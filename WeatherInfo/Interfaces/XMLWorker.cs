@@ -2,27 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WeatherInfo.Classes;
+
 
 namespace WeatherInfo.Interfaces
 {
     /// <summary>
     /// тут будет обработка xml, и отсюда вызывается API
-    /// все методы будут возвращать массив строк, где:
-    /// [0] средняя температура
-    /// [1] минимальная
-    /// [2] максимальная
-    /// [3] облачность
     /// </summary>
     interface XMLWorker
     {
         //тут конструктор, принимающий город
 
-        string[] getHour(int hour);//инфа за один час(отрезок времени, вроде как минимум - 3 часа)
+        Forecast getHours(int hour);//инфа за минимум - 3 часа
 
-        string[] getDay(int day);//здесь парсится инфа по часам за заданный день
+        /// <summary>
+        /// Подробная инфа за день(возможно для первых пяти дней)
+        /// </summary>
+        /// <param name="day">номер дня</param>
+        /// <returns>массив прогнозов по часам</returns>
+        Forecast[] getDay(int day);
 
-        string[] getWeek();//здесь вся неделя
+        /// <summary>
+        /// получает подробно(по три часа) пять дней
+        /// </summary>
+        /// <returns>возвращает массив прогнозов дней, которые сами массивы прогнозов по часам</returns>
+        Forecast[][] getDetailedWeek();
+        
+        /// <summary>
+        /// Неподробная инфа за 14 дней
+        /// </summary>
+        /// <returns>массив дней</returns>
+        Forecast[] getBigForecast();
 
-        void update();//полное обновление текущего xml
+        /// <summary>
+        /// полное обновление прогнозов
+        /// </summary>
+        void update();
     }
 }

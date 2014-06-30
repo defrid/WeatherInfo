@@ -13,9 +13,15 @@ namespace WeatherInfo.Interfaces
     {
         //тут должен быть конструктор, здесь по идее подключение к серверу
 
-        XmlDocument getWeek();
+        XmlDocument getDetailedWeek();
         /*здесь получаем XML с прогнозом на неделю, 
          * при этом он подробный, а значит отдельно по дням получать уже не нужно
          * пока что это будет XMLDocument, позже тип может смениться, но суть будет одна - XML*/
+
+        /// <summary>
+        /// Полный прогноз на 14 дней
+        /// </summary>
+        /// <returns></returns>
+        XmlDocument getBigForecast();
     }
 }
