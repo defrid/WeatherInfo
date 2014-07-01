@@ -11,7 +11,7 @@ namespace WeatherInfo.Classes
     public class XMLParser : XMLWorker
     {
         string town;
-        XmlDocument weather;
+        XDocument weather;
 
         public XMLParser(string _town)
         {

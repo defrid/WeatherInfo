@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using WeatherInfo.Classes;
 
 namespace TestConsole
 {
@@ -12,10 +13,14 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            var request = WebRequest.Create(@"http://api.openweathermap.org/data/2.5/forecast?q=London,us&mode=xml");
-            var response = request.GetResponse();
-            var data = new StreamReader(response.GetResponseStream()).ReadToEnd();
-            Console.WriteLine(data);
+            var api = new WeatherApi("London");
+            Console.WriteLine(api.GetCurrentForecast());
+            Console.ReadKey();
+            Console.WriteLine(api.GetDailyForecast(3));
+            Console.ReadKey();
+            Console.WriteLine(api.GetDetailedWeek());
+            Console.ReadKey();
+            Console.WriteLine(api.GetBigForecast());
             Console.ReadKey();
         }
     }

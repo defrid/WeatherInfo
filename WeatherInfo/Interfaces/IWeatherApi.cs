@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
+﻿using System.Xml.Linq;
 
 namespace WeatherInfo.Interfaces
 {
@@ -16,14 +12,14 @@ namespace WeatherInfo.Interfaces
         /// Получение текущего прогноза
         /// </summary>
         /// <returns></returns>
-        XmlDocument GetCurrentForecast();
+        XDocument GetCurrentForecast();
 
         
         /// <summary>
         /// Подробный прогноз на 5 дней с интервалом в 3 часа
         /// </summary>
         /// <returns></returns>
-        XmlDocument GetDetailedWeek();
+        XDocument GetDetailedWeek();
         /*здесь получаем XML с прогнозом на неделю, 
          * при этом он подробный, а значит отдельно по дням получать уже не нужно
          * пока что это будет XMLDocument, позже тип может смениться, но суть будет одна - XML*/
@@ -33,12 +29,12 @@ namespace WeatherInfo.Interfaces
         /// </summary>
         /// <param name="days">Количество дней</param>
         /// <returns></returns>
-        XmlDocument GetDailyForecast(int days);
+        XDocument GetDailyForecast(int days);
 
         /// <summary>
         /// Полный прогноз на 14 дней
         /// </summary>
         /// <returns></returns>
-        XmlDocument GetBigForecast();
+        XDocument GetBigForecast();
     }
 }

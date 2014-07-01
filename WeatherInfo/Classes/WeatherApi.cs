@@ -15,12 +15,11 @@ namespace WeatherInfo.Classes
 
         public string City { get; protected set; }
 
-        private static readonly string CurentRequestString =
-            @"http://api.openweathermap.org/data/2.5/weather?mode=xml&lang=ru";
-        private static readonly string DetainedRequestString =
-            @"http://api.openweathermap.org/data/2.5/forecast?&mode=xml&lang=ru";
-        private static readonly string ShortRequestString=
-            @"http://api.openweathermap.org/data/2.5/daily?&mode=xml&lang=ru";
+        private const string CurentRequestString = @"http://api.openweathermap.org/data/2.5/weather?mode=xml&lang=ru";
+
+        private const string DetainedRequestString = @"http://api.openweathermap.org/data/2.5/forecast?&mode=xml&lang=ru";
+
+        private const string ShortRequestString = @"http://api.openweathermap.org/data/2.5/forecast//daily?&mode=xml&lang=ru";
         
         public WeatherApi(string city)
         {
@@ -32,40 +31,36 @@ namespace WeatherInfo.Classes
         /// </summary>
         /// <param name="uriString">Строка uri запроса</param>
         /// <returns></returns>
-        private string GetResponseData(string uriString)
+        private static XDocument GetResponseStream(string uriString)
         {
-            string result;
             var request = WebRequest.Create(uriString);
             using (var response = request.GetResponse())
             using (var stream = response.GetResponseStream())
-                if (stream != null)
-                    using (var reader = new StreamReader(stream))
-                    {
-                        result = reader.ReadToEnd();
-                    }
-                else
-                    result = null;
-            return result;
+                return stream!=null?XDocument.Load(stream):null;
         }
 
-        public XmlDocument GetCurrentForecast()
+        public XDocument GetCurrentForecast()
         {
-            throw new NotImplementedException();
+            var uriString = CurentRequestString + String.Format("&q={0}", City);
+            return GetResponseStream(uriString);
         }
 
-        public XmlDocument GetDailyForecast(int days)
+        public XDocument GetDailyForecast(int days)
         {
-            throw new NotImplementedException();
+            var uriString = ShortRequestString + String.Format("&q={0}&cnt={1}", City, days);
+            return GetResponseStream(uriString);
         }
 
-        public XmlDocument GetDetailedWeek()
+        public XDocument GetDetailedWeek()
         {
-            throw new NotImplementedException();
+            var uriString = DetainedRequestString + String.Format("&q={0}", City);
+            return GetResponseStream(uriString);
         }
 
-        public XmlDocument GetBigForecast()
+        public XDocument GetBigForecast()
         {
-            throw new NotImplementedException();
+            var uriString = ShortRequestString + String.Format("&q={0}", City);
+            return GetResponseStream(uriString);
         }
     }
 }
