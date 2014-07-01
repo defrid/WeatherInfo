@@ -64,8 +64,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Forecast.cs" />
+    <Compile Include="Classes\WeatherApi.cs" />
     <Compile Include="Classes\XMLParser.cs" />
-    <Compile Include="Interfaces\WeatherAPI.cs" />
+    <Compile Include="Interfaces\IWeatherApi.cs" />
     <Compile Include="Interfaces\XMLWorker.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

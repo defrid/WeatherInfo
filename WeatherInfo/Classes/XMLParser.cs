@@ -16,8 +16,8 @@ namespace WeatherInfo.Classes
         public XMLParser(string _town)
         {
             town = _town;
-            WeatherAPI con = null;// = new WeatherAPI(town);
-            weather = con.getDetailedWeek();
+            IWeatherApi con = null;// = new WeatherAPI(town);
+            weather = con.GetDetailedWeek();
         }
         
         public Forecast getHours(int hour) 
