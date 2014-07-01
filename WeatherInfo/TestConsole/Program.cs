@@ -7,7 +7,10 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            //var api = new WeatherApi("London");
+            var xml = new XMLParser("Moscow");
+            //xml.getBigForecast();
+            xml.getCurHour();
+            //xml.getDetailedWeek();
             //Console.WriteLine(api.GetCurrentForecast());
             //Console.ReadKey();
             //Console.WriteLine(api.GetDailyForecast(3));

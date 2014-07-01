@@ -10,17 +10,21 @@ namespace WeatherInfo.Classes
     /// </summary>
     public class Forecast
     {
-        int temp;//температура
-        int min;
-        int max;
-        string clouds;//обланость
-
-        public Forecast(int _temp, int _min, int _max, string _clouds)
+        public Forecast(int _min, int _max, string _clouds, string _date)
         {
-            int temp = _temp;
-            int min = _min;
-            int max = _max;
-            string clouds = _clouds;
+            min = _min;
+            max = _max;
+            clouds = _clouds;
+            date = _date;
         }
+
+
+        public int min { get; protected set; }
+
+        public int max { get; protected set; }
+
+        public string clouds { get; protected set; }
+
+        public string date { get; protected set; }//2014-07-01T12:00:00, для неподробного 2014-07-01
     }
 }
