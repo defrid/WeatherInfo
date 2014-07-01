@@ -1,7 +1,7 @@
 ﻿<Window x:Class="WeatherInfo.Settings"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Settings" Height="485.769" Width="375">
+        Title="Настройки" Height="485.769" Width="375">
     <Grid>
         <Label Content="Список городов" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="130" Margin="10,26,0,0" VerticalAlignment="Top" Width="347">
@@ -32,8 +32,8 @@
             </Grid>
         </Border>
         <CheckBox x:Name="autostartFlag_chbx" Content="Автозапуск с Windows" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="about_btn" Content="О программе" HorizontalAlignment="Left" Margin="10,411,0,0" VerticalAlignment="Top" Width="84" Height="23"/>
+        <Button x:Name="about_btn" Click="about_btn_Click" Content="О программе" HorizontalAlignment="Left" Margin="10,411,0,0" VerticalAlignment="Top" Width="84" Height="23"/>
         <Button x:Name="accept_btn" Content="OK" HorizontalAlignment="Left" Margin="184,411,0,0" VerticalAlignment="Top" Width="84" Height="23"/>
-        <Button x:Name="cancel_btn" Content="Отмена" HorizontalAlignment="Left" Margin="273,411,0,0" VerticalAlignment="Top" Width="84" Height="23"/>
+        <Button x:Name="cancel_btn" Click="cancel_btn_Click" Content="Отмена" HorizontalAlignment="Left" Margin="273,411,0,0" VerticalAlignment="Top" Width="84" Height="23"/>
     </Grid>
 </Window>

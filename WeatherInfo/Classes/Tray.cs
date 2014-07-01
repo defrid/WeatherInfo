@@ -125,7 +125,7 @@ namespace WeatherInfo
                 settingsWindow.Focus();
                 settingsWindow.Activate();
                 //ToWindow(sender, e);
-                OnOptionsClick();
+                //OnOptionsClick();
             }
             else { throw new Exception("Задайте событие на нажатие опций в трее - OnOptionsClick"); }
         }

@@ -22,5 +22,18 @@ namespace WeatherInfo
         {
             InitializeComponent();
         }
+
+        private void cancel_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void about_btn_Click(object sender, RoutedEventArgs e)
+        {
+            About aboutWindow = new About();
+            aboutWindow.Show();
+            aboutWindow.Focus();
+            aboutWindow.Activate();
+        }
     }
 }
