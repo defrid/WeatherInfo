@@ -11,33 +11,49 @@
             <Button HorizontalAlignment="Left" Margin="50 5">Обновить</Button>
             <Label HorizontalAlignment="Right" Margin="50 5">Подробно</Label>
         </DockPanel>
-        <Grid ShowGridLines="True" Name="WeatherTable">
-            <Grid.Resources>
-                <Style TargetType="Label">
-                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                </Style>
-            </Grid.Resources>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Label Content="ПН"/>
-            <Label Content="ВТ" Grid.Column="1"/>
-            <Label Content="СР" Grid.Column="2"/>
-            <Label Content="ЧТ" Grid.Column="3"/>
-            <Label Content="ПТ" Grid.Column="4"/>
-            <Label Content="СБ" Grid.Column="5"/>
-            <Label Content="ВС" Grid.Column="6"/>
-        </Grid>
+        <Border BorderBrush="Black" BorderThickness="1">
+            <Grid Name="WeatherTable" ShowGridLines="True">
+                <Grid.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border BorderBrush="Black" BorderThickness="1">
+                    <Label Content="ПН"/>    
+                </Border>
+                <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+                    <Label Content="ВТ" />
+                </Border>
+                <Border Grid.Column="2" BorderBrush="Black" BorderThickness="1">
+                    <Label Content="СР"/>
+                </Border>
+                <Border Grid.Column="3" BorderBrush="Black" BorderThickness="1">
+                    <Label Content="ЧТ" />
+                </Border>
+                <Border Grid.Column="4" BorderBrush="Black" BorderThickness="1">
+                    <Label Content="ПТ" />
+                </Border>
+                <Border Grid.Column="5" BorderBrush="Black" BorderThickness="1">
+                    <Label Content="СБ" />
+                </Border>
+                <Border Grid.Column="6" BorderBrush="Black" BorderThickness="1">
+                    <Label Content="ВС" />
+                </Border>
+            </Grid>
+        </Border>
     </DockPanel>
 </Window>

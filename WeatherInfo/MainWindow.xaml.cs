@@ -46,7 +46,7 @@ namespace WeatherInfo
                 {
                     Content = maxTemp,
                     HorizontalAlignment = HorizontalAlignment.Right,
-                    FontSize = 16,
+                    FontSize = 15,
                     FontWeight = FontWeights.Bold
                 };
             maxTempLabel.SetValue(Grid.ColumnProperty,1);
