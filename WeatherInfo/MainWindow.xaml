@@ -48,7 +48,7 @@
                     <Label Content="ПТ" />
                 </Border>
                 <Border Grid.Column="5" BorderBrush="Black" BorderThickness="1">
-                    <Label Content="СБ" />
+                    <Label Content="СБ"/>
                 </Border>
                 <Border Grid.Column="6" BorderBrush="Black" BorderThickness="1">
                     <Label Content="ВС" />
