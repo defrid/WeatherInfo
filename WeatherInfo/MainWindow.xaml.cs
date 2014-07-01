@@ -26,7 +26,7 @@ namespace WeatherInfo
         public MainWindow()
         {
             InitializeComponent();
-            Tray.SetupTray(this, test);
+            Tray.SetupTray(this, test, full, shortI);
             WeatherTable.Children.Add(GetWeaterElement(1, 1, "2", "+16", "+32", "01d"));
         }
 
@@ -75,7 +75,10 @@ namespace WeatherInfo
             return gridResult;
         }
 
-
+        /*
+         <Image Source="http://openweathermap.org/img/w/10d.png" Grid.Row="1"  Grid.RowSpan="2" Grid.ColumnSpan="2"></Image> 
+         
+         */
         private void Window_StateChanged(object sender, EventArgs e)
         {
             switch(this.WindowState)
