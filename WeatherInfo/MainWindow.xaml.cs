@@ -11,10 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Globalization;
 using WeatherInfo.Classes;
-using System.Windows.Shapes;
-using WeatherInfo.Classes;
-
 
 namespace WeatherInfo
 {
@@ -23,69 +21,102 @@ namespace WeatherInfo
     /// </summary>
     public partial class MainWindow : Window
     {
+        private XMLParser forecasts;
+
         public MainWindow()
         {
             InitializeComponent();
-            new SecondWindow().Show();
-            Tray.SetupTray(this, test, full, shortI);
-            WeatherTable.Children.Add(GetWeaterElement(1, 1, "2", "+16", "+32", "01d"));
+            fillTable();
+            Tray.SetupTray(this, test, test, test);
         }
 
-        private static Grid GetWeaterElement(int column, int row, string day, string minTemp, string maxTemp, string imageId)
+        private void fillTable()
+        {
+            string town = "Moscow";
+            forecasts = new XMLParser(town);
+            Forecast[] days = forecasts.getBigForecast();
+            DateTime date = DateTime.Parse(days[0].date, CultureInfo.InvariantCulture);
+            int dayOfWeek = (int)date.DayOfWeek - 1;
+            int index = 0;
+            City.Content = town;
+            MonthYear.Content = date.Month + "/" + date.Year;
+            for (int i = 0; i < 2; i++)
+            {
+                for (; dayOfWeek < 7; dayOfWeek++)
+                {
+                    WeatherTable.Children.Add(GetWeaterElement(dayOfWeek, i + 1, days[index]));
+                    index++;
+                }
+                dayOfWeek = 0;
+            }
+        }
+
+        private static Grid GetWeaterElement(int column, int row, Forecast fore)
         {
             var gridResult = new Grid();
-            gridResult.SetValue(Grid.RowProperty,row);
-            gridResult.SetValue(Grid.ColumnProperty,column);
+            gridResult.SetValue(Grid.RowProperty, row);
+            gridResult.SetValue(Grid.ColumnProperty, column);
             for (var i = 0; i < 2; i++)
             {
                 gridResult.RowDefinitions.Add(new RowDefinition());
                 gridResult.ColumnDefinitions.Add(new ColumnDefinition());
             }
             gridResult.RowDefinitions.Add(new RowDefinition());
-            var specRowDef = new ColumnDefinition {Width = new GridLength(1.2, GridUnitType.Star)};
+            var specRowDef = new ColumnDefinition { Width = new GridLength(1.2, GridUnitType.Star) };
             gridResult.ColumnDefinitions.Add(specRowDef);
-            var dayLabel = new Label {Content = day,FontWeight = FontWeights.Bold};
+            string day = fore.date.Substring(8, 2);
+            var dayLabel = new Label { Content = day, FontWeight = FontWeights.Bold };
             gridResult.Children.Add(dayLabel);
             var maxTempLabel = new Label()
                 {
-                    Content = maxTemp,
+                    Content = (fore.max > 0 ? "+" + fore.max.ToString() : fore.max.ToString()),
                     HorizontalAlignment = HorizontalAlignment.Right,
                     FontSize = 15,
                     FontWeight = FontWeights.Bold
                 };
-            maxTempLabel.SetValue(Grid.ColumnProperty,1);
-            maxTempLabel.SetValue(Grid.ColumnSpanProperty,2);
+            maxTempLabel.SetValue(Grid.ColumnProperty, 1);
+            maxTempLabel.SetValue(Grid.ColumnSpanProperty, 2);
             gridResult.Children.Add(maxTempLabel);
             var minTempLabel = new Label()
                 {
-                    Content = minTemp,
+                    Content = (fore.min > 0 ? "+" + fore.min.ToString() : fore.min.ToString()),
                     HorizontalAlignment = HorizontalAlignment.Right
                 };
-            minTempLabel.SetValue(Grid.RowProperty,1);
-            minTempLabel.SetValue(Grid.ColumnProperty,2);
+            minTempLabel.SetValue(Grid.RowProperty, 1);
+            minTempLabel.SetValue(Grid.ColumnProperty, 2);
             gridResult.Children.Add(minTempLabel);
             var image = new Image
                 {
                     Source = new BitmapImage(
-                        new Uri(WeatherAPI.ImageRequestString + String.Format("{0}.png", imageId)))
+                        new Uri(WeatherAPI.ImageRequestString + String.Format("{0}.png", fore.icon)))
                 };
-            image.SetValue(Grid.RowProperty,1);
-            image.SetValue(Grid.RowSpanProperty,2);
-            image.SetValue(Grid.ColumnSpanProperty,2);
+            image.SetValue(Grid.RowProperty, 1);
+            image.SetValue(Grid.RowSpanProperty, 2);
+            image.SetValue(Grid.ColumnSpanProperty, 2);
             gridResult.Children.Add(image);
             return gridResult;
         }
 
+        private void moreInfoClick(object sender, RoutedEventArgs e)
+        {
+            new SecondWindow(forecasts).Show();
+        }
+
+        private void updateClick(object sender, RoutedEventArgs e)
+        {
+            WeatherTable.Children.RemoveRange(7, 14);
+            fillTable();
+        }
         /*
          <Image Source="http://openweathermap.org/img/w/10d.png" Grid.Row="1"  Grid.RowSpan="2" Grid.ColumnSpan="2"></Image> 
          
          */
         private void Window_StateChanged(object sender, EventArgs e)
         {
-            switch(this.WindowState)
+            switch (this.WindowState)
             {
                 case System.Windows.WindowState.Minimized:
-                    Tray.Update(new Forecast(10, 12, "clouds", "date", "04d"));
+                    Tray.Update(forecasts.getCurHour());
                     break;
             }
         }
@@ -93,16 +124,6 @@ namespace WeatherInfo
         void test()
         {
             MessageBox.Show("Опции");
-        }
-
-        void full()
-        {
-            MessageBox.Show("Полная инфа");
-        }
-
-        void shortI()
-        {
-            MessageBox.Show("Краткая инфа");
         }
     }
 }

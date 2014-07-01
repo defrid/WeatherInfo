@@ -8,8 +8,8 @@
             <Label Name="MonthYear" HorizontalAlignment="Right" Margin="50 5" Content="Month Year"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom">
-            <Button HorizontalAlignment="Left" Margin="50 5">Обновить</Button>
-            <Label HorizontalAlignment="Right" Margin="50 5">Подробно</Label>
+            <Button Name="Update" HorizontalAlignment="Left" Margin="50 5" Click="updateClick">Обновить</Button>
+            <Button Name="MoreInfo" HorizontalAlignment="Right" Margin="50 5" Click="moreInfoClick">Подробно</Button>
         </DockPanel>
         <Border BorderBrush="Black" BorderThickness="1">
             <Grid Name="WeatherTable" ShowGridLines="True">
@@ -48,7 +48,7 @@
                     <Label Content="ПТ" />
                 </Border>
                 <Border Grid.Column="5" BorderBrush="Black" BorderThickness="1">
-                    <Label Content="СБ"/>
+                    <Label Content="СБ" />
                 </Border>
                 <Border Grid.Column="6" BorderBrush="Black" BorderThickness="1">
                     <Label Content="ВС" />

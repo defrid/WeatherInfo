@@ -19,9 +19,11 @@ namespace WeatherInfo
     /// </summary>
     public partial class SecondWindow : Window
     {
-        public SecondWindow()
+        XMLParser xml;
+        public SecondWindow(XMLParser mainParser)
         {
             InitializeComponent();
+            xml = mainParser;
             Container.Children.Add(GetForecastElement(
                 new Forecast(20, 25, "cld", "dta", "13d"),
                 new Forecast(10, 15, "cloud", "data", "13n")));
