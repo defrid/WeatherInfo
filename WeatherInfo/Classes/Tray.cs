@@ -8,7 +8,10 @@ namespace WeatherInfo
     public class Tray
     {
         public delegate void TrayVoid();
+
         public static event TrayVoid OnOptionsClick;
+        public static event TrayVoid OnFullInfo;
+        public static event TrayVoid OnShortInfo;
 
         public enum weatherState
         {
@@ -18,68 +21,81 @@ namespace WeatherInfo
         static string waySun = @"Icons/sun.png";
         static string wayRain = @"Icons/rain.png";
         static string waySnow = @"Icons/snow.png";
-        static string iDdescr = "Градуcов Цельсия. Синий < 0, Красный > 0.";
+
         static string iPdescr = "Двойной клик - развернуть программу, ПКМ - открыть меню";
         static Window windowMain;
         static NotifyIcon iconPicture = new NotifyIcon();
-        static NotifyIcon iconDigit = new NotifyIcon();
         
         //Устанавливает трей (сюда главное окно и событие на клик опций)
-        public static void SetupTray(Window main, TrayVoid onOptionsClick)
+        public static void SetupTray(Window main, TrayVoid onOptionsClick, TrayVoid toFullInfo, TrayVoid toShortInfo)
         {
             OnOptionsClick += onOptionsClick;
+            OnFullInfo += toFullInfo;
+            OnShortInfo += toShortInfo;
+
             windowMain = main;
 
             iconPicture.Text = iPdescr;
-            iconDigit.Text = iDdescr;
 
             ContextMenu newMenu = new ContextMenu();
-            newMenu.MenuItems.Add(new MenuItem("Подробный режим", ToWindow));
+            newMenu.MenuItems.Add(new MenuItem("Развернуть кратко", ToShort));
+            newMenu.MenuItems.Add(new MenuItem("Развернуть подробно", ToFull));
             newMenu.MenuItems.Add(new MenuItem("Настройки", OptionsClick));
             newMenu.MenuItems.Add(new MenuItem("Выход", AppExit));
 
-            iconPicture.ContextMenu = iconDigit.ContextMenu = newMenu;
+            iconPicture.ContextMenu = newMenu;
 
             iconPicture.MouseDoubleClick += trayClick;
-            iconDigit.MouseDoubleClick += trayClick;
             
             System.Windows.Application.Current.Exit += Current_Exit;
         }
 
+       
         //скрыть значки (Если Exception треи могут не скрыться автоматом)
         public static void TrayHide()
         {
             iconPicture.Visible = false;
-            iconDigit.Visible = false;
         }
 
         //обновить трей
         public static void Update(weatherState weather, int temperature)
         {
             Icon forPic = Icon.FromHandle(getPicture(weather).GetHicon());
-            Icon forDeg = Icon.FromHandle(getPicture(temperature).GetHicon());
-            makeTray(forPic, forDeg);
+            iconPicture.Text = temperature.ToString() + "°С";
+            makeTray(forPic);
         }
 
         public static void Update(Bitmap image, int temperature)
         {
             Icon forPic = Icon.FromHandle(image.GetHicon());
-            Icon forDeg = Icon.FromHandle(getPicture(temperature).GetHicon());
-            makeTray(forPic, forDeg); 
+            iconPicture.Text = temperature.ToString() + "°С";
+            makeTray(forPic); 
         }
 
         //-------------------------------------------------------------------------------
 
+
+        private static void ToShort(object sender, EventArgs e)
+        {
+            ToWindow(sender, e);
+            OnShortInfo();
+        }
+
+        private static void ToFull(object sender, EventArgs e)
+        {
+            ToWindow(sender, e);
+            OnFullInfo();
+        }
+
+
         //задает иконки скрывает окно
-        private static void makeTray(Icon forPic, Icon forDeg)
+        private static void makeTray(Icon forPic) //, Icon forDeg
         {
             windowMain.WindowState = System.Windows.WindowState.Normal;
             windowMain.Hide();
 
             iconPicture.Icon = forPic;
-            iconDigit.Icon = forDeg;
 
-            iconDigit.Visible = true;
             iconPicture.Visible = true;
         }
 
