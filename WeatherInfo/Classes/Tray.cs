@@ -27,6 +27,7 @@ namespace WeatherInfo
         //свернуть окно в трей
         public static void ToTray(Window main, weatherState weather, int temperature)
         {
+            main.WindowState = System.Windows.WindowState.Normal;
             windowMain = main;
             main.Hide();
 
@@ -148,6 +149,8 @@ namespace WeatherInfo
         {
             TrayHide();
             windowMain.Show();
+            windowMain.Focus();
+            windowMain.Activate();
         }
 
         //вызовет событие OnOptionsClick

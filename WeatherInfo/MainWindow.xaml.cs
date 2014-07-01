@@ -23,5 +23,15 @@ namespace WeatherInfo
         {
             InitializeComponent();
         }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            switch(this.WindowState)
+            {
+                case System.Windows.WindowState.Minimized:
+                    Tray.ToTray(this, Tray.weatherState.sun, 0);
+                    break;
+            }
+        }
     }
 }
