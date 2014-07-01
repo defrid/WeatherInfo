@@ -94,7 +94,7 @@ namespace WeatherInfo.Classes
             {
                 if (all == "") all = getAll();
 
-                Regex reg = new Regex(@"([A-z]*(?=.*RU\n))");
+                Regex reg = new Regex(@"([A-z ]*(?=.*" + country + "\n))");
                 var mathes = reg.Matches(all);
 
                 using (StreamWriter sw = new StreamWriter("Location//" + country + ".txt"))
