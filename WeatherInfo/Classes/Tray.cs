@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
+using WeatherInfo.Classes;
 
 namespace WeatherInfo
 {
@@ -13,14 +14,7 @@ namespace WeatherInfo
         public static event TrayVoid OnFullInfo;
         public static event TrayVoid OnShortInfo;
 
-        public enum weatherState
-        {
-            cloud, sun, rain, snow
-        }
-        static string wayCloud = @"Icons/cloud.png";
-        static string waySun = @"Icons/sun.png";
-        static string wayRain = @"Icons/rain.png";
-        static string waySnow = @"Icons/snow.png";
+        public Forecast curFore;
 
         static string iPdescr = "Двойной клик - развернуть программу, ПКМ - открыть меню";
         static Window windowMain;
@@ -58,18 +52,11 @@ namespace WeatherInfo
         }
 
         //обновить трей
-        public static void Update(weatherState weather, int temperature)
+        public static void Update(Forecast newFore)
         {
-            Icon forPic = Icon.FromHandle(getPicture(weather).GetHicon());
-            iconPicture.Text = temperature.ToString() + "°С";
+            Icon forPic = Icon.FromHandle(getPicture(newFore).GetHicon());
+            iconPicture.Text = newFore.max + "°С";
             makeTray(forPic);
-        }
-
-        public static void Update(Bitmap image, int temperature)
-        {
-            Icon forPic = Icon.FromHandle(image.GetHicon());
-            iconPicture.Text = temperature.ToString() + "°С";
-            makeTray(forPic); 
         }
 
         //-------------------------------------------------------------------------------
@@ -113,53 +100,10 @@ namespace WeatherInfo
         }
       
         //получает битмап из картинки
-        private static Bitmap getPicture(weatherState ws)
+        private static Bitmap getPicture(Forecast fore)
         {
-            string way = "";
-            switch (ws)
-            {
-                case weatherState.cloud:
-                    way = wayCloud;
-                    break;
-
-                case weatherState.rain:
-                    way = wayRain;
-                    break;
-
-                case weatherState.sun:
-                    way = waySun;
-                    break;
-
-                case weatherState.snow:
-                    way = waySnow;
-                    break;
-            }
-            return new Bitmap(way);
-        }
-
-        //получает битмап с цветной цифрой
-        private static Bitmap getPicture(int degree)
-        {
-            Bitmap bitmap = new Bitmap(128, 128);
-            Graphics gr = Graphics.FromImage(bitmap);
-            Font fontM = new Font(System.Drawing.FontFamily.GenericSansSerif, 80);
-            SolidBrush brush;
-
-            if (degree > 0)
-                brush = new SolidBrush(Color.Red);
-            else
-                if (degree < 0)
-                {
-                    brush = new SolidBrush(Color.Blue);
-                    degree = -degree;
-                }
-                else brush = new SolidBrush(Color.Black);
-
-
-
-            gr.DrawString(degree.ToString(), fontM, brush, new PointF(0, 0));
-
-            return bitmap;
+            Bitmap res = WeatherInfo.Classes.WeatherAPI.GetImageById(fore.icon);
+            return res;
         }
 
         //откроет окно

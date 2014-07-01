@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WeatherInfo.Classes;
+
 
 namespace WeatherInfo
 {
@@ -30,7 +32,7 @@ namespace WeatherInfo
             switch(this.WindowState)
             {
                 case System.Windows.WindowState.Minimized:
-                    Tray.Update(Tray.weatherState.rain, 10);
+                    Tray.Update(new Forecast(10, 12, "clouds", "date", "04d"));
                     break;
             }
         }
