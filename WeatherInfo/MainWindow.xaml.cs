@@ -22,6 +22,22 @@ namespace WeatherInfo
         public MainWindow()
         {
             InitializeComponent();
+            Tray.SetupTray(this, test);
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            switch(this.WindowState)
+            {
+                case System.Windows.WindowState.Minimized:
+                    Tray.Update(Tray.weatherState.rain, 10);
+                    break;
+            }
+        }
+
+        void test()
+        {
+            MessageBox.Show("Опции");
         }
     }
 }

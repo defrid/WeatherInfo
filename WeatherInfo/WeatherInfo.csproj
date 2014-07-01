@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,6 +67,7 @@
     </Compile>
     <Compile Include="Classes\Forecast.cs" />
     <Compile Include="Classes\WeatherApi.cs" />
+    <Compile Include="Classes\Tray.cs" />
     <Compile Include="Classes\XMLParser.cs" />
     <Compile Include="Interfaces\IWeatherApi.cs" />
     <Compile Include="Interfaces\XMLWorker.cs" />
