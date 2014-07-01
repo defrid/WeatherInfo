@@ -22,7 +22,7 @@ namespace WeatherInfo
         public MainWindow()
         {
             InitializeComponent();
-            Tray.SetupTray(this, test);
+            Tray.SetupTray(this, test, full, shortI);
         }
 
         private void Window_StateChanged(object sender, EventArgs e)
@@ -38,6 +38,16 @@ namespace WeatherInfo
         void test()
         {
             MessageBox.Show("Опции");
+        }
+
+        void full()
+        {
+            MessageBox.Show("Полная инфа");
+        }
+
+        void shortI()
+        {
+            MessageBox.Show("Краткая инфа");
         }
     }
 }
