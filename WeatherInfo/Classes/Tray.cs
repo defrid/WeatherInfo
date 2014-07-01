@@ -24,42 +24,29 @@ namespace WeatherInfo
         static NotifyIcon iconPicture = new NotifyIcon();
         static NotifyIcon iconDigit = new NotifyIcon();
         
-        //свернуть окно в трей
-        public static void ToTray(Window main, weatherState weather, int temperature)
+        //Устанавливает трей (сюда главное окно и событие на клик опций)
+        public static void SetupTray(Window main, TrayVoid onOptionsClick)
         {
-            main.WindowState = System.Windows.WindowState.Normal;
+            OnOptionsClick += onOptionsClick;
             windowMain = main;
-            main.Hide();
-
-            try
-            {
-                Icon forPic = Icon.FromHandle(getPicture(weather).GetHicon());
-                iconPicture.Icon = forPic;
-                Icon forDeg = Icon.FromHandle(getPicture(temperature).GetHicon());
-                iconDigit.Icon = forDeg;
-            }
-            catch { }
 
             iconPicture.Text = iPdescr;
             iconDigit.Text = iDdescr;
 
-            iconPicture.ContextMenu = new ContextMenu();
-            iconPicture.ContextMenu.MenuItems.Add(new MenuItem("Подробный режим", ToWindow));
-            iconPicture.ContextMenu.MenuItems.Add(new MenuItem("Настройки", OptionsClick));
-            iconPicture.ContextMenu.MenuItems.Add(new MenuItem("Выход", AppExit));
+            ContextMenu newMenu = new ContextMenu();
+            newMenu.MenuItems.Add(new MenuItem("Подробный режим", ToWindow));
+            newMenu.MenuItems.Add(new MenuItem("Настройки", OptionsClick));
+            newMenu.MenuItems.Add(new MenuItem("Выход", AppExit));
+
+            iconPicture.ContextMenu = iconDigit.ContextMenu = newMenu;
 
             iconPicture.MouseDoubleClick += trayClick;
             iconDigit.MouseDoubleClick += trayClick;
             
-
             System.Windows.Application.Current.Exit += Current_Exit;
-            iconDigit.Visible = true;
-            iconPicture.Visible = true;
         }
 
-        
-
-        //скрыть значки (Если Exception они могут не скрыться автоматом)
+        //скрыть значки (Если Exception треи могут не скрыться автоматом)
         public static void TrayHide()
         {
             iconPicture.Visible = false;
@@ -69,17 +56,32 @@ namespace WeatherInfo
         //обновить трей
         public static void Update(weatherState weather, int temperature)
         {
-            try
-            {
-                Icon forPic = Icon.FromHandle(getPicture(weather).GetHicon());
-                iconPicture.Icon = forPic;
-                Icon forDeg = Icon.FromHandle(getPicture(temperature).GetHicon());
-                iconDigit.Icon = forDeg;
-            }
-            catch { }
+            Icon forPic = Icon.FromHandle(getPicture(weather).GetHicon());
+            Icon forDeg = Icon.FromHandle(getPicture(temperature).GetHicon());
+            makeTray(forPic, forDeg);
+        }
+
+        public static void Update(Bitmap image, int temperature)
+        {
+            Icon forPic = Icon.FromHandle(image.GetHicon());
+            Icon forDeg = Icon.FromHandle(getPicture(temperature).GetHicon());
+            makeTray(forPic, forDeg); 
         }
 
         //-------------------------------------------------------------------------------
+
+        //задает иконки скрывает окно
+        private static void makeTray(Icon forPic, Icon forDeg)
+        {
+            windowMain.WindowState = System.Windows.WindowState.Normal;
+            windowMain.Hide();
+
+            iconPicture.Icon = forPic;
+            iconDigit.Icon = forDeg;
+
+            iconDigit.Visible = true;
+            iconPicture.Visible = true;
+        }
 
         //при нажатии на выход
         private static void AppExit(object sender, EventArgs e)
@@ -158,8 +160,7 @@ namespace WeatherInfo
         {
             if (OnOptionsClick != null)
             {
-                windowMain.Show();
-                TrayHide();
+                ToWindow(sender, e);
                 OnOptionsClick();
             }
             else { throw new Exception("Задайте событие на нажатие опций в трее - OnOptionsClick"); }
