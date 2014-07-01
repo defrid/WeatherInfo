@@ -22,7 +22,7 @@ namespace WeatherInfo.Interfaces
         /// <summary>
         /// получает подробно(по три часа) пять дней
         /// </summary>
-        /// <returns>возвращает массив прогнозов дней, которые сами массивы прогнозов по часам</returns>
+        /// <returns>возвращает массив прогнозов дней, которые сами листы прогнозов по часам</returns>
         List<Forecast>[] getDetailedWeek();
         
         /// <summary>
