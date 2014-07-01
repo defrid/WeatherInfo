@@ -32,7 +32,7 @@ namespace WeatherInfo
             switch(this.WindowState)
             {
                 case System.Windows.WindowState.Minimized:
-                    Tray.Update(new Forecast(10, 12, "clouds", "date", "04d"));
+                    Tray.Update(new Forecast(10, 12, "clouds", "date", "02n"));
                     break;
             }
         }
