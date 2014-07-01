@@ -33,7 +33,8 @@ namespace WeatherInfo.Classes
             int min = (int)float.Parse(cur.Element("temperature").Attribute("min").Value, NumberStyles.Any, ci);
             int max = (int)float.Parse(cur.Element("temperature").Attribute("max").Value, NumberStyles.Any, ci);
             string clouds = cur.Element("clouds").Attribute("name").Value;
-            return new Forecast(min, max, clouds, time);
+            string icon = cur.Element("weather").Attribute("icon").Value;
+            return new Forecast(min, max, clouds, time, icon);
         }
 
         //массив из пяти листов, в каждом листе почасовые прогнозы. Листы, потому что в первом дне может быть меньше 8 записей
@@ -50,6 +51,7 @@ namespace WeatherInfo.Classes
                 int min = (int)float.Parse(time.Element("temperature").Attribute("min").Value, NumberStyles.Any, ci);
                 int max = (int)float.Parse(time.Element("temperature").Attribute("max").Value, NumberStyles.Any, ci);
                 string clouds = time.Element("clouds").Attribute("value").Value;
+                string icon = time.Element("symbol").Attribute("var").Value;
                 if (date == null)
                 {
                     res[curDay] = new List<Forecast>();
@@ -62,7 +64,7 @@ namespace WeatherInfo.Classes
                     res[curDay] = new List<Forecast>();
                     date = from;
                 }
-                res[curDay].Add(new Forecast(min, max, clouds, from));
+                res[curDay].Add(new Forecast(min, max, clouds, from, icon));
             } 
             return res;
         }
@@ -79,7 +81,8 @@ namespace WeatherInfo.Classes
                 int min = (int)float.Parse(time.Element("temperature").Attribute("min").Value, NumberStyles.Any, ci);
                 int max = (int)float.Parse(time.Element("temperature").Attribute("max").Value, NumberStyles.Any, ci);
                 string clouds = time.Element("clouds").Attribute("value").Value;
-                res[cur] = new Forecast(min, max, clouds, from);
+                string icon = time.Element("symbol").Attribute("var").Value;
+                res[cur] = new Forecast(min, max, clouds, from, icon);
                 cur++;
             }
             return res;
