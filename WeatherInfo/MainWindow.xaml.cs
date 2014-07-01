@@ -26,6 +26,7 @@ namespace WeatherInfo
         public MainWindow()
         {
             InitializeComponent();
+            new SecondWindow().Show();
             Tray.SetupTray(this, test, full, shortI);
             WeatherTable.Children.Add(GetWeaterElement(1, 1, "2", "+16", "+32", "01d"));
         }
