@@ -73,7 +73,7 @@ namespace WeatherInfo.Classes
 
         public XDocument GetBigForecast()
         {
-            var uriString = ShortRequestString + String.Format("&q={0}", City);
+            var uriString = ShortRequestString + String.Format("&q={0}&cnt=14", City);
             return GetResponseStream(uriString);
         }
     }
