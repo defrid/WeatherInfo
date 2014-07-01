@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Xml;
 using System.Xml.Linq;
 using System.Net;
@@ -16,11 +19,9 @@ namespace WeatherInfo.Classes
         public string City { get; protected set; }
 
         private const string CurentRequestString = @"http://api.openweathermap.org/data/2.5/weather?mode=xml&lang=ru";
-
         private const string DetainedRequestString = @"http://api.openweathermap.org/data/2.5/forecast?&mode=xml&lang=ru";
-
         private const string ShortRequestString = @"http://api.openweathermap.org/data/2.5/forecast//daily?&mode=xml&lang=ru";
-        
+        private const string ImageRequestString = @"http://openweathermap.org/img/w/";
         public WeatherApi(string city)
         {
             City = city;
@@ -37,6 +38,19 @@ namespace WeatherInfo.Classes
             using (var response = request.GetResponse())
             using (var stream = response.GetResponseStream())
                 return stream!=null?XDocument.Load(stream):null;
+        }
+        /// <summary>
+        /// Метод для получения рисунка погоды по имени
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static Bitmap GetImageById(string id)
+        {
+            var uriString = ImageRequestString + String.Format("{0}.png", id);
+            var request = WebRequest.Create(uriString);
+            using (var response = request.GetResponse())
+            using (var stream = response.GetResponseStream())
+                return stream!=null?new Bitmap(stream): null;
         }
 
         public XDocument GetCurrentForecast()
