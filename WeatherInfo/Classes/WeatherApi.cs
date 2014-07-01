@@ -16,10 +16,11 @@ namespace WeatherInfo.Classes
 
         public string City { get; protected set; }
 
-        private const string CurentRequestString = @"http://api.openweathermap.org/data/2.5/weather?mode=xml&lang=ru&units=metric";
-        private const string DetainedRequestString = @"http://api.openweathermap.org/data/2.5/forecast?&mode=xml&units=metric&lang=ru";
-        private const string ShortRequestString = @"http://api.openweathermap.org/data/2.5/forecast//daily?&mode=xml&units=metric&lang=ru";
-        private const string ImageRequestString = @"http://openweathermap.org/img/w/";
+        public const string CurentRequestString = @"http://api.openweathermap.org/data/2.5/weather?mode=xml&lang=ru&units=metric";
+        public const string DetainedRequestString = @"http://api.openweathermap.org/data/2.5/forecast?&mode=xml&units=metric&lang=ru";
+        public const string ShortRequestString = @"http://api.openweathermap.org/data/2.5/forecast//daily?&mode=xml&units=metric&lang=ru";
+        public const string ImageRequestString = @"http://openweathermap.org/img/w/";
+        
         public WeatherAPI(string city)
         {
             City = city;
@@ -37,6 +38,7 @@ namespace WeatherInfo.Classes
             using (var stream = response.GetResponseStream())
                 return stream!=null?XDocument.Load(stream):null;
         }
+
         /// <summary>
         /// Метод для получения рисунка погоды по имени
         /// </summary>
