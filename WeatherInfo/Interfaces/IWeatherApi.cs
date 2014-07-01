@@ -8,15 +8,6 @@ namespace WeatherInfo.Interfaces
     /// </summary>
     interface IWeatherAPI
     {
-        //тут должен быть конструктор
-
-        /// <summary>
-        /// Метод для получения рисунка погоды по имени
-        /// </summary>
-        /// <param name="id">значение облачности</param>
-        /// <returns></returns>
-        Bitmap GetImageById(string id);
-
         /// <summary>
         /// Получение текущего прогноза
         /// </summary>

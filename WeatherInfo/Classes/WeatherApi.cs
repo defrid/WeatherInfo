@@ -37,7 +37,11 @@ namespace WeatherInfo.Classes
             using (var stream = response.GetResponseStream())
                 return stream!=null?XDocument.Load(stream):null;
         }
-        
+        /// <summary>
+        /// Метод для получения рисунка погоды по имени
+        /// </summary>
+        /// <param name="id">значение облачности</param>
+        /// <returns></returns>
         public static Bitmap GetImageById(string id)
         {
             var uriString = ImageRequestString + String.Format("{0}.png", id);
@@ -48,18 +52,30 @@ namespace WeatherInfo.Classes
         }
 
 
+        /// <summary>
+        /// Получение текущего прогноза
+        /// </summary>
+        /// <returns></returns>
         public XDocument GetCurrentForecast()
         {
             var uriString = CurentRequestString + String.Format("&q={0}", City);
             return GetResponseStream(uriString);
         }
 
+        /// <summary>
+        /// Подробный прогноз на 5 дней с интервалом в 3 часа
+        /// </summary>
+        /// <returns></returns>
         public XDocument GetDetailedWeek()
         {
             var uriString = DetainedRequestString + String.Format("&q={0}", City);
             return GetResponseStream(uriString);
         }
 
+        /// <summary>
+        /// Полный прогноз на 14 дней
+        /// </summary>
+        /// <returns></returns>
         public XDocument GetBigForecast()
         {
             var uriString = ShortRequestString + String.Format("&q={0}&cnt=14", City);
