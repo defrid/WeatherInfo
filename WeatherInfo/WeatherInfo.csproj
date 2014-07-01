@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="Classes\cityChoose.cs" />
     <Compile Include="Classes\Forecast.cs" />
+    <Compile Include="Classes\translate.cs" />
     <Compile Include="Classes\WeatherAPI.cs" />
     <Compile Include="Classes\Tray.cs" />
     <Compile Include="Classes\XMLParser.cs" />
