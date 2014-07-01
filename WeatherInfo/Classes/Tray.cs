@@ -120,7 +120,11 @@ namespace WeatherInfo
         {
             if (OnOptionsClick != null)
             {
-                ToWindow(sender, e);
+                Settings settingsWindow = new Settings();
+                settingsWindow.Show();
+                settingsWindow.Focus();
+                settingsWindow.Activate();
+                //ToWindow(sender, e);
                 OnOptionsClick();
             }
             else { throw new Exception("Задайте событие на нажатие опций в трее - OnOptionsClick"); }
