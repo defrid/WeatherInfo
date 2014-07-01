@@ -22,17 +22,18 @@ namespace WeatherInfo
     public partial class MainWindow : Window
     {
         private XMLParser forecasts;
+        private string town;
 
         public MainWindow()
         {
             InitializeComponent();
             fillTable();
-            Tray.SetupTray(this, test, test, test);
+            Tray.SetupTray(this, test, expandFull, expandShort);
         }
 
         private void fillTable()
         {
-            string town = "Moscow";
+            town = "Moscow";
             forecasts = new XMLParser(town);
             Forecast[] days = forecasts.getBigForecast();
             DateTime date = DateTime.Parse(days[0].date, CultureInfo.InvariantCulture);
@@ -99,7 +100,7 @@ namespace WeatherInfo
 
         private void moreInfoClick(object sender, RoutedEventArgs e)
         {
-            new SecondWindow(forecasts).Show();
+            new SecondWindow(forecasts, town).Show();
         }
 
         private void updateClick(object sender, RoutedEventArgs e)
@@ -119,6 +120,16 @@ namespace WeatherInfo
                     Tray.Update(forecasts.getCurHour());
                     break;
             }
+        }
+
+        void expandShort()
+        {
+            this.WindowState = System.Windows.WindowState.Normal;
+        }
+
+        void expandFull()
+        {
+            new SecondWindow(forecasts, town).Show();
         }
 
         void test()

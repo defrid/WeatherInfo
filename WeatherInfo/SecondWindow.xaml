@@ -1,12 +1,12 @@
 ﻿<Window x:Class="WeatherInfo.SecondWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="SecondWindow" Height="300" Width="350">
+        Title="Погода по дням" Height="491.045" Width="350">
     <DockPanel>
         <Label Name="City" Content="City" HorizontalAlignment="Center" DockPanel.Dock="Top"></Label>
         <DockPanel DockPanel.Dock="Bottom">
-            <Button Name="Update" Content="Обновить" HorizontalAlignment="Left" Margin="20 3"></Button>
-            <Button Name="ShortInfo" Content="Кратко" HorizontalAlignment="Right" Margin="20 3"></Button>
+            <Button Name="Update" Content="Обновить" HorizontalAlignment="Left" Margin="20 3" Height="25" Width="65" Click="updateClick"></Button>
+            <Button Name="ShortInfo" Content="Кратко" HorizontalAlignment="Right" Margin="20 3" Width="65" Height="25" Click="shortInfoClick"></Button>
         </DockPanel>
         <StackPanel Name="Container">
             <Border BorderBrush="Black" BorderThickness="1">

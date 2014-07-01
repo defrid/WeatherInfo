@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WeatherInfo.Classes;
+using System.Globalization;
+
 
 namespace WeatherInfo
 {
@@ -20,13 +22,13 @@ namespace WeatherInfo
     public partial class SecondWindow : Window
     {
         XMLParser xml;
-        public SecondWindow(XMLParser mainParser)
+
+        public SecondWindow(XMLParser mainParser, string town)
         {
             InitializeComponent();
             xml = mainParser;
-            Container.Children.Add(GetForecastElement(
-                new Forecast(20, 25, "cld", "dta", "13d"),
-                new Forecast(10, 15, "cloud", "data", "13n")));
+            City.Content = town;
+            fillForm();
         }
 
         //<Border BorderBrush="Black" BorderThickness="1">
@@ -52,50 +54,79 @@ namespace WeatherInfo
         //        </DockPanel>
         //    </Border>
 
-        private static Border GetForecastElement(Forecast dayForecast,Forecast nightForecast)
+        private void fillForm()
         {
-            var borderResult = new Border {BorderBrush = Brushes.Black, BorderThickness = new Thickness(1),Margin = new Thickness(0,2,0,2)};
-            var dockPanel = new DockPanel();
-            var dayStackPanel = new StackPanel {Orientation = Orientation.Horizontal};
-            var dayImage = new Image
+            Container.Children.Clear();
+            List<Forecast>[] days = xml.getDetailedWeek();
+            for (int i = 0; i < 5; i++)
+            {
+                Forecast night = days[i].Last();
+                if (days[i].Count < 4)
                 {
-                    Source =
-                        new BitmapImage(new Uri(WeatherAPI.ImageRequestString + String.Format("{0}.png", dayForecast.icon))),
-                    Width=64
-                };
-            dayStackPanel.Children.Add(dayImage);
+                    Container.Children.Add(GetForecastElement(null, night));
+                    continue;
+                }
+                Forecast day = days[i][days[i].Count - 3];
+                Container.Children.Add(GetForecastElement(day, night));
+            }
+        }
+
+        private void fillStackPanel(ref StackPanel panel, Forecast fore)
+        {
+            var dayImage = new Image
+            {
+                Source =
+                    new BitmapImage(new Uri(WeatherAPI.ImageRequestString + String.Format("{0}.png", fore.icon))),
+                Width = 64
+            };
+            panel.Children.Add(dayImage);
             var dayValues = new StackPanel();
-            var dayDateLabel = new Label {Content = dayForecast.date, Padding = new Thickness(0)};
+            string date = DateTime.Parse(fore.date, new CultureInfo("ru-RU")).ToString("d MMM ddd");
+            var dayDateLabel = new Label { Content = date, Padding = new Thickness(0) };
             dayValues.Children.Add(dayDateLabel);
-            var dayTemp = new Label { Content = (dayForecast.max+dayForecast.min)/2, Padding = new Thickness(0) };
+            int temp = (fore.max + fore.min) / 2;
+            var dayTemp = new Label 
+            { 
+                Content = (temp > 0 ? "+" + temp.ToString() : temp.ToString()), 
+                Padding = new Thickness(0) 
+            };
             dayValues.Children.Add(dayTemp);
-            dayStackPanel.Children.Add(dayValues);
+            panel.Children.Add(dayValues);
+        }
+
+        private Border GetForecastElement(Forecast dayForecast, Forecast nightForecast)
+        {
+            var borderResult = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(1), Margin = new Thickness(0, 2, 0, 2) };
+            var dockPanel = new DockPanel();
+            
+            if (dayForecast != null)
+            {
+                var dayStackPanel = new StackPanel { Orientation = Orientation.Horizontal };
+                fillStackPanel(ref dayStackPanel, dayForecast);
+                dockPanel.Children.Add(dayStackPanel);
+            }
 
             var nightStackPanel = new StackPanel
                 {
                     Orientation = Orientation.Horizontal,
                     HorizontalAlignment = HorizontalAlignment.Right,
-                    Margin = new Thickness(0,0,10,0)
+                    Margin = new Thickness(0, 0, 10, 0)
                 };
-            var nightImage = new Image
-            {
-                Source =
-                    new BitmapImage(new Uri(WeatherAPI.ImageRequestString + String.Format("{0}.png", nightForecast.icon))),
-                Width = 64
-            };
-            nightStackPanel.Children.Add(nightImage);
-            var nightValues = new StackPanel();
-            var nightDateLabel = new Label { Content = nightForecast.date, Padding = new Thickness(0) };
-            nightValues.Children.Add(nightDateLabel);
-            var nightTemp = new Label { Content = (nightForecast.max + nightForecast.min) / 2, Padding = new Thickness(0) };
-            nightValues.Children.Add(nightTemp);
-            nightStackPanel.Children.Add(nightValues);
-            dockPanel.Children.Add(dayStackPanel);
+            fillStackPanel(ref nightStackPanel, nightForecast);
+
             dockPanel.Children.Add(nightStackPanel);
             borderResult.Child = dockPanel;
             return borderResult;
-
         }
 
+        private void shortInfoClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void updateClick(object sender, RoutedEventArgs e)
+        {
+            fillForm();
+        }
     }
 }

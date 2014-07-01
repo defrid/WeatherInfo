@@ -1,15 +1,15 @@
 ﻿<Window x:Class="WeatherInfo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="300" Width="630" StateChanged="Window_StateChanged">
+        Title="Weather Informer" Height="300" Width="630" StateChanged="Window_StateChanged">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top">
             <Label Name="City" HorizontalAlignment="Left" Margin="50 5" Content="City"/>
             <Label Name="MonthYear" HorizontalAlignment="Right" Margin="50 5" Content="Month Year"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom">
-            <Button Name="Update" HorizontalAlignment="Left" Margin="50 5" Click="updateClick">Обновить</Button>
-            <Button Name="MoreInfo" HorizontalAlignment="Right" Margin="50 5" Click="moreInfoClick">Подробно</Button>
+            <Button Name="Update" HorizontalAlignment="Left" Margin="50 5" Click="updateClick" Width="65" Height="25">Обновить</Button>
+            <Button Name="MoreInfo" HorizontalAlignment="Right" Margin="50 5" Click="moreInfoClick" Width="65" Height="25">Подробно</Button>
         </DockPanel>
         <Border BorderBrush="Black" BorderThickness="1">
             <Grid Name="WeatherTable" ShowGridLines="True">

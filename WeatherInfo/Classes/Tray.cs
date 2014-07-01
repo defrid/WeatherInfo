@@ -70,7 +70,7 @@ namespace WeatherInfo
 
         private static void ToFull(object sender, EventArgs e)
         {
-            ToWindow(sender, e);
+            //ToWindow(sender, e);
             OnFullInfo();
         }
 
