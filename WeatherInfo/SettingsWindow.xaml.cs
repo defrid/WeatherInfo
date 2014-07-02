@@ -43,7 +43,7 @@ namespace WeatherInfo
         public string country_save = "";
         public int cityId_save;
         public string cityName_save = "";
-        public string delay_save = "";
+        public int updatePeriod_save = 10;
         public string format_save = "";
         public bool autostart_save = true;
 
@@ -54,11 +54,11 @@ namespace WeatherInfo
                 country_save = listOfCountries_cbx.SelectedItem.ToString();
                 cityName_save = listOfCitiies_cbx.SelectedItem.ToString();
                 cityId_save = gC.GetCityNumber(cityName_save);
-                delay_save = Enum.GetName(typeof(Delay), int.Parse(listOfVariablesDelay_cbx.SelectedItem.ToString()));
+                updatePeriod_save = Convert.ToInt32(updatePeriod_slider.Value);
                 format_save = SettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
                 autostart_save = (bool)autostartFlag_chbx.IsChecked;
 
-                App.settings = new Settings(country_save, cityId_save, cityName_save, format_save, delay_save, autostart_save);
+                App.settings = new Settings(country_save, cityId_save, cityName_save, format_save, updatePeriod_save, autostart_save);
 
                 SettingsHandler.WriteXml(App.settings);
                 Autorun();
@@ -108,9 +108,7 @@ namespace WeatherInfo
             listOfCitiies_cbx.SelectedItem = App.settings.city.name;
             listOfCitiies_cbx.SelectionChanged += listOfCitiies_cbx_SelectionChanged;
 
-            LoadDelays();
-            listOfVariablesDelay_cbx.SelectedItem = (int)Enum.Parse(typeof(Delay), App.settings.delay);
-            listOfVariablesDelay_cbx.SelectionChanged += listOfVariablesDelay_cbx_SelectionChanged;
+            updatePeriod_slider.Value = Convert.ToDouble(App.settings.updatePeriod);
 
             LoadFormats();
             listOfFormatsForecast_cbx.SelectedItem = SettingsHandler.GetFormatAttribute(App.settings.format);
@@ -129,16 +127,6 @@ namespace WeatherInfo
         {
             List<string> allCities = gC.CityNames(country);
             listOfCitiies_cbx.ItemsSource = allCities;            
-        }
-
-        void LoadDelays()
-        {
-            string[] delays = Enum.GetNames(typeof(Delay));
-            foreach (var d in delays)
-            {
-                int value = (int)Enum.Parse(typeof(Delay), d);
-                listOfVariablesDelay_cbx.Items.Add(value);
-            }
         }
 
         void LoadFormats()
@@ -165,15 +153,10 @@ namespace WeatherInfo
         {
 
         }
-        
-        private void listOfVariablesDelay_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            delay_save = Enum.GetName(typeof(Delay), int.Parse(listOfVariablesDelay_cbx.SelectedItem.ToString()));
-        }
 
         private void listOfFormatsForecast_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            format_save = SettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());//Enum.GetName(typeof(FormatForecast), int.Parse(listOfFormatsForecast_cbx.SelectedItem.ToString()));
+            format_save = SettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
         }
 
         private void listOfCitiies_cbx_KeyDown(object sender, KeyEventArgs e)
@@ -185,6 +168,11 @@ namespace WeatherInfo
                     if (listOfCitiies_cbx.SelectedItem == null) MessageBox.Show("Город не найден");
                     break;
             }
+        }
+
+        private void updatePeriod_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            
         }
     }
 }
