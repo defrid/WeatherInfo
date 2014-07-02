@@ -49,18 +49,25 @@ namespace WeatherInfo
 
         private void accept_btn_Click(object sender, RoutedEventArgs e)
         {
-            country_save = listOfCountries_cbx.SelectedItem.ToString();            
-            cityName_save = listOfCitiies_cbx.SelectedItem.ToString();
-            cityId_save = gC.GetCityNumber(cityName_save);
-            delay_save = Enum.GetName(typeof(Delay), int.Parse(listOfVariablesDelay_cbx.SelectedItem.ToString()));
-            format_save = SettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
-            autostart_save = (bool)autostartFlag_chbx.IsChecked;
+            try
+            {
+                country_save = listOfCountries_cbx.SelectedItem.ToString();
+                cityName_save = listOfCitiies_cbx.SelectedItem.ToString();
+                cityId_save = gC.GetCityNumber(cityName_save);
+                delay_save = Enum.GetName(typeof(Delay), int.Parse(listOfVariablesDelay_cbx.SelectedItem.ToString()));
+                format_save = SettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
+                autostart_save = (bool)autostartFlag_chbx.IsChecked;
 
-            App.settings = new Settings(country_save, cityId_save, cityName_save, format_save, delay_save, autostart_save);
+                App.settings = new Settings(country_save, cityId_save, cityName_save, format_save, delay_save, autostart_save);
 
-            SettingsHandler.WriteXml(App.settings);
-            Autorun();
-            Close();
+                SettingsHandler.WriteXml(App.settings);
+                Autorun();
+                Close();
+            }
+            catch
+            {
+                MessageBox.Show("Проверьте правильность введенных данных");
+            }
         }
 
         /// <summary>
@@ -146,8 +153,12 @@ namespace WeatherInfo
 
         private void listOfCountries_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LoadCities(listOfCountries_cbx.SelectedItem.ToString());
-            listOfCitiies_cbx.SelectedIndex = 0;
+            try
+            {
+                LoadCities(listOfCountries_cbx.SelectedItem.ToString());
+                listOfCitiies_cbx.SelectedIndex = 0;
+            }
+            catch { }
         }
 
         private void listOfCitiies_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -163,6 +174,17 @@ namespace WeatherInfo
         private void listOfFormatsForecast_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             format_save = SettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());//Enum.GetName(typeof(FormatForecast), int.Parse(listOfFormatsForecast_cbx.SelectedItem.ToString()));
+        }
+
+        private void listOfCitiies_cbx_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch(e.Key)
+            {
+                case Key.Enter:
+                    listOfCitiies_cbx.Text = translate.toEng(listOfCitiies_cbx.Text, "Location//translit.txt");
+                    if (listOfCitiies_cbx.SelectedItem == null) MessageBox.Show("Город не найден");
+                    break;
+            }
         }
     }
 }

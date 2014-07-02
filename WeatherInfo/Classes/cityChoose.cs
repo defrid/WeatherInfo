@@ -148,6 +148,8 @@ namespace WeatherInfo.Classes
                 }
             }
 
+            res = res.OrderBy(item => item).ToList();
+
             return res;
         }
 
