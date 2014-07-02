@@ -83,9 +83,11 @@ namespace WeatherInfo.Classes
         public static void WriteXml(Settings settings)
         {
             XmlSerializer ser = new XmlSerializer(typeof(Settings));
-            TextWriter writer = new StreamWriter(XMLFileName);
-            ser.Serialize(writer, settings);
-            writer.Close();
+            using (TextWriter writer = new StreamWriter(XMLFileName))
+            {
+                ser.Serialize(writer, settings);
+                writer.Close();
+            }           
         }
 
         //Чтение настроек из файла
@@ -94,9 +96,14 @@ namespace WeatherInfo.Classes
             if (File.Exists(XMLFileName))
             {
                 XmlSerializer ser = new XmlSerializer(typeof(Settings));
-                TextReader reader = new StreamReader(XMLFileName);
-                Settings settings = ser.Deserialize(reader) as Settings;
-                reader.Close();
+                //TextReader reader = new StreamReader(XMLFileName);
+                Settings settings = new Settings();
+                using (TextReader reader = new StreamReader(XMLFileName))
+                {
+                    settings = ser.Deserialize(reader) as Settings;
+                    reader.Close();
+                    
+                }
                 return settings;
             }
             else
