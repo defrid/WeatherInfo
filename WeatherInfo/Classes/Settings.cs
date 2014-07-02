@@ -166,6 +166,7 @@ namespace WeatherInfo.Classes
             return attributes.Length == 0 ? String.Empty : attributes[0].name;
         }
 
+        //
         /// <summary>
         /// Для формата прогноза возвращает формат по атрибуту.
         /// </summary>
