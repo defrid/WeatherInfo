@@ -27,7 +27,7 @@ namespace WeatherInfo.Classes
             ci.NumberFormat.CurrencyDecimalSeparator = ".";
         }
         
-        public Forecast getCurHour() 
+        public ForecastHour getCurHour() 
         {
             weather = opAPI.GetCurrentForecast();
             XElement cur = weather.Root;
@@ -36,13 +36,13 @@ namespace WeatherInfo.Classes
             int max = (int)float.Parse(cur.Element("temperature").Attribute("max").Value, NumberStyles.Any, ci);
             string clouds = cur.Element("clouds").Attribute("name").Value;
             string icon = cur.Element("weather").Attribute("icon").Value;
-            return new Forecast(min, max, clouds, time, icon);
+            return new ForecastHour(min, clouds, time, icon);
         }
 
         //массив из пяти листов, в каждом листе почасовые прогнозы. Листы, потому что в первом дне может быть меньше 8 записей
-        public List<Forecast>[] getDetailedWeek()
+        public List<ForecastDay>[] getDetailedWeek()
         {
-            List<Forecast>[] res = new List<Forecast>[10];
+            List<ForecastDay>[] res = new List<ForecastDay>[10];
             string apiName = "{http://weather.yandex.ru/forecast}";
             weather = yaAPI.GetForecast();
             XElement root = weather.Root;
@@ -57,9 +57,9 @@ namespace WeatherInfo.Classes
             return res;
         }
 
-        public Forecast[] getBigForecast()
+        public ForecastDay[] getBigForecast()
         {
-            Forecast[] res = new Forecast[14];
+            ForecastDay[] res = new ForecastDay[14];
             weather = opAPI.GetBigForecast();
             IEnumerable<XElement> forecasts = weather.Root.Element("forecast").Elements();
             int cur = 0;
@@ -70,7 +70,7 @@ namespace WeatherInfo.Classes
                 int max = (int)float.Parse(time.Element("temperature").Attribute("max").Value, NumberStyles.Any, ci);
                 string clouds = time.Element("clouds").Attribute("value").Value;
                 string icon = time.Element("symbol").Attribute("var").Value;
-                res[cur] = new Forecast(min, max, clouds, from, icon);
+                res[cur] = new ForecastDay(min, max, min, max, clouds, from, icon);
                 cur++;
             }
             return res;

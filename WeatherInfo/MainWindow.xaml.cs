@@ -45,7 +45,7 @@ namespace WeatherInfo
         {
             //town = "Moscow";
             forecasts = new XMLParser(town);
-            Forecast[] days = forecasts.getBigForecast();
+            ForecastDay[] days = forecasts.getBigForecast();
             DateTime date = DateTime.Parse(days[0].date, CultureInfo.InvariantCulture);
             int dayOfWeek = (int)date.DayOfWeek - 1;
             emptyDays = dayOfWeek;
@@ -63,7 +63,7 @@ namespace WeatherInfo
             }
         }
 
-        private static Grid GetWeaterElement(int column, int row, Forecast fore)
+        private static Grid GetWeaterElement(int column, int row, ForecastDay fore)
         {
             var gridResult = new Grid();
             gridResult.MouseLeftButtonUp += gridResult_MouseLeftButtonUp;
@@ -82,7 +82,7 @@ namespace WeatherInfo
             gridResult.Children.Add(dayLabel);
             var maxTempLabel = new Label()
                 {
-                    Content = (fore.max > 0 ? "+" + fore.max.ToString() : fore.max.ToString()),
+                    Content = (fore.day > 0 ? "+" + fore.day.ToString() : fore.day.ToString()),
                     HorizontalAlignment = HorizontalAlignment.Right,
                     FontSize = 15,
                     FontWeight = FontWeights.Bold
@@ -92,7 +92,7 @@ namespace WeatherInfo
             gridResult.Children.Add(maxTempLabel);
             var minTempLabel = new Label()
                 {
-                    Content = (fore.min > 0 ? "+" + fore.min.ToString() : fore.min.ToString()),
+                    Content = (fore.ngt > 0 ? "+" + fore.ngt.ToString() : fore.ngt.ToString()),
                     HorizontalAlignment = HorizontalAlignment.Right
                 };
             minTempLabel.SetValue(Grid.RowProperty, 1);
@@ -112,20 +112,10 @@ namespace WeatherInfo
 
         static void gridResult_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var el = sender as Grid;
-            int row = (int)el.GetValue(Grid.RowProperty);
-            int day = (int)el.GetValue(Grid.ColumnProperty);
-            day = row == 1 ? day - emptyDays : 7 - emptyDays + day;
-            if (day > 4)
-            {
-                return;
-            }
-            new ThirdWindow(town, forecasts, day).Show();
         }
 
         private void moreInfoClick(object sender, RoutedEventArgs e)
         {
-            new SecondWindow(forecasts, town).Show();
         }
 
         private void updateClick(object sender, RoutedEventArgs e)
@@ -154,7 +144,6 @@ namespace WeatherInfo
 
         void expandFull()
         {
-            new SecondWindow(forecasts, town).Show();
         }
 
         void options()
