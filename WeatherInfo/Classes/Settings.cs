@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace WeatherInfo.Classes
@@ -51,24 +52,39 @@ namespace WeatherInfo.Classes
     {
         public Settings()
         {
-            country = "Россия";
-            city = "Москва";
+            country = "RU";
+            city = new City(524901, "Moscow");
             format = Enum.GetName(typeof(FormatForecast), FormatForecast.Days);
             delay = Enum.GetName(typeof(Delay), Delay.slightDelay);//Delay.slightDelay;
             autostart = true;
         }
 
-        public Settings(string _country, string _city, string _format, string _delay, bool _autostart)
+        public Settings(string _country, int cityId, string _cityName, string _format, string _delay, bool _autostart)
         {
             country = _country;
-            city = _city;
+            city = new City(cityId, _cityName);
             format = _format;
             delay = _delay;
             autostart = _autostart;
         }
 
+        /// <summary>
+        /// Класс города
+        /// </summary>
+        public class City
+        {
+            public int id { get; set; }
+            public string name { get; set; }
+
+            public City(int _id, string _name)
+            {
+                id = _id;
+                name = _name;
+            }
+        }
+
         public string country { get; set; }
-        public string city { get; set; }
+        public City city { get; set; }
         public string format { get; set; }
         public string delay { get; set; }
         public bool autostart { get; set; }
@@ -77,15 +93,31 @@ namespace WeatherInfo.Classes
     public class SettingsHandler
     {
         public static String XMLFileName = Application.StartupPath + @"\Config\settings.xml";
-        //public Settings settings;
 
         //Запись настроек в файл
         public static void WriteXml(Settings settings)
         {
-            XmlSerializer ser = new XmlSerializer(typeof(Settings));
+            XDocument setts = new XDocument();
+
+            XElement root = new XElement("Settings");
+            root.Add(new XElement("country", settings.country));
+
+            XElement city = new XElement("city");
+            city.Add(new XElement("id", settings.city.id));
+            city.Add(new XElement("name", settings.city.name));
+            root.Add(city);
+
+            root.Add(new XElement("delay", settings.delay));
+            root.Add(new XElement("format", settings.format));
+            root.Add(new XElement("autostart", settings.autostart.ToString()));
+
+            setts.Add(root);            
+
+            //XmlSerializer ser = new XmlSerializer(typeof(Settings));
             using (TextWriter writer = new StreamWriter(XMLFileName))
             {
-                ser.Serialize(writer, settings);
+                setts.Save(writer);
+                //ser.Serialize(writer, settings);
                 writer.Close();
             }           
         }
@@ -95,15 +127,24 @@ namespace WeatherInfo.Classes
         {
             if (File.Exists(XMLFileName))
             {
-                XmlSerializer ser = new XmlSerializer(typeof(Settings));
-                //TextReader reader = new StreamReader(XMLFileName);
+                XDocument setts = XDocument.Load(XMLFileName);              
+
+                
                 Settings settings = new Settings();
-                using (TextReader reader = new StreamReader(XMLFileName))
-                {
-                    settings = ser.Deserialize(reader) as Settings;
-                    reader.Close();
+                settings.country = setts.Root.Element("country").Value;
+                settings.city.id = (int)float.Parse(setts.Root.Element("city").Element("id").Value);
+                settings.city.name = setts.Root.Element("city").Element("name").Value;
+                settings.delay = setts.Root.Element("delay").Value;
+                settings.format = setts.Root.Element("format").Value;
+                settings.autostart = bool.Parse(setts.Root.Element("autostart").Value);
+
+                //XmlSerializer ser = new XmlSerializer(typeof(Settings));
+                //using (TextReader reader = new StreamReader(XMLFileName))
+                //{
+                //    settings = ser.Deserialize(reader) as Settings;
+                //    reader.Close();
                     
-                }
+                //}
                 return settings;
             }
             else
@@ -112,6 +153,11 @@ namespace WeatherInfo.Classes
             }
         }
 
+        /// <summary>
+        /// Для формата прогноза возвращает аттрибут (по сути русская локализация для combobox) для формата
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
         public static string GetFormatAttribute(string format)
         {
             FieldInfo fieldInfo = typeof(FormatForecast).GetField(format);
@@ -120,6 +166,11 @@ namespace WeatherInfo.Classes
             return attributes.Length == 0 ? String.Empty : attributes[0].name;
         }
 
+        /// <summary>
+        /// Для формата прогноза возвращает формат по атрибуту.
+        /// </summary>
+        /// <param name="attribute"></param>
+        /// <returns></returns>
         public static string GetValueByAttribute(string attribute)
         {
             var ff = Enum.GetNames(typeof(FormatForecast));

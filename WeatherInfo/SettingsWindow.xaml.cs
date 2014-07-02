@@ -25,9 +25,7 @@ namespace WeatherInfo
             InitializeComponent();            
         }
 
-        //Settings settings;
-        public string country = "Россия,Англия,Турция";
-        public string city = "Ульяновск,Москва,Димитровград";
+        getCity gC = new getCity();
 
         private void cancel_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -43,20 +41,22 @@ namespace WeatherInfo
         }
 
         public string country_save = "";
-        public string city_save = "";
+        public int cityId_save;
+        public string cityName_save = "";
         public string delay_save = "";
         public string format_save = "";
         public bool autostart_save = true;
 
         private void accept_btn_Click(object sender, RoutedEventArgs e)
         {
-            country_save = listOfCountries_cbx.SelectedItem.ToString();
-            city_save = listOfCitiies_cbx.SelectedItem.ToString();
+            country_save = listOfCountries_cbx.SelectedItem.ToString();            
+            cityName_save = listOfCitiies_cbx.SelectedItem.ToString();
+            cityId_save = gC.GetCityNumber(cityName_save);
             delay_save = Enum.GetName(typeof(Delay), int.Parse(listOfVariablesDelay_cbx.SelectedItem.ToString()));
             format_save = SettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
             autostart_save = (bool)autostartFlag_chbx.IsChecked;
 
-            App.settings = new Settings(country_save, city_save, format_save, delay_save, autostart_save);
+            App.settings = new Settings(country_save, cityId_save, cityName_save, format_save, delay_save, autostart_save);
 
             SettingsHandler.WriteXml(App.settings);
             Autorun();
@@ -93,51 +93,66 @@ namespace WeatherInfo
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string[] countries = country.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            string[] cities = city.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < countries.Length; i++)
-            {
-                listOfCountries_cbx.Items.Add(countries[i]);
-            }
+            LoadCountries();
             listOfCountries_cbx.SelectedItem = App.settings.country;
             listOfCountries_cbx.SelectionChanged += listOfCountries_cbx_SelectionChanged;
 
-            for (int i = 0; i < cities.Length; i++)
-            {
-                listOfCitiies_cbx.Items.Add(cities[i]);
-            }
-            listOfCitiies_cbx.SelectedItem = App.settings.city;
+            LoadCities(App.settings.country);
+            listOfCitiies_cbx.SelectedItem = App.settings.city.name;
             listOfCitiies_cbx.SelectionChanged += listOfCitiies_cbx_SelectionChanged;
 
-            string[] delays = Enum.GetNames(typeof(Delay));
-            foreach (var d in delays)
-            {
-                int value = (int)Enum.Parse(typeof(Delay), d);
-                listOfVariablesDelay_cbx.Items.Add(value);
-            }
+            LoadDelays();
             listOfVariablesDelay_cbx.SelectedItem = (int)Enum.Parse(typeof(Delay), App.settings.delay);
             listOfVariablesDelay_cbx.SelectionChanged += listOfVariablesDelay_cbx_SelectionChanged;
 
-            string[] formats = Enum.GetNames(typeof(FormatForecast));
-            foreach (var f in formats)
-            {
-                var value = SettingsHandler.GetFormatAttribute(f);
-                listOfFormatsForecast_cbx.Items.Add(value);
-            }
+            LoadFormats();
             listOfFormatsForecast_cbx.SelectedItem = SettingsHandler.GetFormatAttribute(App.settings.format);
             listOfFormatsForecast_cbx.SelectionChanged += listOfFormatsForecast_cbx_SelectionChanged;
 
             autostartFlag_chbx.IsChecked = App.settings.autostart;
         }
 
+        void LoadCountries()
+        {
+            List<string> countries = gC.CountryNames();
+            listOfCountries_cbx.ItemsSource = countries;
+        }
+
+        void LoadCities(string country)
+        {
+            List<string> allCities = gC.CityNames(country);
+            listOfCitiies_cbx.ItemsSource = allCities;            
+        }
+
+        void LoadDelays()
+        {
+            string[] delays = Enum.GetNames(typeof(Delay));
+            foreach (var d in delays)
+            {
+                int value = (int)Enum.Parse(typeof(Delay), d);
+                listOfVariablesDelay_cbx.Items.Add(value);
+            }
+        }
+
+        void LoadFormats()
+        {
+            string[] formats = Enum.GetNames(typeof(FormatForecast));
+            foreach (var f in formats)
+            {
+                var value = SettingsHandler.GetFormatAttribute(f);
+                listOfFormatsForecast_cbx.Items.Add(value);
+            }
+        }
+
         private void listOfCountries_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            country_save = Enum.GetName(typeof(Delay), int.Parse(listOfCountries_cbx.SelectedItem.ToString()));
+            LoadCities(listOfCountries_cbx.SelectedItem.ToString());
+            listOfCitiies_cbx.SelectedIndex = 0;
         }
 
         private void listOfCitiies_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            city_save = Enum.GetName(typeof(Delay), int.Parse(listOfCitiies_cbx.SelectedItem.ToString()));
+
         }
         
         private void listOfVariablesDelay_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -147,7 +162,7 @@ namespace WeatherInfo
 
         private void listOfFormatsForecast_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            format_save = Enum.GetName(typeof(Delay), int.Parse(listOfFormatsForecast_cbx.SelectedItem.ToString()));
+            format_save = SettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());//Enum.GetName(typeof(FormatForecast), int.Parse(listOfFormatsForecast_cbx.SelectedItem.ToString()));
         }
     }
 }

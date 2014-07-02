@@ -60,7 +60,13 @@
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\cityChoose.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Classes\Settings.cs" />
+    <Compile Include="Classes\translate.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
