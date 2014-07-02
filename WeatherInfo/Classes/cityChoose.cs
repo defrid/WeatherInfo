@@ -48,6 +48,21 @@ namespace WeatherInfo.Classes
         public List<string> CountryNames()
         {
             List<string> res = new List<string>();
+            Dictionary<string, string> two_full = new Dictionary<string, string>();
+
+            //countries.txt
+
+            if (!File.Exists("Location//countries.txt")) throw new Exception("В папке Location не найден countries.txt");
+            using (StreamReader sr = new StreamReader("Location//countries.txt"))
+            {
+                //"	"
+                while (!sr.EndOfStream)
+                {
+                    string[] temp = sr.ReadLine().Split('	');
+                    two_full.Add(temp[1], temp[0]);
+                }
+            }
+
 
             if (!(File.Exists("Location//savedCountries.txt")))
             {
@@ -59,10 +74,10 @@ namespace WeatherInfo.Classes
                 using (StreamWriter sw = new StreamWriter("Location//savedCountries.txt"))
                     foreach (var a in mathes)
                     {
-                        if (!res.Contains(a.ToString()))
+                        if (two_full.ContainsKey(a.ToString()) && !res.Contains(two_full[a.ToString()]))
                         {
-                            res.Add(a.ToString());
-                            sw.WriteLine(a.ToString());
+                            res.Add(two_full[a.ToString()]);
+                            sw.WriteLine(two_full[a.ToString()]);
                         }
                     }
             }
@@ -77,6 +92,7 @@ namespace WeatherInfo.Classes
                 }
             }
 
+            res = res.OrderBy(item => item).ToList();
 
             return res;
         }
@@ -89,6 +105,17 @@ namespace WeatherInfo.Classes
         public List<string> CityNames(string country)
         {
             List<string> res = new List<string>();
+
+            if (!File.Exists("Location//countries.txt")) throw new Exception("В папке Location не найден countries.txt");
+            using (StreamReader sr = new StreamReader("Location//countries.txt"))
+            {
+                //"	"
+                while (!sr.EndOfStream)
+                {
+                    string[] temp = sr.ReadLine().Split('	');
+                    if (temp[0] == country) country = temp[1];
+                }
+            }
 
             if (!(File.Exists("Location//" + country + ".txt")))
             {

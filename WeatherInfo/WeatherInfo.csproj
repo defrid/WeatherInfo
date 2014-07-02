@@ -85,9 +85,7 @@
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\cityChoose.cs" />
     <Compile Include="Classes\Settings.cs" />
-    <Compile Include="Classes\translate.cs" />
     <Compile Include="SecondWindow.xaml.cs">
       <DependentUpon>SecondWindow.xaml</DependentUpon>
     </Compile>
