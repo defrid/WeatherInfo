@@ -94,14 +94,14 @@ namespace WeatherInfo.Classes
             {
                 if (all == "") all = getAll();
 
-                Regex reg = new Regex(@"([A-z ]*(?=.*" + country + "\n))");
+                Regex reg = new Regex(@"(?<=\d	)(\D*)(?=	[\d-].*" + country + ")");
                 var mathes = reg.Matches(all);
 
                 using (StreamWriter sw = new StreamWriter("Location//" + country + ".txt"))
                 {
                     foreach (var a in mathes)
                     {
-                        if (!res.Contains(a.ToString()) && a.ToString() != "")
+                        if (!res.Contains(a.ToString()) && a.ToString() != string.Empty)
                         {
                             res.Add(a.ToString());
                             sw.WriteLine(a.ToString());
