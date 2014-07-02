@@ -42,12 +42,14 @@ namespace WeatherInfo.Classes
         {
             CityId = cityId;
         }
+
+        //Косячный метод, после using поток автоматически закроется и будет выдавать ошибку
         /// <summary>
         /// Метод для получения потока по html ссылке
         /// </summary>
         /// <param name="link">Ссылка</param>
         /// <returns></returns>
-        private static Stream GetStreadByLink(string link)
+        private static Stream GetStreamByLink(string link)
         {
             var request = WebRequest.Create(link);
             using (var response = request.GetResponse())
@@ -60,8 +62,12 @@ namespace WeatherInfo.Classes
         /// <returns></returns>
         public static XDocument GetCities()
         {
-            var stream = GetStreadByLink(CountryCityXmlLink);
-            return stream != null ? XDocument.Load(stream) : null;
+            var request = WebRequest.Create(CountryCityXmlLink);
+            using (var response = request.GetResponse())
+            {
+                var stream = response.GetResponseStream();
+                return stream != null ? XDocument.Load(stream) : null;
+            }
         }
         /// <summary>
         /// Получить Bitmap рисунок погоды
@@ -71,8 +77,12 @@ namespace WeatherInfo.Classes
         public static Bitmap GetImageById(string imageId)
         {
             var link = String.Format("{0}{1}.png",ForecastWayLink , imageId);
-            var stream = GetStreadByLink(link);
-            return stream != null ? new Bitmap(stream) : null;
+            var request = WebRequest.Create(link);
+            using (var response = request.GetResponse())
+            {
+                var stream = response.GetResponseStream();
+                return stream != null ? new Bitmap(stream) : null;
+            }
         }
         /// <summary>
         /// Получить BitmapImage рисунок погоды
@@ -93,8 +103,11 @@ namespace WeatherInfo.Classes
         public XDocument GetForecast()
         {
             var link = ForecastWayLink + String.Format("{0}.xml", CityId);
-            var stream = GetStreadByLink(link);
-            return stream!=null?XDocument.Load(stream):null;
+            XDocument doc;
+            var request = WebRequest.Create(link);
+            using (var response = request.GetResponse())
+                doc = XDocument.Load(response.GetResponseStream());
+            return doc;
         }
     }
 }

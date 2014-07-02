@@ -9,10 +9,10 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            //var xml = new XMLParser("Moscow");
+            var xml = new XMLParser("Moscow");
             //xml.getBigForecast();
             //xml.getCurHour();
-            //xml.getDetailedWeek();
+            xml.getDetailedWeek();
             //Console.WriteLine(api.GetCurrentForecast());
             //Console.ReadKey();
             //Console.WriteLine(api.GetDailyForecast(3));
@@ -21,11 +21,11 @@ namespace TestConsole
             //Console.ReadKey();
             //Console.WriteLine(api.GetBigForecast());
             //Console.ReadKey();
-            var doc = XDocument.Parse("<x><t><e var=\"n\"/><e var=\"m\"/></t></x>");
+            /*var doc = XDocument.Parse("<x><t><e var=\"n\"/><e var=\"m\"/></t></x>");
             Console.WriteLine(doc.Element("x").Element("t"));
             Console.WriteLine(new XDocument(doc.Element("x").Element("t").Elements()));
             Console.WriteLine(doc);
-            Console.ReadKey();
+            Console.ReadKey();*/
         }
     }
 }
