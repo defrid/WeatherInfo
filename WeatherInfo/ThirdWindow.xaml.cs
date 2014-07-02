@@ -51,7 +51,7 @@ namespace WeatherInfo
             var dayImage = new Image
             {
                 Source =
-                    new BitmapImage(new Uri(WeatherAPI.ImageRequestString + String.Format("{0}.png", fore.icon))),
+                    new BitmapImage(new Uri(OpenWeatherAPI.ImageRequestString + String.Format("{0}.png", fore.icon))),
                 Width = 64
             };
             panel.Children.Add(dayImage);

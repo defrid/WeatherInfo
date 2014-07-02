@@ -102,7 +102,7 @@ namespace WeatherInfo
         //получает битмап из картинки
         private static Bitmap getPicture(Forecast fore)
         {
-            Bitmap res = WeatherInfo.Classes.WeatherAPI.GetImageById(fore.icon);
+            Bitmap res = WeatherInfo.Classes.OpenWeatherAPI.GetImageById(fore.icon);
             return res;
         }
 

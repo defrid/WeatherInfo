@@ -20,7 +20,7 @@ namespace WeatherInfo.Classes
         public XMLParser(string _town)
         {
             town = _town;
-            con = new WeatherAPI(town);
+            con = new OpenWeatherAPI(town);
             ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
             ci.NumberFormat.CurrencyDecimalSeparator = ".";
         }
