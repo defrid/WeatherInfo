@@ -106,15 +106,18 @@ namespace WeatherInfo
                 dockPanel.Children.Add(dayStackPanel);
             }
 
-            var nightStackPanel = new StackPanel
-                {
-                    Orientation = Orientation.Horizontal,
-                    HorizontalAlignment = HorizontalAlignment.Right,
-                    Margin = new Thickness(0, 0, 10, 0)
-                };
-            fillStackPanel(ref nightStackPanel, nightForecast);
+            if (nightForecast != null)
+            {
+                var nightStackPanel = new StackPanel
+                    {
+                        Orientation = Orientation.Horizontal,
+                        HorizontalAlignment = HorizontalAlignment.Right,
+                        Margin = new Thickness(0, 0, 10, 0)
+                    };
+                fillStackPanel(ref nightStackPanel, nightForecast);
+                dockPanel.Children.Add(nightStackPanel);
+            }
 
-            dockPanel.Children.Add(nightStackPanel);
             borderResult.Child = dockPanel;
             return borderResult;
         }
