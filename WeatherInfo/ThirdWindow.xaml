@@ -6,7 +6,7 @@
         <Label Name="City" Content="City" HorizontalAlignment="Center" DockPanel.Dock="Top"></Label>
         <DockPanel DockPanel.Dock="Bottom">
             <Button Name="Update" Content="Обновить" HorizontalAlignment="Left" Margin="20 3" Height="25" Width="65" ></Button>
-            <Button Name="ShortInfo" Content="Кратко" HorizontalAlignment="Right" Margin="20 3" Width="65" Height="25" ></Button>
+            <Button Name="ShortInfo" Content="Подробно" HorizontalAlignment="Right" Margin="20 3" Width="65" Height="25" ></Button>
         </DockPanel>
         <StackPanel Name="Container">
             <Border BorderBrush="Black" BorderThickness="1">
