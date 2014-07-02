@@ -20,13 +20,34 @@ namespace WeatherInfo
     /// </summary>
     public partial class ThirdWindow : Window
     {
-        public ThirdWindow()
+        string town;
+        XMLParser xml;
+        int day;
+
+        public ThirdWindow(string _town, XMLParser forecasts, int _day)
         {
             InitializeComponent();
+            xml = forecasts;
+            town = _town;
+            day = _day;
+            fillWindow();
         }
 
-        private void fillStackPanel(ref StackPanel panel, Forecast fore)
+        private void fillWindow()
         {
+            City.Content = town;
+            Container.Children.Clear();
+            List<Forecast> curDay = xml.getDetailedWeek()[day];
+            for (int i = 0; i < curDay.Count; i++)
+            {
+                Forecast fore = curDay[i];
+                Container.Children.Add(fillStackPanel(fore));
+            }
+        }
+
+        private StackPanel fillStackPanel(Forecast fore)
+        {
+            StackPanel panel = new StackPanel { Orientation = Orientation.Horizontal };
             var dayImage = new Image
             {
                 Source =
@@ -35,7 +56,7 @@ namespace WeatherInfo
             };
             panel.Children.Add(dayImage);
             var dayValues = new StackPanel();
-            var date = DateTime.Parse(fore.date, new CultureInfo("ru-RU")).ToString("d MMM ddd");
+            var date = DateTime.Parse(fore.date, new CultureInfo("ru-RU")).ToString("HH:mm");
             var dayDateLabel = new Label { Content = date, Padding = new Thickness(0) };
             dayValues.Children.Add(dayDateLabel);
             var temp = (fore.max + fore.min) / 2;
@@ -46,22 +67,8 @@ namespace WeatherInfo
             };
             dayValues.Children.Add(dayTemp);
             panel.Children.Add(dayValues);
+            return panel;
         }
 
-        private Border GetForecastElement(Forecast forecast)
-        {
-            var borderResult = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(1), Margin = new Thickness(0, 2, 0, 2) };
-            var dockPanel = new DockPanel();
-
-            if (forecast != null)
-            {
-                var dayStackPanel = new StackPanel { Orientation = Orientation.Horizontal };
-                fillStackPanel(ref dayStackPanel, forecast);
-                dockPanel.Children.Add(dayStackPanel);
-            }
-
-            borderResult.Child = dockPanel;
-            return borderResult;
-        }
     }
 }

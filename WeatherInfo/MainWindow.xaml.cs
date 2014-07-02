@@ -21,23 +21,34 @@ namespace WeatherInfo
     /// </summary>
     public partial class MainWindow : Window
     {
-        private XMLParser forecasts;
-        private string town;
+        private static XMLParser forecasts;
+        private static string town;
+        private static int emptyDays;
 
         public MainWindow()
         {
-            InitializeComponent();
+            town = App.settings.city.name;
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("1. " + exc.Message);
+            }
             fillTable();
             Tray.SetupTray(this, options, expandFull, expandShort);
+            //town = App.settings.city.name;
         }
 
         private void fillTable()
         {
-            town = "Moscow";
+            //town = "Moscow";
             forecasts = new XMLParser(town);
             Forecast[] days = forecasts.getBigForecast();
             DateTime date = DateTime.Parse(days[0].date, CultureInfo.InvariantCulture);
             int dayOfWeek = (int)date.DayOfWeek - 1;
+            emptyDays = dayOfWeek;
             int index = 0;
             City.Content = town;
             MonthYear.Content = date.Month + "/" + date.Year;
@@ -55,6 +66,7 @@ namespace WeatherInfo
         private static Grid GetWeaterElement(int column, int row, Forecast fore)
         {
             var gridResult = new Grid();
+            gridResult.MouseLeftButtonUp += gridResult_MouseLeftButtonUp;
             gridResult.SetValue(Grid.RowProperty, row);
             gridResult.SetValue(Grid.ColumnProperty, column);
             for (var i = 0; i < 2; i++)
@@ -95,13 +107,20 @@ namespace WeatherInfo
             image.SetValue(Grid.RowSpanProperty, 2);
             image.SetValue(Grid.ColumnSpanProperty, 2);
             gridResult.Children.Add(image);
-            //gridResult.MouseUp += new MouseButtonEventHandler(dayClick);
             return gridResult;
         }
 
-        private void dayClick(object sender, MouseButtonEventArgs e)
+        static void gridResult_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-
+            var el = sender as Grid;
+            int row = (int)el.GetValue(Grid.RowProperty);
+            int day = (int)el.GetValue(Grid.ColumnProperty);
+            day = row == 1 ? day - emptyDays : 7 - emptyDays + day;
+            if (day > 4)
+            {
+                return;
+            }
+            new ThirdWindow(town, forecasts, day).Show();
         }
 
         private void moreInfoClick(object sender, RoutedEventArgs e)
