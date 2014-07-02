@@ -11,10 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-<<<<<<< HEAD
 using System.Globalization;
-=======
->>>>>>> origin/SettingsWindow
 using WeatherInfo.Classes;
 
 namespace WeatherInfo
@@ -31,7 +28,7 @@ namespace WeatherInfo
         {
             InitializeComponent();
             fillTable();
-            Tray.SetupTray(this, test, expandFull, expandShort);
+            Tray.SetupTray(this, options, expandFull, expandShort);
         }
 
         private void fillTable()
@@ -98,7 +95,13 @@ namespace WeatherInfo
             image.SetValue(Grid.RowSpanProperty, 2);
             image.SetValue(Grid.ColumnSpanProperty, 2);
             gridResult.Children.Add(image);
+            //gridResult.MouseUp += new MouseButtonEventHandler(dayClick);
             return gridResult;
+        }
+
+        private void dayClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
 
         private void moreInfoClick(object sender, RoutedEventArgs e)
@@ -135,9 +138,9 @@ namespace WeatherInfo
             new SecondWindow(forecasts, town).Show();
         }
 
-        void test()
+        void options()
         {
-            MessageBox.Show("Опции");
+            new SettingsWindow().Show();
         }
     }
 }

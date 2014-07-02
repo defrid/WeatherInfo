@@ -64,28 +64,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SecondWindow.xaml.cs">
-      <DependentUpon>SecondWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ThirdWindow.xaml.cs">
-      <DependentUpon>ThirdWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\cityChoose.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Classes\cityChoose.cs" />
     <Compile Include="Classes\Settings.cs" />
-    <Compile Include="Classes\translate.cs">
-      <SubType>Code</SubType>
+    <Compile Include="Classes\translate.cs" />
+    <Compile Include="SecondWindow.xaml.cs">
+      <DependentUpon>SecondWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ThirdWindow.xaml.cs">
+      <DependentUpon>ThirdWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="About.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -109,10 +105,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ThirdWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     <Page Include="SettingsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ThirdWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
