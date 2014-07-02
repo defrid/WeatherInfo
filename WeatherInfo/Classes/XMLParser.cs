@@ -65,12 +65,14 @@ namespace WeatherInfo.Classes
             int cur = 0;
             foreach (var time in forecasts)
             {
-                string from = time.Attribute("day").Value;
-                int min = (int)float.Parse(time.Element("temperature").Attribute("min").Value, NumberStyles.Any, ci);
-                int max = (int)float.Parse(time.Element("temperature").Attribute("max").Value, NumberStyles.Any, ci);
+                string date = time.Attribute("day").Value;
+                int mor = (int)float.Parse(time.Element("temperature").Attribute("morn").Value, NumberStyles.Any, ci);
+                int day = (int)float.Parse(time.Element("temperature").Attribute("day").Value, NumberStyles.Any, ci);
+                int eve = (int)float.Parse(time.Element("temperature").Attribute("eve").Value, NumberStyles.Any, ci);
+                int ngt = (int)float.Parse(time.Element("temperature").Attribute("night").Value, NumberStyles.Any, ci);
                 string clouds = time.Element("clouds").Attribute("value").Value;
                 string icon = time.Element("symbol").Attribute("var").Value;
-                res[cur] = new ForecastDay(min, max, min, max, clouds, from, icon);
+                res[cur] = new ForecastDay(mor, day, eve, ngt, clouds, date, icon);
                 cur++;
             }
             return res;

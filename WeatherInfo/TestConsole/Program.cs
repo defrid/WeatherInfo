@@ -10,6 +10,7 @@ namespace TestConsole
         static void Main(string[] args)
         {
             var xml = new XMLParser("Moscow");
+            xml.getBigForecast();
             //xml.getBigForecast();
             //xml.getCurHour();
             xml.getDetailedWeek();
