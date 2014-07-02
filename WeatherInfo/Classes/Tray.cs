@@ -120,7 +120,7 @@ namespace WeatherInfo
         {
             if (OnOptionsClick != null)
             {
-                Settings settingsWindow = new Settings();
+                SettingsWindow settingsWindow = new SettingsWindow();
                 settingsWindow.Show();
                 settingsWindow.Focus();
                 settingsWindow.Activate();
