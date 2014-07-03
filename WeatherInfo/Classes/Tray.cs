@@ -52,9 +52,9 @@ namespace WeatherInfo
         }
 
         //обновить трей
-        public static void Update(Forecast newFore)
+        public static void Update(Forecast newFore, float scale=1.8f, bool WriteDigits=true)
         {
-            Icon forPic = Icon.FromHandle(getPicture(newFore).GetHicon());
+            Icon forPic = Icon.FromHandle(getPicture(newFore, scale, WriteDigits).GetHicon());
             iconPicture.Text = newFore.max + "°С";
             makeTray(forPic);
         }
@@ -100,10 +100,39 @@ namespace WeatherInfo
         }
       
         //получает битмап из картинки
-        private static Bitmap getPicture(Forecast fore)
+        private static Bitmap getPicture(Forecast fore, float scale, bool needDigits)
         {
             Bitmap res = WeatherInfo.Classes.WeatherAPI.GetImageById(fore.icon);
-            return res;
+
+            Bitmap bm = new Bitmap(100, 100);
+            Graphics gr = Graphics.FromImage(bm);
+            gr.TranslateTransform(bm.Width/2, bm.Height/2);
+            gr.ScaleTransform(scale, scale);
+            gr.TranslateTransform(-bm.Width/2, -bm.Height/2);
+            gr.DrawImage(res, 0, 0, 100, 100);
+
+            if (needDigits)
+            {
+                gr.ResetTransform();
+                using (Font font1 = new Font("Lucida Console", 65, System.Drawing.FontStyle.Regular, GraphicsUnit.Point))
+                {
+                    int degree = fore.max;
+                    if (degree < 0) degree = -degree;
+                    string text = degree.ToString();
+                    StringFormat stringFormat = new StringFormat();
+                    stringFormat.Alignment = StringAlignment.Center;
+                    stringFormat.LineAlignment = StringAlignment.Center;
+
+                    Brush colorBr=Brushes.Black;
+                    if (fore.max > 0) colorBr = Brushes.Red;
+                    if (fore.max < 0) colorBr = Brushes.Blue;
+
+                    gr.DrawString(text, font1, colorBr, new System.Drawing.Point(50, 50), stringFormat);
+
+                }
+            }
+
+            return bm;
         }
 
         //откроет окно
