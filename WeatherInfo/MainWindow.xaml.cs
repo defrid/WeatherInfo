@@ -118,28 +118,39 @@ namespace WeatherInfo
             return gridResult;
         }
 
-        private Grid GetHourForecast(ForecastHour[] forecasts)
+        private DockPanel GetHourForecast(ForecastHour[] forecasts)
         {
             const int rowsCount = 8;
             const int columnsCount = 3;
-            var gridResut = new Grid();
+            const string title = "Почасовой прогноз";
+            var docResult = new DockPanel();
+            var titleLabel = new Label
+                {
+                    Content = title,
+                    FontWeight = FontWeights.Bold,
+                    FontStyle = FontStyles.Italic
+                };
+            DockPanel.SetDock(titleLabel,Dock.Top);
+            docResult.Children.Add(titleLabel);
+
+            var grid = new Grid();
             for (var i = 0; i < rowsCount; i++)
-                gridResut.RowDefinitions.Add(new RowDefinition());
+                grid.RowDefinitions.Add(new RowDefinition());
             for (var i = 0; i < columnsCount; i++)
-                gridResut.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
             for (var i = 0; i < columnsCount; i++)
                 for (var j = 0; j < rowsCount; j++)
                 {
                     ForecastHour adding = forecasts[rowsCount * i + j];
-                    var container = new StackPanel() { Margin = new Thickness(0, 0, 10, 0), Orientation = Orientation.Horizontal };
+                    var container = new StackPanel { Margin = new Thickness(0, 0, 10, 0), Orientation = Orientation.Horizontal };
                     Grid.SetColumn(container, i);
                     Grid.SetRow(container, j);
 
-                    var timeLabel = new Label() { VerticalAlignment = VerticalAlignment.Center, Content = adding.time + ":00" };
+                    var timeLabel = new Label { VerticalAlignment = VerticalAlignment.Center, Content = adding.time + ":00" };
                     container.Children.Add(timeLabel);
 
                     var bitmapImage = YandexWeatherAPI.GetBitmapImageById(adding.icon);
-                    var icon = new Image() { Source = bitmapImage, Width = 32, Height = 32 };
+                    var icon = new Image { Source = bitmapImage, Width = 32, Height = 32 };
                     container.Children.Add(icon);
 
                     var stringTemp = adding.temp > 0 ? "+" + adding.temp.ToString() : adding.temp.ToString();
@@ -151,9 +162,10 @@ namespace WeatherInfo
                         Content = stringTemp
                     };
                     container.Children.Add(temperLabel);
-                    gridResut.Children.Add(container);
+                    grid.Children.Add(container);
                 }
-            return gridResut;
+            docResult.Children.Add(grid);
+            return docResult;
         }
 
         static void gridResult_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
