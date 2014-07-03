@@ -52,7 +52,7 @@ namespace WeatherInfo
         }
 
         //обновить трей
-        public static void Update(ForecastHour newFore)
+        public static void Update(ForecastHour newFore, float scale=1.8f, bool WriteDigits=true)
         {
             Icon forPic = Icon.FromHandle(getPicture(newFore, scale, WriteDigits).GetHicon());
             iconPicture.Text = newFore.temp + "°С";
@@ -100,7 +100,7 @@ namespace WeatherInfo
         }
       
         //получает битмап из картинки
-        private static Bitmap getPicture(ForecastHour fore)
+        private static Bitmap getPicture(ForecastHour fore, float scale, bool needDigits)
         {
             Bitmap res = WeatherInfo.Classes.OpenWeatherAPI.GetImageById(fore.icon);
 
@@ -116,7 +116,7 @@ namespace WeatherInfo
                 gr.ResetTransform();
                 using (Font font1 = new Font("Lucida Console", 65, System.Drawing.FontStyle.Regular, GraphicsUnit.Point))
                 {
-                    int degree = fore.max;
+                    int degree = fore.temp;
                     if (degree < 0) degree = -degree;
                     string text = degree.ToString();
                     StringFormat stringFormat = new StringFormat();
@@ -124,8 +124,8 @@ namespace WeatherInfo
                     stringFormat.LineAlignment = StringAlignment.Center;
 
                     Brush colorBr=Brushes.Black;
-                    if (fore.max > 0) colorBr = Brushes.Red;
-                    if (fore.max < 0) colorBr = Brushes.Blue;
+                    if (fore.temp > 0) colorBr = Brushes.Red;
+                    if (fore.temp < 0) colorBr = Brushes.Blue;
 
                     gr.DrawString(text, font1, colorBr, new System.Drawing.Point(50, 50), stringFormat);
 
