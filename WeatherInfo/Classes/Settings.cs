@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -37,14 +38,7 @@ namespace WeatherInfo.Classes
     /// </summary>
     public class Settings
     {
-        public Settings()
-        {
-            country = "Россия";
-            city = new City(524901, "Moscow");
-            format = Enum.GetName(typeof(FormatForecast), FormatForecast.Days);
-            updatePeriod = 10;
-            autostart = true;
-        }
+        public Settings() { }
 
         public Settings(string _country, int cityId, string _cityName, string _format, int _updatePeriod, bool _autostart)
         {
@@ -63,10 +57,7 @@ namespace WeatherInfo.Classes
             public int id { get; set; }
             public string name { get; set; }
 
-            public City()
-            {
-
-            }
+            public City() { }
 
             public City(int _id, string _name)
             {
@@ -88,37 +79,151 @@ namespace WeatherInfo.Classes
 
         //Запись настроек в файл
         public static void WriteXml(Settings settings)
-        {          
-
-            XmlSerializer ser = new XmlSerializer(typeof(Settings));
-            using (TextWriter writer = new StreamWriter(XMLFileName))
+        {
+            try
             {
-                ser.Serialize(writer, settings);
-                writer.Close();
-            }           
+                var isValid = ValidateSettings(settings);
+                if (!isValid)
+                {                    
+                    throw new Exception("Переданные настройки не прошли проверку на валиндность. Изменения не будут сохранены.");
+                }
+
+                XmlSerializer ser = new XmlSerializer(typeof(Settings));
+                using (TextWriter writer = new StreamWriter(XMLFileName))
+                {
+                    ser.Serialize(writer, settings);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("SettingsHandler.WriteXml(): Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
+                MessageBox.Show("Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
+            }                     
         }
 
         //Чтение настроек из файла
         public static Settings ReadXml()
         {
-            if (File.Exists(XMLFileName))
+            try
             {
-                Settings settings = new Settings();
-
-                XmlSerializer ser = new XmlSerializer(typeof(Settings));
-                using (TextReader reader = new StreamReader(XMLFileName))
+                if (File.Exists(XMLFileName))
                 {
-                    settings = ser.Deserialize(reader) as Settings;
-                    reader.Close();
+                    Settings settings = new Settings();
 
+                    XmlSerializer ser = new XmlSerializer(typeof(Settings));
+                    using (TextReader reader = new StreamReader(XMLFileName))
+                    {
+                        settings = ser.Deserialize(reader) as Settings;                   
+                    }
+                    var isValid = ValidateSettings(settings);
+                    if (isValid)
+                    {
+                        return settings;
+                    }
+                    else
+                    {
+                        throw new Exception("Файл настроек не прошел проверку на валиндность.");
+                    } 
                 }
-                return settings;
             }
-            else
+            catch (Exception ex)
             {
-                return new Settings();
+                Debug.WriteLine("SettingsHandler.ReadXml(): Непредвиденная ошибка. Будут загружены настройки по-умолчанию, если это возможно. Текст ошибки: " + ex.Message);
+                MessageBox.Show("Непредвиденная ошибка. Будут загружены настройки по-умолчанию, если это возможно. Текст ошибки: " + ex.Message);
+            }
+            return GetDefaultSettings();
+        }
+
+        /// <summary>
+        /// Метод проверяет переданные ему настройки на корректность.
+        /// </summary>
+        /// <param name="settings"></param>
+        /// <returns></returns>
+        private static bool ValidateSettings(Settings settings)
+        {
+            
+            try
+            {
+                var isValid = true;
+
+                //FieldInfo[] fields = typeof(FormatForecast).GetFields(BindingFlags.Public | BindingFlags.Instance);
+                //foreach (var field in fields)
+                //{
+                //    if (!ValidSettingField(field, settings))
+                //    {
+                //        isValid = false;
+                //        break;
+                //    }
+                //}
+
+                if (string.IsNullOrWhiteSpace(settings.country))
+                {
+                    return false;
+                }
+
+                if (string.IsNullOrWhiteSpace(settings.format))
+                {
+                    return false;
+                }
+
+                if (settings.updatePeriod < 10 || settings.updatePeriod > 180)
+                {
+                    return false;
+                }
+
+                if (settings.city.id <= 0)
+                {
+                    return false;
+                }
+
+                if (string.IsNullOrWhiteSpace(settings.city.name))
+                {
+                    return false;
+                }
+
+                return isValid;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
+
+        //private static bool ValidSettingField(FieldInfo field, Settings settings)
+        //{
+        //    switch (field.GetType().ToString())
+        //    {
+        //        case "int":
+        //            if ((int)field.GetValue(settings) <= 0 || (int)field.GetValue(settings) == null)
+        //            {
+        //                return false;
+        //            }
+        //            break;
+        //        case "string":
+        //            if (string.IsNullOrWhiteSpace((string)field.GetValue(settings)))
+        //            {
+        //                return false;
+        //            }
+        //            break;
+        //        case "bool":
+        //            if ((bool)field.GetValue(settings) == null)
+        //            {
+        //                return false;
+        //            }
+        //            break;
+        //        case "City":
+        //            FieldInfo[] cityFields = typeof(Settings.City).GetFields(BindingFlags.Public | BindingFlags.Instance);
+        //            foreach (var cityField in cityFields)
+        //            {
+        //                if (!ValidSettingField(cityField, settings))
+        //                {
+        //                    return false;
+        //                }
+        //            }
+        //            break;
+        //    }
+        //    return false;
+        //}
 
         /// <summary>
         /// Для формата прогноза возвращает аттрибут (по сути русская локализация для combobox) для формата
@@ -127,10 +232,18 @@ namespace WeatherInfo.Classes
         /// <returns></returns>
         public static string GetFormatAttribute(string format)
         {
-            FieldInfo fieldInfo = typeof(FormatForecast).GetField(format);
-            FormatAttribute[] attributes = (FormatAttribute[])fieldInfo.GetCustomAttributes(typeof(FormatAttribute), false);
+            try
+            {
+                FieldInfo fieldInfo = typeof(FormatForecast).GetField(format);
+                FormatAttribute[] attributes = (FormatAttribute[])fieldInfo.GetCustomAttributes(typeof(FormatAttribute), false);
 
-            return attributes.Length == 0 ? String.Empty : attributes[0].name;
+                return attributes.Length == 0 ? String.Empty : attributes[0].name;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("SettingsHandler.GetFormatAttribute(): Ошибка при получении атрибута формата прогноза погоды. Текст ошибки: " + ex.Message);
+                return String.Empty;
+            }            
         }
 
         //
@@ -141,15 +254,40 @@ namespace WeatherInfo.Classes
         /// <returns></returns>
         public static string GetValueByAttribute(string attribute)
         {
-            var ff = Enum.GetNames(typeof(FormatForecast));
-            foreach (var format in ff)
+            try
             {
-                if (attribute == GetFormatAttribute(format))
+                var ff = Enum.GetNames(typeof(FormatForecast));
+                foreach (var format in ff)
                 {
-                    return format;
-                }
+                    if (attribute == GetFormatAttribute(format))
+                    {
+                        return format;
+                    }
+                }                
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("SettingsHandler.GetValueByAttribute(): Ошибка при получении формата прогноза погоды по заданному атрибуту. Текст ошибки: " + ex.Message);
             }
             return String.Empty;
+        }
+
+        /// <summary>
+        /// Настройки по-умолчанию
+        /// </summary>
+        /// <returns></returns>
+        public static Settings GetDefaultSettings()
+        {            
+            string country = "Россия";
+            int cityId = 524901;
+            string cityName = "Moscow";
+            string format = Enum.GetName(typeof(FormatForecast), FormatForecast.Days);
+            int updatePeriod = 10;
+            bool autostart = true;
+
+            var settings = new Settings(country, cityId, cityName, format, updatePeriod, autostart);
+
+            return settings;
         }
     }
 }
