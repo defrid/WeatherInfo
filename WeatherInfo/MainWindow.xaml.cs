@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
+using System.Windows.Threading;
 using WeatherInfo.Classes;
 
 namespace WeatherInfo
@@ -31,6 +32,7 @@ namespace WeatherInfo
         private const string HourTitle = "Почасовой прогноз";
         private const string HoutTimeEnd = ":00";
         private Dictionary<string, string> dayParts;
+        DispatcherTimer timer;
 
         public MainWindow()
         {
@@ -40,7 +42,11 @@ namespace WeatherInfo
             forecasts = new XMLParser(town, townID);
 
             InitializeComponent();
-            
+
+            timer = new DispatcherTimer();
+            timer.Tick += timer_Tick;
+            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
+
             shrtForecast = forecasts.getBigForecast();
             dtldForecast = forecasts.getDetailedWeek();
 
@@ -51,7 +57,13 @@ namespace WeatherInfo
             dayParts.Add("night", "Ночь");
 
             fillTable();
+            timer.Start();
             Tray.SetupTray(this, options, expandShort);
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            applySettings();
         }
 
 
@@ -275,8 +287,11 @@ namespace WeatherInfo
             town = App.settings.city.cityName;
             townID = App.settings.city.cityId.ToString();
 
+            timer.Stop();
             forecasts = new XMLParser(town, townID);
             fillTable();
+            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
+            timer.Start();
         }
 
         void options()
