@@ -1,12 +1,13 @@
-﻿using System;
+﻿using SettingsHandlerInterface.Classes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
-using WeatherInfo.Classes;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace WeatherInfo.Interfaces
+namespace SettingsHandlerInterface
 {
     public interface ISettingsHandler
     {
@@ -34,7 +35,7 @@ namespace WeatherInfo.Interfaces
         /// </summary>
         /// <param name="settings"></param>
         /// <returns></returns>
-        internal static bool ValidateSettings(Settings settings)
+        public static bool ValidateSettings(Settings settings)
         {
 
             try
@@ -119,70 +120,5 @@ namespace WeatherInfo.Interfaces
         //    }
         //    return false;
         //}
-
-        /// <summary>
-        /// Для формата прогноза возвращает аттрибут (по сути русская локализация для combobox) для формата
-        /// </summary>
-        /// <param name="format"></param>
-        /// <returns></returns>
-        internal static string GetFormatAttribute(string format)
-        {
-            try
-            {
-                FieldInfo fieldInfo = typeof(FormatForecast).GetField(format);
-                FormatAttribute[] attributes = (FormatAttribute[])fieldInfo.GetCustomAttributes(typeof(FormatAttribute), false);
-
-                return attributes.Length == 0 ? String.Empty : attributes[0].name;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("SettingsHandler.GetFormatAttribute(): Ошибка при получении атрибута формата прогноза погоды. Текст ошибки: " + ex.Message);
-                return String.Empty;
-            }
-        }
-
-        //
-        /// <summary>
-        /// Для формата прогноза возвращает формат по атрибуту.
-        /// </summary>
-        /// <param name="attribute"></param>
-        /// <returns></returns>
-        internal static string GetValueByAttribute(string attribute)
-        {
-            try
-            {
-                var ff = Enum.GetNames(typeof(FormatForecast));
-                foreach (var format in ff)
-                {
-                    if (attribute == GetFormatAttribute(format))
-                    {
-                        return format;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("SettingsHandler.GetValueByAttribute(): Ошибка при получении формата прогноза погоды по заданному атрибуту. Текст ошибки: " + ex.Message);
-            }
-            return String.Empty;
-        }
-
-        /// <summary>
-        /// Настройки по-умолчанию
-        /// </summary>
-        /// <returns></returns>
-        internal static Settings GetDefaultSettings()
-        {
-            string country = "Россия";
-            int cityId = 524901;
-            string cityName = "Moscow";
-            string format = Enum.GetName(typeof(FormatForecast), FormatForecast.Days);
-            int updatePeriod = 10;
-            bool autostart = true;
-
-            var settings = new Settings(country, cityId, cityName, format, updatePeriod, autostart);
-
-            return settings;
-        }
     }
 }

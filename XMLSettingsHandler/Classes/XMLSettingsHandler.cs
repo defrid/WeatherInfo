@@ -4,15 +4,16 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
-using System.Windows.Forms;
 using System.Xml.Serialization;
-using WeatherInfo.Interfaces;
+using SettingsHandlerInterface;
+using SettingsHandlerInterface.Classes;
+using System.Reflection;
 
-namespace WeatherInfo.Classes
+namespace XMLSettingsHandler.Classes
 {
     public class XMLSettingsHandler : SettingsHandler
     {
-        public static String XMLFileName = Application.StartupPath + @"\Config\settings.xml";
+        public static String XMLFileName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + /*Application.StartupPath + */@"\Config\settings.xml";
 
         public override void SaveSettings(Settings settings)
         {
@@ -46,7 +47,7 @@ namespace WeatherInfo.Classes
             catch (Exception ex)
             {
                 Debug.WriteLine("SettingsHandler.WriteXml(): Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
-                MessageBox.Show("Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
+                //MessageBox.Show("Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
             }
         }
 
@@ -78,9 +79,9 @@ namespace WeatherInfo.Classes
             catch (Exception ex)
             {
                 Debug.WriteLine("SettingsHandler.ReadXml(): Непредвиденная ошибка. Будут загружены настройки по-умолчанию, если это возможно. Текст ошибки: " + ex.Message);
-                MessageBox.Show("Непредвиденная ошибка. Будут загружены настройки по-умолчанию, если это возможно. Текст ошибки: " + ex.Message);
+                //MessageBox.Show("Непредвиденная ошибка. Будут загружены настройки по-умолчанию, если это возможно. Текст ошибки: " + ex.Message);
             }
-            return GetDefaultSettings();
+            return Settings.GetDefaultSettings();
         }
     }
 }
