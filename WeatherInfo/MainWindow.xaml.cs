@@ -24,10 +24,12 @@ namespace WeatherInfo
         private static XMLParser forecasts;
         private static string town;
         private static int emptyDays;
+        int azaza = 0;
 
         public MainWindow()
         {
-            town = App.settings.city.name;
+            town = "Moscow";
+            forecasts = new XMLParser(town);
             try
             {
                 InitializeComponent();
@@ -38,41 +40,10 @@ namespace WeatherInfo
             }
             fillTable();
             Tray.SetupTray(this, options, expandFull, expandShort);
-            //town = App.settings.city.name;
-            //Почасовой прогноз
-            //ForecastHour[] forecasts =
-            //    {
-            //        new ForecastHour(10,"","00:00","skc_n_+10"), 
-            //        new ForecastHour(12,"","01:00","skc_n_+20"),
-            //        new ForecastHour(30,"","02:00","skc_n_+30"),
-            //        new ForecastHour(10,"","03:00","skc_n_+10"), 
-            //        new ForecastHour(12,"","04:00","skc_n_+20"),
-            //        new ForecastHour(30,"","05:00","skc_n_+30"),
-            //        new ForecastHour(10,"","06:00","skc_n_+10"), 
-            //        new ForecastHour(12,"","07:00","skc_n_+20"),
-            //        new ForecastHour(30,"","08:00","skc_n_+30"),
-            //        new ForecastHour(10,"","09:00","skc_n_+10"), 
-            //        new ForecastHour(-12,"","10:00","skc_n_+20"),
-            //        new ForecastHour(-30,"","11:00","skc_n_+30"),
-            //        new ForecastHour(-10,"","12:00","skc_n_+10"), 
-            //        new ForecastHour(-12,"","13:00","skc_n_+20"),
-            //        new ForecastHour(-30,"","14:00","skc_n_+30"),
-            //        new ForecastHour(10,"","15:00","skc_n_+10"), 
-            //        new ForecastHour(12,"","16:00","skc_n_+20"),
-            //        new ForecastHour(30,"","17:00","skc_n_+30"),
-            //        new ForecastHour(10,"","18:00","skc_n_+10"), 
-            //        new ForecastHour(12,"","19:00","skc_n_+20"),
-            //        new ForecastHour(30,"","20:00","skc_n_+30"),
-            //        new ForecastHour(10,"","21:00","skc_n_+10"), 
-            //        new ForecastHour(12,"","22:00","skc_n_+20"),
-            //        new ForecastHour(30,"","23:00","skc_n_+30"),
-            //    };
-            //element.ToolTip = GetHourForecast(forecasts);
         }
 
         private void fillTable()
         {
-            //town = "Moscow";
             forecasts = new XMLParser(town);
             ForecastDay[] days = forecasts.getBigForecast();
             DateTime date = DateTime.Parse(days[0].date, CultureInfo.InvariantCulture);
@@ -93,7 +64,7 @@ namespace WeatherInfo
         }
 
 
-        private static Grid GetWeaterElement(int column, int row, ForecastDay fore)
+        private Grid GetWeaterElement(int column, int row, ForecastDay fore)
         {
             var gridResult = new Grid();
             gridResult.MouseLeftButtonUp += gridResult_MouseLeftButtonUp;
@@ -137,6 +108,13 @@ namespace WeatherInfo
             image.SetValue(Grid.RowSpanProperty, 2);
             image.SetValue(Grid.ColumnSpanProperty, 2);
             gridResult.Children.Add(image);
+            if (azaza > 1)
+            {
+                return gridResult;
+            }
+            ForecastHour[] h = forecasts.getDetailedWeek()[azaza].hours.ToArray();
+            gridResult.ToolTip = GetHourForecast(h);
+            azaza++;
             return gridResult;
         }
 
@@ -157,7 +135,7 @@ namespace WeatherInfo
                     Grid.SetColumn(container, i);
                     Grid.SetRow(container, j);
 
-                    var timeLabel = new Label() { VerticalAlignment = VerticalAlignment.Center, Content = adding.time };
+                    var timeLabel = new Label() { VerticalAlignment = VerticalAlignment.Center, Content = adding.time + ":00" };
                     container.Children.Add(timeLabel);
 
                     var bitmapImage = YandexWeatherAPI.GetBitmapImageById(adding.icon);

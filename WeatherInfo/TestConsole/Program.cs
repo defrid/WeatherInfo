@@ -14,7 +14,7 @@ namespace TestConsole
             xml.getBigForecast();
             //xml.getBigForecast();
             //xml.getCurHour();
-            xml.getDetailedWeek();
+            ForecastDay d = xml.getDetailedWeek()[0];
             //Console.WriteLine(api.GetCurrentForecast());
             //Console.ReadKey();
             //Console.WriteLine(api.GetDailyForecast(3));
