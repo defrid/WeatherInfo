@@ -36,14 +36,8 @@ namespace WeatherInfo
             town = "Moscow";
             forecasts = new XMLParser(town);
 
-            try
-            {
-                InitializeComponent();
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("1. " + exc.Message);
-            }
+            InitializeComponent();
+            
             shrtForecast = forecasts.getBigForecast();
             dtldForecast = forecasts.getDetailedWeek();
 
@@ -60,12 +54,15 @@ namespace WeatherInfo
         private void fillTable()
         {
             forecasts = new XMLParser(town);
+
             shrtForecast = forecasts.getBigForecast();
+            dtldForecast = forecasts.getDetailedWeek();
+
             DateTime date = DateTime.Parse(shrtForecast[0].date, CultureInfo.InvariantCulture);
             int dayOfWeek = (int)date.DayOfWeek - 1;
             int index = 0;
             City.Content = town;
-            MonthYear.Content = date.Month + "/" + date.Year;
+            MonthYear.Content = date.ToString("y");
             for (int i = 0; i < 2; i++)
             {
                 for (; dayOfWeek < 7; dayOfWeek++)
