@@ -21,19 +21,21 @@ namespace WeatherInfo
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ForecastDay[] shrtForecast;
+        private ForecastDay[] dtldForecast;
         private static XMLParser forecasts;
         private static string town;
-        private static int emptyDays;
-        private const int HourRowCount = 8;
-        private const int HourColumnCount = 3;
+        private const int BaseRowCount = 2;
+        private const int BaseColumnCount = 2;
         private const string HourTitle = "Почасовой прогноз";
         private const string HoutTimeEnd = ":00";
-        int azaza = 0;
+        private Dictionary<string, string> dayParts;// = new Dictionary<string, string>();
 
         public MainWindow()
         {
             town = "Moscow";
             forecasts = new XMLParser(town);
+
             try
             {
                 InitializeComponent();
@@ -42,6 +44,15 @@ namespace WeatherInfo
             {
                 MessageBox.Show("1. " + exc.Message);
             }
+            shrtForecast = forecasts.getBigForecast();
+            dtldForecast = forecasts.getDetailedWeek();
+
+            dayParts = new Dictionary<string, string>();
+            dayParts.Add("morning", "Утро");
+            dayParts.Add("day", "День");
+            dayParts.Add("evening", "Вечер");
+            dayParts.Add("night", "Ночь");
+
             fillTable();
             Tray.SetupTray(this, options, expandFull, expandShort);
         }
@@ -49,10 +60,9 @@ namespace WeatherInfo
         private void fillTable()
         {
             forecasts = new XMLParser(town);
-            ForecastDay[] days = forecasts.getBigForecast();
-            DateTime date = DateTime.Parse(days[0].date, CultureInfo.InvariantCulture);
+            shrtForecast = forecasts.getBigForecast();
+            DateTime date = DateTime.Parse(shrtForecast[0].date, CultureInfo.InvariantCulture);
             int dayOfWeek = (int)date.DayOfWeek - 1;
-            emptyDays = dayOfWeek;
             int index = 0;
             City.Content = town;
             MonthYear.Content = date.Month + "/" + date.Year;
@@ -60,7 +70,7 @@ namespace WeatherInfo
             {
                 for (; dayOfWeek < 7; dayOfWeek++)
                 {
-                    WeatherTable.Children.Add(GetWeaterElement(dayOfWeek, i + 1, days[index]));
+                    WeatherTable.Children.Add(GetWeaterElement(dayOfWeek, i + 1, index));
                     index++;
                 }
                 dayOfWeek = 0;
@@ -68,8 +78,9 @@ namespace WeatherInfo
         }
 
 
-        private Grid GetWeaterElement(int column, int row, ForecastDay fore)
+        private Grid GetWeaterElement(int column, int row, int index)
         {
+            ForecastDay fore = shrtForecast[index];
             var gridResult = new Grid();
             gridResult.MouseLeftButtonUp += gridResult_MouseLeftButtonUp;
             gridResult.SetValue(Grid.RowProperty, row);
@@ -112,14 +123,47 @@ namespace WeatherInfo
             image.SetValue(Grid.RowSpanProperty, 2);
             image.SetValue(Grid.ColumnSpanProperty, 2);
             gridResult.Children.Add(image);
-            if (azaza > 1)
+            ToolTipService.SetShowDuration(gridResult, 15000);
+            if (index < 2)
             {
+                ForecastHour[] fors = dtldForecast[index].hours.ToArray().Take(24).ToArray();
+                if (index == 0)
+                {
+                    int curHour = DateTime.Now.Hour;
+                    fors = fors.Where(el => Int32.Parse(el.time) >= curHour).ToArray();
+                }
+                int rows = rowsAndColumns(fors.Length)[0];
+                int cols = rowsAndColumns(fors.Length)[1];
+                gridResult.ToolTip = GetTooltipForecast(rows, cols, HourTitle, fors, HoutTimeEnd);
                 return gridResult;
             }
-            ForecastHour[] h = forecasts.getDetailedWeek()[azaza].hours.ToArray();//Почему то возвращает 28 прогнозов 
-            gridResult.ToolTip = GetTooltipForecast(HourRowCount,HourColumnCount,HourTitle,h,HoutTimeEnd);
-            azaza++;
+            if (index < 10)
+            {
+                ForecastHour[] fors = dtldForecast[index].hours.ToArray();
+                int temp = 0;
+                fors = fors.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
+                foreach(var el in fors)
+                {
+                    el.time = dayParts[el.time];
+                }
+                gridResult.ToolTip = GetTooltipForecast(BaseRowCount, BaseColumnCount, "Суточный прогноз", fors, "");
+            }
             return gridResult;
+        }
+
+        private int[] rowsAndColumns(int len)
+        {
+            if (len > 10)
+            {
+                int row = len % 3 == 0 ? len / 3 : len / 3 + 1;
+                return new int[] { row, 3 };
+            }
+            if (len > 2)
+            {
+                int row = len % 2 == 0 ? len / 2 : len / 2 + 1;
+                return new int[] { row, 2 };
+            }
+            return new int[] { 1, 2 };
         }
 
         /// <summary>
@@ -134,8 +178,9 @@ namespace WeatherInfo
         private DockPanel GetTooltipForecast(int rowsCount, int columnsCount,
                                             string title, ForecastHour[] forecasts, string timeEnd)
         {
-            if (forecasts.Count() < rowsCount*columnsCount)
-                return null;
+            //if (forecasts.Count() < rowsCount * columnsCount)
+            // return null;
+            int remain = forecasts.Length;
             var docResult = new DockPanel();
             var titleLabel = new Label
                 {
@@ -143,7 +188,7 @@ namespace WeatherInfo
                     FontWeight = FontWeights.Bold,
                     FontStyle = FontStyles.Italic
                 };
-            DockPanel.SetDock(titleLabel,Dock.Top);
+            DockPanel.SetDock(titleLabel, Dock.Top);
             docResult.Children.Add(titleLabel);
 
             var grid = new Grid();
@@ -152,18 +197,31 @@ namespace WeatherInfo
             for (var i = 0; i < columnsCount; i++)
                 grid.ColumnDefinitions.Add(new ColumnDefinition());
             for (var i = 0; i < columnsCount; i++)
-                for (var j = 0; j < rowsCount; j++)
+                for (var j = 0; j < rowsCount && remain != 0; j++)
                 {
                     ForecastHour adding = forecasts[rowsCount * i + j];
-                    var container = new StackPanel { Margin = new Thickness(0, 0, 10, 0), Orientation = Orientation.Horizontal};
+                    var container = new StackPanel
+                    {
+                        Margin = new Thickness(0, 0, 10, 0),
+                        Orientation = Orientation.Horizontal
+                    };
                     Grid.SetColumn(container, i);
                     Grid.SetRow(container, j);
 
-                    var timeLabel = new Label { VerticalAlignment = VerticalAlignment.Center, Content = adding.time + timeEnd};
+                    var timeLabel = new Label
+                    {
+                        VerticalAlignment = VerticalAlignment.Center,
+                        Content = adding.time + timeEnd
+                    };
                     container.Children.Add(timeLabel);
 
                     var bitmapImage = YandexWeatherAPI.GetBitmapImageById(adding.icon);
-                    var icon = new Image { Source = bitmapImage, Width = 32, Height = 32 };
+                    var icon = new Image
+                    {
+                        Source = bitmapImage,
+                        Width = 32,
+                        Height = 32
+                    };
                     container.Children.Add(icon);
 
                     var stringTemp = adding.temp > 0 ? "+" + adding.temp.ToString() : adding.temp.ToString();
@@ -176,6 +234,7 @@ namespace WeatherInfo
                     };
                     container.Children.Add(temperLabel);
                     grid.Children.Add(container);
+                    remain--;
                 }
             docResult.Children.Add(grid);
             return docResult;
@@ -224,6 +283,6 @@ namespace WeatherInfo
             new SettingsWindow().Show();
         }
 
-        
+
     }
 }

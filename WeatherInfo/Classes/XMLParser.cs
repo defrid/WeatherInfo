@@ -53,6 +53,7 @@ namespace WeatherInfo.Classes
                 foreach (var hour in day.Elements(apiName + "hour")) 
                 {
                     string time = hour.Attribute("at").Value;
+                    time = time.Length > 0 ? time : "0" + time;
                     int temp = Int32.Parse(hour.Element(apiName + "temperature").Value);
                     string clouds = hour.Element(apiName + "weather_condition").Attribute("code").Value;
                     string icon = hour.Element(apiName + "image-v3").Value;
