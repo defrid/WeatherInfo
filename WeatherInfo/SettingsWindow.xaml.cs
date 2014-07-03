@@ -55,12 +55,12 @@ namespace WeatherInfo
                 cityName_save = listOfCitiies_cbx.SelectedItem.ToString();
                 cityId_save = gC.GetCityNumber(cityName_save);
                 updatePeriod_save = Convert.ToInt32(updatePeriod_slider.Value);
-                format_save = SettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
+                format_save = XMLSettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
                 autostart_save = (bool)autostartFlag_chbx.IsChecked;
 
                 App.settings = new Settings(country_save, cityId_save, cityName_save, format_save, updatePeriod_save, autostart_save);
 
-                SettingsHandler.WriteXml(App.settings);
+                App.settingHandler.SaveSettings(App.settings);
                 Autorun();
                 Close();
             }
@@ -105,13 +105,13 @@ namespace WeatherInfo
             listOfCountries_cbx.SelectionChanged += listOfCountries_cbx_SelectionChanged;
 
             LoadCities(App.settings.country);
-            listOfCitiies_cbx.SelectedItem = App.settings.city.name;
+            listOfCitiies_cbx.SelectedItem = App.settings.city.cityName;
             listOfCitiies_cbx.SelectionChanged += listOfCitiies_cbx_SelectionChanged;
 
             updatePeriod_slider.Value = Convert.ToDouble(App.settings.updatePeriod);
 
             LoadFormats();
-            listOfFormatsForecast_cbx.SelectedItem = SettingsHandler.GetFormatAttribute(App.settings.format);
+            listOfFormatsForecast_cbx.SelectedItem = XMLSettingsHandler.GetFormatAttribute(App.settings.format);
             listOfFormatsForecast_cbx.SelectionChanged += listOfFormatsForecast_cbx_SelectionChanged;
 
             autostartFlag_chbx.IsChecked = App.settings.autostart;
@@ -134,7 +134,7 @@ namespace WeatherInfo
             string[] formats = Enum.GetNames(typeof(FormatForecast));
             foreach (var f in formats)
             {
-                var value = SettingsHandler.GetFormatAttribute(f);
+                var value = XMLSettingsHandler.GetFormatAttribute(f);
                 listOfFormatsForecast_cbx.Items.Add(value);
             }
         }
@@ -156,7 +156,7 @@ namespace WeatherInfo
 
         private void listOfFormatsForecast_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            format_save = SettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
+            format_save = XMLSettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
         }
 
         private void listOfCitiies_cbx_KeyDown(object sender, KeyEventArgs e)

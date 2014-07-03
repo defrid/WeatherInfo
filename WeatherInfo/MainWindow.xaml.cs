@@ -27,7 +27,7 @@ namespace WeatherInfo
 
         public MainWindow()
         {
-            town = App.settings.city.name;
+            town = App.settings.city.cityName;
             try
             {
                 InitializeComponent();

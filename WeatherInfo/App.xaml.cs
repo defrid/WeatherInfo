@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 using WeatherInfo.Classes;
+using WeatherInfo.Interfaces;
 
 namespace WeatherInfo
 {
@@ -13,6 +14,7 @@ namespace WeatherInfo
     /// </summary>
     public partial class App : Application
     {
-        public static Settings settings = SettingsHandler.ReadXml();
+        public static ISettingsHandler settingHandler = new XMLSettingsHandler();
+        public static Settings settings = settingHandler.LoadSettings();
     }
 }
