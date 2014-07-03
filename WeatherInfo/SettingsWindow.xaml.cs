@@ -20,8 +20,11 @@ namespace WeatherInfo
     /// </summary>
     public partial class SettingsWindow : Window
     {
-        public SettingsWindow()
+        MainWindow main;
+
+        public SettingsWindow(object e)
         {
+            main = (MainWindow)e;
             InitializeComponent();
         }
 
@@ -62,6 +65,9 @@ namespace WeatherInfo
                 App.settings = new Settings(country_save, cityId_save, cityName_save, format_save, updatePeriod_save, autostart_save);
 
                 App.settingHandler.SaveSettings(App.settings);
+
+                main.applySettings();
+
                 Autorun();
                 Close();
             }
@@ -158,17 +164,6 @@ namespace WeatherInfo
         private void listOfFormatsForecast_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             format_save = XMLSettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
-        }
-
-        private void listOfCitiies_cbx_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Enter:
-                    listOfCitiies_cbx.Text = translate.toEng(listOfCitiies_cbx.Text, "Location//translit.txt");
-                    if (listOfCitiies_cbx.SelectedItem == null) MessageBox.Show("Город не найден");
-                    break;
-            }
         }
 
         private void updatePeriod_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

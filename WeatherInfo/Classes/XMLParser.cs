@@ -32,12 +32,12 @@ namespace WeatherInfo.Classes
         
         public ForecastHour getCurHour() 
         {
-            weather = yaAPI.GetForecast();
-            XElement cur = weather.Root.Element(apiName + "fact");
-            string time = cur.Element(apiName + "uptime").Value;
-            int temp = Int32.Parse(cur.Element(apiName + "temperature").Value);
-            string clouds = cur.Element(apiName + "weather_condition").Attribute("code").Value;
-            string icon = cur.Element(apiName + "image-v3").Value;
+            weather = opAPI.GetCurrentForecast();
+            XElement cur = weather.Root;
+            string time = cur.Element("lastupdate").Attribute("value").Value;
+            int temp = Int32.Parse(cur.Element("temperature").Attribute("value").Value);
+            string clouds = cur.Element("clouds").Attribute("name").Value;
+            string icon = cur.Element("weather").Attribute("icon").Value;
             return new ForecastHour(temp, clouds, time, icon);
         }
 

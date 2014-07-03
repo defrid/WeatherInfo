@@ -53,7 +53,7 @@ namespace WeatherInfo
             dayParts.Add("night", "Ночь");
 
             fillTable();
-            Tray.SetupTray(this, options, expandFull, expandShort);
+            Tray.SetupTray(this, options, expandShort);
         }
 
         private void fillTable()
@@ -247,7 +247,7 @@ namespace WeatherInfo
 
         private void settingsClick(object sender, RoutedEventArgs e)
         {
-            new SettingsWindow().Show();
+            new SettingsWindow(this).Show();
             
         }
 
@@ -270,13 +270,14 @@ namespace WeatherInfo
             this.WindowState = System.Windows.WindowState.Normal;
         }
 
-        void expandFull()
+        public void applySettings()
         {
+
         }
 
         void options()
         {
-            new SettingsWindow().Show();
+            new SettingsWindow(this).Show();
         }
 
 
