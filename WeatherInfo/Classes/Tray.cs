@@ -62,6 +62,40 @@ namespace WeatherInfo
         //-------------------------------------------------------------------------------
 
 
+        string[] cities = { "Забыли задать город!" };
+
+        public void setCities(string city1, string city2 = "")
+        {
+            if (city2 == "")
+            {
+                cities = new string[1];
+                cities[0] = city1;
+            }
+            else
+            {
+                cities = new string[2];
+                cities[0] = city1;
+                cities[1] = city2;
+            }
+
+
+            ContextMenu menu = new ContextMenu();
+            menu.MenuItems.Add("Развернуть кратко");
+            menu.MenuItems.Add("Развернуть подробно");
+            menu.MenuItems.Add("Настройки", OptionsClick);
+            menu.MenuItems.Add("Выход", AppExit);
+
+            foreach (var a in cities)
+            {
+                menu.MenuItems[0].MenuItems.Add(a, ToShort);
+                menu.MenuItems[1].MenuItems.Add(a, ToFull);
+            }
+
+            iconPicture.ContextMenu = menu;
+        }
+
+
+
         private static void ToShort(object sender, EventArgs e)
         {
             ToWindow(sender, e);
