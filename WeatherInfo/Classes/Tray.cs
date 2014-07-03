@@ -14,7 +14,7 @@ namespace WeatherInfo
         public static event TrayVoid OnFullInfo;
         public static event TrayVoid OnShortInfo;
 
-        public Forecast curFore;
+        public ForecastHour curFore;
 
         static string iPdescr = "Двойной клик - развернуть программу, ПКМ - открыть меню";
         static Window windowMain;
@@ -52,10 +52,10 @@ namespace WeatherInfo
         }
 
         //обновить трей
-        public static void Update(Forecast newFore, float scale=1.8f, bool WriteDigits=true)
+        public static void Update(ForecastHour newFore)
         {
             Icon forPic = Icon.FromHandle(getPicture(newFore, scale, WriteDigits).GetHicon());
-            iconPicture.Text = newFore.max + "°С";
+            iconPicture.Text = newFore.temp + "°С";
             makeTray(forPic);
         }
 
@@ -100,9 +100,9 @@ namespace WeatherInfo
         }
       
         //получает битмап из картинки
-        private static Bitmap getPicture(Forecast fore, float scale, bool needDigits)
+        private static Bitmap getPicture(ForecastHour fore)
         {
-            Bitmap res = WeatherInfo.Classes.WeatherAPI.GetImageById(fore.icon);
+            Bitmap res = WeatherInfo.Classes.OpenWeatherAPI.GetImageById(fore.icon);
 
             Bitmap bm = new Bitmap(100, 100);
             Graphics gr = Graphics.FromImage(bm);

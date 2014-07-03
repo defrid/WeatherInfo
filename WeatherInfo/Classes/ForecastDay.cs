@@ -8,21 +8,27 @@ namespace WeatherInfo.Classes
     /// <summary>
     /// Класс прогноза, в него будем складывать информацию за отрезок времени
     /// </summary>
-    public class Forecast
+    public class ForecastDay
     {
-        public Forecast(int _min, int _max, string _clouds, string _date, string _icon)
+        public ForecastDay(int _mor, int _day, int _evn, int _ngt, string _clouds, string _date, string _icon)
         {
-            min = _min;
-            max = _max;
+            mor = _mor;
+            day = _day;
+            evn = _evn;
+            ngt = _ngt;
             clouds = _clouds;
             date = _date;
             icon = _icon;
         }
 
 
-        public int min { get; protected set; }
+        public int mor { get; protected set; }
 
-        public int max { get; protected set; }
+        public int day { get; protected set; }
+
+        public int evn { get; protected set; }
+
+        public int ngt { get; protected set; }
 
         public string clouds { get; protected set; }
 
