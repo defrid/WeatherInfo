@@ -6,7 +6,7 @@ using System.Text;
 namespace WeatherInfo.Classes
 {
     /// <summary>
-    /// Класс прогноза, в него будем складывать информацию за отрезок времени
+    /// Класс прогноза дня, содержит температуру за четыре времени суток
     /// </summary>
     public class ForecastDay
     {
