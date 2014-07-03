@@ -24,6 +24,10 @@ namespace WeatherInfo
         private static XMLParser forecasts;
         private static string town;
         private static int emptyDays;
+        private const int HourRowCount = 8;
+        private const int HourColumnCount = 3;
+        private const string HourTitle = "Почасовой прогноз";
+        private const string HoutTimeEnd = ":00";
         int azaza = 0;
 
         public MainWindow()
@@ -112,17 +116,26 @@ namespace WeatherInfo
             {
                 return gridResult;
             }
-            ForecastHour[] h = forecasts.getDetailedWeek()[azaza].hours.ToArray();
-            gridResult.ToolTip = GetHourForecast(h);
+            ForecastHour[] h = forecasts.getDetailedWeek()[azaza].hours.ToArray();//Почему то возвращает 28 прогнозов 
+            gridResult.ToolTip = GetTooltipForecast(HourRowCount,HourColumnCount,HourTitle,h,HoutTimeEnd);
             azaza++;
             return gridResult;
         }
 
-        private DockPanel GetHourForecast(ForecastHour[] forecasts)
+        /// <summary>
+        /// Метод для получения всплывающего окна с прогнозом
+        /// </summary>
+        /// <param name="rowsCount">Кол-во строк</param>
+        /// <param name="columnsCount">Кол-во столбцов</param>
+        /// <param name="title">Заголовок</param>
+        /// <param name="forecasts">массив прогнозов</param>
+        /// <param name="timeEnd">Постфикс ко времени</param>
+        /// <returns>Возвращает DockPanel c прогнозами или null(прогнозов меньше числа ячеек)</returns>
+        private DockPanel GetTooltipForecast(int rowsCount, int columnsCount,
+                                            string title, ForecastHour[] forecasts, string timeEnd)
         {
-            const int rowsCount = 8;
-            const int columnsCount = 3;
-            const string title = "Почасовой прогноз";
+            if (forecasts.Count() < rowsCount*columnsCount)
+                return null;
             var docResult = new DockPanel();
             var titleLabel = new Label
                 {
@@ -142,11 +155,11 @@ namespace WeatherInfo
                 for (var j = 0; j < rowsCount; j++)
                 {
                     ForecastHour adding = forecasts[rowsCount * i + j];
-                    var container = new StackPanel { Margin = new Thickness(0, 0, 10, 0), Orientation = Orientation.Horizontal };
+                    var container = new StackPanel { Margin = new Thickness(0, 0, 10, 0), Orientation = Orientation.Horizontal};
                     Grid.SetColumn(container, i);
                     Grid.SetRow(container, j);
 
-                    var timeLabel = new Label { VerticalAlignment = VerticalAlignment.Center, Content = adding.time + ":00" };
+                    var timeLabel = new Label { VerticalAlignment = VerticalAlignment.Center, Content = adding.time + timeEnd};
                     container.Children.Add(timeLabel);
 
                     var bitmapImage = YandexWeatherAPI.GetBitmapImageById(adding.icon);
@@ -167,6 +180,8 @@ namespace WeatherInfo
             docResult.Children.Add(grid);
             return docResult;
         }
+
+        //private DockPanel GetFourTime
 
         static void gridResult_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
