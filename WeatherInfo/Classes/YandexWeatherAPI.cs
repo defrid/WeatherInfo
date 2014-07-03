@@ -14,7 +14,7 @@ namespace WeatherInfo.Classes
     /// <summary>
     /// Класс организующий связь с Yandex.Weather API
     /// </summary>
-    class YandexWeatherAPI:IYandexWeatherApi
+    public class YandexWeatherAPI:IYandexWeatherApi
     {
         /// <summary>
         /// Ссылка на Xml документ с городами
