@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+<<<<<<< HEAD
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -8,6 +9,11 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+=======
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+>>>>>>> origin/SettingsWindow
 
 namespace WeatherInfo.Classes
 {
@@ -19,9 +25,13 @@ namespace WeatherInfo.Classes
         [FormatAttribute("По неделям")]
         Weeks,
         [FormatAttribute("По дням")]
+<<<<<<< HEAD
         Days,
         [FormatAttribute("По часам")]
         Hours
+=======
+        Days
+>>>>>>> origin/SettingsWindow
     }
 
     [AttributeUsage(AttributeTargets.All)]
@@ -35,6 +45,7 @@ namespace WeatherInfo.Classes
     }
 
     /// <summary>
+<<<<<<< HEAD
     /// Перечисление задержек для всплывающего сообщения в трее
     /// </summary>
     public enum Delay
@@ -46,10 +57,13 @@ namespace WeatherInfo.Classes
     }
 
     /// <summary>
+=======
+>>>>>>> origin/SettingsWindow
     /// Класс настроек приложения
     /// </summary>
     public class Settings
     {
+<<<<<<< HEAD
         public Settings()
         {
             country = "RU";
@@ -60,11 +74,20 @@ namespace WeatherInfo.Classes
         }
 
         public Settings(string _country, int cityId, string _cityName, string _format, string _delay, bool _autostart)
+=======
+        public Settings() { }
+
+        public Settings(string _country, int cityId, string _cityName, string _format, int _updatePeriod, bool _autostart)
+>>>>>>> origin/SettingsWindow
         {
             country = _country;
             city = new City(cityId, _cityName);
             format = _format;
+<<<<<<< HEAD
             delay = _delay;
+=======
+            updatePeriod = _updatePeriod;
+>>>>>>> origin/SettingsWindow
             autostart = _autostart;
         }
 
@@ -73,6 +96,7 @@ namespace WeatherInfo.Classes
         /// </summary>
         public class City
         {
+<<<<<<< HEAD
             public int id { get; set; }
             public string name { get; set; }
 
@@ -80,12 +104,24 @@ namespace WeatherInfo.Classes
             {
                 id = _id;
                 name = _name;
+=======
+            public int cityId { get; set; }
+            public string cityName { get; set; }
+
+            public City() { }
+
+            public City(int _cityId, string _cityName)
+            {
+                cityId = _cityId;
+                cityName = _cityName;
+>>>>>>> origin/SettingsWindow
             }
         }
 
         public string country { get; set; }
         public City city { get; set; }
         public string format { get; set; }
+<<<<<<< HEAD
         public string delay { get; set; }
         public bool autostart { get; set; }
     }
@@ -184,4 +220,9 @@ namespace WeatherInfo.Classes
             return String.Empty;
         }
     }
+=======
+        public int updatePeriod { get; set; }
+        public bool autostart { get; set; }
+    }    
+>>>>>>> origin/SettingsWindow
 }
