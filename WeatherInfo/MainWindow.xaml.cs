@@ -23,23 +23,28 @@ namespace WeatherInfo
     {
         private ForecastDay[] shrtForecast;
         private ForecastDay[] dtldForecast;
-        private static XMLParser forecasts;
-        private static string town;
+        private XMLParser forecasts;
+        private string town;
+        private string townID;
         private const int BaseRowCount = 2;
         private const int BaseColumnCount = 2;
         private const string HourTitle = "Почасовой прогноз";
         private const string HoutTimeEnd = ":00";
-        private Dictionary<string, string> dayParts;// = new Dictionary<string, string>();
+        private Dictionary<string, string> dayParts;
 
         public MainWindow()
         {
-            town = "Moscow";
-            forecasts = new XMLParser(town);
+            //town = "Moscow";
+            //townID = "27786";
+            town = App.settings.city.cityName;
+            townID = App.settings.city.cityId.ToString();
+
+            forecasts = new XMLParser(town, townID);
 
             InitializeComponent();
             
             shrtForecast = forecasts.getBigForecast();
-            dtldForecast = forecasts.getDetailedWeek();
+            //dtldForecast = forecasts.getDetailedWeek();
 
             dayParts = new Dictionary<string, string>();
             dayParts.Add("morning", "Утро");
@@ -53,7 +58,7 @@ namespace WeatherInfo
 
         private void fillTable()
         {
-            forecasts = new XMLParser(town);
+            forecasts = new XMLParser(town, townID);
 
             shrtForecast = forecasts.getBigForecast();
             dtldForecast = forecasts.getDetailedWeek();
@@ -79,7 +84,6 @@ namespace WeatherInfo
         {
             ForecastDay fore = shrtForecast[index];
             var gridResult = new Grid();
-            gridResult.MouseLeftButtonUp += gridResult_MouseLeftButtonUp;
             gridResult.SetValue(Grid.RowProperty, row);
             gridResult.SetValue(Grid.ColumnProperty, column);
             for (var i = 0; i < 2; i++)
@@ -124,6 +128,8 @@ namespace WeatherInfo
             if (index < 2)
             {
                 ForecastHour[] fors = dtldForecast[index].hours.ToArray().Take(24).ToArray();
+                int temp = 0;
+                fors = fors.Where(el => Int32.TryParse(el.time, out temp)).ToArray();
                 if (index == 0)
                 {
                     int curHour = DateTime.Now.Hour;
@@ -239,19 +245,12 @@ namespace WeatherInfo
 
         //private DockPanel GetFourTime
 
-        static void gridResult_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void settingsClick(object sender, RoutedEventArgs e)
         {
+            new SettingsWindow().Show();
+            
         }
 
-        private void moreInfoClick(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void updateClick(object sender, RoutedEventArgs e)
-        {
-            WeatherTable.Children.RemoveRange(7, 14);
-            fillTable();
-        }
         /*
          <Image Source="http://openweathermap.org/img/w/10d.png" Grid.Row="1"  Grid.RowSpan="2" Grid.ColumnSpan="2"></Image> 
          

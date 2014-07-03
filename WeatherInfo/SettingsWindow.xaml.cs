@@ -22,7 +22,7 @@ namespace WeatherInfo
     {
         public SettingsWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         getCity gC = new getCity();
@@ -53,7 +53,8 @@ namespace WeatherInfo
             {
                 country_save = listOfCountries_cbx.SelectedItem.ToString();
                 cityName_save = listOfCitiies_cbx.SelectedItem.ToString();
-                cityId_save = gC.GetCityNumber(cityName_save);
+                cityId_save = gC.GetCityNumberYandex(cityName_save);
+                //cityName_save = translate.toEng(listOfCitiies_cbx.SelectedItem.ToString(), "Location//translit.txt");
                 updatePeriod_save = Convert.ToInt32(updatePeriod_slider.Value);
                 format_save = XMLSettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
                 autostart_save = (bool)autostartFlag_chbx.IsChecked;
@@ -125,8 +126,8 @@ namespace WeatherInfo
 
         void LoadCities(string country)
         {
-            List<string> allCities = gC.CityNames(country);
-            listOfCitiies_cbx.ItemsSource = allCities;            
+            List<string> allCities = gC.CityNamesYandex(country);
+            listOfCitiies_cbx.ItemsSource = allCities;
         }
 
         void LoadFormats()
@@ -161,7 +162,7 @@ namespace WeatherInfo
 
         private void listOfCitiies_cbx_KeyDown(object sender, KeyEventArgs e)
         {
-            switch(e.Key)
+            switch (e.Key)
             {
                 case Key.Enter:
                     listOfCitiies_cbx.Text = translate.toEng(listOfCitiies_cbx.Text, "Location//translit.txt");
@@ -172,7 +173,7 @@ namespace WeatherInfo
 
         private void updatePeriod_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            
+
         }
     }
 }

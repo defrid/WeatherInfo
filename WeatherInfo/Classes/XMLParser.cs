@@ -12,17 +12,20 @@ namespace WeatherInfo.Classes
     public class XMLParser : XMLWorker
     {
         string town;
+        string townId;
         XDocument weather;
         IWeatherAPI opAPI;
         IYandexWeatherApi yaAPI;
         CultureInfo ci;
         string apiName = "{http://weather.yandex.ru/forecast}";
 
-        public XMLParser(string _town)
+        public XMLParser(string _town, string _townId)
         {
             town = _town;
-            opAPI = new OpenWeatherAPI(town);
-            yaAPI = new YandexWeatherAPI("27786");
+            townId = _townId;
+            string townEng = translate.toEng(town, "Location//translit.txt");
+            opAPI = new OpenWeatherAPI(townEng);
+            yaAPI = new YandexWeatherAPI(_townId);
             ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
             ci.NumberFormat.CurrencyDecimalSeparator = ".";
         }
