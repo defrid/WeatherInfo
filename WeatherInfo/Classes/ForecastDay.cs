@@ -10,29 +10,23 @@ namespace WeatherInfo.Classes
     /// </summary>
     public class ForecastDay
     {
-        public ForecastDay(int _mor, int _day, int _evn, int _ngt, string _clouds, string _date, string _icon)
+        public ForecastDay(int _min, int _max, List<ForecastHour> _hours, string _date, string _icon)
         {
-            mor = _mor;
-            day = _day;
-            evn = _evn;
-            ngt = _ngt;
-            clouds = _clouds;
+            min = _min;
+            max = _max;
+            hours = _hours;
             date = _date;
             icon = _icon;
         }
 
 
-        public int mor { get; protected set; }
+        public int max { get; protected set; }
 
-        public int day { get; protected set; }
+        public int min { get; protected set; }
 
-        public int evn { get; protected set; }
+        public List<ForecastHour> hours { get; set; }
 
-        public int ngt { get; protected set; }
-
-        public string clouds { get; protected set; }
-
-        public string date { get; protected set; }//2014-07-01T12:00:00, для неподробного 2014-07-01
+        public string date { get; protected set; }//2014-07-01
 
         public string icon { get; protected set; }
     }

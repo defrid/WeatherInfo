@@ -82,7 +82,7 @@ namespace WeatherInfo
             gridResult.Children.Add(dayLabel);
             var maxTempLabel = new Label()
                 {
-                    Content = (fore.day > 0 ? "+" + fore.day.ToString() : fore.day.ToString()),
+                    Content = (fore.max > 0 ? "+" + fore.max.ToString() : fore.max.ToString()),
                     HorizontalAlignment = HorizontalAlignment.Right,
                     FontSize = 15,
                     FontWeight = FontWeights.Bold
@@ -92,7 +92,7 @@ namespace WeatherInfo
             gridResult.Children.Add(maxTempLabel);
             var minTempLabel = new Label()
                 {
-                    Content = (fore.ngt > 0 ? "+" + fore.ngt.ToString() : fore.ngt.ToString()),
+                    Content = (fore.min > 0 ? "+" + fore.min.ToString() : fore.min.ToString()),
                     HorizontalAlignment = HorizontalAlignment.Right
                 };
             minTempLabel.SetValue(Grid.RowProperty, 1);

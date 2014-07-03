@@ -14,7 +14,7 @@ namespace WeatherInfo.Classes
     /// <summary>
     /// Класс организующий связь с Yandex.Weather API
     /// </summary>
-    class YandexWeatherAPI:IYandexWeatherApi
+    public class YandexWeatherAPI:IYandexWeatherApi
     {
         /// <summary>
         /// Ссылка на Xml документ с городами
@@ -41,19 +41,6 @@ namespace WeatherInfo.Classes
         public YandexWeatherAPI(string cityId)
         {
             CityId = cityId;
-        }
-
-        //Косячный метод, после using поток автоматически закроется и будет выдавать ошибку
-        /// <summary>
-        /// Метод для получения потока по html ссылке
-        /// </summary>
-        /// <param name="link">Ссылка</param>
-        /// <returns></returns>
-        private static Stream GetStreamByLink(string link)
-        {
-            var request = WebRequest.Create(link);
-            using (var response = request.GetResponse())
-                return response.GetResponseStream();
         }
 
         /// <summary>
