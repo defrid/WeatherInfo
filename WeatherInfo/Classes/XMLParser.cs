@@ -29,8 +29,8 @@ namespace WeatherInfo.Classes
             ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
             ci.NumberFormat.CurrencyDecimalSeparator = ".";
         }
-        
-        public ForecastHour getCurHour() 
+
+        public ForecastHour getCurHour()
         {
             weather = opAPI.GetCurrentForecast();
             XElement cur = weather.Root;
@@ -53,7 +53,7 @@ namespace WeatherInfo.Classes
             {
                 string date = day.Attribute("date").Value;
                 res[curDay] = new ForecastDay(0, 0, new List<ForecastHour>(), date, null);
-                foreach (var hour in day.Elements(apiName + "hour")) 
+                foreach (var hour in day.Elements(apiName + "hour"))
                 {
                     string time = hour.Attribute("at").Value;
                     time = time.Length > 0 ? time : "0" + time;
@@ -68,7 +68,10 @@ namespace WeatherInfo.Classes
                 foreach (var day_part in parts)
                 {
                     string time = day_part.Attribute("type").Value;
-                    int temp = Int32.Parse(day_part.Element(apiName + "temperature_to").Value);
+                    int temp;
+                    try { temp = Int32.Parse(day_part.Element(apiName + "temperature_to").Value); }
+                    catch
+                    { temp = Int32.Parse(day_part.Element(apiName + "temperature").Value); }
                     string clouds = day_part.Element(apiName + "weather_condition").Attribute("code").Value;
                     string icon = day_part.Element(apiName + "image-v3").Value;
                     res[curDay].hours.Add(new ForecastHour(temp, clouds, time, icon));

@@ -34,8 +34,6 @@ namespace WeatherInfo
 
         public MainWindow()
         {
-            //town = "Moscow";
-            //townID = "27786";
             town = App.settings.city.cityName;
             townID = App.settings.city.cityId.ToString();
 
@@ -44,7 +42,7 @@ namespace WeatherInfo
             InitializeComponent();
             
             shrtForecast = forecasts.getBigForecast();
-            //dtldForecast = forecasts.getDetailedWeek();
+            dtldForecast = forecasts.getDetailedWeek();
 
             dayParts = new Dictionary<string, string>();
             dayParts.Add("morning", "Утро");
@@ -55,6 +53,7 @@ namespace WeatherInfo
             fillTable();
             Tray.SetupTray(this, options, expandShort);
         }
+
 
         private void fillTable()
         {
@@ -272,7 +271,12 @@ namespace WeatherInfo
 
         public void applySettings()
         {
+            WeatherTable.Children.RemoveRange(7, 14);
+            town = App.settings.city.cityName;
+            townID = App.settings.city.cityId.ToString();
 
+            forecasts = new XMLParser(town, townID);
+            fillTable();
         }
 
         void options()
