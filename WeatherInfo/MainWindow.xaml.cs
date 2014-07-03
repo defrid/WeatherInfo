@@ -39,6 +39,35 @@ namespace WeatherInfo
             fillTable();
             Tray.SetupTray(this, options, expandFull, expandShort);
             //town = App.settings.city.name;
+            //Почасовой прогноз
+            //ForecastHour[] forecasts =
+            //    {
+            //        new ForecastHour(10,"","00:00","skc_n_+10"), 
+            //        new ForecastHour(12,"","01:00","skc_n_+20"),
+            //        new ForecastHour(30,"","02:00","skc_n_+30"),
+            //        new ForecastHour(10,"","03:00","skc_n_+10"), 
+            //        new ForecastHour(12,"","04:00","skc_n_+20"),
+            //        new ForecastHour(30,"","05:00","skc_n_+30"),
+            //        new ForecastHour(10,"","06:00","skc_n_+10"), 
+            //        new ForecastHour(12,"","07:00","skc_n_+20"),
+            //        new ForecastHour(30,"","08:00","skc_n_+30"),
+            //        new ForecastHour(10,"","09:00","skc_n_+10"), 
+            //        new ForecastHour(-12,"","10:00","skc_n_+20"),
+            //        new ForecastHour(-30,"","11:00","skc_n_+30"),
+            //        new ForecastHour(-10,"","12:00","skc_n_+10"), 
+            //        new ForecastHour(-12,"","13:00","skc_n_+20"),
+            //        new ForecastHour(-30,"","14:00","skc_n_+30"),
+            //        new ForecastHour(10,"","15:00","skc_n_+10"), 
+            //        new ForecastHour(12,"","16:00","skc_n_+20"),
+            //        new ForecastHour(30,"","17:00","skc_n_+30"),
+            //        new ForecastHour(10,"","18:00","skc_n_+10"), 
+            //        new ForecastHour(12,"","19:00","skc_n_+20"),
+            //        new ForecastHour(30,"","20:00","skc_n_+30"),
+            //        new ForecastHour(10,"","21:00","skc_n_+10"), 
+            //        new ForecastHour(12,"","22:00","skc_n_+20"),
+            //        new ForecastHour(30,"","23:00","skc_n_+30"),
+            //    };
+            //element.ToolTip = GetHourForecast(forecasts);
         }
 
         private void fillTable()
@@ -62,6 +91,7 @@ namespace WeatherInfo
                 dayOfWeek = 0;
             }
         }
+
 
         private static Grid GetWeaterElement(int column, int row, ForecastDay fore)
         {
@@ -110,6 +140,44 @@ namespace WeatherInfo
             return gridResult;
         }
 
+        private Grid GetHourForecast(ForecastHour[] forecasts)
+        {
+            const int rowsCount = 8;
+            const int columnsCount = 3;
+            var gridResut = new Grid();
+            for (var i = 0; i < rowsCount; i++)
+                gridResut.RowDefinitions.Add(new RowDefinition());
+            for (var i = 0; i < columnsCount; i++)
+                gridResut.ColumnDefinitions.Add(new ColumnDefinition());
+            for (var i = 0; i < columnsCount; i++)
+                for (var j = 0; j < rowsCount; j++)
+                {
+                    ForecastHour adding = forecasts[rowsCount * i + j];
+                    var container = new StackPanel() { Margin = new Thickness(0, 0, 10, 0), Orientation = Orientation.Horizontal };
+                    Grid.SetColumn(container, i);
+                    Grid.SetRow(container, j);
+
+                    var timeLabel = new Label() { VerticalAlignment = VerticalAlignment.Center, Content = adding.time };
+                    container.Children.Add(timeLabel);
+
+                    var bitmapImage = YandexWeatherAPI.GetBitmapImageById(adding.icon);
+                    var icon = new Image() { Source = bitmapImage, Width = 32, Height = 32 };
+                    container.Children.Add(icon);
+
+                    var stringTemp = adding.temp > 0 ? "+" + adding.temp.ToString() : adding.temp.ToString();
+                    var temperLabel = new Label()
+                    {
+                        VerticalAlignment = VerticalAlignment.Center,
+                        FontSize = 14,
+                        FontWeight = FontWeights.Bold,
+                        Content = stringTemp
+                    };
+                    container.Children.Add(temperLabel);
+                    gridResut.Children.Add(container);
+                }
+            return gridResut;
+        }
+
         static void gridResult_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
         }
@@ -150,5 +218,7 @@ namespace WeatherInfo
         {
             new SettingsWindow().Show();
         }
+
+        
     }
 }
