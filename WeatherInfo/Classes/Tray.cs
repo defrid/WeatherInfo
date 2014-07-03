@@ -99,7 +99,7 @@ namespace WeatherInfo
             ToWindow(sender, e);
         }
       
-        //получает битмап из картинки
+        //получает битмап из картинки.
         private static Bitmap getPicture(ForecastHour fore, float scale, bool needDigits)
         {
             Bitmap res = WeatherInfo.Classes.OpenWeatherAPI.GetImageById(fore.icon);
