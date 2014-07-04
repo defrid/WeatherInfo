@@ -36,6 +36,10 @@ namespace WeatherInfo
         private Dictionary<string, string> dayParts;
         DispatcherTimer timer;
 
+        private DispatcherTimer rotationTimer;
+        private int rotationAngle = 0;
+        private bool isEnter;
+
         public MainWindow()
         {
             //town = App.settings.city.cityName;
@@ -45,18 +49,9 @@ namespace WeatherInfo
 
             InitializeComponent();
 
-            
-            using (var stream=new MemoryStream())
-            {
-                Properties.Resources.Gear.Save(stream,ImageFormat.Png);
-                var image = new BitmapImage();
-                image.BeginInit();
-                image.StreamSource = stream;
-                image.CacheOption=BitmapCacheOption.OnLoad;
-                image.EndInit();
-                SettingsImage.Source = image;
-            }
-            
+            SettingsImage.Source = ConvertBitmabToImage(Properties.Resources.Gear);
+            rotationTimer=new DispatcherTimer {Interval = new TimeSpan(0, 0, 0, 0, 10)};
+            rotationTimer.Tick += rotationTimer_Tick;
 
             //SettingsImage.Source=new BitmapImage(new Uri(Properties.Resources.SettingsIcon));
             //timer = new DispatcherTimer();
@@ -77,9 +72,32 @@ namespace WeatherInfo
             //Tray.SetupTray(this, options, expandShort);
         }
 
+        void rotationTimer_Tick(object sender, EventArgs e)
+        {
+            rotationAngle += 1;
+            SettingsImage.RenderTransform = new RotateTransform(rotationAngle);
+            if (rotationAngle == 360)
+                rotationAngle =0;
+            
+        }
+
         void timer_Tick(object sender, EventArgs e)
         {
             applySettings();
+        }
+
+        private BitmapImage ConvertBitmabToImage(System.Drawing.Bitmap bitmapImage)
+        {
+            using (var stream = new MemoryStream())
+            {
+                bitmapImage.Save(stream, ImageFormat.Png);
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = stream;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.EndInit();
+                return image;
+            }
         }
 
 
@@ -313,12 +331,14 @@ namespace WeatherInfo
 
         private void SettingsImage_MouseLeave(object sender, MouseEventArgs e)
         {
-            Console.WriteLine("Leave");
+            rotationTimer.Stop();
+            SettingsImage.RenderTransform = new RotateTransform(0);
         }
 
         private void SettingsImage_MouseEnter(object sender, MouseEventArgs e)
         {
-            Console.WriteLine("Enter");
+            rotationTimer.Start();
+
         }
 
         private void SettingsImage_MouseDown(object sender, MouseButtonEventArgs e)
