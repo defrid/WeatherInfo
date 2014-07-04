@@ -6,7 +6,7 @@ using Methods_bd;
 
 namespace WeatherInfo
 {
-    class Methods_to_BD
+    class Models
     {
         
         Tables tb = new Tables();
@@ -14,7 +14,7 @@ namespace WeatherInfo
         public string country_set(string name)
         {
             string id = "";
-            foreach (Class1.Country l in tb.db.Country)
+            foreach (Countries.Country l in tb.db.Country)
             {
                 if (name == l.country_name.ToString())
                 {

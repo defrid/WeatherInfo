@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherInfo", "WeatherInfo.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{3A422517-05EB-4650-99C5-F5EDF8997756}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Methods_bd", "..\Methods_bd\Methods_bd.csproj", "{809FCE61-A287-4E50-B88F-C9FCD1C8D659}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "..\Methods_bd\Models.csproj", "{809FCE61-A287-4E50-B88F-C9FCD1C8D659}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
