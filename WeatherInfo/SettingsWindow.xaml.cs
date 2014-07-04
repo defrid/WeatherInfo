@@ -54,7 +54,8 @@ namespace WeatherInfo
 
         private void accept_btn_Click(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
                 country_save = listOfCountries_cbx.SelectedItem.ToString();
                 cityName_save = listOfCitiies_cbx.SelectedItem.ToString();
                 cityId_save = gC.GetCityNumberYandex(cityName_save);
@@ -71,7 +72,11 @@ namespace WeatherInfo
 
                 Autorun();
                 Close();
-            
+            }
+            catch
+            {
+                MessageBox.Show("Проверьте правильность введенных данных");
+            }
         }
 
         /// <summary>
