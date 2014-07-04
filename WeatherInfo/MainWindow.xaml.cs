@@ -34,7 +34,7 @@ namespace WeatherInfo
         private const string HourTitle = "Почасовой прогноз";
         private const string HoutTimeEnd = ":00";
         private Dictionary<string, string> dayParts;
-        DispatcherTimer timer;
+        DispatcherTimer timer = new DispatcherTimer();
 
         public MainWindow()
         {
@@ -174,6 +174,7 @@ namespace WeatherInfo
                 fors = fors.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
                 foreach(var el in fors)
                 {
+                    if(dayParts!=null)
                     el.time = dayParts[el.time];
                 }
                 gridResult.ToolTip = GetTooltipForecast(BaseRowCount, BaseColumnCount, "Суточный прогноз", fors, "");

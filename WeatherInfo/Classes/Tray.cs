@@ -91,6 +91,11 @@ namespace WeatherInfo
             iconPicture.ContextMenu = menu;
         }
 
+        private void ToFull(object sender, EventArgs e)
+        {
+            ToWindow(sender, e);
+        }
+
 
 
         private static void ToShort(object sender, EventArgs e)
@@ -102,8 +107,8 @@ namespace WeatherInfo
         //задает иконки скрывает окно
         private static void makeTray(Icon forPic) //, Icon forDeg
         {
-            windowMain.WindowState = System.Windows.WindowState.Normal;
-            windowMain.Hide();
+            //windowMain.WindowState = System.Windows.WindowState.Normal;
+            //windowMain.Hide();
 
             iconPicture.Icon = forPic;
 
