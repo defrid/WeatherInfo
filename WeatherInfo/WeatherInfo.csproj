@@ -91,9 +91,7 @@
     </Compile>
     <Compile Include="Classes\ForecastHour.cs" />
     <Compile Include="Classes\Settings.cs" />
-    <Compile Include="Classes\translate.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Classes\translate.cs" />
     <Compile Include="Classes\YandexWeatherAPI.cs" />
     <Compile Include="Interfaces\IYandexAPI.cs" />
     <Compile Include="Classes\XMLSettingsHandler.cs" />

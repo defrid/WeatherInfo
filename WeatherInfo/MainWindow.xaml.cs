@@ -42,10 +42,10 @@ namespace WeatherInfo
 
         public MainWindow()
         {
-            //town = App.settings.city.cityName;
-            //townID = App.settings.city.cityId.ToString();
+            town = App.settings.city.cityName;
+            townID = App.settings.city.cityId.ToString();
 
-            //forecasts = new XMLParser(town, townID);
+            forecasts = new XMLParser(town, townID);
 
             InitializeComponent();
 
@@ -53,23 +53,22 @@ namespace WeatherInfo
             rotationTimer=new DispatcherTimer {Interval = new TimeSpan(0, 0, 0, 0, 10)};
             rotationTimer.Tick += rotationTimer_Tick;
 
-            //SettingsImage.Source=new BitmapImage(new Uri(Properties.Resources.SettingsIcon));
-            //timer = new DispatcherTimer();
-            //timer.Tick += timer_Tick;
-            //timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
+            timer = new DispatcherTimer();
+            timer.Tick += timer_Tick;
+            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
-            //shrtForecast = forecasts.getBigForecast();
-            //dtldForecast = forecasts.getDetailedWeek();
+            shrtForecast = forecasts.getBigForecast();
+            dtldForecast = forecasts.getDetailedWeek();
 
-            //dayParts = new Dictionary<string, string>();
-            //dayParts.Add("morning", "Утро");
-            //dayParts.Add("day", "День");
-            //dayParts.Add("evening", "Вечер");
-            //dayParts.Add("night", "Ночь");
+            dayParts = new Dictionary<string, string>();
+            dayParts.Add("morning", "Утро");
+            dayParts.Add("day", "День");
+            dayParts.Add("evening", "Вечер");
+            dayParts.Add("night", "Ночь");
 
-            //fillTable();
-            //timer.Start();
-            //Tray.SetupTray(this, options, expandShort);
+            fillTable();
+            timer.Start();
+            Tray.SetupTray(this, options, expandShort);
         }
 
         /// <summary>
@@ -316,7 +315,7 @@ namespace WeatherInfo
             switch (this.WindowState)
             {
                 case System.Windows.WindowState.Minimized:
-                    Tray.Update(forecasts.getCurHour());
+                    Tray.Update(forecasts.getCurHour(),1.5f, false);
                     break;
             }
         }
