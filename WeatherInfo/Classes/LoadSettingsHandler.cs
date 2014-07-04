@@ -64,7 +64,8 @@ namespace WeatherInfo.Classes
                 //    }
                 //}
                 //return chooseLibName;
-                return "XMLSettingsHandler.dll";
+
+                return "XMLSettingsHandler.dll";//"MdfDbSettingsHandler.dll";
             }
             catch (Exception e)
             {

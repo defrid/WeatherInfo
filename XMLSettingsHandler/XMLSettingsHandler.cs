@@ -9,7 +9,7 @@ using SettingsHandlerInterface;
 using SettingsHandlerInterface.Classes;
 using System.Reflection;
 
-namespace XMLSettingsHandler.Classes
+namespace XMLSettingsHandler
 {
     public class XMLSettingsHandler : SettingsHandler
     {
