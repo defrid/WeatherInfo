@@ -86,23 +86,19 @@
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\cityChoose.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Classes\LoadSettingsHandler.cs" />
+    <Compile Include="Classes\Methods_to_BD.cs" />
+    <Compile Include="Classes\cityChoose.cs" />
     <Compile Include="Classes\ForecastHour.cs" />
-    <Compile Include="Classes\Settings.cs" />
+    <Compile Include="Classes\Tables.cs" />
     <Compile Include="Classes\translate.cs" />
     <Compile Include="Classes\YandexWeatherAPI.cs" />
     <Compile Include="Interfaces\IYandexAPI.cs" />
-    <Compile Include="Classes\XMLSettingsHandler.cs" />
-    <Compile Include="Interfaces\ISettingsHandler.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Two_Windows.xaml.cs">
+      <DependentUpon>Two_Windows.xaml</DependentUpon>
     </Compile>
     <Page Include="About.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -130,10 +126,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Two_Windows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -151,10 +156,14 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\gear.png" />
+    <ProjectReference Include="..\SettingsHandlerInterface\SettingsHandlerInterface.csproj">
+      <Project>{5aa7e742-fdc3-4ffa-9336-209943278141}</Project>
+      <Name>SettingsHandlerInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XMLSettingsHandler\XMLSettingsHandler.csproj">
+      <Project>{6bd9e98d-8644-40d5-b04c-60007e3fd8df}</Project>
+      <Name>XMLSettingsHandler</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

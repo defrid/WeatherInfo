@@ -138,7 +138,9 @@ namespace WeatherInfo
             gridResult.RowDefinitions.Add(new RowDefinition());
             var specRowDef = new ColumnDefinition { Width = new GridLength(1.2, GridUnitType.Star) };
             gridResult.ColumnDefinitions.Add(specRowDef);
+            
             string day = fore.date.Substring(8, 2);
+
             var dayLabel = new Label { Content = day, FontWeight = FontWeights.Bold };
             gridResult.Children.Add(dayLabel);
             var maxTempLabel = new Label()
@@ -342,6 +344,22 @@ namespace WeatherInfo
         private void SettingsImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
             new SettingsWindow(this).Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Two_Windows tw = new Two_Windows(this, new MainWindow());
+            tw.Show();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch(e.Key)
+            {
+                case Key.F1:
+                    Two_Windows tw = new Two_Windows(this, new MainWindow());
+                    break;
+            }
         }
 
 

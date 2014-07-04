@@ -30,7 +30,7 @@ namespace WeatherInfo
             iconPicture.Text = iPdescr;
 
             ContextMenu newMenu = new ContextMenu();
-            newMenu.MenuItems.Add(new MenuItem("Развернуть кратко", ToWindow));
+            newMenu.MenuItems.Add(new MenuItem("Развернуть", ToWindow));
             newMenu.MenuItems.Add(new MenuItem("Настройки", OptionsClick));
             newMenu.MenuItems.Add(new MenuItem("Выход", AppExit));
 
@@ -107,8 +107,8 @@ namespace WeatherInfo
         //задает иконки скрывает окно
         private static void makeTray(Icon forPic) //, Icon forDeg
         {
-            //windowMain.WindowState = System.Windows.WindowState.Normal;
-            //windowMain.Hide();
+            windowMain.WindowState = System.Windows.WindowState.Normal;
+            windowMain.Hide();
 
             iconPicture.Icon = forPic;
 
