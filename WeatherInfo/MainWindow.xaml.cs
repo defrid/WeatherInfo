@@ -332,7 +332,6 @@ namespace WeatherInfo
         private void SettingsImage_MouseLeave(object sender, MouseEventArgs e)
         {
             rotationTimer.Stop();
-            SettingsImage.RenderTransform = new RotateTransform(0);
         }
 
         private void SettingsImage_MouseEnter(object sender, MouseEventArgs e)
