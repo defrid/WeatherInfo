@@ -7,8 +7,8 @@
             <Label Name="City" HorizontalAlignment="Left" Margin="50 5" Content="City"/>
             <Label Name="MonthYear" HorizontalAlignment="Right" Margin="50 5" Content="Month Year"/>
         </DockPanel>
-        <DockPanel DockPanel.Dock="Bottom">
-            <Button Name="MoreInfo" HorizontalAlignment="Right" Margin="50 5" Click="settingsClick" Width="65" Height="25">Настройки</Button>
+        <DockPanel DockPanel.Dock="Bottom" Height="32">
+            <Image Name="SettingsImage" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter" MouseDown="SettingsImage_MouseDown"/>
         </DockPanel>
         <Border BorderBrush="Black" BorderThickness="1">
             <Grid Name="WeatherTable" ShowGridLines="True" >

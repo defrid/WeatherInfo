@@ -17,13 +17,13 @@ namespace WeatherInfo.Classes
         IWeatherAPI opAPI;
         IYandexWeatherApi yaAPI;
         CultureInfo ci;
-        string apiName = "{http://weather.yandex.ru/forecast}";
+        string apiName = @"http://weather.yandex.ru/forecast";
 
         public XMLParser(string _town, string _townId)
         {
             town = _town;
             townId = _townId;
-            string townEng = translate.toEng(town, "Location//translit.txt");
+            string townEng = translate.toEng(town, @"Location//translit.txt");
             opAPI = new OpenWeatherAPI(townEng);
             yaAPI = new YandexWeatherAPI(_townId);
             ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();

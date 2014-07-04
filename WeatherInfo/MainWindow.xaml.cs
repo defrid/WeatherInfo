@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -36,29 +38,43 @@ namespace WeatherInfo
 
         public MainWindow()
         {
-            town = App.settings.city.cityName;
-            townID = App.settings.city.cityId.ToString();
+            //town = App.settings.city.cityName;
+            //townID = App.settings.city.cityId.ToString();
 
-            forecasts = new XMLParser(town, townID);
+            //forecasts = new XMLParser(town, townID);
 
             InitializeComponent();
 
-            timer = new DispatcherTimer();
-            timer.Tick += timer_Tick;
-            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
+            
+            using (var stream=new MemoryStream())
+            {
+                Properties.Resources.Gear.Save(stream,ImageFormat.Png);
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = stream;
+                image.CacheOption=BitmapCacheOption.OnLoad;
+                image.EndInit();
+                SettingsImage.Source = image;
+            }
+            
 
-            shrtForecast = forecasts.getBigForecast();
-            dtldForecast = forecasts.getDetailedWeek();
+            //SettingsImage.Source=new BitmapImage(new Uri(Properties.Resources.SettingsIcon));
+            //timer = new DispatcherTimer();
+            //timer.Tick += timer_Tick;
+            //timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
-            dayParts = new Dictionary<string, string>();
-            dayParts.Add("morning", "Утро");
-            dayParts.Add("day", "День");
-            dayParts.Add("evening", "Вечер");
-            dayParts.Add("night", "Ночь");
+            //shrtForecast = forecasts.getBigForecast();
+            //dtldForecast = forecasts.getDetailedWeek();
 
-            fillTable();
-            timer.Start();
-            Tray.SetupTray(this, options, expandShort);
+            //dayParts = new Dictionary<string, string>();
+            //dayParts.Add("morning", "Утро");
+            //dayParts.Add("day", "День");
+            //dayParts.Add("evening", "Вечер");
+            //dayParts.Add("night", "Ночь");
+
+            //fillTable();
+            //timer.Start();
+            //Tray.SetupTray(this, options, expandShort);
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -256,12 +272,7 @@ namespace WeatherInfo
 
         //private DockPanel GetFourTime
 
-        private void settingsClick(object sender, RoutedEventArgs e)
-        {
-            new SettingsWindow(this).Show();
-            
-        }
-
+        
         /*
          <Image Source="http://openweathermap.org/img/w/10d.png" Grid.Row="1"  Grid.RowSpan="2" Grid.ColumnSpan="2"></Image> 
          
@@ -295,6 +306,22 @@ namespace WeatherInfo
         }
 
         void options()
+        {
+            new SettingsWindow(this).Show();
+        }
+
+
+        private void SettingsImage_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine("Leave");
+        }
+
+        private void SettingsImage_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine("Enter");
+        }
+
+        private void SettingsImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
             new SettingsWindow(this).Show();
         }
