@@ -10,7 +10,7 @@
                 <Label Content="Список стран" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
                 <ComboBox x:Name="listOfCountries_cbx" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="321" IsEditable="True"/>
                 <Label Content="Список городов" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
-                <ComboBox x:Name="listOfCitiies_cbx" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Width="321" IsEditable="True" KeyDown="listOfCitiies_cbx_KeyDown"/>
+                <ComboBox x:Name="listOfCitiies_cbx" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Width="321" IsEditable="True"/>
             </Grid>
         </Border>
 

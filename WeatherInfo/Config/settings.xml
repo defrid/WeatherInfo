@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <country>Россия</country>
+  <city>
+    <cityId>27786</cityId>
+    <cityName>Ульяновск</cityName>
+  </city>
+  <format>Days</format>
+  <updatePeriod>70</updatePeriod>
+  <autostart>true</autostart>
+</Settings>
