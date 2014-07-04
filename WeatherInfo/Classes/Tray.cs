@@ -11,8 +11,7 @@ namespace WeatherInfo
         public delegate void TrayVoid();
 
         public static event TrayVoid OnOptionsClick;
-        public static event TrayVoid OnFullInfo;
-        public static event TrayVoid OnShortInfo;
+        public static event TrayVoid onToWindow;
 
         public ForecastHour curFore;
 
@@ -21,19 +20,17 @@ namespace WeatherInfo
         static NotifyIcon iconPicture = new NotifyIcon();
         
         //Устанавливает трей (сюда главное окно и событие на клик опций)
-        public static void SetupTray(Window main, TrayVoid onOptionsClick, TrayVoid toFullInfo, TrayVoid toShortInfo)
+        public static void SetupTray(Window main, TrayVoid onOptionsClick, TrayVoid toWindow)
         {
             OnOptionsClick += onOptionsClick;
-            OnFullInfo += toFullInfo;
-            OnShortInfo += toShortInfo;
+            onToWindow += toWindow;
 
             windowMain = main;
 
             iconPicture.Text = iPdescr;
 
             ContextMenu newMenu = new ContextMenu();
-            newMenu.MenuItems.Add(new MenuItem("Развернуть кратко", ToShort));
-            newMenu.MenuItems.Add(new MenuItem("Развернуть подробно", ToFull));
+            newMenu.MenuItems.Add(new MenuItem("Развернуть кратко", ToWindow));
             newMenu.MenuItems.Add(new MenuItem("Настройки", OptionsClick));
             newMenu.MenuItems.Add(new MenuItem("Выход", AppExit));
 
@@ -99,13 +96,6 @@ namespace WeatherInfo
         private static void ToShort(object sender, EventArgs e)
         {
             ToWindow(sender, e);
-            OnShortInfo();
-        }
-
-        private static void ToFull(object sender, EventArgs e)
-        {
-            //ToWindow(sender, e);
-            OnFullInfo();
         }
 
 
@@ -183,7 +173,7 @@ namespace WeatherInfo
         {
             if (OnOptionsClick != null)
             {
-                SettingsWindow settingsWindow = new SettingsWindow();
+                SettingsWindow settingsWindow = new SettingsWindow(windowMain);
                 settingsWindow.Show();
                 settingsWindow.Focus();
                 settingsWindow.Activate();

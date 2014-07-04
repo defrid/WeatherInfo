@@ -23,8 +23,8 @@ namespace WeatherInfo.Classes
     {
         public string name = string.Empty;
         public FormatAttribute(string _name)
-        { 
-            name = _name; 
+        {
+            name = _name;
         }
     }
 
@@ -66,5 +66,5 @@ namespace WeatherInfo.Classes
         public string format { get; set; }
         public int updatePeriod { get; set; }
         public bool autostart { get; set; }
-    }    
+    }
 }

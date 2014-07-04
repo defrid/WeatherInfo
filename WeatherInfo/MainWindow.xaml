@@ -7,12 +7,11 @@
             <Label Name="City" HorizontalAlignment="Left" Margin="50 5" Content="City"/>
             <Label Name="MonthYear" HorizontalAlignment="Right" Margin="50 5" Content="Month Year"/>
         </DockPanel>
-        <DockPanel DockPanel.Dock="Bottom">
-            <Button Name="Update" HorizontalAlignment="Left" Margin="50 5" Click="updateClick" Width="65" Height="25">Обновить</Button>
-            <Button Name="MoreInfo" HorizontalAlignment="Right" Margin="50 5" Click="moreInfoClick" Width="65" Height="25">Подробно</Button>
+        <DockPanel DockPanel.Dock="Bottom" Height="32">
+            <Image Name="SettingsImage" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter" MouseDown="SettingsImage_MouseDown"/>
         </DockPanel>
         <Border BorderBrush="Black" BorderThickness="1">
-            <Grid Name="WeatherTable" ShowGridLines="True">
+            <Grid Name="WeatherTable" ShowGridLines="True" >
                 <Grid.Resources>
                     <Style TargetType="Label">
                         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
@@ -33,7 +32,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Border BorderBrush="Black" BorderThickness="1">
-                    <Label Content="ПН"/>    
+                    <Label Content="ПН"/>
                 </Border>
                 <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1">
                     <Label Content="ВТ" />

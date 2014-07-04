@@ -1,5 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -12,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
+using System.Windows.Threading;
 using WeatherInfo.Classes;
 
 namespace WeatherInfo
@@ -21,52 +24,93 @@ namespace WeatherInfo
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static XMLParser forecasts;
-        private static string town;
-        private static int emptyDays;
+        private ForecastDay[] shrtForecast;
+        private ForecastDay[] dtldForecast;
+        private XMLParser forecasts;
+        private string town;
+        private string townID;
+        private const int BaseRowCount = 2;
+        private const int BaseColumnCount = 2;
+        private const string HourTitle = "Почасовой прогноз";
+        private const string HoutTimeEnd = ":00";
+        private Dictionary<string, string> dayParts;
+        DispatcherTimer timer;
 
         public MainWindow()
         {
-            town = App.settings.city.cityName;
-            try
+            //town = App.settings.city.cityName;
+            //townID = App.settings.city.cityId.ToString();
+
+            //forecasts = new XMLParser(town, townID);
+
+            InitializeComponent();
+
+            
+            using (var stream=new MemoryStream())
             {
-                InitializeComponent();
+                Properties.Resources.Gear.Save(stream,ImageFormat.Png);
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = stream;
+                image.CacheOption=BitmapCacheOption.OnLoad;
+                image.EndInit();
+                SettingsImage.Source = image;
             }
-            catch (Exception exc)
-            {
-                MessageBox.Show("1. " + exc.Message);
-            }
-            fillTable();
-            Tray.SetupTray(this, options, expandFull, expandShort);
-            //town = App.settings.city.name;
+            
+
+            //SettingsImage.Source=new BitmapImage(new Uri(Properties.Resources.SettingsIcon));
+            //timer = new DispatcherTimer();
+            //timer.Tick += timer_Tick;
+            //timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
+
+            //shrtForecast = forecasts.getBigForecast();
+            //dtldForecast = forecasts.getDetailedWeek();
+
+            //dayParts = new Dictionary<string, string>();
+            //dayParts.Add("morning", "Утро");
+            //dayParts.Add("day", "День");
+            //dayParts.Add("evening", "Вечер");
+            //dayParts.Add("night", "Ночь");
+
+            //fillTable();
+            //timer.Start();
+            //Tray.SetupTray(this, options, expandShort);
         }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            applySettings();
+        }
+
 
         private void fillTable()
         {
-            //town = "Moscow";
-            forecasts = new XMLParser(town);
-            ForecastDay[] days = forecasts.getBigForecast();
-            DateTime date = DateTime.Parse(days[0].date, CultureInfo.InvariantCulture);
+            forecasts = new XMLParser(town, townID);
+
+            shrtForecast = forecasts.getBigForecast();
+            dtldForecast = forecasts.getDetailedWeek();
+
+            DateTime date = DateTime.Parse(shrtForecast[0].date, CultureInfo.InvariantCulture);
             int dayOfWeek = (int)date.DayOfWeek - 1;
-            emptyDays = dayOfWeek;
             int index = 0;
             City.Content = town;
-            MonthYear.Content = date.Month + "/" + date.Year;
+            MonthYear.Content = date.ToString("y");
             for (int i = 0; i < 2; i++)
             {
                 for (; dayOfWeek < 7; dayOfWeek++)
                 {
-                    WeatherTable.Children.Add(GetWeaterElement(dayOfWeek, i + 1, days[index]));
+                    WeatherTable.Children.Add(GetWeaterElement(dayOfWeek, i + 1, index));
                     index++;
                 }
                 dayOfWeek = 0;
             }
         }
 
-        private static Grid GetWeaterElement(int column, int row, ForecastDay fore)
+
+        private Grid GetWeaterElement(int column, int row, int index)
         {
+            ForecastDay fore = shrtForecast[index];
             var gridResult = new Grid();
-            gridResult.MouseLeftButtonUp += gridResult_MouseLeftButtonUp;
             gridResult.SetValue(Grid.RowProperty, row);
             gridResult.SetValue(Grid.ColumnProperty, column);
             for (var i = 0; i < 2; i++)
@@ -82,7 +126,7 @@ namespace WeatherInfo
             gridResult.Children.Add(dayLabel);
             var maxTempLabel = new Label()
                 {
-                    Content = (fore.day > 0 ? "+" + fore.day.ToString() : fore.day.ToString()),
+                    Content = (fore.max > 0 ? "+" + fore.max.ToString() : fore.max.ToString()),
                     HorizontalAlignment = HorizontalAlignment.Right,
                     FontSize = 15,
                     FontWeight = FontWeights.Bold
@@ -92,7 +136,7 @@ namespace WeatherInfo
             gridResult.Children.Add(maxTempLabel);
             var minTempLabel = new Label()
                 {
-                    Content = (fore.ngt > 0 ? "+" + fore.ngt.ToString() : fore.ngt.ToString()),
+                    Content = (fore.min > 0 ? "+" + fore.min.ToString() : fore.min.ToString()),
                     HorizontalAlignment = HorizontalAlignment.Right
                 };
             minTempLabel.SetValue(Grid.RowProperty, 1);
@@ -107,22 +151,128 @@ namespace WeatherInfo
             image.SetValue(Grid.RowSpanProperty, 2);
             image.SetValue(Grid.ColumnSpanProperty, 2);
             gridResult.Children.Add(image);
+            ToolTipService.SetShowDuration(gridResult, 15000);
+            if (index < 2)
+            {
+                ForecastHour[] fors = dtldForecast[index].hours.ToArray().Take(24).ToArray();
+                int temp = 0;
+                fors = fors.Where(el => Int32.TryParse(el.time, out temp)).ToArray();
+                if (index == 0)
+                {
+                    int curHour = DateTime.Now.Hour;
+                    fors = fors.Where(el => Int32.Parse(el.time) >= curHour).ToArray();
+                }
+                int rows = rowsAndColumns(fors.Length)[0];
+                int cols = rowsAndColumns(fors.Length)[1];
+                gridResult.ToolTip = GetTooltipForecast(rows, cols, HourTitle, fors, HoutTimeEnd);
+                return gridResult;
+            }
+            if (index < 10)
+            {
+                ForecastHour[] fors = dtldForecast[index].hours.ToArray();
+                int temp = 0;
+                fors = fors.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
+                foreach(var el in fors)
+                {
+                    el.time = dayParts[el.time];
+                }
+                gridResult.ToolTip = GetTooltipForecast(BaseRowCount, BaseColumnCount, "Суточный прогноз", fors, "");
+            }
             return gridResult;
         }
 
-        static void gridResult_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private int[] rowsAndColumns(int len)
         {
+            if (len > 10)
+            {
+                int row = len % 3 == 0 ? len / 3 : len / 3 + 1;
+                return new int[] { row, 3 };
+            }
+            if (len > 2)
+            {
+                int row = len % 2 == 0 ? len / 2 : len / 2 + 1;
+                return new int[] { row, 2 };
+            }
+            return new int[] { 1, 2 };
         }
 
-        private void moreInfoClick(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Метод для получения всплывающего окна с прогнозом
+        /// </summary>
+        /// <param name="rowsCount">Кол-во строк</param>
+        /// <param name="columnsCount">Кол-во столбцов</param>
+        /// <param name="title">Заголовок</param>
+        /// <param name="forecasts">массив прогнозов</param>
+        /// <param name="timeEnd">Постфикс ко времени</param>
+        /// <returns>Возвращает DockPanel c прогнозами или null(прогнозов меньше числа ячеек)</returns>
+        private DockPanel GetTooltipForecast(int rowsCount, int columnsCount,
+                                            string title, ForecastHour[] forecasts, string timeEnd)
         {
+            //if (forecasts.Count() < rowsCount * columnsCount)
+            // return null;
+            int remain = forecasts.Length;
+            var docResult = new DockPanel();
+            var titleLabel = new Label
+                {
+                    Content = title,
+                    FontWeight = FontWeights.Bold,
+                    FontStyle = FontStyles.Italic
+                };
+            DockPanel.SetDock(titleLabel, Dock.Top);
+            docResult.Children.Add(titleLabel);
+
+            var grid = new Grid();
+            for (var i = 0; i < rowsCount; i++)
+                grid.RowDefinitions.Add(new RowDefinition());
+            for (var i = 0; i < columnsCount; i++)
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+            for (var i = 0; i < columnsCount; i++)
+                for (var j = 0; j < rowsCount && remain != 0; j++)
+                {
+                    ForecastHour adding = forecasts[rowsCount * i + j];
+                    var container = new StackPanel
+                    {
+                        Margin = new Thickness(0, 0, 10, 0),
+                        Orientation = Orientation.Horizontal
+                    };
+                    Grid.SetColumn(container, i);
+                    Grid.SetRow(container, j);
+
+                    var timeLabel = new Label
+                    {
+                        VerticalAlignment = VerticalAlignment.Center,
+                        Content = adding.time + timeEnd
+                    };
+                    container.Children.Add(timeLabel);
+
+                    var bitmapImage = YandexWeatherAPI.GetBitmapImageById(adding.icon);
+                    var icon = new Image
+                    {
+                        Source = bitmapImage,
+                        Width = 32,
+                        Height = 32
+                    };
+                    container.Children.Add(icon);
+
+                    var stringTemp = adding.temp > 0 ? "+" + adding.temp.ToString() : adding.temp.ToString();
+                    var temperLabel = new Label()
+                    {
+                        VerticalAlignment = VerticalAlignment.Center,
+                        FontSize = 14,
+                        FontWeight = FontWeights.Bold,
+                        Content = stringTemp
+                    };
+                    container.Children.Add(temperLabel);
+                    grid.Children.Add(container);
+                    remain--;
+                }
+            docResult.Children.Add(grid);
+            return docResult;
         }
 
-        private void updateClick(object sender, RoutedEventArgs e)
-        {
-            WeatherTable.Children.RemoveRange(7, 14);
-            fillTable();
-        }
+        //private DockPanel GetFourTime
+
+        
         /*
          <Image Source="http://openweathermap.org/img/w/10d.png" Grid.Row="1"  Grid.RowSpan="2" Grid.ColumnSpan="2"></Image> 
          
@@ -142,13 +292,40 @@ namespace WeatherInfo
             this.WindowState = System.Windows.WindowState.Normal;
         }
 
-        void expandFull()
+        public void applySettings()
         {
+            WeatherTable.Children.RemoveRange(7, 14);
+            town = App.settings.city.cityName;
+            townID = App.settings.city.cityId.ToString();
+
+            timer.Stop();
+            forecasts = new XMLParser(town, townID);
+            fillTable();
+            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
+            timer.Start();
         }
 
         void options()
         {
-            new SettingsWindow().Show();
+            new SettingsWindow(this).Show();
         }
+
+
+        private void SettingsImage_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine("Leave");
+        }
+
+        private void SettingsImage_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine("Enter");
+        }
+
+        private void SettingsImage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            new SettingsWindow(this).Show();
+        }
+
+
     }
 }

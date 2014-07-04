@@ -19,7 +19,7 @@ namespace WeatherInfo.Classes
 
         public string clouds { get; protected set; }
 
-        public string time { get; protected set; }
+        public string time { get; set; }
 
         public string icon { get; protected set; }
     }

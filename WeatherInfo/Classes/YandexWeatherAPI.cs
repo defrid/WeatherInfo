@@ -43,19 +43,6 @@ namespace WeatherInfo.Classes
             CityId = cityId;
         }
 
-        //Косячный метод, после using поток автоматически закроется и будет выдавать ошибку
-        /// <summary>
-        /// Метод для получения потока по html ссылке
-        /// </summary>
-        /// <param name="link">Ссылка</param>
-        /// <returns></returns>
-        private static Stream GetStreamByLink(string link)
-        {
-            var request = WebRequest.Create(link);
-            using (var response = request.GetResponse())
-                return response.GetResponseStream();
-        }
-
         /// <summary>
         /// метод для получения списков всех городов
         /// </summary>
