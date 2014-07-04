@@ -346,12 +346,6 @@ namespace WeatherInfo
             new SettingsWindow(this).Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Two_Windows tw = new Two_Windows(this, new MainWindow());
-            tw.Show();
-        }
-
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             switch(e.Key)
