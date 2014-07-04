@@ -49,7 +49,7 @@ namespace WeatherInfo
         }
 
         //обновить трей
-        public static void Update(ForecastHour newFore, float scale=1.8f, bool WriteDigits=true)
+        public static void Update(ForecastHour newFore, float scale=1.8f, bool WriteDigits=false)
         {
             Icon forPic = Icon.FromHandle(getPicture(newFore, scale, WriteDigits).GetHicon());
             iconPicture.Text = newFore.temp + "°С";

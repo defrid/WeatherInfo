@@ -38,43 +38,43 @@ namespace WeatherInfo
 
         public MainWindow()
         {
-            //town = App.settings.city.cityName;
-            //townID = App.settings.city.cityId.ToString();
+            town = App.settings.city.cityName;
+            townID = App.settings.city.cityId.ToString();
 
-            //forecasts = new XMLParser(town, townID);
+            forecasts = new XMLParser(town, townID);
 
             InitializeComponent();
 
-            
-            using (var stream=new MemoryStream())
+
+            using (var stream = new MemoryStream())
             {
-                Properties.Resources.Gear.Save(stream,ImageFormat.Png);
+                Properties.Resources.Gear.Save(stream, ImageFormat.Png);
                 var image = new BitmapImage();
                 image.BeginInit();
                 image.StreamSource = stream;
-                image.CacheOption=BitmapCacheOption.OnLoad;
+                image.CacheOption = BitmapCacheOption.OnLoad;
                 image.EndInit();
                 SettingsImage.Source = image;
             }
-            
+
 
             //SettingsImage.Source=new BitmapImage(new Uri(Properties.Resources.SettingsIcon));
-            //timer = new DispatcherTimer();
-            //timer.Tick += timer_Tick;
-            //timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
+            timer = new DispatcherTimer();
+            timer.Tick += timer_Tick;
+            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
-            //shrtForecast = forecasts.getBigForecast();
-            //dtldForecast = forecasts.getDetailedWeek();
+            shrtForecast = forecasts.getBigForecast();
+            dtldForecast = forecasts.getDetailedWeek();
 
-            //dayParts = new Dictionary<string, string>();
-            //dayParts.Add("morning", "Утро");
-            //dayParts.Add("day", "День");
-            //dayParts.Add("evening", "Вечер");
-            //dayParts.Add("night", "Ночь");
+            dayParts = new Dictionary<string, string>();
+            dayParts.Add("morning", "Утро");
+            dayParts.Add("day", "День");
+            dayParts.Add("evening", "Вечер");
+            dayParts.Add("night", "Ночь");
 
-            //fillTable();
-            //timer.Start();
-            //Tray.SetupTray(this, options, expandShort);
+            fillTable();
+            timer.Start();
+            Tray.SetupTray(this, options, expandShort);
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -172,10 +172,10 @@ namespace WeatherInfo
                 ForecastHour[] fors = dtldForecast[index].hours.ToArray();
                 int temp = 0;
                 fors = fors.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
-                foreach(var el in fors)
+                foreach (var el in fors)
                 {
-                    if(dayParts!=null)
-                    el.time = dayParts[el.time];
+                    if (dayParts != null)
+                        el.time = dayParts[el.time];
                 }
                 gridResult.ToolTip = GetTooltipForecast(BaseRowCount, BaseColumnCount, "Суточный прогноз", fors, "");
             }
@@ -273,7 +273,7 @@ namespace WeatherInfo
 
         //private DockPanel GetFourTime
 
-        
+
         /*
          <Image Source="http://openweathermap.org/img/w/10d.png" Grid.Row="1"  Grid.RowSpan="2" Grid.ColumnSpan="2"></Image> 
          
@@ -283,7 +283,7 @@ namespace WeatherInfo
             switch (this.WindowState)
             {
                 case System.Windows.WindowState.Minimized:
-                    Tray.Update(forecasts.getCurHour());
+                    Tray.Update(forecasts.getCurHour(), 1.5f,false);
                     break;
             }
         }
