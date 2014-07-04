@@ -1,7 +1,7 @@
 ﻿<Window x:Class="WeatherInfo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Weather Informer" Height="266.5" Width="630" StateChanged="Window_StateChanged" KeyDown="Window_KeyDown">
+        Title="Weather Informer" Height="275" Width="630" StateChanged="Window_StateChanged" KeyDown="Window_KeyDown" ResizeMode="CanMinimize">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top">
             <Label Name="City" HorizontalAlignment="Left" Margin="50 5" Content="City"/>
@@ -10,9 +10,8 @@
                 <Image Name="SettingsImage" RenderTransformOrigin="0.5 0.5" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter" MouseDown="SettingsImage_MouseDown"/>
             </DockPanel>
         </DockPanel>
-        
         <Border BorderBrush="Black" BorderThickness="1">
-            <Grid Name="WeatherTable" ShowGridLines="True" >
+            <Grid Name="WeatherTable" ShowGridLines="True" MinHeight="200" MinWidth="600">
                 <Grid.Resources>
                     <Style TargetType="Label">
                         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
