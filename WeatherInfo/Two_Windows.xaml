@@ -1,0 +1,14 @@
+﻿<Window x:Class="WeatherInfo.Two_Windows"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Two_Windows" Height="316.418" Width="526.866">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260*"/>
+            <ColumnDefinition Width="259*"/>
+        </Grid.ColumnDefinitions>
+        <ContentControl x:Name="cc1" Content="ContentControl" Margin="0"/>
+        <ContentControl x:Name="cc2" Content="ContentControl" Grid.Column="1" Margin="0"/>
+
+    </Grid>
+</Window>

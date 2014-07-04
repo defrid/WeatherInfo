@@ -9,6 +9,7 @@
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom" Height="32">
             <Image Name="SettingsImage" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter" MouseDown="SettingsImage_MouseDown"/>
+            <Button Content="Button" Height="32" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         </DockPanel>
         <Border BorderBrush="Black" BorderThickness="1">
             <Grid Name="WeatherTable" ShowGridLines="True" >
