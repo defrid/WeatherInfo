@@ -27,6 +27,22 @@ namespace WeatherInfo
 
             one.Close();
             two.Close();
+
+            this.Show();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch(e.Key)
+            {
+                case Key.F1:
+
+                    MainWindow main = new MainWindow();
+                    main.Show();
+                    this.Close();
+
+                    break;
+            }
         }
     }
 }

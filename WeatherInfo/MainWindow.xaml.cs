@@ -352,6 +352,16 @@ namespace WeatherInfo
             tw.Show();
         }
 
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch(e.Key)
+            {
+                case Key.F1:
+                    Two_Windows tw = new Two_Windows(this, new MainWindow());
+                    break;
+            }
+        }
+
 
     }
 }
