@@ -34,7 +34,11 @@ namespace WeatherInfo
         private const string HourTitle = "Почасовой прогноз";
         private const string HoutTimeEnd = ":00";
         private Dictionary<string, string> dayParts;
-        DispatcherTimer timer = new DispatcherTimer();
+        DispatcherTimer timer;
+
+        private DispatcherTimer rotationTimer;
+        private int rotationAngle = 0;
+        private bool isEnter;
 
         public MainWindow()
         {
@@ -45,20 +49,10 @@ namespace WeatherInfo
 
             InitializeComponent();
 
-            
-            using (var stream=new MemoryStream())
-            {
-                Properties.Resources.Gear.Save(stream,ImageFormat.Png);
-                var image = new BitmapImage();
-                image.BeginInit();
-                image.StreamSource = stream;
-                image.CacheOption=BitmapCacheOption.OnLoad;
-                image.EndInit();
-                SettingsImage.Source = image;
-            }
+            SettingsImage.Source = ConvertBitmabToImage(Properties.Resources.Gear);
+            rotationTimer=new DispatcherTimer {Interval = new TimeSpan(0, 0, 0, 0, 10)};
+            rotationTimer.Tick += rotationTimer_Tick;
 
-
-            //SettingsImage.Source = new BitmapImage(new Uri(Properties.Resources.Gear));
             timer = new DispatcherTimer();
             timer.Tick += timer_Tick;
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
@@ -77,9 +71,32 @@ namespace WeatherInfo
             Tray.SetupTray(this, options, expandShort);
         }
 
+        void rotationTimer_Tick(object sender, EventArgs e)
+        {
+            rotationAngle += 1;
+            SettingsImage.RenderTransform = new RotateTransform(rotationAngle);
+            if (rotationAngle == 360)
+                rotationAngle =0;
+            
+        }
+
         void timer_Tick(object sender, EventArgs e)
         {
             applySettings();
+        }
+
+        private BitmapImage ConvertBitmabToImage(System.Drawing.Bitmap bitmapImage)
+        {
+            using (var stream = new MemoryStream())
+            {
+                bitmapImage.Save(stream, ImageFormat.Png);
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = stream;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.EndInit();
+                return image;
+            }
         }
 
 
@@ -176,7 +193,6 @@ namespace WeatherInfo
                 fors = fors.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
                 foreach(var el in fors)
                 {
-                    if(dayParts!=null)
                     el.time = dayParts[el.time];
                 }
                 gridResult.ToolTip = GetTooltipForecast(BaseRowCount, BaseColumnCount, "Суточный прогноз", fors, "");
@@ -285,7 +301,7 @@ namespace WeatherInfo
             switch (this.WindowState)
             {
                 case System.Windows.WindowState.Minimized:
-                    Tray.Update(forecasts.getCurHour());
+                    Tray.Update(forecasts.getCurHour(),1.5f, false);
                     break;
             }
         }
@@ -316,12 +332,13 @@ namespace WeatherInfo
 
         private void SettingsImage_MouseLeave(object sender, MouseEventArgs e)
         {
-            Console.WriteLine("Leave");
+            rotationTimer.Stop();
         }
 
         private void SettingsImage_MouseEnter(object sender, MouseEventArgs e)
         {
-            Console.WriteLine("Enter");
+            rotationTimer.Start();
+
         }
 
         private void SettingsImage_MouseDown(object sender, MouseButtonEventArgs e)

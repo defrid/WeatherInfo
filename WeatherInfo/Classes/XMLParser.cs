@@ -35,7 +35,7 @@ namespace WeatherInfo.Classes
             weather = opAPI.GetCurrentForecast();
             XElement cur = weather.Root;
             string time = cur.Element("lastupdate").Attribute("value").Value;
-            int temp = (int)Double.Parse(cur.Element("temperature").Attribute("value").Value, NumberStyles.Any, ci);
+            int temp = (int)double.Parse(cur.Element("temperature").Attribute("value").Value, NumberStyles.Any, ci);
             string clouds = cur.Element("clouds").Attribute("name").Value;
             string icon = cur.Element("weather").Attribute("icon").Value;
             return new ForecastHour(temp, clouds, time, icon);
