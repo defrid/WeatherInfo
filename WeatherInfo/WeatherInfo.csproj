@@ -100,6 +100,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    <Compile Include="Classes\LoadSettingsHandler.cs" />
+    <Compile Include="SecondWindow.xaml.cs">
+      <DependentUpon>SecondWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
@@ -155,6 +158,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\gear.png" />
+    <ProjectReference Include="..\SettingsHandlerInterface\SettingsHandlerInterface.csproj">
+      <Project>{5aa7e742-fdc3-4ffa-9336-209943278141}</Project>
+      <Name>SettingsHandlerInterface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

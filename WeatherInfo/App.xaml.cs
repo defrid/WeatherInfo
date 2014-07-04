@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SettingsHandlerInterface;
+using SettingsHandlerInterface.Classes;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,7 +16,7 @@ namespace WeatherInfo
     /// </summary>
     public partial class App : Application
     {
-        public static ISettingsHandler settingHandler = new XMLSettingsHandler();
+        public static ISettingsHandler settingHandler = LoadSettingsHandler.GetInstanceSettingsHandler();
         public static Settings settings = settingHandler.LoadSettings();
     }
 }
