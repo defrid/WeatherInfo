@@ -34,52 +34,70 @@ namespace WeatherInfo
         private const string HourTitle = "Почасовой прогноз";
         private const string HoutTimeEnd = ":00";
         private Dictionary<string, string> dayParts;
-        DispatcherTimer timer = new DispatcherTimer();
+        DispatcherTimer timer;
+
+        private DispatcherTimer rotationTimer;
+        private int rotationAngle = 0;
+        private bool isEnter;
 
         public MainWindow()
         {
-            town = App.settings.city.cityName;
-            townID = App.settings.city.cityId.ToString();
+            //town = App.settings.city.cityName;
+            //townID = App.settings.city.cityId.ToString();
 
-            forecasts = new XMLParser(town, townID);
+            //forecasts = new XMLParser(town, townID);
 
             InitializeComponent();
 
-
-            using (var stream = new MemoryStream())
-            {
-                Properties.Resources.Gear.Save(stream, ImageFormat.Png);
-                var image = new BitmapImage();
-                image.BeginInit();
-                image.StreamSource = stream;
-                image.CacheOption = BitmapCacheOption.OnLoad;
-                image.EndInit();
-                SettingsImage.Source = image;
-            }
-
+            SettingsImage.Source = ConvertBitmabToImage(Properties.Resources.Gear);
+            rotationTimer=new DispatcherTimer {Interval = new TimeSpan(0, 0, 0, 0, 10)};
+            rotationTimer.Tick += rotationTimer_Tick;
 
             //SettingsImage.Source=new BitmapImage(new Uri(Properties.Resources.SettingsIcon));
-            timer = new DispatcherTimer();
-            timer.Tick += timer_Tick;
-            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
+            //timer = new DispatcherTimer();
+            //timer.Tick += timer_Tick;
+            //timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
-            shrtForecast = forecasts.getBigForecast();
-            dtldForecast = forecasts.getDetailedWeek();
+            //shrtForecast = forecasts.getBigForecast();
+            //dtldForecast = forecasts.getDetailedWeek();
 
-            dayParts = new Dictionary<string, string>();
-            dayParts.Add("morning", "Утро");
-            dayParts.Add("day", "День");
-            dayParts.Add("evening", "Вечер");
-            dayParts.Add("night", "Ночь");
+            //dayParts = new Dictionary<string, string>();
+            //dayParts.Add("morning", "Утро");
+            //dayParts.Add("day", "День");
+            //dayParts.Add("evening", "Вечер");
+            //dayParts.Add("night", "Ночь");
 
-            fillTable();
-            timer.Start();
-            Tray.SetupTray(this, options, expandShort);
+            //fillTable();
+            //timer.Start();
+            //Tray.SetupTray(this, options, expandShort);
+        }
+
+        void rotationTimer_Tick(object sender, EventArgs e)
+        {
+            rotationAngle += 1;
+            SettingsImage.RenderTransform = new RotateTransform(rotationAngle);
+            if (rotationAngle == 360)
+                rotationAngle =0;
+            
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
             applySettings();
+        }
+
+        private BitmapImage ConvertBitmabToImage(System.Drawing.Bitmap bitmapImage)
+        {
+            using (var stream = new MemoryStream())
+            {
+                bitmapImage.Save(stream, ImageFormat.Png);
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.StreamSource = stream;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.EndInit();
+                return image;
+            }
         }
 
 
@@ -172,10 +190,9 @@ namespace WeatherInfo
                 ForecastHour[] fors = dtldForecast[index].hours.ToArray();
                 int temp = 0;
                 fors = fors.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
-                foreach (var el in fors)
+                foreach(var el in fors)
                 {
-                    if (dayParts != null)
-                        el.time = dayParts[el.time];
+                    el.time = dayParts[el.time];
                 }
                 gridResult.ToolTip = GetTooltipForecast(BaseRowCount, BaseColumnCount, "Суточный прогноз", fors, "");
             }
@@ -273,7 +290,7 @@ namespace WeatherInfo
 
         //private DockPanel GetFourTime
 
-
+        
         /*
          <Image Source="http://openweathermap.org/img/w/10d.png" Grid.Row="1"  Grid.RowSpan="2" Grid.ColumnSpan="2"></Image> 
          
@@ -283,7 +300,7 @@ namespace WeatherInfo
             switch (this.WindowState)
             {
                 case System.Windows.WindowState.Minimized:
-                    Tray.Update(forecasts.getCurHour(), 1.5f,false);
+                    Tray.Update(forecasts.getCurHour());
                     break;
             }
         }
@@ -314,12 +331,13 @@ namespace WeatherInfo
 
         private void SettingsImage_MouseLeave(object sender, MouseEventArgs e)
         {
-            Console.WriteLine("Leave");
+            rotationTimer.Stop();
         }
 
         private void SettingsImage_MouseEnter(object sender, MouseEventArgs e)
         {
-            Console.WriteLine("Enter");
+            rotationTimer.Start();
+
         }
 
         private void SettingsImage_MouseDown(object sender, MouseButtonEventArgs e)
