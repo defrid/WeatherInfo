@@ -7,14 +7,15 @@ using System.IO;
 using System.Data.Linq.Mapping;
 using System.Data.Linq;
 using System.Data.SqlClient;
-using Methods_bd;
+using DomainModel;
+using DomainModel.Models;
 
 namespace WeatherInfo
 {
     class Tables
    {
 
-        public DB_class.DB db = new DB_class.DB(@"Data Source=.\SQLEXPRESS;AttachDbFilename=" + "C:\\Users\\vip\\Documents\\DataBase.mdf" + ";Integrated Security=True;Connect Timeout=30;User Instance=True");
+        public DBSettings db = new DBSettings(@"Data Source=.\SQLEXPRESS;AttachDbFilename=" + "C:\\Users\\vip\\Documents\\DataBase.mdf" + ";Integrated Security=True;Connect Timeout=30;User Instance=True");
 
        //добавление
        public void ADD_city(int number, string name)

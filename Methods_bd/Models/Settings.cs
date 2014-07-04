@@ -8,7 +8,7 @@ using System.Data.Linq.Mapping;
 using System.Data.Linq;
 using System.Data.SqlClient;
 
-namespace Methods_bd
+namespace DomainModel.Models
 {
     public class Setting
     {
