@@ -38,10 +38,10 @@ namespace WeatherInfo
 
         public MainWindow()
         {
-            //town = App.settings.city.cityName;
-            //townID = App.settings.city.cityId.ToString();
+            town = App.settings.city.cityName;
+            townID = App.settings.city.cityId.ToString();
 
-            //forecasts = new XMLParser(town, townID);
+            forecasts = new XMLParser(town, townID);
 
             InitializeComponent();
 
@@ -56,25 +56,25 @@ namespace WeatherInfo
                 image.EndInit();
                 SettingsImage.Source = image;
             }
-            
 
-            //SettingsImage.Source=new BitmapImage(new Uri(Properties.Resources.SettingsIcon));
-            //timer = new DispatcherTimer();
-            //timer.Tick += timer_Tick;
-            //timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
-            //shrtForecast = forecasts.getBigForecast();
-            //dtldForecast = forecasts.getDetailedWeek();
+            //SettingsImage.Source = new BitmapImage(new Uri(Properties.Resources.Gear));
+            timer = new DispatcherTimer();
+            timer.Tick += timer_Tick;
+            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
-            //dayParts = new Dictionary<string, string>();
-            //dayParts.Add("morning", "Утро");
-            //dayParts.Add("day", "День");
-            //dayParts.Add("evening", "Вечер");
-            //dayParts.Add("night", "Ночь");
+            shrtForecast = forecasts.getBigForecast();
+            dtldForecast = forecasts.getDetailedWeek();
 
-            //fillTable();
-            //timer.Start();
-            //Tray.SetupTray(this, options, expandShort);
+            dayParts = new Dictionary<string, string>();
+            dayParts.Add("morning", "Утро");
+            dayParts.Add("day", "День");
+            dayParts.Add("evening", "Вечер");
+            dayParts.Add("night", "Ночь");
+
+            fillTable();
+            timer.Start();
+            Tray.SetupTray(this, options, expandShort);
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -121,7 +121,9 @@ namespace WeatherInfo
             gridResult.RowDefinitions.Add(new RowDefinition());
             var specRowDef = new ColumnDefinition { Width = new GridLength(1.2, GridUnitType.Star) };
             gridResult.ColumnDefinitions.Add(specRowDef);
+            
             string day = fore.date.Substring(8, 2);
+
             var dayLabel = new Label { Content = day, FontWeight = FontWeights.Bold };
             gridResult.Children.Add(dayLabel);
             var maxTempLabel = new Label()
