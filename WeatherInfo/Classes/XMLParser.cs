@@ -12,77 +12,88 @@ namespace WeatherInfo.Classes
     public class XMLParser : XMLWorker
     {
         string town;
+        string townId;
         XDocument weather;
-        IWeatherAPI con;
+        IWeatherAPI opAPI;
+        IYandexWeatherApi yaAPI;
         CultureInfo ci;
+        string apiName = @"http://weather.yandex.ru/forecast";
 
-
-        public XMLParser(string _town)
+        public XMLParser(string _town, string _townId)
         {
             town = _town;
-            con = new WeatherAPI(town);
+            townId = _townId;
+            string townEng = translate.toEng(town, @"Location/translit.txt");
+            opAPI = new OpenWeatherAPI(townEng);
+            yaAPI = new YandexWeatherAPI(_townId);
             ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
             ci.NumberFormat.CurrencyDecimalSeparator = ".";
         }
-        
-        public Forecast getCurHour() 
+
+        public ForecastHour getCurHour()
         {
-            weather = con.GetCurrentForecast();
+            weather = opAPI.GetCurrentForecast();
             XElement cur = weather.Root;
             string time = cur.Element("lastupdate").Attribute("value").Value;
-            int min = (int)float.Parse(cur.Element("temperature").Attribute("min").Value, NumberStyles.Any, ci);
-            int max = (int)float.Parse(cur.Element("temperature").Attribute("max").Value, NumberStyles.Any, ci);
+            int temp = (int)double.Parse(cur.Element("temperature").Attribute("value").Value, NumberStyles.Any, ci);
             string clouds = cur.Element("clouds").Attribute("name").Value;
             string icon = cur.Element("weather").Attribute("icon").Value;
-            return new Forecast(min, max, clouds, time, icon);
+            return new ForecastHour(temp, clouds, time, icon);
         }
 
         //массив из пяти листов, в каждом листе почасовые прогнозы. Листы, потому что в первом дне может быть меньше 8 записей
-        public List<Forecast>[] getDetailedWeek()
+        public ForecastDay[] getDetailedWeek()
         {
-            List<Forecast>[] res = new List<Forecast>[5];
-            weather = con.GetDetailedWeek();
-            IEnumerable<XElement> forecasts = weather.Root.Element("forecast").Elements();
+            ForecastDay[] res = new ForecastDay[10];
+            weather = yaAPI.GetForecast();
+            XElement root = weather.Root;
+            XNamespace ss = apiName;
+            IEnumerable<XElement> days = root.Elements(ss + "day");
             int curDay = 0;
-            string date = null;
-            foreach (var time in forecasts)
+            foreach (var day in days)
             {
-                string from = time.Attribute("from").Value;
-                int min = (int)float.Parse(time.Element("temperature").Attribute("min").Value, NumberStyles.Any, ci);
-                int max = (int)float.Parse(time.Element("temperature").Attribute("max").Value, NumberStyles.Any, ci);
-                string clouds = time.Element("clouds").Attribute("value").Value;
-                string icon = time.Element("symbol").Attribute("var").Value;
-                if (date == null)
+                string date = day.Attribute("date").Value;
+                res[curDay] = new ForecastDay(0, 0, new List<ForecastHour>(), date, null);
+                foreach (var hour in day.Elements(ss + "hour"))
                 {
-                    res[curDay] = new List<Forecast>();
-                    date = from;
+                    string time = hour.Attribute("at").Value;
+                    time = time.Length > 1 ? time : "0" + time;
+                    int temp = Int32.Parse(hour.Element(ss + "temperature").Value);
+                    string clouds = hour.Element(ss + "weather_condition").Attribute("code").Value;
+                    string icon = hour.Element(ss + "image-v3").Value;
+                    res[curDay].hours.Add(new ForecastHour(temp, clouds, time, icon));
                 }
-                else if (Int32.Parse(date.Substring(8, 2)) != Int32.Parse(from.Substring(8, 2)))
+
+                IEnumerable<XElement> parts = day.Elements(ss + "day_part").Where(
+                    el => (el.Attribute("typeid").Value != "5" && el.Attribute("typeid").Value != "6"));
+                foreach (var day_part in parts)
                 {
-                    curDay++;
-                    if (curDay == 5) break;
-                    res[curDay] = new List<Forecast>();
-                    date = from;
+                    string time = day_part.Attribute("type").Value;
+                    int temp;
+                    try { temp = Int32.Parse(day_part.Element(ss + "temperature_to").Value); }
+                    catch { temp = Int32.Parse(day_part.Element(ss + "temperature").Value); }
+                    string clouds = day_part.Element(ss + "weather_condition").Attribute("code").Value;
+                    string icon = day_part.Element(ss + "image-v3").Value;
+                    res[curDay].hours.Add(new ForecastHour(temp, clouds, time, icon));
                 }
-                res[curDay].Add(new Forecast(min, max, clouds, from, icon));
-            } 
+                curDay++;
+            }
             return res;
         }
 
-        public Forecast[] getBigForecast()
+        public ForecastDay[] getBigForecast()
         {
-            Forecast[] res = new Forecast[14];
-            weather = con.GetBigForecast();
+            ForecastDay[] res = new ForecastDay[14];
+            weather = opAPI.GetBigForecast();
             IEnumerable<XElement> forecasts = weather.Root.Element("forecast").Elements();
             int cur = 0;
             foreach (var time in forecasts)
             {
-                string from = time.Attribute("day").Value;
+                string date = time.Attribute("day").Value;
                 int min = (int)float.Parse(time.Element("temperature").Attribute("min").Value, NumberStyles.Any, ci);
                 int max = (int)float.Parse(time.Element("temperature").Attribute("max").Value, NumberStyles.Any, ci);
-                string clouds = time.Element("clouds").Attribute("value").Value;
                 string icon = time.Element("symbol").Attribute("var").Value;
-                res[cur] = new Forecast(min, max, clouds, from, icon);
+                res[cur] = new ForecastDay(min, max, null, date, icon);
                 cur++;
             }
             return res;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SettingsHandlerInterface.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WeatherInfo.Classes;
+using System.Windows.Threading;
 
 namespace WeatherInfo
 {
@@ -20,9 +22,12 @@ namespace WeatherInfo
     /// </summary>
     public partial class SettingsWindow : Window
     {
-        public SettingsWindow()
+        MainWindow main;
+
+        public SettingsWindow(object e)
         {
-            InitializeComponent();            
+            main = (MainWindow)e;
+            InitializeComponent();
         }
 
         getCity gC = new getCity();
@@ -40,27 +45,36 @@ namespace WeatherInfo
             aboutWindow.Activate();
         }
 
-        public string country_save = "";
+        public string countryId_save = "RU";
+        public string countryName_save = "";
+        public int regionId_save = 0;
+        public string regionName_save = "Region";
         public int cityId_save;
         public string cityName_save = "";
         public int updatePeriod_save = 10;
         public string format_save = "";
         public bool autostart_save = true;
+        public string temperatureUnits_save = "Celsius";
+        public string language_save = "Russian";
 
         private void accept_btn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                country_save = listOfCountries_cbx.SelectedItem.ToString();
+                countryName_save = listOfCountries_cbx.SelectedItem.ToString();
                 cityName_save = listOfCitiies_cbx.SelectedItem.ToString();
-                cityId_save = gC.GetCityNumber(cityName_save);
+                cityId_save = gC.GetCityNumberYandex(cityName_save);
+                //cityName_save = translate.toEng(listOfCitiies_cbx.SelectedItem.ToString(), "Location//translit.txt");
                 updatePeriod_save = Convert.ToInt32(updatePeriod_slider.Value);
-                format_save = XMLSettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
+                format_save = Options.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
                 autostart_save = (bool)autostartFlag_chbx.IsChecked;
 
-                App.settings = new Settings(country_save, cityId_save, cityName_save, format_save, updatePeriod_save, autostart_save);
+                App.settings = new Settings(countryId_save, countryName_save, regionId_save, regionName_save, cityId_save, cityName_save, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
 
                 App.settingHandler.SaveSettings(App.settings);
+
+                main.applySettings();
+
                 Autorun();
                 Close();
             }
@@ -101,17 +115,17 @@ namespace WeatherInfo
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadCountries();
-            listOfCountries_cbx.SelectedItem = App.settings.country;
+            listOfCountries_cbx.SelectedItem = App.settings.cities[0].country.countryName;
             listOfCountries_cbx.SelectionChanged += listOfCountries_cbx_SelectionChanged;
 
-            LoadCities(App.settings.country);
-            listOfCitiies_cbx.SelectedItem = App.settings.city.cityName;
+            LoadCities(App.settings.cities[0].country.countryName);
+            listOfCitiies_cbx.SelectedItem = App.settings.cities[0].city.cityName;
             listOfCitiies_cbx.SelectionChanged += listOfCitiies_cbx_SelectionChanged;
 
             updatePeriod_slider.Value = Convert.ToDouble(App.settings.updatePeriod);
 
             LoadFormats();
-            listOfFormatsForecast_cbx.SelectedItem = XMLSettingsHandler.GetFormatAttribute(App.settings.format);
+            listOfFormatsForecast_cbx.SelectedItem = Options.GetFormatAttribute(App.settings.format);
             listOfFormatsForecast_cbx.SelectionChanged += listOfFormatsForecast_cbx_SelectionChanged;
 
             autostartFlag_chbx.IsChecked = App.settings.autostart;
@@ -125,16 +139,16 @@ namespace WeatherInfo
 
         void LoadCities(string country)
         {
-            List<string> allCities = gC.CityNames(country);
-            listOfCitiies_cbx.ItemsSource = allCities;            
+            List<string> allCities = gC.CityNamesYandex(country);
+            listOfCitiies_cbx.ItemsSource = allCities;
         }
 
         void LoadFormats()
         {
-            string[] formats = Enum.GetNames(typeof(FormatForecast));
+            string[] formats = Enum.GetNames(typeof(Options.FormatForecast));
             foreach (var f in formats)
             {
-                var value = XMLSettingsHandler.GetFormatAttribute(f);
+                var value = Options.GetFormatAttribute(f);
                 listOfFormatsForecast_cbx.Items.Add(value);
             }
         }
@@ -156,23 +170,12 @@ namespace WeatherInfo
 
         private void listOfFormatsForecast_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            format_save = XMLSettingsHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
-        }
-
-        private void listOfCitiies_cbx_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch(e.Key)
-            {
-                case Key.Enter:
-                    listOfCitiies_cbx.Text = translate.toEng(listOfCitiies_cbx.Text, "Location//translit.txt");
-                    if (listOfCitiies_cbx.SelectedItem == null) MessageBox.Show("Город не найден");
-                    break;
-            }
+            format_save = Options.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
         }
 
         private void updatePeriod_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            
+
         }
     }
 }

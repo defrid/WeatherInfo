@@ -11,7 +11,7 @@ using WeatherInfo.Interfaces;
 
 namespace WeatherInfo.Classes
 {
-    public class WeatherAPI:IWeatherAPI
+    public class OpenWeatherAPI:IWeatherAPI
     {
 
         public string City { get; protected set; }
@@ -21,7 +21,7 @@ namespace WeatherInfo.Classes
         public const string ShortRequestString = @"http://api.openweathermap.org/data/2.5/forecast//daily?&mode=xml&units=metric&lang=ru";
         public const string ImageRequestString = @"http://openweathermap.org/img/w/";
         
-        public WeatherAPI(string city)
+        public OpenWeatherAPI(string city)
         {
             City = city;
         }

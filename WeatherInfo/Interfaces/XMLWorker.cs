@@ -17,18 +17,18 @@ namespace WeatherInfo.Interfaces
         /// инфа за текущий час
         /// </summary>
         /// <returns></returns>
-        Forecast getCurHour();
+        ForecastHour getCurHour();
 
         /// <summary>
         /// получает подробно(по три часа) пять дней
         /// </summary>
         /// <returns>возвращает массив прогнозов дней, которые сами листы прогнозов по часам</returns>
-        List<Forecast>[] getDetailedWeek();
+        ForecastDay[] getDetailedWeek();
         
         /// <summary>
         /// Неподробная инфа за 14 дней
         /// </summary>
         /// <returns>массив дней</returns>
-        Forecast[] getBigForecast();
+        ForecastDay[] getBigForecast();
     }
 }

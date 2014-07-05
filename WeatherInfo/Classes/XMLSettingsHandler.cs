@@ -229,7 +229,7 @@ namespace WeatherInfo.Classes
         public static Settings GetDefaultSettings()
         {
             string country = "Россия";
-            int cityId = 524901;
+            int cityId = 27612;
             string cityName = "Moscow";
             string format = Enum.GetName(typeof(FormatForecast), FormatForecast.Days);
             int updatePeriod = 10;
