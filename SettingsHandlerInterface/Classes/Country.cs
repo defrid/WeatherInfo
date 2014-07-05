@@ -11,14 +11,16 @@ namespace SettingsHandlerInterface.Classes
     public class Country
     {
         public string countryId { get; set; }
-        public string countryName { get; set; }
+        public string countryRusName { get; set; }
+        public string countryEngName { get; set; }
 
         public Country() { }
 
-        public Country(string _countryId, string _countryName)
+        public Country(string _countryId, string _countryRusName, string _countryEngName)
         {
             countryId = _countryId;
-            countryName = _countryName;
+            countryRusName = _countryRusName;
+            countryEngName = _countryEngName;
         }
     }
 }
