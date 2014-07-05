@@ -78,7 +78,20 @@ namespace WeatherInfo
             worker.RunWorkerAsync();
             //fillTable();
             timer.Start();
-            Tray.SetupTray(this, options, expandShort);
+
+
+            //--------------------------------------------------- для трея
+            Tray.SetupTray(this, options, expandShort); //проинициализировали
+            Tray.PreLoad(); //метод по-идее отображающий иконку загрузки, пока не будет вызван update
+            ForecastHour FH = forecasts.getCurHour();
+            List<TrayCityData> listfortray = new List<TrayCityData>();
+            //Это надо делать в потоке! ------
+            listfortray.Add(new TrayCityData("Царь-град", FH.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(FH.icon))); //просто пример
+            listfortray.Add(new TrayCityData("Бомж-град", FH.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(FH.icon), "градусов водки")); //последним параметром передавать формат температуры (по дефолту цельсии)
+            //------
+            Tray.Update(listfortray, false); //собственно обновить трей (ЭТОТ МЕТОД ВЫЗЫВАТЬ ЕЩЁ И В ЦИКЛЕ)
+            
+            //------------------------------------------------------
         }
 
         /// <summary>
