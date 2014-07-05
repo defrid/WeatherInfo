@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
 using System.Windows.Threading;
+using System.ComponentModel;
+using System.Threading;
 using WeatherInfo.Classes;
 
 namespace WeatherInfo
@@ -33,8 +35,10 @@ namespace WeatherInfo
         private const int BaseColumnCount = 2;
         private const string HourTitle = "Почасовой прогноз";
         private const string HoutTimeEnd = ":00";
+
         private Dictionary<string, string> dayParts;
         DispatcherTimer timer;
+        private readonly BackgroundWorker worker = new BackgroundWorker();
 
         private DispatcherTimer rotationTimer;
         private int rotationAngle = 0;
@@ -47,6 +51,9 @@ namespace WeatherInfo
             forecasts = new XMLParser(town, townID);
 
             InitializeComponent();
+            
+            City.Content = town;
+            MonthYear.Content = DateTime.Now.ToString("y");
 
             SettingsImage.Source = ConvertBitmabToImage(Properties.Resources.Gear);
             rotationTimer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 0, 10) };
@@ -54,10 +61,12 @@ namespace WeatherInfo
 
             timer = new DispatcherTimer();
             timer.Tick += timer_Tick;
-            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
+            timer.Interval = TimeSpan.FromSeconds(5);//FromMinutes(App.settings.updatePeriod);
 
             shrtForecast = forecasts.getBigForecast();
             dtldForecast = forecasts.getDetailedWeek();
+            worker.DoWork += worker_reload;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
 
             dayParts = new Dictionary<string, string>();
             dayParts.Add("morning", "Утро");
@@ -65,7 +74,9 @@ namespace WeatherInfo
             dayParts.Add("evening", "Вечер");
             dayParts.Add("night", "Ночь");
 
-            fillTable();
+            this.IsEnabled = false;
+            worker.RunWorkerAsync();
+            //fillTable();
             timer.Start();
             Tray.SetupTray(this, options, expandShort);
         }
@@ -108,14 +119,27 @@ namespace WeatherInfo
             }
         }
 
+        private void worker_reload(object sender, DoWorkEventArgs e)
+        {
+            Thread.Sleep(2000);
+            forecasts = new XMLParser(town, townID);
+            shrtForecast = forecasts.getBigForecast();
+            dtldForecast = forecasts.getDetailedWeek();
+        }
+
+        private void worker_RunWorkerCompleted(object sender,
+                                               RunWorkerCompletedEventArgs e)
+        {
+            fillTable();
+            this.IsEnabled = true;
+            City.Content = town;
+            timer.Start();
+        }
+
 
         private void fillTable()
         {
             WeatherTable.Children.Clear();
-            forecasts = new XMLParser(town, townID);
-
-            shrtForecast = forecasts.getBigForecast();
-            dtldForecast = forecasts.getDetailedWeek();
 
             DateTime curDay = DateTime.Now;
             for (int i = 0; i < 7; i++)
@@ -130,8 +154,6 @@ namespace WeatherInfo
                 curDay = curDay.AddDays(1);
             }
             int index = 0;
-            City.Content = town;
-            MonthYear.Content = DateTime.Now.ToString("y");
             for (int i = 0; i < 2; i++)
             {
                 for (int j = 0; j < 7; j++)
@@ -355,15 +377,16 @@ namespace WeatherInfo
 
         public void applySettings()
         {
-            WeatherTable.Children.RemoveRange(7, 14);
+            City.Content = "Update";
+            this.IsEnabled = false;
+            
             town = App.settings.GetFirstCity().city.cityName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
             townID = App.settings.GetFirstCity().city.cityId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
 
             timer.Stop();
-            forecasts = new XMLParser(town, townID);
-            fillTable();
-            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
-            timer.Start();
+            worker.RunWorkerAsync();
+            timer.Interval = TimeSpan.FromSeconds(5);//TimeSpan.FromMinutes(App.settings.updatePeriod);
+            //
         }
 
         void options()
