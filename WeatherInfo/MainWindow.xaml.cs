@@ -28,6 +28,7 @@ namespace WeatherInfo
     {
         private ForecastDay[] shrtForecast;
         private ForecastDay[] dtldForecast;
+        private ForecastHour curForecast;
         private XMLParser forecasts;
         private string town;
         private string townID;
@@ -39,6 +40,7 @@ namespace WeatherInfo
         private Dictionary<string, string> dayParts;
         DispatcherTimer timer;
         private readonly BackgroundWorker worker = new BackgroundWorker();
+        List<TrayCityData> listfortray;
 
         private DispatcherTimer rotationTimer;
         private int rotationAngle = 0;
@@ -61,12 +63,13 @@ namespace WeatherInfo
 
             timer = new DispatcherTimer();
             timer.Tick += timer_Tick;
-            timer.Interval = TimeSpan.FromSeconds(5);//FromMinutes(App.settings.updatePeriod);
+            timer.Interval = TimeSpan.FromSeconds(10);//FromMinutes(App.settings.updatePeriod);
 
             shrtForecast = forecasts.getBigForecast();
             dtldForecast = forecasts.getDetailedWeek();
             worker.DoWork += worker_reload;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            Tray.SetupTray(this, options, expandShort);
 
             dayParts = new Dictionary<string, string>();
             dayParts.Add("morning", "Утро");
@@ -75,22 +78,15 @@ namespace WeatherInfo
             dayParts.Add("night", "Ночь");
 
             this.IsEnabled = false;
+            Tray.PreLoad();
             worker.RunWorkerAsync();
             //fillTable();
             timer.Start();
 
 
             //--------------------------------------------------- для трея
-            Tray.SetupTray(this, options, expandShort); //проинициализировали
-            Tray.PreLoad(); //метод по-идее отображающий иконку загрузки, пока не будет вызван update
-            ForecastHour FH = forecasts.getCurHour();
-            List<TrayCityData> listfortray = new List<TrayCityData>();
-            //Это надо делать в потоке! ------
-            listfortray.Add(new TrayCityData("Царь-град", FH.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(FH.icon))); //просто пример
-            listfortray.Add(new TrayCityData("Бомж-град", FH.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(FH.icon), "градусов водки")); //последним параметром передавать формат температуры (по дефолту цельсии)
-            //------
-            Tray.Update(listfortray, false); //собственно обновить трей (ЭТОТ МЕТОД ВЫЗЫВАТЬ ЕЩЁ И В ЦИКЛЕ)
-            
+             //проинициализировали
+             //метод по-идее отображающий иконку загрузки, пока не будет вызван update
             //------------------------------------------------------
         }
 
@@ -138,6 +134,7 @@ namespace WeatherInfo
             forecasts = new XMLParser(town, townID);
             shrtForecast = forecasts.getBigForecast();
             dtldForecast = forecasts.getDetailedWeek();
+            curForecast = forecasts.getCurHour();
         }
 
         private void worker_RunWorkerCompleted(object sender,
@@ -146,6 +143,15 @@ namespace WeatherInfo
             fillTable();
             this.IsEnabled = true;
             City.Content = town;
+
+            listfortray = new List<TrayCityData>();
+            //Это надо делать в потоке! ------
+            listfortray.Add(new TrayCityData(
+                "Царь-град", curForecast.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(curForecast.icon))); //просто пример
+            listfortray.Add(new TrayCityData(
+                "Бомж-град", curForecast.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(curForecast.icon), "градусов водки")); //последним параметром передавать формат температуры (по дефолту цельсии)
+            Tray.Update(listfortray, false);
+
             timer.Start();
         }
 
@@ -364,23 +370,6 @@ namespace WeatherInfo
          <Image Source="http://openweathermap.org/img/w/10d.png" Grid.Row="1"  Grid.RowSpan="2" Grid.ColumnSpan="2"></Image> 
          
          */
-        private void Window_StateChanged(object sender, EventArgs e)
-        {
-            switch (this.WindowState)
-            {
-                case System.Windows.WindowState.Minimized:
-                    Tray.PreLoad();
-                    ForecastHour FH = forecasts.getCurHour();
-                    List<TrayCityData> listfortray = new List<TrayCityData>();
-                    //Это надо делать в потоке! ------
-                    listfortray.Add(new TrayCityData("Царь-град", FH.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(FH.icon)));
-                    listfortray.Add(new TrayCityData("Бомж-град", FH.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(FH.icon)));
-                    //------
-                    Tray.Update(listfortray);
-                    break;
-            }
-        }
-
         
 
         void expandShort()
@@ -397,6 +386,7 @@ namespace WeatherInfo
             townID = App.settings.GetFirstCity().city.cityYaId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
 
             timer.Stop();
+            Tray.PreLoad();
             worker.RunWorkerAsync();
             timer.Interval = TimeSpan.FromSeconds(5);//TimeSpan.FromMinutes(App.settings.updatePeriod);
             //
