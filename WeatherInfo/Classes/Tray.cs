@@ -9,7 +9,7 @@ namespace WeatherInfo
     public class Tray
     {
         public delegate void TrayVoid();
-
+        //
         public static event TrayVoid OnOptionsClick;
         public static event TrayVoid onToWindow;
 
