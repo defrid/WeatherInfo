@@ -64,17 +64,27 @@ namespace SettingsHandlerInterface
                         return false;
                     }
 
-                    if (string.IsNullOrWhiteSpace(city.country.countryName))
+                    if (string.IsNullOrWhiteSpace(city.country.countryRusName))
                     {
                         return false;
                     }
 
-                    if (city.city.cityId < 0)
+                    if (string.IsNullOrWhiteSpace(city.country.countryEngName))
                     {
                         return false;
                     }
 
-                    if (string.IsNullOrWhiteSpace(city.city.cityName))
+                    if (city.city.cityYaId < 0 || city.city.cityOWId < 0)
+                    {
+                        return false;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(city.city.cityEngName))
+                    {
+                        return false;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(city.city.cityRusName))
                     {
                         return false;
                     }

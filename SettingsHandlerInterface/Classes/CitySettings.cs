@@ -19,11 +19,11 @@ namespace SettingsHandlerInterface.Classes
         /// <param name="_countryName">Наименование страны</param>
         /// <param name="_cityId">ИД города (числовой код)</param>
         /// <param name="_cityName">Наименование города</param>
-        public CitySettings(string _countryId, string _countryName, int _regionId, string _regionName, int _cityId, string _cityName)
+        public CitySettings(string _countryId, string _countryRusName, string _countryEngName, int _regionId, string _regionName, int _cityYaId, int _cityOWId, string _cityRusName, string _cityEngName)
         {
-            country = new Country(_countryId, _countryName);
+            country = new Country(_countryId, _countryRusName, _countryEngName);
             region = new RegionOfCity(_regionId, _regionName);
-            city = new City(_cityId, _cityName);
+            city = new City(_cityYaId, _cityOWId, _cityRusName, _cityEngName);
         }
 
         public CitySettings(Country _country, RegionOfCity _region, City _city)
@@ -44,13 +44,17 @@ namespace SettingsHandlerInterface.Classes
         public static CitySettings GetDefaultSettings()
         {
             string _countryId = "RU";
-            string _countryName = "Россия";
-            int _regionId = 73;
-            string _regionName = "Ульяновск";
-            int _cityId = 27786;
-            string _cityName = "Ульяновск";
+            string _countryRusName = "Россия";
+            string _countryEngName = "Russia";
+            int _regionId = 11153;
+            string _regionName = "Ульяновская область";
 
-            var citySettings = new CitySettings(_countryId, _countryName, _regionId, _regionName, _cityId, _cityName);
+            int _cityYaId = 27786;
+            int _cityOWId = 479123;
+            string _cityRusName = "Ульяновск";
+            string _cityEngName = "Ulyanovsk";
+
+            var citySettings = new CitySettings(_countryId, _countryRusName, _countryEngName, _regionId, _regionName, _cityYaId, _cityOWId, _cityRusName, _cityEngName);
 
             return citySettings;
         }

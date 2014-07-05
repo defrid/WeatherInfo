@@ -10,15 +10,19 @@ namespace SettingsHandlerInterface.Classes
     /// </summary>
     public class City
     {
-        public int cityId { get; set; }
-        public string cityName { get; set; }
+        public int cityYaId { get; set; }
+        public int cityOWId { get; set; }
+        public string cityRusName { get; set; }
+        public string cityEngName { get; set; }
 
         public City() { }
 
-        public City(int _cityId, string _cityName)
+        public City(int _cityYaId, int _cityOWId, string _cityRusName, string _cityEngName)
         {
-            cityId = _cityId;
-            cityName = _cityName;
+            cityYaId = _cityYaId;
+            cityOWId = _cityOWId;
+            cityRusName = _cityRusName;
+            cityEngName = _cityEngName;
         }
     }
 }

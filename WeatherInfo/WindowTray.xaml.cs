@@ -46,7 +46,6 @@ namespace WeatherInfo
             dp.Children.Add(item.name);
             //-------------------------
             System.Windows.Controls.Image im = new System.Windows.Controls.Image();
-            string s = AppDomain.CurrentDomain.BaseDirectory.ToString();
 
             //Создал System.Drawing.Image
             System.Drawing.Image i = item.icon;

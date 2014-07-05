@@ -21,7 +21,7 @@ namespace WeatherInfo
         /// <summary>
         /// Класс для города в трее
         /// </summary>
-        /// <param name="name">Название города</param>
+        /// <param name="name">Название города.</param>
         /// <param name="temp">Температура</param>
         /// <param name="icon">Иконка погоды</param>
         /// <param name="format">Формат градусов (по умолчанию градусы цельсия) - это просто будет приписано к градусам</param>
@@ -79,6 +79,7 @@ namespace WeatherInfo
             System.Windows.Application.Current.Exit += ApplicationExit;
 
             notifyIcon = new TaskbarIcon();
+            //notifyIcon.Visibility = Visibility.Visible;
 
             Button FullWindow = new Button();
             Button Options = new Button();
@@ -96,11 +97,17 @@ namespace WeatherInfo
             Exit.Click += Exit_MouseDown;
             notifyIcon.TrayMouseDoubleClick += FullWindow_MouseDown;
             notifyIcon.TrayLeftMouseDown += notifyIcon_TrayLeftMouseDown;
+            notifyIcon.TrayRightMouseDown += notifyIcon_TrayRightMouseDown;
 
             timer.Tick += rotationTimer_Tick;
             preLoadCanvas = new System.Drawing.Bitmap(100, 100);
             preLoadGraphics = System.Drawing.Graphics.FromImage(preLoadCanvas);
             preLoadImage = Properties.Resources.Gear;
+        }
+
+        static void notifyIcon_TrayRightMouseDown(object sender, RoutedEventArgs e)
+        {
+            notifyIcon.ContextMenu.Visibility = Visibility.Visible;
         }
 
         static void notifyIcon_TrayLeftMouseDown(object sender, RoutedEventArgs e)
@@ -115,7 +122,7 @@ namespace WeatherInfo
 
         static void Options_MouseDown(object sender, RoutedEventArgs e)
         {
-            notifyIcon.Visibility = Visibility.Hidden;
+            //notifyIcon.Visibility = Visibility.Hidden;
             notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
             notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
 
@@ -128,7 +135,7 @@ namespace WeatherInfo
 
         static void FullWindow_MouseDown(object sender, RoutedEventArgs e)
         {
-            notifyIcon.Visibility = Visibility.Hidden;
+            //notifyIcon.Visibility = Visibility.Hidden;
             notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
             notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
 
@@ -169,15 +176,18 @@ namespace WeatherInfo
         /// скроет главное окно если открыто, запишет данные в трей, покажет его, сам трей будет с иконкой 1го города
         /// </summary>
         /// <param name="cities">список городов</param>
-        public static void Update(List<TrayCityData> cities)
+        /// <param name="needHide">если главное окно не надо прятать послать false</param>
+        public static void Update(List<TrayCityData> cities, bool needHide=true)
         {
             timer.Stop();
             notifyIcon.ToolTipText = "Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню";
             notifyIcon.Icon = System.Drawing.Icon.FromHandle(cities[0].icon.GetHicon());
 
-            windowMain.WindowState = WindowState.Normal;
-            windowMain.Hide();
-            
+            if (needHide)
+            {
+                windowMain.WindowState = WindowState.Normal;
+                windowMain.Hide();
+            }
 
             WindowTray wt = new WindowTray(leaveWindowTray, cities);
             notifyIcon.TrayPopup = wt;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SettingsHandlerInterface.Classes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,8 +9,26 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 namespace WeatherInfo.Classes
 {
+    public class cityData
+    {
+        public List<City> cities = new List<City>();
+        public List<Country> countries = new List<Country>();
+    }
+
     public class getCity
     {
+
+        /// <summary>
+        /// этот метод будет возвращать соединенный список
+        /// </summary>
+        /// <returns></returns>
+        public static cityData LoadCityData()
+        {
+            return null;
+        }
+
+
+
         public getCity()
         {
             if (!(Directory.Exists("Location")))

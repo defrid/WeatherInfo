@@ -46,11 +46,14 @@ namespace WeatherInfo
         }
 
         public string countryId_save = "RU";
-        public string countryName_save = "";
+        public string countryRusName_save = "";
+        public string countryEngName_save = "Country";
         public int regionId_save = 0;
         public string regionName_save = "Region";
-        public int cityId_save;
-        public string cityName_save = "";
+        public int cityYaId_save;
+        public int cityOWId_save;
+        public string cityRusName_save = "";
+        public string cityEngName_save = "City";
         public int updatePeriod_save = 10;
         public string format_save = "";
         public bool autostart_save = true;
@@ -61,15 +64,15 @@ namespace WeatherInfo
         {
             try
             {
-                countryName_save = listOfCountries_cbx.SelectedItem.ToString();
-                cityName_save = listOfCitiies_cbx.SelectedItem.ToString();
-                cityId_save = gC.GetCityNumberYandex(cityName_save);
+                countryRusName_save = listOfCountries_cbx.SelectedItem.ToString();
+                cityRusName_save = listOfCitiies_cbx.SelectedItem.ToString();
+                cityYaId_save = gC.GetCityNumberYandex(cityRusName_save);
                 //cityName_save = translate.toEng(listOfCitiies_cbx.SelectedItem.ToString(), "Location//translit.txt");
                 updatePeriod_save = Convert.ToInt32(updatePeriod_slider.Value);
                 format_save = Options.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
                 autostart_save = (bool)autostartFlag_chbx.IsChecked;
 
-                App.settings = new Settings(countryId_save, countryName_save, regionId_save, regionName_save, cityId_save, cityName_save, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
+                App.settings = new Settings(countryId_save, countryRusName_save, countryEngName_save, regionId_save, regionName_save, cityYaId_save, cityOWId_save, cityRusName_save, cityEngName_save, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
 
                 App.settingHandler.SaveSettings(App.settings);
 
@@ -115,11 +118,11 @@ namespace WeatherInfo
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadCountries();
-            listOfCountries_cbx.SelectedItem = App.settings.cities[0].country.countryName;
+            listOfCountries_cbx.SelectedItem = App.settings.cities[0].country.countryRusName;
             listOfCountries_cbx.SelectionChanged += listOfCountries_cbx_SelectionChanged;
 
-            LoadCities(App.settings.cities[0].country.countryName);
-            listOfCitiies_cbx.SelectedItem = App.settings.cities[0].city.cityName;
+            LoadCities(App.settings.cities[0].country.countryRusName);
+            listOfCitiies_cbx.SelectedItem = App.settings.cities[0].city.cityRusName;
             listOfCitiies_cbx.SelectionChanged += listOfCitiies_cbx_SelectionChanged;
 
             updatePeriod_slider.Value = Convert.ToDouble(App.settings.updatePeriod);
