@@ -41,8 +41,13 @@ namespace WeatherInfo
 
         public MainWindow()
         {
+<<<<<<< HEAD
             town = App.settings.city.cityName;
             townID = App.settings.city.cityId.ToString();
+=======
+            town = App.settings.GetFirstCity().city.cityName;
+            townID = App.settings.GetFirstCity().city.cityId.ToString();
+>>>>>>> origin/SettingsWindow
 
             forecasts = new XMLParser(town, townID);
 
@@ -86,7 +91,11 @@ namespace WeatherInfo
 
         void timer_Tick(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             fillTable();
+=======
+            applySettings();
+>>>>>>> origin/SettingsWindow
         }
 
         /// <summary>
@@ -344,14 +353,26 @@ namespace WeatherInfo
             this.WindowState = System.Windows.WindowState.Normal;
         }
 
+<<<<<<< HEAD
         private void update()
         {
             timer.Stop();
+=======
+        public void applySettings()
+        {
+            WeatherTable.Children.RemoveRange(7, 14);
+            town = App.settings.GetFirstCity().city.cityName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
+            townID = App.settings.GetFirstCity().city.cityId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
+
+            timer.Stop();
+            forecasts = new XMLParser(town, townID);
+>>>>>>> origin/SettingsWindow
             fillTable();
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
             timer.Start();
         }
 
+<<<<<<< HEAD
         public void applySettings()
         {
             town = App.settings.city.cityName;
@@ -360,6 +381,8 @@ namespace WeatherInfo
             update();
         }
 
+=======
+>>>>>>> origin/SettingsWindow
         void options()
         {
             new SettingsWindow(this).Show();
@@ -404,11 +427,14 @@ namespace WeatherInfo
             }
         }
 
+<<<<<<< HEAD
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+=======
+>>>>>>> origin/SettingsWindow
 
     }
 }

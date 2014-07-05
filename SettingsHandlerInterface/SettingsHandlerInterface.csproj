@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\City.cs" />
+    <Compile Include="Classes\CitySettings.cs" />
+    <Compile Include="Classes\Country.cs" />
+    <Compile Include="Classes\Options.cs" />
+    <Compile Include="Classes\RegionOfCity.cs" />
     <Compile Include="Classes\Settings.cs" />
     <Compile Include="Interfaces\ISettingsHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -52,10 +52,35 @@ namespace SettingsHandlerInterface
                 //    }
                 //}
 
-                if (string.IsNullOrWhiteSpace(settings.country))
+                if (settings == null || settings.cities.Count == 0)
                 {
                     return false;
                 }
+
+                foreach (var city in settings.cities)
+                {
+                    if (string.IsNullOrWhiteSpace(city.country.countryId))
+                    {
+                        return false;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(city.country.countryName))
+                    {
+                        return false;
+                    }
+
+                    if (city.city.cityId < 0)
+                    {
+                        return false;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(city.city.cityName))
+                    {
+                        return false;
+                    }
+                }
+
+                
 
                 if (string.IsNullOrWhiteSpace(settings.format))
                 {
@@ -67,15 +92,7 @@ namespace SettingsHandlerInterface
                     return false;
                 }
 
-                if (settings.city.cityId <= 0)
-                {
-                    return false;
-                }
-
-                if (string.IsNullOrWhiteSpace(settings.city.cityName))
-                {
-                    return false;
-                }
+                
 
                 return isValid;
             }
