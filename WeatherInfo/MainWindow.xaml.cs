@@ -334,10 +334,19 @@ namespace WeatherInfo
             switch (this.WindowState)
             {
                 case System.Windows.WindowState.Minimized:
-                    Tray.Update(forecasts.getCurHour(), 1.5f, false);
+                    Tray.PreLoad();
+                    ForecastHour FH = forecasts.getCurHour();
+                    List<TrayCityData> listfortray = new List<TrayCityData>();
+                    //Это надо делать в потоке! ------
+                    listfortray.Add(new TrayCityData("Царь-град", FH.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(FH.icon)));
+                    listfortray.Add(new TrayCityData("Бомж-град", FH.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(FH.icon)));
+                    //------
+                    Tray.Update(listfortray);
                     break;
             }
         }
+
+        
 
         void expandShort()
         {

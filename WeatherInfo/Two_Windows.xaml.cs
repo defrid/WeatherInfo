@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WeatherInfo.Classes;
 
 namespace WeatherInfo
 {
@@ -42,6 +43,15 @@ namespace WeatherInfo
                     this.Close();
 
                     break;
+            }
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            switch(this.WindowState)
+            {
+                //так до меня и не дошло что тут делать с треем.... грусть печаль....
+                
             }
         }
     }
