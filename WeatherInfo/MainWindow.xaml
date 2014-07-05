@@ -1,7 +1,7 @@
 ﻿<Window x:Class="WeatherInfo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Weather Informer" Height="275" Width="630" StateChanged="Window_StateChanged" KeyDown="Window_KeyDown" ResizeMode="CanMinimize">
+        Title="Weather Informer" Height="275" Width="630" KeyDown="Window_KeyDown" ResizeMode="CanMinimize">
     <DockPanel>
         <DockPanel DockPanel.Dock="Top">
             <Label Name="City" HorizontalAlignment="Left" Margin="50 5" Content="City"/>

@@ -45,14 +45,5 @@ namespace WeatherInfo
                     break;
             }
         }
-
-        private void Window_StateChanged(object sender, EventArgs e)
-        {
-            switch(this.WindowState)
-            {
-                //так до меня и не дошло что тут делать с треем.... грусть печаль....
-                
-            }
-        }
     }
 }

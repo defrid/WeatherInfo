@@ -351,15 +351,6 @@ namespace WeatherInfo
          <Image Source="http://openweathermap.org/img/w/10d.png" Grid.Row="1"  Grid.RowSpan="2" Grid.ColumnSpan="2"></Image> 
          
          */
-        private void Window_StateChanged(object sender, EventArgs e)
-        {
-            switch (this.WindowState)
-            {
-                case System.Windows.WindowState.Minimized:
-                    Tray.Update(forecasts.getCurHour(), 1.5f, false);
-                    break;
-            }
-        }
 
         void expandShort()
         {
