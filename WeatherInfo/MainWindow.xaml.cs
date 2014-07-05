@@ -86,7 +86,7 @@ namespace WeatherInfo
 
         void timer_Tick(object sender, EventArgs e)
         {
-            applySettings();
+            fillTable();
         }
 
         /// <summary>
@@ -344,17 +344,20 @@ namespace WeatherInfo
             this.WindowState = System.Windows.WindowState.Normal;
         }
 
-        public void applySettings()
+        private void update()
         {
-            WeatherTable.Children.RemoveRange(7, 14);
-            town = App.settings.city.cityName;
-            townID = App.settings.city.cityId.ToString();
-
             timer.Stop();
-            forecasts = new XMLParser(town, townID);
             fillTable();
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
             timer.Start();
+        }
+
+        public void applySettings()
+        {
+            town = App.settings.city.cityName;
+            townID = App.settings.city.cityId.ToString();
+            forecasts = new XMLParser(town, townID);
+            update();
         }
 
         void options()
@@ -399,6 +402,11 @@ namespace WeatherInfo
                     Two_Windows tw = new Two_Windows(this, new MainWindow());
                     break;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
 
