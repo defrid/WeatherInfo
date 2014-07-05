@@ -1,197 +1,199 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows;
-using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 using WeatherInfo.Classes;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Collections.Generic;
+using Hardcodet.Wpf.TaskbarNotification;
+using System.Threading;
+using System.Windows.Threading;
+using WeatherInfo.Properties;
 
 namespace WeatherInfo
 {
+    public class TrayCityData
+    {
+        public Label name;
+        public Label temp;
+        public System.Drawing.Bitmap icon;
+
+        /// <summary>
+        /// Класс для города в трее
+        /// </summary>
+        /// <param name="name">Название города</param>
+        /// <param name="temp">Температура</param>
+        /// <param name="icon">Иконка погоды</param>
+        /// <param name="format">Формат градусов (по умолчанию градусы цельсия) - это просто будет приписано к градусам</param>
+        public TrayCityData(string name, int temperature, System.Drawing.Bitmap icon, string format="°С" )
+        {
+            this.name = new Label();
+            this.name.Content = name;
+
+            this.icon = icon;
+
+            this.temp = new Label();
+            if (temperature > 0)
+            {
+                temp.Content = "+" + temperature.ToString();
+                temp.Foreground = Brushes.Red;
+            }
+            if (temperature == 0) temp.Content = "0";
+            if (temperature < 0)
+            {
+                temp.Content = temperature.ToString();
+                temp.Foreground = Brushes.Blue;
+            }
+            temp.Content += format;
+        }
+    }
+
     public class Tray
     {
         public delegate void TrayVoid();
 
+        /// <summary>
+        /// когда хотим в опции
+        /// </summary>
         public static event TrayVoid OnOptionsClick;
+
+        /// <summary>
+        /// когда хотим обратно в окно :)
+        /// </summary>
         public static event TrayVoid onToWindow;
 
-        public ForecastHour curFore;
-
-        static string iPdescr = "Двойной клик - развернуть программу, ПКМ - открыть меню";
+        static TaskbarIcon notifyIcon;
         static Window windowMain;
-        static NotifyIcon iconPicture = new NotifyIcon();
         
-        //Устанавливает трей (сюда главное окно и событие на клик опций)
+        /// <summary>
+        /// Необходимо вызвать этот метод в самом начале работы программы
+        /// </summary>
+        /// <param name="main">окно, которое трей сочтет главным и будет его скрывать</param>
+        /// <param name="onOptionsClick">сюда послать метод, который будет обрабатывать нажатие не опции</param>
+        /// <param name="toWindow">сюда послать метод, совершающий действия, при развертывании трея</param>
         public static void SetupTray(Window main, TrayVoid onOptionsClick, TrayVoid toWindow)
         {
             OnOptionsClick += onOptionsClick;
             onToWindow += toWindow;
-
             windowMain = main;
+            System.Windows.Application.Current.Exit += ApplicationExit;
 
-            iconPicture.Text = iPdescr;
+            notifyIcon = new TaskbarIcon();
 
-            ContextMenu newMenu = new ContextMenu();
-            newMenu.MenuItems.Add(new MenuItem("Развернуть", ToWindow));
-            newMenu.MenuItems.Add(new MenuItem("Настройки", OptionsClick));
-            newMenu.MenuItems.Add(new MenuItem("Выход", AppExit));
+            Button FullWindow = new Button();
+            Button Options = new Button();
+            Button Exit = new Button();
+            FullWindow.Content = "Развернуть";
+            Options.Content = "Настройки";
+            Exit.Content = "Выход";
+            notifyIcon.ContextMenu = new ContextMenu();
+            notifyIcon.ContextMenu.Items.Add(FullWindow);
+            notifyIcon.ContextMenu.Items.Add(Options);
+            notifyIcon.ContextMenu.Items.Add(Exit);
 
-            iconPicture.ContextMenu = newMenu;
+            FullWindow.Click += FullWindow_MouseDown;
+            Options.Click += Options_MouseDown;
+            Exit.Click += Exit_MouseDown;
+            notifyIcon.TrayMouseDoubleClick += FullWindow_MouseDown;
+            notifyIcon.TrayLeftMouseDown += notifyIcon_TrayLeftMouseDown;
 
-            iconPicture.MouseDoubleClick += trayClick;
-            
-            System.Windows.Application.Current.Exit += Current_Exit;
+            timer.Tick += rotationTimer_Tick;
+            preLoadCanvas = new System.Drawing.Bitmap(100, 100);
+            preLoadGraphics = System.Drawing.Graphics.FromImage(preLoadCanvas);
+            preLoadImage = Properties.Resources.Gear;
         }
 
-       
-        //скрыть значки (Если Exception треи могут не скрыться автоматом)
-        public static void TrayHide()
+        static void notifyIcon_TrayLeftMouseDown(object sender, RoutedEventArgs e)
         {
-            iconPicture.Visible = false;
+            notifyIcon.TrayPopup.Visibility = Visibility.Visible;
         }
 
-        //обновить трей
-        public static void Update(ForecastHour newFore, float scale=1.8f, bool WriteDigits=false)
+        static void Exit_MouseDown(object sender, RoutedEventArgs e)
         {
-            Icon forPic = Icon.FromHandle(getPicture(newFore, scale, WriteDigits).GetHicon());
-            iconPicture.Text = newFore.temp + "°С";
-            makeTray(forPic);
-        }
-
-        //-------------------------------------------------------------------------------
-
-
-        string[] cities = { "Забыли задать город!" };
-
-        public void setCities(string city1, string city2 = "")
-        {
-            if (city2 == "")
-            {
-                cities = new string[1];
-                cities[0] = city1;
-            }
-            else
-            {
-                cities = new string[2];
-                cities[0] = city1;
-                cities[1] = city2;
-            }
-
-
-            ContextMenu menu = new ContextMenu();
-            menu.MenuItems.Add("Развернуть кратко");
-            menu.MenuItems.Add("Развернуть подробно");
-            menu.MenuItems.Add("Настройки", OptionsClick);
-            menu.MenuItems.Add("Выход", AppExit);
-
-            foreach (var a in cities)
-            {
-                menu.MenuItems[0].MenuItems.Add(a, ToShort);
-                menu.MenuItems[1].MenuItems.Add(a, ToFull);
-            }
-
-            iconPicture.ContextMenu = menu;
-        }
-
-        private void ToFull(object sender, EventArgs e)
-        {
-            ToWindow(sender, e);
-        }
-
-
-
-        private static void ToShort(object sender, EventArgs e)
-        {
-            ToWindow(sender, e);
-        }
-
-
-        //задает иконки скрывает окно
-        private static void makeTray(Icon forPic) //, Icon forDeg
-        {
-            windowMain.WindowState = System.Windows.WindowState.Normal;
-            windowMain.Hide();
-
-            iconPicture.Icon = forPic;
-
-            iconPicture.Visible = true;
-        }
-
-        //при нажатии на выход
-        private static void AppExit(object sender, EventArgs e)
-        {
-            TrayHide();
             windowMain.Close();
         }
 
-        //при двойном клике открываем окно
-        static void trayClick(object sender, EventArgs e)
+        static void Options_MouseDown(object sender, RoutedEventArgs e)
         {
-            ToWindow(sender, e);
-        }
-      
-        //получает битмап из картинки.
-        private static Bitmap getPicture(ForecastHour fore, float scale, bool needDigits)
-        {
-            Bitmap res = WeatherInfo.Classes.OpenWeatherAPI.GetImageById(fore.icon);
+            notifyIcon.Visibility = Visibility.Hidden;
+            notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
+            notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
 
-            Bitmap bm = new Bitmap(100, 100);
-            Graphics gr = Graphics.FromImage(bm);
-            gr.TranslateTransform(bm.Width/2, bm.Height/2);
-            gr.ScaleTransform(scale, scale);
-            gr.TranslateTransform(-bm.Width/2, -bm.Height/2);
-            gr.DrawImage(res, 0, 0, 100, 100);
-
-            if (needDigits)
-            {
-                gr.ResetTransform();
-                using (Font font1 = new Font("Lucida Console", 65, System.Drawing.FontStyle.Regular, GraphicsUnit.Point))
-                {
-                    int degree = fore.temp;
-                    if (degree < 0) degree = -degree;
-                    string text = degree.ToString();
-                    StringFormat stringFormat = new StringFormat();
-                    stringFormat.Alignment = StringAlignment.Center;
-                    stringFormat.LineAlignment = StringAlignment.Center;
-
-                    Brush colorBr=Brushes.Black;
-                    if (fore.temp > 0) colorBr = Brushes.Red;
-                    if (fore.temp < 0) colorBr = Brushes.Blue;
-
-                    gr.DrawString(text, font1, colorBr, new System.Drawing.Point(50, 50), stringFormat);
-
-                }
-            }
-
-            return bm;
-        }
-
-        //откроет окно
-        private static void ToWindow(object sender, EventArgs e)
-        {
-            TrayHide();
             windowMain.Show();
             windowMain.Focus();
             windowMain.Activate();
+
+            OnOptionsClick();
         }
 
-        //вызовет событие OnOptionsClick
-        private static void OptionsClick(object sender, EventArgs e)
+        static void FullWindow_MouseDown(object sender, RoutedEventArgs e)
         {
-            if (OnOptionsClick != null)
-            {
-                SettingsWindow settingsWindow = new SettingsWindow(windowMain);
-                settingsWindow.Show();
-                settingsWindow.Focus();
-                settingsWindow.Activate();
-                //ToWindow(sender, e);
-                //OnOptionsClick();
-            }
-            else { throw new Exception("Задайте событие на нажатие опций в трее - OnOptionsClick"); }
+            notifyIcon.Visibility = Visibility.Hidden;
+            notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
+            notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
+
+            windowMain.Show();
+            windowMain.Activate();
+            windowMain.Focus();
+
+            onToWindow();
         }
 
-        //событие на закрытие всего приложения
-        private static void Current_Exit(object sender, ExitEventArgs e)
+        static System.Drawing.Bitmap preLoadCanvas;
+        static System.Drawing.Bitmap preLoadImage;
+        static System.Drawing.Graphics preLoadGraphics;
+        static DispatcherTimer timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 0, 10) };
+
+        /// <summary>
+        /// Этот метод следует вызвать если программу скрыли, а данные ещё долго будут грузиться
+        /// </summary>
+        public static void PreLoad()
         {
-            TrayHide();
+            notifyIcon.Visibility = Visibility.Visible;
+            notifyIcon.ToolTipText = "WeatherInfo загружает данные";
+            preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
+            timer.Start();
+        }
+
+        private static void rotationTimer_Tick(object sender, EventArgs e)
+        {
+            preLoadGraphics.Clear(System.Drawing.Color.Transparent);
+            preLoadGraphics.TranslateTransform(50, 50);
+            preLoadGraphics.RotateTransform(1f);
+            preLoadGraphics.TranslateTransform(-50, -50);
+            preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
+            notifyIcon.Icon = System.Drawing.Icon.FromHandle(preLoadCanvas.GetHicon());
+        }
+
+        /// <summary>
+        /// скроет главное окно если открыто, запишет данные в трей, покажет его, сам трей будет с иконкой 1го города
+        /// </summary>
+        /// <param name="cities">список городов</param>
+        public static void Update(List<TrayCityData> cities)
+        {
+            timer.Stop();
+            notifyIcon.ToolTipText = "Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню";
+            notifyIcon.Icon = System.Drawing.Icon.FromHandle(cities[0].icon.GetHicon());
+
+            windowMain.WindowState = WindowState.Normal;
+            windowMain.Hide();
+            
+
+            WindowTray wt = new WindowTray(leaveWindowTray, cities);
+            notifyIcon.TrayPopup = wt;
+            notifyIcon.TrayPopup.Visibility = Visibility.Visible;
+            notifyIcon.ContextMenu.Visibility = Visibility.Visible;
+        }
+
+        static void leaveWindowTray()
+        {
+            notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
+            
+        }
+
+        private static void ApplicationExit(object sender, ExitEventArgs e)
+        {
+            notifyIcon.Dispose();
         }
     }
 }

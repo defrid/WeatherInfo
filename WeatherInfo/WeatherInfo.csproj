@@ -55,6 +55,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
+    <Reference Include="Hardcodet.Wpf.TaskbarNotification">
+      <HintPath>Dll\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
@@ -103,6 +106,9 @@
     <Compile Include="ChooseTown.xaml.cs">
       <DependentUpon>ChooseTown.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowTray.xaml.cs">
+      <DependentUpon>WindowTray.xaml</DependentUpon>
+    </Compile>
     <Page Include="About.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -136,6 +142,10 @@
     <Page Include="ChooseTown.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowTray.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
