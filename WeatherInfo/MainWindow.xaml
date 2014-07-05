@@ -4,7 +4,7 @@
         Title="Weather Informer" Height="275" Width="640" StateChanged="Window_StateChanged" KeyDown="Window_KeyDown" ResizeMode="CanMinimize">
     <ScrollViewer>
         <Border BorderBrush="Black" BorderThickness="2">
-    <StackPanel>
+    <StackPanel Name="MainContainer">
             <DockPanel Margin="10">
             <DockPanel DockPanel.Dock="Top">
                 <Label Name="City" HorizontalAlignment="Left" Margin="50 5" Content="City"/>
