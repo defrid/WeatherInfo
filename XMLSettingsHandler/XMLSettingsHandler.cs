@@ -9,7 +9,7 @@ using SettingsHandlerInterface;
 using SettingsHandlerInterface.Classes;
 using System.Reflection;
 
-namespace XMLSettingsHandler.Classes
+namespace XMLSettingsHandler
 {
     public class XMLSettingsHandler : SettingsHandler
     {
@@ -56,6 +56,7 @@ namespace XMLSettingsHandler.Classes
         {
             try
             {
+                //WriteXml(Settings.GetDefaultSettings());
                 if (File.Exists(XMLFileName))
                 {
                     Settings settings = new Settings();
