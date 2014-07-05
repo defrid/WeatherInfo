@@ -21,7 +21,7 @@ namespace WeatherInfo
         /// <summary>
         /// Класс для города в трее
         /// </summary>
-        /// <param name="name">Название города</param>
+        /// <param name="name">Название города.</param>
         /// <param name="temp">Температура</param>
         /// <param name="icon">Иконка погоды</param>
         /// <param name="format">Формат градусов (по умолчанию градусы цельсия) - это просто будет приписано к градусам</param>
