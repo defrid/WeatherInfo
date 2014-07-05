@@ -76,6 +76,11 @@ namespace SettingsHandlerInterface.Classes
         public string temperatureUnits { get; set; }
         public string language { get; set; }
 
+        public CitySettings GetFirstCity()
+        {
+            return cities.ElementAt(0);
+        }
+
         /// <summary>
         /// Настройки по-умолчанию
         /// </summary>
