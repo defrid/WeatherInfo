@@ -71,6 +71,11 @@ namespace WeatherInfo
             Tray.SetupTray(this, options, expandShort);
         }
 
+        /// <summary>
+        /// Обработчик таймера для поворота шестерни
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void rotationTimer_Tick(object sender, EventArgs e)
         {
             rotationAngle += 1;
@@ -85,6 +90,11 @@ namespace WeatherInfo
             applySettings();
         }
 
+        /// <summary>
+        /// Метод для перевода Bitmap в BitmapImage
+        /// </summary>
+        /// <param name="bitmapImage"></param>
+        /// <returns></returns>
         private BitmapImage ConvertBitmabToImage(System.Drawing.Bitmap bitmapImage)
         {
             using (var stream = new MemoryStream())
@@ -123,7 +133,13 @@ namespace WeatherInfo
             }
         }
 
-
+        /// <summary>
+        /// Метод для создания элемента прогнозы для сетки
+        /// </summary>
+        /// <param name="column">Номер столбца</param>
+        /// <param name="row">Номер строки</param>
+        /// <param name="index">???</param>
+        /// <returns></returns>
         private Grid GetWeaterElement(int column, int row, int index)
         {
             ForecastDay fore = shrtForecast[index];
@@ -329,18 +345,30 @@ namespace WeatherInfo
             new SettingsWindow(this).Show();
         }
 
-
+        /// <summary>
+        /// Обработчик собывать MouseLeave для шестерни
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SettingsImage_MouseLeave(object sender, MouseEventArgs e)
         {
             rotationTimer.Stop();
         }
-
+        /// <summary>
+        /// Обработчик собывать MouseEnter для шестерни
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SettingsImage_MouseEnter(object sender, MouseEventArgs e)
         {
             rotationTimer.Start();
 
         }
-
+        /// <summary>
+        /// Обработчик собывать MouseDown для шестерни
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SettingsImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
             new SettingsWindow(this).Show();
