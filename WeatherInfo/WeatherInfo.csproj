@@ -86,6 +86,7 @@
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\ChoosenCityForForecast.cs" />
     <Compile Include="Classes\LoadSettingsHandler.cs" />
     <Compile Include="Classes\Methods_to_BD.cs" />
     <Compile Include="Classes\cityChoose.cs" />

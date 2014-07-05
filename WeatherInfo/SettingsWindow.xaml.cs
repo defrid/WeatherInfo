@@ -1,4 +1,5 @@
-﻿using SettingsHandlerInterface.Classes;
+﻿using System.Collections;
+using SettingsHandlerInterface.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace WeatherInfo
         {
             main = (MainWindow)e;
             InitializeComponent();
+            ChoosenCities=new List<ChoosenCityForForecast>();
         }
 
         getCity gC = new getCity();
@@ -45,6 +47,8 @@ namespace WeatherInfo
             aboutWindow.Activate();
         }
 
+        public List<ChoosenCityForForecast> ChoosenCities { get; set; }
+
         public string country_save = "";
         public int cityId_save;
         public string cityName_save = "";
@@ -56,9 +60,6 @@ namespace WeatherInfo
         {
             try
             {
-                country_save = listOfCountries_cbx.SelectedItem.ToString();
-                cityName_save = listOfCitiies_cbx.SelectedItem.ToString();
-                cityId_save = gC.GetCityNumberYandex(cityName_save);
                 //cityName_save = translate.toEng(listOfCitiies_cbx.SelectedItem.ToString(), "Location//translit.txt");
                 updatePeriod_save = Convert.ToInt32(updatePeriod_slider.Value);
                 format_save = FormatHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
@@ -172,5 +173,44 @@ namespace WeatherInfo
         {
 
         }
+
+        private void AddCityButtonClick(object sender, RoutedEventArgs e)
+        {
+            var newCity = new ChoosenCityForForecast
+                {
+                    Country = listOfCountries_cbx.SelectedItem.ToString(),
+                    CityName = listOfCitiies_cbx.SelectedItem.ToString(),
+                    CityId = gC.GetCityNumberYandex(cityName_save)
+                };
+            var repeateSearch = ChoosenCities.SingleOrDefault(el =>(el.CityId == newCity.CityId &&
+                                                               el.CityName == newCity.CityName &&
+                                                               el.Country == newCity.Country));
+            if(repeateSearch!=null)
+                return;
+            ChoosenCities.Add(newCity);
+            ChoosenCitiesComboBox.Items.Add(newCity.ToString());
+            ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count -1;
+        }
+
+        private void DeleteCityButtonClick(object sender, RoutedEventArgs e)
+        {
+            var countryCity = (ChoosenCitiesComboBox.SelectedItem as String)
+                .Split(new[] {", "}, StringSplitOptions.RemoveEmptyEntries);
+            var removeCity = countryCity[0];
+            var removeCountry = countryCity[1];
+            ChoosenCities.Remove(
+                ChoosenCities.SingleOrDefault(el=>(el.CityName==removeCity&&el.Country==removeCountry)));
+            ChoosenCitiesComboBox.Items.RemoveAt(ChoosenCitiesComboBox.SelectedIndex);
+            ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count - 1;
+
+        }
+
+        private void LockUnlockButtons(object sender, SelectionChangedEventArgs e)
+        {
+            var comboItemsCount = ChoosenCitiesComboBox.Items.Count;
+            AddButton.IsEnabled = comboItemsCount < 10;
+            DeleteButton.IsEnabled = comboItemsCount > 1;
+        }
+        
     }
 }
