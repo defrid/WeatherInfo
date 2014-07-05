@@ -30,6 +30,7 @@ namespace WeatherInfo
             main = (MainWindow)e;
             InitializeComponent();
             ChoosenCities=new List<ChoosenCityForForecast>();
+            Icon = MainWindow.ConvertBitmabToImage(Properties.Resources.settingsGear.ToBitmap());
         }
 
         getCity gC = new getCity();

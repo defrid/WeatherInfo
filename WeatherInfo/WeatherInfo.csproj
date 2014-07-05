@@ -53,6 +53,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\weather.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
     <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -175,6 +178,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Location\countries.txt" />
+    <None Include="Resources\config.ico" />
+    <None Include="Resources\weather.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Location\savedCountries.txt" />
