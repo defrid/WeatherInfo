@@ -38,19 +38,18 @@ namespace WeatherInfo
 
         private DispatcherTimer rotationTimer;
         private int rotationAngle = 0;
-        private bool isEnter;
 
         public MainWindow()
         {
-            town = App.settings.city.cityName;
-            townID = App.settings.city.cityId.ToString();
+            town = App.settings.GetFirstCity().city.cityName;
+            townID = App.settings.GetFirstCity().city.cityId.ToString();
 
             forecasts = new XMLParser(town, townID);
 
             InitializeComponent();
 
             SettingsImage.Source = ConvertBitmabToImage(Properties.Resources.Gear);
-            rotationTimer=new DispatcherTimer {Interval = new TimeSpan(0, 0, 0, 0, 10)};
+            rotationTimer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 0, 10) };
             rotationTimer.Tick += rotationTimer_Tick;
 
             timer = new DispatcherTimer();
@@ -81,8 +80,8 @@ namespace WeatherInfo
             rotationAngle += 1;
             SettingsImage.RenderTransform = new RotateTransform(rotationAngle);
             if (rotationAngle == 360)
-                rotationAngle =0;
-            
+                rotationAngle = 0;
+
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -112,25 +111,43 @@ namespace WeatherInfo
 
         private void fillTable()
         {
+            WeatherTable.Children.Clear();
             forecasts = new XMLParser(town, townID);
 
             shrtForecast = forecasts.getBigForecast();
             dtldForecast = forecasts.getDetailedWeek();
 
-            DateTime date = DateTime.Parse(shrtForecast[0].date, CultureInfo.InvariantCulture);
-            int dayOfWeek = (int)date.DayOfWeek - 1;
+            DateTime curDay = DateTime.Now;
+            for (int i = 0; i < 7; i++)
+            {
+                Label day = new Label()
+                {
+                    Content = curDay.ToString("ddd")
+                };
+                Grid.SetRow(day, 0);
+                Grid.SetColumn(day, i);
+                WeatherTable.Children.Add(day);
+                curDay = curDay.AddDays(1);
+            }
             int index = 0;
             City.Content = town;
-            MonthYear.Content = date.ToString("y");
+            MonthYear.Content = DateTime.Now.ToString("y");
             for (int i = 0; i < 2; i++)
             {
-                for (; dayOfWeek < 7; dayOfWeek++)
+                for (int j = 0; j < 7; j++)
                 {
-                    WeatherTable.Children.Add(GetWeaterElement(dayOfWeek, i + 1, index));
+                    WeatherTable.Children.Add(GetWeaterElement(j, i + 1, index));
                     index++;
                 }
-                dayOfWeek = 0;
             }
+        }
+
+        private Grid dayOfWeek(int column, string day)
+        {
+            var gridResult = new Grid();
+            gridResult.SetValue(Grid.RowProperty, 0);
+            gridResult.SetValue(Grid.ColumnProperty, column);
+            return gridResult;
         }
 
         /// <summary>
@@ -138,7 +155,7 @@ namespace WeatherInfo
         /// </summary>
         /// <param name="column">Номер столбца</param>
         /// <param name="row">Номер строки</param>
-        /// <param name="index">???</param>
+        /// <param name="index">Номер добавляемого дня(в массиве полученных дней)</param>
         /// <returns></returns>
         private Grid GetWeaterElement(int column, int row, int index)
         {
@@ -154,7 +171,7 @@ namespace WeatherInfo
             gridResult.RowDefinitions.Add(new RowDefinition());
             var specRowDef = new ColumnDefinition { Width = new GridLength(1.2, GridUnitType.Star) };
             gridResult.ColumnDefinitions.Add(specRowDef);
-            
+
             string day = fore.date.Substring(8, 2);
 
             var dayLabel = new Label { Content = day, FontWeight = FontWeights.Bold };
@@ -207,7 +224,7 @@ namespace WeatherInfo
                 ForecastHour[] fors = dtldForecast[index].hours.ToArray();
                 int temp = 0;
                 fors = fors.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
-                foreach(var el in fors)
+                foreach (var el in fors)
                 {
                     el.time = dayParts[el.time];
                 }
@@ -307,7 +324,7 @@ namespace WeatherInfo
 
         //private DockPanel GetFourTime
 
-        
+
         /*
          <Image Source="http://openweathermap.org/img/w/10d.png" Grid.Row="1"  Grid.RowSpan="2" Grid.ColumnSpan="2"></Image> 
          
@@ -317,7 +334,7 @@ namespace WeatherInfo
             switch (this.WindowState)
             {
                 case System.Windows.WindowState.Minimized:
-                    Tray.Update(forecasts.getCurHour(),1.5f, false);
+                    Tray.Update(forecasts.getCurHour(), 1.5f, false);
                     break;
             }
         }
@@ -330,8 +347,8 @@ namespace WeatherInfo
         public void applySettings()
         {
             WeatherTable.Children.RemoveRange(7, 14);
-            town = App.settings.city.cityName;
-            townID = App.settings.city.cityId.ToString();
+            town = App.settings.GetFirstCity().city.cityName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
+            townID = App.settings.GetFirstCity().city.cityId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
 
             timer.Stop();
             forecasts = new XMLParser(town, townID);
@@ -376,7 +393,7 @@ namespace WeatherInfo
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            switch(e.Key)
+            switch (e.Key)
             {
                 case Key.F1:
                     Two_Windows tw = new Two_Windows(this, new MainWindow());

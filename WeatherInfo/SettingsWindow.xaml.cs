@@ -45,26 +45,31 @@ namespace WeatherInfo
             aboutWindow.Activate();
         }
 
-        public string country_save = "";
+        public string countryId_save = "RU";
+        public string countryName_save = "";
+        public int regionId_save = 0;
+        public string regionName_save = "Region";
         public int cityId_save;
         public string cityName_save = "";
         public int updatePeriod_save = 10;
         public string format_save = "";
         public bool autostart_save = true;
+        public string temperatureUnits_save = "Celsius";
+        public string language_save = "Russian";
 
         private void accept_btn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                country_save = listOfCountries_cbx.SelectedItem.ToString();
+                countryName_save = listOfCountries_cbx.SelectedItem.ToString();
                 cityName_save = listOfCitiies_cbx.SelectedItem.ToString();
                 cityId_save = gC.GetCityNumberYandex(cityName_save);
                 //cityName_save = translate.toEng(listOfCitiies_cbx.SelectedItem.ToString(), "Location//translit.txt");
                 updatePeriod_save = Convert.ToInt32(updatePeriod_slider.Value);
-                format_save = FormatHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
+                format_save = Options.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
                 autostart_save = (bool)autostartFlag_chbx.IsChecked;
 
-                App.settings = new Settings(country_save, cityId_save, cityName_save, format_save, updatePeriod_save, autostart_save);
+                App.settings = new Settings(countryId_save, countryName_save, regionId_save, regionName_save, cityId_save, cityName_save, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
 
                 App.settingHandler.SaveSettings(App.settings);
 
@@ -110,17 +115,17 @@ namespace WeatherInfo
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadCountries();
-            listOfCountries_cbx.SelectedItem = App.settings.country;
+            listOfCountries_cbx.SelectedItem = App.settings.cities[0].country.countryName;
             listOfCountries_cbx.SelectionChanged += listOfCountries_cbx_SelectionChanged;
 
-            LoadCities(App.settings.country);
-            listOfCitiies_cbx.SelectedItem = App.settings.city.cityName;
+            LoadCities(App.settings.cities[0].country.countryName);
+            listOfCitiies_cbx.SelectedItem = App.settings.cities[0].city.cityName;
             listOfCitiies_cbx.SelectionChanged += listOfCitiies_cbx_SelectionChanged;
 
             updatePeriod_slider.Value = Convert.ToDouble(App.settings.updatePeriod);
 
             LoadFormats();
-            listOfFormatsForecast_cbx.SelectedItem = FormatHandler.GetFormatAttribute(App.settings.format);
+            listOfFormatsForecast_cbx.SelectedItem = Options.GetFormatAttribute(App.settings.format);
             listOfFormatsForecast_cbx.SelectionChanged += listOfFormatsForecast_cbx_SelectionChanged;
 
             autostartFlag_chbx.IsChecked = App.settings.autostart;
@@ -140,10 +145,10 @@ namespace WeatherInfo
 
         void LoadFormats()
         {
-            string[] formats = Enum.GetNames(typeof(FormatForecast));
+            string[] formats = Enum.GetNames(typeof(Options.FormatForecast));
             foreach (var f in formats)
             {
-                var value = FormatHandler.GetFormatAttribute(f);
+                var value = Options.GetFormatAttribute(f);
                 listOfFormatsForecast_cbx.Items.Add(value);
             }
         }
@@ -165,7 +170,7 @@ namespace WeatherInfo
 
         private void listOfFormatsForecast_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            format_save = FormatHandler.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
+            format_save = Options.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
         }
 
         private void updatePeriod_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
