@@ -58,5 +58,10 @@ namespace SettingsHandlerInterface.Classes
 
             return citySettings;
         }
+
+        public override string ToString()
+        {
+            return string.Format("{1}, {0}", country.countryRusName, city.cityRusName);
+        }
     }
 }
