@@ -45,8 +45,8 @@ namespace WeatherInfo
 
         public MainWindow()
         {
-            town = App.settings.GetFirstCity().city.cityName;
-            townID = App.settings.GetFirstCity().city.cityId.ToString();
+            town = App.settings.GetFirstCity().city.cityRusName;
+            townID = App.settings.GetFirstCity().city.cityYaId.ToString();
 
             forecasts = new XMLParser(town, townID);
 
@@ -380,8 +380,8 @@ namespace WeatherInfo
             City.Content = "Update";
             this.IsEnabled = false;
             
-            town = App.settings.GetFirstCity().city.cityName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
-            townID = App.settings.GetFirstCity().city.cityId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
+            town = App.settings.GetFirstCity().city.cityRusName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
+            townID = App.settings.GetFirstCity().city.cityYaId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
 
             timer.Stop();
             worker.RunWorkerAsync();
