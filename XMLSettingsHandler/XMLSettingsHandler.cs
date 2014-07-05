@@ -56,6 +56,7 @@ namespace XMLSettingsHandler
         {
             try
             {
+                //WriteXml(Settings.GetDefaultSettings());
                 if (File.Exists(XMLFileName))
                 {
                     Settings settings = new Settings();
