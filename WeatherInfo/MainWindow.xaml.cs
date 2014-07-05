@@ -180,7 +180,9 @@ namespace WeatherInfo
             var image = new Image
                 {
                     Source = new BitmapImage(
-                        new Uri(OpenWeatherAPI.ImageRequestString + String.Format("{0}.png", fore.icon)))
+                        new Uri(OpenWeatherAPI.ImageRequestString + String.Format("{0}.png", fore.icon))),
+                        Height = 42,
+                        Width = 42
                 };
             image.SetValue(Grid.RowProperty, 1);
             image.SetValue(Grid.RowSpanProperty, 2);

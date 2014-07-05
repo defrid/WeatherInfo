@@ -30,11 +30,6 @@ namespace TestConsole
             Console.WriteLine(doc);
             Console.ReadKey();*/
 
-            StringReader reader=new StringReader("123\n123\n123");
-            while (true)
-            {
-                var line = reader.ReadLine();
-            }
         }
     }
 }
