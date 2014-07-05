@@ -57,7 +57,7 @@ namespace WeatherInfo.Classes
                 foreach (var hour in day.Elements(ss + "hour"))
                 {
                     string time = hour.Attribute("at").Value;
-                    time = time.Length > 0 ? time : "0" + time;
+                    time = time.Length > 1 ? time : "0" + time;
                     int temp = Int32.Parse(hour.Element(ss + "temperature").Value);
                     string clouds = hour.Element(ss + "weather_condition").Attribute("code").Value;
                     string icon = hour.Element(ss + "image-v3").Value;
@@ -71,8 +71,7 @@ namespace WeatherInfo.Classes
                     string time = day_part.Attribute("type").Value;
                     int temp;
                     try { temp = Int32.Parse(day_part.Element(ss + "temperature_to").Value); }
-                    catch
-                    { temp = Int32.Parse(day_part.Element(ss + "temperature").Value); }
+                    catch { temp = Int32.Parse(day_part.Element(ss + "temperature").Value); }
                     string clouds = day_part.Element(ss + "weather_condition").Attribute("code").Value;
                     string icon = day_part.Element(ss + "image-v3").Value;
                     res[curDay].hours.Add(new ForecastHour(temp, clouds, time, icon));

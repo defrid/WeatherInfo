@@ -103,9 +103,6 @@
     <Compile Include="ChooseTown.xaml.cs">
       <DependentUpon>ChooseTown.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window2.xaml.cs">
-      <DependentUpon>Window2.xaml</DependentUpon>
-    </Compile>
     <Page Include="About.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -137,10 +134,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChooseTown.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
