@@ -50,6 +50,12 @@ namespace WeatherInfo
 
         public MainWindow()
         {
+            
+            if (!OneInstance.EnsureSingleInstance())
+            { 
+                this.Close(); 
+            }
+
             town = App.settings.GetFirstCity().city.cityRusName;
             townID = App.settings.GetFirstCity().city.cityYaId.ToString();
 

@@ -94,6 +94,7 @@
     <Compile Include="Classes\Methods_to_BD.cs" />
     <Compile Include="Classes\cityChoose.cs" />
     <Compile Include="Classes\ForecastHour.cs" />
+    <Compile Include="Classes\OneInstance.cs" />
     <Compile Include="Classes\Tables.cs" />
     <Compile Include="Classes\translate.cs" />
     <Compile Include="Classes\YandexWeatherAPI.cs" />
@@ -103,9 +104,6 @@
     </Compile>
     <Compile Include="Two_Windows.xaml.cs">
       <DependentUpon>Two_Windows.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ChooseTown.xaml.cs">
-      <DependentUpon>ChooseTown.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowTray.xaml.cs">
       <DependentUpon>WindowTray.xaml</DependentUpon>
@@ -137,10 +135,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Two_Windows.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ChooseTown.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
