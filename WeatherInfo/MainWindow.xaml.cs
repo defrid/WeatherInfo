@@ -55,8 +55,8 @@ namespace WeatherInfo
             //wg.makeDiagram .makeGraphic 
             //wg.Show();
             if (!OneInstance.EnsureSingleInstance())
-            { 
-                this.Close(); 
+            {
+                this.Close();
             }
 
             town = App.settings.GetFirstCity().city.cityRusName;
@@ -248,7 +248,7 @@ namespace WeatherInfo
                 }
             }
         }
-        
+
         /// <summary>
         /// Превращает прогноз яндекса в 10 дневный прогноз, на случай отсутствия соединения с opAPI
         /// </summary>
