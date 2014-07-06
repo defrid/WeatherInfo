@@ -1,7 +1,7 @@
 ﻿<Window x:Class="WeatherInfo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Weather Informer" Height="295" Width="640" KeyDown="Window_KeyDown" ResizeMode="CanMinimize">
+        Title="Weather Informer" Height="295" Width="640" KeyDown="Window_KeyDown" ResizeMode="CanMinimize" Loaded="Window_Loaded">
     <ScrollViewer>
         <Border BorderBrush="Black" BorderThickness="2">
     <StackPanel Name="MainContainer">
@@ -12,7 +12,8 @@
                     <Label Name="MonthYear" Margin="50 5" Content="Month Year" VerticalAlignment="Center"/>
                     <Image Name="SettingsImage" RenderTransformOrigin="0.5 0.5" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter" MouseDown="SettingsImage_MouseDown"/>
                 </DockPanel>
-            </DockPanel>
+                        <Button Content="Button" Width="75" Click="Button_Click"/>
+                    </DockPanel>
             <Border BorderBrush="Black" BorderThickness="1">
                 <Grid Name="WeatherTable" ShowGridLines="True" MinWidth="580" MinHeight="170">
                     <Grid.Resources>
