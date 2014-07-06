@@ -13,12 +13,17 @@ namespace SettingsHandlerInterface.Classes
         public CitySettings() { }
 
         /// <summary>
-        /// Конструктор с параметрами
+        /// Конструктор класса, создаёт экземпляр, хранящий информацию о параметрах города.
         /// </summary>
         /// <param name="_countryId">ИД страны (буквенный код)</param>
-        /// <param name="_countryName">Наименование страны</param>
-        /// <param name="_cityId">ИД города (числовой код)</param>
-        /// <param name="_cityName">Наименование города</param>
+        /// <param name="_countryRusName">Наименование страны на русском</param>
+        /// <param name="_countryEngName">Наименование страны на английском</param>
+        /// <param name="_regionId">ИД региона</param>
+        /// <param name="_regionName">Наименование региона</param>
+        /// <param name="_cityYaId">ИД города из Яндекса</param>
+        /// <param name="_cityOWId">ИД города из OpenWeather</param>
+        /// <param name="_cityRusName">Наименование города на русском</param>
+        /// <param name="_cityEngName">Наименование города на английском</param>
         public CitySettings(string _countryId, string _countryRusName, string _countryEngName, int _regionId, string _regionName, int _cityYaId, int _cityOWId, string _cityRusName, string _cityEngName)
         {
             country = new Country(_countryId, _countryRusName, _countryEngName);
@@ -26,6 +31,12 @@ namespace SettingsHandlerInterface.Classes
             city = new City(_cityYaId, _cityOWId, _cityRusName, _cityEngName);
         }
 
+        /// <summary>
+        /// Конструктор класса, создаёт экземпляр, хранящий информацию о параметрах города.
+        /// </summary>
+        /// <param name="_country">Объект, представляющий информацию о стране</param>
+        /// <param name="_region">Объект, представляющий информацию о регионе</param>
+        /// <param name="_city">Объект, представляющий информацию о городе</param>
         public CitySettings(Country _country, RegionOfCity _region, City _city)
         {
             country = _country;
@@ -40,14 +51,14 @@ namespace SettingsHandlerInterface.Classes
         /// <summary>
         /// Настройки по-умолчанию для города
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Объект, хранящий информацию о параметрах города.</returns>
         public static CitySettings GetDefaultSettings()
         {
             string _countryId = "RU";
             string _countryRusName = "Россия";
             string _countryEngName = "Russia";
-            int _regionId = 11153;
-            string _regionName = "Ульяновская область";
+            int _regionId = 0;
+            string _regionName = "Region";
 
             int _cityYaId = 27786;
             int _cityOWId = 479123;
