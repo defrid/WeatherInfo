@@ -1,0 +1,12 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" x:Class="WeatherInfo.WindowGraphics"
+        Title="Статистика" Height="450" Width="666.791">
+    <Grid Loaded="Grid_Loaded" Margin="0">
+
+        <chartingToolkit:Chart Name="grafic" Grid.Row="0" Margin="0">
+        </chartingToolkit:Chart>
+
+    </Grid>
+</Window>

@@ -45,6 +45,11 @@ namespace WeatherInfo
 
         public MainWindow()
         {
+            //Пример создания окна графиков
+            //WindowGraphics wg = new WindowGraphics();
+            //wg.makeDiagram .makeGraphic 
+            //wg.Show();
+
             town = App.settings.GetFirstCity().city.cityRusName;
             townID = App.settings.GetFirstCity().city.cityYaId.ToString();
 
