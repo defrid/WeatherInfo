@@ -118,7 +118,7 @@ namespace WeatherInfo
         /// </summary>
         /// <param name="bitmapImage"></param>
         /// <returns></returns>
-        private BitmapImage ConvertBitmabToImage(System.Drawing.Bitmap bitmapImage)
+        public static BitmapImage ConvertBitmabToImage(System.Drawing.Bitmap bitmapImage)
         {
             using (var stream = new MemoryStream())
             {
