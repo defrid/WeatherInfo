@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Globalization;
 using System.Windows.Threading;
 using WeatherInfo.Classes;
+using Entity_base;
 
 namespace WeatherInfo
 {
@@ -68,6 +69,15 @@ namespace WeatherInfo
             fillTable();
             timer.Start();
             Tray.SetupTray(this, options, expandShort);
+
+            
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataBase data = new DataBase();
+            data.ADD_BD();
+            data.show();
         }
 
         /// <summary>
