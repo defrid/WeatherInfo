@@ -13,13 +13,24 @@ namespace XMLSettingsHandler
 {
     public class XMLSettingsHandler : SettingsHandler
     {
-        public static String XMLFileName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + /*Application.StartupPath + */@"\Config\settings.xml";
+        /// <summary>
+        /// Хранит путь к файлу настроек
+        /// </summary>
+        public static String XMLFileName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\Config\settings.xml";
 
+        /// <summary>
+        /// Сохраняет настройки в XML-файл.
+        /// </summary>
+        /// <param name="settings">Объект, содержащий настройки приложения</param>
         public override void SaveSettings(Settings settings)
         {
             WriteXml(settings);
         }
 
+        /// <summary>
+        /// Загружает настрйки из XML-файла и возвращает объект их содержащий.
+        /// </summary>
+        /// <returns></returns>
         public override Settings LoadSettings()
         {
             var settings = ReadXml();
@@ -27,7 +38,10 @@ namespace XMLSettingsHandler
             return settings;
         }
 
-        //Запись настроек в файл
+        /// <summary>
+        /// Сохраняет настройки в XML-файл.
+        /// </summary>
+        /// <param name="settings">Объект, содержащий настройки приложения</param>
         private static void WriteXml(Settings settings)
         {
             try
@@ -51,7 +65,10 @@ namespace XMLSettingsHandler
             }
         }
 
-        //Чтение настроек из файла
+        /// <summary>
+        /// Загружает настрйки из XML-файла и возвращает объект их содержащий.
+        /// </summary>
+        /// <returns></returns>
         private static Settings ReadXml()
         {
             try

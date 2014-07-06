@@ -15,6 +15,15 @@ namespace SettingsHandlerInterface.Classes
     {
         public Settings() { }
 
+        /// <summary>
+        /// Конструктор класса, создаёт экземпляр, хранящий информацию о настройках программы
+        /// </summary>
+        /// <param name="_cities">Список городов (со всей хранимой информацией о городе)</param>
+        /// <param name="_format">Формат представления прогноза погоды</param>
+        /// <param name="_updatePeriod">Период обновления прогноза</param>
+        /// <param name="_autostart">Флаг автозагрузки (true - разрешить, false - запретить)</param>
+        /// <param name="_temperatureUnits">Единицы измерения температуры</param>
+        /// <param name="_language">Язык локализации системы</param>
         public Settings(List<CitySettings> _cities, string _format, int _updatePeriod, bool _autostart, TemperatureUnits _temperatureUnits, Language _language)
         {
             cities = new List<CitySettings>(_cities);
@@ -25,6 +34,23 @@ namespace SettingsHandlerInterface.Classes
             language = _language;
         }
 
+        /// <summary>
+        /// Конструктор класса, создаёт экземпляр, хранящий информацию о настройках программы
+        /// </summary>
+        /// <param name="_countryId">ИД страны</param>
+        /// <param name="_countryRusName">Наименование страны на русском</param>
+        /// <param name="_countryEngName">Наименование страны на английском</param>
+        /// <param name="_regionId">ИД региона страны</param>
+        /// <param name="_regionName">Наименование региона страны</param>
+        /// <param name="_cityYaId">ИД города из Яндекса</param>
+        /// <param name="_cityOWId">ИД города из OpenWeather</param>
+        /// <param name="_cityRusName">Название города на русском</param>
+        /// <param name="_cityEngName">Название города на английском</param>
+        /// <param name="_format">Формат представления прогноза погоды</param>
+        /// <param name="_updatePeriod">Период обновления прогноза</param>
+        /// <param name="_autostart">Флаг автозагрузки (true - разрешить, false - запретить)</param>
+        /// <param name="_temperatureUnits">Единицы измерения температуры</param>
+        /// <param name="_language">Язык локализации системы</param>
         public Settings(string _countryId, string _countryRusName, string _countryEngName, int _regionId, string _regionName, int _cityYaId, int _cityOWId, string _cityRusName, string _cityEngName, string _format, int _updatePeriod, bool _autostart, TemperatureUnits _temperatureUnits, Language _language)
         {
             cities = new List<CitySettings>();
@@ -36,6 +62,17 @@ namespace SettingsHandlerInterface.Classes
             language = _language;
         }
 
+        /// <summary>
+        /// Конструктор класса, создаёт экземпляр, хранящий информацию о настройках программы
+        /// </summary>
+        /// <param name="_countries">Список стран (со всей хранимой информацией о стране)</param>
+        /// <param name="_regions">Список регионов (со всей хранимой информацией о городе)</param>
+        /// <param name="_cities">Список городов (со всей хранимой информацией о городе)</param>
+        /// <param name="_format">Формат представления прогноза погоды</param>
+        /// <param name="_updatePeriod">Период обновления прогноза</param>
+        /// <param name="_autostart">Флаг автозагрузки (true - разрешить, false - запретить)</param>
+        /// <param name="_temperatureUnits">Единицы измерения температуры</param>
+        /// <param name="_language">Язык локализации системы</param>
         public Settings(List<Country> _countries, List<RegionOfCity> _regions, List<City> _cities, string _format, int _updatePeriod, bool _autostart, TemperatureUnits _temperatureUnits, Language _language)
         {
             cities = new List<CitySettings>();
@@ -46,13 +83,40 @@ namespace SettingsHandlerInterface.Classes
             language = _language;
         }
 
+        /// <summary>
+        /// Список городов
+        /// </summary>
         public List<CitySettings> cities { get; set; }
+
+        /// <summary>
+        /// Формат представления прогноза погоды
+        /// </summary>
         public string format { get; set; }
+
+        /// <summary>
+        /// Период обновления прогноза
+        /// </summary>
         public int updatePeriod { get; set; }
+
+        /// <summary>
+        /// Флаг автозагрузки (true - разрешить, false - запретить)
+        /// </summary>
         public bool autostart { get; set; }
+
+        /// <summary>
+        /// Единицы измерения температуры
+        /// </summary>
         public TemperatureUnits temperatureUnits { get; set; }
+
+        /// <summary>
+        /// Язык локализации системы
+        /// </summary>
         public Language language { get; set; }
 
+        /// <summary>
+        /// Возвращает первый в списке город
+        /// </summary>
+        /// <returns></returns>
         public CitySettings GetFirstCity()
         {
             return cities.ElementAt(0);

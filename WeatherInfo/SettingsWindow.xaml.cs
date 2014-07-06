@@ -16,6 +16,7 @@ using WeatherInfo.Classes;
 using System.Windows.Threading;
 using Microsoft.Win32;
 using IWshRuntimeLibrary;
+using System.Diagnostics;
 
 namespace WeatherInfo
 {
@@ -38,8 +39,6 @@ namespace WeatherInfo
             language_save = new Language("Русский", "Russian");
         }
 
-        getCity gC = new getCity();
-
         private void cancel_btn_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -47,10 +46,17 @@ namespace WeatherInfo
 
         private void about_btn_Click(object sender, RoutedEventArgs e)
         {
-            About aboutWindow = new About();
-            aboutWindow.Show();
-            aboutWindow.Focus();
-            aboutWindow.Activate();
+            try
+            {
+                About aboutWindow = new About();
+                aboutWindow.Show();
+                aboutWindow.Focus();
+                aboutWindow.Activate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("About Window Show(): Непредвиденная ошибка! Ошибка: " + ex.Message);
+            }            
         }
 
         public List<CitySettings> ChoosenCities;
@@ -70,7 +76,6 @@ namespace WeatherInfo
                 temperatureUnits_save = (TemperatureUnits)listOfTemperatureUnits_cbx.SelectedItem;
                 language_save = (Language)listOfLanguages_cbx.SelectedItem;
 
-                //App.settings = new Settings(countryId_save, countryRusName_save, countryEngName_save, regionId_save, regionName_save, cityYaId_save, cityOWId_save, cityRusName_save, cityEngName_save, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
                 App.settings = new Settings(ChoosenCities, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
 
                 App.settingHandler.SaveSettings(App.settings);
@@ -93,32 +98,41 @@ namespace WeatherInfo
         /// </summary>
         private void Autorun()
         {
-            var path = string.Concat(Environment.CurrentDirectory, @"\WeatherInfo.exe");
-            var pathToLnk = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\WeatherInfo.lnk";
-
-            
-
-            RegistryKey key =
-                    Registry.CurrentUser.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
-            //Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
-
-            if ((bool)autostartFlag_chbx.IsChecked)
+            try
             {
-                if (CreateShortCut(path, Environment.CurrentDirectory, pathToLnk))
+                var path = string.Concat(Environment.CurrentDirectory, @"\WeatherInfo.exe");
+                var pathToLnk = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\WeatherInfo.lnk";
+
+
+
+                RegistryKey key =
+                        Registry.CurrentUser.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
+                //Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
+
+                if ((bool)autostartFlag_chbx.IsChecked)
                 {
-                    key.SetValue("WeatherInfo", pathToLnk);
-                    //key.SetValue("WeatherInfo", "\\WeatherInfo.exe");
+                    if (CreateShortCut(path, Environment.CurrentDirectory, pathToLnk))
+                    {
+                        key.SetValue("WeatherInfo", pathToLnk);
+                        //key.SetValue("WeatherInfo", "\\WeatherInfo.exe");
+                    }
                 }
+                else
+                {
+                    if (DeleteShortCut(pathToLnk))
+                    {
+                        key.DeleteValue("WeatherInfo", false);
+                    }
+                }
+                key.Flush();
+                key.Close();
             }
-            else
+            catch (Exception ex)
             {
-                if (DeleteShortCut(pathToLnk))
-                {
-                    key.DeleteValue("WeatherInfo", false);
-                }
+                MessageBox.Show("Ошибка сохранения состояния автозагрузки. Ошибка: " + ex.Message);
+                Debug.WriteLine("Autorun(): Ошибка сохранения состояния автозагрузки. Ошибка: " + ex.Message);
             }
-            key.Flush();
-            key.Close();            
+                        
         }
 
         /// <summary>
@@ -144,6 +158,7 @@ namespace WeatherInfo
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка добвления программы в автозагрузку! Ошибка: " + ex.Message);
+                Debug.WriteLine("CreateShortCut(): Ошибка добвления программы в автозагрузку! Ошибка: " + ex.Message);
                 return false;
             }            
         }
@@ -166,6 +181,7 @@ namespace WeatherInfo
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка удаления программы из автозагрузки! Ошибка: " + ex.Message);
+                Debug.WriteLine("DeleteShortCut(): Ошибка удаления программы из автозагрузки! Ошибка: " + ex.Message);
                 return false;
             }            
         }
@@ -229,15 +245,23 @@ namespace WeatherInfo
         /// </summary>
         void LoadChoosenCities()
         {
-            ChoosenCities = new List<CitySettings>(App.settings.cities);
-            foreach (var city in ChoosenCities)
+            try
             {
-                var item = new ComboBoxItem();
-                item.Tag = city;
-                item.Content = city.ToString();
-                ChoosenCitiesComboBox.Items.Add(item);//(city.ToString());
-                //ChoosenCitiesComboBox.Items.GetItemAt(ChoosenCitiesComboBox.Items.Count - 1).Tag = city;                
+                ChoosenCities = new List<CitySettings>(App.settings.cities);
+                foreach (var city in ChoosenCities)
+                {
+                    var item = new ComboBoxItem();
+                    item.Tag = city;
+                    item.Content = city.ToString();
+                    ChoosenCitiesComboBox.Items.Add(item);//(city.ToString());
+                    //ChoosenCitiesComboBox.Items.GetItemAt(ChoosenCitiesComboBox.Items.Count - 1).Tag = city;                
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка загрузки списка выбранных для отображения городов. Ошибка: " + ex.Message);
+                Debug.WriteLine("LoadChoosenCities(): Ошибка загрузки списка выбранных для отображения городов. Ошибка: " + ex.Message);
+            }            
         }
 
         /// <summary>
@@ -245,12 +269,20 @@ namespace WeatherInfo
         /// </summary>
         void LoadFormats()
         {
-            string[] formats = Enum.GetNames(typeof(Options.FormatForecast));
-            foreach (var f in formats)
+            try
             {
-                var value = Options.GetFormatAttribute(f);
-                listOfFormatsForecast_cbx.Items.Add(value);
+                string[] formats = Enum.GetNames(typeof(Options.FormatForecast));
+                foreach (var f in formats)
+                {
+                    var value = Options.GetFormatAttribute(f);
+                    listOfFormatsForecast_cbx.Items.Add(value);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка загрузки списка форматов отображения. Ошибка: " + ex.Message);
+                Debug.WriteLine("LoadFormats(): Ошибка загрузки списка форматов отображения. Ошибка: " + ex.Message);
+            } 
         }
 
         /// <summary>
@@ -258,14 +290,19 @@ namespace WeatherInfo
         /// </summary>
         void LoadTemperatureUnits()
         {
-            var temperatureUnits = Options.GetTemperatureUnits();
-            foreach (var tempUn in temperatureUnits)
+            try
             {
-                //var item = new ComboBoxItem();
-                //item.Tag = tempUn;
-                //item.Content = tempUn.ToString();
-                listOfTemperatureUnits_cbx.Items.Add(tempUn);
+                var temperatureUnits = Options.GetTemperatureUnits();
+                foreach (var tempUn in temperatureUnits)
+                {
+                    listOfTemperatureUnits_cbx.Items.Add(tempUn);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка загрузки списка единиц измерения температуры. Ошибка: " + ex.Message);
+                Debug.WriteLine("LoadTemperatureUnits(): Ошибка загрузки списка единиц измерения температуры. Ошибка: " + ex.Message);
+            } 
         }
 
         /// <summary>
@@ -273,13 +310,21 @@ namespace WeatherInfo
         /// </summary>
         void LoadLanguages()
         {
-            var languages = Options.GetLanguages();
-            foreach (var lang in languages)
+            try
             {
-                //var item = new ComboBoxItem();
-                //item.Tag = lang;
-                //item.Content = lang.ToString();
-                listOfLanguages_cbx.Items.Add(lang);
+                var languages = Options.GetLanguages();
+                foreach (var lang in languages)
+                {
+                    //var item = new ComboBoxItem();
+                    //item.Tag = lang;
+                    //item.Content = lang.ToString();
+                    listOfLanguages_cbx.Items.Add(lang);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка загрузки списка языков локализации программы. Ошибка: " + ex.Message);
+                Debug.WriteLine("LoadLanguages(): Ошибка загрузки списка языков локализации программы. Ошибка: " + ex.Message);
             }
         }
 
