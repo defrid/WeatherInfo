@@ -9,24 +9,97 @@ namespace SettingsHandlerInterface.Classes
 {
     public class Options
     {
-        /// <summary>
-        /// Перечисление форматов единиц измерения температуры
-        /// </summary>
-        public enum TemperatureUnits
-        {
-            Celsius,
-            Kelvin,
-            Fahrenheit
-        }
+        #region Единицы измерения температуры
+        #region TemperatureUnits на enum
+        //public enum TemperatureUnits
+        //{
+        //    [FormatAttribute("Цельсии")]
+        //    Celsius,
+        //    [FormatAttribute("Кельвины")]
+        //    Kelvin,
+        //    [FormatAttribute("Фаренгейты")]
+        //    Fahrenheit
+        //}
+        #endregion
 
+        /// <summary>
+        /// Класс формата единиц измерения температуры
+        /// </summary>
+        //public class TemperatureUnits
+        //{
+        //    public TemperatureUnits(string _rusName, string _engName)
+        //    {
+        //        rusName = _rusName;
+        //        engName = _engName;
+        //    }
+
+        //    string rusName { get; set; }
+        //    string engName { get; set; }
+
+        //    public override string ToString()
+        //    {
+        //        return engName;
+        //        //return string.Format("{1} | {0}", rusName, engName);
+        //    }
+        //}
+
+        /// <summary>
+        /// Список, хранящий единицы измерения температуры
+        /// </summary>
+        private static List<TemperatureUnits> temperatureUnits = new List<TemperatureUnits> { new TemperatureUnits("Цельсии", "Celsius"), 
+                                                                                              new TemperatureUnits("Кельвины", "Kelvin"),
+                                                                                              new TemperatureUnits("Фаренгейты", "Fahrenheit") };
+
+        public static List<TemperatureUnits> GetTemperatureUnits()
+        {
+            return temperatureUnits;
+        }
+        #endregion
+
+        #region Языки для системы
+        #region Languages на enum
+        //public enum Languages
+        //{
+        //    [FormatAttribute("Русский")]
+        //    Russian,
+        //    [FormatAttribute("Английский")]
+        //    English
+        //}
+        #endregion
         /// <summary>
         /// Языки
         /// </summary>
-        public enum Languages
+        //public class Language
+        //{
+        //    public Language(string _rusName, string _engName)
+        //    {
+        //        rusName = _rusName;
+        //        engName = _engName;
+        //    }
+
+        //    string rusName { get; set; }
+        //    string engName { get; set; }
+
+        //    public override string ToString()
+        //    {
+        //        return string.Format("{1} | {0}", rusName, engName);
+        //    }
+        //}
+
+        /// <summary>
+        /// Список, хранящий языки для системы (Расский, Английкский, ...)
+        /// </summary>
+        private static List<Language> languages = new List<Language> { new Language("Русский", "Russian"), new Language("Английский", "English") };
+
+        /// <summary>
+        /// Возвращает список языков для системы
+        /// </summary>
+        /// <returns>Список языков для системы</returns>
+        public static List<Language> GetLanguages()
         {
-            Russian,
-            English
+            return languages;
         }
+        #endregion
 
         /// <summary>
         /// Перечисление форматов прогноза погоды (по неделям, по дням)
@@ -51,8 +124,9 @@ namespace SettingsHandlerInterface.Classes
                 name = _name;
             }
         }
+
         /// <summary>
-        /// Для формата прогноза возвращает аттрибут (по сути русская локализация для combobox) для формата
+        /// Для формата прогноза возвращает аттрибут (по сути русская локализация для combobox)
         /// </summary>
         /// <param name="format"></param>
         /// <returns></returns>

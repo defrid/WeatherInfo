@@ -167,10 +167,17 @@
       <Project>{5aa7e742-fdc3-4ffa-9336-209943278141}</Project>
       <Name>SettingsHandlerInterface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XMLSettingsHandler\XMLSettingsHandler.csproj">
-      <Project>{6bd9e98d-8644-40d5-b04c-60007e3fd8df}</Project>
-      <Name>XMLSettingsHandler</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
