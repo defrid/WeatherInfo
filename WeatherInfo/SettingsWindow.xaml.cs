@@ -30,7 +30,7 @@ namespace WeatherInfo
             InitializeComponent();
         }
 
-        getCity gC = new getCity();
+        //(ИЗМЕНЕН ЗАГРУЗЧИК)getCity gC = new getCity();
 
         private void cancel_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -66,8 +66,12 @@ namespace WeatherInfo
             {
                 countryRusName_save = listOfCountries_cbx.SelectedItem.ToString();
                 cityRusName_save = listOfCitiies_cbx.SelectedItem.ToString();
-                cityYaId_save = gC.GetCityNumberYandex(cityRusName_save);
+
+                //(ИЗМЕНЕН ЗАГРУЗЧИК) cityYaId_save = gC.GetCityNumberYandex(cityRusName_save);
                 //cityName_save = translate.toEng(listOfCitiies_cbx.SelectedItem.ToString(), "Location//translit.txt");
+                cityYaId_save = getCity.getCityId(cityRusName_save, true, true, countryRusName_save);
+                
+
                 updatePeriod_save = Convert.ToInt32(updatePeriod_slider.Value);
                 format_save = Options.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
                 autostart_save = (bool)autostartFlag_chbx.IsChecked;
@@ -136,14 +140,16 @@ namespace WeatherInfo
 
         void LoadCountries()
         {
-            List<string> countries = gC.CountryNames();
-            listOfCountries_cbx.ItemsSource = countries;
+            //(ИЗМЕНЕН ЗАГРУЗЧИК)List<string> countries = gC.CountryNames();
+            //(ИЗМЕНЕН ЗАГРУЗЧИК)listOfCountries_cbx.ItemsSource = countries;
+            listOfCountries_cbx.ItemsSource = getCity.getCountryNames();
         }
 
         void LoadCities(string country)
         {
-            List<string> allCities = gC.CityNamesYandex(country);
-            listOfCitiies_cbx.ItemsSource = allCities;
+            //(ИЗМЕНЕН ЗАГРУЗЧИК)List<string> allCities = gC.CityNamesYandex(country);
+            //(ИЗМЕНЕН ЗАГРУЗЧИК)listOfCitiies_cbx.ItemsSource = allCities;
+            listOfCitiies_cbx.ItemsSource = getCity.getCities(country, true);
         }
 
         void LoadFormats()
@@ -177,6 +183,11 @@ namespace WeatherInfo
         }
 
         private void updatePeriod_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }

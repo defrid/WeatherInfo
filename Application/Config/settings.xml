@@ -4,15 +4,18 @@
     <CitySettings>
       <country>
         <countryId>RU</countryId>
-        <countryName>Россия</countryName>
+        <countryRusName>Россия</countryRusName>
+        <countryEngName>Country</countryEngName>
       </country>
       <region>
         <regionId>0</regionId>
         <regionName>Region</regionName>
       </region>
       <city>
-        <cityId>27786</cityId>
-        <cityName>Ульяновск</cityName>
+        <cityYaId>27549</cityYaId>
+        <cityOWId>0</cityOWId>
+        <cityRusName>Муром</cityRusName>
+        <cityEngName>City</cityEngName>
       </city>
     </CitySettings>
   </cities>
