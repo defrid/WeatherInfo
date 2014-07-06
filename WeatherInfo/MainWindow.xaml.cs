@@ -123,7 +123,10 @@ namespace WeatherInfo
             }
         }
 
-
+        /// <summary>
+        /// Проверяет есть ли доступ к сети
+        /// </summary>
+        /// <returns>Истина, если подключение есть</returns>
         public static bool IsNetworkAvailable()
         {
             if (!NetworkInterface.GetIsNetworkAvailable())
