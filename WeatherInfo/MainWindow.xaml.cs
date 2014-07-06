@@ -53,7 +53,7 @@ namespace WeatherInfo
             forecasts = new XMLParser(town, townID);
 
             InitializeComponent();
-            
+
             City.Content = town;
             MonthYear.Content = DateTime.Now.ToString("y");
 
@@ -78,13 +78,6 @@ namespace WeatherInfo
             this.IsEnabled = false;
             Tray.PreLoad();
             worker.RunWorkerAsync();
-            //fillTable();
-
-
-            //--------------------------------------------------- для трея
-             //проинициализировали
-             //метод по-идее отображающий иконку загрузки, пока не будет вызван update
-            //------------------------------------------------------
         }
 
         /// <summary>
@@ -125,6 +118,11 @@ namespace WeatherInfo
             }
         }
 
+        /// <summary>
+        /// Подключается к серверу в фоновом режиме
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void worker_reload(object sender, DoWorkEventArgs e)
         {
             timer.Stop();
@@ -135,6 +133,11 @@ namespace WeatherInfo
             curForecast = forecasts.getCurHour();
         }
 
+        /// <summary>
+        /// Обновляет интерфейс, если подключение успешно
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void worker_RunWorkerCompleted(object sender,
                                                RunWorkerCompletedEventArgs e)
         {
@@ -153,7 +156,9 @@ namespace WeatherInfo
             timer.Start();
         }
 
-
+        /// <summary>
+        /// Заполнение таблицы погоды
+        /// </summary>
         private void fillTable()
         {
             WeatherTable.Children.Clear();
@@ -181,6 +186,12 @@ namespace WeatherInfo
             }
         }
 
+        /// <summary>
+        /// Возвращает табличку текущего дня
+        /// </summary>
+        /// <param name="column"></param>
+        /// <param name="day"></param>
+        /// <returns></returns>
         private Grid dayOfWeek(int column, string day)
         {
             var gridResult = new Grid();
@@ -272,6 +283,11 @@ namespace WeatherInfo
             return gridResult;
         }
 
+        /// <summary>
+        /// Метод для определения размера сетки Тултипа
+        /// </summary>
+        /// <param name="len">количество прогнозов в тултипе</param>
+        /// <returns>количество строк[0] и стобцов[1]</returns>
         private int[] rowsAndColumns(int len)
         {
             if (len > 10)
@@ -368,25 +384,33 @@ namespace WeatherInfo
          <Image Source="http://openweathermap.org/img/w/10d.png" Grid.Row="1"  Grid.RowSpan="2" Grid.ColumnSpan="2"></Image> 
          
          */
-        
+
 
         void expandShort()
         {
             this.WindowState = System.Windows.WindowState.Normal;
         }
 
+
+        /// <summary>
+        /// Применение настроек и по совместительству обновление таблицы
+        /// </summary>
         public void applySettings()
         {
+            while (worker.IsBusy)
+            {
+                MessageBox.Show("Подождите, пока завершится текущее обновление");
+            }
             City.Content = "Update";
             this.IsEnabled = false;
-            
+
             town = App.settings.GetFirstCity().city.cityRusName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
             townID = App.settings.GetFirstCity().city.cityYaId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
             timer.Interval = TimeSpan.FromSeconds(5);//TimeSpan.FromMinutes(App.settings.updatePeriod);
 
             Tray.PreLoad();
             worker.RunWorkerAsync();
-            
+
             //
         }
 
