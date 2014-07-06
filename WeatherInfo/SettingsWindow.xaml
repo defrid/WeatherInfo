@@ -12,9 +12,9 @@
                 <Label Content="Список городов" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
                 <ComboBox x:Name="listOfCitiies_cbx" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Width="218" IsEditable="True"/>
                 <Label Content="Отображаемые города" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,121,0,0" ></Label>
-                <Button Content="Добавить город" HorizontalAlignment="Left" Margin="233,94,0,0" VerticalAlignment="Top" Width="102" Click="Button_Click"/>
-                <ComboBox HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top" Width="218"/>
-                <Button Content="Удалить" HorizontalAlignment="Left" Margin="233,152,0,0" VerticalAlignment="Top" Width="102"/>
+                <Button Content="Добавить город" Name="AddButton" HorizontalAlignment="Left" Margin="233,94,0,0" VerticalAlignment="Top" Width="102" Click="AddCityButtonClick"/>
+                <ComboBox Name="ChoosenCitiesComboBox" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top" Width="218" SelectionChanged="LockUnlockButtons"/>
+                <Button Content="Удалить" Name="DeleteButton" HorizontalAlignment="Left" Margin="233,152,0,0" VerticalAlignment="Top" Width="102" Click="DeleteCityButtonClick"/>
             </Grid>
         </Border>
 

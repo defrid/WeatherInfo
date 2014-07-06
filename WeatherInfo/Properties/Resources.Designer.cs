@@ -69,5 +69,25 @@ namespace WeatherInfo.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon settingsGear {
+            get {
+                object obj = ResourceManager.GetObject("settingsGear", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon weather {
+            get {
+                object obj = ResourceManager.GetObject("weather", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }
