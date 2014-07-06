@@ -10,7 +10,7 @@ namespace WeatherInfo.Classes
     public class getCity
     {
         /// <summary>
-        /// эту модель я использую для лесериализации моего xml
+        /// эту модель использую для десериализации xml с данными городов
         /// </summary>
         #region model_Full
         [XmlRoot("city")]
@@ -100,7 +100,7 @@ namespace WeatherInfo.Classes
         /// Возвращает города в стране
         /// </summary>
         /// <param name="CountryName_rus">Русское название страны</param>
-        /// <param name="needRussianName">Вам нужно русское название города?</param>
+        /// <param name="needRussianName">true - русское название города, false - английское</param>
         /// <returns></returns>
         static public List<string> getCities (string CountryName_rus, bool needRussianName)
         {
@@ -174,7 +174,7 @@ namespace WeatherInfo.Classes
         /// Получает из русского названия английское или наоборот
         /// </summary>
         /// <param name="nameOFCity">Название</param>
-        /// <param name="WeHaveRusName">Оно русское?</param>
+        /// <param name="WeHaveRusName">Оно русское? True - вренем английское и наоборот</param>
         /// <param name="nameOfCountry_rus">Если известно, задай страну</param>
         /// <returns></returns>
         static public string cityTranslate(string nameOFCity, bool WeHaveRusName, string nameOfCountry_rus = "*")
