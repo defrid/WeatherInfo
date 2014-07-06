@@ -29,8 +29,13 @@ namespace WeatherInfo
         {
             main = (MainWindow)e;
             InitializeComponent();
-            ChoosenCities=new List<ChoosenCityForForecast>();
             Icon = MainWindow.ConvertBitmabToImage(Properties.Resources.settingsGear.ToBitmap());
+            ChoosenCities = new List<CitySettings>();
+            updatePeriod_save = 10;
+            format_save = Options.GetValueByAttribute(Options.FormatForecast.Days.ToString());
+            autostart_save = true;
+            temperatureUnits_save = "Celsius";
+            language_save = "Russian";
         }
 
         getCity gC = new getCity();
@@ -48,34 +53,25 @@ namespace WeatherInfo
             aboutWindow.Activate();
         }
 
-        public List<ChoosenCityForForecast> ChoosenCities { get; set; }
 
-        public string country_save = "";
-        public string countryId_save = "RU";
-        public string countryName_save = "";
-        public int regionId_save = 0;
-        public string regionName_save = "Region";
-        public int cityId_save;
-        public string cityName_save = "";
-        public int updatePeriod_save = 10;
-        public string format_save = "";
-        public bool autostart_save = true;
-        public string temperatureUnits_save = "Celsius";
-        public string language_save = "Russian";
+        public List<CitySettings> ChoosenCities;
+        public int updatePeriod_save;
+        public string format_save;
+        public bool autostart_save;
+        public string temperatureUnits_save;
+        public string language_save;
+
 
         private void accept_btn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                countryName_save = listOfCountries_cbx.SelectedItem.ToString();
-                cityName_save = listOfCitiies_cbx.SelectedItem.ToString();
-                cityId_save = gC.GetCityNumberYandex(cityName_save);
-                //cityName_save = translate.toEng(listOfCitiies_cbx.SelectedItem.ToString(), "Location//translit.txt");
                 updatePeriod_save = Convert.ToInt32(updatePeriod_slider.Value);
                 format_save = Options.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
                 autostart_save = (bool)autostartFlag_chbx.IsChecked;
 
-                App.settings = new Settings(countryId_save, countryName_save, regionId_save, regionName_save, cityId_save, cityName_save, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
+                //App.settings = new Settings(countryId_save, countryRusName_save, countryEngName_save, regionId_save, regionName_save, cityYaId_save, cityOWId_save, cityRusName_save, cityEngName_save, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
+                App.settings = new Settings(ChoosenCities, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
 
                 App.settingHandler.SaveSettings(App.settings);
 
@@ -121,12 +117,15 @@ namespace WeatherInfo
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadCountries();
-            listOfCountries_cbx.SelectedItem = App.settings.cities[0].country.countryName;
+            listOfCountries_cbx.SelectedItem = App.settings.cities[0].country.countryRusName;
             listOfCountries_cbx.SelectionChanged += listOfCountries_cbx_SelectionChanged;
 
-            LoadCities(App.settings.cities[0].country.countryName);
-            listOfCitiies_cbx.SelectedItem = App.settings.cities[0].city.cityName;
+            LoadCities(App.settings.cities[0].country.countryRusName);
+            listOfCitiies_cbx.SelectedItem = App.settings.cities[0].city.cityRusName;
             listOfCitiies_cbx.SelectionChanged += listOfCitiies_cbx_SelectionChanged;
+
+            LoadChoosenCities();
+            ChoosenCitiesComboBox.SelectedIndex = 0;
 
             updatePeriod_slider.Value = Convert.ToDouble(App.settings.updatePeriod);
 
@@ -147,6 +146,16 @@ namespace WeatherInfo
         {
             List<string> allCities = gC.CityNamesYandex(country);
             listOfCitiies_cbx.ItemsSource = allCities;
+        }
+
+        void LoadChoosenCities()
+        {
+            ChoosenCities = new List<CitySettings>(App.settings.cities);
+            foreach (var city in ChoosenCities)
+            {
+                ChoosenCitiesComboBox.Items.Add(city.ToString());
+                ChoosenCitiesComboBox.Tag = city;                
+            }
         }
 
         void LoadFormats()
@@ -171,7 +180,7 @@ namespace WeatherInfo
 
         private void listOfCitiies_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+          
         }
 
         private void listOfFormatsForecast_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -186,30 +195,44 @@ namespace WeatherInfo
 
         private void AddCityButtonClick(object sender, RoutedEventArgs e)
         {
-            var newCity = new ChoosenCityForForecast
-                {
-                    Country = listOfCountries_cbx.SelectedItem.ToString(),
-                    CityName = listOfCitiies_cbx.SelectedItem.ToString(),
-                    CityId = gC.GetCityNumberYandex(cityName_save)
-                };
-            var repeateSearch = ChoosenCities.SingleOrDefault(el =>(el.CityId == newCity.CityId &&
-                                                               el.CityName == newCity.CityName &&
-                                                               el.Country == newCity.Country));
-            if(repeateSearch!=null)
+            var newCity = new CitySettings
+            {
+                country = new Country {
+                    countryId = "RU",
+                    countryRusName = listOfCountries_cbx.SelectedItem.ToString(),
+                    countryEngName = "Russia"
+                },
+                region = new RegionOfCity {
+                    regionId = 0,
+                    regionName = "Region"
+                },
+                city = new City {
+                    cityYaId = gC.GetCityNumberYandex(listOfCitiies_cbx.SelectedItem.ToString()),
+                    cityOWId = 0,//gC.GetCityNumber(listOfCitiies_cbx.SelectedItem.ToString()),
+                    cityRusName = listOfCitiies_cbx.SelectedItem.ToString(),
+                    cityEngName = "City"
+                }                
+            };
+            var repeateSearch = ChoosenCities.SingleOrDefault(el => (el.city.cityYaId == newCity.city.cityYaId   &&
+                                                               el.city.cityRusName == newCity.city.cityRusName   &&
+                                                               el.country.countryId == newCity.country.countryId &&
+                                                               el.country.countryRusName == newCity.country.countryRusName));
+            if (repeateSearch != null)
                 return;
             ChoosenCities.Add(newCity);
             ChoosenCitiesComboBox.Items.Add(newCity.ToString());
-            ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count -1;
+            ChoosenCitiesComboBox.Tag = newCity;
+            ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count - 1;
         }
 
         private void DeleteCityButtonClick(object sender, RoutedEventArgs e)
         {
             var countryCity = (ChoosenCitiesComboBox.SelectedItem as String)
-                .Split(new[] {", "}, StringSplitOptions.RemoveEmptyEntries);
+                .Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
             var removeCity = countryCity[0];
             var removeCountry = countryCity[1];
             ChoosenCities.Remove(
-                ChoosenCities.SingleOrDefault(el=>(el.CityName==removeCity&&el.Country==removeCountry)));
+                ChoosenCities.SingleOrDefault(el => (el.city.cityRusName == removeCity && el.country.countryRusName == removeCountry)));
             ChoosenCitiesComboBox.Items.RemoveAt(ChoosenCitiesComboBox.SelectedIndex);
             ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count - 1;
 
@@ -221,6 +244,5 @@ namespace WeatherInfo
             AddButton.IsEnabled = comboItemsCount < 10;
             DeleteButton.IsEnabled = comboItemsCount > 1;
         }
-        
     }
 }

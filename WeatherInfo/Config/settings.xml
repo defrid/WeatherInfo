@@ -4,15 +4,52 @@
     <CitySettings>
       <country>
         <countryId>RU</countryId>
-        <countryName>Россия</countryName>
+        <countryRusName>Россия</countryRusName>
+        <countryEngName>Russia</countryEngName>
       </country>
       <region>
         <regionId>0</regionId>
-        <regionName>Moscow</regionName>
+        <regionName>Region</regionName>
       </region>
       <city>
-        <cityId>27786</cityId>
-        <cityName>Ульяновск</cityName>
+        <cityYaId>28807</cityYaId>
+        <cityOWId>0</cityOWId>
+        <cityRusName>Самара</cityRusName>
+        <cityEngName>City</cityEngName>
+      </city>
+    </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>Россия</countryRusName>
+        <countryEngName>Russia</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>27786</cityYaId>
+        <cityOWId>0</cityOWId>
+        <cityRusName>Ульяновск</cityRusName>
+        <cityEngName>City</cityEngName>
+      </city>
+    </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>Россия</countryRusName>
+        <countryEngName>Russia</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>27612</cityYaId>
+        <cityOWId>0</cityOWId>
+        <cityRusName>Москва</cityRusName>
+        <cityEngName>City</cityEngName>
       </city>
     </CitySettings>
   </cities>
