@@ -107,7 +107,7 @@ namespace WeatherInfo
             }
         }
 
-        private DockPanel GetContainerForCity()
+        private DockPanel GetContainerForCity(string cityName,string monthYear,int cityIndex,bool addSettingsIcon=false)
         {
             var docResult = new DockPanel {Margin = new Thickness(10)};
             
@@ -117,16 +117,16 @@ namespace WeatherInfo
             var cityLabel = new Label
                 {
                     HorizontalAlignment = HorizontalAlignment.Left,
-                    Margin = new Thickness(50, 5, 50, 5)
-                    //добавить в содержимое название города
+                    Margin = new Thickness(50, 5, 50, 5),
+                    Content = cityName
                 };
             docPanelCityYear.Children.Add(cityLabel);
 
             var monthYearLabel = new Label
                 {
                     VerticalAlignment = VerticalAlignment.Center,
-                    Margin = new Thickness(50, 5, 50, 5)
-                    //добавить в содержимое месяц и год
+                    Margin = new Thickness(50, 5, 50, 5),
+                    Content = monthYear
                 };
             docPanelCityYear.Children.Add(monthYearLabel);
 
@@ -142,7 +142,35 @@ namespace WeatherInfo
             weatherGrid.RowDefinitions.Add(new RowDefinition());
             weatherGrid.RowDefinitions.Add(new RowDefinition());
 
-            //Добавление дней недель и погодных ячеек
+            DateTime curDay = DateTime.Now;
+            for (int i = 0; i < 7; i++)
+            {
+                Label day = new Label()
+                {
+                    Content = curDay.ToString("ddd")
+                };
+                Grid.SetRow(day, 0);
+                Grid.SetColumn(day, i);
+                weatherGrid.Children.Add(day);
+                curDay = curDay.AddDays(1);
+            }
+            var loadCity=App.settings.cities.ElementAt(cityIndex);
+            var townRusName = loadCity.city.cityRusName;
+            var townYaId = loadCity.city.cityYaId.ToString();
+            var xmlParser = new XMLParser(townRusName, townYaId);
+
+            shrtForecast = xmlParser.getBigForecast();
+            dtldForecast = xmlParser.getDetailedWeek();
+
+            int index = 0;
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    weatherGrid.Children.Add(GetWeaterElement(j, i + 1, index));
+                    index++;
+                }
+            }
 
             gridBorder.Child = weatherGrid;
 
