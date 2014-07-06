@@ -34,8 +34,8 @@ namespace WeatherInfo
             updatePeriod_save = 10;
             format_save = Options.GetValueByAttribute(Options.FormatForecast.Days.ToString());
             autostart_save = true;
-            temperatureUnits_save = new TemperatureUnits("Цельсии", "Celsius"); //"Celsius";
-            language_save = new Language("Русский", "Russian");//"Russian";
+            temperatureUnits_save = new TemperatureUnits("Цельсии", "Celsius");
+            language_save = new Language("Русский", "Russian");
         }
 
         getCity gC = new getCity();
@@ -86,16 +86,17 @@ namespace WeatherInfo
             }
         }
 
+        #region Автозагрузка
         /// <summary>
         /// Метод утановки автозагрузки приложения.
-        /// ВАЖНО: просто наткнулся в сэмплах, позже разобраться, сейчас пусть повисит закомменченным
+        /// Добавляет запись в реестр текущего пользователя и ярлык в папку автозагрузки.
         /// </summary>
         private void Autorun()
         {
             var path = string.Concat(Environment.CurrentDirectory, @"\WeatherInfo.exe");
             var pathToLnk = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\WeatherInfo.lnk";
 
-            CreateShortCut(path, path.Substring(0, path.LastIndexOf('\\')), pathToLnk);
+            
 
             RegistryKey key =
                     Registry.CurrentUser.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
@@ -103,27 +104,70 @@ namespace WeatherInfo
 
             if ((bool)autostartFlag_chbx.IsChecked)
             {
-                key.SetValue("WeatherInfo", pathToLnk);
-                //key.SetValue("WeatherInfo", "\\WeatherInfo.exe");
-
+                if (CreateShortCut(path, Environment.CurrentDirectory, pathToLnk))
+                {
+                    key.SetValue("WeatherInfo", pathToLnk);
+                    //key.SetValue("WeatherInfo", "\\WeatherInfo.exe");
+                }
             }
             else
             {
-                key.DeleteValue("WeatherInfo", false);
+                if (DeleteShortCut(pathToLnk))
+                {
+                    key.DeleteValue("WeatherInfo", false);
+                }
             }
             key.Flush();
             key.Close();            
         }
 
-        private void CreateShortCut(string FilePath, string WorkDir, string shortcutPath)
+        /// <summary>
+        /// Создание ярлыка в папке автозагрузки
+        /// </summary>
+        /// <param name="FilePath">Путь к исполняемому файлу программы</param>
+        /// <param name="WorkDir">Рабочая директория приложения</param>
+        /// <param name="shortcutPath">Путь к создаваемому ярлыку</param>
+        /// <returns>Флаг успешности операции</returns>
+        private bool CreateShortCut(string FilePath, string WorkDir, string shortcutPath)
         {
-            WshShell shell = new WshShell();
+            try
+            {
+                WshShell shell = new WshShell();
 
-            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutPath);
-            shortcut.Description = "Запуск";
-            shortcut.TargetPath = FilePath;
-            shortcut.WorkingDirectory = WorkDir;
-            shortcut.Save();
+                IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutPath);
+                shortcut.Description = "Запуск";
+                shortcut.TargetPath = FilePath;
+                shortcut.WorkingDirectory = WorkDir;
+                shortcut.Save();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка добвления программы в автозагрузку! Ошибка: " + ex.Message);
+                return false;
+            }            
+        }
+
+        /// <summary>
+        /// Удаляет ярлык из папки автозагрузки
+        /// </summary>
+        /// <param name="shortcutPath">Путь к удаляемому ярлыку приложения в папке автозагрузки</param>
+        /// <returns>Флаг успешности операции</returns>
+        private bool DeleteShortCut(string shortcutPath)
+        {
+            try
+            {
+                if (System.IO.File.Exists(shortcutPath))
+                {
+                    System.IO.File.Delete(shortcutPath);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка удаления программы из автозагрузки! Ошибка: " + ex.Message);
+                return false;
+            }            
         }
 
         private void autostartFlag_chbx_Checked(object sender, RoutedEventArgs e)
@@ -131,6 +175,7 @@ namespace WeatherInfo
             autostart_save = (bool)autostartFlag_chbx.IsChecked;//true;
             //MessageBox.Show("Автозапуск");
         }
+        #endregion
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -138,7 +183,7 @@ namespace WeatherInfo
             listOfCountries_cbx.SelectedItem = App.settings.cities[0].country.countryRusName;
             listOfCountries_cbx.SelectionChanged += listOfCountries_cbx_SelectionChanged;
 
-            LoadCities(App.settings.cities[0].country.countryRusName);
+            LoadCities();
             listOfCitiies_cbx.SelectedItem = App.settings.cities[0].city.cityRusName;
             listOfCitiies_cbx.SelectionChanged += listOfCitiies_cbx_SelectionChanged;
 
@@ -160,18 +205,28 @@ namespace WeatherInfo
             autostartFlag_chbx.IsChecked = App.settings.autostart;
         }
 
+        /// <summary>
+        /// Подгружает список стран
+        /// </summary>
         void LoadCountries()
         {
             List<string> countries = getCity.getCountryNames();
             listOfCountries_cbx.ItemsSource = countries;
         }
 
-        void LoadCities(string country)
+        /// <summary>
+        /// Подгружает список городов для выбранной страны
+        /// </summary>
+        /// <param name="country"></param>
+        void LoadCities()
         {
             List<string> allCities = getCity.getCities(listOfCountries_cbx.SelectedItem.ToString(), true);
             listOfCitiies_cbx.ItemsSource = allCities;
         }
 
+        /// <summary>
+        /// Подгружает список выбранных для отображения городов
+        /// </summary>
         void LoadChoosenCities()
         {
             ChoosenCities = new List<CitySettings>(App.settings.cities);
@@ -185,6 +240,9 @@ namespace WeatherInfo
             }
         }
 
+        /// <summary>
+        /// Подгружает список форматов отображения
+        /// </summary>
         void LoadFormats()
         {
             string[] formats = Enum.GetNames(typeof(Options.FormatForecast));
@@ -195,6 +253,9 @@ namespace WeatherInfo
             }
         }
 
+        /// <summary>
+        /// Подгружает список единиц измерения температуры
+        /// </summary>
         void LoadTemperatureUnits()
         {
             var temperatureUnits = Options.GetTemperatureUnits();
@@ -207,6 +268,9 @@ namespace WeatherInfo
             }
         }
 
+        /// <summary>
+        /// Подгружает список языков локализации программы
+        /// </summary>
         void LoadLanguages()
         {
             var languages = Options.GetLanguages();
@@ -223,7 +287,7 @@ namespace WeatherInfo
         {
             try
             {
-                LoadCities(listOfCountries_cbx.SelectedItem.ToString());
+                LoadCities();
                 listOfCitiies_cbx.SelectedIndex = 0;
             }
             catch { }

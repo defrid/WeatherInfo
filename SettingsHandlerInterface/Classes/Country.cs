@@ -16,6 +16,12 @@ namespace SettingsHandlerInterface.Classes
 
         public Country() { }
 
+        /// <summary>
+        /// Конструктор класса, создаёт экземпляр, хранящий информацию о стране
+        /// </summary>
+        /// <param name="_countryId">ИД страны из Яндекса</param>
+        /// <param name="_countryRusName">Наименование страны на руском</param>
+        /// <param name="_countryEngName">Наименование страны на английском</param>
         public Country(string _countryId, string _countryRusName, string _countryEngName)
         {
             countryId = _countryId;

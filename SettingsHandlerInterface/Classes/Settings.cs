@@ -61,15 +61,15 @@ namespace SettingsHandlerInterface.Classes
         /// <summary>
         /// Настройки по-умолчанию
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Объект, хранящий настройки программы.</returns>
         public static Settings GetDefaultSettings()
         {
             string _countryId = "RU";
             string _countryRusName = "Россия";
             string _countryEngName = "Russia";
 
-            int _regionId = 73;
-            string _regionName = "Ульяновск";
+            int _regionId = 0;
+            string _regionName = "Region";
 
             int _cityYaId = 27786;
             int _cityOWId = 479123;
@@ -78,10 +78,9 @@ namespace SettingsHandlerInterface.Classes
 
             string _format = Enum.GetName(typeof(Options.FormatForecast), Options.FormatForecast.Days);
             int _updatePeriod = 60;
-            bool _autostart = true;
+            bool _autostart = false;
             TemperatureUnits _temperatureUnits = new TemperatureUnits("Цельсии", "Celsius");
             Language _language = new Language("Русский", "Russian");
-            //string _language = "Russian";
 
             var settings = new Settings(_countryId, _countryRusName, _countryEngName, _regionId, _regionName, _cityYaId, _cityOWId, _cityRusName, _cityEngName, _format, _updatePeriod, _autostart, _temperatureUnits, _language);
 

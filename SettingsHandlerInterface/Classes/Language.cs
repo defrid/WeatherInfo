@@ -12,6 +12,11 @@ namespace SettingsHandlerInterface.Classes
     {
         public Language() { }
 
+        /// <summary>
+        /// Конструктор класса, создаёт экземпляр, хранящий информацию о языке локализации программы.
+        /// </summary>
+        /// <param name="_rusName">Наименование на русском</param>
+        /// <param name="_engName">Наименование на английском</param>
         public Language(string _rusName, string _engName)
         {
             rusName = _rusName;

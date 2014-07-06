@@ -12,6 +12,11 @@ namespace SettingsHandlerInterface.Classes
     {
         public TemperatureUnits() { }
 
+        /// <summary>
+        /// Конструктор класса, создаёт экземпляр класса, хранящий информацию о единицах измерения температуры.
+        /// </summary>
+        /// <param name="_rusName">Наименование на русском</param>
+        /// <param name="_engName">Наименование на английском</param>
         public TemperatureUnits(string _rusName, string _engName)
         {
             rusName = _rusName;
