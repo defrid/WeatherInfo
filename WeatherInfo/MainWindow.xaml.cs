@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.IO;
@@ -56,8 +56,6 @@ namespace WeatherInfo
             timer.Tick += timer_Tick;
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
-            //shrtForecast = forecasts.getBigForecast();
-            //dtldForecast = forecasts.getDetailedWeek();
 
             dayParts = new Dictionary<string, string>();
             dayParts.Add("morning", "Утро");
@@ -291,8 +289,6 @@ namespace WeatherInfo
             return new int[] { 1, 2 };
         }
 
-
-
         /// <summary>
         /// Метод для получения всплывающего окна с прогнозом
         /// </summary>
@@ -394,7 +390,6 @@ namespace WeatherInfo
             WeatherTable.Children.RemoveRange(7, 14);
             town = App.settings.GetFirstCity().city.cityRusName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
             townID = App.settings.GetFirstCity().city.cityYaId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
-
             timer.Stop();
             forecasts = new XMLParser(town, townID);
             fillTable();
@@ -431,7 +426,7 @@ namespace WeatherInfo
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SettingsImage_MouseDown(object sender, MouseButtonEventArgs e)
+        private void SettingsImage_MouseUp(object sender, MouseButtonEventArgs e)
         {
             new SettingsWindow(this).Show();
         }
