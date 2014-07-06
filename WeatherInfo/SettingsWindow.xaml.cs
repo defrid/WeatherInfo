@@ -213,10 +213,11 @@ namespace WeatherInfo
                     cityEngName = "City"
                 }                
             };
-            var repeateSearch = ChoosenCities.SingleOrDefault(el => (el.city.cityYaId == newCity.city.cityYaId   &&
-                                                               el.city.cityRusName == newCity.city.cityRusName   &&
-                                                               el.country.countryId == newCity.country.countryId &&
-                                                               el.country.countryRusName == newCity.country.countryRusName));
+            var repeateSearch = ChoosenCities
+                .SingleOrDefault(el => (el.city.cityYaId == newCity.city.cityYaId &&
+                                        el.city.cityRusName == newCity.city.cityRusName &&
+                                        el.country.countryId == newCity.country.countryId &&
+                                        el.country.countryRusName == newCity.country.countryRusName));
             if (repeateSearch != null)
                 return;
             ChoosenCities.Add(newCity);

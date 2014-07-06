@@ -56,8 +56,8 @@ namespace WeatherInfo
             timer.Tick += timer_Tick;
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
-            shrtForecast = forecasts.getBigForecast();
-            dtldForecast = forecasts.getDetailedWeek();
+            //shrtForecast = forecasts.getBigForecast();
+            //dtldForecast = forecasts.getDetailedWeek();
 
             dayParts = new Dictionary<string, string>();
             dayParts.Add("morning", "Утро");
@@ -151,61 +151,7 @@ namespace WeatherInfo
             docResult.Children.Add(gridBorder);
             return docResult;
         }
-
-        // <DockPanel Margin="10">
-        //    <DockPanel DockPanel.Dock="Top">
-        //        <Label Name="City" HorizontalAlignment="Left" Margin="50 5" Content="City"/>
-        //        <DockPanel HorizontalAlignment="Right" VerticalAlignment="Center">
-        //            <Label Name="MonthYear" Margin="50 5" Content="Month Year" VerticalAlignment="Center"/>
-        //            <Image Name="SettingsImage" RenderTransformOrigin="0.5 0.5" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter" MouseDown="SettingsImage_MouseDown"/>
-        //        </DockPanel>
-        //    </DockPanel>
-        //    <Border BorderBrush="Black" BorderThickness="1">
-        //        <Grid Name="WeatherTable" ShowGridLines="True" MinWidth="580" MinHeight="170">
-        //            <Grid.Resources>
-        //                <Style TargetType="Label">
-        //                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-        //                </Style>
-        //            </Grid.Resources>
-        //            <Grid.ColumnDefinitions>
-        //                <ColumnDefinition/>
-        //                <ColumnDefinition/>
-        //                <ColumnDefinition/>
-        //                <ColumnDefinition/>
-        //                <ColumnDefinition/>
-        //                <ColumnDefinition/>
-        //                <ColumnDefinition/>
-        //            </Grid.ColumnDefinitions>
-        //            <Grid.RowDefinitions>
-        //                <RowDefinition Height="30"/>
-        //                <RowDefinition/>
-        //                <RowDefinition/>
-        //            </Grid.RowDefinitions>
-        //            <Border BorderBrush="Black" BorderThickness="1">
-        //                <Label Content="ПН"/>
-        //            </Border>
-        //            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1">
-        //                <Label Content="ВТ" />
-        //            </Border>
-        //            <Border Grid.Column="2" BorderBrush="Black" BorderThickness="1">
-        //                <Label Content="СР"/>
-        //            </Border>
-        //            <Border Grid.Column="3" BorderBrush="Black" BorderThickness="1">
-        //                <Label Content="ЧТ" />
-        //            </Border>
-        //            <Border Grid.Column="4" BorderBrush="Black" BorderThickness="1">
-        //                <Label Content="ПТ" />
-        //            </Border>
-        //            <Border Grid.Column="5" BorderBrush="Black" BorderThickness="1">
-        //                <Label Content="СБ" />
-        //            </Border>
-        //            <Border Grid.Column="6" BorderBrush="Black" BorderThickness="1">
-        //                <Label Content="ВС" />
-        //            </Border>
-        //        </Grid>
-        //    </Border>
-        //</DockPanel>
-
+        
         private void fillTable()
         {
             WeatherTable.Children.Clear();
