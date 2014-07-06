@@ -67,6 +67,10 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Printing" />
+    <Reference Include="system.windows.controls.datavisualization.toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\system.windows.controls.datavisualization.toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -81,6 +85,10 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dll\WPFToolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -104,6 +112,12 @@
     </Compile>
     <Compile Include="Two_Windows.xaml.cs">
       <DependentUpon>Two_Windows.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChooseTown.xaml.cs">
+      <DependentUpon>ChooseTown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowGraphics.xaml.cs">
+      <DependentUpon>WindowGraphics.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowTray.xaml.cs">
       <DependentUpon>WindowTray.xaml</DependentUpon>
@@ -137,6 +151,14 @@
     <Page Include="Two_Windows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChooseTown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowGraphics.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="WindowTray.xaml">
       <Generator>MSBuild:Compile</Generator>

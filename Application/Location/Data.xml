@@ -1,0 +1,2364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <country nameRu="Абхазия">
+    <city nameRu="Гудаута" nameEng="gudauta" idYa="37187" idOp="614409" />
+    <city nameRu="Гагра" nameEng="gagra" idYa="37172" idOp="614622" />
+    <city nameRu="Сухум" nameEng="suhum" idYa="37189" idOp="2295065" />
+  </country>
+  <country nameRu="Австралия">
+    <city nameRu="Перт" nameEng="perth" idYa="94610" idOp="2063523" />
+    <city nameRu="Ньюкасл" nameEng="newcastle" idYa="94774" idOp="2155472" />
+    <city nameRu="Дарвин" nameEng="darwin" idYa="94120" idOp="2073124" />
+    <city nameRu="Мельбурн" nameEng="melbourne" idYa="94866" idOp="2158177" />
+    <city nameRu="Канберра" nameEng="canberra" idYa="94926" idOp="2172517" />
+    <city nameRu="Кэрнс" nameEng="cairns" idYa="94287" idOp="2172797" />
+    <city nameRu="Сидней" nameEng="sydney" idYa="94768" idOp="2147714" />
+    <city nameRu="Брисбен" nameEng="brisbane" idYa="94578" idOp="2174003" />
+    <city nameRu="Аделаида" nameEng="adelaide" idYa="94675" idOp="2078025" />
+    <city nameRu="Алис-Спрингс" nameEng="alice springs" idYa="94326" idOp="2077895" />
+    <city nameRu="Таунсвилл" nameEng="townsville" idYa="94294" idOp="2146142" />
+    <city nameRu="Хобарт" nameEng="hobart" idYa="94975" idOp="2163355" />
+  </country>
+  <country nameRu="Австрия">
+    <city nameRu="Линц" nameEng="linz" idYa="11204" idOp="160660" />
+    <city nameRu="Айзенштадт" nameEng="eisenstadt" idYa="11190" idOp="2780190" />
+    <city nameRu="Сан-Антон" nameEng="sankt anton am arlberg" idYa="11110" idOp="2766757" />
+    <city nameRu="Баден" nameEng="baden" idYa="11111" idOp="4347708" />
+    <city nameRu="Цель-Ам-Зе" nameEng="zell am see" idYa="11144" idOp="2760634" />
+    <city nameRu="Капрун" nameEng="kaprun" idYa="11143" idOp="2774758" />
+    <city nameRu="Лех" nameEng="lech" idYa="11309" idOp="536440" />
+    <city nameRu="Инсбрук" nameEng="innsbruck" idYa="11120" idOp="2775220" />
+    <city nameRu="Зельден" nameEng="selden" idYa="11125" idOp="5137600" />
+    <city nameRu="Зальцбург" nameEng="salzburg" idYa="11350" idOp="2766824" />
+    <city nameRu="Вена" nameEng="vienna" idYa="11036" idOp="4791160" />
+  </country>
+  <country nameRu="Азербайджан">
+    <city nameRu="Баку" nameEng="baku" idYa="37864" idOp="1492255" />
+  </country>
+  <country nameRu="Азорские острова">
+    <city nameRu="Понта-Делгада" nameEng="ponta delgada" idYa="8512" idOp="3372783" />
+    <city nameRu="Орта" nameEng="horta" idYa="8505" idOp="1519050" />
+  </country>
+  <country nameRu="Албания">
+    <city nameRu="Тирана" nameEng="tirana" idYa="13615" idOp="3183875" />
+  </country>
+  <country nameRu="Алжир">
+    <city nameRu="Алжир" nameEng="algiers" idYa="60369" idOp="2507480" />
+    <city nameRu="Оран" nameEng="oran" idYa="60461" idOp="515109" />
+  </country>
+  <country nameRu="Ангилья">
+    <city nameRu="Ангилья" nameEng="anguilla" idYa="78846" idOp="3183060" />
+  </country>
+  <country nameRu="Ангола">
+    <city nameRu="Луанда" nameEng="loanda" idYa="66160" idOp="3458479" />
+  </country>
+  <country nameRu="Андорра">
+    <city nameRu="Энкамп" nameEng="encamp" idYa="7727" idOp="3040686" />
+    <city nameRu="Эскальдес" nameEng="escaldes" idYa="7730" idOp="3040051" />
+    <city nameRu="Пас-де-ла-Каса" nameEng="pas de la casa" idYa="7732" idOp="3039604" />
+    <city nameRu="Пал" nameEng="pal" idYa="7734" idOp="515186" />
+    <city nameRu="Ордино" nameEng="ordino" idYa="7735" idOp="3180247" />
+    <city nameRu="Андорра-ла-Велья" nameEng="andorra la vella" idYa="7737" idOp="3041563" />
+  </country>
+  <country nameRu="Антигуа и Барбуда">
+    <city nameRu="Антигуа" nameEng="antigua" idYa="78862" idOp="2521706" />
+  </country>
+  <country nameRu="Аргентина">
+    <city nameRu="Ушуайя" nameEng="ushuaia" idYa="87938" idOp="3833367" />
+    <city nameRu="Сальта" nameEng="salta" idYa="87047" idOp="581568" />
+    <city nameRu="Мар-дель-Плата" nameEng="mar del plata" idYa="87692" idOp="3430863" />
+    <city nameRu="Мирамар" nameEng="miramar" idYa="87693" idOp="3844159" />
+    <city nameRu="Кордова" nameEng="cordoba" idYa="87344" idOp="3860259" />
+    <city nameRu="Буэнос-Айрес" nameEng="buenos aires" idYa="87582" idOp="3435910" />
+  </country>
+  <country nameRu="Армения">
+    <city nameRu="Раздан" nameEng="hrazdan" idYa="37792" idOp="616629" />
+    <city nameRu="Ереван" nameEng="yerevan" idYa="37789" idOp="616052" />
+    <city nameRu="Гюмри" nameEng="gyumri" idYa="37686" idOp="616635" />
+  </country>
+  <country nameRu="Аруба">
+    <city nameRu="Ораньестад" nameEng="oranjestad" idYa="78982" idOp="3577154" />
+  </country>
+  <country nameRu="Афганистан">
+    <city nameRu="Кабул" nameEng="kabul" idYa="40948" idOp="294615" />
+  </country>
+  <country nameRu="Багамские острова">
+    <city nameRu="Нассау" nameEng="nassau" idYa="78073" idOp="4713813" />
+  </country>
+  <country nameRu="Балеарские острова">
+    <city nameRu="Менорка" nameEng="minorca" idYa="8314" idOp="4333548" />
+    <city nameRu="Ибица" nameEng="ibiza" idYa="8373" idOp="2516479" />
+  </country>
+  <country nameRu="Бангладеш">
+    <city nameRu="Дакка" nameEng="dhaka" idYa="41923" idOp="1273043" />
+    <city nameRu="Джессор" nameEng="jessore" idYa="41936" idOp="1336140" />
+    <city nameRu="Исхурди" nameEng="ishurdi" idYa="41907" idOp="1185207" />
+    <city nameRu="Фени" nameEng="feni" idYa="41943" idOp="664544" />
+    <city nameRu="Читтагонг" nameEng="chittagong" idYa="41978" idOp="1205733" />
+    <city nameRu="Богра" nameEng="bogra" idYa="41883" idOp="1509847" />
+    <city nameRu="Рангпур" nameEng="rangpur" idYa="41859" idOp="1257237" />
+    <city nameRu="Силхет" nameEng="sylhet" idYa="41891" idOp="1185099" />
+    <city nameRu="Барисал" nameEng="barisal" idYa="41950" idOp="1336137" />
+  </country>
+  <country nameRu="Барбадос">
+    <city nameRu="Бриджтаун" nameEng="bridgetown" idYa="78955" idOp="2075807" />
+  </country>
+  <country nameRu="Бахрейн">
+    <city nameRu="Манама" nameEng="manama" idYa="41151" idOp="1263965" />
+  </country>
+  <country nameRu="Беларусь">
+    <city nameRu="Житковичи" nameEng="zhytkavichy" idYa="33027" idOp="618815" />
+    <city nameRu="Октябрь" nameEng="oktyabr" idYa="26950" idOp="1501925" />
+    <city nameRu="Климовичи" nameEng="klimavichy" idYa="26006" idOp="627202" />
+    <city nameRu="Борисов" nameEng="borisov" idYa="26759" idOp="572500" />
+    <city nameRu="Сенно" nameEng="senno" idYa="26668" idOp="497019" />
+    <city nameRu="Орша" nameEng="orsha" idYa="26763" idOp="514744" />
+    <city nameRu="Солигорск" nameEng="salihorsk" idYa="26003" idOp="622428" />
+    <city nameRu="Слоним" nameEng="slonim" idYa="26005" idOp="621754" />
+    <city nameRu="Горки" nameEng="gorki" idYa="26774" idOp="517144" />
+    <city nameRu="Мстиславль" nameEng="mstsislaw" idYa="26779" idOp="624889" />
+    <city nameRu="Осиповичи" nameEng="asipovichy" idYa="26012" idOp="624034" />
+    <city nameRu="Дзержинск" nameEng="dzerzhinsk" idYa="26018" idOp="563708" />
+    <city nameRu="Лепель" nameEng="lepel" idYa="26659" idOp="2751709" />
+    <city nameRu="Крупки" nameEng="krupki" idYa="26022" idOp="626471" />
+    <city nameRu="Глубокое" nameEng="glubokoye" idYa="26025" idOp="1524227" />
+    <city nameRu="Волковыск" nameEng="vawkavysk" idYa="26923" idOp="620391" />
+    <city nameRu="Новополоцк" nameEng="navapolatsk" idYa="26030" idOp="624784" />
+    <city nameRu="Пружаны" nameEng="pruzhany" idYa="26929" idOp="622997" />
+    <city nameRu="Жодино" nameEng="zhodzina" idYa="26034" idOp="618800" />
+    <city nameRu="Барановичи" nameEng="baranavichy" idYa="26941" idOp="630429" />
+    <city nameRu="Слуцк" nameEng="slutsk" idYa="26951" idOp="621741" />
+    <city nameRu="Любань" nameEng="lyuban" idYa="26955" idOp="532637" />
+    <city nameRu="Лида" nameEng="lida" idYa="26832" idOp="1268360" />
+    <city nameRu="Сморгонь" nameEng="smarhon" idYa="26017" idOp="621713" />
+    <city nameRu="Толочин" nameEng="talachyn" idYa="26766" idOp="620833" />
+    <city nameRu="Жлобин" nameEng="zhlobin" idYa="26966" idOp="618806" />
+    <city nameRu="Туров" nameEng="turov" idYa="26028" idOp="529505" />
+    <city nameRu="Радошковичи" nameEng="radashkovichy" idYa="26749" idOp="622877" />
+    <city nameRu="Минск" nameEng="minsk" idYa="26850" idOp="488742" />
+    <city nameRu="Ошмяны" nameEng="ashmyany" idYa="26736" idOp="630515" />
+    <city nameRu="Брест" nameEng="brest" idYa="33008" idOp="629634" />
+    <city nameRu="Пинск" nameEng="pinsk" idYa="33019" idOp="1504343" />
+    <city nameRu="Поставы" nameEng="pastavy" idYa="26026" idOp="623760" />
+    <city nameRu="Славгород" nameEng="slavgorod" idYa="26878" idOp="1491706" />
+  </country>
+  <country nameRu="Белиз">
+    <city nameRu="Белиз" nameEng="belize city" idYa="78584" idOp="3582677" />
+    <city nameRu="Сан-Педро" nameEng="san pedro" idYa="78582" idOp="3836772" />
+  </country>
+  <country nameRu="Бельгия">
+    <city nameRu="Хасселт" nameEng="hasselt" idYa="6433" idOp="2754779" />
+    <city nameRu="Остенде" nameEng="ostend" idYa="6407" idOp="2789786" />
+    <city nameRu="Брюгге" nameEng="bruges" idYa="6409" idOp="3029799" />
+    <city nameRu="Ватерлоо" nameEng="waterloo" idYa="6446" idOp="4880889" />
+    <city nameRu="Антверпен" nameEng="antwerp" idYa="6450" idOp="2803138" />
+    <city nameRu="Брюссель" nameEng="brussels" idYa="6451" idOp="2800866" />
+    <city nameRu="Льеж" nameEng="liege" idYa="6457" idOp="2792413" />
+    <city nameRu="Бовшен" nameEng="beauvechain" idYa="6458" idOp="2802483" />
+    <city nameRu="Гент" nameEng="ghent" idYa="6431" idOp="7259400" />
+  </country>
+  <country nameRu="Бенин">
+    <city nameRu="Котону" nameEng="cotonou" idYa="65344" idOp="2394819" />
+  </country>
+  <country nameRu="Болгария">
+    <city nameRu="Плевен" nameEng="pleven" idYa="15745" idOp="728203" />
+    <city nameRu="Сопот" nameEng="sopot" idYa="15746" idOp="666435" />
+    <city nameRu="Пловдив" nameEng="plovdiv" idYa="15625" idOp="728193" />
+    <city nameRu="Ивайловград" nameEng="ivaylovgrad" idYa="15628" idOp="730837" />
+    <city nameRu="Видин" nameEng="vidin" idYa="15502" idOp="725905" />
+    <city nameRu="Свиштов" nameEng="svishtov" idYa="15533" idOp="726534" />
+    <city nameRu="Враца" nameEng="vratsa" idYa="15505" idOp="725712" />
+    <city nameRu="Монтана" nameEng="montana" idYa="15507" idOp="5666921" />
+    <city nameRu="Лом" nameEng="lom" idYa="15511" idOp="567695" />
+    <city nameRu="Ловеч" nameEng="lovech" idYa="15525" idOp="729559" />
+    <city nameRu="Бургас" nameEng="burgas" idYa="15655" idOp="732770" />
+    <city nameRu="Приморско" nameEng="primorsko" idYa="15657" idOp="505259" />
+    <city nameRu="Русе" nameEng="ruse" idYa="15535" idOp="1257936" />
+    <city nameRu="София" nameEng="sofia" idYa="15614" idOp="2523285" />
+    <city nameRu="Разград" nameEng="razgrad" idYa="15549" idOp="727696" />
+    <city nameRu="Силистра" nameEng="silistra" idYa="15550" idOp="727221" />
+    <city nameRu="Варна" nameEng="varna" idYa="15552" idOp="1487764" />
+    <city nameRu="Шабла" nameEng="shabla" idYa="15561" idOp="727329" />
+    <city nameRu="Сандански" nameEng="sandanski" idYa="15712" idOp="727447" />
+    <city nameRu="Банско" nameEng="bansko" idYa="15714" idOp="513878" />
+    <city nameRu="Кюстендил" nameEng="kyustendil" idYa="15601" idOp="729730" />
+    <city nameRu="Кырджали" nameEng="kurdzhali" idYa="15730" idOp="729794" />
+    <city nameRu="Чирпан" nameEng="chirpan" idYa="15635" idOp="732452" />
+    <city nameRu="Габрово" nameEng="gabrovo" idYa="15743" idOp="731549" />
+    <city nameRu="Свиленград" nameEng="svilengrad" idYa="15741" idOp="726546" />
+  </country>
+  <country nameRu="Боливия">
+    <city nameRu="Ла-Пас" nameEng="la paz" idYa="85201" idOp="3432079" />
+    <city nameRu="Копакабана" nameEng="copacabana" idYa="85202" idOp="3685949" />
+    <city nameRu="Сукре" nameEng="sucre" idYa="85283" idOp="3667728" />
+    <city nameRu="Санта-Крус" nameEng="santa cruz de la sierra" idYa="85245" idOp="3904906" />
+    <city nameRu="Тринидад" nameEng="trinidad" idYa="85154" idOp="3534915" />
+  </country>
+  <country nameRu="Босния и Герцеговина">
+    <city nameRu="Ливно" nameEng="livno" idYa="14640" idOp="3196410" />
+    <city nameRu="Сараево" nameEng="sarajevo" idYa="14654" idOp="3191281" />
+  </country>
+  <country nameRu="Ботсвана">
+    <city nameRu="Габороне" nameEng="gaborone" idYa="68244" idOp="933773" />
+  </country>
+  <country nameRu="Бразилия">
+    <city nameRu="Рио-Де-Жанейро" nameEng="rio de janeiro" idYa="83746" idOp="3451190" />
+    <city nameRu="Сан-Паулу" nameEng="sao paulo" idYa="83780" idOp="3448439" />
+    <city nameRu="Бразилиа" nameEng="brasilia" idYa="83378" idOp="3469058" />
+    <city nameRu="Манаус" nameEng="manaus" idYa="82332" idOp="3663517" />
+    <city nameRu="Сальвадор" nameEng="salvador" idYa="83229" idOp="3836564" />
+  </country>
+  <country nameRu="Бруней">
+    <city nameRu="Куала-Белаит" nameEng="kuala belait" idYa="96323" idOp="1820491" />
+    <city nameRu="Бандар-Сери-Бегаван" nameEng="bandar seri begawan" idYa="96315" idOp="1820906" />
+  </country>
+  <country nameRu="Бурунди">
+    <city nameRu="Бужумбура" nameEng="bujumbura" idYa="64390" idOp="425378" />
+  </country>
+  <country nameRu="Бутан">
+    <city nameRu="Тхимпху" nameEng="thimphu" idYa="42300" idOp="1252416" />
+  </country>
+  <country nameRu="Великобритания">
+    <city nameRu="Глазго" nameEng="glasgow" idYa="3140" idOp="5654320" />
+    <city nameRu="Манчестер" nameEng="manchester" idYa="3334" idOp="5000598" />
+    <city nameRu="Лондон" nameEng="london" idYa="3772" idOp="1006984" />
+    <city nameRu="Белфаст" nameEng="belfast" idYa="3917" idOp="1020340" />
+    <city nameRu="Абердин" nameEng="aberdeen" idYa="3091" idOp="5225857" />
+    <city nameRu="Бирмингем" nameEng="birmingham" idYa="3534" idOp="4049979" />
+    <city nameRu="Плимут" nameEng="plymouth" idYa="3827" idOp="2186239" />
+    <city nameRu="Эдинбург" nameEng="edinburgh" idYa="3160" idOp="4257043" />
+    <city nameRu="Дерби" nameEng="derby" idYa="3929" idOp="2072924" />
+    <city nameRu="Дувр" nameEng="dover" idYa="3930" idOp="2207912" />
+    <city nameRu="Кембридж" nameEng="cambridge" idYa="3931" idOp="6240770" />
+    <city nameRu="Ливерпуль" nameEng="liverpool" idYa="3932" idOp="2159851" />
+    <city nameRu="Оксфорд" nameEng="oxford" idYa="3933" idOp="4081914" />
+  </country>
+  <country nameRu="Венгрия">
+    <city nameRu="Тата" nameEng="tata" idYa="12836" idOp="1490003" />
+    <city nameRu="Эгер" nameEng="eger" idYa="12870" idOp="4912474" />
+    <city nameRu="Будапешт" nameEng="budapest" idYa="12843" idOp="3054643" />
+    <city nameRu="Дебрецен" nameEng="debrecen" idYa="12882" idOp="721472" />
+    <city nameRu="Кестхей" nameEng="keszthely" idYa="12920" idOp="3050212" />
+    <city nameRu="Папа" nameEng="papa" idYa="12825" idOp="1260417" />
+  </country>
+  <country nameRu="Венесуэла">
+    <city nameRu="Порламар (остров Маргарита)" nameEng="porlamar" idYa="80421" idOp="3629965" />
+    <city nameRu="Каракас" nameEng="caracas" idYa="80415" idOp="3646738" />
+  </country>
+  <country nameRu="Восточное Самоа">
+    <city nameRu="Паго-Паго" nameEng="pago pago" idYa="91765" idOp="5881576" />
+  </country>
+  <country nameRu="Восточный Тимор">
+    <city nameRu="Дили" nameEng="dili" idYa="97390" idOp="616752" />
+  </country>
+  <country nameRu="Вьетнам">
+    <city nameRu="Хошимин" nameEng="ho chi minh" idYa="48900" idOp="1566083" />
+    <city nameRu="Камау" nameEng="ca mau" idYa="48914" idOp="1586443" />
+    <city nameRu="Сапа (Шапа)" nameEng="sa pa" idYa="48804" idOp="5435059" />
+    <city nameRu="Намдинь" nameEng="nam dinh" idYa="48823" idOp="1573517" />
+    <city nameRu="Хайфон" nameEng="haiphong" idYa="48825" idOp="1581298" />
+    <city nameRu="Тханьхоа" nameEng="thanh hoa" idYa="48840" idOp="1566166" />
+    <city nameRu="Винь" nameEng="vinh" idYa="48845" idOp="3445014" />
+    <city nameRu="Фантхьет" nameEng="phan thiet" idYa="48887" idOp="1571058" />
+  </country>
+  <country nameRu="Габон">
+    <city nameRu="Либревиль" nameEng="libreville" idYa="64500" idOp="2399697" />
+  </country>
+  <country nameRu="Гаити">
+    <city nameRu="Порт-о-Пренс" nameEng="port-au-prince" idYa="78439" idOp="3718426" />
+  </country>
+  <country nameRu="Гайана">
+    <city nameRu="Джорджтаун" nameEng="georgetown" idYa="81001" idOp="4292686" />
+  </country>
+  <country nameRu="Гамбия">
+    <city nameRu="Банжул" nameEng="banjul" idYa="61701" idOp="2413876" />
+  </country>
+  <country nameRu="Гана">
+    <city nameRu="Аккра" nameEng="accra" idYa="65472" idOp="2306104" />
+  </country>
+  <country nameRu="Гваделупа">
+    <city nameRu="Пуэнт-а-Питр" nameEng="pointe-a-pitre" idYa="78897" idOp="3578599" />
+    <city nameRu="Густавия" nameEng="gustavia" idYa="78894" idOp="3579132" />
+  </country>
+  <country nameRu="Гватемала">
+    <city nameRu="Гватемала Сити" nameEng="guatemala city" idYa="78641" idOp="3598132" />
+    <city nameRu="Флорес" nameEng="flores" idYa="78615" idOp="3399539" />
+  </country>
+  <country nameRu="Гвинея">
+    <city nameRu="Конакри" nameEng="conakry" idYa="61832" idOp="2422465" />
+  </country>
+  <country nameRu="Гвинея-Бисау">
+    <city nameRu="Бисау" nameEng="bissau" idYa="61766" idOp="1275441" />
+  </country>
+  <country nameRu="Германия">
+    <city nameRu="Потсдам" nameEng="potsdam" idYa="10379" idOp="5132103" />
+    <city nameRu="Франкфурт-на-Майне" nameEng="frankfurt am main" idYa="10637" idOp="2925533" />
+    <city nameRu="Кельн" nameEng="cologne" idYa="10513" idOp="3178287" />
+    <city nameRu="Бонн" nameEng="bonn" idYa="10517" idOp="2205987" />
+    <city nameRu="Гамбург" nameEng="hamburg" idYa="10141" idOp="3456068" />
+    <city nameRu="Дюссельдорф" nameEng="dusseldorf" idYa="10400" idOp="2934246" />
+    <city nameRu="Эссен" nameEng="essen" idYa="10410" idOp="466989" />
+    <city nameRu="Росток" nameEng="rostock" idYa="10170" idOp="2844588" />
+    <city nameRu="Веймар" nameEng="weimar" idYa="10555" idOp="4740482" />
+    <city nameRu="Киль" nameEng="kiel" idYa="10046" idOp="5258525" />
+    <city nameRu="Нюрнберг" nameEng="nuremberg" idYa="10763" idOp="2861650" />
+    <city nameRu="Берлин" nameEng="berlin" idYa="10385" idOp="3441476" />
+    <city nameRu="Гармиш-Партенкирхен" nameEng="garmisch-partenkirchen" idYa="10963" idOp="2922530" />
+    <city nameRu="Ганновер" nameEng="hanover" idYa="10338" idOp="4558475" />
+    <city nameRu="Карлштадт" nameEng="karlstadt" idYa="10983" idOp="2892786" />
+    <city nameRu="Баден-Баден" nameEng="baden-baden" idYa="10984" idOp="2953504" />
+    <city nameRu="Лейпциг" nameEng="leipzig" idYa="10471" idOp="2879139" />
+    <city nameRu="Бремен" nameEng="bremen" idYa="10224" idOp="4184222" />
+    <city nameRu="Дрезден" nameEng="dresden" idYa="10486" idOp="4619013" />
+    <city nameRu="Берген" nameEng="bergen" idYa="10238" idOp="5095611" />
+  </country>
+  <country nameRu="Гибралтар">
+    <city nameRu="Гибралтар" nameEng="gibraltar" idYa="8495" idOp="2411585" />
+  </country>
+  <country nameRu="Гондурас">
+    <city nameRu="Тегусигальпа" nameEng="tegucigalpa" idYa="78720" idOp="3600949" />
+  </country>
+  <country nameRu="Гренландия">
+    <city nameRu="Нуук (Готхоб)" nameEng="nuuk" idYa="4250" idOp="3421319" />
+  </country>
+  <country nameRu="Греция">
+    <city nameRu="Керкира (Корфу)" nameEng="kerkyra" idYa="16641" idOp="2463679" />
+    <city nameRu="Кастория" nameEng="kastoria" idYa="16614" idOp="735927" />
+    <city nameRu="Парос" nameEng="paros" idYa="16748" idOp="255721" />
+    <city nameRu="Афины" nameEng="athens" idYa="16716" idOp="4180386" />
+    <city nameRu="Салоники" nameEng="thessaloniki" idYa="16666" idOp="734077" />
+  </country>
+  <country nameRu="Грузия">
+    <city nameRu="Кутаиси" nameEng="kutaisi" idYa="37395" idOp="613607" />
+    <city nameRu="Батуми" nameEng="batumi" idYa="37484" idOp="615532" />
+    <city nameRu="Тбилиси" nameEng="tbilisi" idYa="37549" idOp="611717" />
+  </country>
+  <country nameRu="Дания">
+    <city nameRu="Оденсе" nameEng="odense" idYa="6120" idOp="2884344" />
+    <city nameRu="Варде" nameEng="varde" idYa="6195" idOp="542334" />
+    <city nameRu="Копенгаген" nameEng="copenhagen" idYa="6180" idOp="2618425" />
+  </country>
+  <country nameRu="Демократическая республика Конго">
+    <city nameRu="Киншаса" nameEng="kinshasa" idYa="64210" idOp="2314302" />
+  </country>
+  <country nameRu="Джибути">
+    <city nameRu="Джибути" nameEng="djibouti" idYa="63125" idOp="223817" />
+  </country>
+  <country nameRu="Доминика">
+    <city nameRu="Розо" nameEng="roseau" idYa="78907" idOp="5043752" />
+  </country>
+  <country nameRu="Доминиканская Республика">
+    <city nameRu="Санто-Доминго" nameEng="santo domingo" idYa="78486" idOp="3536640" />
+  </country>
+  <country nameRu="Египет">
+    <city nameRu="Марса-Алам" nameEng="marsa alam" idYa="62467" idOp="352736" />
+    <city nameRu="Луксор" nameEng="luxor" idYa="62405" idOp="360502" />
+    <city nameRu="Асуан" nameEng="aswan" idYa="62414" idOp="1257800" />
+    <city nameRu="Александрия" nameEng="alexandria" idYa="62318" idOp="3407977" />
+    <city nameRu="Таба" nameEng="taba" idYa="62457" idOp="540042" />
+    <city nameRu="Каир" nameEng="cairo" idYa="62366" idOp="4185632" />
+  </country>
+  <country nameRu="Замбия">
+    <city nameRu="Лусака" nameEng="lusaka" idYa="67665" idOp="909137" />
+    <city nameRu="Ливингстон" nameEng="livingstone" idYa="67743" idOp="910111" />
+  </country>
+  <country nameRu="Зимбабве">
+    <city nameRu="Кариба" nameEng="kariba" idYa="67761" idOp="889215" />
+    <city nameRu="Хараре" nameEng="harare" idYa="67775" idOp="890299" />
+  </country>
+  <country nameRu="Израиль">
+    <city nameRu="Иерусалим" nameEng="jerusalem" idYa="40290" idOp="281184" />
+    <city nameRu="Тель-Авив" nameEng="tel aviv" idYa="40180" idOp="293397" />
+    <city nameRu="Хайфа" nameEng="haifa" idYa="40155" idOp="294801" />
+  </country>
+  <country nameRu="Индия">
+    <city nameRu="Лакнау" nameEng="lucknow" idYa="42369" idOp="1264733" />
+    <city nameRu="Бхагалпур" nameEng="bhagalpur" idYa="42498" idOp="1276300" />
+    <city nameRu="Джхасугуда" nameEng="jharsuguda" idYa="42886" idOp="1268977" />
+    <city nameRu="Бхудж" nameEng="bhuj" idYa="42634" idOp="1275812" />
+    <city nameRu="Индаур" nameEng="indore" idYa="42754" idOp="1269743" />
+    <city nameRu="Балешвар" nameEng="balasore" idYa="42895" idOp="1277599" />
+    <city nameRu="Ченнай (Мадрас)" nameEng="chennai" idYa="43279" idOp="1264527" />
+    <city nameRu="Сурат" nameEng="surat" idYa="42840" idOp="1255364" />
+    <city nameRu="Хисар" nameEng="hisar" idYa="42131" idOp="1270022" />
+    <city nameRu="Агра" nameEng="agra" idYa="42260" idOp="579760" />
+    <city nameRu="Удайпур" nameEng="udaipur" idYa="42542" idOp="1253986" />
+    <city nameRu="Веравал" nameEng="veraval" idYa="42909" idOp="1253237" />
+    <city nameRu="Бангалор" nameEng="bangalore" idYa="43295" idOp="1277333" />
+    <city nameRu="Раджкот" nameEng="rajkot" idYa="42737" idOp="1258847" />
+    <city nameRu="Бхопал" nameEng="bhopal" idYa="42667" idOp="1275841" />
+    <city nameRu="Виджаявада" nameEng="vijayawada" idYa="43181" idOp="1253184" />
+    <city nameRu="Джамшедпур" nameEng="jamshedpur" idYa="42798" idOp="1269300" />
+    <city nameRu="Мумбай (Бомбей)" nameEng="mumbai" idYa="43057" idOp="1275339" />
+    <city nameRu="Джабалпур" nameEng="jabalpur" idYa="42675" idOp="1269633" />
+    <city nameRu="Биканер" nameEng="bikaner" idYa="42165" idOp="1275665" />
+    <city nameRu="Гоа" nameEng="goa" idYa="43192" idOp="1271151" />
+    <city nameRu="Калькутта" nameEng="calcutta" idYa="42809" idOp="5148883" />
+    <city nameRu="Гуна" nameEng="guna" idYa="42559" idOp="1270711" />
+    <city nameRu="Бармер" nameEng="barmer" idYa="42435" idOp="1276901" />
+    <city nameRu="Баллари" nameEng="bellary" idYa="43205" idOp="1276509" />
+    <city nameRu="Дели" nameEng="delhi" idYa="42182" idOp="1273294" />
+    <city nameRu="Сатна" nameEng="satna" idYa="42571" idOp="1257022" />
+    <city nameRu="Барейли" nameEng="bareilly" idYa="42189" idOp="1277013" />
+    <city nameRu="Ранчи" nameEng="ranchi" idYa="42701" idOp="579266" />
+    <city nameRu="Кота" nameEng="kota" idYa="42452" idOp="6930874" />
+    <city nameRu="Коямпуттур" nameEng="coimbatore" idYa="43321" idOp="1273865" />
+    <city nameRu="Джайсалмер" nameEng="jaisalmer" idYa="42328" idOp="1269507" />
+    <city nameRu="Гая" nameEng="gaya" idYa="42591" idOp="1511428" />
+    <city nameRu="Мадурай" nameEng="madurai" idYa="43360" idOp="1264521" />
+    <city nameRu="Порт Блэр" nameEng="port blair" idYa="43333" idOp="1259385" />
+    <city nameRu="Патна" nameEng="patna" idYa="42492" idOp="1260086" />
+    <city nameRu="Аллахабад" nameEng="allahabad" idYa="42475" idOp="1278994" />
+    <city nameRu="Джайпур" nameEng="jaipur" idYa="42348" idOp="1269515" />
+    <city nameRu="Тривандрам" nameEng="thiruvananthapuram" idYa="43373" idOp="1254163" />
+    <city nameRu="Нагпур" nameEng="nagpur" idYa="42867" idOp="1262180" />
+    <city nameRu="Хайдарабад" nameEng="hyderabad" idYa="43128" idOp="1269843" />
+    <city nameRu="Гвалияр" nameEng="gwalior" idYa="42361" idOp="1270583" />
+    <city nameRu="Райпур" nameEng="raipur" idYa="42874" idOp="1258972" />
+    <city nameRu="Горанкпур" nameEng="gorakhpur" idYa="42379" idOp="1270927" />
+  </country>
+  <country nameRu="Индонезия">
+    <city nameRu="Банда-Ачех" nameEng="banda aceh" idYa="96001" idOp="1215502" />
+    <city nameRu="Лхоксемаве" nameEng="lhokseumawe" idYa="96009" idOp="1214658" />
+    <city nameRu="Энде" nameEng="ende" idYa="97290" idOp="527581" />
+    <city nameRu="Набире" nameEng="nabire" idYa="97682" idOp="1634614" />
+    <city nameRu="Джативанги" nameEng="jatiwangi" idYa="96791" idOp="1642684" />
+    <city nameRu="Уджунгпанданг" nameEng="makassar" idYa="97180" idOp="1622786" />
+    <city nameRu="Медан" nameEng="medan" idYa="96035" idOp="1214520" />
+    <city nameRu="Сурабая" nameEng="surabaya" idYa="96933" idOp="1625822" />
+    <city nameRu="Семаранг" nameEng="semarang" idYa="96837" idOp="1627896" />
+    <city nameRu="Сиболга" nameEng="sibolga" idYa="96073" idOp="1213855" />
+    <city nameRu="Кута" nameEng="kuta" idYa="97229" idOp="1486910" />
+    <city nameRu="Денпасар (Бали)" nameEng="bali" idYa="97230" idOp="550671" />
+    <city nameRu="Убуд" nameEng="ubud" idYa="97231" idOp="933347" />
+    <city nameRu="Амед" nameEng="amed" idYa="97232" idOp="529679" />
+    <city nameRu="Паданг" nameEng="padang" idYa="96163" idOp="1633419" />
+    <city nameRu="Санур" nameEng="sanur" idYa="97236" idOp="281997" />
+    <city nameRu="Батам" nameEng="batam" idYa="96087" idOp="610416" />
+    <city nameRu="Матарам" nameEng="mataram" idYa="97240" idOp="1635882" />
+    <city nameRu="Самаринда" nameEng="samarinda" idYa="96607" idOp="1629001" />
+    <city nameRu="Серанг" nameEng="serang" idYa="96737" idOp="3013381" />
+    <city nameRu="Джакарта" nameEng="jakarta" idYa="96745" idOp="1642911" />
+    <city nameRu="Бима" nameEng="bima" idYa="97270" idOp="3647651" />
+    <city nameRu="Битунг" nameEng="bitung" idYa="97016" idOp="1648636" />
+    <city nameRu="Баликпапан" nameEng="balikpapan" idYa="96633" idOp="1650527" />
+    <city nameRu="Амбон" nameEng="ambon" idYa="97724" idOp="3004774" />
+    <city nameRu="Таракан" nameEng="tarakan" idYa="96509" idOp="1624725" />
+  </country>
+  <country nameRu="Иордания">
+    <city nameRu="Петра" nameEng="petra" idYa="40297" idOp="867005" />
+    <city nameRu="Амман" nameEng="amman" idYa="40270" idOp="2648603" />
+    <city nameRu="Акаба" nameEng="aqaba" idYa="40342" idOp="250774" />
+  </country>
+  <country nameRu="Ирак">
+    <city nameRu="Басра" nameEng="basra" idYa="40689" idOp="99532" />
+    <city nameRu="Багдад" nameEng="baghdad" idYa="40650" idOp="98182" />
+  </country>
+  <country nameRu="Иран">
+    <city nameRu="Шираз" nameEng="shiraz" idYa="40848" idOp="115019" />
+    <city nameRu="Керман" nameEng="kerman" idYa="40841" idOp="712576" />
+    <city nameRu="Тегеран" nameEng="tehran" idYa="40754" idOp="112931" />
+    <city nameRu="Семнан" nameEng="semnan" idYa="40757" idOp="116402" />
+  </country>
+  <country nameRu="Ирландия">
+    <city nameRu="Дублин" nameEng="dublin" idYa="3969" idOp="5344157" />
+    <city nameRu="Корк" nameEng="cork" idYa="3955" idOp="2965140" />
+    <city nameRu="Бирр" nameEng="birr" idYa="3965" idOp="2661493" />
+    <city nameRu="Лимерик" nameEng="limerick" idYa="3961" idOp="5198034" />
+  </country>
+  <country nameRu="Испания">
+    <city nameRu="Картахена" nameEng="cartagena" idYa="8961" idOp="3896433" />
+    <city nameRu="Гвадалахара" nameEng="guadalajara" idYa="8226" idOp="4005539" />
+    <city nameRu="Марбелья" nameEng="marbella" idYa="8963" idOp="2514169" />
+    <city nameRu="Сарагоса" nameEng="zaragoza" idYa="8160" idOp="3514051" />
+    <city nameRu="Ла-Корунья" nameEng="coruna" idYa="8001" idOp="3119841" />
+    <city nameRu="Аликанте" nameEng="alicante" idYa="8360" idOp="2521978" />
+    <city nameRu="Бенидорм" nameEng="benidorm" idYa="8361" idOp="2521088" />
+    <city nameRu="Малага" nameEng="malaga" idYa="8482" idOp="2514256" />
+    <city nameRu="Барселона" nameEng="barcelona" idYa="8181" idOp="3648559" />
+    <city nameRu="Эстепона" nameEng="estepona" idYa="8214" idOp="2517816" />
+    <city nameRu="Кордова" nameEng="cordoba" idYa="8410" idOp="3860259" />
+    <city nameRu="Валенсия" nameEng="valencia" idYa="8284" idOp="3625549" />
+    <city nameRu="Мадрид" nameEng="madrid" idYa="8221" idOp="4865871" />
+    <city nameRu="Севилья" nameEng="seville" idYa="8391" idOp="5171681" />
+  </country>
+  <country nameRu="Италия">
+    <city nameRu="Бормио" nameEng="bormio" idYa="16009" idOp="3181730" />
+    <city nameRu="Болонья" nameEng="bologna" idYa="16140" idOp="3181928" />
+    <city nameRu="Бари" nameEng="bari" idYa="16270" idOp="2024626" />
+    <city nameRu="Ольбия" nameEng="olbia" idYa="16531" idOp="3172087" />
+    <city nameRu="Римини" nameEng="rimini" idYa="16149" idOp="3169361" />
+    <city nameRu="Сан-Ремо" nameEng="san remo" idYa="16155" idOp="3167777" />
+    <city nameRu="Пиза" nameEng="pisa" idYa="16158" idOp="3932166" />
+    <city nameRu="Неаполь" nameEng="naples" idYa="16289" idOp="4165565" />
+    <city nameRu="Капри" nameEng="capri" idYa="16294" idOp="3180630" />
+    <city nameRu="Флоренция" nameEng="florence" idYa="16170" idOp="4062577" />
+    <city nameRu="Сиена" nameEng="siena" idYa="16171" idOp="3166548" />
+    <city nameRu="Кальяри" nameEng="cagliari" idYa="16560" idOp="2525473" />
+    <city nameRu="Курмайор" nameEng="courmayeur" idYa="16051" idOp="3177872" />
+    <city nameRu="Аоста" nameEng="aosta" idYa="16054" idOp="3182997" />
+    <city nameRu="Турин" nameEng="turin" idYa="16059" idOp="1502061" />
+    <city nameRu="Бриндизи" nameEng="brindisi" idYa="16320" idOp="3181528" />
+    <city nameRu="Катания" nameEng="catania" idYa="16459" idOp="2525068" />
+    <city nameRu="Бергамо" nameEng="bergamo" idYa="16076" idOp="3182164" />
+    <city nameRu="Милан" nameEng="milan" idYa="16080" idOp="4641630" />
+    <city nameRu="Верона" nameEng="verona" idYa="16090" idOp="5217179" />
+    <city nameRu="Венеция" nameEng="venice" idYa="16105" idOp="4176380" />
+    <city nameRu="Триест" nameEng="triest" idYa="16110" idOp="3165185" />
+    <city nameRu="Рим" nameEng="rome" idYa="16242" idOp="146770" />
+    <city nameRu="Генуя" nameEng="genoa" idYa="16120" idOp="4833348" />
+  </country>
+  <country nameRu="Йемен">
+    <city nameRu="Аден" nameEng="aden" idYa="41480" idOp="3446420" />
+    <city nameRu="Сана" nameEng="sanaa" idYa="41404" idOp="71137" />
+  </country>
+  <country nameRu="Кабо-Верде">
+    <city nameRu="Прая" nameEng="praia" idYa="8589" idOp="3452465" />
+  </country>
+  <country nameRu="Казахстан">
+    <city nameRu="Алматы" nameEng="almaty" idYa="36870" idOp="1526384" />
+    <city nameRu="Петропавловск" nameEng="petropavlovsk" idYa="28679" idOp="510171" />
+    <city nameRu="Аркалык" nameEng="arkalyk" idYa="35363" idOp="1526193" />
+    <city nameRu="Уральск" nameEng="uralsk" idYa="35108" idOp="510808" />
+    <city nameRu="Усть-Каменогорск" nameEng="ust-kamenogorsk" idYa="36403" idOp="1520316" />
+    <city nameRu="Туркестан" nameEng="turkestan" idYa="38198" idOp="1517945" />
+    <city nameRu="Атырау (Гурьев)" nameEng="atyrau" idYa="35700" idOp="610529" />
+    <city nameRu="Темиртау" nameEng="temirtau" idYa="35393" idOp="1489779" />
+    <city nameRu="Тараз" nameEng="taraz" idYa="38341" idOp="1516905" />
+    <city nameRu="Кокшетау" nameEng="kokshetau" idYa="28879" idOp="1522203" />
+    <city nameRu="Семей" nameEng="semey" idYa="36177" idOp="517992" />
+    <city nameRu="Павлодар" nameEng="pavlodar" idYa="36003" idOp="1520240" />
+    <city nameRu="Актау" nameEng="aktau" idYa="38111" idOp="610612" />
+    <city nameRu="Темир" nameEng="temir" idYa="35426" idOp="553099" />
+    <city nameRu="Астана" nameEng="astana" idYa="35188" idOp="1526273" />
+  </country>
+  <country nameRu="Каймановы острова">
+    <city nameRu="Джорджтаун" nameEng="george town" idYa="78383" idOp="2165718" />
+  </country>
+  <country nameRu="Камбоджа">
+    <city nameRu="Сиануквиль" nameEng="sihanoukville" idYa="48983" idOp="1831142" />
+    <city nameRu="Пномпень" nameEng="phnom penh" idYa="48991" idOp="1821306" />
+  </country>
+  <country nameRu="Канада">
+    <city nameRu="Йеллоунайф" nameEng="yellowknife" idYa="71936" idOp="6185377" />
+    <city nameRu="Вистлер" nameEng="whistler" idYa="71687" idOp="6180144" />
+    <city nameRu="Форт-Нельсон" nameEng="fort nelson" idYa="71945" idOp="5955902" />
+    <city nameRu="Фредериктон" nameEng="fredericton" idYa="71700" idOp="5957776" />
+    <city nameRu="Голден" nameEng="golden" idYa="79001" idOp="2070711" />
+    <city nameRu="Шарлоттаун" nameEng="charlottetown" idYa="71706" idOp="5920288" />
+    <city nameRu="Виннипег" nameEng="winnipeg" idYa="71579" idOp="6183235" />
+    <city nameRu="Уайтхорс" nameEng="whitehorse" idYa="71964" idOp="6180550" />
+    <city nameRu="Доусон" nameEng="dawson" idYa="71966" idOp="4190953" />
+    <city nameRu="Тандер-Бей" nameEng="thunder bay" idYa="71749" idOp="6166142" />
+    <city nameRu="Квебек" nameEng="quebec" idYa="71714" idOp="6325494" />
+    <city nameRu="Реджайна" nameEng="regina" idYa="71863" idOp="3832647" />
+    <city nameRu="Саскатун" nameEng="saskatoon" idYa="71866" idOp="6141256" />
+    <city nameRu="Кингстон" nameEng="kingston" idYa="71620" idOp="2161311" />
+    <city nameRu="Калгари" nameEng="calgary" idYa="71877" idOp="5913490" />
+    <city nameRu="Торонто" nameEng="toronto" idYa="71624" idOp="5174095" />
+    <city nameRu="Монреаль" nameEng="montreal" idYa="71627" idOp="6077243" />
+    <city nameRu="Оттава" nameEng="ottawa" idYa="71628" idOp="4905006" />
+    <city nameRu="Джаспер" nameEng="jasper" idYa="71888" idOp="4259640" />
+    <city nameRu="Ванкувер" nameEng="vancouver" idYa="71892" idOp="5814616" />
+    <city nameRu="Нейн" nameEng="nain" idYa="71902" idOp="1262115" />
+    <city nameRu="Галифакс" nameEng="halifax" idYa="71395" idOp="4938652" />
+    <city nameRu="Икалуик" nameEng="iqaluit" idYa="71909" idOp="5983720" />
+    <city nameRu="Эдмонтон" nameEng="edmonton" idYa="71123" idOp="5946768" />
+    <city nameRu="Виктория" nameEng="victoria" idYa="71799" idOp="3634922" />
+  </country>
+  <country nameRu="Канарские острова">
+    <city nameRu="Тенерифе" nameEng="tenerife" idYa="8212" idOp="2511174" />
+    <city nameRu="Санта-Крус" nameEng="santa cruz de tenerife" idYa="60020" idOp="2511174" />
+  </country>
+  <country nameRu="Катар">
+    <city nameRu="Доха" nameEng="doha" idYa="41170" idOp="290030" />
+  </country>
+  <country nameRu="Кения">
+    <city nameRu="Момбаса" nameEng="mombasa" idYa="63820" idOp="186301" />
+    <city nameRu="Накуру" nameEng="nakuru" idYa="63714" idOp="184622" />
+    <city nameRu="Ламу" nameEng="lamu" idYa="63772" idOp="7180617" />
+    <city nameRu="Найроби" nameEng="nairobi" idYa="63740" idOp="184745" />
+  </country>
+  <country nameRu="Кипр">
+    <city nameRu="Пафос" nameEng="paphos" idYa="17600" idOp="146214" />
+    <city nameRu="Никосия" nameEng="nicosia" idYa="17602" idOp="146268" />
+    <city nameRu="Айя-Напа" nameEng="ayia napa" idYa="17603" idOp="146748" />
+    <city nameRu="Протарас" nameEng="protaras" idYa="17604" idOp="18918" />
+    <city nameRu="Лимасол" nameEng="limassol" idYa="17608" idOp="146384" />
+    <city nameRu="Ларнака" nameEng="larnaca" idYa="17609" idOp="146400" />
+  </country>
+  <country nameRu="Киргизия">
+    <city nameRu="Чолпон-Ата" nameEng="cholpon-ata" idYa="36934" idOp="1528512" />
+    <city nameRu="Талас" nameEng="talas" idYa="38345" idOp="299900" />
+    <city nameRu="Нарын" nameEng="naryn" idYa="36974" idOp="1527592" />
+    <city nameRu="Бишкек" nameEng="bishkek" idYa="38353" idOp="1528675" />
+    <city nameRu="Каракол" nameEng="karakol" idYa="36948" idOp="1528121" />
+    <city nameRu="Ош" nameEng="osh" idYa="38615" idOp="465291" />
+    <city nameRu="Балыкчи (Иссык-Куль)" nameEng="balykchy" idYa="36927" idOp="1527004" />
+  </country>
+  <country nameRu="Кирибати">
+    <city nameRu="Байрики" nameEng="bairiki" idYa="91610" idOp="7601762" />
+  </country>
+  <country nameRu="Китай">
+    <city nameRu="Синин, пров. Цинхай" nameEng="xining" idYa="52866" idOp="1788852" />
+    <city nameRu="Синань, пров. Гуандун" nameEng="xinan" idYa="57731" idOp="3391130" />
+    <city nameRu="Ухань, пров. Хубэй" nameEng="wuhan" idYa="57494" idOp="1791247" />
+    <city nameRu="Далянь, пров. Ляонин" nameEng="dalian" idYa="54662" idOp="1814087" />
+    <city nameRu="Харбин, пров. Хэйлунцзян" nameEng="harbin" idYa="50953" idOp="2037013" />
+    <city nameRu="Чанша, пров. Хунань" nameEng="changsha" idYa="57687" idOp="1815577" />
+    <city nameRu="Тайюань, пров. Шэньси" nameEng="taiyuan" idYa="53772" idOp="1793511" />
+    <city nameRu="Шицзячжуан, пров. Хэбэй" nameEng="shijiazhuang" idYa="53698" idOp="1795270" />
+    <city nameRu="Ханьчжун, пров. Шаньси" nameEng="hanzhong" idYa="57127" idOp="1808857" />
+    <city nameRu="Наньчан, пров. Цзянси" nameEng="nanchang" idYa="58606" idOp="1800163" />
+    <city nameRu="Гуанчжоу, пров. Гуандун" nameEng="guangzhou" idYa="59287" idOp="1809858" />
+    <city nameRu="Ланьчжоу, пров. Ганьсу" nameEng="lanzhou" idYa="52889" idOp="1804430" />
+    <city nameRu="Эньши, пров. Хубэй" nameEng="enshi" idYa="57447" idOp="1811720" />
+    <city nameRu="Лхаса, Тибет" nameEng="lhasa" idYa="55591" idOp="1280737" />
+    <city nameRu="Чанчунь, пров. Цзилинь" nameEng="changchun" idYa="54161" idOp="2038180" />
+    <city nameRu="Дуншэн, Вн. Монголия" nameEng="dongsheng" idYa="53543" idOp="1812256" />
+    <city nameRu="Санья, о-в Хайнань" nameEng="sanya" idYa="59948" idOp="1796556" />
+    <city nameRu="Чанчжоу, пров. Цзянсу" nameEng="changzhou" idYa="57972" idOp="1815456" />
+    <city nameRu="Чунцин, пров. Сычуань" nameEng="chongqing" idYa="57516" idOp="1814906" />
+    <city nameRu="Циндао, пров. Шаньдун" nameEng="qingdao" idYa="54857" idOp="1797929" />
+    <city nameRu="Цицикар, пров. Хэйлунцзян" nameEng="qiqihar" idYa="50745" idOp="2035265" />
+    <city nameRu="Хайлар, Вн. Монголия" nameEng="hailar" idYa="50527" idOp="1267185" />
+    <city nameRu="Куньмин, пров. Юньнань" nameEng="kunming" idYa="56778" idOp="1804651" />
+    <city nameRu="Турфан, Синьцзян-Уйгурский авт. р." nameEng="turpan" idYa="51573" idOp="1529114" />
+    <city nameRu="Шэньян, пров. Ляонин" nameEng="shenyang" idYa="54342" idOp="2034937" />
+    <city nameRu="Цзинань, пров. Шаньдун" nameEng="jinan" idYa="54823" idOp="1805753" />
+    <city nameRu="Баодин, пров. Хэбэй" nameEng="baoding" idYa="54602" idOp="1816971" />
+    <city nameRu="Гонконг" nameEng="hong kong" idYa="45007" idOp="1819729" />
+    <city nameRu="Хэфэй, пров. Аньхой" nameEng="hefei" idYa="58321" idOp="1808722" />
+    <city nameRu="Тайпа (Данцзай-Дао), Макао" nameEng="taipa" idYa="45011" idOp="635150" />
+    <city nameRu="Макао" nameEng="macau" idYa="45012" idOp="3395998" />
+    <city nameRu="Хух-Хото, Вн. Монголия" nameEng="hohhot" idYa="53463" idOp="2036892" />
+    <city nameRu="Гуйян, пров. Гуйчжоу" nameEng="guiyang" idYa="57816" idOp="1809461" />
+    <city nameRu="Наньнин, Гуанси-Чжуанский авт. р." nameEng="nanning" idYa="59431" idOp="1799869" />
+    <city nameRu="Уси, пров. Цзянсу" nameEng="wuxi" idYa="58357" idOp="1790923" />
+    <city nameRu="Чэндэ, пров. Хэбэй" nameEng="chengde" idYa="54423" idOp="2038087" />
+    <city nameRu="Фучжоу, пров. Фуцзянь" nameEng="fuzhou" idYa="58847" idOp="1810821" />
+    <city nameRu="Даньдун, пров. Ляонин" nameEng="dandong" idYa="54497" idOp="2037886" />
+    <city nameRu="Гуйлинь, Гуанси-Чжуанский авт. р." nameEng="guilin" idYa="57957" idOp="1809498" />
+    <city nameRu="Чэнду, пров. Сычуань" nameEng="chengdu" idYa="56294" idOp="1815286" />
+    <city nameRu="Иньчуань, Нинся-Хуэйский авт. р." nameEng="yinchuan" idYa="53614" idOp="1786657" />
+    <city nameRu="Пекин" nameEng="beijing" idYa="54511" idOp="1816670" />
+    <city nameRu="Лоян, пров. Хэнань" nameEng="luoyang" idYa="57072" idOp="1801792" />
+    <city nameRu="Сямынь, пров. Фуцзянь" nameEng="xiamen" idYa="59134" idOp="1790645" />
+    <city nameRu="Сучжоу, пров. Цзянсу" nameEng="suzhou" idYa="58358" idOp="1886760" />
+    <city nameRu="Байи, Тибет" nameEng="bai" idYa="56311" idOp="1272653" />
+    <city nameRu="Шанхай" nameEng="shanghai" idYa="58362" idOp="1796236" />
+    <city nameRu="Чжэнчжоу, пров. Хэнань" nameEng="zhengzhou" idYa="57083" idOp="1784658" />
+    <city nameRu="Бейхай, Гуанси-Чжуанский авт. р." nameEng="beihai" idYa="59644" idOp="1816705" />
+    <city nameRu="Тяньцзинь" nameEng="tianjin" idYa="54527" idOp="1792947" />
+  </country>
+  <country nameRu="Кокосовые острова">
+    <city nameRu="Кокосовые острова (Килинг)" nameEng="west island" idYa="96996" idOp="7304591" />
+  </country>
+  <country nameRu="Колумбия">
+    <city nameRu="Богота" nameEng="bogota" idYa="80222" idOp="5095808" />
+  </country>
+  <country nameRu="Коморские острова">
+    <city nameRu="Морони" nameEng="moroni" idYa="67001" idOp="921772" />
+  </country>
+  <country nameRu="Коста-Рика">
+    <city nameRu="Пунтаренас" nameEng="puntarenas" idYa="78760" idOp="3622228" />
+    <city nameRu="Сан-Хосе" nameEng="san jose" idYa="78762" idOp="3628142" />
+    <city nameRu="Пуэрто-Лимон" nameEng="puerto limon" idYa="78767" idOp="3622247" />
+    <city nameRu="Либериа" nameEng="liberia" idYa="78774" idOp="3623076" />
+  </country>
+  <country nameRu="Кот-д'Ивуар">
+    <city nameRu="Абиджан" nameEng="abidjan" idYa="65578" idOp="2293538" />
+  </country>
+  <country nameRu="Куба">
+    <city nameRu="Сантьяго-де-Куба" nameEng="santiago de cuba" idYa="78264" idOp="3536729" />
+    <city nameRu="Тринидад" nameEng="trinidad" idYa="78337" idOp="3534915" />
+    <city nameRu="Варадеро" nameEng="varadero" idYa="78229" idOp="3534632" />
+    <city nameRu="Гавана" nameEng="havana" idYa="78325" idOp="3553478" />
+  </country>
+  <country nameRu="Лаос">
+    <city nameRu="Пхонсаван" nameEng="phonsavan" idYa="48934" idOp="1952156" />
+    <city nameRu="Вьентьян" nameEng="vientiane" idYa="48940" idOp="1651944" />
+    <city nameRu="Паксе (пров. Чампасак)" nameEng="pakxe" idYa="48955" idOp="1654379" />
+  </country>
+  <country nameRu="Латвия">
+    <city nameRu="Ливаны" nameEng="livani" idYa="26437" idOp="457860" />
+    <city nameRu="Вентспилс" nameEng="ventspils" idYa="26314" idOp="454310" />
+    <city nameRu="Резекне" nameEng="rezekne" idYa="26446" idOp="456202" />
+    <city nameRu="Даугавпилс" nameEng="daugavpils" idYa="26544" idOp="460413" />
+    <city nameRu="Рига" nameEng="riga" idYa="26422" idOp="1261722" />
+    <city nameRu="Краслава" nameEng="kraslava" idYa="26550" idOp="458623" />
+    <city nameRu="Цесис" nameEng="cesis" idYa="26335" idOp="460570" />
+  </country>
+  <country nameRu="Лесото">
+    <city nameRu="Масеру" nameEng="maseru" idYa="68454" idOp="932505" />
+  </country>
+  <country nameRu="Либерия">
+    <city nameRu="Монровия" nameEng="monrovia" idYa="65602" idOp="5374175" />
+  </country>
+  <country nameRu="Ливан">
+    <city nameRu="Баальбек" nameEng="baalbek" idYa="40112" idOp="277130" />
+    <city nameRu="Бейрут" nameEng="beirut" idYa="40100" idOp="276781" />
+    <city nameRu="Триполи" nameEng="tripoli" idYa="40103" idOp="252601" />
+  </country>
+  <country nameRu="Ливия">
+    <city nameRu="Себха" nameEng="sabha" idYa="62124" idOp="2212775" />
+    <city nameRu="Триполи" nameEng="tripoli" idYa="62010" idOp="252601" />
+    <city nameRu="Бенгази" nameEng="benghazi" idYa="62052" idOp="88319" />
+  </country>
+  <country nameRu="Литва">
+    <city nameRu="Каунас" nameEng="kaunas" idYa="26629" idOp="598316" />
+    <city nameRu="Тракай" nameEng="trakai" idYa="26729" idOp="593871" />
+    <city nameRu="Вильнюс" nameEng="vilnius" idYa="26730" idOp="593116" />
+    <city nameRu="Нида" nameEng="nida" idYa="26603" idOp="1261446" />
+    <city nameRu="Клайпеда" nameEng="klaipeda" idYa="26509" idOp="598098" />
+    <city nameRu="Паланга" nameEng="palanga" idYa="26510" idOp="596238" />
+    <city nameRu="Друскининкай" nameEng="druskininkai" idYa="26735" idOp="599757" />
+  </country>
+  <country nameRu="Лихтенштейн">
+    <city nameRu="Вадуц" nameEng="vaduz" idYa="6990" idOp="3042030" />
+  </country>
+  <country nameRu="Люксембург">
+    <city nameRu="Люксембург" nameEng="luxembourg" idYa="6590" idOp="2960316" />
+  </country>
+  <country nameRu="Мавритания">
+    <city nameRu="Нуакшот" nameEng="nouakchott" idYa="61442" idOp="2377450" />
+  </country>
+  <country nameRu="Мадагаскар">
+    <city nameRu="Антананариву" nameEng="antananarivo" idYa="67083" idOp="1070940" />
+  </country>
+  <country nameRu="Македония">
+    <city nameRu="Скопье" nameEng="skopje" idYa="13586" idOp="785842" />
+  </country>
+  <country nameRu="Малави">
+    <city nameRu="Лилонгве" nameEng="lilongwe" idYa="67586" idOp="927967" />
+  </country>
+  <country nameRu="Малайзия">
+    <city nameRu="Сибу" nameEng="sibu" idYa="96421" idOp="691097" />
+    <city nameRu="Субанг" nameEng="subang" idYa="48647" idOp="1771023" />
+    <city nameRu="Куала-Лумпур" nameEng="kuala lumpur" idYa="48648" idOp="1735161" />
+    <city nameRu="Кучинг" nameEng="kuching" idYa="96413" idOp="1735634" />
+    <city nameRu="Куантан" nameEng="kuantan" idYa="48657" idOp="1735227" />
+    <city nameRu="Кудат" nameEng="kudat" idYa="96477" idOp="2112454" />
+  </country>
+  <country nameRu="Мали">
+    <city nameRu="Бамако" nameEng="bamako" idYa="61291" idOp="2460596" />
+  </country>
+  <country nameRu="Мальдивские острова">
+    <city nameRu="Мале" nameEng="male" idYa="43555" idOp="1264115" />
+  </country>
+  <country nameRu="Мальта">
+    <city nameRu="Валлетта" nameEng="valletta" idYa="16597" idOp="2562305" />
+  </country>
+  <country nameRu="Марокко">
+    <city nameRu="Танжер" nameEng="tangier" idYa="60101" idOp="2530335" />
+    <city nameRu="Рабат" nameEng="rabat" idYa="60135" idOp="2562620" />
+    <city nameRu="Фес" nameEng="fes" idYa="60141" idOp="4386419" />
+    <city nameRu="Касабланка" nameEng="casablanca" idYa="60155" idOp="2553604" />
+    <city nameRu="Агадир" nameEng="agadir" idYa="60252" idOp="683914" />
+  </country>
+  <country nameRu="Маршалловы Острова">
+    <city nameRu="Маджуро" nameEng="majuro" idYa="91376" idOp="2113779" />
+  </country>
+  <country nameRu="Мексика">
+    <city nameRu="Чиуауа" nameEng="chihuahua" idYa="76225" idOp="4014338" />
+    <city nameRu="Гвадалахара" nameEng="guadalajara" idYa="76612" idOp="4005539" />
+    <city nameRu="Акапулько" nameEng="acapulco" idYa="76805" idOp="3533462" />
+    <city nameRu="Пуэрто-Вальярта" nameEng="puerto vallarta" idYa="76614" idOp="3991328" />
+    <city nameRu="Мехико" nameEng="mexico" idYa="76680" idOp="4398103" />
+    <city nameRu="Монтеррей" nameEng="monterrey" idYa="76393" idOp="3604614" />
+    <city nameRu="Мансанильо" nameEng="manzanillo" idYa="76654" idOp="3547867" />
+    <city nameRu="Сан-Лукас" nameEng="cabo san lucas" idYa="76518" idOp="3985710" />
+    <city nameRu="Канкун" nameEng="cancun" idYa="76595" idOp="3531673" />
+  </country>
+  <country nameRu="Мелилья">
+    <city nameRu="Мелилья" nameEng="melilla" idYa="60338" idOp="2513947" />
+  </country>
+  <country nameRu="Микронезия">
+    <city nameRu="Паликир" nameEng="palikir" idYa="91348" idOp="2081986" />
+  </country>
+  <country nameRu="Мозамбик">
+    <city nameRu="Мапуту" nameEng="maputo" idYa="67341" idOp="1040652" />
+  </country>
+  <country nameRu="Молдова">
+    <city nameRu="Бендеры (Тигина)" nameEng="bender" idYa="33828" idOp="618577" />
+    <city nameRu="Тирасполь" nameEng="tiraspol" idYa="33829" idOp="617239" />
+    <city nameRu="Сороки" nameEng="soroki" idYa="33678" idOp="1491378" />
+    <city nameRu="Комрат" nameEng="comrat" idYa="33883" idOp="618405" />
+  </country>
+  <country nameRu="Монако">
+    <city nameRu="Монако" nameEng="monaco" idYa="7691" idOp="2993458" />
+  </country>
+  <country nameRu="Монголия">
+    <city nameRu="Улаангом" nameEng="ulaangom" idYa="44212" idOp="1515029" />
+    <city nameRu="Мандалговь" nameEng="mandalgovi" idYa="44341" idOp="2030065" />
+    <city nameRu="Ховд" nameEng="hovd" idYa="44218" idOp="1516048" />
+    <city nameRu="Баянхонгор" nameEng="bayanhongor" idYa="44287" idOp="2032532" />
+    <city nameRu="Алтай" nameEng="altay" idYa="44277" idOp="1511736" />
+  </country>
+  <country nameRu="Монтсеррат">
+    <city nameRu="Плимут" nameEng="plymouth" idYa="78898" idOp="2186239" />
+  </country>
+  <country nameRu="Мьянма">
+    <city nameRu="Ситуэ" nameEng="sittwe" idYa="48062" idOp="1295765" />
+    <city nameRu="Мьичина" nameEng="myitkyina" idYa="48008" idOp="1307741" />
+    <city nameRu="Мандалай" nameEng="mandalay" idYa="48042" idOp="1311874" />
+    <city nameRu="Баган" nameEng="bagan" idYa="48048" idOp="1511094" />
+    <city nameRu="Тауннгу" nameEng="taungoo" idYa="48078" idOp="1290596" />
+    <city nameRu="Пьинмана" nameEng="pyinmana" idYa="48074" idOp="1298987" />
+    <city nameRu="Патейн" nameEng="pathein" idYa="48094" idOp="1328421" />
+  </country>
+  <country nameRu="Намибия">
+    <city nameRu="Виндхук" nameEng="windhoek" idYa="68110" idOp="3352136" />
+  </country>
+  <country nameRu="Непал">
+    <city nameRu="Покхара" nameEng="pokhara" idYa="44434" idOp="1282898" />
+    <city nameRu="Дханкута" nameEng="dhankuta" idYa="44477" idOp="1283465" />
+    <city nameRu="Бхайрава" nameEng="bhairahawa" idYa="44438" idOp="1283621" />
+    <city nameRu="Катманду" nameEng="kathmandu" idYa="44454" idOp="1283240" />
+  </country>
+  <country nameRu="Нигер">
+    <city nameRu="Ниамей" nameEng="niamey" idYa="61052" idOp="2440485" />
+  </country>
+  <country nameRu="Нигерия">
+    <city nameRu="Лагос" nameEng="lagos" idYa="65201" idOp="4002224" />
+    <city nameRu="Абуджа" nameEng="abuja" idYa="65125" idOp="2352778" />
+  </country>
+  <country nameRu="Нидерланды">
+    <city nameRu="Амстердам" nameEng="amsterdam" idYa="6240" idOp="5107152" />
+    <city nameRu="Роттердам" nameEng="rotterdam" idYa="6344" idOp="5134453" />
+    <city nameRu="Маастрихт" nameEng="maastricht" idYa="6380" idOp="2751283" />
+  </country>
+  <country nameRu="Никарагуа">
+    <city nameRu="Манагуа" nameEng="managua" idYa="78741" idOp="3617763" />
+  </country>
+  <country nameRu="Новая Зеландия">
+    <city nameRu="Крайстчерч" nameEng="christchurch" idYa="93781" idOp="2192362" />
+    <city nameRu="Окленд" nameEng="auckland" idYa="93110" idOp="2193733" />
+    <city nameRu="Веллингтон" nameEng="wellington" idYa="93439" idOp="1252887" />
+  </country>
+  <country nameRu="Новая Каледония">
+    <city nameRu="Нумеа" nameEng="noumea" idYa="91592" idOp="2139521" />
+  </country>
+  <country nameRu="Норвегия">
+    <city nameRu="Осло" nameEng="oslo" idYa="1384" idOp="542213" />
+    <city nameRu="Киркенес" nameEng="kirkenes" idYa="1089" idOp="779303" />
+    <city nameRu="Лиллехаммер" nameEng="lillehammer" idYa="1378" idOp="3147474" />
+    <city nameRu="Берген" nameEng="bergen" idYa="1311" idOp="5095611" />
+  </country>
+  <country nameRu="Норфолк">
+    <city nameRu="Кингстон" nameEng="kingston" idYa="94996" idOp="2161311" />
+  </country>
+  <country nameRu="ОАЭ">
+    <city nameRu="Абу-Даби" nameEng="abu dhabi" idYa="41217" idOp="292968" />
+    <city nameRu="Дубай" nameEng="dubai" idYa="41194" idOp="292223" />
+    <city nameRu="Аджман" nameEng="ajman" idYa="41195" idOp="292932" />
+    <city nameRu="Шарджа" nameEng="sharjah" idYa="41196" idOp="292672" />
+  </country>
+  <country nameRu="Оман">
+    <city nameRu="Маскат" nameEng="muscat" idYa="41258" idOp="4868404" />
+    <city nameRu="Салала" nameEng="salalah" idYa="41316" idOp="286621" />
+  </country>
+  <country nameRu="Остров Гуам">
+    <city nameRu="Аганья" nameEng="hagatna" idYa="91212" idOp="4044012" />
+  </country>
+  <country nameRu="Острова Кука">
+    <city nameRu="Аваруа" nameEng="avarua" idYa="91843" idOp="4035715" />
+  </country>
+  <country nameRu="Пакистан">
+    <city nameRu="Лахор" nameEng="lahore" idYa="41640" idOp="1172451" />
+    <city nameRu="Исламабад" nameEng="islamabad" idYa="41571" idOp="1176615" />
+    <city nameRu="Карачи" nameEng="karachi" idYa="41780" idOp="1174872" />
+  </country>
+  <country nameRu="Палау">
+    <city nameRu="Корор" nameEng="koror" idYa="91408" idOp="7732415" />
+  </country>
+  <country nameRu="Палестинская автономия">
+    <city nameRu="Газа" nameEng="gaza" idYa="62338" idOp="281133" />
+    <city nameRu="Вифлеем" nameEng="bethlehem" idYa="40183" idOp="1019704" />
+  </country>
+  <country nameRu="Панама">
+    <city nameRu="Давид" nameEng="david" idYa="78793" idOp="2169314" />
+    <city nameRu="Колон" nameEng="colon" idYa="78794" idOp="1273850" />
+    <city nameRu="Буке" nameEng="boquete" idYa="78796" idOp="3713860" />
+    <city nameRu="Панама" nameEng="panama" idYa="78806" idOp="4167694" />
+    <city nameRu="Бокас-дель-Торо" nameEng="bocas del toro" idYa="78791" idOp="3713959" />
+  </country>
+  <country nameRu="Папуа - Новая Гвинея">
+    <city nameRu="Ванимо" nameEng="vanimo" idYa="94022" idOp="2084442" />
+    <city nameRu="Киунга" nameEng="kiunga" idYa="94001" idOp="2093846" />
+    <city nameRu="Киета" nameEng="kieta" idYa="94097" idOp="2094027" />
+    <city nameRu="Дару" nameEng="daru" idYa="94003" idOp="159647" />
+    <city nameRu="Вевак" nameEng="wewak" idYa="94004" idOp="2083537" />
+    <city nameRu="Порт-Морсби" nameEng="port moresby" idYa="94035" idOp="2088122" />
+    <city nameRu="Туфи" nameEng="tufi" idYa="94067" idOp="3165120" />
+    <city nameRu="Маданг" nameEng="madang" idYa="94014" idOp="2091996" />
+  </country>
+  <country nameRu="Парагвай">
+    <city nameRu="Асунсьон" nameEng="asuncion" idYa="86218" idOp="3480908" />
+  </country>
+  <country nameRu="Перу">
+    <city nameRu="Лима" nameEng="lima" idYa="84628" idOp="535229" />
+    <city nameRu="Трухильо" nameEng="trujillo" idYa="84501" idOp="3625979" />
+    <city nameRu="Куско" nameEng="cusco" idYa="84686" idOp="3941584" />
+    <city nameRu="Наска" nameEng="nazca" idYa="84719" idOp="3934356" />
+  </country>
+  <country nameRu="Польша">
+    <city nameRu="Краков" nameEng="krakow" idYa="12566" idOp="2884850" />
+    <city nameRu="Белосток" nameEng="bialystok" idYa="12295" idOp="776069" />
+    <city nameRu="Вроцлав" nameEng="wroclaw" idYa="12424" idOp="3081368" />
+    <city nameRu="Лодзь" nameEng="lodz" idYa="12465" idOp="627083" />
+    <city nameRu="Познань" nameEng="poznan" idYa="12330" idOp="3088171" />
+    <city nameRu="Катовице" nameEng="katowice" idYa="12560" idOp="3096472" />
+    <city nameRu="Закопане" nameEng="zakopane" idYa="12625" idOp="3080866" />
+    <city nameRu="Сопот" nameEng="sopot" idYa="12146" idOp="666435" />
+    <city nameRu="Гданьск" nameEng="gdansk" idYa="12150" idOp="3099434" />
+    <city nameRu="Варшава" nameEng="warsaw" idYa="12375" idOp="4927854" />
+  </country>
+  <country nameRu="Португалия">
+    <city nameRu="Порту" nameEng="porto" idYa="8545" idOp="3391408" />
+    <city nameRu="Брага" nameEng="braga" idYa="8547" idOp="3405006" />
+    <city nameRu="Коимбра" nameEng="coimbra" idYa="8548" idOp="2740637" />
+    <city nameRu="Фару" nameEng="faro" idYa="8554" idOp="567748" />
+    <city nameRu="Эвора" nameEng="evora" idYa="8558" idOp="2268406" />
+    <city nameRu="Синтра" nameEng="sintra" idYa="8532" idOp="2262912" />
+    <city nameRu="Фуншал (Мадейра)" nameEng="funchal" idYa="8521" idOp="2267827" />
+    <city nameRu="Лиссабон" nameEng="lisbon" idYa="8536" idOp="4516749" />
+  </country>
+  <country nameRu="Республика Конго">
+    <city nameRu="Браззавиль" nameEng="brazzaville" idYa="64450" idOp="2260535" />
+  </country>
+  <country nameRu="Реюньон">
+    <city nameRu="Сен-Пьер" nameEng="saint-pierre" idYa="61984" idOp="5972291" />
+    <city nameRu="Сен-Дени" nameEng="saint-denis" idYa="61980" idOp="2980916" />
+  </country>
+  <country nameRu="Россия">
+    <city nameRu="Нытва" nameEng="nytva" idYa="28219" idOp="516576" />
+    <city nameRu="Окуловка" nameEng="okulovka" idYa="26283" idOp="515771" />
+    <city nameRu="Уссурийск" nameEng="ussuriysk" idYa="31847" idOp="2014006" />
+    <city nameRu="Кабанск" nameEng="kabansk" idYa="30729" idOp="2023350" />
+    <city nameRu="Гремячинск" nameEng="gremyachinsk" idYa="30732" idOp="558885" />
+    <city nameRu="Беломорск" nameEng="belomorsk" idYa="22551" idOp="577922" />
+    <city nameRu="Калачинск" nameEng="kalachinsk" idYa="28696" idOp="1505074" />
+    <city nameRu="Омск" nameEng="omsk" idYa="28698" idOp="1496153" />
+    <city nameRu="Городовиковск" nameEng="gorodovikovsk" idYa="34845" idOp="559475" />
+    <city nameRu="Яшалта" nameEng="yashalta" idYa="34846" idOp="468776" />
+    <city nameRu="Холмогоры" nameEng="kholmogory" idYa="22559" idOp="549748" />
+    <city nameRu="Нурлат" nameEng="nurlat" idYa="28706" idOp="516716" />
+    <city nameRu="Альметьевск" nameEng="almetyevsk" idYa="28707" idOp="582432" />
+    <city nameRu="Ноглики" nameEng="nogliki" idYa="32053" idOp="2122783" />
+    <city nameRu="Чита" nameEng="chita" idYa="30758" idOp="2025339" />
+    <city nameRu="Бугульма" nameEng="bugulma" idYa="28711" idOp="571170" />
+    <city nameRu="Туймазы" nameEng="tuymazy" idYa="28712" idOp="480089" />
+    <city nameRu="Элиста" nameEng="elista" idYa="34861" idOp="563514" />
+    <city nameRu="Белебей" nameEng="belebey" idYa="28718" idOp="578120" />
+    <city nameRu="Давлеканово" nameEng="davlekanovo" idYa="28720" idOp="567006" />
+    <city nameRu="Демидов" nameEng="demidov" idYa="26673" idOp="566751" />
+    <city nameRu="Уфа" nameEng="ufa" idYa="28722" idOp="479561" />
+    <city nameRu="Шебекино" nameEng="shebekino" idYa="34316" idOp="495112" />
+    <city nameRu="Абзаково" nameEng="abzakovo" idYa="28731" idOp="584329" />
+    <city nameRu="Сафоново" nameEng="safonovo" idYa="26686" idOp="499452" />
+    <city nameRu="Бакал" nameEng="bakal" idYa="28735" idOp="579738" />
+    <city nameRu="Нариманов" nameEng="narimanov" idYa="34886" idOp="523443" />
+    <city nameRu="Вязьма" nameEng="vyazma" idYa="26695" idOp="470676" />
+    <city nameRu="Пласт" nameEng="plast" idYa="28744" idOp="1494907" />
+    <city nameRu="Светлогорск" nameEng="svetlogorsk" idYa="26700" idOp="485699" />
+    <city nameRu="Балтийск" nameEng="baltiysk" idYa="26701" idOp="2609906" />
+    <city nameRu="Калининград" nameEng="kaliningrad" idYa="26702" idOp="554234" />
+    <city nameRu="Светлый" nameEng="svetly" idYa="26703" idOp="485660" />
+    <city nameRu="Ладушкин" nameEng="ladushkin" idYa="26704" idOp="537229" />
+    <city nameRu="Багратионовск" nameEng="bagrationovsk" idYa="26705" idOp="579760" />
+    <city nameRu="Аршан" nameEng="arshan" idYa="30803" idOp="580862" />
+    <city nameRu="Гвардейск" nameEng="gvardeysk" idYa="26708" idOp="557710" />
+    <city nameRu="Гурьевск" nameEng="guryevsk" idYa="26710" idOp="1506073" />
+    <city nameRu="Озерск" nameEng="ozersk" idYa="26712" idOp="1538634" />
+    <city nameRu="Сольвычегодск" nameEng="solvychegodsk" idYa="22884" idOp="490743" />
+    <city nameRu="Гусев" nameEng="gusev" idYa="26714" idOp="557882" />
+    <city nameRu="Нестеров" nameEng="nesterov" idYa="26715" idOp="522508" />
+    <city nameRu="Краснознаменск" nameEng="krasnoznamensk" idYa="26716" idOp="541947" />
+    <city nameRu="Байкальск" nameEng="baykalsk" idYa="30818" idOp="2026979" />
+    <city nameRu="Бабушкин" nameEng="babushkin" idYa="30822" idOp="2027276" />
+    <city nameRu="Улан-Удэ" nameEng="ulan-ude" idYa="30823" idOp="2014407" />
+    <city nameRu="Усинск" nameEng="usinsk" idYa="23410" idOp="863061" />
+    <city nameRu="Тимашевск" nameEng="timashevsk" idYa="34922" idOp="482965" />
+    <city nameRu="Майский" nameEng="mayskiy" idYa="37223" idOp="528242" />
+    <city nameRu="Славянск-на-Кубани" nameEng="slavyansk-na-kubani" idYa="34924" idOp="492094" />
+    <city nameRu="Северодвинск" nameEng="severodvinsk" idYa="22546" idOp="496285" />
+    <city nameRu="Гусиноозерск" nameEng="gusinoozersk" idYa="30830" idOp="2023782" />
+    <city nameRu="Краснодар" nameEng="krasnodar" idYa="34929" idOp="542420" />
+    <city nameRu="Петровск-Забайкальский" nameEng="petrovsk-zabaykalskiy" idYa="30834" idOp="2017945" />
+    <city nameRu="Сыктывкар" nameEng="syktyvkar" idYa="23804" idOp="485239" />
+    <city nameRu="Новокубанск" nameEng="novokubansk" idYa="34934" idOp="518682" />
+    <city nameRu="Гулькевичи" nameEng="gulkevichi" idYa="34935" idOp="558066" />
+    <city nameRu="Кропоткин" nameEng="kropotkin" idYa="34936" idOp="540761" />
+    <city nameRu="Усть-Лабинск" nameEng="ust-labinsk" idYa="34937" idOp="478044" />
+    <city nameRu="Хилок" nameEng="khilok" idYa="30844" idOp="2022463" />
+    <city nameRu="Павлово" nameEng="pavlovo" idYa="27555" idOp="827329" />
+    <city nameRu="Новоалександровск" nameEng="novoaleksandrovsk" idYa="34944" idOp="519106" />
+    <city nameRu="Кинель" nameEng="kinel" idYa="28803" idOp="548625" />
+    <city nameRu="Михайловск" nameEng="mikhaylovsk" idYa="34948" idOp="493702" />
+    <city nameRu="Ставрополь" nameEng="stavropol" idYa="34949" idOp="487846" />
+    <city nameRu="Бугуруслан" nameEng="buguruslan" idYa="28806" idOp="571159" />
+    <city nameRu="Самара" nameEng="samara" idYa="28807" idOp="499099" />
+    <city nameRu="Анапа" nameEng="anapa" idYa="37001" idOp="582182" />
+    <city nameRu="Крымск" nameEng="krymsk" idYa="37002" idOp="540251" />
+    <city nameRu="Благодарный" nameEng="blagodarny" idYa="34958" idOp="576172" />
+    <city nameRu="Приморск" nameEng="primorsk" idYa="22893" idOp="505270" />
+    <city nameRu="Плесецк" nameEng="plesetsk" idYa="22672" idOp="509026" />
+    <city nameRu="Джубга" nameEng="dzhubga" idYa="37009" idOp="563601" />
+    <city nameRu="Абдулино" nameEng="abdulino" idYa="28818" idOp="584471" />
+    <city nameRu="Апшеронск" nameEng="apsheronsk" idYa="37012" idOp="581313" />
+    <city nameRu="Белореченск" nameEng="belorechensk" idYa="37013" idOp="577893" />
+    <city nameRu="Адыгейск" nameEng="adygeysk" idYa="37015" idOp="483142" />
+    <city nameRu="Салават" nameEng="salavat" idYa="28824" idOp="499292" />
+    <city nameRu="Стерлитамак" nameEng="sterlitamak" idYa="28825" idOp="487495" />
+    <city nameRu="Лазаревское" nameEng="lazarevskoye" idYa="37019" idOp="536625" />
+    <city nameRu="Зирган" nameEng="zirgan" idYa="28828" idOp="462467" />
+    <city nameRu="Ишимбай" nameEng="ishimbay" idYa="28829" idOp="555980" />
+    <city nameRu="Ельня" nameEng="elnya" idYa="26783" idOp="467753" />
+    <city nameRu="Курганинск" nameEng="kurganinsk" idYa="37024" idOp="538836" />
+    <city nameRu="Десногорск" nameEng="desnogorsk" idYa="26785" idOp="566384" />
+    <city nameRu="Лабинск" nameEng="labinsk" idYa="37026" idOp="537281" />
+    <city nameRu="Магнитогорск" nameEng="magnitogorsk" idYa="28838" idOp="532288" />
+    <city nameRu="Армавир" nameEng="armavir" idYa="37031" idOp="580922" />
+    <city nameRu="Лагань" nameEng="lagan" idYa="34984" idOp="1488048" />
+    <city nameRu="Спас-Деменск" nameEng="spas-demensk" idYa="26795" idOp="489868" />
+    <city nameRu="Киров" nameEng="kirov" idYa="26796" idOp="548408" />
+    <city nameRu="Стародуб" nameEng="starodub" idYa="26994" idOp="488852" />
+    <city nameRu="Севск" nameEng="sevsk" idYa="26995" idOp="496246" />
+    <city nameRu="Питкяранта" nameEng="pitkyaranta" idYa="22709" idOp="509234" />
+    <city nameRu="Черкесск" nameEng="cherkessk" idYa="37047" idOp="569154" />
+    <city nameRu="Лермонтов" nameEng="lermontov" idYa="37049" idOp="535886" />
+    <city nameRu="Пятигорск" nameEng="pyatigorsk" idYa="37050" idOp="503550" />
+    <city nameRu="Железноводск" nameEng="zheleznovodsk" idYa="37052" idOp="463340" />
+    <city nameRu="Урус-Мартан" nameEng="urus-martan" idYa="37237" idOp="478581" />
+    <city nameRu="Зеленокумск" nameEng="zelenokumsk" idYa="37056" idOp="463824" />
+    <city nameRu="Медвежьегорск" nameEng="medvezhyegorsk" idYa="22721" idOp="527888" />
+    <city nameRu="Сорочинск" nameEng="sorochinsk" idYa="35011" idOp="490554" />
+    <city nameRu="Асбест" nameEng="asbest" idYa="22724" idOp="1511330" />
+    <city nameRu="Буденновск" nameEng="budennovsk" idYa="37061" idOp="571306" />
+    <city nameRu="Кондопога" nameEng="kondopoga" idYa="22727" idOp="545626" />
+    <city nameRu="Ачинск" nameEng="achinsk" idYa="29467" idOp="1512165" />
+    <city nameRu="Фурманов" nameEng="furmanov" idYa="27353" idOp="562309" />
+    <city nameRu="Кижи" nameEng="kizhi" idYa="22737" idOp="2018930" />
+    <city nameRu="Пинега" nameEng="pinega" idYa="22563" idOp="509483" />
+    <city nameRu="Сусуман" nameEng="susuman" idYa="24790" idOp="2120864" />
+    <city nameRu="Новотроицк" nameEng="novotroitsk" idYa="35035" idOp="517836" />
+    <city nameRu="Гай" nameEng="gay" idYa="35036" idOp="561731" />
+    <city nameRu="Томари" nameEng="tomari" idYa="32122" idOp="2120530" />
+    <city nameRu="Бреды" nameEng="bredy" idYa="35041" idOp="1508811" />
+    <city nameRu="Мирный" nameEng="mirny" idYa="22755" idOp="526354" />
+    <city nameRu="Саратов" nameEng="saratov" idYa="34172" idOp="498677" />
+    <city nameRu="Сочи" nameEng="sochi" idYa="37099" idOp="491422" />
+    <city nameRu="Бузулук" nameEng="buzuluk" idYa="28909" idOp="570427" />
+    <city nameRu="Ханты-Мансийск" nameEng="khanty-mansiysk" idYa="23933" idOp="1503772" />
+    <city nameRu="Шенкурск" nameEng="shenkursk" idYa="22768" idOp="494884" />
+    <city nameRu="Ербогачен" nameEng="erbogachen" idYa="24817" idOp="2012956" />
+    <city nameRu="Красная Поляна" nameEng="krasnaya polyana" idYa="37107" idOp="542681" />
+    <city nameRu="Борзя" nameEng="borzya" idYa="30965" idOp="2026126" />
+    <city nameRu="Архыз" nameEng="arkhyz" idYa="37111" idOp="520806" />
+    <city nameRu="Забайкальск" nameEng="zabaykalsk" idYa="30968" idOp="2012780" />
+    <city nameRu="Хоста" nameEng="hosta" idYa="37020" idOp="549424" />
+    <city nameRu="Мелеуз" nameEng="meleuz" idYa="28925" idOp="527717" />
+    <city nameRu="Кумертау" nameEng="kumertau" idYa="28927" idOp="539283" />
+    <city nameRu="Краснокаменск" nameEng="krasnokamensk" idYa="30977" idOp="2021618" />
+    <city nameRu="Рославль" nameEng="roslavl" idYa="26882" idOp="501283" />
+    <city nameRu="Кисловодск" nameEng="kislovodsk" idYa="37123" idOp="548114" />
+    <city nameRu="Карталы" nameEng="kartaly" idYa="28941" idOp="1504317" />
+    <city nameRu="Жуковка" nameEng="zhukovka" idYa="26894" idOp="462822" />
+    <city nameRu="Сельцо" nameEng="seltso" idYa="26897" idOp="497610" />
+    <city nameRu="Брянск" nameEng="bryansk" idYa="26898" idOp="571476" />
+    <city nameRu="Туапсе" nameEng="tuapse" idYa="37018" idOp="480716" />
+    <city nameRu="Дятьково" nameEng="dyatkovo" idYa="26900" idOp="563822" />
+    <city nameRu="Светогорск" nameEng="svetogorsk" idYa="22807" idOp="485639" />
+    <city nameRu="Покровск" nameEng="pokrovsk" idYa="24856" idOp="2017824" />
+    <city nameRu="Моздок" nameEng="mozdok" idYa="37145" idOp="524736" />
+    <city nameRu="Магас" nameEng="magas" idYa="37146" idOp="1865387" />
+    <city nameRu="Алдан" nameEng="aldan" idYa="31004" idOp="2027968" />
+    <city nameRu="Томмот" nameEng="tommot" idYa="31005" idOp="2015179" />
+    <city nameRu="Ленинск-Кузнецкий" nameEng="leninsk-kuznetskiy" idYa="29744" idOp="1500665" />
+    <city nameRu="Петрозаводск" nameEng="petrozavodsk" idYa="22820" idOp="509820" />
+    <city nameRu="Кизляр" nameEng="kizlyar" idYa="37163" idOp="547840" />
+    <city nameRu="Пудож" nameEng="pudozh" idYa="22831" idOp="504269" />
+    <city nameRu="Соль-Илецк" nameEng="sol-iletsk" idYa="35120" idOp="491019" />
+    <city nameRu="Оренбург" nameEng="orenburg" idYa="35121" idOp="515003" />
+    <city nameRu="Адлер" nameEng="adler" idYa="37171" idOp="584243" />
+    <city nameRu="Вытегра" nameEng="vytegra" idYa="22837" idOp="469960" />
+    <city nameRu="Медногорск" nameEng="mednogorsk" idYa="35129" idOp="528109" />
+    <city nameRu="Кулу" nameEng="kulu" idYa="24891" idOp="1501460" />
+    <city nameRu="Каргополь" nameEng="kargopol" idYa="22845" idOp="552465" />
+    <city nameRu="Киселевск" nameEng="kiselevsk" idYa="29749" idOp="1503277" />
+    <city nameRu="Орск" nameEng="orsk" idYa="35138" idOp="514734" />
+    <city nameRu="Няндома" nameEng="nyandoma" idYa="22854" idOp="516647" />
+    <city nameRu="Теберда" nameEng="teberda" idYa="37193" idOp="483873" />
+    <city nameRu="Сосногорск" nameEng="sosnogorsk" idYa="23607" idOp="490391" />
+    <city nameRu="Новая Ляля" nameEng="novaya lyalya" idYa="28045" idOp="1497276" />
+    <city nameRu="Вельск" nameEng="velsk" idYa="22867" idOp="475938" />
+    <city nameRu="Кашхатау" nameEng="kashkhatau" idYa="37206" idOp="489997" />
+    <city nameRu="Сретенск" nameEng="sretensk" idYa="30777" idOp="2016110" />
+    <city nameRu="Новопавловск" nameEng="novopavlovsk" idYa="37210" idOp="518383" />
+    <city nameRu="Ленск" nameEng="lensk" idYa="24923" idOp="2020838" />
+    <city nameRu="Нальчик" nameEng="nalchik" idYa="37212" idOp="523523" />
+    <city nameRu="Баксан" nameEng="baksan" idYa="37213" idOp="579574" />
+    <city nameRu="Нарткала" nameEng="nartkala" idYa="37214" idOp="523405" />
+    <city nameRu="Поронайск" nameEng="poronaysk" idYa="32098" idOp="2121909" />
+    <city nameRu="Чикола" nameEng="chikola" idYa="37218" idOp="568184" />
+    <city nameRu="Ардон" nameEng="ardon" idYa="37219" idOp="581179" />
+    <city nameRu="Беслан" nameEng="beslan" idYa="37220" idOp="576697" />
+    <city nameRu="Сураж" nameEng="suraj" idYa="26982" idOp="1255383" />
+    <city nameRu="Котлас" nameEng="kotlas" idYa="22887" idOp="543704" />
+    <city nameRu="Клинцы" nameEng="klintsy" idYa="26984" idOp="547475" />
+    <city nameRu="Дигора" nameEng="digora" idYa="37225" idOp="566243" />
+    <city nameRu="Малгобек" nameEng="malgobek" idYa="37226" idOp="531129" />
+    <city nameRu="Алагир" nameEng="alagir" idYa="37227" idOp="802078" />
+    <city nameRu="Выборг" nameEng="vyborg" idYa="22892" idOp="470546" />
+    <city nameRu="Карабулак" nameEng="karabulak" idYa="37229" idOp="552951" />
+    <city nameRu="Высоцк" nameEng="vysotsk" idYa="22894" idOp="500350" />
+    <city nameRu="Зеленогорск" nameEng="zelenogorsk" idYa="22895" idOp="463830" />
+    <city nameRu="Злынка" nameEng="zlynka" idYa="26992" idOp="462413" />
+    <city nameRu="Каменногорск" nameEng="kamennogorsk" idYa="22898" idOp="553518" />
+    <city nameRu="Ачхой-Мартан" nameEng="achkhoy-martan" idYa="37236" idOp="584298" />
+    <city nameRu="Трубчевск" nameEng="trubchevsk" idYa="26997" idOp="481350" />
+    <city nameRu="Шали" nameEng="shali" idYa="37238" idOp="1492466" />
+    <city nameRu="Аргун" nameEng="argun" idYa="37239" idOp="581126" />
+    <city nameRu="Боровск" nameEng="borovsk" idYa="27001" idOp="572070" />
+    <city nameRu="Обнинск" nameEng="obninsk" idYa="27002" idOp="516436" />
+    <city nameRu="Дорогобуж" nameEng="dorogobuzh" idYa="26687" idOp="565202" />
+    <city nameRu="Гудермес" nameEng="gudermes" idYa="37244" idOp="558118" />
+    <city nameRu="Урень" nameEng="uren" idYa="27370" idOp="478757" />
+    <city nameRu="Сертолово" nameEng="sertolovo" idYa="22910" idOp="496519" />
+    <city nameRu="Якутск" nameEng="yakutsk" idYa="24959" idOp="2013159" />
+    <city nameRu="Бабаево" nameEng="babayevo" idYa="27008" idOp="580006" />
+    <city nameRu="Кизилюрт" nameEng="kizilyurt" idYa="37249" idOp="547849" />
+    <city nameRu="Сясьстрой" nameEng="syasstroy" idYa="22914" idOp="485313" />
+    <city nameRu="Назрань" nameEng="nazran" idYa="37251" idOp="523064" />
+    <city nameRu="Каспийск" nameEng="kaspiysk" idYa="37252" idOp="551847" />
+    <city nameRu="Новая Ладога" nameEng="novaya ladoga" idYa="22917" idOp="519630" />
+    <city nameRu="Кириллов" nameEng="kirillov" idYa="27019" idOp="548478" />
+    <city nameRu="Рыльск" nameEng="rilsk" idYa="33166" idOp="1497337" />
+    <city nameRu="Туринск" nameEng="turinsk" idYa="28255" idOp="1488933" />
+    <city nameRu="Белозерск" nameEng="belozersk" idYa="22939" idOp="577711" />
+    <city nameRu="Новочеркасск" nameEng="novocherkassk" idYa="34732" idOp="518970" />
+    <city nameRu="Вологда" nameEng="vologda" idYa="27037" idOp="472459" />
+    <city nameRu="Сокол" nameEng="sokol" idYa="27038" idOp="2016334" />
+    <city nameRu="Кадников" nameEng="kadnikov" idYa="27039" idOp="554554" />
+    <city nameRu="Харовск" nameEng="kharovsk" idYa="27040" idOp="550512" />
+    <city nameRu="Грязовец" nameEng="gryazovets" idYa="27041" idOp="558236" />
+    <city nameRu="Хатанга" nameEng="khatanga" idYa="20891" idOp="2022572" />
+    <city nameRu="Чебаркуль" nameEng="chebarkul" idYa="28742" idOp="1508350" />
+    <city nameRu="Морозовск" nameEng="morozovsk" idYa="34545" idOp="525162" />
+    <city nameRu="Солигалич" nameEng="soligalich" idYa="27049" idOp="491025" />
+    <city nameRu="Еманжелинск" nameEng="emanzhelinsk" idYa="28743" idOp="1486039" />
+    <city nameRu="Корсаков" nameEng="korsakov" idYa="32158" idOp="2124286" />
+    <city nameRu="Никольск" nameEng="nikolsk" idYa="27066" idOp="521776" />
+    <city nameRu="Ясногорск" nameEng="yasnogorsk" idYa="27722" idOp="468671" />
+    <city nameRu="Южно-Сахалинск" nameEng="sakhalinsk" idYa="32150" idOp="2119441" />
+    <city nameRu="Каргасок" nameEng="kargasok" idYa="29122" idOp="1504382" />
+    <city nameRu="Фокино" nameEng="fokino" idYa="26899" idOp="2015310" />
+    <city nameRu="Красавино" nameEng="krasavino" idYa="22980" idOp="542908" />
+    <city nameRu="Луза" nameEng="luza" idYa="22982" idOp="533143" />
+    <city nameRu="Протвино" nameEng="protvino" idYa="27724" idOp="504576" />
+    <city nameRu="Суровикино" nameEng="surovikino" idYa="34551" idOp="486071" />
+    <city nameRu="Камызяк" nameEng="kamyzyak" idYa="34893" idOp="553248" />
+    <city nameRu="Мураши" nameEng="murashi" idYa="27097" idOp="524414" />
+    <city nameRu="Певек" nameEng="pevek" idYa="25051" idOp="2122090" />
+    <city nameRu="Усть-Илимск" nameEng="ust-ilimsk" idYa="30117" idOp="2013952" />
+    <city nameRu="Пестово" nameEng="pestovo" idYa="27109" idOp="510364" />
+    <city nameRu="Тында" nameEng="tynda" idYa="30499" idOp="2014718" />
+    <city nameRu="Таштагол" nameEng="tashtagol" idYa="29954" idOp="1490042" />
+    <city nameRu="Ведено" nameEng="vedeno" idYa="37361" idOp="563744" />
+    <city nameRu="Правдинск" nameEng="pravdinsk" idYa="26707" idOp="505599" />
+    <city nameRu="Камбарка" nameEng="kambarka" idYa="28416" idOp="553835" />
+    <city nameRu="Тотьма" nameEng="totma" idYa="27051" idOp="481960" />
+    <city nameRu="Кырен" nameEng="kiren" idYa="30806" idOp="2022083" />
+    <city nameRu="Удачный" nameEng="udachny" idYa="24321" idOp="2014624" />
+    <city nameRu="Кодинск" nameEng="kodinsk" idYa="29194" idOp="1503037" />
+    <city nameRu="Сарапул" nameEng="sarapul" idYa="28418" idOp="498687" />
+    <city nameRu="Янаул" nameEng="yanaul" idYa="28419" idOp="469178" />
+    <city nameRu="Токма" nameEng="tokma" idYa="30127" idOp="691469" />
+    <city nameRu="Кологрив" nameEng="kologriv" idYa="27164" idOp="546282" />
+    <city nameRu="Дудинка" nameEng="dudinka" idYa="23074" idOp="1507116" />
+    <city nameRu="Чермоз" nameEng="chermoz" idYa="28128" idOp="569122" />
+    <city nameRu="Норильск" nameEng="norilsk" idYa="23078" idOp="1497337" />
+    <city nameRu="Колпашево" nameEng="kolpashevo" idYa="29230" idOp="1502862" />
+    <city nameRu="Орлов" nameEng="orlov" idYa="27187" idOp="550785" />
+    <city nameRu="Билибино" nameEng="bilibino" idYa="25147" idOp="2126682" />
+    <city nameRu="Тверь" nameEng="tver" idYa="27402" idOp="480060" />
+    <city nameRu="Кирово-Чепецк" nameEng="kirovo-chepetsk" idYa="27198" idOp="548395" />
+    <city nameRu="Киров" nameEng="kirov" idYa="27199" idOp="548408" />
+    <city nameRu="Знаменск" nameEng="znamensk" idYa="34571" idOp="831130" />
+    <city nameRu="Зея" nameEng="zeya" idYa="31300" idOp="2012593" />
+    <city nameRu="Удомля" nameEng="udomlya" idYa="27206" idOp="452949" />
+    <city nameRu="Чегем" nameEng="chegem" idYa="37211" idOp="569639" />
+    <city nameRu="Темрюк" nameEng="temryuk" idYa="34914" idOp="483661" />
+    <city nameRu="Енисейск" nameEng="eniseysk" idYa="29263" idOp="1485997" />
+    <city nameRu="Лесосибирск" nameEng="lesosibirsk" idYa="29264" idOp="1500607" />
+    <city nameRu="Мышкин" nameEng="myshkin" idYa="27220" idOp="523859" />
+    <city nameRu="Рыбинск" nameEng="rybinsk" idYa="27225" idOp="500004" />
+    <city nameRu="Дербент" nameEng="derbent" idYa="37470" idOp="566532" />
+    <city nameRu="Буйнакск" nameEng="buynaksk" idYa="37471" idOp="570479" />
+    <city nameRu="Махачкала" nameEng="makhachkala" idYa="37472" idOp="532096" />
+    <city nameRu="Избербаш" nameEng="izberbash" idYa="37473" idOp="554894" />
+    <city nameRu="Данилов" nameEng="danilov" idYa="27235" idOp="567183" />
+    <city nameRu="Карабудахкент" nameEng="karabudakhkent" idYa="37476" idOp="552953" />
+    <city nameRu="Нюрба" nameEng="nyurba" idYa="24639" idOp="2018735" />
+    <city nameRu="Буй" nameEng="buy" idYa="27242" idOp="570508" />
+    <city nameRu="Галич" nameEng="galich" idYa="27243" idOp="562161" />
+    <city nameRu="Козельск" nameEng="kozelsk" idYa="27708" idOp="543348" />
+    <city nameRu="Среднеколымск" nameEng="srednekolymsk" idYa="25206" idOp="2121025" />
+    <city nameRu="Шимановск" nameEng="shimanovsk" idYa="31442" idOp="2016701" />
+    <city nameRu="Макарьев" nameEng="makaryev" idYa="27259" idOp="532138" />
+    <city nameRu="Нея" nameEng="neya" idYa="27260" idOp="522353" />
+    <city nameRu="Мантурово" nameEng="manturovo" idYa="27262" idOp="529505" />
+    <city nameRu="Первоуральск" nameEng="pervouralsk" idYa="28437" idOp="510808" />
+    <city nameRu="Дубна" nameEng="dubna" idYa="27414" idOp="564719" />
+    <city nameRu="Шарья" nameEng="sharya" idYa="27271" idOp="495619" />
+    <city nameRu="Яранск" nameEng="yaransk" idYa="27385" idOp="469005" />
+    <city nameRu="Красноуральск" nameEng="krasnouralsk" idYa="28439" idOp="1502060" />
+    <city nameRu="Ветлуга" nameEng="vetluga" idYa="27277" idOp="473910" />
+    <city nameRu="Кувшиново" nameEng="kuvshinovo" idYa="26392" idOp="538104" />
+    <city nameRu="Котельнич" nameEng="kotelnich" idYa="27283" idOp="543737" />
+    <city nameRu="Кореновск" nameEng="korenovsk" idYa="34926" idOp="544896" />
+    <city nameRu="Клин" nameEng="klin" idYa="27417" idOp="547523" />
+    <city nameRu="Новосиль" nameEng="novosil" idYa="27914" idOp="517947" />
+    <city nameRu="Асино" nameEng="asino" idYa="29347" idOp="1511309" />
+    <city nameRu="Нарьян-Мар" nameEng="naryan-mar" idYa="23205" idOp="523392" />
+    <city nameRu="Онега" nameEng="onega" idYa="22641" idOp="515246" />
+    <city nameRu="Мокшан" nameEng="mokshan" idYa="27307" idOp="525659" />
+    <city nameRu="Кашин" nameEng="kashin" idYa="27316" idOp="551986" />
+    <city nameRu="Калязин" nameEng="kalyazin" idYa="27317" idOp="553884" />
+    <city nameRu="Шелехов" nameEng="shelekhov" idYa="30711" idOp="2016764" />
+    <city nameRu="Сланцы" nameEng="slantsy" idYa="26055" idOp="492162" />
+    <city nameRu="Углич" nameEng="uglich" idYa="27321" idOp="479532" />
+    <city nameRu="Воркута" nameEng="vorkuta" idYa="23226" idOp="1486910" />
+    <city nameRu="Касимов" nameEng="kasimov" idYa="27323" idOp="551891" />
+    <city nameRu="Ростов" nameEng="rostov" idYa="27329" idOp="501183" />
+    <city nameRu="Гаврилов-Ям" nameEng="gavrilov-yam" idYa="27330" idOp="561762" />
+    <city nameRu="Ярославль" nameEng="yaroslavl" idYa="27331" idOp="468902" />
+    <city nameRu="Комсомольск" nameEng="komsomolsk" idYa="27332" idOp="545736" />
+    <city nameRu="Кострома" nameEng="kostroma" idYa="27333" idOp="543878" />
+    <city nameRu="Переславль-Залесский" nameEng="pereslavl-zalesskiy" idYa="27425" idOp="511359" />
+    <city nameRu="Волгореченск" nameEng="volgorechensk" idYa="27343" idOp="472750" />
+    <city nameRu="Приволжск" nameEng="privolzhsk" idYa="27344" idOp="505060" />
+    <city nameRu="Кинешма" nameEng="kineshma" idYa="27346" idOp="548605" />
+    <city nameRu="Иваново" nameEng="ivanovo" idYa="27347" idOp="555312" />
+    <city nameRu="Ковров" nameEng="kovrov" idYa="27348" idOp="543460" />
+    <city nameRu="Вичуга" nameEng="vichuga" idYa="27349" idOp="473788" />
+    <city nameRu="Нерехта" nameEng="nerekhta" idYa="27350" idOp="522594" />
+    <city nameRu="Родники" nameEng="rodniki" idYa="27351" idOp="501730" />
+    <city nameRu="Заволжск" nameEng="zavolzhsk" idYa="27354" idOp="464112" />
+    <city nameRu="Ревда" nameEng="revda" idYa="28430" idOp="502011" />
+    <city nameRu="Электроугли" nameEng="elektrougli" idYa="27439" idOp="563522" />
+    <city nameRu="Тарко Сале" nameEng="tarko-sale" idYa="23552" idOp="1490085" />
+    <city nameRu="Игарка" nameEng="igarka" idYa="23274" idOp="1505991" />
+    <city nameRu="Сосновоборск" nameEng="sosnovoborsk" idYa="29479" idOp="1491291" />
+    <city nameRu="Торопец" nameEng="toropets" idYa="26479" idOp="482042" />
+    <city nameRu="Томск" nameEng="tomsk" idYa="29430" idOp="1489425" />
+    <city nameRu="Яшкуль" nameEng="yashkul" idYa="34866" idOp="468747" />
+    <city nameRu="Северск" nameEng="seversk" idYa="29440" idOp="1538637" />
+    <city nameRu="Нолинск" nameEng="nolinsk" idYa="27393" idOp="520041" />
+    <city nameRu="Учалы" nameEng="uchaly" idYa="28736" idOp="479704" />
+    <city nameRu="Мглин" nameEng="mglin" idYa="26983" idOp="527217" />
+    <city nameRu="Жирновск" nameEng="zhirnovsk" idYa="34263" idOp="462984" />
+    <city nameRu="Алексин" nameEng="aleksin" idYa="27405" idOp="582750" />
+    <city nameRu="Яр-Сале" nameEng="yar-sale" idYa="23341" idOp="1486321" />
+    <city nameRu="Кимры" nameEng="kimry" idYa="27412" idOp="548652" />
+    <city nameRu="Благовещенск" nameEng="blagoveshchensk" idYa="31510" idOp="2026609" />
+    <city nameRu="Конаково" nameEng="konakovo" idYa="27415" idOp="545673" />
+    <city nameRu="Дедовск" nameEng="dedovsk" idYa="27416" idOp="566854" />
+    <city nameRu="Белогорск" nameEng="belogorsk" idYa="31513" idOp="2026895" />
+    <city nameRu="Дмитров" nameEng="dmitrov" idYa="27419" idOp="565955" />
+    <city nameRu="Талдом" nameEng="taldom" idYa="27420" idOp="484826" />
+    <city nameRu="Лотошино" nameEng="lotoshino" idYa="27421" idOp="533975" />
+    <city nameRu="Инта" nameEng="inta" idYa="23327" idOp="1487332" />
+    <city nameRu="Лабытнанги" nameEng="labytnangi" idYa="23329" idOp="1500933" />
+    <city nameRu="Салехард" nameEng="salekhard" idYa="23330" idOp="1493197" />
+    <city nameRu="Кировск" nameEng="kirovsk" idYa="26075" idOp="548391" />
+    <city nameRu="Александров" nameEng="aleksandrov" idYa="27428" idOp="583350" />
+    <city nameRu="Северо-Курильск" nameEng="severo-kurilsk" idYa="32215" idOp="2121385" />
+    <city nameRu="Завитинск" nameEng="zavitinsk" idYa="31527" idOp="2012626" />
+    <city nameRu="Зеленогорск" nameEng="zelenogorsk" idYa="29480" idOp="463830" />
+    <city nameRu="Красноармейск" nameEng="krasnoarmeysk" idYa="27433" idOp="542464" />
+    <city nameRu="Черноголовка" nameEng="chernogolovka" idYa="27434" idOp="568808" />
+    <city nameRu="Электрогорск" nameEng="elektrogorsk" idYa="27435" idOp="563524" />
+    <city nameRu="Тосно" nameEng="tosno" idYa="26077" idOp="481964" />
+    <city nameRu="Шуя" nameEng="shuya" idYa="27441" idOp="493231" />
+    <city nameRu="Камешково" nameEng="kameshkovo" idYa="27442" idOp="553389" />
+    <city nameRu="Гаврилов Посад" nameEng="gavrilov posad" idYa="27443" idOp="561783" />
+    <city nameRu="Тейково" nameEng="teykovo" idYa="27444" idOp="483137" />
+    <city nameRu="Кольчугино" nameEng="kolchugino" idYa="27446" idOp="546521" />
+    <city nameRu="Похвистнево" nameEng="pokhvistnevo" idYa="28809" idOp="507624" />
+    <city nameRu="Пучеж" nameEng="puchezh" idYa="27448" idOp="504294" />
+    <city nameRu="Южа" nameEng="yuzha" idYa="27449" idOp="466084" />
+    <city nameRu="Чкаловск" nameEng="chkalovsk" idYa="27451" idOp="567902" />
+    <city nameRu="Городец" nameEng="gorodets" idYa="27453" idOp="559678" />
+    <city nameRu="Дзержинск" nameEng="dzerzhinsk" idYa="27457" idOp="563708" />
+    <city nameRu="Абинск" nameEng="abinsk" idYa="37003" idOp="584441" />
+    <city nameRu="Бор" nameEng="bor" idYa="27460" idOp="572665" />
+    <city nameRu="Семенов" nameEng="semenov" idYa="27462" idOp="497450" />
+    <city nameRu="Амурск" nameEng="amursk" idYa="31559" idOp="2027749" />
+    <city nameRu="Уэлен" nameEng="uelen" idYa="25399" idOp="2431573" />
+    <city nameRu="Тайга" nameEng="tayga" idYa="29521" idOp="1489907" />
+    <city nameRu="Палана" nameEng="palana" idYa="32227" idOp="2122262" />
+    <city nameRu="Новороссийск" nameEng="novorossiysk" idYa="37006" idOp="518255" />
+    <city nameRu="Чудово" nameEng="chudovo" idYa="26079" idOp="567774" />
+    <city nameRu="Агата" nameEng="agata" idYa="23383" idOp="2015545" />
+    <city nameRu="Ядрин" nameEng="yadrin" idYa="27579" idOp="469809" />
+    <city nameRu="Йошкар-Ола" nameEng="yoshkar-ola" idYa="27485" idOp="466806" />
+    <city nameRu="Юрга" nameEng="urga" idYa="29536" idOp="538836" />
+    <city nameRu="Березовский" nameEng="berezovskiy" idYa="29542" idOp="1510203" />
+    <city nameRu="Ноябрьск" nameEng="noyabrsk" idYa="23356" idOp="1496503" />
+    <city nameRu="Краснознаменск" nameEng="krasnoznamensk" idYa="27500" idOp="541947" />
+    <city nameRu="Балей" nameEng="baley" idYa="30866" idOp="2027184" />
+    <city nameRu="Волоколамск" nameEng="volokolamsk" idYa="27502" idOp="472433" />
+    <city nameRu="Боготол" nameEng="bogotol" idYa="29553" idOp="1509852" />
+    <city nameRu="Гагарин" nameEng="gagarin" idYa="27507" idOp="562237" />
+    <city nameRu="Звенигород" nameEng="zvenigorod" idYa="27508" idOp="461920" />
+    <city nameRu="Можайск" nameEng="mozhaysk" idYa="27509" idOp="524712" />
+    <city nameRu="Королев" nameEng="korolev" idYa="27510" idOp="554233" />
+    <city nameRu="Истра" nameEng="istra" idYa="27511" idOp="555746" />
+    <city nameRu="Химки" nameEng="himki" idYa="27512" idOp="550280" />
+    <city nameRu="Красногорск" nameEng="krasnogorsk" idYa="27513" idOp="542374" />
+    <city nameRu="Печора" nameEng="pechora" idYa="23418" idOp="511794" />
+    <city nameRu="Чулым" nameEng="chulym" idYa="29625" idOp="1507679" />
+    <city nameRu="Руза" nameEng="ruza" idYa="27520" idOp="500303" />
+    <city nameRu="Апрелевка" nameEng="aprelevka" idYa="27521" idOp="581321" />
+    <city nameRu="Красноярск" nameEng="krasnoyarsk" idYa="29570" idOp="1502026" />
+    <city nameRu="Павловский Посад" nameEng="pavlovskiy posad" idYa="27523" idOp="512023" />
+    <city nameRu="Внуково" nameEng="vnukovo" idYa="27524" idOp="473021" />
+    <city nameRu="Дивногорск" nameEng="divnogorsk" idYa="29573" idOp="1507379" />
+    <city nameRu="Петушки" nameEng="petushki" idYa="27526" idOp="509697" />
+    <city nameRu="Железногорск" nameEng="zheleznogorsk" idYa="29575" idOp="463343" />
+    <city nameRu="Уяр" nameEng="uyar" idYa="29576" idOp="1487922" />
+    <city nameRu="Бородино" nameEng="borodino" idYa="29577" idOp="1508943" />
+    <city nameRu="Воскресенск" nameEng="voskresensk" idYa="27530" idOp="471656" />
+    <city nameRu="Владимир" nameEng="vladimir" idYa="27532" idOp="473247" />
+    <city nameRu="Канск" nameEng="kansk" idYa="29581" idOp="1504682" />
+    <city nameRu="Покров" nameEng="pokrov" idYa="27535" idOp="507599" />
+    <city nameRu="Лыткарино" nameEng="lytkarino" idYa="27536" idOp="532657" />
+    <city nameRu="Куровское" nameEng="kurovskoye" idYa="27537" idOp="538601" />
+    <city nameRu="Иланский" nameEng="ilanskiy" idYa="29586" idOp="1505933" />
+    <city nameRu="Алзамай" nameEng="alzamay" idYa="29589" idOp="1511709" />
+    <city nameRu="Навашино" nameEng="navashino" idYa="27542" idOp="523198" />
+    <city nameRu="Вязники" nameEng="vyazniki" idYa="27543" idOp="470666" />
+    <city nameRu="Лакинск" nameEng="lakinsk" idYa="27544" idOp="537107" />
+    <city nameRu="Муром" nameEng="murom" idYa="27549" idOp="524294" />
+    <city nameRu="Володарск" nameEng="volodarsk" idYa="27550" idOp="472494" />
+    <city nameRu="Горбатов" nameEng="gorbatov" idYa="27551" idOp="560285" />
+    <city nameRu="Саров" nameEng="sarov" idYa="27552" idOp="498525" />
+    <city nameRu="Бокситогорск" nameEng="boksitogorsk" idYa="26096" idOp="575410" />
+    <city nameRu="Осинники" nameEng="osinniki" idYa="29851" idOp="1495974" />
+    <city nameRu="Ворсма" nameEng="vorsma" idYa="27556" idOp="471760" />
+    <city nameRu="Богородск" nameEng="bogorodsk" idYa="27557" idOp="575560" />
+    <city nameRu="Пикалево" nameEng="pikalevo" idYa="26097" idOp="509598" />
+    <city nameRu="Кстово" nameEng="kstovo" idYa="27562" idOp="540103" />
+    <city nameRu="Куйбышев" nameEng="kuybyshev" idYa="29611" idOp="1501141" />
+    <city nameRu="Барабинск" nameEng="barabinsk" idYa="29612" idOp="1510916" />
+    <city nameRu="Майкоп" nameEng="maykop" idYa="37021" idOp="528293" />
+    <city nameRu="Каргат" nameEng="kargat" idYa="29624" idOp="1504380" />
+    <city nameRu="Сергач" nameEng="sergach" idYa="27577" idOp="496802" />
+    <city nameRu="Белорецк" nameEng="beloretsk" idYa="28831" idOp="577881" />
+    <city nameRu="Шумерля" nameEng="shumerlya" idYa="27580" idOp="493463" />
+    <city nameRu="Чебоксары" nameEng="cheboksary" idYa="27581" idOp="569696" />
+    <city nameRu="Новочебоксарск" nameEng="novocheboksarsk" idYa="27582" idOp="518976" />
+    <city nameRu="Мариинский Посад" nameEng="mariinskiy posad" idYa="27583" idOp="529343" />
+    <city nameRu="Починок" nameEng="pochinok" idYa="26784" idOp="508606" />
+    <city nameRu="Канаш" nameEng="kanash" idYa="27587" idOp="553216" />
+    <city nameRu="Тогучин" nameEng="toguchin" idYa="29636" idOp="1489508" />
+    <city nameRu="Звенигово" nameEng="zvenigovo" idYa="27589" idOp="461916" />
+    <city nameRu="Козловка" nameEng="kozlovka" idYa="27590" idOp="543133" />
+    <city nameRu="Волжск" nameEng="volzhsk" idYa="27592" idOp="472234" />
+    <city nameRu="Топки" nameEng="topki" idYa="29641" idOp="1489394" />
+    <city nameRu="Кемерово" nameEng="kemerovo" idYa="29642" idOp="1503901" />
+    <city nameRu="Казань" nameEng="kazan" idYa="27595" idOp="551487" />
+    <city nameRu="Бавлы" nameEng="bavly" idYa="27597" idOp="578638" />
+    <city nameRu="Зарайск" nameEng="zaraysk" idYa="27600" idOp="464687" />
+    <city nameRu="Зеленоград" nameEng="zelenograd" idYa="27602" idOp="463829" />
+    <city nameRu="Солнечногорск" nameEng="solnechnogorsk" idYa="27603" idOp="490996" />
+    <city nameRu="Ермолино" nameEng="yermolino" idYa="27604" idOp="467238" />
+    <city nameRu="Малоярославец" nameEng="maloyaroslavets" idYa="27606" idOp="530849" />
+    <city nameRu="Пушкино" nameEng="pushkino" idYa="27608" idOp="503977" />
+    <city nameRu="Балабаново" nameEng="balabanovo" idYa="27609" idOp="579529" />
+    <city nameRu="Верея" nameEng="vereya" idYa="27610" idOp="475699" />
+    <city nameRu="Москва" nameEng="moscow" idYa="27612" idOp="524901" />
+    <city nameRu="Домодедово" nameEng="domodedovo" idYa="27613" idOp="565381" />
+    <city nameRu="Саяногорск" nameEng="sayanogorsk" idYa="29861" idOp="1492893" />
+    <city nameRu="Озеры" nameEng="ozery" idYa="27621" idOp="513378" />
+    <city nameRu="Ступино" nameEng="stupino" idYa="27624" idOp="486968" />
+    <city nameRu="Коломна" nameEng="kolomna" idYa="27625" idOp="546230" />
+    <city nameRu="Жуковский" nameEng="zhukovskiy" idYa="27626" idOp="462755" />
+    <city nameRu="Троицк" nameEng="troitsk" idYa="27629" idOp="1489246" />
+    <city nameRu="Подольск" nameEng="podolsk" idYa="27630" idOp="508101" />
+    <city nameRu="Климовск" nameEng="klimovsk" idYa="27631" idOp="547560" />
+    <city nameRu="Спас-Клепики" nameEng="spas-klepiki" idYa="27636" idOp="489862" />
+    <city nameRu="Меленки" nameEng="melenki" idYa="27637" idOp="527740" />
+    <city nameRu="Курлово" nameEng="kurlovo" idYa="27639" idOp="538696" />
+    <city nameRu="Выкса" nameEng="vyksa" idYa="27643" idOp="470444" />
+    <city nameRu="Кулебаки" nameEng="kulebaki" idYa="27644" idOp="539555" />
+    <city nameRu="Минусинск" nameEng="minusinsk" idYa="29866" idOp="1498693" />
+    <city nameRu="Губкинский" nameEng="gubkinskiy" idYa="23551" idOp="1539209" />
+    <city nameRu="Елатьма" nameEng="yelatma" idYa="27648" idOp="468030" />
+    <city nameRu="Нижнеудинск" nameEng="nizhneudinsk" idYa="29698" idOp="1497549" />
+    <city nameRu="Спасск-Дальний" nameEng="spassk-dalniy" idYa="31922" idOp="2016187" />
+    <city nameRu="Арзамас" nameEng="arzamas" idYa="27653" idOp="580724" />
+    <city nameRu="Шатки" nameEng="shatki" idYa="27654" idOp="495562" />
+    <city nameRu="Купино" nameEng="kupino" idYa="29706" idOp="1501365" />
+    <city nameRu="Козьмодемьянск" nameEng="kozmodemyansk" idYa="27479" idOp="543018" />
+    <city nameRu="Перевоз" nameEng="perevoz" idYa="27664" idOp="511287" />
+    <city nameRu="Лукоянов" nameEng="lukoyanov" idYa="27665" idOp="533400" />
+    <city nameRu="Полярный" nameEng="polyarny" idYa="22019" idOp="506763" />
+    <city nameRu="Новодвинск" nameEng="novodvinsk" idYa="22552" idOp="518909" />
+    <city nameRu="Алатырь" nameEng="alatyr" idYa="27679" idOp="583437" />
+    <city nameRu="Бердск" nameEng="berdsk" idYa="29729" idOp="1510350" />
+    <city nameRu="Искитим" nameEng="iskitim" idYa="29730" idOp="1505429" />
+    <city nameRu="Черепаново" nameEng="cherepanovo" idYa="29731" idOp="1508161" />
+    <city nameRu="Лаишево" nameEng="laishevo" idYa="27693" idOp="537158" />
+    <city nameRu="Салаир" nameEng="salair" idYa="29742" idOp="1493224" />
+    <city nameRu="Буинск" nameEng="buinsk" idYa="27695" idOp="571155" />
+    <city nameRu="Болгар" nameEng="bolgar" idYa="27696" idOp="570990" />
+    <city nameRu="Белово" nameEng="belovo" idYa="29745" idOp="1510469" />
+    <city nameRu="Калуга" nameEng="kaluga" idYa="27703" idOp="553915" />
+    <city nameRu="Мосальск" nameEng="mosalsk" idYa="27704" idOp="525084" />
+    <city nameRu="Вуктыл" nameEng="vuktyl" idYa="23612" idOp="470905" />
+    <city nameRu="Кондрово" nameEng="kondrovo" idYa="27709" idOp="545575" />
+    <city nameRu="Сорск" nameEng="sorsk" idYa="29760" idOp="1491360" />
+    <city nameRu="Медынь" nameEng="medyn" idYa="27714" idOp="527869" />
+    <city nameRu="Суворов" nameEng="suvorov" idYa="27717" idOp="485888" />
+    <city nameRu="Новомосковск" nameEng="novomoskovsk" idYa="27718" idOp="518557" />
+    <city nameRu="Тула" nameEng="tula" idYa="27719" idOp="480562" />
+    <city nameRu="Болохово" nameEng="bolokhovo" idYa="27721" idOp="575343" />
+    <city nameRu="Эльбрус" nameEng="elbrus" idYa="37203" idOp="563534" />
+    <city nameRu="Таруса" nameEng="tarusa" idYa="27723" idOp="484287" />
+    <city nameRu="Электросталь" nameEng="elektrostal" idYa="27726" idOp="563523" />
+    <city nameRu="Белоярский" nameEng="beloyarskiy" idYa="23633" idOp="1510450" />
+    <city nameRu="Рязань" nameEng="ryazan" idYa="27730" idOp="500096" />
+    <city nameRu="Поярково" nameEng="poyarkovo" idYa="31587" idOp="2017705" />
+    <city nameRu="Бикин" nameEng="bikin" idYa="31832" idOp="2026696" />
+    <city nameRu="Шацк" nameEng="shatsk" idYa="27744" idOp="495532" />
+    <city nameRu="Сасово" nameEng="sasovo" idYa="27745" idOp="461699" />
+    <city nameRu="Инсар" nameEng="insar" idYa="27861" idOp="556318" />
+    <city nameRu="Темников" nameEng="temnikov" idYa="27752" idOp="483684" />
+    <city nameRu="Пыталово" nameEng="pytalovo" idYa="26361" idOp="503374" />
+    <city nameRu="Краснослободск" nameEng="krasnoslobodsk" idYa="27756" idOp="542213" />
+    <city nameRu="Шилка" nameEng="shilka" idYa="30862" idOp="2016708" />
+    <city nameRu="Ковылкино" nameEng="kovylkino" idYa="27759" idOp="543436" />
+    <city nameRu="Саранск" nameEng="saransk" idYa="27760" idOp="498698" />
+    <city nameRu="Карасук" nameEng="karasuk" idYa="29814" idOp="1504489" />
+    <city nameRu="Смирных" nameEng="smirnykh" idYa="32090" idOp="2121126" />
+    <city nameRu="Сегежа" nameEng="segezha" idYa="22621" idOp="497927" />
+    <city nameRu="Камень-на-Оби" nameEng="kamen-na-obi" idYa="29822" idOp="1504871" />
+    <city nameRu="Сузун" nameEng="suzun" idYa="29823" idOp="1490551" />
+    <city nameRu="Лесозаводск" nameEng="lesozavodsk" idYa="31875" idOp="2020812" />
+    <city nameRu="Ардатов" nameEng="ardatov" idYa="27781" idOp="581186" />
+    <city nameRu="Ульяновск" nameEng="ulyanovsk" idYa="27786" idOp="479123" />
+    <city nameRu="Новоульяновск" nameEng="novoulyanovsk" idYa="27787" idOp="517766" />
+    <city nameRu="Заринск" nameEng="zarinsk" idYa="29836" idOp="1485439" />
+    <city nameRu="Закаменск" nameEng="zakamensk" idYa="30914" idOp="2012728" />
+    <city nameRu="Барнаул" nameEng="barnaul" idYa="29838" idOp="1510853" />
+    <city nameRu="Кубинка" nameEng="kubinka" idYa="27501" idOp="540030" />
+    <city nameRu="Новоалтайск" nameEng="novoaltaysk" idYa="29841" idOp="1497173" />
+    <city nameRu="Ипатово" nameEng="ipatovo" idYa="34955" idOp="556230" />
+    <city nameRu="Новокузнецк" nameEng="novokuznetsk" idYa="29846" idOp="1496990" />
+    <city nameRu="Димитровград" nameEng="dimitrovgrad" idYa="27799" idOp="566199" />
+    <city nameRu="Емва" nameEng="emva" idYa="23704" idOp="467525" />
+    <city nameRu="Калтан" nameEng="kaltan" idYa="29850" idOp="1504972" />
+    <city nameRu="Мариинск" nameEng="mariinsk" idYa="29551" idOp="1499350" />
+    <city nameRu="Микунь" nameEng="mikun" idYa="23703" idOp="526600" />
+    <city nameRu="Мыски" nameEng="myski" idYa="29853" idOp="1498129" />
+    <city nameRu="Череповец" nameEng="cherepovets" idYa="27113" idOp="569223" />
+    <city nameRu="Черногорск" nameEng="chernogorsk" idYa="29860" idOp="1508054" />
+    <city nameRu="Абакан" nameEng="abakan" idYa="29862" idOp="1512236" />
+    <city nameRu="Мценск" nameEng="mtsensk" idYa="27817" idOp="524640" />
+    <city nameRu="Богородицк" nameEng="bogoroditsk" idYa="27820" idOp="575591" />
+    <city nameRu="Узловая" nameEng="uzlovaya" idYa="27821" idOp="477494" />
+    <city nameRu="Венёв" nameEng="venev" idYa="27822" idOp="475881" />
+    <city nameRu="Лебедянь" nameEng="lebedyan" idYa="27824" idOp="536518" />
+    <city nameRu="Скопин" nameEng="skopin" idYa="27825" idOp="492376" />
+    <city nameRu="Донской" nameEng="donskoy" idYa="27826" idOp="565290" />
+    <city nameRu="Кимовск" nameEng="kimovsk" idYa="27827" idOp="548658" />
+    <city nameRu="Нягань" nameEng="nyagan" idYa="23733" idOp="1496476" />
+    <city nameRu="Кулунда" nameEng="kulunda" idYa="36024" idOp="1501460" />
+    <city nameRu="Кораблино" nameEng="korablino" idYa="27834" idOp="545001" />
+    <city nameRu="Нязепетровск" nameEng="nyazepetrovsk" idYa="28533" idOp="516615" />
+    <city nameRu="Когалым" nameEng="kogalym" idYa="23748" idOp="6695754" />
+    <city nameRu="Горняк" nameEng="gornyak" idYa="36037" idOp="1506260" />
+    <city nameRu="Змеиногорск" nameEng="zmeinogorsk" idYa="36038" idOp="1485042" />
+    <city nameRu="Моршанск" nameEng="morshansk" idYa="27848" idOp="525138" />
+    <city nameRu="Усть Калманка" nameEng="ust-kalmanka" idYa="36044" idOp="1488200" />
+    <city nameRu="Почеп" nameEng="pochep" idYa="26986" idOp="508656" />
+    <city nameRu="Дмитровск" nameEng="dmitrovsk" idYa="34001" idOp="565908" />
+    <city nameRu="Железногорск" nameEng="zheleznogorsk" idYa="34002" idOp="463343" />
+    <city nameRu="Горно-Алтайск" nameEng="gorno-altaysk" idYa="36052" idOp="1506271" />
+    <city nameRu="Дальнегорск" nameEng="dalnegorsk" idYa="31957" idOp="2051471" />
+    <city nameRu="Назарово" nameEng="nazarovo" idYa="29561" idOp="1497951" />
+    <city nameRu="Владивосток" nameEng="vladivostok" idYa="31960" idOp="2013348" />
+    <city nameRu="Курск" nameEng="kursk" idYa="34009" idOp="538560" />
+    <city nameRu="Щигры" nameEng="shchigry" idYa="34010" idOp="495206" />
+    <city nameRu="Славгород" nameEng="slavgorod" idYa="29915" idOp="1491706" />
+    <city nameRu="Малоархангельск" nameEng="maloarkhangelsk" idYa="34012" idOp="530966" />
+    <city nameRu="Ливны" nameEng="livny" idYa="34013" idOp="534701" />
+    <city nameRu="Никольск" nameEng="nikolsk" idYa="27871" idOp="521776" />
+    <city nameRu="Инза" nameEng="inza" idYa="27872" idOp="556283" />
+    <city nameRu="Новоспасское" nameEng="novospasskoye" idYa="27873" idOp="517897" />
+    <city nameRu="Артем" nameEng="artem" idYa="31974" idOp="2027456" />
+    <city nameRu="Большой Камень" nameEng="bolshoy kamen" idYa="31975" idOp="2026303" />
+    <city nameRu="Абаза" nameEng="abaza" idYa="36072" idOp="1512205" />
+    <city nameRu="Задонск" nameEng="zadonsk" idYa="34028" idOp="465726" />
+    <city nameRu="Ак-Довурак" nameEng="ak-dovurak" idYa="36079" idOp="1512064" />
+    <city nameRu="Алейск" nameEng="aleysk" idYa="29937" idOp="1511783" />
+    <city nameRu="Оха" nameEng="okha" idYa="32060" idOp="2122614" />
+    <city nameRu="Октябрьск" nameEng="oktyabrsk" idYa="27893" idOp="515879" />
+    <city nameRu="Спасск" nameEng="spassk" idYa="27860" idOp="489741" />
+    <city nameRu="Бийск" nameEng="biysk" idYa="29947" idOp="1510018" />
+    <city nameRu="Белокуриха" nameEng="belokurikha" idYa="36092" idOp="1510502" />
+    <city nameRu="Карачев" nameEng="karachev" idYa="27901" idOp="552920" />
+    <city nameRu="Жердевка" nameEng="zherdevka" idYa="34047" idOp="463217" />
+    <city nameRu="Кызыл" nameEng="kyzyl" idYa="36096" idOp="1500973" />
+    <city nameRu="Орел" nameEng="orel" idYa="27906" idOp="515012" />
+    <city nameRu="Шерегеш" nameEng="sheregesh" idYa="29955" idOp="1492252" />
+    <city nameRu="Озерск" nameEng="ozersk" idYa="28545" idOp="1538634" />
+    <city nameRu="Аркадак" nameEng="arkadak" idYa="34058" idOp="581080" />
+    <city nameRu="Сердобск" nameEng="serdobsk" idYa="34062" idOp="496934" />
+    <city nameRu="Гдов" nameEng="gdov" idYa="26157" idOp="561679" />
+    <city nameRu="Ефремов" nameEng="efremov" idYa="27921" idOp="468390" />
+    <city nameRu="Данков" nameEng="dankov" idYa="27922" idOp="567109" />
+    <city nameRu="Старица" nameEng="staritsa" idYa="26499" idOp="488946" />
+    <city nameRu="Аткарск" nameEng="atkarsk" idYa="34069" idOp="580420" />
+    <city nameRu="Елец" nameEng="yelets" idYa="27928" idOp="467978" />
+    <city nameRu="Поворино" nameEng="povorino" idYa="34147" idOp="505806" />
+    <city nameRu="Липецк" nameEng="lipetsk" idYa="27930" idOp="535121" />
+    <city nameRu="Усмань" nameEng="usman" idYa="27931" idOp="478317" />
+    <city nameRu="Новомичуринск" nameEng="novomichurinsk" idYa="27934" idOp="518602" />
+    <city nameRu="Мичуринск" nameEng="michurinsk" idYa="27935" idOp="527191" />
+    <city nameRu="Грязи" nameEng="gryazi" idYa="27937" idOp="558312" />
+    <city nameRu="Хвалынск" nameEng="hvalynsk" idYa="34083" idOp="548982" />
+    <city nameRu="Балаково" nameEng="balakovo" idYa="34085" idOp="579492" />
+    <city nameRu="Вольск" nameEng="volsk" idYa="34086" idOp="472278" />
+    <city nameRu="Котовск" nameEng="kotovsk" idYa="27943" idOp="543605" />
+    <city nameRu="Сургут" nameEng="surgut" idYa="23849" idOp="1490624" />
+    <city nameRu="Быково" nameEng="bykovo" idYa="27527" idOp="570298" />
+    <city nameRu="Рассказово" nameEng="rasskazovo" idYa="27948" idOp="502793" />
+    <city nameRu="Аршан" nameEng="arshan" idYa="29997" idOp="580862" />
+    <city nameRu="Шадринск" nameEng="shadrinsk" idYa="28552" idOp="1492517" />
+    <city nameRu="Североуральск" nameEng="severouralsk" idYa="23919" idOp="496275" />
+    <city nameRu="Кирсанов" nameEng="kirsanov" idYa="27957" idOp="548330" />
+    <city nameRu="Курчатов" nameEng="kurchatov" idYa="34102" idOp="538908" />
+    <city nameRu="Ногинск" nameEng="noginsk" idYa="27529" idOp="520068" />
+    <city nameRu="Дмитриев-Льговский" nameEng="dmitriyev" idYa="34104" idOp="490747" />
+    <city nameRu="Каменка" nameEng="kamenka" idYa="27961" idOp="553778" />
+    <city nameRu="Кузнецк" nameEng="kuznetsk" idYa="27963" idOp="537737" />
+    <city nameRu="Заречный" nameEng="zarechny" idYa="27964" idOp="1485445" />
+    <city nameRu="Тикси" nameEng="tiksi" idYa="21824" idOp="2015306" />
+    <city nameRu="Хасан" nameEng="hasan" idYa="31968" idOp="1270251" />
+    <city nameRu="Сурск" nameEng="sursk" idYa="27971" idOp="486048" />
+    <city nameRu="Губкин" nameEng="gubkin" idYa="34117" idOp="558146" />
+    <city nameRu="Сычевка" nameEng="sychevka" idYa="26595" idOp="485280" />
+    <city nameRu="Воронеж" nameEng="voronezh" idYa="34123" idOp="472045" />
+    <city nameRu="Барыш" nameEng="barish" idYa="27980" idOp="7427939" />
+    <city nameRu="Строитель" nameEng="stroitel" idYa="34211" idOp="487147" />
+    <city nameRu="Суздаль" nameEng="suzdal" idYa="27533" idOp="485824" />
+    <city nameRu="Нижнекамск" nameEng="nizhnekamsk" idYa="28899" idOp="521118" />
+    <city nameRu="Углегорск" nameEng="uglegorsk" idYa="32088" idOp="2120261" />
+    <city nameRu="Бобров" nameEng="bobrov" idYa="34138" idOp="575948" />
+    <city nameRu="Сосново" nameEng="sosnovo" idYa="22891" idOp="490213" />
+    <city nameRu="Эртиль" nameEng="ertil" idYa="34141" idOp="563420" />
+    <city nameRu="Советск" nameEng="sovetsk" idYa="27392" idOp="490068" />
+    <city nameRu="Борисоглебск" nameEng="borisoglebsk" idYa="34146" idOp="572525" />
+    <city nameRu="Лянтор" nameEng="lyantor" idYa="23846" idOp="1541359" />
+    <city nameRu="Витим" nameEng="vitim" idYa="30054" idOp="2013375" />
+    <city nameRu="Кирс" nameEng="kirs" idYa="28009" idOp="548333" />
+    <city nameRu="Чердынь" nameEng="cherdyn" idYa="23914" idOp="569359" />
+    <city nameRu="Красновишерск" nameEng="krasnovishersk" idYa="23917" idOp="542184" />
+    <city nameRu="Волчанск" nameEng="vovchansk" idYa="23918" idOp="689304" />
+    <city nameRu="Оленек" nameEng="olenek" idYa="24125" idOp="2018567" />
+    <city nameRu="Ивдель" nameEng="ivdel" idYa="23921" idOp="1505260" />
+    <city nameRu="Югорск" nameEng="ugorsk" idYa="23922" idOp="1502725" />
+    <city nameRu="Калининск" nameEng="kalininsk" idYa="34164" idOp="554199" />
+    <city nameRu="Урай" nameEng="uray" idYa="23928" idOp="1488429" />
+    <city nameRu="Красноармейск" nameEng="krasnoarmeysk" idYa="34170" idOp="542464" />
+    <city nameRu="Соликамск" nameEng="solikamsk" idYa="28027" idOp="491023" />
+    <city nameRu="Березники" nameEng="berezniki" idYa="28028" idOp="577206" />
+    <city nameRu="Маркс" nameEng="marks" idYa="34173" idOp="529073" />
+    <city nameRu="Надым" nameEng="nadym" idYa="23445" idOp="1498087" />
+    <city nameRu="Холмск" nameEng="holmsk" idYa="32128" idOp="2124615" />
+    <city nameRu="Долинск" nameEng="dolinsk" idYa="32133" idOp="2125945" />
+    <city nameRu="Карпинск" nameEng="karpinsk" idYa="28040" idOp="1504343" />
+    <city nameRu="Ершов" nameEng="ershov" idYa="34186" idOp="467120" />
+    <city nameRu="Луга" nameEng="luga" idYa="26166" idOp="533690" />
+    <city nameRu="Серов" nameEng="serov" idYa="28044" idOp="1492663" />
+    <city nameRu="Мегион" nameEng="megion" idYa="23949" idOp="1499053" />
+    <city nameRu="Лангепас" nameEng="langepas" idYa="23950" idOp="6696767" />
+    <city nameRu="Покачи" nameEng="pokachi" idYa="23951" idOp="7289676" />
+    <city nameRu="Невельск" nameEng="nevelsk" idYa="32145" idOp="2122894" />
+    <city nameRu="Кежма" nameEng="kezma" idYa="30102" idOp="724503" />
+    <city nameRu="Анива" nameEng="aniva" idYa="32155" idOp="2127154" />
+    <city nameRu="Тайшет" nameEng="tayshet" idYa="29594" idOp="1489870" />
+    <city nameRu="Грайворон" nameEng="grayvoron" idYa="34206" idOp="559034" />
+    <city nameRu="Унеча" nameEng="unecha" idYa="26985" idOp="479028" />
+    <city nameRu="Кош-Агач" nameEng="kosh-agach" idYa="36259" idOp="1502422" />
+    <city nameRu="Белгород" nameEng="belgorod" idYa="34214" idOp="578072" />
+    <city nameRu="Курильск" nameEng="kurilsk" idYa="32174" idOp="2121385" />
+    <city nameRu="Смоленск" nameEng="smolensk" idYa="26781" idOp="491687" />
+    <city nameRu="Малая Вишера" nameEng="malaya vishera" idYa="26184" idOp="531257" />
+    <city nameRu="Партизанск" nameEng="partizansk" idYa="31987" idOp="2018116" />
+    <city nameRu="Острогожск" nameEng="ostrogozhsk" idYa="34230" idOp="514198" />
+    <city nameRu="Ялуторовск" nameEng="yalutorovsk" idYa="28465" idOp="1486468" />
+    <city nameRu="Оленегорск" nameEng="olenegorsk" idYa="21945" idOp="515698" />
+    <city nameRu="Чокурдах" nameEng="chokurdakh" idYa="21946" idOp="2126123" />
+    <city nameRu="Россошь" nameEng="rossosh" idYa="34236" idOp="501215" />
+    <city nameRu="Павловск" nameEng="pavlovsk" idYa="34237" idOp="512053" />
+    <city nameRu="Бутурлиновка" nameEng="buturlinovka" idYa="34239" idOp="570563" />
+    <city nameRu="Урюпинск" nameEng="uryupinsk" idYa="34240" idOp="478544" />
+    <city nameRu="Ивангород" nameEng="ivangorod" idYa="26054" idOp="555624" />
+    <city nameRu="Калач" nameEng="kalach" idYa="34247" idOp="554410" />
+    <city nameRu="Слободской" nameEng="slobodskoy" idYa="28104" idOp="491882" />
+    <city nameRu="Кингисепп" nameEng="kingisepp" idYa="26059" idOp="548602" />
+    <city nameRu="Елань" nameEng="yelan" idYa="34253" idOp="468063" />
+    <city nameRu="Новоаннинский" nameEng="novoanninskiy" idYa="34254" idOp="519062" />
+    <city nameRu="Санкт-Петербург" nameEng="saint petersburg" idYa="26063" idOp="498817" />
+    <city nameRu="Ломоносов" nameEng="lomonosov" idYa="26064" idOp="534341" />
+    <city nameRu="Гатчина" nameEng="gatchina" idYa="26068" idOp="561887" />
+    <city nameRu="Рудня" nameEng="rudnya" idYa="34262" idOp="500678" />
+    <city nameRu="Пушкин" nameEng="pushkin" idYa="26073" idOp="504003" />
+    <city nameRu="Даниловка" nameEng="danilovka" idYa="34267" idOp="567177" />
+    <city nameRu="Котово" nameEng="kotovo" idYa="34268" idOp="543633" />
+    <city nameRu="Петров Вал" nameEng="petrov val" idYa="34269" idOp="509826" />
+    <city nameRu="Любань" nameEng="lyuban" idYa="26078" idOp="532637" />
+    <city nameRu="Татарск" nameEng="tatarsk" idYa="29605" idOp="1490003" />
+    <city nameRu="Кириши" nameEng="kirishi" idYa="26080" idOp="548442" />
+    <city nameRu="Колпино" nameEng="kolpino" idYa="26081" idOp="546105" />
+    <city nameRu="Александровск" nameEng="aleksandrovsk" idYa="28130" idOp="583041" />
+    <city nameRu="Кизел" nameEng="kizel" idYa="28131" idOp="547875" />
+    <city nameRu="Чусовой" nameEng="chusovoy" idYa="28133" idOp="567434" />
+    <city nameRu="Губаха" nameEng="gubakha" idYa="28134" idOp="558209" />
+    <city nameRu="Качканар" nameEng="kachkanar" idYa="28135" idOp="554599" />
+    <city nameRu="Лесной" nameEng="lesnoy" idYa="28136" idOp="829005" />
+    <city nameRu="Гремячинск" nameEng="gremyachinsk" idYa="28137" idOp="558885" />
+    <city nameRu="Тихвин" nameEng="tikhvin" idYa="26094" idOp="483019" />
+    <city nameRu="Туран" nameEng="turan" idYa="36093" idOp="1488950" />
+    <city nameRu="Новоузенск" nameEng="novouzensk" idYa="34289" idOp="517739" />
+    <city nameRu="Печенга" nameEng="pechenga" idYa="22005" idOp="511865" />
+    <city nameRu="Заозерск" nameEng="zaozersk" idYa="22015" idOp="828218" />
+    <city nameRu="Уварово" nameEng="uvarovo" idYa="34048" idOp="477626" />
+    <city nameRu="Лысково" nameEng="lyskovo" idYa="27563" idOp="532715" />
+    <city nameRu="Сунтар" nameEng="suntar" idYa="24738" idOp="2015913" />
+    <city nameRu="Новая Игирма" nameEng="novaya igirma" idYa="30218" idOp="2019004" />
+    <city nameRu="Валуйки" nameEng="valuyki" idYa="34321" idOp="477192" />
+    <city nameRu="Киренск" nameEng="kirensk" idYa="30230" idOp="2022083" />
+    <city nameRu="Нижневартовск" nameEng="nizhnevartovsk" idYa="23471" idOp="1497543" />
+    <city nameRu="Ярцево" nameEng="yartsevo" idYa="26580" idOp="468866" />
+    <city nameRu="Богучар" nameEng="boguchar" idYa="34336" idOp="575457" />
+    <city nameRu="Островной" nameEng="ostrovnoy" idYa="22049" idOp="556268" />
+    <city nameRu="Сибай" nameEng="sibay" idYa="28935" idOp="493160" />
+    <city nameRu="Бодайбо" nameEng="bodaybo" idYa="30253" idOp="2026583" />
+    <city nameRu="Приозерск" nameEng="priozersk" idYa="26158" idOp="505230" />
+    <city nameRu="Серафимович" nameEng="serafimovich" idYa="34357" idOp="496957" />
+    <city nameRu="Глазов" nameEng="glazov" idYa="28214" idOp="561347" />
+    <city nameRu="Очер" nameEng="ocher" idYa="28217" idOp="516256" />
+    <city nameRu="Краснокамск" nameEng="krasnokamsk" idYa="28223" idOp="542327" />
+    <city nameRu="Пермь" nameEng="perm" idYa="28224" idOp="511196" />
+    <city nameRu="Палласовка" nameEng="pallasovka" idYa="34373" idOp="513042" />
+    <city nameRu="Верхняя Тура" nameEng="verkhnyaya tura" idYa="28232" idOp="474462" />
+    <city nameRu="Кушва" nameEng="kushva" idYa="28233" idOp="538340" />
+    <city nameRu="Лысьва" nameEng="lysva" idYa="28234" idOp="532675" />
+    <city nameRu="Горнозаводск" nameEng="gornozavodsk" idYa="28236" idOp="559752" />
+    <city nameRu="Троицк" nameEng="troitsk" idYa="28748" idOp="1489246" />
+    <city nameRu="Нижний Тагил" nameEng="nizhniy tagil" idYa="28240" idOp="520494" />
+    <city nameRu="Княгинино" nameEng="knyaginino" idYa="27576" idOp="547162" />
+    <city nameRu="Нижняя Салда" nameEng="nizhnyaya salda" idYa="28243" idOp="1497393" />
+    <city nameRu="Советский" nameEng="sovetskiy" idYa="23822" idOp="1491230" />
+    <city nameRu="Александров-Гай" nameEng="aleksandrov gay" idYa="34391" idOp="583345" />
+    <city nameRu="Любим" nameEng="lyubim" idYa="27236" idOp="532600" />
+    <city nameRu="Хадыженск" nameEng="khadyzhensk" idYa="37016" idOp="550846" />
+    <city nameRu="Петровск" nameEng="petrovsk" idYa="34063" idOp="509987" />
+    <city nameRu="Североморск" nameEng="severomorsk" idYa="22111" idOp="496278" />
+    <city nameRu="Кола" nameEng="coca" idYa="22112" idOp="3457025" />
+    <city nameRu="Мурманск" nameEng="murmansk" idYa="22113" idOp="524305" />
+    <city nameRu="Тура" nameEng="tura" idYa="24507" idOp="2014833" />
+    <city nameRu="Вихоревка" nameEng="vikhorevka" idYa="30308" idOp="2013399" />
+    <city nameRu="Тавда" nameEng="tavda" idYa="28264" idOp="1489962" />
+    <city nameRu="Токсово" nameEng="toksovo" idYa="22900" idOp="482443" />
+    <city nameRu="Сортавала" nameEng="sortavala" idYa="22802" idOp="490466" />
+    <city nameRu="Усть-Кут" nameEng="ust-kut" idYa="30320" idOp="2013923" />
+    <city nameRu="Светлоград" nameEng="svetlograd" idYa="34954" idOp="485698" />
+    <city nameRu="Тобольск" nameEng="tobolsk" idYa="28275" idOp="1489530" />
+    <city nameRu="Обь" nameEng="ob" idYa="29630" idOp="1496421" />
+    <city nameRu="Тамбов" nameEng="tambov" idYa="27947" idOp="484646" />
+    <city nameRu="Миллерово" nameEng="millerovo" idYa="34438" idOp="526558" />
+    <city nameRu="Новосибирск" nameEng="novosibirsk" idYa="29634" idOp="1496747" />
+    <city nameRu="Ржев" nameEng="rzhev" idYa="26498" idOp="499717" />
+    <city nameRu="Псков" nameEng="pskov" idYa="26258" idOp="504341" />
+    <city nameRu="Уржум" nameEng="urzhum" idYa="28307" idOp="478532" />
+    <city nameRu="Мамадыш" nameEng="mamadysh" idYa="28503" idOp="529709" />
+    <city nameRu="Сольцы" nameEng="soltsy" idYa="26263" idOp="490750" />
+    <city nameRu="Усть-Камчатск" nameEng="ust-kamchatsk" idYa="32408" idOp="2115627" />
+    <city nameRu="Цивильск" nameEng="tsivilsk" idYa="27588" idOp="480851" />
+    <city nameRu="Дно" nameEng="dno" idYa="26268" idOp="565885" />
+    <city nameRu="Иловля" nameEng="ilovlya" idYa="34461" idOp="556961" />
+    <city nameRu="Дубовка" nameEng="dubovka" idYa="34462" idOp="564654" />
+    <city nameRu="Волжский" nameEng="volzhskiy" idYa="34463" idOp="472231" />
+    <city nameRu="Старая Русса" nameEng="staraya russa" idYa="26275" idOp="489088" />
+    <city nameRu="Оса" nameEng="osa" idYa="28324" idOp="514706" />
+    <city nameRu="Кунгур" nameEng="kungur" idYa="28326" idOp="539147" />
+    <city nameRu="Зеленодольск" nameEng="zelenodolsk" idYa="27591" idOp="463835" />
+    <city nameRu="Эльтон" nameEng="elton" idYa="34476" idOp="563495" />
+    <city nameRu="Валдай" nameEng="valday" idYa="26289" idOp="477301" />
+    <city nameRu="Новоуральск" nameEng="novouralsk" idYa="28342" idOp="1538636" />
+    <city nameRu="Кировград" nameEng="kirovgrad" idYa="28343" idOp="1503335" />
+    <city nameRu="Невьянск" nameEng="nevyansk" idYa="28344" idOp="1497795" />
+    <city nameRu="Реж" nameEng="rezh" idYa="28347" idOp="1493648" />
+    <city nameRu="Ковдор" nameEng="kovdor" idYa="22204" idOp="543508" />
+    <city nameRu="Ирбит" nameEng="irbit" idYa="28351" idOp="1505526" />
+    <city nameRu="Талица" nameEng="talitsa" idYa="28352" idOp="1490281" />
+    <city nameRu="Терек" nameEng="terek" idYa="37224" idOp="483495" />
+    <city nameRu="Мончегорск" nameEng="monchegorsk" idYa="22212" idOp="525404" />
+    <city nameRu="Апатиты" nameEng="apatity" idYa="22213" idOp="581357" />
+    <city nameRu="Кировск" nameEng="kirovsk" idYa="22216" idOp="548391" />
+    <city nameRu="Кандалакша" nameEng="kandalaksha" idYa="22217" idOp="553190" />
+    <city nameRu="Усолье" nameEng="usole" idYa="28026" idOp="3034041" />
+    <city nameRu="Тюмень" nameEng="tyumen" idYa="28367" idOp="1488754" />
+    <city nameRu="Братск" nameEng="bratsk" idYa="30405" idOp="2051523" />
+    <city nameRu="Судогда" nameEng="sudogda" idYa="27541" idOp="486834" />
+    <city nameRu="Плавск" nameEng="plavsk" idYa="27814" idOp="509052" />
+    <city nameRu="Северобайкальск" nameEng="severobaykalsk" idYa="30435" idOp="2016910" />
+    <city nameRu="Донецк" nameEng="donetsk" idYa="34532" idOp="565348" />
+    <city nameRu="Гуково" nameEng="gukovo" idYa="34533" idOp="558082" />
+    <city nameRu="Белая Калитва" nameEng="belaya kalitva" idYa="34539" idOp="578155" />
+    <city nameRu="Печоры" nameEng="pechory" idYa="26351" idOp="511785" />
+    <city nameRu="Малмыж" nameEng="malmyzh" idYa="28401" idOp="530972" />
+    <city nameRu="Советская Гавань" nameEng="sovetskaya gavan" idYa="31770" idOp="2121052" />
+    <city nameRu="Агрыз" nameEng="agryz" idYa="28403" idOp="583983" />
+    <city nameRu="Остров" nameEng="ostrov" idYa="26358" idOp="514171" />
+    <city nameRu="Калач-на-Дону" nameEng="kalach-na-donu" idYa="34552" idOp="554397" />
+    <city nameRu="Можга" nameEng="mozhga" idYa="28409" idOp="524699" />
+    <city nameRu="Ижевск" nameEng="izhevsk" idYa="28411" idOp="554840" />
+    <city nameRu="Шарыпово" nameEng="sharypovo" idYa="29558" idOp="1492401" />
+    <city nameRu="Волгоград" nameEng="volgograd" idYa="34560" idOp="472757" />
+    <city nameRu="Волгодонск" nameEng="volgodonsk" idYa="34562" idOp="472761" />
+    <city nameRu="Ленинск" nameEng="leninsk" idYa="34565" idOp="536156" />
+    <city nameRu="Краснослободск" nameEng="krasnoslobodsk" idYa="34567" idOp="542213" />
+    <city nameRu="Холм" nameEng="holm" idYa="26378" idOp="2124615" />
+    <city nameRu="Чернушка" nameEng="chernushka" idYa="28428" idOp="568608" />
+    <city nameRu="Демянск" nameEng="demyansk" idYa="26381" idOp="566629" />
+    <city nameRu="Наро-Фоминск" nameEng="naro-fominsk" idYa="27611" idOp="523426" />
+    <city nameRu="Дегтярск" nameEng="degtyarsk" idYa="28431" idOp="1507488" />
+    <city nameRu="Красноуфимск" nameEng="krasnoufimsk" idYa="28434" idOp="542199" />
+    <city nameRu="Осташков" nameEng="ostashkov" idYa="26389" idOp="514259" />
+    <city nameRu="Михайловск" nameEng="mikhaylovsk" idYa="28438" idOp="493702" />
+    <city nameRu="Жиганск" nameEng="zhigansk" idYa="24343" idOp="2012530" />
+    <city nameRu="Екатеринбург" nameEng="yekaterinburg" idYa="28440" idOp="1486209" />
+    <city nameRu="Арамиль" nameEng="aramil" idYa="28442" idOp="1511466" />
+    <city nameRu="Богданович" nameEng="bogdanovich" idYa="28443" idOp="1509888" />
+    <city nameRu="Фокино" nameEng="fokino" idYa="31976" idOp="2015310" />
+    <city nameRu="Сысерть" nameEng="sysert" idYa="28448" idOp="1490402" />
+    <city nameRu="Каменск-Уральский" nameEng="kamensk-uralskiy" idYa="28449" idOp="1504826" />
+    <city nameRu="Нерчинск" nameEng="nerchinsk" idYa="30768" idOp="2019326" />
+    <city nameRu="Камышлов" nameEng="kamyshlov" idYa="28451" idOp="1504769" />
+    <city nameRu="Елизово" nameEng="elizovo" idYa="32548" idOp="2119538" />
+    <city nameRu="Тулун" nameEng="tulun" idYa="30504" idOp="2014927" />
+    <city nameRu="Далматово" nameEng="dalmatovo" idYa="28457" idOp="1507565" />
+    <city nameRu="Саянск" nameEng="sayansk" idYa="30509" idOp="2055166" />
+    <city nameRu="Мирный" nameEng="mirny" idYa="24726" idOp="526354" />
+    <city nameRu="Олонец" nameEng="olonets" idYa="22912" idOp="515403" />
+    <city nameRu="Заводоуковск" nameEng="zavodoukovsk" idYa="28466" idOp="1485357" />
+    <city nameRu="Усть-Катав" nameEng="ust-katav" idYa="28638" idOp="478071" />
+    <city nameRu="Владикавказ" nameEng="vladikavkaz" idYa="37228" idOp="473249" />
+    <city nameRu="Льгов" nameEng="lgov" idYa="34101" idOp="535334" />
+    <city nameRu="Советск" nameEng="sovetsk" idYa="27815" idOp="490068" />
+    <city nameRu="Петропавловск-Камчатский" nameEng="petropavlovsk" idYa="32583" idOp="510171" />
+    <city nameRu="Уренгой" nameEng="urengoy" idYa="23453" idOp="1488414" />
+    <city nameRu="Шахты" nameEng="shakhty" idYa="34635" idOp="496015" />
+    <city nameRu="Семикаракорск" nameEng="semikarakorsk" idYa="34636" idOp="497218" />
+    <city nameRu="Тара" nameEng="tara" idYa="28493" idOp="1490140" />
+    <city nameRu="Сальск" nameEng="salsk" idYa="34842" idOp="499161" />
+    <city nameRu="Курумкан" nameEng="kurumkan" idYa="30547" idOp="2021188" />
+    <city nameRu="Константиновск" nameEng="konstantinovsk" idYa="34644" idOp="545277" />
+    <city nameRu="Магадан" nameEng="magadan" idYa="25913" idOp="2123628" />
+    <city nameRu="Опочка" nameEng="opochka" idYa="26456" idOp="515155" />
+    <city nameRu="Пустошка" nameEng="pustoshka" idYa="26457" idOp="503878" />
+    <city nameRu="Елабуга" nameEng="elabuga" idYa="28506" idOp="468082" />
+    <city nameRu="Пенза" nameEng="penza" idYa="27962" idOp="511565" />
+    <city nameRu="Котельниково" nameEng="kotelnikovo" idYa="34655" idOp="543728" />
+    <city nameRu="Мензелинск" nameEng="menzelinsk" idYa="28517" idOp="527529" />
+    <city nameRu="Агидель" nameEng="agidel" idYa="28518" idOp="484856" />
+    <city nameRu="Обоянь" nameEng="oboyan" idYa="34109" idOp="516400" />
+    <city nameRu="Андреаполь" nameEng="andreapol" idYa="26480" idOp="582105" />
+    <city nameRu="Себеж" nameEng="sebezh" idYa="26455" idOp="498001" />
+    <city nameRu="Западная Двина" nameEng="dvina" idYa="26485" idOp="464891" />
+    <city nameRu="Нелидово" nameEng="nelidovo" idYa="26486" idOp="522775" />
+    <city nameRu="Куса" nameEng="kusa" idYa="28540" idOp="538442" />
+    <city nameRu="Омутнинск" nameEng="omutninsk" idYa="28109" idOp="515267" />
+    <city nameRu="Харабали" nameEng="kharabali" idYa="34687" idOp="550671" />
+    <city nameRu="Карабаш" nameEng="karabash" idYa="28544" idOp="552974" />
+    <city nameRu="Зубцов" nameEng="zubtsov" idYa="26497" idOp="462008" />
+    <city nameRu="Касли" nameEng="kasli" idYa="28546" idOp="1504251" />
+    <city nameRu="Аргаяш" nameEng="argayash" idYa="28548" idOp="1511428" />
+    <city nameRu="Заречный" nameEng="zarechny" idYa="28550" idOp="1485445" />
+    <city nameRu="Калевала" nameEng="kalevala" idYa="22408" idOp="554318" />
+    <city nameRu="Макаров" nameEng="makarov" idYa="32116" idOp="2123614" />
+    <city nameRu="Зима" nameEng="zima" idYa="30603" idOp="2012484" />
+    <city nameRu="Свирск" nameEng="svirsk" idYa="30614" idOp="2015842" />
+    <city nameRu="Черемхово" nameEng="cheremkhovo" idYa="30617" idOp="2025527" />
+    <city nameRu="Нововоронеж" nameEng="novovoronezh" idYa="34124" idOp="517716" />
+    <city nameRu="Суджа" nameEng="sudzha" idYa="34100" idOp="486816" />
+    <city nameRu="Ишим" nameEng="ishim" idYa="28573" idOp="1505453" />
+    <city nameRu="Сенгилей" nameEng="sengiley" idYa="27891" idOp="497094" />
+    <city nameRu="Таганрог" nameEng="taganrog" idYa="34720" idOp="484907" />
+    <city nameRu="Батайск" nameEng="bataysk" idYa="34722" idOp="578740" />
+    <city nameRu="Азов" nameEng="azov" idYa="34723" idOp="580054" />
+    <city nameRu="Ростов-на-Дону" nameEng="rostov-na-donu" idYa="34730" idOp="501175" />
+    <city nameRu="Сладково" nameEng="sladkovo" idYa="28587" idOp="1491719" />
+    <city nameRu="Баргузин" nameEng="barguzin" idYa="30636" idOp="2027109" />
+    <city nameRu="Аксай" nameEng="aksay" idYa="34734" idOp="583673" />
+    <city nameRu="Зерноград" nameEng="zernograd" idYa="34735" idOp="463637" />
+    <city nameRu="Воткинск" nameEng="votkinsk" idYa="28318" idOp="471430" />
+    <city nameRu="Чистополь" nameEng="chistopol" idYa="28601" idOp="567990" />
+    <city nameRu="Невель" nameEng="nevel" idYa="26555" idOp="522410" />
+    <city nameRu="Пролетарск" nameEng="proletarsk" idYa="34748" idOp="504831" />
+    <city nameRu="Заинск" nameEng="zainsk" idYa="28605" idOp="465543" />
+    <city nameRu="Славск" nameEng="slavsk" idYa="26613" idOp="492112" />
+    <city nameRu="Шатура" nameEng="shatura" idYa="27615" idOp="495518" />
+    <city nameRu="Советск" nameEng="sovetsk" idYa="26614" idOp="490068" />
+    <city nameRu="Дюртюли" nameEng="dyurtyuli" idYa="28614" idOp="563719" />
+    <city nameRu="Мезень" nameEng="mezen" idYa="22471" idOp="527321" />
+    <city nameRu="Хабаровск" nameEng="khabarovsk" idYa="31735" idOp="2022890" />
+    <city nameRu="Бирск" nameEng="birsk" idYa="28621" idOp="576317" />
+    <city nameRu="Сосновка" nameEng="sosnovka" idYa="28504" idOp="490276" />
+    <city nameRu="Могоча" nameEng="mogocha" idYa="30673" idOp="2019912" />
+    <city nameRu="Духовщина" nameEng="dukhovshchina" idYa="26579" idOp="564234" />
+    <city nameRu="Златоуст" nameEng="zlatoust" idYa="28630" idOp="462444" />
+    <city nameRu="Сим" nameEng="sim" idYa="28632" idOp="492944" />
+    <city nameRu="Энгельс" nameEng="engels" idYa="34778" idOp="563464" />
+    <city nameRu="Сатка" nameEng="satka" idYa="28635" idOp="498418" />
+    <city nameRu="Аша" nameEng="asha" idYa="28636" idOp="580660" />
+    <city nameRu="Катав-Ивановск" nameEng="katav-ivanovsk" idYa="28639" idOp="551794" />
+    <city nameRu="Челябинск" nameEng="chelyabinsk" idYa="28642" idOp="1508291" />
+    <city nameRu="Коркино" nameEng="korkino" idYa="28643" idOp="1502536" />
+    <city nameRu="Сковородино" nameEng="skovorodino" idYa="30692" idOp="2016443" />
+    <city nameRu="Кыштым" nameEng="kyshtym" idYa="28646" idOp="1500997" />
+    <city nameRu="Миасс" nameEng="miass" idYa="28647" idOp="1498894" />
+    <city nameRu="Копейск" nameEng="kopeysk" idYa="28649" idOp="1502603" />
+    <city nameRu="Рубцовск" nameEng="rubtsovsk" idYa="36034" idOp="1493467" />
+    <city nameRu="Мамоново" nameEng="mamonovo" idYa="26606" idOp="2609901" />
+    <city nameRu="Зеленоградск" nameEng="zelenogradsk" idYa="26608" idOp="463828" />
+    <city nameRu="Куртамыш" nameEng="kurtamysh" idYa="28659" idOp="1501255" />
+    <city nameRu="Курган" nameEng="kurgan" idYa="28661" idOp="1501321" />
+    <city nameRu="Иркутск" nameEng="irkutsk" idYa="30710" idOp="2023469" />
+    <city nameRu="Неман" nameEng="neman" idYa="26615" idOp="522742" />
+    <city nameRu="Кемь-Порт" nameEng="kem" idYa="22520" idOp="551145" />
+    <city nameRu="Усть-Ордынский" nameEng="ust-ordynskiy" idYa="30713" idOp="2013894" />
+    <city nameRu="Макушино" nameEng="makushino" idYa="28666" idOp="1500036" />
+    <city nameRu="Ангарск" nameEng="angarsk" idYa="30715" idOp="2027667" />
+  </country>
+  <country nameRu="Руанда">
+    <city nameRu="Кигали" nameEng="kigali" idYa="64387" idOp="202061" />
+  </country>
+  <country nameRu="Румыния">
+    <city nameRu="Галац" nameEng="galati" idYa="15310" idOp="3176407" />
+    <city nameRu="Бухарест" nameEng="bucharest" idYa="15420" idOp="683506" />
+    <city nameRu="Синая" nameEng="sinaia" idYa="15325" idOp="667091" />
+  </country>
+  <country nameRu="США">
+    <city nameRu="Чикаго, шт. Иллинойс" nameEng="chicago" idYa="72530" idOp="4887398" />
+    <city nameRu="Анкоридж" nameEng="anchorage" idYa="70276" idOp="5879400" />
+    <city nameRu="Финикс, шт. Аризона" nameEng="phoenix" idYa="72278" idOp="5308655" />
+    <city nameRu="Нашвилл, шт. Теннесси" nameEng="nashville" idYa="72327" idOp="4644585" />
+    <city nameRu="Топика, шт. Канзас" nameEng="topeka" idYa="72456" idOp="4280539" />
+    <city nameRu="Майами, шт. Флорида" nameEng="miami" idYa="72202" idOp="4164138" />
+    <city nameRu="Лас-Вегас, шт. Невада" nameEng="las vegas" idYa="72386" idOp="3536724" />
+    <city nameRu="Филадельфия, шт. Пенсильвания" nameEng="philadelphia" idYa="72408" idOp="4560349" />
+    <city nameRu="Литл-Рок, шт. Арканзас" nameEng="little rock" idYa="72340" idOp="4119403" />
+    <city nameRu="Сан-Франциско, шт. Калифорния" nameEng="san francisco" idYa="72494" idOp="3837675" />
+    <city nameRu="Сиэтл, шт. Вашингтон" nameEng="seattle" idYa="72793" idOp="5809844" />
+    <city nameRu="Атланта, шт. Джорджия" nameEng="atlanta" idYa="72219" idOp="4180439" />
+    <city nameRu="Конкорд, шт. Нью-Гэмпшир" nameEng="concord" idYa="72605" idOp="3435261" />
+    <city nameRu="Портленд, шт. Мэн" nameEng="portland" idYa="72606" idOp="2152667" />
+    <city nameRu="Оклахома-Сити, шт. Оклахома" nameEng="oklahoma city" idYa="72353" idOp="4544349" />
+    <city nameRu="Монтгомери, шт. Алабама" nameEng="montgomery" idYa="72226" idOp="1166548" />
+    <city nameRu="Сакраменто, шт. Калифорния" nameEng="sacramento" idYa="72483" idOp="3443013" />
+    <city nameRu="Новый Орлеан, шт. Луизиана" nameEng="new orleans" idYa="72231" idOp="4335045" />
+    <city nameRu="Рино, шт. Невада" nameEng="reno" idYa="72488" idOp="544896" />
+    <city nameRu="Берлингтон, шт. Вермонт" nameEng="burlington" idYa="72617" idOp="4286281" />
+    <city nameRu="Джексон, шт. Миссисипи" nameEng="jackson" idYa="72235" idOp="5031678" />
+    <city nameRu="Альбукерке, шт. Нью-Мексико" nameEng="albuquerque" idYa="72365" idOp="5454711" />
+    <city nameRu="Гонолулу, шт. Гавайские острова" nameEng="honolulu" idYa="91182" idOp="5856195" />
+    <city nameRu="Агуадилья, шт. Пуэрто-Рико" nameEng="aguadilla" idYa="78514" idOp="4562506" />
+    <city nameRu="Хьюстон, шт. Техас" nameEng="houston" idYa="72243" idOp="4699066" />
+    <city nameRu="Ньюарк, шт. Нью-Джерси" nameEng="newark" idYa="72502" idOp="4143861" />
+    <city nameRu="Нью-Йорк, шт. Нью-Йорк" nameEng="new york" idYa="72503" idOp="5106292" />
+    <city nameRu="Сейлем, шт. Орегон" nameEng="salem" idYa="72694" idOp="1257629" />
+    <city nameRu="Провиденс, шт. Род-Айленд" nameEng="providence" idYa="72507" idOp="5224151" />
+    <city nameRu="Бисмарк, шт. Северная Дакота" nameEng="bismarck" idYa="72764" idOp="5688025" />
+    <city nameRu="Бостон, шт. Массачусетс" nameEng="boston" idYa="72509" idOp="4930956" />
+    <city nameRu="Остин, шт. Техас" nameEng="austin" idYa="72254" idOp="2177481" />
+    <city nameRu="Милуоки, шт. Висконсин" nameEng="milwaukee" idYa="72640" idOp="5263045" />
+    <city nameRu="Мадисон, шт. Висконсин" nameEng="madison" idYa="72641" idOp="5229526" />
+    <city nameRu="Даллас" nameEng="dallas" idYa="72258" idOp="4684888" />
+    <city nameRu="Хелина, шт. Монтана" nameEng="helena" idYa="72772" idOp="2065602" />
+    <city nameRu="Колумбия, шт. Южная Каролина" nameEng="columbia" idYa="72310" idOp="4352053" />
+    <city nameRu="Олбани, шт. Нью-Йорк" nameEng="albany" idYa="72518" idOp="2077963" />
+    <city nameRu="Питтсбург, шт. Пенсильвания" nameEng="pittsburgh" idYa="72520" idOp="5206379" />
+    <city nameRu="Хартфорд, шт. Коннектикут" nameEng="hartford" idYa="72508" idOp="4835797" />
+    <city nameRu="Ричмонд, шт. Виргиния" nameEng="richmond" idYa="72401" idOp="2183472" />
+    <city nameRu="Миннеаполис, шт. Миннесота" nameEng="minneapolis" idYa="72658" idOp="5037649" />
+    <city nameRu="Абердин, шт. Южная Дакота" nameEng="aberdeen" idYa="72659" idOp="5225857" />
+    <city nameRu="Вашингтон, Федеральный округ Колумбия" nameEng="washington" idYa="72405" idOp="4880731" />
+    <city nameRu="Балтимор, шт. Мэриленд" nameEng="baltimore" idYa="72406" idOp="4347778" />
+    <city nameRu="Олимпия, шт. Вашингтон" nameEng="olympia" idYa="72792" idOp="5805687" />
+    <city nameRu="Детройт, шт. Мичиган" nameEng="detroit" idYa="72537" idOp="4990729" />
+    <city nameRu="Лансинг, шт. Мичиган" nameEng="lansing" idYa="72539" idOp="5123993" />
+    <city nameRu="Де-Мойн, шт. Айова" nameEng="des moines" idYa="72546" idOp="4853828" />
+    <city nameRu="Линкольн, шт. Небраска" nameEng="lincoln" idYa="72551" idOp="2188371" />
+    <city nameRu="Бойсе, шт. Айдахо" nameEng="boise" idYa="72681" idOp="5586437" />
+    <city nameRu="Лос-Анджелес, шт. Калифорния" nameEng="los angeles" idYa="72295" idOp="3882428" />
+    <city nameRu="Колумбус, шт. Огайо" nameEng="columbus" idYa="72428" idOp="4188985" />
+    <city nameRu="Джуно, шт. Аляска" nameEng="juneau" idYa="70381" idOp="5258190" />
+    <city nameRu="Луисвилл, шт. Кентукки" nameEng="louisville" idYa="72423" idOp="4299276" />
+    <city nameRu="Роли, шт. Северная Каролина" nameEng="raleigh" idYa="72306" idOp="4487042" />
+    <city nameRu="Шайенн, шт. Вайоминг" nameEng="cheyenne" idYa="72564" idOp="5821086" />
+    <city nameRu="Денвер, шт. Колорадо" nameEng="denver" idYa="72565" idOp="4463523" />
+    <city nameRu="Индианаполис, шт. Индиана" nameEng="indianapolis" idYa="72438" idOp="4259418" />
+    <city nameRu="Спрингфилд, шт. Иллинойс" nameEng="springfield" idYa="72439" idOp="6693094" />
+    <city nameRu="Солт-Лейк-Сити, шт. Юта" nameEng="salt lake city" idYa="72572" idOp="5780993" />
+    <city nameRu="Канзас-Сити, шт. Миссури" nameEng="kansas city" idYa="72446" idOp="4273837" />
+  </country>
+  <country nameRu="Сальвадор">
+    <city nameRu="Сан-Мигель" nameEng="san miguel" idYa="78670" idOp="3428644" />
+    <city nameRu="Сан-Сальвадор" nameEng="san salvador" idYa="78663" idOp="3428481" />
+  </country>
+  <country nameRu="Самоа">
+    <city nameRu="Апиа" nameEng="apia" idYa="91762" idOp="3461954" />
+  </country>
+  <country nameRu="Сан-Марино">
+    <city nameRu="Сан-Марино" nameEng="san marino" idYa="16591" idOp="5392400" />
+  </country>
+  <country nameRu="Саудовская Аравия">
+    <city nameRu="Медина" nameEng="medina" idYa="40249" idOp="2066608" />
+    <city nameRu="Даммам" nameEng="dammam" idYa="40419" idOp="110336" />
+    <city nameRu="Эр-Рияд" nameEng="riyadh" idYa="40437" idOp="108410" />
+    <city nameRu="Мекка" nameEng="mecca" idYa="41030" idOp="5371965" />
+  </country>
+  <country nameRu="Свазиленд">
+    <city nameRu="Манзини" nameEng="manzini" idYa="68396" idOp="934995" />
+  </country>
+  <country nameRu="Северная Корея">
+    <city nameRu="Чхонджин" nameEng="chongjin" idYa="47008" idOp="2044757" />
+    <city nameRu="Пхеньян" nameEng="pyongyang" idYa="47058" idOp="1871859" />
+  </country>
+  <country nameRu="Северные Марианские острова">
+    <city nameRu="Сайпан" nameEng="saipan" idYa="91232" idOp="7828758" />
+  </country>
+  <country nameRu="Сейшельские острова">
+    <city nameRu="Виктория" nameEng="victoria" idYa="63980" idOp="3634922" />
+  </country>
+  <country nameRu="Сенегал">
+    <city nameRu="Дакар" nameEng="dakar" idYa="61641" idOp="2253354" />
+  </country>
+  <country nameRu="Сент-Винсент и Гренадины">
+    <city nameRu="Кингстаун" nameEng="kingstown" idYa="78951" idOp="5223672" />
+  </country>
+  <country nameRu="Сент-Китс и Невис">
+    <city nameRu="Бастер" nameEng="basseterre" idYa="78857" idOp="3575551" />
+  </country>
+  <country nameRu="Сент-Люсия">
+    <city nameRu="Кастри" nameEng="castries" idYa="78947" idOp="3028258" />
+  </country>
+  <country nameRu="Сербия">
+    <city nameRu="Белград" nameEng="belgrade" idYa="13272" idOp="4957962" />
+    <city nameRu="Димитровград" nameEng="dimitrovgrad" idYa="13397" idOp="566199" />
+  </country>
+  <country nameRu="Сеута">
+    <city nameRu="Сеута" nameEng="ceuta" idYa="60320" idOp="6362987" />
+  </country>
+  <country nameRu="Сингапур">
+    <city nameRu="Сингапур" nameEng="singapore" idYa="48698" idOp="1880252" />
+  </country>
+  <country nameRu="Сирия">
+    <city nameRu="Дамаск" nameEng="damascus" idYa="40080" idOp="4352728" />
+    <city nameRu="Хама" nameEng="khama" idYa="40030" idOp="550775" />
+    <city nameRu="Латакия" nameEng="latakia" idYa="40022" idOp="173576" />
+    <city nameRu="Алеппо (Халеб)" nameEng="aleppo" idYa="40007" idOp="170063" />
+  </country>
+  <country nameRu="Словакия">
+    <city nameRu="Кошице" nameEng="kosice" idYa="11968" idOp="724443" />
+    <city nameRu="Братислава" nameEng="bratislava" idYa="11816" idOp="3060972" />
+    <city nameRu="Ясна" nameEng="yasna" idYa="11915" idOp="805755" />
+    <city nameRu="Попрад" nameEng="poprad" idYa="11934" idOp="723846" />
+  </country>
+  <country nameRu="Словения">
+    <city nameRu="Вогель" nameEng="vogel" idYa="14006" idOp="2816874" />
+    <city nameRu="Любляна" nameEng="ljubljana" idYa="14015" idOp="3196359" />
+  </country>
+  <country nameRu="Соломоновы острова">
+    <city nameRu="Хониара" nameEng="honiara" idYa="91520" idOp="2108502" />
+  </country>
+  <country nameRu="Сомали">
+    <city nameRu="Могадишо" nameEng="mogadishu" idYa="63260" idOp="53654" />
+  </country>
+  <country nameRu="Судан">
+    <city nameRu="Хартум" nameEng="khartoum" idYa="62721" idOp="379252" />
+  </country>
+  <country nameRu="Суринам">
+    <city nameRu="Парамарибо" nameEng="paramaribo" idYa="81200" idOp="3383330" />
+  </country>
+  <country nameRu="Сьерра-Леоне">
+    <city nameRu="Макени" nameEng="makeni" idYa="61873" idOp="2406407" />
+  </country>
+  <country nameRu="Таджикистан">
+    <city nameRu="Худжанд" nameEng="khujand" idYa="38599" idOp="1514879" />
+    <city nameRu="Турсунзода" nameEng="tursunzoda" idYa="38834" idOp="1220301" />
+    <city nameRu="Душанбе" nameEng="dushanbe" idYa="38836" idOp="1221874" />
+    <city nameRu="Гарм" nameEng="garm" idYa="38868" idOp="1277318" />
+    <city nameRu="Кулоб" nameEng="kulob" idYa="38943" idOp="1221194" />
+  </country>
+  <country nameRu="Таиланд">
+    <city nameRu="Ко Чанг" nameEng="ko chang" idYa="48481" idOp="7280459" />
+    <city nameRu="Самуи" nameEng="samui" idYa="48550" idOp="727455" />
+    <city nameRu="Бангкок" nameEng="bangkok" idYa="48455" idOp="1609350" />
+    <city nameRu="Сурин" nameEng="surin" idYa="48432" idOp="1606030" />
+    <city nameRu="Краби" nameEng="krabi" idYa="48563" idOp="1152633" />
+    <city nameRu="Пхукет" nameEng="phuket" idYa="48565" idOp="1151254" />
+    <city nameRu="Саттанхип" nameEng="sattahip" idYa="48477" idOp="1606386" />
+  </country>
+  <country nameRu="Тайвань">
+    <city nameRu="Тайбей" nameEng="taipei" idYa="58968" idOp="1668341" />
+    <city nameRu="Тайнань" nameEng="tainan" idYa="59358" idOp="1668355" />
+  </country>
+  <country nameRu="Танзания">
+    <city nameRu="Занзибар" nameEng="zanzibar" idYa="63870" idOp="148730" />
+    <city nameRu="Додома" nameEng="dodoma" idYa="63862" idOp="160196" />
+    <city nameRu="Дар-эс-Салам" nameEng="dar es salaam" idYa="63894" idOp="160263" />
+    <city nameRu="Чаки-Чаки" nameEng="chake chake" idYa="63845" idOp="160677" />
+  </country>
+  <country nameRu="Того">
+    <city nameRu="Ломе" nameEng="lome" idYa="65387" idOp="490914" />
+  </country>
+  <country nameRu="Тонга">
+    <city nameRu="Нукуалофа" nameEng="nukualofa" idYa="91791" idOp="4032402" />
+  </country>
+  <country nameRu="Тринидад и Тобаго">
+    <city nameRu="Тринидад" nameEng="trinidad" idYa="78970" idOp="3534915" />
+  </country>
+  <country nameRu="Тувалу">
+    <city nameRu="Фунафути" nameEng="funafuti" idYa="91643" idOp="2110394" />
+  </country>
+  <country nameRu="Тунис">
+    <city nameRu="Сусс" nameEng="sousse" idYa="60739" idOp="2464915" />
+    <city nameRu="Монастир" nameEng="monastir" idYa="60740" idOp="2473493" />
+    <city nameRu="Тунис" nameEng="tunis" idYa="60715" idOp="2464470" />
+    <city nameRu="Хаммамет" nameEng="hammamet" idYa="60729" idOp="2494548" />
+  </country>
+  <country nameRu="Туркмения">
+    <city nameRu="Ашхабад" nameEng="ashgabat" idYa="38880" idOp="162183" />
+  </country>
+  <country nameRu="Турция">
+    <city nameRu="Синоп" nameEng="sinop" idYa="17026" idOp="2523086" />
+    <city nameRu="Бодрум" nameEng="bodrum" idYa="17290" idOp="320995" />
+    <city nameRu="Даламан" nameEng="dalaman" idYa="17295" idOp="447273" />
+    <city nameRu="Фетхие" nameEng="fethiye" idYa="17296" idOp="314967" />
+    <city nameRu="Мармарис" nameEng="marmaris" idYa="17298" idOp="304782" />
+    <city nameRu="Кемер" nameEng="kemer" idYa="17299" idOp="1503901" />
+    <city nameRu="Анталья" nameEng="antalya" idYa="17300" idOp="323777" />
+    <city nameRu="Белек" nameEng="belek" idYa="17301" idOp="321580" />
+    <city nameRu="Сиде" nameEng="side" idYa="17302" idOp="3840300" />
+    <city nameRu="Текирова" nameEng="tekirova" idYa="17304" idOp="299445" />
+    <city nameRu="Аксу" nameEng="aksu" idYa="17305" idOp="1274532" />
+    <city nameRu="Манавгат" nameEng="manavgat" idYa="17307" idOp="304854" />
+    <city nameRu="Авсаллар" nameEng="avsallar" idYa="17309" idOp="322887" />
+    <city nameRu="Аланья" nameEng="alanya" idYa="17310" idOp="324190" />
+    <city nameRu="Текирдаг" nameEng="tekirdag" idYa="17056" idOp="738927" />
+    <city nameRu="Стамбул" nameEng="istanbul" idYa="17060" idOp="745044" />
+    <city nameRu="Эдирне" nameEng="edirne" idYa="17050" idOp="747712" />
+    <city nameRu="Болу" nameEng="bolu" idYa="17070" idOp="750516" />
+    <city nameRu="Силифке" nameEng="silifke" idYa="17330" idOp="300808" />
+    <city nameRu="Измир" nameEng="izmir" idYa="17220" idOp="311046" />
+    <city nameRu="Адана" nameEng="adana" idYa="17350" idOp="1264621" />
+    <city nameRu="Эрзурум" nameEng="erzurum" idYa="17096" idOp="315368" />
+    <city nameRu="Бурса" nameEng="bursa" idYa="17116" idOp="750269" />
+    <city nameRu="Анкара" nameEng="ankara" idYa="17130" idOp="1254972" />
+  </country>
+  <country nameRu="Тёркс и Кайкос">
+    <city nameRu="Кокберн-Таун" nameEng="cockburn town" idYa="78118" idOp="3576994" />
+  </country>
+  <country nameRu="Уганда">
+    <city nameRu="Кампала" nameEng="kampala" idYa="63680" idOp="232422" />
+  </country>
+  <country nameRu="Узбекистан">
+    <city nameRu="Навои" nameEng="navoi" idYa="38567" idOp="1513131" />
+    <city nameRu="Наманган" nameEng="namangan" idYa="38611" idOp="1513157" />
+    <city nameRu="Нукус" nameEng="nukus" idYa="38264" idOp="601294" />
+    <city nameRu="Ташкент" nameEng="tashkent" idYa="38457" idOp="1512569" />
+  </country>
+  <country nameRu="Украина">
+    <city nameRu="Орджоникидзе" nameEng="ordzhonikidze" idYa="33804" idOp="515083" />
+    <city nameRu="Никополь" nameEng="nikopol" idYa="33805" idOp="700051" />
+    <city nameRu="Ровно" nameEng="rovno" idYa="33301" idOp="501091" />
+    <city nameRu="Здолбунов" nameEng="zdolbuniv" idYa="33302" idOp="687432" />
+    <city nameRu="Шепетовка" nameEng="shepetivka" idYa="33317" idOp="694216" />
+    <city nameRu="Овидиополь" nameEng="ovidiopol" idYa="33831" idOp="698138" />
+    <city nameRu="Житомир" nameEng="zhytomyr" idYa="33325" idOp="686967" />
+    <city nameRu="Николаев" nameEng="nikolaev" idYa="33846" idOp="728795" />
+    <city nameRu="Радомышль" nameEng="radomyshl" idYa="33338" idOp="695912" />
+    <city nameRu="Фастов" nameEng="fastiv" idYa="33339" idOp="709248" />
+    <city nameRu="Ирпень" nameEng="irpin" idYa="33340" idOp="707565" />
+    <city nameRu="Васильков" nameEng="vasylkiv" idYa="33341" idOp="690412" />
+    <city nameRu="Обухов" nameEng="obukhiv" idYa="33346" idOp="698782" />
+    <city nameRu="Борисполь" nameEng="boryspil" idYa="33347" idOp="711660" />
+    <city nameRu="Каховка" nameEng="kakhovka" idYa="33870" idOp="707244" />
+    <city nameRu="Прилуки" nameEng="pryluky" idYa="33362" idOp="696108" />
+    <city nameRu="Гребёнка" nameEng="hrebinka" idYa="33363" idOp="708181" />
+    <city nameRu="Днепродзержинск" nameEng="dniprodzerzhynsk" idYa="33372" idOp="709932" />
+    <city nameRu="Рени" nameEng="reni" idYa="33888" idOp="477039" />
+    <city nameRu="Измаил" nameEng="izmayil" idYa="33889" idOp="707308" />
+    <city nameRu="Ахтырка" nameEng="okhtyrka" idYa="33383" idOp="713749" />
+    <city nameRu="Лозовая" nameEng="lozova" idYa="34409" idOp="702760" />
+    <city nameRu="Херсон" nameEng="kherson" idYa="33902" idOp="706448" />
+    <city nameRu="Львов" nameEng="lvov" idYa="33393" idOp="533008" />
+    <city nameRu="Армянск" nameEng="armyansk" idYa="33909" idOp="713203" />
+    <city nameRu="Дрогобыч" nameEng="drogobych" idYa="33398" idOp="709611" />
+    <city nameRu="Тернополь" nameEng="ternopol" idYa="33415" idOp="3171382" />
+    <city nameRu="Саки" nameEng="saky" idYa="33930" idOp="694910" />
+    <city nameRu="Красноперекопск" nameEng="krasnoperekopsk" idYa="33931" idOp="704362" />
+    <city nameRu="Симеиз" nameEng="simeiz" idYa="33987" idOp="693809" />
+    <city nameRu="Симферополь" nameEng="simferopol" idYa="33946" idOp="693805" />
+    <city nameRu="Новомосковск" nameEng="novomoskovsk" idYa="34501" idOp="518557" />
+    <city nameRu="Бердичев" nameEng="berdychiv" idYa="33444" idOp="712441" />
+    <city nameRu="Алушта" nameEng="alushta" idYa="33959" idOp="713513" />
+    <city nameRu="Белогорск" nameEng="belogorsk" idYa="33966" idOp="2026895" />
+    <city nameRu="Днепропетровск" nameEng="dnipropetrovsk" idYa="34504" idOp="709930" />
+    <city nameRu="Судак" nameEng="sudak" idYa="33975" idOp="692315" />
+    <city nameRu="Белая Церковь" nameEng="bila tserkva" idYa="33464" idOp="712165" />
+    <city nameRu="Керчь" nameEng="kerch" idYa="33983" idOp="551047" />
+    <city nameRu="Канев" nameEng="kanev" idYa="33475" idOp="553152" />
+    <city nameRu="Массандра" nameEng="massandra" idYa="33988" idOp="701619" />
+    <city nameRu="Павлоград" nameEng="pavlohrad" idYa="34502" idOp="697889" />
+    <city nameRu="Севастополь" nameEng="sevastopol" idYa="33991" idOp="694423" />
+    <city nameRu="Инкерман" nameEng="inkerman" idYa="33992" idOp="712576" />
+    <city nameRu="Трускавец" nameEng="truskavets" idYa="33399" idOp="691179" />
+    <city nameRu="Артемовск" nameEng="artemivsk" idYa="34510" idOp="713174" />
+    <city nameRu="Краматорск" nameEng="kramatorsk" idYa="34511" idOp="704508" />
+    <city nameRu="Донецк" nameEng="donetsk" idYa="34519" idOp="565348" />
+    <city nameRu="Горловка" nameEng="horlivka" idYa="34520" idOp="707753" />
+    <city nameRu="Алчевск" nameEng="alchevsk" idYa="34522" idOp="713716" />
+    <city nameRu="Луганск" nameEng="luhansk" idYa="34523" idOp="702658" />
+    <city nameRu="Краснодон" nameEng="krasnodon" idYa="34528" idOp="704403" />
+    <city nameRu="Диканька" nameEng="dykanka" idYa="33505" idOp="710041" />
+    <city nameRu="Полтава" nameEng="poltava" idYa="33506" idOp="696643" />
+    <city nameRu="Стрый" nameEng="stryi" idYa="33513" idOp="692372" />
+    <city nameRu="Калуш" nameEng="kalush" idYa="33527" idOp="707099" />
+    <city nameRu="Ялта" nameEng="yalta" idYa="33990" idOp="688533" />
+    <city nameRu="Одесса" nameEng="odessa" idYa="33837" idOp="698740" />
+    <city nameRu="Миргород" nameEng="myrhorod" idYa="33496" idOp="701075" />
+    <city nameRu="Жмеринка" nameEng="zhmerynka" idYa="33564" idOp="687116" />
+    <city nameRu="Немиров" nameEng="nemyriv" idYa="33565" idOp="700322" />
+    <city nameRu="Тульчин" nameEng="tulchyn" idYa="33566" idOp="691016" />
+    <city nameRu="Скадовск" nameEng="skadovsk" idYa="33903" idOp="693709" />
+    <city nameRu="Жашков" nameEng="zhashkiv" idYa="33581" idOp="687245" />
+    <city nameRu="Умань" nameEng="uman" idYa="33587" idOp="2120864" />
+    <city nameRu="Шпола" nameEng="shpola" idYa="33592" idOp="693920" />
+    <city nameRu="Сарны" nameEng="sarni" idYa="33088" idOp="6141190" />
+    <city nameRu="Попасная" nameEng="popasna" idYa="34529" idOp="696566" />
+    <city nameRu="Кременчуг" nameEng="kremenchuk" idYa="33615" idOp="704147" />
+    <city nameRu="Чоп" nameEng="chop" idYa="33630" idOp="1273992" />
+    <city nameRu="Свалява" nameEng="svalyava" idYa="33635" idOp="692129" />
+    <city nameRu="Хуст" nameEng="hust" idYa="33638" idOp="706165" />
+    <city nameRu="Ворохта" nameEng="vorokhta" idYa="33643" idOp="689037" />
+    <city nameRu="Чернигов" nameEng="chernihiv" idYa="33135" idOp="710735" />
+    <city nameRu="Шостка" nameEng="shostka" idYa="33155" idOp="693942" />
+    <city nameRu="Глухов" nameEng="hlukhiv" idYa="33156" idOp="707758" />
+    <city nameRu="Мелитополь" nameEng="melitopol" idYa="34704" idOp="701404" />
+    <city nameRu="Ковель" nameEng="kovel" idYa="33173" idOp="704617" />
+    <city nameRu="Мариуполь" nameEng="mariupol" idYa="34712" idOp="701822" />
+    <city nameRu="Помошная" nameEng="pomichna" idYa="33705" idOp="696581" />
+    <city nameRu="Кировоград" nameEng="kirovohrad" idYa="33711" idOp="705812" />
+    <city nameRu="Долинская" nameEng="dolynska" idYa="33719" idOp="709782" />
+    <city nameRu="Овруч" nameEng="ovruch" idYa="33213" idOp="698131" />
+    <city nameRu="Коростень" nameEng="korosten" idYa="33215" idOp="704901" />
+    <city nameRu="Моршин" nameEng="morshin" idYa="33397" idOp="700753" />
+    <city nameRu="Котовск" nameEng="kotovsk" idYa="33756" idOp="543605" />
+    <city nameRu="Балта" nameEng="balta" idYa="33757" idOp="579384" />
+    <city nameRu="Бахмач" nameEng="bakhmach" idYa="33258" idOp="712967" />
+    <city nameRu="Конотоп" nameEng="konotop" idYa="33261" idOp="705135" />
+    <city nameRu="Южноукраинск" nameEng="yuzhnoukrainsk" idYa="33776" idOp="7525990" />
+    <city nameRu="Вознесенск" nameEng="voznesensk" idYa="33777" idOp="471188" />
+    <city nameRu="Сумы" nameEng="sumy" idYa="33275" idOp="692194" />
+    <city nameRu="Харьков" nameEng="kharkiv" idYa="34300" idOp="706483" />
+  </country>
+  <country nameRu="Уругвай">
+    <city nameRu="Монтевидео" nameEng="montevideo" idYa="86585" idOp="3441575" />
+  </country>
+  <country nameRu="Фарерские острова">
+    <city nameRu="Торсхавн" nameEng="torshavn" idYa="6011" idOp="2611396" />
+  </country>
+  <country nameRu="Фиджи">
+    <city nameRu="Нанди" nameEng="nadi" idYa="91680" idOp="1262292" />
+    <city nameRu="Лабаса" nameEng="labasa" idYa="91657" idOp="5332593" />
+    <city nameRu="Сува" nameEng="suva" idYa="91690" idOp="785238" />
+  </country>
+  <country nameRu="Филиппины">
+    <city nameRu="Давао" nameEng="davao" idYa="98753" idOp="1715348" />
+    <city nameRu="Инфанта" nameEng="infanta" idYa="98434" idOp="1710744" />
+    <city nameRu="Сан-Хосе" nameEng="san jose" idYa="98531" idOp="3628142" />
+    <city nameRu="Пуэрто-Принсеса" nameEng="puerto princesa" idYa="98618" idOp="1692685" />
+    <city nameRu="Виган" nameEng="vigan" idYa="98222" idOp="2658135" />
+    <city nameRu="Дагупан" nameEng="dagupan" idYa="98325" idOp="1716192" />
+    <city nameRu="Апарри" nameEng="aparri" idYa="98232" idOp="1730398" />
+    <city nameRu="Кабанатуан" nameEng="cabanatuan" idYa="98330" idOp="1721906" />
+    <city nameRu="Ламбиа" nameEng="cagayan de oro" idYa="98747" idOp="1721080" />
+    <city nameRu="Манила" nameEng="manila" idYa="98429" idOp="4120426" />
+    <city nameRu="Корон" nameEng="coron" idYa="98526" idOp="3860164" />
+    <city nameRu="Калапан" nameEng="calapan" idYa="98431" idOp="1720561" />
+  </country>
+  <country nameRu="Финляндия">
+    <city nameRu="Халли" nameEng="halli" idYa="2945" idOp="1254396" />
+    <city nameRu="Леви" nameEng="levi" idYa="2824" idOp="535505" />
+    <city nameRu="Куусамо" nameEng="kuusamo" idYa="2869" idOp="649924" />
+    <city nameRu="Турку" nameEng="turku" idYa="2972" idOp="633679" />
+    <city nameRu="Рованиеми" nameEng="rovaniemi" idYa="2845" idOp="638936" />
+    <city nameRu="Хельсинки" nameEng="helsinki" idYa="2974" idOp="658225" />
+    <city nameRu="Лахти" nameEng="lahti" idYa="2965" idOp="649360" />
+  </country>
+  <country nameRu="Франция">
+    <city nameRu="Марсель" nameEng="marseilles" idYa="7650" idOp="4901279" />
+    <city nameRu="Перпиньян" nameEng="perpignan" idYa="7747" idOp="2987914" />
+    <city nameRu="Канны" nameEng="cannes" idYa="7684" idOp="3028808" />
+    <city nameRu="Нант" nameEng="nantes" idYa="7222" idOp="2990969" />
+    <city nameRu="Брест" nameEng="brest" idYa="7110" idOp="629634" />
+    <city nameRu="Лилль" nameEng="lille" idYa="7015" idOp="2998324" />
+    <city nameRu="Ницца" nameEng="nice" idYa="7690" idOp="5376959" />
+    <city nameRu="Париж" nameEng="paris" idYa="7149" idOp="4717560" />
+    <city nameRu="Виши" nameEng="vichy" idYa="7374" idOp="621729" />
+    <city nameRu="Дижон" nameEng="dijon" idYa="7280" idOp="3021372" />
+    <city nameRu="Аяччо" nameEng="ajaccio" idYa="7793" idOp="3038334" />
+    <city nameRu="Биарриц" nameEng="biarritz" idYa="7602" idOp="3032797" />
+    <city nameRu="Сен-Тропе" nameEng="saint-tropez" idYa="7794" idOp="2976742" />
+    <city nameRu="Бордо" nameEng="bordeaux" idYa="7510" idOp="3031582" />
+    <city nameRu="Довиль" nameEng="deauville" idYa="7031" idOp="3021668" />
+    <city nameRu="Тулуза" nameEng="toulouse" idYa="7630" idOp="2972315" />
+    <city nameRu="Страсбург" nameEng="strasbourg" idYa="7190" idOp="2973783" />
+    <city nameRu="Шамони" nameEng="chamonix" idYa="7498" idOp="3027301" />
+    <city nameRu="Лион" nameEng="lyon" idYa="7481" idOp="4207205" />
+  </country>
+  <country nameRu="Французская Гвиана">
+    <city nameRu="Кайенна" nameEng="cayenne" idYa="81405" idOp="3028097" />
+  </country>
+  <country nameRu="Французская Полинезия">
+    <city nameRu="Папеэте" nameEng="papeete" idYa="91938" idOp="4033936" />
+  </country>
+  <country nameRu="Хорватия">
+    <city nameRu="Загреб" nameEng="zagreb" idYa="14240" idOp="6618983" />
+    <city nameRu="Дубровник" nameEng="dubrovnik" idYa="14474" idOp="3201047" />
+    <city nameRu="Пула" nameEng="pula" idYa="14307" idOp="1262338" />
+    <city nameRu="Сплит" nameEng="split" idYa="14444" idOp="3190261" />
+  </country>
+  <country nameRu="Центральноафриканская республика">
+    <city nameRu="Банги" nameEng="bangui" idYa="64650" idOp="1727211" />
+  </country>
+  <country nameRu="Черногория">
+    <city nameRu="Тиват" nameEng="tivat" idYa="13457" idOp="3189073" />
+    <city nameRu="Котор" nameEng="kotor" idYa="13456" idOp="3197532" />
+    <city nameRu="Будва" nameEng="budva" idYa="13458" idOp="3203106" />
+    <city nameRu="Цетинье" nameEng="cetinje" idYa="13460" idOp="3202641" />
+    <city nameRu="Бар" nameEng="bar" idYa="13461" idOp="578953" />
+    <city nameRu="Подгорица" nameEng="podgorica" idYa="13462" idOp="3193044" />
+  </country>
+  <country nameRu="Чехия">
+    <city nameRu="Брно" nameEng="brno" idYa="11723" idOp="3078610" />
+    <city nameRu="Яхимов" nameEng="jachymov" idYa="11412" idOp="3074587" />
+    <city nameRu="Карловы Вары" nameEng="karlovy vary" idYa="11414" idOp="3073803" />
+    <city nameRu="Марианские Лазни" nameEng="marianske lazne" idYa="11418" idOp="3071024" />
+    <city nameRu="Прага" nameEng="prague" idYa="11518" idOp="4548393" />
+  </country>
+  <country nameRu="Чили">
+    <city nameRu="Вальпараисо" nameEng="valparaiso" idYa="85571" idOp="3868626" />
+    <city nameRu="Винья-дель-Мар" nameEng="vina del mar" idYa="85572" idOp="3868121" />
+    <city nameRu="Пуэрто-Монт" nameEng="puerto mont" idYa="85799" idOp="3874960" />
+    <city nameRu="Сантьяго" nameEng="santiago" idYa="85577" idOp="3536729" />
+    <city nameRu="Арика" nameEng="arica" idYa="85406" idOp="3899361" />
+  </country>
+  <country nameRu="Швейцария">
+    <city nameRu="Вербье" nameEng="verbier" idYa="6722" idOp="2658168" />
+    <city nameRu="Давос" nameEng="davos" idYa="6787" idOp="2661039" />
+    <city nameRu="Берн" nameEng="bern" idYa="6630" idOp="3854985" />
+    <city nameRu="Женева" nameEng="geneva" idYa="6700" idOp="4893591" />
+    <city nameRu="Кур" nameEng="chur" idYa="6786" idOp="527191" />
+    <city nameRu="Цюрих" nameEng="zurich" idYa="6670" idOp="4899170" />
+    <city nameRu="Баден" nameEng="baden" idYa="6991" idOp="4347708" />
+    <city nameRu="Лозанна" nameEng="lausanne" idYa="6992" idOp="2659994" />
+    <city nameRu="Гриндельвальд" nameEng="grindelwald" idYa="6745" idOp="2660498" />
+  </country>
+  <country nameRu="Швеция">
+    <city nameRu="Стокгольм" nameEng="stockholm" idYa="2464" idOp="2673730" />
+    <city nameRu="Гетеборг" nameEng="gothenburg" idYa="2513" idOp="5695743" />
+    <city nameRu="Мальмё" nameEng="malmo" idYa="2635" idOp="2979001" />
+    <city nameRu="Тимро" nameEng="timra" idYa="2366" idOp="2669047" />
+    <city nameRu="Оре" nameEng="are" idYa="2214" idOp="536625" />
+  </country>
+  <country nameRu="Шри-Ланка">
+    <city nameRu="Маннар" nameEng="mannar" idYa="43413" idOp="1263659" />
+    <city nameRu="Коломбо" nameEng="colombo" idYa="43466" idOp="3465927" />
+    <city nameRu="Канди" nameEng="kandy" idYa="43444" idOp="1241622" />
+    <city nameRu="Анурадхапура" nameEng="anuradhapura" idYa="43421" idOp="1251081" />
+    <city nameRu="Галле" nameEng="galle" idYa="43495" idOp="3838859" />
+  </country>
+  <country nameRu="Эквадор">
+    <city nameRu="Куэнка" nameEng="cuenca" idYa="84239" idOp="4012344" />
+    <city nameRu="Гуаякиль" nameEng="guayaquil" idYa="84203" idOp="3657509" />
+    <city nameRu="Кито" nameEng="quito" idYa="84071" idOp="3696183" />
+  </country>
+  <country nameRu="Экваториальная Гвинея">
+    <city nameRu="Малабо" nameEng="malabo" idYa="64810" idOp="1703315" />
+    <city nameRu="Бата" nameEng="bata" idYa="64820" idOp="578740" />
+  </country>
+  <country nameRu="Эстония">
+    <city nameRu="Нарва-Йыэсуу" nameEng="narva-joesuu" idYa="26057" idOp="590030" />
+    <city nameRu="Хаапсалу" nameEng="haapsalu" idYa="26123" idOp="592225" />
+    <city nameRu="Курессааре" nameEng="kuressaare" idYa="26215" idOp="590939" />
+    <city nameRu="Выру" nameEng="voru" idYa="26249" idOp="518246" />
+    <city nameRu="Нарва" nameEng="narva" idYa="26058" idOp="590031" />
+    <city nameRu="Валга" nameEng="valga" idYa="26247" idOp="3106702" />
+    <city nameRu="Тарту" nameEng="tartu" idYa="26242" idOp="588335" />
+    <city nameRu="Пярну" nameEng="parnu" idYa="26231" idOp="589580" />
+    <city nameRu="Таллин" nameEng="tallin" idYa="26038" idOp="4493186" />
+  </country>
+  <country nameRu="Эфиопия">
+    <city nameRu="Аддис-Абеба" nameEng="addis ababa" idYa="63450" idOp="344979" />
+  </country>
+  <country nameRu="ЮАР">
+    <city nameRu="Йоханнесбург" nameEng="johannesburg" idYa="68368" idOp="993800" />
+    <city nameRu="Дурбан" nameEng="durban" idYa="68588" idOp="1007311" />
+    <city nameRu="Тсване (Претория)" nameEng="pretoria" idYa="68262" idOp="964137" />
+  </country>
+  <country nameRu="Южная Корея">
+    <city nameRu="Масан" nameEng="masan" idYa="47155" idOp="1700753" />
+    <city nameRu="Сеул" nameEng="seoul" idYa="47108" idOp="1835848" />
+    <city nameRu="Пусан" nameEng="busan" idYa="47159" idOp="1724862" />
+  </country>
+  <country nameRu="Южная Осетия">
+    <city nameRu="Цхинвал" nameEng="tskhinval" idYa="37416" idOp="611403" />
+  </country>
+  <country nameRu="Ямайка">
+    <city nameRu="Монтего-Бэй" nameEng="montego bay" idYa="78388" idOp="3489460" />
+    <city nameRu="Кингстон" nameEng="kingston" idYa="78397" idOp="2161311" />
+  </country>
+  <country nameRu="Япония">
+    <city nameRu="Наха" nameEng="naha" idYa="47936" idOp="1259244" />
+    <city nameRu="Осака" nameEng="osaka" idYa="47772" idOp="1520327" />
+    <city nameRu="Нара" nameEng="nara" idYa="47780" idOp="1261837" />
+    <city nameRu="Такамацу" nameEng="takamatsu" idYa="47891" idOp="1851100" />
+    <city nameRu="Вакканай" nameEng="wakkanai" idYa="47401" idOp="2127515" />
+    <city nameRu="Никко" nameEng="nikko" idYa="47690" idOp="1855395" />
+    <city nameRu="Токио" nameEng="tokyo" idYa="47662" idOp="1850147" />
+    <city nameRu="Киото" nameEng="kyoto" idYa="47759" idOp="1857910" />
+    <city nameRu="Абасири" nameEng="abashiri" idYa="47409" idOp="2130741" />
+    <city nameRu="Камакура" nameEng="kamakura" idYa="47667" idOp="1860672" />
+    <city nameRu="Саппоро" nameEng="sapporo" idYa="47412" idOp="2128295" />
+    <city nameRu="Ниигата" nameEng="niigata" idYa="47573" idOp="1855431" />
+    <city nameRu="Йокогама" nameEng="yokohama" idYa="47670" idOp="1848354" />
+    <city nameRu="Нагасаки" nameEng="nagasaki" idYa="47817" idOp="1856177" />
+    <city nameRu="Кобе" nameEng="kobe" idYa="47770" idOp="705544" />
+    <city nameRu="Асахикава" nameEng="asahikawa" idYa="47407" idOp="2130629" />
+    <city nameRu="Нэмуро" nameEng="nemuro" idYa="47420" idOp="2128975" />
+    <city nameRu="Кусиро" nameEng="kushiro" idYa="47418" idOp="2129376" />
+    <city nameRu="Фукуока" nameEng="fukuoka" idYa="47807" idOp="1907125" />
+  </country>
+</cities>

@@ -81,20 +81,21 @@ namespace WeatherInfo
             notifyIcon = new TaskbarIcon();
             //notifyIcon.Visibility = Visibility.Visible;
 
-            Button FullWindow = new Button();
-            Button Options = new Button();
-            Button Exit = new Button();
-            FullWindow.Content = "Развернуть";
-            Options.Content = "Настройки";
-            Exit.Content = "Выход";
+            TextBlock FullWindow = new TextBlock();
+            TextBlock Options = new TextBlock();
+            TextBlock Exit = new TextBlock();
+            FullWindow.Text = "Развернуть";
+            Options.Text = "Настройки";
+            Exit.Text = "Выход";
+
             notifyIcon.ContextMenu = new ContextMenu();
             notifyIcon.ContextMenu.Items.Add(FullWindow);
             notifyIcon.ContextMenu.Items.Add(Options);
             notifyIcon.ContextMenu.Items.Add(Exit);
 
-            FullWindow.Click += FullWindow_MouseDown;
-            Options.Click += Options_MouseDown;
-            Exit.Click += Exit_MouseDown;
+            FullWindow.MouseLeftButtonDown += FullWindow_MouseDown;
+            Options.MouseLeftButtonDown += Options_MouseDown;
+            Exit.MouseLeftButtonDown += Exit_MouseDown;
             notifyIcon.TrayMouseDoubleClick += FullWindow_MouseDown;
             notifyIcon.TrayLeftMouseDown += notifyIcon_TrayLeftMouseDown;
             notifyIcon.TrayRightMouseDown += notifyIcon_TrayRightMouseDown;
