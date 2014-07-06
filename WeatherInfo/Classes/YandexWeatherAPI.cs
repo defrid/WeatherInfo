@@ -14,7 +14,7 @@ namespace WeatherInfo.Classes
     /// <summary>
     /// Класс организующий связь с Yandex.Weather API
     /// </summary>
-    public class YandexWeatherAPI:IYandexWeatherApi
+    public class YandexWeatherAPI : IYandexWeatherApi
     {
         /// <summary>
         /// Ссылка на Xml документ с городами
@@ -63,7 +63,7 @@ namespace WeatherInfo.Classes
         /// <returns></returns>
         public static Bitmap GetImageById(string imageId)
         {
-            var link = String.Format("{0}{1}.png",ForecastWayLink , imageId);
+            var link = String.Format("{0}{1}.png", ForecastWayLink, imageId);
             var request = WebRequest.Create(link);
             using (var response = request.GetResponse())
             {
@@ -78,7 +78,7 @@ namespace WeatherInfo.Classes
         /// <returns></returns>
         public static BitmapImage GetBitmapImageById(string imageId)
         {
-            var link=String.Format("{0}{1}.png",ForecastImageLink , imageId);
+            var link = String.Format("{0}{1}.png", ForecastImageLink, imageId);
             var uri = new Uri(link);
             return new BitmapImage(uri);
         }
