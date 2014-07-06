@@ -1,314 +1,220 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.Data.Linq;
+using System.Linq;
+
 namespace WeatherInfo.Classes
 {
     public class getCity
     {
-        public getCity()
-        {
-            if (!(Directory.Exists("Location")))
-            {
-                Directory.CreateDirectory("Location");
-            }
-        }
-
-        #region openweather
-        //тут просто храниться инфа
-        string all = "";
-
         /// <summary>
-        /// получить идентификатор города
+        /// эту модель использую для десериализации xml с данными городов
         /// </summary>
-        /// <param name="city">город</param>
-        /// <returns></returns>
-        public int GetCityNumber(string city)
-        {
-            if (all == "") all = getAll();
-
-            //(\d*)(?=.*Novosibirsk.*)
-            Regex reg = new Regex("(\\d*)(?=.*" + city + ".*)", RegexOptions.IgnoreCase);
-            var mathes = reg.Match(all);
-            int res = 0;
-            try
-            {
-                res = Convert.ToInt32(mathes.Groups[0].ToString());
-            }
-            catch { }
-            return res;
-        }
-
-        /// <summary>
-        /// получить названия стран
-        /// </summary>
-        /// <returns></returns>
-        public List<string> CountryNames()
-        {
-            List<string> res = new List<string>();
-            Dictionary<string, string> two_full = new Dictionary<string, string>();
-
-            //countries.txt
-
-            if (!File.Exists("Location//countries.txt")) throw new Exception("В папке Location не найден countries.txt");
-            using (StreamReader sr = new StreamReader("Location//countries.txt"))
-            {
-                //"	"
-                while (!sr.EndOfStream)
-                {
-                    string[] temp = sr.ReadLine().Split('	');
-                    two_full.Add(temp[1], temp[0]);
-                }
-            }
-
-
-            if (!(File.Exists("Location//savedCountries.txt")))
-            {
-                if (all == "") all = getAll();
-
-                Regex reg = new Regex(@"((?<!\w)..(?=\n|$))");
-                var mathes = reg.Matches(all);
-
-                using (StreamWriter sw = new StreamWriter("Location//savedCountries.txt"))
-                    foreach (var a in mathes)
-                    {
-                        if (two_full.ContainsKey(a.ToString()) && !res.Contains(two_full[a.ToString()]))
-                        {
-                            res.Add(two_full[a.ToString()]);
-                            sw.WriteLine(two_full[a.ToString()]);
-                        }
-                    }
-            }
-            else
-            {
-                using (StreamReader sr = new StreamReader("Location//savedCountries.txt"))
-                {
-                    while (!sr.EndOfStream)
-                    {
-                        res.Add(sr.ReadLine());
-                    }
-                }
-            }
-
-            res = res.OrderBy(item => item).ToList();
-
-            return res;
-        }
-
-        /// <summary>
-        /// получить города в стране
-        /// </summary>
-        /// <param name="country">страна</param>
-        /// <returns></returns>
-        public List<string> CityNames(string country)
-        {
-            List<string> res = new List<string>();
-
-            if (!File.Exists("Location//countries.txt")) throw new Exception("В папке Location не найден countries.txt");
-            using (StreamReader sr = new StreamReader("Location//countries.txt"))
-            {
-                //"	"
-                while (!sr.EndOfStream)
-                {
-                    string[] temp = sr.ReadLine().Split('	');
-                    if (temp[0] == country) country = temp[1];
-                }
-            }
-
-            if (!(File.Exists("Location//" + country + ".txt")))
-            {
-                if (all == "") all = getAll();
-
-                Regex reg = new Regex(@"(?<=\d	)(\D*)(?=	[\d-].*" + country + ")");
-                var mathes = reg.Matches(all);
-
-                using (StreamWriter sw = new StreamWriter("Location//" + country + ".txt"))
-                {
-                    foreach (var a in mathes)
-                    {
-                        if (!res.Contains(a.ToString()) && a.ToString() != string.Empty)
-                        {
-                            res.Add(a.ToString());
-                            sw.WriteLine(a.ToString());
-                        }
-                    }
-                }
-            }
-
-            else
-            {
-                using (StreamReader sr = new StreamReader("Location//" + country + ".txt"))
-                {
-                    while (!sr.EndOfStream)
-                    {
-                        res.Add(sr.ReadLine());
-                    }
-                }
-            }
-
-            res = res.OrderBy(item => item).ToList();
-
-            return res;
-        }
-
-        //тут скачивается или грузится инфа
-        string getAll()
-        {
-            string res = "";
-
-            if (!(File.Exists("Location//savedCity.txt")))
-            {
-                System.Net.WebRequest reqGET = System.Net.WebRequest.Create(@"http://openweathermap.org/help/city_list.txt");
-                System.Net.WebResponse resp = reqGET.GetResponse();
-                System.IO.Stream stream = resp.GetResponseStream();
-                System.IO.StreamReader sr = new System.IO.StreamReader(stream);
-                res = sr.ReadToEnd();
-
-                using (StreamWriter sw = new StreamWriter("Location//savedCity.txt"))
-                {
-                    sw.Write(res);
-                }
-            }
-
-            else
-            {
-                using (StreamReader sr = new StreamReader("Location//savedCity.txt"))
-                {
-                    res = sr.ReadToEnd();
-                }
-            }
-
-            return res;
-        }
-        #endregion
-
-        #region Yandex
-        #region model
+        #region model_Full
         [XmlRoot("city")]
-        public class city
+        public class cityFull
         {
-            [XmlText]
-            public string name { get; set; }
-            [XmlAttribute("id")]
-            public int id { get; set; }
+            [XmlAttribute("nameRu")]
+            public string nameRu { get; set; }
+            [XmlAttribute("nameEng")]
+            public string nameEng { get; set; }
+            [XmlAttribute("idYa")]
+            public int idYa { get; set; }
+            [XmlAttribute("idOp")]
+            public int idOp { get; set; }
         }
 
         [XmlRoot("country")]
-        public class country
+        public class countryFull
         {
-            [XmlAttribute("name")]
-            public string name { get; set; }
+            [XmlAttribute("nameRu")]
+            public string nameRu { get; set; }
 
             [XmlElement("city")]
-            public List<city> cities { get; set; }
+            public List<cityFull> cities { get; set; }
 
-            public country() { cities = new List<city>(); }
+            public countryFull() { cities = new List<cityFull>(); }
         }
 
         [XmlRoot("cities")]
-        public class SpCountry
+        public class SpCountryFull
         {
-            public SpCountry() { countries = new List<country>(); }
+            public SpCountryFull() { countries = new List<countryFull>(); }
             [XmlElement(ElementName = "country")]
-            public List<country> countries { get; set; }
+            public List<countryFull> countries { get; set; }
         }
         #endregion
 
-        XmlSerializer xs = new XmlSerializer(typeof(SpCountry));
-        SpCountry YandexFile;
+
+
+        static SpCountryFull File;
 
         /// <summary>
-        /// получить идентификатор города
+        /// Этот метод вернет всю иерархию
         /// </summary>
-        /// <param name="city">город</param>
         /// <returns></returns>
-        public int GetCityNumberYandex(string city)
+        static public SpCountryFull getFullObject()
         {
-            if (YandexFile == null) YAgetAll();
-
-            foreach (var a in YandexFile.countries)
+            if (File == null)
             {
-                foreach (var b in a.cities)
+                XmlSerializer xs = new XmlSerializer(typeof(SpCountryFull));
+
+                if (!Directory.Exists("Location"))
                 {
-                    if (b.name == city) return b.id;
+                    throw new Exception("Папка Location не найдена!");
+                }
+
+                if (!System.IO.File.Exists(@"Location/Data.xml"))
+                {
+                    throw new Exception("В папке Location не найден Data.xml (файл с городами)");
+                }
+
+                File = (SpCountryFull)xs.Deserialize(new StreamReader(@"Location/Data.xml"));
+            }
+
+            return File;
+        }
+
+        /// <summary>
+        /// Возвращает названия стран (всё на русском)
+        /// </summary>
+        /// <returns></returns>
+        static public List<string> getCountryNames()
+        {
+            getFullObject();
+
+            List<string> res = new List<string>();
+
+            foreach (var contr in File.countries)
+            {
+                res.Add(contr.nameRu);
+            }
+
+            res = res.OrderBy(item => item).ToList();
+            return res;
+        }
+
+        /// <summary>
+        /// Возвращает города в стране
+        /// </summary>
+        /// <param name="CountryName_rus">Русское название страны</param>
+        /// <param name="needRussianName">true - русское название города, false - английское</param>
+        /// <returns></returns>
+        static public List<string> getCities(string CountryName_rus, bool needRussianName)
+        {
+            getFullObject();
+
+            List<string> res = new List<string>();
+
+            var Fcountry = File.countries.Where(c => c.nameRu == CountryName_rus).FirstOrDefault();
+            if (Fcountry != null)
+            {
+                foreach (var cit in Fcountry.cities)
+                {
+                    if (needRussianName) res.Add(cit.nameRu);
+                    else res.Add(cit.nameEng);
                 }
             }
 
-            return 0;
-        }
-
-        /// <summary>
-        /// получить названия стран
-        /// </summary>
-        /// <returns></returns>
-        public List<string> CountryNamesYandex()
-        {
-            if (YandexFile == null) YAgetAll();
-            List<string> res = new List<string>();
-
-            foreach (var a in YandexFile.countries)
-            {
-                res.Add(a.name);
-            }
-
             res = res.OrderBy(item => item).ToList();
             return res;
         }
 
         /// <summary>
-        /// получить города в стране
+        /// Возвращает id города
         /// </summary>
-        /// <param name="country">страна</param>
+        /// <param name="nameOFCity">Название (русское или английское)</param>
+        /// <param name="WeHaveRusName">Вы послали русское название?</param>
+        /// <param name="WeNeedYandexId">Вам нужно id для яндекса?</param>
+        /// <param name="nameOfCountry_rus">Если известно, укажите название страны, иначе везде будем искать</param>
         /// <returns></returns>
-        public List<string> CityNamesYandex(string country)
+        static public int getCityId(string nameOFCity, bool WeHaveRusName, bool WeNeedYandexId, string nameOfCountry_rus = "*")
         {
-            if (YandexFile == null) YAgetAll();
-            List<string> res = new List<string>();
+            getFullObject();
+            cityFull Fc = null;
 
-            var F = YandexFile.countries.Where(c => c.name == country).FirstOrDefault();
-            foreach (var a in F.cities)
+            if (nameOfCountry_rus == "*")
             {
-                res.Add(a.name);
-            }
-
-            res = res.OrderBy(item => item).ToList();
-            return res;
-        }
-
-        //тут скачивается или грузится инфа
-        void YAgetAll()
-        {
-            string res = "";
-
-            if (!(File.Exists("Location//YandexFile.txt")))
-            {
-                System.Net.WebRequest reqGET = System.Net.WebRequest.Create(@"http://weather.yandex.ru/static/cities.xml");
-                System.Net.WebResponse resp = reqGET.GetResponse();
-                System.IO.Stream stream = resp.GetResponseStream();
-                System.IO.StreamReader sr = new System.IO.StreamReader(stream);
-                res = sr.ReadToEnd();
-
-                using (StreamWriter sw = new StreamWriter("Location//YandexFile.txt"))
+                foreach (var c in File.countries)
                 {
-                    sw.Write(res);
+                    if (WeHaveRusName)
+                    {
+                        Fc = c.cities.Where(n => n.nameRu == nameOFCity).FirstOrDefault();
+                    }
+                    else
+                    {
+                        Fc = c.cities.Where(n => n.nameEng == nameOFCity).FirstOrDefault();
+                    }
+
+                    if (Fc != null) break;
                 }
             }
 
             else
             {
-                using (StreamReader sr = new StreamReader("Location//YandexFile.txt"))
+                var countr = File.countries.Where(c => c.nameRu == nameOfCountry_rus).FirstOrDefault();
+                if (WeHaveRusName)
                 {
-                    res = sr.ReadToEnd();
+                    Fc = countr.cities.Where(c => c.nameRu == nameOFCity).FirstOrDefault();
+                }
+                else
+                {
+                    Fc = countr.cities.Where(c => c.nameEng == nameOFCity).FirstOrDefault();
                 }
             }
 
-            var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(res));
-            YandexFile = (SpCountry)xs.Deserialize(memoryStream);
+            if (WeNeedYandexId) return Fc.idYa;
+            else return Fc.idOp;
         }
-        #endregion
+
+
+        /// <summary>
+        /// Получает из русского названия английское или наоборот
+        /// </summary>
+        /// <param name="nameOFCity">Название</param>
+        /// <param name="WeHaveRusName">Оно русское? True - вренем английское и наоборот</param>
+        /// <param name="nameOfCountry_rus">Если известно, задай страну</param>
+        /// <returns></returns>
+        static public string cityTranslate(string nameOFCity, bool WeHaveRusName, string nameOfCountry_rus = "*")
+        {
+            getFullObject();
+            cityFull Fc = null;
+
+            if (nameOfCountry_rus == "*")
+            {
+                foreach (var c in File.countries)
+                {
+                    if (WeHaveRusName)
+                    {
+                        Fc = c.cities.Where(n => n.nameRu == nameOFCity).FirstOrDefault();
+                    }
+                    else
+                    {
+                        Fc = c.cities.Where(n => n.nameEng == nameOFCity).FirstOrDefault();
+                    }
+
+                    if (Fc != null) break;
+                }
+            }
+
+            else
+            {
+                var countr = File.countries.Where(c => c.nameRu == nameOfCountry_rus).FirstOrDefault();
+                if (WeHaveRusName)
+                {
+                    Fc = countr.cities.Where(c => c.nameRu == nameOFCity).FirstOrDefault();
+                }
+                else
+                {
+                    Fc = countr.cities.Where(c => c.nameEng == nameOFCity).FirstOrDefault();
+                }
+            }
+
+            if (WeHaveRusName) return Fc.nameEng;
+            else return Fc.nameRu;
+
+        }
     }
 }

@@ -77,7 +77,7 @@ namespace WeatherInfo
 
                 main.applySettings();
 
-                //Autorun();
+                Autorun();
                 Close();
             }
             catch (Exception ex)
@@ -162,13 +162,13 @@ namespace WeatherInfo
 
         void LoadCountries()
         {
-            List<string> countries = gC.CountryNames();
+            List<string> countries = getCity.getCountryNames();
             listOfCountries_cbx.ItemsSource = countries;
         }
 
         void LoadCities(string country)
         {
-            List<string> allCities = gC.CityNamesYandex(country);
+            List<string> allCities = getCity.getCities(listOfCountries_cbx.SelectedItem.ToString(), true);
             listOfCitiies_cbx.ItemsSource = allCities;
         }
 
@@ -246,6 +246,9 @@ namespace WeatherInfo
 
         private void AddCityButtonClick(object sender, RoutedEventArgs e)
         {
+            var curCity = listOfCitiies_cbx.SelectedItem.ToString();
+            var curCountry = listOfCountries_cbx.SelectedItem.ToString();
+
             var newCity = new CitySettings
             {
                 country = new Country {
@@ -258,12 +261,13 @@ namespace WeatherInfo
                     regionName = "Region"
                 },
                 city = new City {
-                    cityYaId = gC.GetCityNumberYandex(listOfCitiies_cbx.SelectedItem.ToString()),
-                    cityOWId = 0,//gC.GetCityNumber(listOfCitiies_cbx.SelectedItem.ToString()),
+                    cityYaId = getCity.getCityId(curCity, true, true, curCountry),
+                    cityOWId = getCity.getCityId(curCity, true, false, curCountry),
                     cityRusName = listOfCitiies_cbx.SelectedItem.ToString(),
-                    cityEngName = "City"
+                    cityEngName = getCity.cityTranslate(curCity, true, curCountry)
                 }                
             };
+
             var repeateSearch = ChoosenCities.SingleOrDefault(el => (el.city.cityYaId == newCity.city.cityYaId   &&
                                                                el.city.cityRusName == newCity.city.cityRusName   &&
                                                                el.country.countryId == newCity.country.countryId &&
@@ -271,19 +275,30 @@ namespace WeatherInfo
             if (repeateSearch != null)
                 return;
             ChoosenCities.Add(newCity);
-            ChoosenCitiesComboBox.Items.Add(newCity.ToString());
-            ChoosenCitiesComboBox.Tag = newCity;
+            var item = new ComboBoxItem();
+            item.Content = newCity.ToString();
+            item.Tag = newCity;
+            //ChoosenCitiesComboBox.Items.Add(newCity.ToString());
+            //ChoosenCitiesComboBox.Tag = newCity;
+            ChoosenCitiesComboBox.Items.Add(item);
             ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count - 1;
         }
 
         private void DeleteCityButtonClick(object sender, RoutedEventArgs e)
         {
-            var countryCity = (ChoosenCitiesComboBox.SelectedItem as String)
-                .Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
-            var removeCity = countryCity[0];
-            var removeCountry = countryCity[1];
+            //var countryCity = (ChoosenCitiesComboBox.SelectedItem as String)
+            //    .Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+            //var removeCity = countryCity[0];
+            //var removeCountry = countryCity[1];
+            //ChoosenCities.Remove(
+            //    ChoosenCities.SingleOrDefault(el => (el.city.cityRusName == removeCity && el.country.countryRusName == removeCountry)));
+            //ChoosenCitiesComboBox.Items.RemoveAt(ChoosenCitiesComboBox.SelectedIndex);
+            //ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count - 1;
+            var countryCity = (ChoosenCitiesComboBox.SelectedItem as ComboBoxItem).Tag as CitySettings;
+            //var removeCity = countryCity[0];
+            //var removeCountry = countryCity[1];
             ChoosenCities.Remove(
-                ChoosenCities.SingleOrDefault(el => (el.city.cityRusName == removeCity && el.country.countryRusName == removeCountry)));
+                ChoosenCities.SingleOrDefault(el => (el.city.cityRusName == countryCity.city.cityRusName && el.country.countryRusName == countryCity.country.countryRusName)));
             ChoosenCitiesComboBox.Items.RemoveAt(ChoosenCitiesComboBox.SelectedIndex);
             ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count - 1;
 
