@@ -8,6 +8,7 @@
 	<Value Id="addCity_btnStts" Content="Добавить город"/>
 	<Value Id="ChoosenCitiesComboBoxStts" />
 	<Value Id="deleteCity_btnStts" Content="Удалить город" />
+	<Value Id="replaceCity_btnStts" Content="Заменить город" />
 	<Value Id="forecast_lblStts" Content="Прогноз" />
 	<Value Id="labelFormatStts" Content="Формат" />
 	<Value Id="listOfFormatsForecast_cbxStts" />

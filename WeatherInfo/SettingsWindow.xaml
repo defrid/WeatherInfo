@@ -20,7 +20,8 @@
                 <Label localization:Translate.Uid="displayedCitiesStts"  Content="{localization:Translate}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,121,0,0" ></Label>
                 <Button localization:Translate.Uid="addCity_btnStts"  Content="{localization:Translate}" Name="AddButton" HorizontalAlignment="Left" Margin="233,94,0,0" VerticalAlignment="Top" Width="102" Click="AddCityButtonClick"/>
                 <ComboBox Name="ChoosenCitiesComboBox" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top" Width="218" SelectionChanged="LockUnlockButtons"/>
-                <Button localization:Translate.Uid="deleteCity_btnStts"  Content="{localization:Translate}" Name="DeleteButton" HorizontalAlignment="Left" Margin="233,152,0,0" VerticalAlignment="Top" Width="102" Click="DeleteCityButtonClick"/>
+                <Button localization:Translate.Uid="deleteCity_btnStts"  Content="{localization:Translate}" x:Name="DeleteButton" HorizontalAlignment="Left" Margin="233,152,0,0" VerticalAlignment="Top" Width="102" Click="DeleteCityButtonClick"/>
+                <Button localization:Translate.Uid="replaceCity_btnStts"  Content="{localization:Translate}" x:Name="ReplaceButton" HorizontalAlignment="Left" Margin="233,152,0,0" VerticalAlignment="Top" Width="102" Click="ReplaceButton_Click"/>
             </Grid>
         </Border>
 

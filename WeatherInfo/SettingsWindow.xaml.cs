@@ -442,32 +442,38 @@ namespace WeatherInfo
 
         }
 
-        private void AddCityButtonClick(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Добавить город в список выбранных
+        /// </summary>
+        private void AddCityToChoosen()
         {
             var curCity = (string)((ComboBoxItem)listOfCitiies_cbx.SelectedItem).Tag;
             var curCountry = (string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag; //listOfCountries_cbx.SelectedItem.ToString();            
 
             var newCity = new CitySettings
             {
-                country = new Country {
+                country = new Country
+                {
                     countryId = "RU",
                     countryRusName = curCountry,
                     countryEngName = translate.toEng(curCountry, translatePath)
                 },
-                region = new RegionOfCity {
+                region = new RegionOfCity
+                {
                     regionId = 0,
                     regionName = "Region"
                 },
-                city = new City {
+                city = new City
+                {
                     cityYaId = getCity.getCityId(curCity, true, true, curCountry),
                     cityOWId = getCity.getCityId(curCity, true, false, curCountry),
                     cityRusName = curCity,
                     cityEngName = upperEngCityName(getCity.cityTranslate(curCity, true, curCountry))
-                }                
+                }
             };
 
-            var repeateSearch = ChoosenCities.SingleOrDefault(el => (el.city.cityYaId == newCity.city.cityYaId   &&
-                                                               el.city.cityRusName == newCity.city.cityRusName   &&
+            var repeateSearch = ChoosenCities.SingleOrDefault(el => (el.city.cityYaId == newCity.city.cityYaId &&
+                                                               el.city.cityRusName == newCity.city.cityRusName &&
                                                                el.country.countryId == newCity.country.countryId &&
                                                                el.country.countryRusName == newCity.country.countryRusName));
             if (repeateSearch != null)
@@ -476,38 +482,58 @@ namespace WeatherInfo
             var item = new ComboBoxItem();
             item.Tag = newCity;
             item.Content = App.settings.language.engName == "English" ? newCity.city.cityEngName : newCity.city.cityRusName; // newCity.ToString();
-            
+
             //ChoosenCitiesComboBox.Items.Add(newCity.ToString());
             //ChoosenCitiesComboBox.Tag = newCity;
             ChoosenCitiesComboBox.Items.Add(item);
             ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count - 1;
         }
 
-        private void DeleteCityButtonClick(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Убирает город из списка выбранных
+        /// </summary>
+        private void RemoveCityFromChoosen()
         {
-            //var countryCity = (ChoosenCitiesComboBox.SelectedItem as String)
-            //    .Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
-            //var removeCity = countryCity[0];
-            //var removeCountry = countryCity[1];
-            //ChoosenCities.Remove(
-            //    ChoosenCities.SingleOrDefault(el => (el.city.cityRusName == removeCity && el.country.countryRusName == removeCountry)));
-            //ChoosenCitiesComboBox.Items.RemoveAt(ChoosenCitiesComboBox.SelectedIndex);
-            //ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count - 1;
             var countryCity = (ChoosenCitiesComboBox.SelectedItem as ComboBoxItem).Tag as CitySettings;
-            //var removeCity = countryCity[0];
-            //var removeCountry = countryCity[1];
             ChoosenCities.Remove(
                 ChoosenCities.SingleOrDefault(el => (el.city.cityRusName == countryCity.city.cityRusName && el.country.countryRusName == countryCity.country.countryRusName)));
-            ChoosenCitiesComboBox.Items.RemoveAt(ChoosenCitiesComboBox.SelectedIndex);
-            ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count - 1;
+            ChoosenCitiesComboBox.Items.RemoveAt(ChoosenCitiesComboBox.SelectedIndex);            
+        }
 
+        private void AddCityButtonClick(object sender, RoutedEventArgs e)
+        {
+            AddCityToChoosen();
+        }
+
+        private void DeleteCityButtonClick(object sender, RoutedEventArgs e)
+        {
+            RemoveCityFromChoosen();
+            ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count - 1;
         }
 
         private void LockUnlockButtons(object sender, SelectionChangedEventArgs e)
         {
             var comboItemsCount = ChoosenCitiesComboBox.Items.Count;
             AddButton.IsEnabled = comboItemsCount < 10;
+
             DeleteButton.IsEnabled = comboItemsCount > 1;
+            ReplaceButton.IsEnabled = !(comboItemsCount > 1);
+            if (comboItemsCount > 1)
+            {
+                DeleteButton.Visibility = Visibility.Visible;
+                ReplaceButton.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                DeleteButton.Visibility = Visibility.Hidden;
+                ReplaceButton.Visibility = Visibility.Visible;
+            }            
+        }
+
+        private void ReplaceButton_Click(object sender, RoutedEventArgs e)
+        {
+            RemoveCityFromChoosen();
+            AddCityToChoosen();
         }
     }
 }
