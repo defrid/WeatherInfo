@@ -121,66 +121,7 @@ namespace WeatherInfo
             public DbSet<Place> Places { get; set; }
         }
 
-        public void ADD_BD()
-        {
-            using (var db = new Base())
-            {
-                // Create and save a new Blog 
-                // Console.Write("Enter a name for a new Blog: ");
-                var name = "djcbsdjkcb";
-
-                var blog = new Picture { Path = name };
-                try
-                {
-                    db.Picturies.Add(blog);
-                    db.SaveChanges();
-
-                }
-                catch (Exception e)
-                {
-                    string v = e.Message;
-                }
-            }
-        }
-
-        public void show()
-        {
-            using (var db = new Base())
-            {
-                var query = from b in db.Cities
-                            orderby b.Name_cityRus
-                            select b;
-
-                //Console.WriteLine("All blogs in the database:");
-                foreach (var item in query)
-                {
-
-                    string a = item.Name_cityRus.ToString();
-                }
-            }
-        }
-
-        //методы добавления
-        public void ADD_country(string word_b1, string name1)
-        {
-            using (var db = new Base())
-            {
-                var name = name1;
-                var word_b = word_b1;
-
-                var country = new Country { Name_bukva = word_b, Name_country = name };
-                try
-                {
-                    db.Countries.Add(country);
-                    db.SaveChanges();
-
-                }
-                catch (Exception e)
-                {
-                    string error = e.Message;
-                }
-            }
-        }
+       
 
         public void ADD_placed(int number, string nameEn, string nameRus, string word, string name, int year, string month, string value, string sut, string path, int skal, string razmer)
         {
@@ -225,7 +166,57 @@ namespace WeatherInfo
             }
         }
 
-       
+        public string pull()
+        {
+            string d = "";
+            using (var db = new Base())
+            {
+                var query = from b in db.Prognozes
+                            orderby b.PrognozId
+                            select b;
+
+
+                foreach (var item in query)
+                {
+                    //int place = item.PlaceId;
+                    int pic = item.PictureId;
+                    int temp = item.TempId;
+                    int data = item.Temp.DataId;
+                    int city = item.Place.CityId;
+                    int country = item.Place.CountyId;
+                    int sutki = item.Temp.Data.SutkiId;
+
+                    var rssBlogs = from b in db.Picturies
+                                   where b.PictureId == item.PictureId
+                                   select b.Path;
+                    foreach (var item1 in rssBlogs)
+                    {
+                        d += item1.ToString();
+                    }
+
+                    var rssBlogs1 = from b in db.Temps
+                                   where b.TempId == item.TempId
+                                   select b.Value;
+                    foreach (var item1 in rssBlogs1)
+                    {
+                        d += item1.ToString();
+                    }
+
+                    var rssBlogs2 = from b in db.Temps
+                                    where b.TempId == item.TempId
+                                    select b.Pazmer;
+                    foreach (var item1 in rssBlogs2)
+                    {
+                        d += item1.ToString();
+                    }
+
+                    string gorod = rssBlogs1.ToString() + rssBlogs2.ToString();
+                   
+                }
+            }
+
+            return d;
+        }
 
         //public void ADD_temperature(string value1, string razmer1, int dataid)
         //{

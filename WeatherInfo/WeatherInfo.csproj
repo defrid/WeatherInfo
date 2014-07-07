@@ -95,7 +95,6 @@
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\LoadSettingsHandler.cs" />
-    <Compile Include="Classes\Methods_to_BD.cs" />
     <Compile Include="Classes\cityChoose.cs" />
     <Compile Include="Classes\ForecastHour.cs" />
     <Compile Include="Classes\Tables.cs" />
