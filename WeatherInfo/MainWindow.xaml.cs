@@ -95,7 +95,7 @@ namespace WeatherInfo
             this.IsEnabled = false;
             Tray.PreLoad();
             Icon = ConvertBitmabToImage(Properties.Resources.weather.ToBitmap());
-           // City.Content = (hasConnection) ? "Обновление" : "Нет соединения";
+            Connection.Content = (hasConnection) ? "Обновление" : "Нет соединения";
             worker.RunWorkerAsync();
         }
 
@@ -313,9 +313,9 @@ namespace WeatherInfo
                 }
             }
 #warning Переделать!!!
-            int limit = connectedToOpAPI ? 14 : 10;
-            //if (!connectedToOpAPI)
-              //  convertDtldToShrt();
+            int limit = !connectedToOpAPI ? 10 : 14;
+            if (!connectedToOpAPI)
+                ConvertDtldToShrt();
             for(var k=0;k< weatherTables.Count;k++)
             {
                 for (int i = 0; i < 2; i++)
@@ -323,7 +323,14 @@ namespace WeatherInfo
                     for (int j = 0; j < 7; j++)
                     {
                         var index = 7*i+j;
+                        if(index>=limit)
+                            break;
                         var weatherElement = GetWeaterElement(j, i + 1,shrtForecasts[k][index]);
+                        if (index == 0)
+                        {
+                            weatherElement.MouseUp += gridResult_MouseUp;
+                            weatherElement.Name = "_"+index.ToString();
+                        }
                         if (index < 10)
                         {
                             var today = index == 0;
@@ -335,23 +342,27 @@ namespace WeatherInfo
                 }
             }
         }
-        /*
+        
         /// <summary>
         /// Превращает прогноз яндекса в 10 дневный прогноз, на случай отсутствия соединения с opAPI
         /// </summary>
-        private void convertDtldToShrt()
+        private void ConvertDtldToShrt()
         {
-            shrtForecast = new ForecastDay[10];
-            for (int i = 0; i < 10; i++)
+            shrtForecasts=new List<ForecastDay[]>();
+            foreach (var dtldForecast in dtldForecasts)
             {
-                ForecastHour fore = dtldForecast[i].hours[2];
-                int min = dtldForecast[i].hours[0].temp;
-                int max = fore.temp;
-                string date = dtldForecast[i].date;
-                string icon = fore.icon;
-                shrtForecast[i] = new ForecastDay(min, max, null, date, icon);
+                var shrtForecast = new ForecastDay[10];
+                for (int i = 0; i < 10; i++)
+                {
+                    ForecastHour fore = dtldForecast[i].hours[2];
+                    int min = dtldForecast[i].hours[0].temp;
+                    int max = fore.temp;
+                    string date = dtldForecast[i].date;
+                    string icon = fore.icon;
+                    shrtForecast[i] = new ForecastDay(min, max, null, date, icon);
+                }
             }
-        }*/
+        }
 
         /// <summary>
         /// Возвращает табличку текущего дня
@@ -426,11 +437,8 @@ namespace WeatherInfo
             gridResult.Children.Add(image);
             ToolTipService.SetShowDuration(gridResult, 15000);
 
+
             
-            //if (index == 0)
-            //{
-            //    gridResult.MouseDown += gridResult_MouseDown;
-            //}
             
             return gridResult;
         }
@@ -467,10 +475,11 @@ namespace WeatherInfo
             }
         }
 
-        //void gridResult_MouseDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    new curWeather(forecasts.getCurHour()).Show();
-        //}
+        void gridResult_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            var index = Int32.Parse((sender as FrameworkElement).Name.Remove(0,1));
+            new curWeather(forecasts[index].getCurHour()).Show();
+        }
 
         /// <summary>
         /// Метод для определения размера сетки Тултипа
@@ -648,20 +657,20 @@ namespace WeatherInfo
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SettingsImage_MouseDown(object sender, MouseButtonEventArgs e)
+        private void SettingsImage_MouseUp(object sender, MouseButtonEventArgs e)
         {
             new SettingsWindow(this).Show();
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.F1:
-                    Two_Windows tw = new Two_Windows(this, new MainWindow());
-                    break;
-            }
-        }
+        //private void Window_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    switch (e.Key)
+        //    {
+        //        case Key.F1:
+        //            Two_Windows tw = new Two_Windows(this, new MainWindow());
+        //            break;
+        //    }
+        //}
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
