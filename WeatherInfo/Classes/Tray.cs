@@ -63,7 +63,7 @@ namespace WeatherInfo
         public static event TrayVoid onToWindow;
 
         static TaskbarIcon notifyIcon;
-        static Window windowMain;
+        public static Window windowMain;
         public static bool trayHasLoaded = false;
         
         /// <summary>
@@ -143,15 +143,19 @@ namespace WeatherInfo
 
         static void FullWindow_MouseDown(object sender, RoutedEventArgs e)
         {
-            //notifyIcon.Visibility = Visibility.Hidden;
-            notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
-            notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
+            try
+            {
+                //notifyIcon.Visibility = Visibility.Hidden;
+                notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
+                notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
 
-            windowMain.Show();
-            windowMain.Activate();
-            windowMain.Focus();
+                windowMain.Show();
+                windowMain.Activate();
+                windowMain.Focus();
 
-            onToWindow();
+                onToWindow();
+            }
+            catch { }
         }
 
         static System.Drawing.Bitmap preLoadCanvas;
@@ -209,13 +213,14 @@ namespace WeatherInfo
 
                 WindowTray wt = new WindowTray(leaveWindowTray, cities);
                 notifyIcon.TrayPopup = wt;
+                notifyIcon.TrayPopup.Visibility = Visibility.Visible;
+                notifyIcon.ContextMenu.Visibility = Visibility.Visible;
             }
             catch
             {
 
             }
-            notifyIcon.TrayPopup.Visibility = Visibility.Visible;
-            notifyIcon.ContextMenu.Visibility = Visibility.Visible;
+
         }
 
         static void leaveWindowTray()

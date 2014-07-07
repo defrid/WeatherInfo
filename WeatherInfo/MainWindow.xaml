@@ -3,18 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Weather Informer" Height="295" Width="640" KeyDown="Window_KeyDown" ResizeMode="CanMinimize" Loaded="Window_Loaded" StateChanged="Window_StateChanged">
 
-        <Border BorderBrush="Black" BorderThickness="2">
+        <Border BorderBrush="Black" BorderThickness="2" KeyDown="Window_KeyDown">
     <StackPanel Name="MainContainer" KeyDown="Window_KeyDown">
-            <DockPanel Margin="10">
-            <DockPanel DockPanel.Dock="Top">
+            <DockPanel Margin="10" KeyDown="Window_KeyDown">
+            <DockPanel DockPanel.Dock="Top" KeyDown="Window_KeyDown">
                 <Label Name="City" HorizontalAlignment="Left" Margin="50 5" Content="City"/>
-                <DockPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <DockPanel HorizontalAlignment="Right" VerticalAlignment="Center" KeyDown="Window_KeyDown">
                     <Label Name="MonthYear" Margin="50 5" Content="Month Year" VerticalAlignment="Center"/>
                     <Image Name="SettingsImage" RenderTransformOrigin="0.5 0.5" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter" MouseDown="SettingsImage_MouseDown"/>
                 </DockPanel>
-                        <Button Content="Button" Width="75" Click="Button_Click" Visibility="Hidden"/>
+                       
                     </DockPanel>
-            <Border BorderBrush="Black" BorderThickness="1">
+                <Border BorderBrush="Black" BorderThickness="1" KeyDown="Window_KeyDown">
                 <Grid Name="WeatherTable" ShowGridLines="True" MinWidth="580" MinHeight="170" MouseDown="WeatherTable_MouseDown" KeyDown="Window_KeyDown">
                     <Grid.Resources>
                         <Style TargetType="Label">

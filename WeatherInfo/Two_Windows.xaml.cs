@@ -19,9 +19,14 @@ namespace WeatherInfo
     /// </summary>
     public partial class Two_Windows : Window
     {
+
+        MainWindow forSet;
+
         public Two_Windows(List<MainWindow> mv)
         {
             InitializeComponent();
+
+            forSet = mv[0];
 
             List<ContentControl> cll = new List<ContentControl>();
             foreach (var a in mv)
@@ -44,6 +49,9 @@ namespace WeatherInfo
                 this.stackP.Children.Add(a);
             }
 
+            Tray.SetupTray(this, options, expandShort);
+            //Tray.windowMain = this;
+
             this.Show();
         }
 
@@ -59,6 +67,33 @@ namespace WeatherInfo
 
                     break;
             }
+        }
+
+
+        void expandShort()
+        {
+            this.WindowState = System.Windows.WindowState.Normal;
+            this.Show();
+        }
+
+
+
+        void options()
+        {
+            try
+            {
+                MainWindow.wasLoaded = false;
+                if (MainWindow.SettingWindow != null) MainWindow.SettingWindow.Close();
+                MainWindow.SettingWindow = new SettingsWindow(forSet);
+                MainWindow.SettingWindow.Show();
+                
+            }
+            catch { }
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == System.Windows.WindowState.Minimized) this.Hide();
         }
     }
 }
