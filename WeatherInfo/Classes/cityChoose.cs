@@ -48,14 +48,14 @@ namespace WeatherInfo.Classes
         #endregion
 
 
-       
+
         static SpCountryFull File;
-        
+
         /// <summary>
         /// Этот метод вернет всю иерархию
         /// </summary>
         /// <returns></returns>
-        static public  SpCountryFull getFullObject()
+        static public SpCountryFull getFullObject()
         {
             if (File == null)
             {
@@ -87,7 +87,7 @@ namespace WeatherInfo.Classes
 
             List<string> res = new List<string>();
 
-            foreach(var contr in File.countries)
+            foreach (var contr in File.countries)
             {
                 res.Add(contr.nameRu);
             }
@@ -102,18 +102,18 @@ namespace WeatherInfo.Classes
         /// <param name="CountryName_rus">Русское название страны</param>
         /// <param name="needRussianName">true - русское название города, false - английское</param>
         /// <returns></returns>
-        static public List<string> getCities (string CountryName_rus, bool needRussianName)
+        static public List<string> getCities(string CountryName_rus, bool needRussianName)
         {
             getFullObject();
 
             List<string> res = new List<string>();
 
             var Fcountry = File.countries.Where(c => c.nameRu == CountryName_rus).FirstOrDefault();
-            if(Fcountry!=null)
+            if (Fcountry != null)
             {
-                foreach(var cit in Fcountry.cities)
+                foreach (var cit in Fcountry.cities)
                 {
-                    if(needRussianName) res.Add(cit.nameRu);
+                    if (needRussianName) res.Add(cit.nameRu);
                     else res.Add(cit.nameEng);
                 }
             }
@@ -130,7 +130,7 @@ namespace WeatherInfo.Classes
         /// <param name="WeNeedYandexId">Вам нужно id для яндекса?</param>
         /// <param name="nameOfCountry_rus">Если известно, укажите название страны, иначе везде будем искать</param>
         /// <returns></returns>
-        static public int getCityId(string nameOFCity, bool WeHaveRusName, bool WeNeedYandexId, string nameOfCountry_rus="*")
+        static public int getCityId(string nameOFCity, bool WeHaveRusName, bool WeNeedYandexId, string nameOfCountry_rus = "*")
         {
             getFullObject();
             cityFull Fc = null;

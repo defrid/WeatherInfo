@@ -19,6 +19,7 @@ using System.ComponentModel;
 using System.Threading;
 using System.Net.NetworkInformation;
 using WeatherInfo.Classes;
+using Entity_base;
 
 namespace WeatherInfo
 {
@@ -55,9 +56,10 @@ namespace WeatherInfo
             //wg.makeDiagram .makeGraphic 
             //wg.Show();
             if (!OneInstance.EnsureSingleInstance())
-            { 
-                this.Close(); 
+            {
+                this.Close();
             }
+
 
             town = App.settings.GetFirstCity().city.cityRusName;
             townID = App.settings.GetFirstCity().city.cityYaId.ToString();
@@ -90,9 +92,11 @@ namespace WeatherInfo
             hasConnection = IsNetworkAvailable();
             this.IsEnabled = false;
             Tray.PreLoad();
+            Icon = ConvertBitmabToImage(Properties.Resources.weather.ToBitmap());
             City.Content = (hasConnection) ? "Обновление" : "Нет соединения";
             worker.RunWorkerAsync();
         }
+
 
         /// <summary>
         /// Обработчик таймера для поворота шестерни
@@ -118,7 +122,7 @@ namespace WeatherInfo
         /// </summary>
         /// <param name="bitmapImage"></param>
         /// <returns></returns>
-        private BitmapImage ConvertBitmabToImage(System.Drawing.Bitmap bitmapImage)
+        public static BitmapImage ConvertBitmabToImage(System.Drawing.Bitmap bitmapImage)
         {
             using (var stream = new MemoryStream())
             {
@@ -216,6 +220,77 @@ namespace WeatherInfo
             timer.Start();
         }
 
+        private DockPanel GetContainerForCity(string cityName, string monthYear, int cityIndex, bool addSettingsIcon = false)
+        {
+            var docResult = new DockPanel { Margin = new Thickness(10) };
+
+            var docPanelCityYear = new DockPanel();
+            DockPanel.SetDock(docPanelCityYear, Dock.Top);
+
+            var cityLabel = new Label
+            {
+                HorizontalAlignment = HorizontalAlignment.Left,
+                Margin = new Thickness(50, 5, 50, 5),
+                Content = cityName
+            };
+            docPanelCityYear.Children.Add(cityLabel);
+
+            var monthYearLabel = new Label
+            {
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(50, 5, 50, 5),
+                Content = monthYear
+            };
+            docPanelCityYear.Children.Add(monthYearLabel);
+
+            var gridBorder = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(1) };
+
+            var weatherGrid = new Grid() { ShowGridLines = true, MinWidth = 580, MinHeight = 170 };
+            var dayStyle = new Style() { TargetType = typeof(Label) };
+            dayStyle.Setters.Add(new Setter(HorizontalAlignmentProperty, HorizontalAlignment.Center));
+            weatherGrid.Resources.Add("CenterAlligment", dayStyle);
+            for (var i = 0; i < 7; i++)
+                weatherGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            weatherGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(30) });
+            weatherGrid.RowDefinitions.Add(new RowDefinition());
+            weatherGrid.RowDefinitions.Add(new RowDefinition());
+
+            DateTime curDay = DateTime.Now;
+            for (int i = 0; i < 7; i++)
+            {
+                Label day = new Label()
+                {
+                    Content = curDay.ToString("ddd")
+                };
+                Grid.SetRow(day, 0);
+                Grid.SetColumn(day, i);
+                weatherGrid.Children.Add(day);
+                curDay = curDay.AddDays(1);
+            }
+            var loadCity = App.settings.cities.ElementAt(cityIndex);
+            var townRusName = loadCity.city.cityRusName;
+            var townYaId = loadCity.city.cityYaId.ToString();
+            var xmlParser = new XMLParser(townRusName, townYaId);
+
+            shrtForecast = xmlParser.getBigForecast();
+            dtldForecast = xmlParser.getDetailedWeek();
+
+            int index = 0;
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    weatherGrid.Children.Add(GetWeaterElement(j, i + 1, index));
+                    index++;
+                }
+            }
+
+            gridBorder.Child = weatherGrid;
+
+            docResult.Children.Add(gridBorder);
+            return docResult;
+        }
+
         /// <summary>
         /// Заполнение таблицы погоды
         /// </summary>
@@ -248,7 +323,7 @@ namespace WeatherInfo
                 }
             }
         }
-        
+
         /// <summary>
         /// Превращает прогноз яндекса в 10 дневный прогноз, на случай отсутствия соединения с opAPI
         /// </summary>
@@ -340,6 +415,12 @@ namespace WeatherInfo
             image.SetValue(Grid.ColumnSpanProperty, 2);
             gridResult.Children.Add(image);
             ToolTipService.SetShowDuration(gridResult, 15000);
+
+            
+            if (index == 0)
+            {
+                gridResult.MouseDown += gridResult_MouseDown;
+            }
             if (!connectedToYaAPI && index < 10)
             {
                 gridResult.ToolTip = "Нет соединения с одним из серверов погоды";
@@ -372,6 +453,11 @@ namespace WeatherInfo
                 gridResult.ToolTip = GetTooltipForecast(BaseRowCount, BaseColumnCount, "Суточный прогноз", fors, "");
             }
             return gridResult;
+        }
+
+        void gridResult_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            new curWeather(forecasts.getCurHour()).Show();
         }
 
         /// <summary>
@@ -551,6 +637,18 @@ namespace WeatherInfo
                     Two_Windows tw = new Two_Windows(this, new MainWindow());
                     break;
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //DataBase data = new DataBase();
+            //data.ADD_BD();
+            //data.show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new Days(forecasts.getDetailedWeek()).Show();
         }
 
     }

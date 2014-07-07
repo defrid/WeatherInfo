@@ -54,6 +54,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\weather.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
     <Reference Include="Hardcodet.Wpf.TaskbarNotification">
@@ -98,6 +101,7 @@
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\ChoosenCityForForecast.cs" />
     <Compile Include="Classes\LoadSettingsHandler.cs" />
     <Compile Include="Classes\Methods_to_BD.cs" />
     <Compile Include="Classes\cityChoose.cs" />
@@ -106,6 +110,12 @@
     <Compile Include="Classes\Tables.cs" />
     <Compile Include="Classes\translate.cs" />
     <Compile Include="Classes\YandexWeatherAPI.cs" />
+    <Compile Include="curWeather.xaml.cs">
+      <DependentUpon>curWeather.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Days.xaml.cs">
+      <DependentUpon>Days.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\IYandexAPI.cs" />
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
@@ -122,6 +132,14 @@
     <Page Include="About.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="curWeather.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Days.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -183,6 +201,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Entity_base\Entity_base.csproj">
+      <Project>{c794c9d9-24ce-423b-bde6-41c0be0edbb5}</Project>
+      <Name>Entity_base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SettingsHandlerInterface\SettingsHandlerInterface.csproj">
       <Project>{5aa7e742-fdc3-4ffa-9336-209943278141}</Project>
       <Name>SettingsHandlerInterface</Name>
@@ -193,7 +215,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Location\countries.txt" />
+    <None Include="Resources\config.ico" />
+    <None Include="Resources\weather.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Location\savedCountries.txt" />
