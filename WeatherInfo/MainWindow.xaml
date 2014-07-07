@@ -15,7 +15,7 @@
                         <Button Content="Button" Width="75" Click="Button_Click"/>
                     </DockPanel>
             <Border BorderBrush="Black" BorderThickness="1">
-                <Grid Name="WeatherTable" ShowGridLines="True" MinWidth="580" MinHeight="170">
+                <Grid Name="WeatherTable" ShowGridLines="True" MinWidth="580" MinHeight="170" MouseDown="WeatherTable_MouseDown">
                     <Grid.Resources>
                         <Style TargetType="Label">
                             <Setter Property="HorizontalAlignment" Value="Center"></Setter>

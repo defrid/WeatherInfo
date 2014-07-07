@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Настройки" Height="638" Width="375"
         Loaded="Window_Loaded"
-        ResizeMode="CanMinimize">
+        ResizeMode="NoResize" Closing="Window_Closing" Topmost="True" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="169*"/>

@@ -157,20 +157,28 @@ namespace WeatherInfo
         /// </summary>
         public static void PreLoad()
         {
-            notifyIcon.Visibility = Visibility.Visible;
-            notifyIcon.ToolTipText = "WeatherInfo загружает данные";
-            preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
-            timer.Start();
+            try
+            {
+                notifyIcon.Visibility = Visibility.Visible;
+                notifyIcon.ToolTipText = "WeatherInfo загружает данные";
+                preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
+                timer.Start();
+            }
+            catch { }
         }
 
         private static void rotationTimer_Tick(object sender, EventArgs e)
         {
-            preLoadGraphics.Clear(System.Drawing.Color.Transparent);
-            preLoadGraphics.TranslateTransform(50, 50);
-            preLoadGraphics.RotateTransform(1f);
-            preLoadGraphics.TranslateTransform(-50, -50);
-            preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
-            notifyIcon.Icon = System.Drawing.Icon.FromHandle(preLoadCanvas.GetHicon());
+            try
+            {
+                preLoadGraphics.Clear(System.Drawing.Color.Transparent);
+                preLoadGraphics.TranslateTransform(50, 50);
+                preLoadGraphics.RotateTransform(1f);
+                preLoadGraphics.TranslateTransform(-50, -50);
+                preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
+                notifyIcon.Icon = System.Drawing.Icon.FromHandle(preLoadCanvas.GetHicon());
+            }
+            catch { }
         }
 
         /// <summary>
@@ -180,18 +188,25 @@ namespace WeatherInfo
         /// <param name="needHide">если главное окно не надо прятать послать false</param>
         public static void Update(List<TrayCityData> cities, bool needHide=true)
         {
-            timer.Stop();
-            notifyIcon.ToolTipText = "Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню";
-            notifyIcon.Icon = System.Drawing.Icon.FromHandle(cities[0].icon.GetHicon());
-
-            if (needHide)
+            try
             {
-                windowMain.WindowState = WindowState.Normal;
-                windowMain.Hide();
-            }
+                timer.Stop();
+                notifyIcon.ToolTipText = "Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню";
+                notifyIcon.Icon = System.Drawing.Icon.FromHandle(cities[0].icon.GetHicon());
 
-            WindowTray wt = new WindowTray(leaveWindowTray, cities);
-            notifyIcon.TrayPopup = wt;
+                if (needHide)
+                {
+                    windowMain.WindowState = WindowState.Normal;
+                    windowMain.Hide();
+                }
+
+                WindowTray wt = new WindowTray(leaveWindowTray, cities);
+                notifyIcon.TrayPopup = wt;
+            }
+            catch
+            {
+
+            }
             notifyIcon.TrayPopup.Visibility = Visibility.Visible;
             notifyIcon.ContextMenu.Visibility = Visibility.Visible;
         }

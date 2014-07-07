@@ -30,6 +30,7 @@ namespace WeatherInfo
         {
             main = (MainWindow)e;
             InitializeComponent();
+            
             ChoosenCities = new List<CitySettings>();
             updatePeriod_save = 10;
             format_save = Options.GetValueByAttribute(Options.FormatForecast.Days.ToString());
@@ -78,6 +79,7 @@ namespace WeatherInfo
                 main.applySettings();
 
                 Autorun();
+
                 Close();
             }
             catch (Exception ex)
@@ -373,6 +375,10 @@ namespace WeatherInfo
             var comboItemsCount = ChoosenCitiesComboBox.Items.Count;
             AddButton.IsEnabled = comboItemsCount < 10;
             DeleteButton.IsEnabled = comboItemsCount > 1;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
         }
     }
 }

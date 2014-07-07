@@ -41,6 +41,8 @@ namespace WeatherInfo
         private bool hasConnection = false;
         private bool connectedToYaAPI = false;
         private bool connectedToOpAPI = false;
+        public static SettingsWindow SettingWindow;
+        public static WindowGraphics GraphicsWindow;
 
         private Dictionary<string, string> dayParts;
         DispatcherTimer timer;
@@ -597,7 +599,13 @@ namespace WeatherInfo
 
         void options()
         {
-            new SettingsWindow(this).Show();
+            try
+            {
+                if (SettingWindow != null) SettingWindow.Close();
+                SettingWindow = new SettingsWindow(this);
+                SettingWindow.Show();
+            }
+            catch { }
         }
 
         /// <summary>
@@ -626,7 +634,13 @@ namespace WeatherInfo
         /// <param name="e"></param>
         private void SettingsImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            new SettingsWindow(this).Show();
+            try
+            {
+                if (SettingWindow != null) SettingWindow.Close();
+                SettingWindow = new SettingsWindow(this);
+                SettingWindow.Show();
+            }
+            catch { }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -649,6 +663,30 @@ namespace WeatherInfo
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             new Days(forecasts.getDetailedWeek()).Show();
+        }
+
+        private void WeatherTable_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                switch (e.ChangedButton)
+                {
+                    case MouseButton.Right:
+                        if (GraphicsWindow != null) GraphicsWindow.Close();
+                        GraphicsWindow = new WindowGraphics();
+                        GraphicsWindow.makeGraphic(this.dtldForecast.ToList());
+                        GraphicsWindow.Show();
+                        break;
+
+                    case MouseButton.Middle:
+                        if (GraphicsWindow != null) GraphicsWindow.Close();
+                        GraphicsWindow = new WindowGraphics();
+                        GraphicsWindow.makeDiagram(this.dtldForecast.ToList());
+                        GraphicsWindow.Show();
+                        break;
+                }
+            }
+            catch { }
         }
 
     }
