@@ -15,8 +15,7 @@ namespace Entity_base
         {
             public int CountryId { get; set; }
             public string Name_bukva { get; set; }
-            public string Name_Englcountry { get; set; }
-            public string Name_Ruscountry { get; set; }
+            public string Name_country { get; set; }
 
             public virtual List<Place> Places { get; set; }
 
@@ -156,6 +155,93 @@ namespace Entity_base
                 }
             }
         }
+
+        //методы добавления
+        public void ADD_country(string word_b1, string name1)
+        {
+            using (var db = new Base())
+            {
+                var name = name1;
+                var word_b = word_b1;
+
+                var country = new Country { Name_bukva = word_b, Name_country = name };
+                try
+                {
+                    db.Countries.Add(country);
+                    db.SaveChanges();
+
+                }
+                catch (Exception e)
+                {
+                    string error = e.Message;
+                }
+            }
+        }
+
+        public void ADD_city(int numb, string name_)
+        {
+            using (var db = new Base())
+            {
+                var name = name_;
+                var number = numb;
+
+                var city = new City { Number = number, Name_city = name_ };
+                try
+                {
+                    db.Cities.Add(city);
+                    db.SaveChanges();
+
+                }
+                catch (Exception e)
+                {
+                    string error = e.Message;
+                }
+            }
+        }
+
+        public void ADD_place(int id_country, int id_city)
+        {
+            using (var db = new Base())
+            {
+                var id_co = id_country;
+                var id_ct = id_city;
+
+                var place = new Place {CountyId = id_co, CityId = id_ct };
+                try
+                {
+                    db.Places.Add(place);
+                    db.SaveChanges();
+
+                }
+                catch (Exception e)
+                {
+                    string error = e.Message;
+                }
+            }
+        }
+
+        //public void ADD_temperature(string value1, string razmer1, int dataid)
+        //{
+        //    using (var db = new Base())
+        //    {
+        //        var value = value1;
+        //        var razmer = razmer1;
+        //        var d_id = dataid;
+
+        //        var  = new Country { Name_bukva = word_b, Name_country = name };
+        //        try
+        //        {
+        //            db.Countries.Add(country);
+        //            db.SaveChanges();
+
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            string error = e.Message;
+        //        }
+        //    }
+        //}
+
     }
 
 }

@@ -77,7 +77,7 @@ namespace WeatherInfo
             Tables data = new Tables();
             //data.ADD_BD();
             //data.ADD_country("RU", "Россия");
-            data.ADD_placed(123, "Ulyanovsk", "Ульяновск", "RU", "Россия", 2014, "апрель", "29", "утро", "путь кртинки", 24, "градусы");
+           data.ADD_placed(123, "Ulyanovsk", "Ульяновск", "RU", "Россия", 2014, "апрель", "29", "утро", "путь кртинки", 24, "градусы");
            // data.ADD_country("RU", "Россия");
            // data.show();
         }
