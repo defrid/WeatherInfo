@@ -95,5 +95,17 @@ namespace WeatherInfo
         {
             if (this.WindowState == System.Windows.WindowState.Minimized) this.Hide();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+         
+            //this.Close();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            if (MainWindow.SettingWindow != null) MainWindow.SettingWindow.Close();
+            if (MainWindow.GraphicsWindow != null) MainWindow.GraphicsWindow.Close();
+        }
     }
 }

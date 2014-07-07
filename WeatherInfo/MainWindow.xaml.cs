@@ -74,9 +74,11 @@ namespace WeatherInfo
 
                 if (TWO_w != null) TWO_w.Close();
 
-                TWO_w = new Two_Windows(mv);
-                this.Close();
+                Two_Windows t = new Two_Windows(mv);
+                TWO_w = t;
+                TWO_w.Show();
             }
+            this.Close();
         }
 
 
@@ -106,7 +108,7 @@ namespace WeatherInfo
             timer = new DispatcherTimer();
             timer.Tick += timer_Tick;
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
-
+            //timer.Interval = TimeSpan.FromSeconds(5);
             worker.DoWork += worker_reload;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
 
@@ -648,8 +650,8 @@ namespace WeatherInfo
             City.Content = (hasConnection) ? "Обновление" : "Нет соединения";
             this.IsEnabled = false;
 
-            town = App.settings.GetFirstCity().city.cityRusName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
-            townID = App.settings.GetFirstCity().city.cityYaId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
+            //town = App.settings.GetFirstCity().city.cityRusName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
+            //townID = App.settings.GetFirstCity().city.cityYaId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
             if (App.settings.format == "Days")

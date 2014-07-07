@@ -76,8 +76,9 @@ namespace WeatherInfo
 
                 App.settingHandler.SaveSettings(App.settings);
 
-                main.applySettings();
-                main.OpenBig();
+                //main.applySettings();
+                MainWindow.wasLoaded = false;
+                main = new MainWindow();
 
                 Autorun();
 

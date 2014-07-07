@@ -28,9 +28,9 @@
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="74" Margin="10,247,0,0" VerticalAlignment="Top" Width="347" Grid.ColumnSpan="2">
             <Grid>
                 <Label Content="Формат" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.024,0.222"/>
-                <ComboBox x:Name="listOfFormatsForecast_cbx" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="155"/>
+                <ComboBox x:Name="listOfFormatsForecast_cbx" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="155" IsEnabled="False"/>
                 <Label Content="Единицы измерения" HorizontalAlignment="Left" Margin="180,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.024,0.222"/>
-                <ComboBox x:Name="listOfTemperatureUnits_cbx" HorizontalAlignment="Left" Margin="180,39,0,0" VerticalAlignment="Top" Width="155"/>
+                <ComboBox x:Name="listOfTemperatureUnits_cbx" HorizontalAlignment="Left" Margin="180,39,0,0" VerticalAlignment="Top" Width="155" IsEnabled="False"/>
 
             </Grid>
         </Border>
@@ -55,7 +55,7 @@
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="65" Margin="10,494,0,0" VerticalAlignment="Top" Width="347" Grid.ColumnSpan="2">
             <Grid>
                 <Label Content="Язык" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.024,0.222"/>
-                <ComboBox x:Name="listOfLanguages_cbx" HorizontalAlignment="Left" Margin="52,10,0,0" VerticalAlignment="Top" Width="283"/>
+                <ComboBox x:Name="listOfLanguages_cbx" HorizontalAlignment="Left" Margin="52,10,0,0" VerticalAlignment="Top" Width="283" IsEnabled="False"/>
                 <CheckBox x:Name="autostartFlag_chbx" Checked="autostartFlag_chbx_Checked" Content="Автозапуск с Windows" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0" Width="197"/>
             </Grid>
         </Border>
