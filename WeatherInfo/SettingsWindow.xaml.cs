@@ -1,4 +1,5 @@
-﻿using SettingsHandlerInterface.Classes;
+﻿using System.Globalization;
+using SettingsHandlerInterface.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tomers.WPF.Localization;
 using WeatherInfo.Classes;
 using System.Windows.Threading;
 using Microsoft.Win32;
@@ -78,12 +80,19 @@ namespace WeatherInfo
                 main.applySettings();
 
                 Autorun();
+                ChangeLocalization();
                 Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Проверьте правильность введенных данных. Ошибка: " + ex.Message);
             }
+        }
+
+        void ChangeLocalization()
+        {
+            //if (LanguageContext.Instance.Culture.Equals(CultureInfo.GetCultureInfo("ru-RU")))
+            LanguageContext.Instance.Culture = CultureInfo.GetCultureInfo(language_save.engName == "English" ? "en-US" : "ru-RU");
         }
 
         #region Автозагрузка

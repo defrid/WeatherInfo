@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Dictionary EnglishName="English" CultureName="English" Culture="en-US">
+	<Value Id="labelListOfCityStts" Content="List of cities" />
+	<Value Id="labelListOfCountryStts" Content="List of countries" />
+	<Value Id="listOfCountries_cbxStts" />
+	<Value Id="listOfCitiies_cbxStts" />
+	<Value Id="displayedCitiesStts" Content="Displayed cities" />
+	<Value Id="addCity_btnStts" Content="Add city"/>
+	<Value Id="ChoosenCitiesComboBoxStts" />
+	<Value Id="deleteCity_btnStts" Content="Delete city" />
+	<Value Id="forecast_lblStts" Content="Forecast" />
+	<Value Id="labelFormatStts" Content="Format" />
+	<Value Id="listOfFormatsForecast_cbxStts" />
+	<Value Id="labelTemperatureUnitsStts" Content="Temperature units" />
+	<Value Id="listOfTemperatureUnits_cbxStts" />
+	<Value Id="labelUpdatePeriodSettingsStts" Content="Update settings" />
+	<Value Id="labelUpdatePeriodStts" Content="Time (minutes)" />
+	<Value Id="about_btnStts" Content="About" />
+	<Value Id="accept_btnStts" Content="OK" />
+	<Value Id="cancel_btnStts" Content="Cancel" />
+	<Value Id="labelSystemStts" Content="System" />
+	<Value Id="labelLabguageStts" Content="Language" />
+	<Value Id="autostartFlag_chbxStts" Content="Autostart with Windows" />
+</Dictionary>
