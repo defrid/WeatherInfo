@@ -19,15 +19,30 @@ namespace WeatherInfo
     /// </summary>
     public partial class Two_Windows : Window
     {
-        public Two_Windows(Window one, Window two)
+        public Two_Windows(List<MainWindow> mv)
         {
             InitializeComponent();
 
-            cc1.Content = one.Content;
-            cc2.Content = two.Content;
+            List<ContentControl> cll = new List<ContentControl>();
+            foreach (var a in mv)
+            {
+                ContentControl t = new ContentControl();
+                t.Content = a.Content;
+                cll.Add(t);
+            }
 
-            one.Close();
-            two.Close();
+            foreach(var a in mv)
+            {
+              //  a.Close();
+            }
+
+            int h = (int)this.Height/cll.Count;
+
+
+            foreach(var a in cll)
+            {
+                this.stackP.Children.Add(a);
+            }
 
             this.Show();
         }

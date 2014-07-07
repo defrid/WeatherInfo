@@ -52,6 +52,8 @@ namespace WeatherInfo
         private DispatcherTimer rotationTimer;
         private int rotationAngle = 0;
 
+        public static int cId = 0;
+
         public MainWindow()
         {
             if (!OneInstance.EnsureSingleInstance())
@@ -62,8 +64,8 @@ namespace WeatherInfo
 
 
 
-            town = App.settings.GetFirstCity().city.cityRusName;
-            townID = App.settings.GetFirstCity().city.cityYaId.ToString();
+            town = App.settings.cities[cId].city.cityRusName;
+            townID = App.settings.cities[cId].city.cityYaId.ToString();
 
             forecasts = new XMLParser(town, townID);
 
@@ -82,6 +84,8 @@ namespace WeatherInfo
 
             worker.DoWork += worker_reload;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+
+            
             Tray.SetupTray(this, options, expandShort);
 
             dayParts = new Dictionary<string, string>();
@@ -674,7 +678,17 @@ namespace WeatherInfo
             switch (e.Key)
             {
                 case Key.F1:
-                    Two_Windows tw = new Two_Windows(this, new MainWindow());
+                    List<MainWindow> mv = new List<MainWindow>();
+                    int c = 0;
+                    this.Hide();
+                    foreach (var a in App.settings.cities)
+                    {
+                        MainWindow.cId = c;
+                        MainWindow w = new MainWindow();
+                        c++;
+                        mv.Add(w);
+                    }
+                    Two_Windows tw = new Two_Windows(mv);
                     break;
 
                 case Key.F2:

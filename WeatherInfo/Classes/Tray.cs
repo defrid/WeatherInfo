@@ -64,6 +64,7 @@ namespace WeatherInfo
 
         static TaskbarIcon notifyIcon;
         static Window windowMain;
+        public static bool trayHasLoaded = false;
         
         /// <summary>
         /// Необходимо вызвать этот метод в самом начале работы программы
@@ -73,37 +74,41 @@ namespace WeatherInfo
         /// <param name="toWindow">сюда послать метод, совершающий действия, при развертывании трея</param>
         public static void SetupTray(Window main, TrayVoid onOptionsClick, TrayVoid toWindow)
         {
-            OnOptionsClick += onOptionsClick;
-            onToWindow += toWindow;
-            windowMain = main;
-            System.Windows.Application.Current.Exit += ApplicationExit;
+            if (!trayHasLoaded)
+            {
+                OnOptionsClick += onOptionsClick;
+                onToWindow += toWindow;
+                windowMain = main;
+                System.Windows.Application.Current.Exit += ApplicationExit;
 
-            notifyIcon = new TaskbarIcon();
-            //notifyIcon.Visibility = Visibility.Visible;
+                notifyIcon = new TaskbarIcon();
+                //notifyIcon.Visibility = Visibility.Visible;
 
-            TextBlock FullWindow = new TextBlock();
-            TextBlock Options = new TextBlock();
-            TextBlock Exit = new TextBlock();
-            FullWindow.Text = "Развернуть";
-            Options.Text = "Настройки";
-            Exit.Text = "Выход";
+                TextBlock FullWindow = new TextBlock();
+                TextBlock Options = new TextBlock();
+                TextBlock Exit = new TextBlock();
+                FullWindow.Text = "Развернуть";
+                Options.Text = "Настройки";
+                Exit.Text = "Выход";
 
-            notifyIcon.ContextMenu = new ContextMenu();
-            notifyIcon.ContextMenu.Items.Add(FullWindow);
-            notifyIcon.ContextMenu.Items.Add(Options);
-            notifyIcon.ContextMenu.Items.Add(Exit);
+                notifyIcon.ContextMenu = new ContextMenu();
+                notifyIcon.ContextMenu.Items.Add(FullWindow);
+                notifyIcon.ContextMenu.Items.Add(Options);
+                notifyIcon.ContextMenu.Items.Add(Exit);
 
-            FullWindow.MouseLeftButtonDown += FullWindow_MouseDown;
-            Options.MouseLeftButtonDown += Options_MouseDown;
-            Exit.MouseLeftButtonDown += Exit_MouseDown;
-            notifyIcon.TrayMouseDoubleClick += FullWindow_MouseDown;
-            notifyIcon.TrayLeftMouseDown += notifyIcon_TrayLeftMouseDown;
-            notifyIcon.TrayRightMouseDown += notifyIcon_TrayRightMouseDown;
+                FullWindow.MouseLeftButtonDown += FullWindow_MouseDown;
+                Options.MouseLeftButtonDown += Options_MouseDown;
+                Exit.MouseLeftButtonDown += Exit_MouseDown;
+                notifyIcon.TrayMouseDoubleClick += FullWindow_MouseDown;
+                notifyIcon.TrayLeftMouseDown += notifyIcon_TrayLeftMouseDown;
+                notifyIcon.TrayRightMouseDown += notifyIcon_TrayRightMouseDown;
 
-            timer.Tick += rotationTimer_Tick;
-            preLoadCanvas = new System.Drawing.Bitmap(100, 100);
-            preLoadGraphics = System.Drawing.Graphics.FromImage(preLoadCanvas);
-            preLoadImage = Properties.Resources.Gear;
+                timer.Tick += rotationTimer_Tick;
+                preLoadCanvas = new System.Drawing.Bitmap(100, 100);
+                preLoadGraphics = System.Drawing.Graphics.FromImage(preLoadCanvas);
+                preLoadImage = Properties.Resources.Gear;
+                trayHasLoaded = true;
+            }
         }
 
         static void notifyIcon_TrayRightMouseDown(object sender, RoutedEventArgs e)
