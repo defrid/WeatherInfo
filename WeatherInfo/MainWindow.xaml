@@ -9,12 +9,11 @@
             <DockPanel DockPanel.Dock="Top">
                 <Label Name="City" HorizontalAlignment="Left" Margin="50 5" Content="City"/>
                 <DockPanel HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <Label Name="MonthYear" Margin="50 5" Content="Month Year" VerticalAlignment="Center"/>
-                    <Image Name="SettingsImage" RenderTransformOrigin="0.5 0.5" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter" MouseDown="SettingsImage_MouseDown"/>
+                            <Image Name="SettingsImage" RenderTransformOrigin="0.5 0.5" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter" MouseDown="SettingsImage_MouseDown"/>
                 </DockPanel>
                     </DockPanel>
-            <Border BorderBrush="Black" BorderThickness="1">
-                <Grid Name="WeatherTable" ShowGridLines="True" MinWidth="580" MinHeight="170">
+            <Border  BorderThickness="1">
+                <Grid Name="WeatherTable" ShowGridLines="True" MinWidth="580" MinHeight="170" Visibility="Collapsed">
                     <Grid.Resources>
                         <Style TargetType="Label">
                             <Setter Property="HorizontalAlignment" Value="Center"></Setter>

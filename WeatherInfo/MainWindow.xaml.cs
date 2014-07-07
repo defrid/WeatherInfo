@@ -28,9 +28,9 @@ namespace WeatherInfo
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ForecastDay[] shrtForecast;
-        private ForecastDay[] dtldForecast;
-        private ForecastHour curForecast;
+        private List<ForecastDay[]> shrtForecasts;
+        private List<ForecastDay[]> dtldForecasts;
+        private List<ForecastHour> curForecasts;
         private List<XMLParser> forecasts;
         //private string town;
         //private string townID;
@@ -41,6 +41,8 @@ namespace WeatherInfo
         private bool hasConnection = false;
         private bool connectedToYaAPI = false;
         private bool connectedToOpAPI = false;
+        private bool inKelv = false;
+        private bool inFahr = false;
 
         private Dictionary<string, string> dayParts;
         DispatcherTimer timer;
@@ -62,6 +64,12 @@ namespace WeatherInfo
 
 
             InitializeComponent();
+
+            forecasts = new List<XMLParser>();
+            shrtForecasts = new List<ForecastDay[]>();
+            dtldForecasts = new List<ForecastDay[]>();
+            curForecasts = new List<ForecastHour>();
+
 
             var nowMonthYear = DateTime.Now.ToString("y");
             foreach (var setting in App.settings.cities)
@@ -176,20 +184,37 @@ namespace WeatherInfo
         {
             timer.Stop();
             while (!(hasConnection = IsNetworkAvailable())) ;
-            forecasts = new XMLParser(town, townID);
+            forecasts.Clear();
+            shrtForecasts.Clear();
+            dtldForecasts.Clear();
+            curForecasts.Clear();
+            foreach (var setting in App.settings.cities)
+            {
+                var cityName = setting.city.cityEngName;
+                var cityID = setting.city.cityYaId.ToString();
+                forecasts.Add(new XMLParser(cityName, cityID));
+            }
             try
             {
-                curForecast = forecasts.getCurHour();
-                shrtForecast = forecasts.getBigForecast();
+                foreach (var forecast in forecasts)
+                {
+                    shrtForecasts.Add(forecast.getBigForecast());
+                    curForecasts.Add(forecast.getCurHour());
+                }
                 connectedToOpAPI = true;
             }
             catch { connectedToOpAPI = false; }
             try
             {
-                dtldForecast = forecasts.getDetailedWeek();
+                foreach (var forecast in forecasts)
+                {
+                    dtldForecasts.Add(forecast.getDetailedWeek());
+                }
                 connectedToYaAPI = true;
             }
             catch { connectedToYaAPI = false; }
+#warning он тут кельвины делает
+            convertToKelvin();
         }
 
         /// <summary>
@@ -206,18 +231,26 @@ namespace WeatherInfo
                 timer.Start();
                 return;
             }
-            City.Content = town;
+            City.Content = "нижние залупки";
             FillTables();
             this.IsEnabled = true;
 
             List<TrayCityData> listfortray = new List<TrayCityData>();
-            //Это надо делать в потоке! ------
-            listfortray.Add(new TrayCityData(
-                town, curForecast.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(curForecast.icon))); //просто пример
+            for (int i = 0; i < App.settings.cities.Count; i++)
+            {
+                var name = App.settings.cities[i].city.cityRusName;
+                var temp = curForecasts[i].temp;
+                var icon = WeatherInfo.Classes.OpenWeatherAPI.GetImageById(curForecasts[i].icon);
+                listfortray.Add(new TrayCityData(name, temp, icon));
+            }
+            //    //Это надо делать в потоке! ------
+            //    listfortray.Add(new TrayCityData(
+            //        town, curForecast.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(curForecast.icon))); //просто пример
             Tray.Update(listfortray, false);
 
             timer.Start();
         }
+
 
         private DockPanel GetContainerForCity(string cityName, string monthYear, bool addSettingsIcon = false)
         {
@@ -233,7 +266,7 @@ namespace WeatherInfo
                 Content = cityName
             };
             docPanelCityYear.Children.Add(cityLabel);
-            
+
             var monthYearLabel = new Label
             {
                 VerticalAlignment = VerticalAlignment.Center,
@@ -241,6 +274,7 @@ namespace WeatherInfo
                 Content = monthYear
             };
             docPanelCityYear.Children.Add(monthYearLabel);
+            docResult.Children.Add(docPanelCityYear);
 
             var gridBorder = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(1) };
 
@@ -266,7 +300,7 @@ namespace WeatherInfo
                 weatherGrid.Children.Add(day);
                 curDay = curDay.AddDays(1);
             }
-            
+
             gridBorder.Child = weatherGrid;
 
             docResult.Children.Add(gridBorder);
@@ -287,16 +321,19 @@ namespace WeatherInfo
             DateTime curDay = DateTime.Now;
             for (int i = 0; i < 7; i++)
             {
-                Label day = new Label()
+                foreach (var table in weatherTables)
                 {
-                    Content = curDay.ToString("ddd")
-                };
-                Grid.SetRow(day, 0);
-                Grid.SetColumn(day, i);
-                weatherTables.ForEach(table=>table.Children.Add(day));
+                    Label day = new Label()
+                    {
+                        Content = curDay.ToString("ddd")
+                    };
+                    Grid.SetRow(day, 0);
+                    Grid.SetColumn(day, i);
+                    table.Children.Add(day);
+                }
                 curDay = curDay.AddDays(1);
             }
-#warning Переделать!!!
+
             int index = 0;
             int limit = connectedToOpAPI ? 14 : 10;
             if (!connectedToOpAPI)
@@ -305,7 +342,12 @@ namespace WeatherInfo
             {
                 for (int j = 0; j < 7 && index < limit; j++)
                 {
-                    WeatherTable.Children.Add(GetWeaterElement(j, i + 1, index));
+                    for (int k = 0; k < forecasts.Count; k++)
+                    {
+                        var curShrt = shrtForecasts[k][index];
+                        if (index < 10) weatherTables[k].Children.Add(GetWeaterElement(j, i + 1, curShrt, dtldForecasts[k][index]));
+                        else weatherTables[k].Children.Add(GetWeaterElement(j, i + 1, curShrt));
+                    }
                     index++;
                 }
             }
@@ -316,17 +358,58 @@ namespace WeatherInfo
         /// </summary>
         private void convertDtldToShrt()
         {
-            shrtForecast = new ForecastDay[10];
-            for (int i = 0; i < 10; i++)
+            for (int j = 0; j < dtldForecasts.Count; j++)
             {
-                ForecastHour fore = dtldForecast[i].hours[2];
-                int min = dtldForecast[i].hours[0].temp;
-                int max = fore.temp;
-                string date = dtldForecast[i].date;
-                string icon = fore.icon;
-                shrtForecast[i] = new ForecastDay(min, max, null, date, icon);
+                shrtForecasts[j] = new ForecastDay[10];
+                for (int i = 0; i < 10; i++)
+                {
+                    ForecastHour fore = dtldForecasts[j][i].hours[2];
+                    int min = dtldForecasts[j][i].hours[0].temp;
+                    int max = fore.temp;
+                    string date = dtldForecasts[j][i].date;
+                    string icon = fore.icon;
+                    shrtForecasts[j][i] = new ForecastDay(min, max, null, date, icon);
+                }
             }
         }
+
+#warning TODO перевод в фаренгейт
+        private void convertToFahrenheit()
+        {
+
+        }
+
+
+        private void convertToKelvin()
+        {
+            foreach (var fore in shrtForecasts)
+            {
+                foreach (var day in fore)
+                {
+                    day.max = day.max + 273;
+                    day.min = day.min + 273;
+                }
+            }
+
+            foreach (var fore in dtldForecasts)
+            {
+                foreach (var day in fore)
+                {
+                    day.max = day.max + 273;
+                    day.min = day.min + 273;
+                    foreach (var hour in day.hours)
+                    {
+                        hour.temp += 273;
+                    }
+                }
+            }
+
+            foreach (var fore in curForecasts)
+            {
+                fore.temp += 273;
+            }
+        }
+
 
         /// <summary>
         /// Возвращает табличку текущего дня
@@ -351,7 +434,7 @@ namespace WeatherInfo
         /// <param name="shortForecast"></param>
         /// <param name="longForecast"></param>
         /// <returns></returns>
-        private Grid GetWeaterElement(int column, int row, ForecastDay shortForecast,ForecastDay dayForecast)
+        private Grid GetWeaterElement(int column, int row, ForecastDay shortForecast, ForecastDay dayForecast = null)
         {
             var gridResult = new Grid();
             gridResult.SetValue(Grid.RowProperty, row);
@@ -401,48 +484,56 @@ namespace WeatherInfo
             gridResult.Children.Add(image);
             ToolTipService.SetShowDuration(gridResult, 15000);
 
+
+            //if (index == 0)
+            //{
+            //    gridResult.MouseDown += gridResult_MouseDown;
+            //}
             
-            if (index == 0)
+            
+            if (dayForecast == null)
             {
-                gridResult.MouseDown += gridResult_MouseDown;
+                return gridResult;
             }
-            if (!connectedToYaAPI && index < 10)
+
+            if (!connectedToYaAPI)
             {
                 gridResult.ToolTip = "Нет соединения с одним из серверов погоды";
                 return gridResult;
             }
-            if (index < 2)
+
+            ForecastHour[] fors = dayForecast.hours.ToArray();
+
+            if (row == 1 && column < 2)
             {
-                ForecastHour[] fors = dayForecast.hours.ToArray().Take(24).ToArray();
                 int temp = 0;
                 fors = fors.Where(el => Int32.TryParse(el.time, out temp)).ToArray();
-                if (index == 0)
+                if (column == 0)
                 {
                     int curHour = DateTime.Now.Hour;
                     fors = fors.Where(el => Int32.Parse(el.time) >= curHour).ToArray();
                 }
+
                 int rows = rowsAndColumns(fors.Length)[0];
                 int cols = rowsAndColumns(fors.Length)[1];
                 gridResult.ToolTip = GetTooltipForecast(rows, cols, HourTitle, fors, HoutTimeEnd);
                 return gridResult;
             }
-            if (index < 10)
+
+            int temp2 = 0;
+            fors = fors.Where(el => !Int32.TryParse(el.time, out temp2)).ToArray();
+            foreach (var el in fors)
             {
-                ForecastHour[] fors = da.hours.ToArray();
-                int temp = 0;
-                fors = fors.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
-                foreach (var el in fors)
-                {
-                    el.time = dayParts[el.time];
-                }
-                gridResult.ToolTip = GetTooltipForecast(BaseRowCount, BaseColumnCount, "Суточный прогноз", fors, "");
+                el.time = dayParts[el.time];
             }
+            gridResult.ToolTip = GetTooltipForecast(BaseRowCount, BaseColumnCount, "Суточный прогноз", fors, "");
+
             return gridResult;
         }
 
         void gridResult_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            new curWeather(forecasts.getCurHour()).Show();
+            //new curWeather(forecasts.getCurHour()).Show();
         }
 
         /// <summary>
@@ -487,11 +578,6 @@ namespace WeatherInfo
                 };
             DockPanel.SetDock(titleLabel, Dock.Top);
             docResult.Children.Add(titleLabel);
-            if (!connectedToYaAPI)
-            {
-                titleLabel.Content = "Нет соединения с сервером погоды";
-                return docResult;
-            }
 
             var grid = new Grid();
             for (var i = 0; i < rowsCount; i++)
@@ -570,8 +656,8 @@ namespace WeatherInfo
             City.Content = (hasConnection) ? "Обновление" : "Нет соединения";
             this.IsEnabled = false;
 
-            town = App.settings.GetFirstCity().city.cityRusName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
-            townID = App.settings.GetFirstCity().city.cityYaId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
+            //town = App.settings.GetFirstCity().city.cityRusName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
+            //townID = App.settings.GetFirstCity().city.cityYaId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
             Tray.PreLoad();
@@ -633,7 +719,7 @@ namespace WeatherInfo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new Days(forecasts.getDetailedWeek()).Show();
+            //new Days(forecasts.getDetailedWeek()).Show();
         }
 
     }

@@ -20,9 +20,9 @@ namespace WeatherInfo.Classes
         }
 
 
-        public int max { get; protected set; }
+        public int max { get; set; }
 
-        public int min { get; protected set; }
+        public int min { get; set; }
 
         public List<ForecastHour> hours { get; set; }
 
