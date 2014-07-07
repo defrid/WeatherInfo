@@ -31,9 +31,9 @@ namespace WeatherInfo
         private ForecastDay[] shrtForecast;
         private ForecastDay[] dtldForecast;
         private ForecastHour curForecast;
-        private XMLParser forecasts;
-        private string town;
-        private string townID;
+        private List<XMLParser> forecasts;
+        //private string town;
+        //private string townID;
         private const int BaseRowCount = 2;
         private const int BaseColumnCount = 2;
         private const string HourTitle = "Почасовой прогноз";
@@ -61,15 +61,14 @@ namespace WeatherInfo
             }
 
 
-            town = App.settings.GetFirstCity().city.cityRusName;
-            townID = App.settings.GetFirstCity().city.cityYaId.ToString();
-
-            forecasts = new XMLParser(town, townID);
-
             InitializeComponent();
 
-            City.Content = town;
-            MonthYear.Content = DateTime.Now.ToString("y");
+            var nowMonthYear = DateTime.Now.ToString("y");
+            foreach (var setting in App.settings.cities)
+            {
+                var cityName = setting.city.cityRusName;
+                MainContainer.Children.Add(GetContainerForCity(cityName, nowMonthYear));
+            }
 
             SettingsImage.Source = ConvertBitmabToImage(Properties.Resources.Gear);
             rotationTimer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 0, 10) };
@@ -208,7 +207,7 @@ namespace WeatherInfo
                 return;
             }
             City.Content = town;
-            fillTable();
+            FillTables();
             this.IsEnabled = true;
 
             List<TrayCityData> listfortray = new List<TrayCityData>();
@@ -220,7 +219,7 @@ namespace WeatherInfo
             timer.Start();
         }
 
-        private DockPanel GetContainerForCity(string cityName, string monthYear, int cityIndex, bool addSettingsIcon = false)
+        private DockPanel GetContainerForCity(string cityName, string monthYear, bool addSettingsIcon = false)
         {
             var docResult = new DockPanel { Margin = new Thickness(10) };
 
@@ -234,7 +233,7 @@ namespace WeatherInfo
                 Content = cityName
             };
             docPanelCityYear.Children.Add(cityLabel);
-
+            
             var monthYearLabel = new Label
             {
                 VerticalAlignment = VerticalAlignment.Center,
@@ -267,24 +266,7 @@ namespace WeatherInfo
                 weatherGrid.Children.Add(day);
                 curDay = curDay.AddDays(1);
             }
-            var loadCity = App.settings.cities.ElementAt(cityIndex);
-            var townRusName = loadCity.city.cityRusName;
-            var townYaId = loadCity.city.cityYaId.ToString();
-            var xmlParser = new XMLParser(townRusName, townYaId);
-
-            shrtForecast = xmlParser.getBigForecast();
-            dtldForecast = xmlParser.getDetailedWeek();
-
-            int index = 0;
-            for (int i = 0; i < 2; i++)
-            {
-                for (int j = 0; j < 7; j++)
-                {
-                    weatherGrid.Children.Add(GetWeaterElement(j, i + 1, index));
-                    index++;
-                }
-            }
-
+            
             gridBorder.Child = weatherGrid;
 
             docResult.Children.Add(gridBorder);
@@ -294,10 +276,14 @@ namespace WeatherInfo
         /// <summary>
         /// Заполнение таблицы погоды
         /// </summary>
-        private void fillTable()
+        private void FillTables()
         {
-            WeatherTable.Children.Clear();
-
+            var weatherTables = MainContainer.Children.Cast<DockPanel>().Skip(1)
+                .Select(weatherContainer => (weatherContainer.Children[1] as Border).Child as Grid).ToList();
+            foreach (var weatherTable in weatherTables)
+            {
+                weatherTable.Children.Clear();
+            }
             DateTime curDay = DateTime.Now;
             for (int i = 0; i < 7; i++)
             {
@@ -307,9 +293,10 @@ namespace WeatherInfo
                 };
                 Grid.SetRow(day, 0);
                 Grid.SetColumn(day, i);
-                WeatherTable.Children.Add(day);
+                weatherTables.ForEach(table=>table.Children.Add(day));
                 curDay = curDay.AddDays(1);
             }
+#warning Переделать!!!
             int index = 0;
             int limit = connectedToOpAPI ? 14 : 10;
             if (!connectedToOpAPI)
@@ -356,16 +343,15 @@ namespace WeatherInfo
         }
 
 
-
-
         /// <summary>
         /// Метод для создания элемента прогнозы для сетки
         /// </summary>
         /// <param name="column">Номер столбца</param>
         /// <param name="row">Номер строки</param>
-        /// <param name="index">Номер добавляемого дня(в массиве полученных дней)</param>
+        /// <param name="shortForecast"></param>
+        /// <param name="longForecast"></param>
         /// <returns></returns>
-        private Grid GetWeaterElement(int column, int row, int index)
+        private Grid GetWeaterElement(int column, int row, ForecastDay shortForecast,ForecastDay dayForecast)
         {
             var gridResult = new Grid();
             gridResult.SetValue(Grid.RowProperty, row);
@@ -382,13 +368,12 @@ namespace WeatherInfo
             var dayLabel = new Label { FontWeight = FontWeights.Bold };
             gridResult.Children.Add(dayLabel);
 
-            ForecastDay fore = shrtForecast[index];
-            string day = fore.date.Substring(8, 2);
+            string day = shortForecast.date.Substring(8, 2);
             dayLabel.Content = day;
 
             var maxTempLabel = new Label()
                 {
-                    Content = (fore.max > 0 ? "+" + fore.max.ToString() : fore.max.ToString()),
+                    Content = (shortForecast.max > 0 ? "+" + shortForecast.max.ToString() : shortForecast.max.ToString()),
                     HorizontalAlignment = HorizontalAlignment.Right,
                     FontSize = 15,
                     FontWeight = FontWeights.Bold
@@ -398,7 +383,7 @@ namespace WeatherInfo
             gridResult.Children.Add(maxTempLabel);
             var minTempLabel = new Label()
                 {
-                    Content = (fore.min > 0 ? "+" + fore.min.ToString() : fore.min.ToString()),
+                    Content = (shortForecast.min > 0 ? "+" + shortForecast.min.ToString() : shortForecast.min.ToString()),
                     HorizontalAlignment = HorizontalAlignment.Right
                 };
             minTempLabel.SetValue(Grid.RowProperty, 1);
@@ -407,8 +392,8 @@ namespace WeatherInfo
             var image = new Image
                 {
                     Source = connectedToOpAPI ? new BitmapImage(
-                        new Uri(OpenWeatherAPI.ImageRequestString + String.Format("{0}.png", fore.icon)))
-                        : YandexWeatherAPI.GetBitmapImageById(fore.icon)
+                        new Uri(OpenWeatherAPI.ImageRequestString + String.Format("{0}.png", shortForecast.icon)))
+                        : YandexWeatherAPI.GetBitmapImageById(shortForecast.icon)
                 };
             image.SetValue(Grid.RowProperty, 1);
             image.SetValue(Grid.RowSpanProperty, 2);
@@ -428,7 +413,7 @@ namespace WeatherInfo
             }
             if (index < 2)
             {
-                ForecastHour[] fors = dtldForecast[index].hours.ToArray().Take(24).ToArray();
+                ForecastHour[] fors = dayForecast.hours.ToArray().Take(24).ToArray();
                 int temp = 0;
                 fors = fors.Where(el => Int32.TryParse(el.time, out temp)).ToArray();
                 if (index == 0)
@@ -443,7 +428,7 @@ namespace WeatherInfo
             }
             if (index < 10)
             {
-                ForecastHour[] fors = dtldForecast[index].hours.ToArray();
+                ForecastHour[] fors = da.hours.ToArray();
                 int temp = 0;
                 fors = fors.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
                 foreach (var el in fors)
