@@ -305,7 +305,7 @@ namespace WeatherInfo
             {
                 for (int j = 0; j < 7 && index < limit; j++)
                 {
-                    WeatherTable.Children.Add(GetWeaterElement(j, i + 1, index));
+                    WeatherTable.Children.Add(GetWeaterElement(j, i + 1, ));
                     index++;
                 }
             }
@@ -402,35 +402,31 @@ namespace WeatherInfo
             ToolTipService.SetShowDuration(gridResult, 15000);
 
             
-            if (index == 0)
-            {
-                gridResult.MouseDown += gridResult_MouseDown;
-            }
-            if (!connectedToYaAPI && index < 10)
+            //if (index == 0)
+            //{
+            //    gridResult.MouseDown += gridResult_MouseDown;
+            //}
+            if (!connectedToYaAPI && !connectedToOpAPI)
             {
                 gridResult.ToolTip = "Нет соединения с одним из серверов погоды";
                 return gridResult;
             }
-            if (index < 2)
+            if (dayForecast.hours.Count>5)
             {
-                ForecastHour[] fors = dayForecast.hours.ToArray().Take(24).ToArray();
+                int curHour = DateTime.Now.Hour;
+                ForecastHour[] fors = dayForecast.hours.Take(24)
+                    .Where(el => Int32.Parse(el.time) >= curHour).ToArray();
                 int temp = 0;
-                fors = fors.Where(el => Int32.TryParse(el.time, out temp)).ToArray();
-                if (index == 0)
-                {
-                    int curHour = DateTime.Now.Hour;
-                    fors = fors.Where(el => Int32.Parse(el.time) >= curHour).ToArray();
-                }
-                int rows = rowsAndColumns(fors.Length)[0];
-                int cols = rowsAndColumns(fors.Length)[1];
+                //fors = fors.Where(el => Int32.TryParse(el.time, out temp)).ToArray();
+                int rows = fors.Length!=24?rowsAndColumns(fors.Length)[0]:8;
+                int cols = fors.Length!=24?rowsAndColumns(fors.Length)[1]:3;
                 gridResult.ToolTip = GetTooltipForecast(rows, cols, HourTitle, fors, HoutTimeEnd);
                 return gridResult;
             }
-            if (index < 10)
+            else
             {
-                ForecastHour[] fors = da.hours.ToArray();
                 int temp = 0;
-                fors = fors.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
+                ForecastHour[] fors = dayForecast.hours.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
                 foreach (var el in fors)
                 {
                     el.time = dayParts[el.time];
@@ -440,10 +436,10 @@ namespace WeatherInfo
             return gridResult;
         }
 
-        void gridResult_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            new curWeather(forecasts.getCurHour()).Show();
-        }
+        //void gridResult_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    new curWeather(forecasts.getCurHour()).Show();
+        //}
 
         /// <summary>
         /// Метод для определения размера сетки Тултипа
