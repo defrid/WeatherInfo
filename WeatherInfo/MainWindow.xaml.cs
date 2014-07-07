@@ -43,6 +43,7 @@ namespace WeatherInfo
         private bool connectedToOpAPI = false;
         public static SettingsWindow SettingWindow;
         public static WindowGraphics GraphicsWindow;
+        static Days Days_shortmode;
 
         private Dictionary<string, string> dayParts;
         DispatcherTimer timer;
@@ -53,14 +54,12 @@ namespace WeatherInfo
 
         public MainWindow()
         {
-            //Пример создания окна графиков
-            //WindowGraphics wg = new WindowGraphics();
-            //wg.makeDiagram .makeGraphic 
-            //wg.Show();
             if (!OneInstance.EnsureSingleInstance())
             {
                 this.Close();
             }
+
+
 
 
             town = App.settings.GetFirstCity().city.cityRusName;
@@ -79,7 +78,7 @@ namespace WeatherInfo
 
             timer = new DispatcherTimer();
             timer.Tick += timer_Tick;
-            timer.Interval = TimeSpan.FromSeconds(4);//FromMinutes(App.settings.updatePeriod);
+            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
             worker.DoWork += worker_reload;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
@@ -97,6 +96,11 @@ namespace WeatherInfo
             Icon = ConvertBitmabToImage(Properties.Resources.weather.ToBitmap());
             City.Content = (hasConnection) ? "Обновление" : "Нет соединения";
             worker.RunWorkerAsync();
+
+            if (App.settings.format == "Days")
+            {
+                Button_Click(null, null);
+            }
         }
 
 
@@ -589,7 +593,17 @@ namespace WeatherInfo
 
             town = App.settings.GetFirstCity().city.cityRusName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
             townID = App.settings.GetFirstCity().city.cityYaId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
-            timer.Interval = TimeSpan.FromSeconds(5);//TimeSpan.FromMinutes(App.settings.updatePeriod);
+            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
+
+            if (App.settings.format == "Days")
+            {
+                Button_Click(null, null);
+            }
+            else
+            {
+                if (Days_shortmode != null) Days_shortmode.Close();
+                this.Show();
+            }
 
             Tray.PreLoad();
             worker.RunWorkerAsync();
@@ -691,7 +705,10 @@ namespace WeatherInfo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new Days(forecasts.getDetailedWeek()).Show();
+            this.Hide();
+            if (Days_shortmode != null) Days_shortmode.Close();
+            Days_shortmode = new Days(forecasts.getDetailedWeek());
+            Days_shortmode.Show();
         }
 
         private void WeatherTable_MouseDown(object sender, MouseButtonEventArgs e)
