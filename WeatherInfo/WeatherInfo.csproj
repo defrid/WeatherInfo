@@ -102,6 +102,15 @@
     <Compile Include="Classes\translate.cs" />
     <Compile Include="Classes\YandexWeatherAPI.cs" />
     <Compile Include="Interfaces\IYandexAPI.cs" />
+    <Compile Include="Migrations\201407062216542_InitialCreate.cs" />
+    <Compile Include="Migrations\201407062216542_InitialCreate.Designer.cs">
+      <DependentUpon>201407062216542_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407062248059_City.cs" />
+    <Compile Include="Migrations\201407062248059_City.Designer.cs">
+      <DependentUpon>201407062248059_City.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
@@ -160,6 +169,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201407062216542_InitialCreate.resx">
+      <DependentUpon>201407062216542_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407062248059_City.resx">
+      <DependentUpon>201407062248059_City.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -173,10 +188,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entity_base\Entity_base.csproj">
-      <Project>{c794c9d9-24ce-423b-bde6-41c0be0edbb5}</Project>
-      <Name>Entity_base</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SettingsHandlerInterface\SettingsHandlerInterface.csproj">
       <Project>{5aa7e742-fdc3-4ffa-9336-209943278141}</Project>
       <Name>SettingsHandlerInterface</Name>

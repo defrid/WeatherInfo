@@ -16,7 +16,6 @@ using System.Windows.Shapes;
 using System.Globalization;
 using System.Windows.Threading;
 using WeatherInfo.Classes;
-using Entity_base;
 
 namespace WeatherInfo
 {
@@ -75,9 +74,12 @@ namespace WeatherInfo
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataBase data = new DataBase();
-            data.ADD_BD();
-            data.show();
+            Tables data = new Tables();
+            //data.ADD_BD();
+            //data.ADD_country("RU", "Россия");
+            data.ADD_placed(123, "Ulyanovsk", "Ульяновск", "RU", "Россия", 2014, "апрель", "29", "утро", "путь кртинки", 24, "градусы");
+           // data.ADD_country("RU", "Россия");
+           // data.show();
         }
 
         /// <summary>
