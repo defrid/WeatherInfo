@@ -118,6 +118,8 @@ namespace WeatherInfo
 
         static void Exit_MouseDown(object sender, RoutedEventArgs e)
         {
+            if (MainWindow.GraphicsWindow != null) MainWindow.GraphicsWindow.Close();
+            if (MainWindow.SettingWindow != null) MainWindow.SettingWindow.Close();
             windowMain.Close();
         }
 
@@ -127,9 +129,9 @@ namespace WeatherInfo
             notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
             notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
 
-            windowMain.Show();
-            windowMain.Focus();
-            windowMain.Activate();
+            //windowMain.Show();
+            //windowMain.Focus();
+            //windowMain.Activate();
 
             OnOptionsClick();
         }

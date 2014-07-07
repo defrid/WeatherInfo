@@ -706,5 +706,15 @@ namespace WeatherInfo
             catch { }
         }
 
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            switch (this.WindowState)
+            {
+                case System.Windows.WindowState.Minimized:
+                    this.Hide();
+                    break;
+            }
+        }
+
     }
 }
