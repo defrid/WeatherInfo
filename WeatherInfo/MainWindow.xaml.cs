@@ -571,10 +571,22 @@ namespace WeatherInfo
          
          */
 
-
+        /// <summary>
+        /// Команда развернуть из трея
+        /// </summary>
         void expandShort()
         {
             this.WindowState = System.Windows.WindowState.Normal;
+
+            if (App.settings.format == "Days")
+            {
+                Button_Click(null, null);
+            }
+            else
+            {
+                if (Days_shortmode != null) Days_shortmode.Close();
+                this.Show();
+            }
         }
 
 
@@ -732,6 +744,5 @@ namespace WeatherInfo
                     break;
             }
         }
-
     }
 }

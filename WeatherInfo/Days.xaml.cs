@@ -130,5 +130,16 @@ namespace WeatherInfo
             if (curDay == 0) { prev.IsEnabled = false; }
             if (curDay < 9) { next.IsEnabled = true; }
         }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            switch (this.WindowState)
+            {
+                case System.Windows.WindowState.Minimized:
+                    this.Hide();
+                    break;
+            }
+         
+        }
     }
 }
