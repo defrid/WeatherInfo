@@ -18,6 +18,7 @@ using WeatherInfo.Classes;
 using System.Windows.Threading;
 using Microsoft.Win32;
 using IWshRuntimeLibrary;
+using System.Text.RegularExpressions;
 
 namespace WeatherInfo
 {
@@ -262,11 +263,26 @@ namespace WeatherInfo
             //listOfCitiies_cbx.ItemsSource = allCities;
             foreach (var city in allCities)
             {
+                var curCity = getCity.cityTranslate(city, true, country);
+
                 var item = new ComboBoxItem();
                 item.Tag = city;
-                item.Content = App.settings.language.engName == "English" ? getCity.cityTranslate(city, true, country) : city;
+                item.Content = App.settings.language.engName == "English" ? upperEngCityName(curCity) : city;
                 listOfCitiies_cbx.Items.Add(item);
             }
+        }
+
+        string upperEngCityName(string city)
+        {
+            var curCity = city;
+            if (App.settings.language.engName == "English")
+            {
+                var firstLit = curCity[0].ToString();
+                var reg = new Regex(curCity[0].ToString());
+                curCity = reg.Replace(curCity, firstLit.ToUpper(), 1);
+            }
+
+            return curCity;
         }
 
         int GetIndCurCity()
@@ -295,7 +311,7 @@ namespace WeatherInfo
             {
                 var item = new ComboBoxItem();
                 item.Tag = cityStts;
-                item.Content = App.settings.language.engName == "English" ? cityStts.city.cityEngName : cityStts.city.cityRusName;//city.ToString();
+                item.Content = App.settings.language.engName == "English" ? upperEngCityName(cityStts.city.cityEngName) : cityStts.city.cityRusName;//city.ToString();
 
                 ChoosenCitiesComboBox.Items.Add(item);//(city.ToString());
                 //ChoosenCitiesComboBox.Items.GetItemAt(ChoosenCitiesComboBox.Items.Count - 1).Tag = city;                
@@ -446,7 +462,7 @@ namespace WeatherInfo
                     cityYaId = getCity.getCityId(curCity, true, true, curCountry),
                     cityOWId = getCity.getCityId(curCity, true, false, curCountry),
                     cityRusName = curCity,
-                    cityEngName = getCity.cityTranslate(curCity, true, curCountry)
+                    cityEngName = upperEngCityName(getCity.cityTranslate(curCity, true, curCountry))
                 }                
             };
 
