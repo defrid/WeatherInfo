@@ -77,7 +77,7 @@ namespace WeatherInfo
 
             timer = new DispatcherTimer();
             timer.Tick += timer_Tick;
-            timer.Interval = TimeSpan.FromSeconds(4);//FromMinutes(App.settings.updatePeriod);
+            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
             worker.DoWork += worker_reload;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
@@ -587,7 +587,7 @@ namespace WeatherInfo
 
             town = App.settings.GetFirstCity().city.cityRusName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
             townID = App.settings.GetFirstCity().city.cityYaId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
-            timer.Interval = TimeSpan.FromSeconds(5);//TimeSpan.FromMinutes(App.settings.updatePeriod);
+            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
             Tray.PreLoad();
             worker.RunWorkerAsync();
