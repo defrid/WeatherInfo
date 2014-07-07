@@ -10,55 +10,55 @@
             <ColumnDefinition Width="169*"/>
             <ColumnDefinition Width="198*"/>
         </Grid.ColumnDefinitions>
-        <Label localization:Translate.Uid="labelListOfCityStts"  Content="{localization:Translate}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+        <Label localization:Translate.Uid="labelListOfCityStts" Content="{localization:Translate Default=Список городов}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="188" Margin="10,26,0,0" VerticalAlignment="Top" Width="347" Grid.ColumnSpan="2">
             <Grid>
-                <Label localization:Translate.Uid="labelListOfCountryStts"  Content="{localization:Translate}" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
+                <Label localization:Translate.Uid="labelListOfCountryStts"  Content="{localization:Translate Default=Список стран}" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
                 <ComboBox x:Name="listOfCountries_cbx" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="321" IsEditable="True"/>
-                <Label localization:Translate.Uid="labelListOfCityStts"  Content="{localization:Translate}" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
+                <Label localization:Translate.Uid="labelListOfCityStts"  Content="{localization:Translate Default=Список городов}" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
                 <ComboBox x:Name="listOfCitiies_cbx" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Width="218" IsEditable="True"/>
-                <Label localization:Translate.Uid="displayedCitiesStts"  Content="{localization:Translate}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,121,0,0" ></Label>
-                <Button localization:Translate.Uid="addCity_btnStts"  Content="{localization:Translate}" Name="AddButton" HorizontalAlignment="Left" Margin="233,94,0,0" VerticalAlignment="Top" Width="102" Click="AddCityButtonClick"/>
+                <Label localization:Translate.Uid="displayedCitiesStts"  Content="{localization:Translate Default=Выбранные города}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,121,0,0" ></Label>
+                <Button localization:Translate.Uid="addCity_btnStts"  Content="{localization:Translate Default=Добавить}" Name="AddButton" HorizontalAlignment="Left" Margin="233,94,0,0" VerticalAlignment="Top" Width="102" Click="AddCityButtonClick"/>
                 <ComboBox Name="ChoosenCitiesComboBox" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top" Width="218" SelectionChanged="LockUnlockButtons"/>
-                <Button localization:Translate.Uid="deleteCity_btnStts"  Content="{localization:Translate}" x:Name="DeleteButton" HorizontalAlignment="Left" Margin="233,152,0,0" VerticalAlignment="Top" Width="102" Click="DeleteCityButtonClick"/>
-                <Button localization:Translate.Uid="replaceCity_btnStts"  Content="{localization:Translate}" x:Name="ReplaceButton" HorizontalAlignment="Left" Margin="233,152,0,0" VerticalAlignment="Top" Width="102" Click="ReplaceButton_Click"/>
+                <Button localization:Translate.Uid="deleteCity_btnStts"  Content="{localization:Translate Default=Удалить}" x:Name="DeleteButton" HorizontalAlignment="Left" Margin="233,152,0,0" VerticalAlignment="Top" Width="102" Click="DeleteCityButtonClick"/>
+                <Button localization:Translate.Uid="replaceCity_btnStts"  Content="{localization:Translate Default=Заменить}" x:Name="ReplaceButton" HorizontalAlignment="Left" Margin="233,152,0,0" VerticalAlignment="Top" Width="102" Click="ReplaceButton_Click"/>
             </Grid>
         </Border>
 
 
-        <Label localization:Translate.Uid="forecast_lblStts" Content="{localization:Translate}" HorizontalAlignment="Left" Margin="10,221,0,0" VerticalAlignment="Top"/>
+        <Label localization:Translate.Uid="forecast_lblStts" Content="{localization:Translate Default=Прогноз}" HorizontalAlignment="Left" Margin="10,221,0,0" VerticalAlignment="Top"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="74" Margin="10,247,0,0" VerticalAlignment="Top" Width="347" Grid.ColumnSpan="2">
             <Grid>
-                <Label localization:Translate.Uid="labelFormatStts" Content="{localization:Translate}" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.024,0.222"/>
+                <Label localization:Translate.Uid="labelFormatStts" Content="{localization:Translate Default=Формат}" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.024,0.222"/>
                 <ComboBox x:Name="listOfFormatsForecast_cbx" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="155"/>
-                <Label localization:Translate.Uid="labelTemperatureUnitsStts" Content="{localization:Translate}" HorizontalAlignment="Left" Margin="180,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.024,0.222"/>
+                <Label localization:Translate.Uid="labelTemperatureUnitsStts" Content="{localization:Translate Default=Единицы измерения}" HorizontalAlignment="Left" Margin="180,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.024,0.222"/>
                 <ComboBox x:Name="listOfTemperatureUnits_cbx" HorizontalAlignment="Left" Margin="180,39,0,0" VerticalAlignment="Top" Width="155"/>
 
             </Grid>
         </Border>
 
-        <Label localization:Translate.Uid="labelUpdatePeriodSettingsStts" Content="{localization:Translate}" HorizontalAlignment="Left" Margin="10,334,0,0" VerticalAlignment="Top"/>
+        <Label localization:Translate.Uid="labelUpdatePeriodSettingsStts" Content="{localization:Translate Default=Период обновления}" HorizontalAlignment="Left" Margin="10,334,0,0" VerticalAlignment="Top"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="10,360,0,0" VerticalAlignment="Top" Width="347" Grid.ColumnSpan="2">
             <Grid HorizontalAlignment="Right" Width="345">
                 <!--<Grid.ColumnDefinitions>
                     <ColumnDefinition Width="8*"/>
                     <ColumnDefinition Width="61*"/>
                 </Grid.ColumnDefinitions>-->
-                <Label localization:Translate.Uid="labelUpdatePeriodStts" Content="{localization:Translate}" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.024,0.222" Grid.ColumnSpan="2"/>
+                <Label localization:Translate.Uid="labelUpdatePeriodStts" Content="{localization:Translate Default=Время (минут)}" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.024,0.222" Grid.ColumnSpan="2"/>
                 <Slider x:Name="updatePeriod_slider" ValueChanged="updatePeriod_slider_ValueChanged" IsSnapToTickEnabled="True" Margin="0,34,10,0" VerticalAlignment="Top" RenderTransformOrigin="0.595,-0.7" Minimum="10" Maximum="180" TickFrequency="10" TickPlacement="Both" HorizontalAlignment="Right" Width="325" SmallChange="10" LargeChange="10"/>
                 <TextBox x:Name="period_tbx" Text="{Binding Value, ElementName=updatePeriod_slider}" IsReadOnly="True" Margin="127,69,127,10"/>
             </Grid>
         </Border>
 
-        <Button x:Name="about_btn" Click="about_btn_Click" localization:Translate.Uid="about_btnStts" Content="{localization:Translate}" HorizontalAlignment="Left" Margin="10,572,0,0" VerticalAlignment="Top" Width="84" Height="23"/>
-        <Button x:Name="accept_btn" Click="accept_btn_Click" localization:Translate.Uid="accept_btnStts" Content="{localization:Translate}" HorizontalAlignment="Left" Margin="15,572,0,0" VerticalAlignment="Top" Width="84" Height="23" Grid.Column="1"/>
-        <Button x:Name="cancel_btn" Click="cancel_btn_Click" localization:Translate.Uid="cancel_btnStts" Content="{localization:Translate}" HorizontalAlignment="Left" Margin="104,572,0,0" VerticalAlignment="Top" Width="84" Height="23" Grid.Column="1" RenderTransformOrigin="0.56,-0.609"/>
-        <Label localization:Translate.Uid="labelSystemStts" Content="{localization:Translate}" HorizontalAlignment="Left" Margin="10,468,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="about_btn" Click="about_btn_Click" localization:Translate.Uid="about_btnStts" Content="{localization:Translate Default=О программе}" HorizontalAlignment="Left" Margin="10,572,0,0" VerticalAlignment="Top" Width="84" Height="23"/>
+        <Button x:Name="accept_btn" Click="accept_btn_Click" localization:Translate.Uid="accept_btnStts" Content="{localization:Translate Default=OK}" HorizontalAlignment="Left" Margin="15,572,0,0" VerticalAlignment="Top" Width="84" Height="23" Grid.Column="1"/>
+        <Button x:Name="cancel_btn" Click="cancel_btn_Click" localization:Translate.Uid="cancel_btnStts" Content="{localization:Translate Default=Отмена}" HorizontalAlignment="Left" Margin="104,572,0,0" VerticalAlignment="Top" Width="84" Height="23" Grid.Column="1" RenderTransformOrigin="0.56,-0.609"/>
+        <Label localization:Translate.Uid="labelSystemStts" Content="{localization:Translate Default=Система}" HorizontalAlignment="Left" Margin="10,468,0,0" VerticalAlignment="Top"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="65" Margin="10,494,0,0" VerticalAlignment="Top" Width="347" Grid.ColumnSpan="2">
             <Grid>
-                <Label localization:Translate.Uid="labelLabguageStts" Content="{localization:Translate}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.024,0.222"/>
+                <Label localization:Translate.Uid="labelLabguageStts" Content="{localization:Translate Default=Язык}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.024,0.222"/>
                 <ComboBox x:Name="listOfLanguages_cbx" HorizontalAlignment="Left" Margin="74,10,0,0" VerticalAlignment="Top" Width="261"/>
-                <CheckBox x:Name="autostartFlag_chbx"  localization:Translate.Uid="autostartFlag_chbxStts" Content="{localization:Translate}" Checked="autostartFlag_chbx_Checked" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0" Width="197"/>
+                <CheckBox x:Name="autostartFlag_chbx"  localization:Translate.Uid="autostartFlag_chbxStts" Content="{localization:Translate Default=Автозапуск с Windows}" Checked="autostartFlag_chbx_Checked" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0" Width="197"/>
             </Grid>
         </Border>
     </Grid>

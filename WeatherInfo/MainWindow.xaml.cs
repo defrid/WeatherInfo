@@ -20,6 +20,7 @@ using System.Threading;
 using System.Net.NetworkInformation;
 using WeatherInfo.Classes;
 using Entity_base;
+using Tomers.WPF.Localization;
 
 namespace WeatherInfo
 {
@@ -36,7 +37,7 @@ namespace WeatherInfo
         private string townID;
         private const int BaseRowCount = 2;
         private const int BaseColumnCount = 2;
-        private const string HourTitle = "Почасовой прогноз";
+        private string HourTitle = LanguageDictionary.Current.Translate<string>("hourTitle_mainWin", "Content");//"Почасовой прогноз";
         private const string HoutTimeEnd = ":00";
         private bool hasConnection = false;
         private bool connectedToYaAPI = false;
@@ -84,16 +85,18 @@ namespace WeatherInfo
             Tray.SetupTray(this, options, expandShort);
 
             dayParts = new Dictionary<string, string>();
-            dayParts.Add("morning", "Утро");
-            dayParts.Add("day", "День");
-            dayParts.Add("evening", "Вечер");
-            dayParts.Add("night", "Ночь");
+            dayParts.Add("morning", LanguageDictionary.Current.Translate<string>("morning_mainWin", "Content"));//"Утро"
+            dayParts.Add("day", LanguageDictionary.Current.Translate<string>("day_mainWin", "Content"));//"День"
+            dayParts.Add("evening", LanguageDictionary.Current.Translate<string>("evening_mainWin", "Content"));//"Вечер"
+            dayParts.Add("night", LanguageDictionary.Current.Translate<string>("night_mainWin", "Content"));//"Ночь"
 
             hasConnection = IsNetworkAvailable();
             this.IsEnabled = false;
             Tray.PreLoad();
             Icon = ConvertBitmabToImage(Properties.Resources.weather.ToBitmap());
-            City.Content = (hasConnection) ? "Обновление" : "Нет соединения";
+            var message = (hasConnection) ? LanguageDictionary.Current.Translate<string>("messUpdateStatusInProcess_mainWin", "Content")
+                                          : LanguageDictionary.Current.Translate<string>("messUpdateStatusFaildConnection_mainWin", "Content");
+            City.Content = message;//(hasConnection) ? "Обновление" : "Нет соединения";
             worker.RunWorkerAsync();
         }
 
@@ -203,13 +206,14 @@ namespace WeatherInfo
         {
             if (!(connectedToOpAPI || connectedToYaAPI))
             {
-                City.Content = "Нет соединения";
+                City.Content = LanguageDictionary.Current.Translate<string>("messUpdateStatusFaildConnection_mainWin", "Content");//"Нет соединения";
                 timer.Start();
                 return;
             }
             City.Content = town;
             fillTable();
             this.IsEnabled = true;
+            MonthYear.Content = DateTime.Now.ToString("y");
 
             List<TrayCityData> listfortray = new List<TrayCityData>();
             //Это надо делать в потоке! ------
@@ -423,7 +427,7 @@ namespace WeatherInfo
             }
             if (!connectedToYaAPI && index < 10)
             {
-                gridResult.ToolTip = "Нет соединения с одним из серверов погоды";
+                gridResult.ToolTip = LanguageDictionary.Current.Translate<string>("messConnectedToYaAPIResult_mainWin", "Content");//"Нет соединения с одним из серверов погоды";
                 return gridResult;
             }
             if (index < 2)
@@ -438,6 +442,7 @@ namespace WeatherInfo
                 }
                 int rows = rowsAndColumns(fors.Length)[0];
                 int cols = rowsAndColumns(fors.Length)[1];
+                HourTitle = LanguageDictionary.Current.Translate<string>("dailyTitle_mainWin", "Content");//"Почасовой прогноз"
                 gridResult.ToolTip = GetTooltipForecast(rows, cols, HourTitle, fors, HoutTimeEnd);
                 return gridResult;
             }
@@ -450,7 +455,8 @@ namespace WeatherInfo
                 {
                     el.time = dayParts[el.time];
                 }
-                gridResult.ToolTip = GetTooltipForecast(BaseRowCount, BaseColumnCount, "Суточный прогноз", fors, "");
+                var titleToolTip = LanguageDictionary.Current.Translate<string>("dailyTitle_mainWin", "Content");//"Суточный прогноз"
+                gridResult.ToolTip = GetTooltipForecast(BaseRowCount, BaseColumnCount, titleToolTip, fors, "");
             }
             return gridResult;
         }
@@ -504,7 +510,7 @@ namespace WeatherInfo
             docResult.Children.Add(titleLabel);
             if (!connectedToYaAPI)
             {
-                titleLabel.Content = "Нет соединения с сервером погоды";
+                titleLabel.Content = LanguageDictionary.Current.Translate<string>("messConnectedToYaAPIResult_mainWin", "Content");//"Нет соединения с сервером погоды";
                 return docResult;
             }
 
@@ -579,11 +585,16 @@ namespace WeatherInfo
         {
             while (worker.IsBusy)
             {
-                MessageBox.Show("Подождите, пока завершится текущее обновление");
+                var waitForUpdate = LanguageDictionary.Current.Translate<string>("messWaitForUpdate_mainWin", "Content");
+                MessageBox.Show(waitForUpdate);
             }
             hasConnection = IsNetworkAvailable();
-            City.Content = (hasConnection) ? "Обновление" : "Нет соединения";
+            var message = (hasConnection) ? LanguageDictionary.Current.Translate<string>("messUpdateStatusInProcess_mainWin", "Content")
+                                          : LanguageDictionary.Current.Translate<string>("messUpdateStatusFaildConnection_mainWin", "Content");
+            City.Content = message;//(hasConnection) ? "Обновление" : "Нет соединения";
             this.IsEnabled = false;
+
+            MonthYear.Content = DateTime.Now.ToString("y");
 
             town = App.settings.GetFirstCity().city.cityRusName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
             townID = App.settings.GetFirstCity().city.cityYaId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.

@@ -22,4 +22,24 @@
 	<Value Id="labelSystemStts" Content="System" />
 	<Value Id="labelLabguageStts" Content="Language" />
 	<Value Id="autostartFlag_chbxStts" Content="Autostart with Windows" />
+	
+	<Value Id="labelCurMonthYear_mainWin" Content="Month Year" />
+	<Value Id="labelCurCity_mainWin" Content="City" />
+	<Value Id="labelMonday_mainWin" Content="Mon" />
+	<Value Id="labelTuesday_mainWin" Content="Tue" />
+	<Value Id="labelWednesday_mainWin" Content="Wed" />
+	<Value Id="labelThursday_mainWin" Content="Thu" />
+	<Value Id="labelFriday_mainWin" Content="Fri" />
+	<Value Id="labelSaturday_mainWin" Content="Sat" />
+	<Value Id="labelSunday_mainWin" Content="Sun" />
+	<Value Id="messUpdateStatusInProcess_mainWin" Content="Updating" />
+	<Value Id="messUpdateStatusFaildConnection_mainWin" Content="Not connection" />
+	<Value Id="hourTitle_mainWin" Content="Hourly forecast" />
+	<Value Id="morning_mainWin" Content="Morning" />
+	<Value Id="day_mainWin" Content="Day" />
+	<Value Id="evening_mainWin" Content="Evening" />
+	<Value Id="night_mainWin" Content="Night" />
+	<Value Id="messConnectedToYaAPIResult_mainWin" Content="No connection to one of the weather's servers." />
+	<Value Id="dailyTitle_mainWin" Content="Daily forecast" />
+	<Value Id="messWaitForUpdate_mainWin" Content="Wait for the update will complete." />
 </Dictionary>

@@ -22,4 +22,24 @@
 	<Value Id="labelSystemStts" Content="Система" />
 	<Value Id="labelLabguageStts" Content="Язык" />
 	<Value Id="autostartFlag_chbxStts" Content="Автозапуск с Windows" />
+	
+	<Value Id="labelCurMonthYear_mainWin" Content="Месяц Год" />	
+	<Value Id="labelCurCity_mainWin" Content="Город" />	
+	<Value Id="labelMonday_mainWin" Content="ПН" />
+	<Value Id="labelTuesday_mainWin" Content="ВТ" />
+	<Value Id="labelWednesday_mainWin" Content="СР" />
+	<Value Id="labelThursday_mainWin" Content="ЧТ" />
+	<Value Id="labelFriday_mainWin" Content="ПТ" />
+	<Value Id="labelSaturday_mainWin" Content="СБ" />
+	<Value Id="labelSunday_mainWin" Content="ВС" />
+	<Value Id="messUpdateStatusInProcess_mainWin" Content="Обновление" />
+	<Value Id="messUpdateStatusFaildConnection_mainWin" Content="Нет соединения" />
+	<Value Id="hourTitle_mainWin" Content="Почасовой прогноз" />
+	<Value Id="morning_mainWin" Content="Утро" />
+	<Value Id="day_mainWin" Content="День" />
+	<Value Id="evening_mainWin" Content="Вечер" />
+	<Value Id="night_mainWin" Content="Ночь" />
+	<Value Id="messConnectedToYaAPIResult_mainWin" Content="Нет соединения с одним из серверов погоды" />
+	<Value Id="dailyTitle_mainWin" Content="Суточный прогноз" />
+	<Value Id="messWaitForUpdate_mainWin" Content="Подождите, пока завершится текущее обновление" />
 </Dictionary>
