@@ -61,9 +61,9 @@ namespace WeatherInfo
             {
                 case Key.F1:
 
-                    MainWindow main = new MainWindow();
-                    main.Show();
-                    this.Close();
+                    //MainWindow main = new MainWindow();
+                    //main.Show();
+                    //this.Close();
 
                     break;
             }

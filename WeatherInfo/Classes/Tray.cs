@@ -213,8 +213,8 @@ namespace WeatherInfo
 
                 WindowTray wt = new WindowTray(leaveWindowTray, cities);
                 notifyIcon.TrayPopup = wt;
-                notifyIcon.TrayPopup.Visibility = Visibility.Visible;
-                notifyIcon.ContextMenu.Visibility = Visibility.Visible;
+                            notifyIcon.TrayPopup.Visibility = Visibility.Visible;
+            notifyIcon.ContextMenu.Visibility = Visibility.Visible;
             }
             catch
             {

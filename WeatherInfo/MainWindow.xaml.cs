@@ -724,47 +724,29 @@ namespace WeatherInfo
             switch (e.Key)
             {
                 case Key.F1:
-                    List<MainWindow> mv = new List<MainWindow>();
-                    int c = 0;
-                    this.Hide();
-                    foreach (var a in App.settings.cities)
-                    {
-                        MainWindow.cId = c;
-                        MainWindow w = new MainWindow();
-                        c++;
-                        mv.Add(w);
-                    }
-                    Two_Windows tw = new Two_Windows(mv);
-                    this.Close();
+                    //List<MainWindow> mv = new List<MainWindow>();
+                    //int c = 0;
+                    //this.Hide();
+                    //foreach (var a in App.settings.cities)
+                    //{
+                    //    MainWindow.cId = c;
+                    //    MainWindow w = new MainWindow();
+                    //    c++;
+                    //    mv.Add(w);
+                    //}
+                    //Two_Windows tw = new Two_Windows(mv);
+                    //this.Close();
                     break;
 
                 case Key.F2:
-                      if (GraphicsWindow != null) GraphicsWindow.Close();
-                        GraphicsWindow = new WindowGraphics();
-                        List<ForecastHour> fhl = new List<ForecastHour>();
-                        foreach (var a in dtldForecast[0].hours)
-                        {
-                            if(a.time.Length==2)
-                            {
-                                fhl.Add(a);
-                            }
-                        }
-                        GraphicsWindow.makeGraphic(new ForecastDay(0, 0, fhl, "", ""));
-                        GraphicsWindow.Show();
-                        break;
+                    break;
 
                 case Key.F3:
-                        if (GraphicsWindow != null) GraphicsWindow.Close();
-                        GraphicsWindow = new WindowGraphics();
-                        GraphicsWindow.makeGraphic(this.dtldForecast.ToList());
-                        GraphicsWindow.Show();
+                     
                         break;
 
                 case Key.F4:
-                        if (GraphicsWindow != null) GraphicsWindow.Close();
-                        GraphicsWindow = new WindowGraphics();
-                        GraphicsWindow.makeDiagram(this.dtldForecast.ToList());
-                        GraphicsWindow.Show();
+                     
                         break;
             }
         }
@@ -804,6 +786,39 @@ namespace WeatherInfo
                     this.Hide();
                     break;
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (GraphicsWindow != null) GraphicsWindow.Close();
+            GraphicsWindow = new WindowGraphics();
+            List<ForecastHour> fhl = new List<ForecastHour>();
+            foreach (var a in dtldForecast[0].hours)
+            {
+                if (a.time.Length == 2)
+                {
+                    fhl.Add(a);
+                }
+            }
+            GraphicsWindow.makeGraphic(new ForecastDay(0, 0, fhl, "", ""));
+            GraphicsWindow.Show();
+           
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (GraphicsWindow != null) GraphicsWindow.Close();
+            GraphicsWindow = new WindowGraphics();
+            GraphicsWindow.makeGraphic(this.dtldForecast.ToList());
+            GraphicsWindow.Show();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            if (GraphicsWindow != null) GraphicsWindow.Close();
+            GraphicsWindow = new WindowGraphics();
+            GraphicsWindow.makeDiagram(this.dtldForecast.ToList());
+            GraphicsWindow.Show();
         }
     }
 }
