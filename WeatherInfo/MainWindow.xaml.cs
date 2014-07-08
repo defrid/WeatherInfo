@@ -21,6 +21,7 @@ using System.Net.NetworkInformation;
 using WeatherInfo.Classes;
 using Entity_base;
 using Tomers.WPF.Localization;
+using System.Text.RegularExpressions;
 
 namespace WeatherInfo
 {
@@ -37,7 +38,7 @@ namespace WeatherInfo
         //private string townID;
         private const int BaseRowCount = 2;
         private const int BaseColumnCount = 2;
-        private string HourTitle = "Почасовой прогноз";
+        private string HourTitle = LanguageDictionary.Current.Translate<string>("hourTitle_mainWin", "Content");//"Почасовой прогноз";
         private string HoutTimeEnd = ":00";
         private bool hasConnection = false;
         private bool connectedToYaAPI = false;
@@ -68,13 +69,15 @@ namespace WeatherInfo
 
             InitializeComponent();
             forecasts = new List<XMLParser>();
-            var nowMonthYear = DateTime.Now.ToString("y");
+            
             preloaders = new List<DockPanel>();
+            var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
             foreach (var city in App.settings.cities)
             {
-                MainContainer.Children.Add(GetContainerForCity(city.city.cityRusName, nowMonthYear));
-                var town = city.city.cityEngName;
+                var town = (App.settings.language.engName) == "English" ? upperEngCityName(city.city.cityEngName) : city.city.cityRusName;//city.city.cityRusName;
                 var townId = city.city.cityYaId.ToString();
+                MainContainer.Children.Add(GetContainerForCity(town, nowMonthYear));
+                town = city.city.cityEngName;
                 forecasts.Add(new XMLParser(town, townId));
             }
 
@@ -164,6 +167,18 @@ namespace WeatherInfo
             return days;
         }
 
+        private string upperEngCityName(string city)
+        {
+            var curCity = city;
+            if (App.settings.language.engName == "English")
+            {
+                var firstLit = curCity[0].ToString();
+                var reg = new Regex(curCity[0].ToString());
+                curCity = reg.Replace(curCity, firstLit.ToUpper(), 1);
+            }
+
+            return curCity;
+        }
 
         /// <summary>
         /// Обработчик таймера для поворота шестерни
@@ -293,9 +308,8 @@ namespace WeatherInfo
                 timer.Start();
                 return;
             }
-            else
             {
-                Connection.Content = "Соединение установлено";
+                Connection.Content = LanguageDictionary.Current.Translate<string>("messUpdateStatusSuccessConnection_mainWin", "Content");//"Соединение установлено";
             }
 
             SetWindowHeight();
@@ -317,6 +331,9 @@ namespace WeatherInfo
 
         private DockPanel GetContainerForCity(string cityName, string monthYear, bool addSettingsIcon = false)
         {
+            var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
+            var lang = App.settings.language.engName;
+
             var docResult = new DockPanel { Margin = new Thickness(10) };
 
             var docPanelCityYear = new DockPanel();
@@ -526,7 +543,7 @@ namespace WeatherInfo
             }
             if (dayForecast.hours.Count > 24)
             {
-                InitDaysDictionary();
+                dayParts = InitDaysDictionary();
                 int temp = 0;
                 ForecastHour[] fors = dayForecast.hours.Where(el => Int32.TryParse(el.time, out temp)).ToArray();
                 if (today)
@@ -541,7 +558,11 @@ namespace WeatherInfo
             }
             else
             {
-                InitDaysDictionary();
+                //ForecastHour[] fors = dtldForecast[index].hours.ToArray();
+                //dayParts = InitDaysDictionary();
+
+                dayParts = InitDaysDictionary();
+
                 int temp = 0;
                 ForecastHour[] fors = dayForecast.hours.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
                 foreach (var el in fors)
@@ -685,16 +706,19 @@ namespace WeatherInfo
             var mainElementsCount = MainContainer.Children.Cast<Panel>().Skip(1).Count();
             MainContainer.Children.RemoveRange(1, mainElementsCount);
 
+
+
             forecasts = new List<XMLParser>();
-            var nowMonthYear = DateTime.Now.ToString("y");
-            preloaders=new List<DockPanel>();
+            
+            preloaders = new List<DockPanel>();
+            var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
             foreach (var city in App.settings.cities)
             {
-                var town = city.city.cityEngName;
+                var town = (App.settings.language.engName) == "English" ? upperEngCityName(city.city.cityEngName) : city.city.cityRusName;//city.city.cityRusName;
                 var townId = city.city.cityYaId.ToString();
+                MainContainer.Children.Add(GetContainerForCity(town, nowMonthYear));
+                town = city.city.cityEngName;
                 forecasts.Add(new XMLParser(town, townId));
-
-                MainContainer.Children.Add(GetContainerForCity(city.city.cityRusName, nowMonthYear));
             }
             
             preloaderRotationTimer.Start();
