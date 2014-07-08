@@ -310,10 +310,6 @@ namespace WeatherInfo
             }
             Tray.Update(listfortray, false);
             timer.Start();
-            foreach (var container in MainContainer.Children)
-            {
-                Console.WriteLine((container as FrameworkElement).ActualHeight);
-            }
         }
 
         private DockPanel GetContainerForCity(string cityName, string monthYear, bool addSettingsIcon = false)
@@ -375,6 +371,7 @@ namespace WeatherInfo
             foreach (var weatherTable in weatherTables)
             {
                 weatherTable.Children.Clear();
+                weatherTable.ShowGridLines = true;
             }
             DateTime curDay = DateTime.Now;
             foreach (var weatherTable in weatherTables)
