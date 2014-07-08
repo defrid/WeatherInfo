@@ -305,7 +305,7 @@ namespace WeatherInfo
             if (!(connectedToOpAPI || connectedToYaAPI))
             {
                 Connection.Content = LanguageDictionary.Current.Translate<string>("messUpdateStatusFaildConnection_mainWin", "Content");
-                timer.Start();
+                worker.RunWorkerAsync();
                 return;
             }
             {
@@ -317,6 +317,12 @@ namespace WeatherInfo
             FillTables();
             Scroll.IsEnabled = true;
 
+
+            if (!connectedToOpAPI)
+            {
+                timer.Start();
+                return;
+            }
             List<TrayCityData> listfortray = new List<TrayCityData>();
             for (int i = 0; i < App.settings.cities.Count; i++)
             {
@@ -429,8 +435,15 @@ namespace WeatherInfo
                         if (index < 10)
                         {
                             var today = index == 0;
-                            var tooltip = GetSpecialTooltip(dtldForecasts[k][index], today);
-                            weatherElement.ToolTip = tooltip;
+                            if (!connectedToYaAPI)
+                            {
+                                weatherElement.ToolTip = LanguageDictionary.Current.Translate<string>("messConnectedToYaAPIResult_mainWin", "Content");
+                            }
+                            else
+                            {
+                                var tooltip = GetSpecialTooltip(dtldForecasts[k][index], today);
+                                weatherElement.ToolTip = tooltip;
+                            }
                         }
                         weatherTables[k].Children.Add(weatherElement);
                     }
@@ -537,7 +550,7 @@ namespace WeatherInfo
 
         private object GetSpecialTooltip(ForecastDay dayForecast, bool today)
         {
-            if (!connectedToYaAPI && !connectedToOpAPI)
+            if (!connectedToYaAPI)
             {
                 return LanguageDictionary.Current.Translate<string>("messConnectedToYaAPIResult_mainWin", "Content");
             }
@@ -671,8 +684,6 @@ namespace WeatherInfo
             docResult.Children.Add(grid);
             return docResult;
         }
-
-        //private DockPanel GetFourTime
 
 
         /*
