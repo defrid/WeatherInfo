@@ -75,12 +75,12 @@ namespace WeatherInfo
             }
 
             SettingsImage.Source = ConvertBitmabToImage(Properties.Resources.Gear);
-            rotationTimer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 0, 10) };
+            rotationTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10)};
             rotationTimer.Tick += rotationTimer_Tick;
 
             timer = new DispatcherTimer();
             timer.Tick += timer_Tick;
-            timer.Interval = TimeSpan.FromSeconds(30);//FromMinutes(App.settings.updatePeriod);
+            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
             worker.DoWork += worker_reload;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
@@ -89,7 +89,7 @@ namespace WeatherInfo
             
 
             hasConnection = IsNetworkAvailable();
-            this.IsEnabled = false;
+            Scroll.IsEnabled = false;
             Tray.PreLoad();
             Icon = ConvertBitmabToImage(Properties.Resources.weather.ToBitmap());
             var message = (hasConnection) ? LanguageDictionary.Current.Translate<string>("messUpdateStatusInProcess_mainWin", "Content")
@@ -244,7 +244,7 @@ namespace WeatherInfo
                 Connection.Content = "Соединение установлено";
             }
             FillTables();
-            this.IsEnabled = true;
+            Scroll.IsEnabled = true;
 
             List<TrayCityData> listfortray = new List<TrayCityData>();
             for (int i = 0; i < App.settings.cities.Count; i++)
@@ -620,7 +620,7 @@ namespace WeatherInfo
             var message = (hasConnection) ? LanguageDictionary.Current.Translate<string>("messUpdateStatusInProcess_mainWin", "Content")
                                           : LanguageDictionary.Current.Translate<string>("messUpdateStatusFaildConnection_mainWin", "Content");
             Connection.Content = message;
-            this.IsEnabled = false;
+            Scroll.IsEnabled = false;
 
             var mainElementsCount = MainContainer.Children.Cast<Panel>().Skip(1).Count();
             MainContainer.Children.RemoveRange(1, mainElementsCount);
@@ -636,7 +636,7 @@ namespace WeatherInfo
                 MainContainer.Children.Add(GetContainerForCity(town, nowMonthYear));
             }
 
-            timer.Interval = TimeSpan.FromSeconds(30);//TimeSpan.FromMinutes(App.settings.updatePeriod);
+            timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
             Tray.PreLoad();
             worker.RunWorkerAsync();
