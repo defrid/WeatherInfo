@@ -65,7 +65,7 @@ namespace WeatherInfo
             var docResult = new DockPanel();
             var titleLabel = new Label
             {
-                Content = DateTime.Parse(date, System.Globalization.CultureInfo.CreateSpecificCulture("ru-RU")).ToString("m"),
+                Content = DateTime.Parse(date).ToString("m", LanguageContext.Instance.Culture),
                 FontWeight = FontWeights.Bold,
                 FontStyle = FontStyles.Italic
             };

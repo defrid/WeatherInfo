@@ -21,6 +21,7 @@ using System.Net.NetworkInformation;
 using WeatherInfo.Classes;
 using Entity_base;
 using Tomers.WPF.Localization;
+using System.Text.RegularExpressions;
 
 namespace WeatherInfo
 {
@@ -69,8 +70,8 @@ namespace WeatherInfo
 
             InitializeComponent();
 
-            City.Content = town;
-            MonthYear.Content = DateTime.Now.ToString("y");
+            City.Content = (App.settings.language.engName) == "English" ? upperEngCityName(App.settings.GetFirstCity().city.cityEngName) : town;
+            MonthYear.Content = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
 
             SettingsImage.Source = ConvertBitmabToImage(Properties.Resources.Gear);
             rotationTimer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 0, 10) };
@@ -107,6 +108,18 @@ namespace WeatherInfo
             return days;
         }
 
+        private string upperEngCityName(string city)
+        {
+            var curCity = city;
+            if (App.settings.language.engName == "English")
+            {
+                var firstLit = curCity[0].ToString();
+                var reg = new Regex(curCity[0].ToString());
+                curCity = reg.Replace(curCity, firstLit.ToUpper(), 1);
+            }
+
+            return curCity;
+        }
 
         /// <summary>
         /// Обработчик таймера для поворота шестерни
@@ -217,10 +230,10 @@ namespace WeatherInfo
                 timer.Start();
                 return;
             }
-            City.Content = town;
+            City.Content = (App.settings.language.engName) == "English" ? upperEngCityName(App.settings.GetFirstCity().city.cityEngName) : town;//town;
             fillTable();
             this.IsEnabled = true;
-            MonthYear.Content = DateTime.Now.ToString("y");
+            MonthYear.Content = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
 
             List<TrayCityData> listfortray = new List<TrayCityData>();
             //Это надо делать в потоке! ------
@@ -602,7 +615,8 @@ namespace WeatherInfo
             City.Content = message;//(hasConnection) ? "Обновление" : "Нет соединения";
             this.IsEnabled = false;
 
-            MonthYear.Content = DateTime.Now.ToString("y");
+
+            MonthYear.Content = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
 
             town = App.settings.GetFirstCity().city.cityRusName; //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
             townID = App.settings.GetFirstCity().city.cityYaId.ToString(); //работа с несколькими городами, cities - список городов, для каждого хранятся настройки.
