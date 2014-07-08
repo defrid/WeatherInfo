@@ -456,7 +456,7 @@ namespace WeatherInfo
             if (index < 10)
             {
                 ForecastHour[] fors = dtldForecast[index].hours.ToArray();
-                InitDaysDictionary();
+                dayParts = InitDaysDictionary();
                 int temp = 0;
                 fors = fors.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
                 foreach (var el in fors)
