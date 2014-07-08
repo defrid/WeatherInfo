@@ -269,7 +269,7 @@ namespace WeatherInfo
             List<TrayCityData> listfortray = new List<TrayCityData>();
             for (int i = 0; i < App.settings.cities.Count; i++)
             {
-                var name = App.settings.cities[i].city.cityRusName;
+                var name = (App.settings.language.engName) == "English" ? upperEngCityName(App.settings.cities[i].city.cityEngName) : App.settings.cities[i].city.cityRusName;
                 var temp = curForecasts[i].temp;
                 var icon = WeatherInfo.Classes.OpenWeatherAPI.GetImageById(curForecasts[i].icon);
                 listfortray.Add(new TrayCityData(name, temp, icon));

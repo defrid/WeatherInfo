@@ -24,6 +24,8 @@
 	<Value Id="labelLabguageStts" Content="Language" />
 	<Value Id="autostartFlag_chbxStts" Content="Autostart with Windows" />
 	<Value Id="messCheckDataStts" Content="Check the correctness of data. Error: " />
+	<Value Id="incorrectCityStts" Content="Specific city can not be added! Check your input!" />
+	<Value Id="incorrectCountryStts" Content="Country can not be selected! Check your input!" />
 <!-- Main Window -->		
 	<Value Id="labelCurMonthYear_mainWin" Content="Month Year" />
 	<Value Id="labelCurCity_mainWin" Content="City" />
@@ -50,4 +52,25 @@
 	<Value Id="labelForecastOnDay_daysWin" Content="Forecast for the day." />
 	<Value Id="buttonNext_daysWin" Content="Next" />
 	<Value Id="buttonPrev_daysWin" Content="Prev." />
+<!-- Current forecast -->	
+	<Value Id="titleForm_curWeaWin" Title="Current forecast" />
+	<Value Id="labelCurWeather_curWeaWin" Content="Current forecast" />
+<!-- Окно О программе -->	
+	<Value Id="titleForm_aboutWin" Title="About" />
+	<Value Id="textBlockAbout_curWeaWin" Text=
+"Weather informer 'WeatherInfo'. Developed by the Group 'B' within the Intensive SimbirSoft the summer of 2014. 
+Squad: 
+- Pavel Beketov (TL) 
+- Danila Matyushin (TL-2) 
+- Julia Klimova 
+- Sergey Smerechinsky 
+- Andrew Soldatkin
+" />
+<!-- Tray -->
+	<Value Id="menuFullWindow_Tray" Content="Maximize" />
+	<Value Id="menuOptions_Tray" Content="Settings" />
+	<Value Id="menuExit_Tray" Content="Exit" />
+	<Value Id="toolTipTextPreLoad_Tray" Content="WeatherInfo loads data" />
+	<Value Id="toolTipText_Tray" Content="Left mouse button - short forecasts, Right mouse button - to open the menu" />
+	<Value Id="menuExit_Tray" Content="Exit" />
 </Dictionary>

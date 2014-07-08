@@ -229,7 +229,7 @@ namespace WeatherInfo.Classes
         /// <param name="nameOFcountry">Название страны</param>
         /// <param name="WeHaveRusName">Оно русское? True - вренем английское и наоборот</param>
         /// <returns></returns>
-        static public string countryTranslate (string nameOFcountry, bool WeHaveRusName)
+        static public string countryTranslate(string nameOFcountry, bool WeHaveRusName)
         {
             getFullObject();
 
