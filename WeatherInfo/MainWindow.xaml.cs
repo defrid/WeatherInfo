@@ -213,9 +213,13 @@ namespace WeatherInfo
 
             List<TrayCityData> listfortray = new List<TrayCityData>();
             //Это надо делать в потоке! ------
-            listfortray.Add(new TrayCityData(
-                town, curForecast.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(curForecast.icon))); //просто пример
-            Tray.Update(listfortray, false);
+            try
+            {
+                listfortray.Add(new TrayCityData(
+                    town, curForecast.temp, WeatherInfo.Classes.OpenWeatherAPI.GetImageById(curForecast.icon))); //просто пример
+                Tray.Update(listfortray, false);
+            }
+            catch { }
 
             timer.Start();
         }
@@ -634,7 +638,9 @@ namespace WeatherInfo
             switch (e.Key)
             {
                 case Key.F1:
-                    Two_Windows tw = new Two_Windows(this, new MainWindow());
+                    WindowGraphics wg = new WindowGraphics(lang.eng);
+                    wg.makeDiagram(dtldForecast.ToList());
+                    wg.ShowDialog();
                     break;
             }
         }

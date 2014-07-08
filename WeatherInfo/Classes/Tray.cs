@@ -53,12 +53,12 @@ namespace WeatherInfo
         public delegate void TrayVoid();
 
         /// <summary>
-        /// когда хотим в опции
+        /// Когда хотим в опции
         /// </summary>
         public static event TrayVoid OnOptionsClick;
 
         /// <summary>
-        /// когда хотим обратно в окно :)
+        /// Когда хотим обратно в окно
         /// </summary>
         public static event TrayVoid onToWindow;
 
@@ -165,19 +165,26 @@ namespace WeatherInfo
 
         private static void rotationTimer_Tick(object sender, EventArgs e)
         {
-            preLoadGraphics.Clear(System.Drawing.Color.Transparent);
-            preLoadGraphics.TranslateTransform(50, 50);
-            preLoadGraphics.RotateTransform(1f);
-            preLoadGraphics.TranslateTransform(-50, -50);
-            preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
-            notifyIcon.Icon = System.Drawing.Icon.FromHandle(preLoadCanvas.GetHicon());
+            try
+            {
+                preLoadGraphics.Clear(System.Drawing.Color.Transparent);
+                preLoadGraphics.TranslateTransform(50, 50);
+                preLoadGraphics.RotateTransform(1f);
+                preLoadGraphics.TranslateTransform(-50, -50);
+                preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
+                notifyIcon.Icon = System.Drawing.Icon.FromHandle(preLoadCanvas.GetHicon());
+            }
+            catch
+            { 
+                // Трей! Я запрещаю тебе крашиться! Держись до последней строчки кода!
+            }
         }
 
         /// <summary>
-        /// скроет главное окно если открыто, запишет данные в трей, покажет его, сам трей будет с иконкой 1го города
+        /// Cкроет главное окно если открыто, запишет данные в трей, покажет его, сам трей будет с иконкой 1го города
         /// </summary>
-        /// <param name="cities">список городов</param>
-        /// <param name="needHide">если главное окно не надо прятать послать false</param>
+        /// <param name="cities">Список городов</param>
+        /// <param name="needHide">Если главное окно не надо прятать послать false</param>
         public static void Update(List<TrayCityData> cities, bool needHide=true)
         {
             timer.Stop();
