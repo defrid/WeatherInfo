@@ -53,7 +53,7 @@ namespace WeatherInfoUnitTests
         }
 
         /// <summary>
-        /// Тест перевода страны
+        /// Тест перевода страны 
         /// </summary>
         [TestMethod]
         public void translateCountry()
