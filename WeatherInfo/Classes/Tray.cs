@@ -64,7 +64,6 @@ namespace WeatherInfo
 
         static TaskbarIcon notifyIcon;
         static Window windowMain;
-        static lang Lang = lang.rus;
 
         /// <summary>
         /// Необходимо вызвать этот метод в самом начале работы программы
@@ -72,10 +71,8 @@ namespace WeatherInfo
         /// <param name="main">окно, которое трей сочтет главным и будет его скрывать</param>
         /// <param name="onOptionsClick">сюда послать метод, который будет обрабатывать нажатие не опции</param>
         /// <param name="toWindow">сюда послать метод, совершающий действия, при развертывании трея</param>
-        /// <param name="Language">укажите язык</param>
-        public static void SetupTray(Window main, TrayVoid onOptionsClick, TrayVoid toWindow, lang Language = lang.rus)
+        public static void SetupTray(Window main, TrayVoid onOptionsClick, TrayVoid toWindow)
         {
-            Lang = Language;
             OnOptionsClick += onOptionsClick;
             onToWindow += toWindow;
             windowMain = main;
@@ -88,18 +85,9 @@ namespace WeatherInfo
             TextBlock Options = new TextBlock();
             TextBlock Exit = new TextBlock();
 
-            if (Lang == lang.rus)
-            {
                 FullWindow.Text = "Развернуть";
                 Options.Text = "Настройки";
                 Exit.Text = "Выход";
-            }
-            else
-            {
-                FullWindow.Text = "Maximize";
-                Options.Text = "Options";
-                Exit.Text = "Exxit";
-            }
 
             notifyIcon.ContextMenu = new ContextMenu();
             notifyIcon.ContextMenu.Items.Add(FullWindow);
@@ -113,51 +101,75 @@ namespace WeatherInfo
             notifyIcon.TrayLeftMouseDown += notifyIcon_TrayLeftMouseDown;
             notifyIcon.TrayRightMouseDown += notifyIcon_TrayRightMouseDown;
 
-            timer.Tick += rotationTimer_Tick;
-            preLoadCanvas = new System.Drawing.Bitmap(100, 100);
-            preLoadGraphics = System.Drawing.Graphics.FromImage(preLoadCanvas);
-            preLoadImage = Properties.Resources.Gear;
+            try
+            {
+                timer.Tick += rotationTimer_Tick;
+                preLoadCanvas = new System.Drawing.Bitmap(100, 100);
+                preLoadGraphics = System.Drawing.Graphics.FromImage(preLoadCanvas);
+                preLoadImage = Properties.Resources.Gear;
+            }
+            catch { }
         }
 
         static void notifyIcon_TrayRightMouseDown(object sender, RoutedEventArgs e)
         {
-            notifyIcon.ContextMenu.Visibility = Visibility.Visible;
+            try
+            {
+                notifyIcon.ContextMenu.Visibility = Visibility.Visible;
+            }
+            catch { }
         }
 
         static void notifyIcon_TrayLeftMouseDown(object sender, RoutedEventArgs e)
         {
-            notifyIcon.TrayPopup.Visibility = Visibility.Visible;
+            try
+            {
+                notifyIcon.TrayPopup.Visibility = Visibility.Visible;
+            }
+            catch { }
         }
 
         static void Exit_MouseDown(object sender, RoutedEventArgs e)
         {
-            windowMain.Close();
+            try
+            {
+                windowMain.Close();
+            }
+            catch { }
         }
 
         static void Options_MouseDown(object sender, RoutedEventArgs e)
         {
-            //notifyIcon.Visibility = Visibility.Hidden;
-            notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
-            notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
+            try
+            {
+                //notifyIcon.Visibility = Visibility.Hidden;
+                notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
+                notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
 
-            windowMain.Show();
-            windowMain.Focus();
-            windowMain.Activate();
+                windowMain.Show();
+                windowMain.Focus();
+                windowMain.Activate();
 
-            OnOptionsClick();
+                OnOptionsClick();
+            }
+            catch { }
         }
 
         static void FullWindow_MouseDown(object sender, RoutedEventArgs e)
         {
-            //notifyIcon.Visibility = Visibility.Hidden;
-            notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
-            notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
+            try
+            {
+                //notifyIcon.Visibility = Visibility.Hidden;
+                notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
+                notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
 
-            windowMain.Show();
-            windowMain.Activate();
-            windowMain.Focus();
+                windowMain.Show();
+                windowMain.Activate();
+                windowMain.Focus();
 
-            onToWindow();
+                onToWindow();
+            }
+            catch { }
         }
 
         static System.Drawing.Bitmap preLoadCanvas;
@@ -170,13 +182,14 @@ namespace WeatherInfo
         /// </summary>
         public static void PreLoad()
         {
-            notifyIcon.Visibility = Visibility.Visible;
-            if (Lang == lang.rus)
+            try
+            {
+                notifyIcon.Visibility = Visibility.Visible;
                 notifyIcon.ToolTipText = "WeatherInfo загружает данные...";
-            else
-                notifyIcon.ToolTipText = "WeatherInfo downloads data..";
-            preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
-            timer.Start();
+                preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
+                timer.Start();
+            }
+            catch { }
         }
 
         private static void rotationTimer_Tick(object sender, EventArgs e)
@@ -207,10 +220,7 @@ namespace WeatherInfo
             {
                 timer.Stop();
 
-                if (Lang == lang.rus)
                     notifyIcon.ToolTipText = "Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню";
-                else
-                    notifyIcon.ToolTipText = "Left mouse button - short forecast, Right mouse button - show menu";
 
                 try
                 {
@@ -234,8 +244,11 @@ namespace WeatherInfo
 
         static void leaveWindowTray()
         {
-            notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
-            
+            try
+            {
+                notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
+            }
+            catch { }
         }
 
         private static void ApplicationExit(object sender, ExitEventArgs e)
