@@ -1857,7 +1857,7 @@
     <city nameRu="Бухарест" nameEng="bucharest" idYa="15420" idOp="683506" />
     <city nameRu="Синая" nameEng="sinaia" idYa="15325" idOp="667091" />
   </country>
-  <country nameRu="США" nameEng="United States Minor Outlying Islands" nameShort="UM">
+  <country nameRu="США" nameEng="United States" nameShort="US">
     <city nameRu="Чикаго, шт. Иллинойс" nameEng="chicago" idYa="72530" idOp="4887398" />
     <city nameRu="Анкоридж" nameEng="anchorage" idYa="70276" idOp="5879400" />
     <city nameRu="Финикс, шт. Аризона" nameEng="phoenix" idYa="72278" idOp="5308655" />
@@ -2090,6 +2090,7 @@
   </country>
   <country nameRu="Украина" nameEng="Ukraine" nameShort="UA">
     <city nameRu="Орджоникидзе" nameEng="ordzhonikidze" idYa="33804" idOp="515083" />
+	<city nameRu="Киев" nameEng="kiev" idYa="33345" idOp="703448" />
     <city nameRu="Никополь" nameEng="nikopol" idYa="33805" idOp="700051" />
     <city nameRu="Ровно" nameEng="rovno" idYa="33301" idOp="501091" />
     <city nameRu="Здолбунов" nameEng="zdolbuniv" idYa="33302" idOp="687432" />
