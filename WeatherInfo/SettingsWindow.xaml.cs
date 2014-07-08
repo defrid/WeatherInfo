@@ -77,12 +77,12 @@ namespace WeatherInfo
                 //App.settings = new Settings(countryId_save, countryRusName_save, countryEngName_save, regionId_save, regionName_save, cityYaId_save, cityOWId_save, cityRusName_save, cityEngName_save, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
                 App.settings = new Settings(ChoosenCities, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
 
-                App.settingHandler.SaveSettings(App.settings);
-
-                main.applySettings();
+                App.settingHandler.SaveSettings(App.settings);                
 
                 Autorun();
                 ChangeLocalization();
+
+                main.applySettings();
                 Close();
             }
             catch (Exception ex)

@@ -36,6 +36,7 @@
 	<Value Id="labelSunday_mainWin" Content="Sun" />
 	<Value Id="messUpdateStatusInProcess_mainWin" Content="Updating" />
 	<Value Id="messUpdateStatusFaildConnection_mainWin" Content="Not connection" />
+	<Value Id="messUpdateStatusSuccessConnection_mainWin" Content="Connection established" />
 	<Value Id="hourTitle_mainWin" Content="Hourly forecast" />
 	<Value Id="morning_mainWin" Content="Morning" />
 	<Value Id="day_mainWin" Content="Day" />

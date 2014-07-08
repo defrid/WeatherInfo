@@ -65,10 +65,10 @@ namespace WeatherInfo
 
             InitializeComponent();
             forecasts = new List<XMLParser>();
-            var nowMonthYear = DateTime.Now.ToString("y");
+            var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
             foreach (var city in App.settings.cities)
             {
-                var town = city.city.cityRusName;
+                var town = (App.settings.language.engName) == "English" ? upperEngCityName(city.city.cityEngName) : city.city.cityRusName;//city.city.cityRusName;
                 var townId = city.city.cityYaId.ToString();
                 forecasts.Add(new XMLParser(town, townId));
 
@@ -256,7 +256,7 @@ namespace WeatherInfo
                 return;
             }
             {
-                Connection.Content = "Соединение установлено";
+                Connection.Content = LanguageDictionary.Current.Translate<string>("messUpdateStatusSuccessConnection_mainWin", "Content");//"Соединение установлено";
             }
             //City.Content = (App.settings.language.engName) == "English" ? upperEngCityName(App.settings.GetFirstCity().city.cityEngName) : town;//town;
             //FillTable();
@@ -280,6 +280,9 @@ namespace WeatherInfo
 
         private DockPanel GetContainerForCity(string cityName, string monthYear, bool addSettingsIcon = false)
         {
+            var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
+            var lang = App.settings.language.engName;
+
             var docResult = new DockPanel { Margin = new Thickness(10) };
 
             var docPanelCityYear = new DockPanel();
@@ -653,10 +656,10 @@ namespace WeatherInfo
             //MonthYear.Content = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
 
             forecasts = new List<XMLParser>();
-            var nowMonthYear = DateTime.Now.ToString("y");
+            var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
             foreach (var city in App.settings.cities)
             {
-                var town = city.city.cityRusName;
+                var town = (App.settings.language.engName) == "English" ? upperEngCityName(city.city.cityEngName) : city.city.cityRusName;
                 var townId = city.city.cityYaId.ToString();
                 forecasts.Add(new XMLParser(town, townId));
 
