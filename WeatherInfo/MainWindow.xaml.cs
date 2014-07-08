@@ -341,7 +341,7 @@ namespace WeatherInfo
             Tray.Update(this, listfortray, needHide);
         }
 
-        private DockPanel GetContainerForCity(string cityName, string monthYear, bool addSettingsIcon = false)
+        private DockPanel GetContainerForCity(string cityName, string monthYear)
         {
             var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
             var lang = App.settings.language.engName;
@@ -368,7 +368,7 @@ namespace WeatherInfo
             };
             docPanelCityYear.Children.Add(monthYearLabel);
             docResult.Children.Add(docPanelCityYear);
-
+            
             var gridBorder = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(1) };
 
             var weatherGrid = new Grid() { ShowGridLines = false, MinWidth = 580, MinHeight = 170 };
@@ -388,8 +388,53 @@ namespace WeatherInfo
             gridBorder.Child = weatherGrid;
 
             docResult.Children.Add(gridBorder);
+            var stackButton = new StackPanel();
+            var button1 = new Button()
+                {
+                    Name = cityName,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    Margin = new Thickness(5,0,5,0),
+                    Content = "One Day" //Локализация
+                };
+            button1.Click += OneDay_Click;
+            stackButton.Children.Add(button1);
+            var button2=new Button()
+            {
+                Name = cityName,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new Thickness(5, 0, 5, 0),
+                Content = "Many Day" //Локализация
+            };
+            button2.Click += ManyDays_Click;
+            stackButton.Children.Add(button2);
+            var button3 = new Button()
+            {
+                Name = cityName,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new Thickness(5, 0, 5, 0),
+                Content = "Cloudly" //Локализация
+            };
+            button3.Click += Cloudly_Click;
             return docResult;
         }
+
+        void OneDay_Click(object sender, RoutedEventArgs e)
+        {
+            var name = (sender as Button).Name;
+        }
+
+        
+        void ManyDays_Click(object sender, RoutedEventArgs e)
+        {
+            var name = (sender as Button).Name;
+        }
+
+        void Cloudly_Click(object sender, RoutedEventArgs e)
+        {
+            var name = (sender as Button).Name;
+        }
+
+        
 
         /// <summary>
         /// Заполнение таблицы погоды
