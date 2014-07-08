@@ -58,6 +58,13 @@
                     </Border>
                 </Grid>
             </Border>
+        Title="Weather Informer" Height="330" Width="640" ResizeMode="CanMinimize" Loaded="Window_Loaded">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border BorderBrush="Black" BorderThickness="2">
+    <StackPanel Name="MainContainer">
+        <DockPanel>
+            <Label Name="Connection" HorizontalAlignment="Left" Content="Connection"></Label>
+            <Image Name="SettingsImage" RenderTransformOrigin="0.5 0.5" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter"/>
         </DockPanel>
         </StackPanel>
         </Border>
