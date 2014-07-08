@@ -36,6 +36,7 @@ namespace WeatherInfo
         private Grid GetWeaterElement()
         {
             var gridResult = new Grid();
+            gridResult.Width = this.Width;
             gridResult.SetValue(Grid.RowProperty, 0);
             gridResult.SetValue(Grid.ColumnProperty, 0);
             for (var i = 0; i < 2; i++)
@@ -59,13 +60,13 @@ namespace WeatherInfo
             var tempLabel = new Label()
             {
                 Content = (cur.temp > 0 ? "+" + cur.temp.ToString() : cur.temp.ToString()),
-                HorizontalAlignment = HorizontalAlignment.Right,
+                HorizontalAlignment = HorizontalAlignment.Left,
                 FontSize = 15,
                 FontWeight = FontWeights.Bold
             };
             tempLabel.SetValue(Grid.ColumnProperty, 2);
             tempLabel.SetValue(Grid.ColumnSpanProperty, 2);
-            tempLabel.SetValue(Grid.RowProperty, 1);
+            tempLabel.SetValue(Grid.RowProperty, 0);
             gridResult.Children.Add(tempLabel);
             var image = new Image
             {

@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:localization="http://schemas.tomer.com/winfx/2006/xaml/presentation"
         localization:Translate.Uid="titleForm_curWeaWin" Title="{localization:Translate Default=Текущий прогноз}"
-        Height="157.5" Width="136.5">
+        Height="204" Width="204" ResizeMode="NoResize">
     <Grid>
         <Label localization:Translate.Uid="labelCurWeather_curWeaWin" Content="{localization:Translate Default=Текущий прогноз}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <DockPanel Name ="CurrentWeather" HorizontalAlignment="Left" Height="87" LastChildFill="False" Margin="10,31,0,0" VerticalAlignment="Top" Width="108"/>
+        <DockPanel Name ="CurrentWeather" HorizontalAlignment="Left" Margin="0,26,0,0" VerticalAlignment="Top" LastChildFill="False" Height="150" Width="198"/>
     </Grid>
 </Window>

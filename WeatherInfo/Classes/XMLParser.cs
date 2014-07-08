@@ -11,8 +11,8 @@ namespace WeatherInfo.Classes
 {
     public class XMLParser : XMLWorker
     {
-        string town;
-        string townId;
+        public string town;
+        public string townId;
         XDocument weather;
         IWeatherAPI opAPI;
         IYandexWeatherApi yaAPI;
