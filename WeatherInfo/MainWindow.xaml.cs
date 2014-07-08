@@ -375,6 +375,7 @@ namespace WeatherInfo
             foreach (var weatherTable in weatherTables)
             {
                 weatherTable.Children.Clear();
+                weatherTable.ShowGridLines = true;
             }
             DateTime curDay = DateTime.Now;
             foreach (var weatherTable in weatherTables)
