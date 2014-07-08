@@ -187,20 +187,29 @@ namespace WeatherInfo
         /// <param name="needHide">Если главное окно не надо прятать послать false</param>
         public static void Update(List<TrayCityData> cities, bool needHide=true)
         {
-            timer.Stop();
-            notifyIcon.ToolTipText = "Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню";
-            notifyIcon.Icon = System.Drawing.Icon.FromHandle(cities[0].icon.GetHicon());
-
-            if (needHide)
+            try
             {
-                windowMain.WindowState = WindowState.Normal;
-                windowMain.Hide();
-            }
+                timer.Stop();
+                notifyIcon.ToolTipText = "Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню";
 
-            WindowTray wt = new WindowTray(leaveWindowTray, cities);
-            notifyIcon.TrayPopup = wt;
-            notifyIcon.TrayPopup.Visibility = Visibility.Visible;
-            notifyIcon.ContextMenu.Visibility = Visibility.Visible;
+                try
+                {
+                    notifyIcon.Icon = System.Drawing.Icon.FromHandle(cities[0].icon.GetHicon());
+                }
+                catch { }
+
+                if (needHide)
+                {
+                    windowMain.WindowState = WindowState.Normal;
+                    windowMain.Hide();
+                }
+
+                WindowTray wt = new WindowTray(leaveWindowTray, cities);
+                notifyIcon.TrayPopup = wt;
+                notifyIcon.TrayPopup.Visibility = Visibility.Visible;
+                notifyIcon.ContextMenu.Visibility = Visibility.Visible;
+            }
+            catch { }
         }
 
         static void leaveWindowTray()

@@ -32,6 +32,12 @@ namespace WeatherInfo.Classes
             [XmlAttribute("nameRu")]
             public string nameRu { get; set; }
 
+            [XmlAttribute("nameEng")]
+            public string nameEng { get; set; }
+
+            [XmlAttribute("nameShort")]
+            public string nameShort { get; set; }
+
             [XmlElement("city")]
             public List<cityFull> cities { get; set; }
 
@@ -215,6 +221,24 @@ namespace WeatherInfo.Classes
             if (WeHaveRusName) return Fc.nameEng;
             else return Fc.nameRu;
 
+        }
+
+        /// <summary>
+        /// Переводит название страны
+        /// </summary>
+        /// <param name="nameOFcountry">Название страны</param>
+        /// <param name="WeHaveRusName">Оно русское? True - вренем английское и наоборот</param>
+        /// <returns></returns>
+        static public string countryTranslate (string nameOFcountry, bool WeHaveRusName)
+        {
+            getFullObject();
+
+            countryFull F = null;
+            if (WeHaveRusName) F = File.countries.Where(c => c.nameRu == nameOFcountry).FirstOrDefault();
+            else F = File.countries.Where(c => c.nameEng == nameOFcountry).FirstOrDefault();
+
+            if (WeHaveRusName) return F.nameEng;
+            else return F.nameRu;
         }
     }
 }

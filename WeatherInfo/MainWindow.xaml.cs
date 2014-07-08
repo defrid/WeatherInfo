@@ -683,9 +683,9 @@ namespace WeatherInfo
             switch (e.Key)
             {
                 case Key.F1:
-                    WindowGraphics wg = new WindowGraphics(lang.eng);
-                    wg.makeDiagram(dtldForecast.ToList());
-                    wg.ShowDialog();
+                    //WindowGraphics wg = new WindowGraphics(lang.eng);
+                    //wg.makeDiagram(dtldForecast.ToList());
+                    //wg.ShowDialog();
                     break;
             }
         }
