@@ -638,6 +638,8 @@ namespace WeatherInfo
         /// </summary>
         public void applySettings()
         {
+            Tray.SetTrayMenu();
+
             while (worker.IsBusy)
             {
                 var waitForUpdate = LanguageDictionary.Current.Translate<string>("messWaitForUpdate_mainWin", "Content");

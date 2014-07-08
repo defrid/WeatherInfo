@@ -65,6 +65,10 @@ namespace WeatherInfo
 
         static TaskbarIcon notifyIcon;
         static Window windowMain;
+
+        static TextBlock FullWindow;
+        static TextBlock Options;
+        static TextBlock Exit;
         
         /// <summary>
         /// Необходимо вызвать этот метод в самом начале работы программы
@@ -82,12 +86,14 @@ namespace WeatherInfo
             notifyIcon = new TaskbarIcon();
             //notifyIcon.Visibility = Visibility.Visible;
 
-            TextBlock FullWindow = new TextBlock();
-            TextBlock Options = new TextBlock();
-            TextBlock Exit = new TextBlock();
-            FullWindow.Text = LanguageDictionary.Current.Translate<string>("menuFullWindow_Tray", "Content");//"Развернуть";
-            Options.Text = LanguageDictionary.Current.Translate<string>("menuOptions_Tray", "Content"); //"Настройки";
-            Exit.Text = LanguageDictionary.Current.Translate<string>("menuExit_Tray", "Content"); //"Выход";
+            FullWindow = new TextBlock();
+            Options = new TextBlock();
+            Exit = new TextBlock();
+
+            SetTrayMenu();
+            //FullWindow.Text = LanguageDictionary.Current.Translate<string>("menuFullWindow_Tray", "Content");//"Развернуть";
+            //Options.Text = LanguageDictionary.Current.Translate<string>("menuOptions_Tray", "Content"); //"Настройки";
+            //Exit.Text = LanguageDictionary.Current.Translate<string>("menuExit_Tray", "Content"); //"Выход";
 
             notifyIcon.ContextMenu = new ContextMenu();
             notifyIcon.ContextMenu.Items.Add(FullWindow);
@@ -105,6 +111,13 @@ namespace WeatherInfo
             preLoadCanvas = new System.Drawing.Bitmap(100, 100);
             preLoadGraphics = System.Drawing.Graphics.FromImage(preLoadCanvas);
             preLoadImage = Properties.Resources.Gear;
+        }
+
+        public static void SetTrayMenu()
+        {
+            FullWindow.Text = LanguageDictionary.Current.Translate<string>("menuFullWindow_Tray", "Content");//"Развернуть";
+            Options.Text = LanguageDictionary.Current.Translate<string>("menuOptions_Tray", "Content"); //"Настройки";
+            Exit.Text = LanguageDictionary.Current.Translate<string>("menuExit_Tray", "Content"); //"Выход";
         }
 
         static void notifyIcon_TrayRightMouseDown(object sender, RoutedEventArgs e)
