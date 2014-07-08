@@ -259,6 +259,7 @@ namespace WeatherInfo
         /// <param name="country"></param>
         void LoadCities()
         {
+            listOfCitiies_cbx.Items.Clear();
             var country = (string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag;
             List<string> allCities = getCity.getCities(country, true);
             //listOfCitiies_cbx.ItemsSource = allCities;
