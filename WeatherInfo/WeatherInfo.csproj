@@ -83,6 +83,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Tomers.WPF.Localization">
+      <HintPath>Dll\Tomers.WPF.Localization.dll</HintPath>
+    </Reference>
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
@@ -109,6 +112,7 @@
     <Compile Include="Classes\OneInstance.cs" />
     <Compile Include="Classes\Tables.cs" />
     <Compile Include="Classes\translate.cs" />
+    <Compile Include="Classes\XmlLanguageDictionary.cs" />
     <Compile Include="Classes\YandexWeatherAPI.cs" />
     <Compile Include="curWeather.xaml.cs">
       <DependentUpon>curWeather.xaml</DependentUpon>
@@ -208,10 +212,6 @@
     <ProjectReference Include="..\SettingsHandlerInterface\SettingsHandlerInterface.csproj">
       <Project>{5aa7e742-fdc3-4ffa-9336-209943278141}</Project>
       <Name>SettingsHandlerInterface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XMLSettingsHandler\XMLSettingsHandler.csproj">
-      <Project>{6bd9e98d-8644-40d5-b04c-60007e3fd8df}</Project>
-      <Name>XMLSettingsHandler</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

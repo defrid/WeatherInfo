@@ -15,7 +15,7 @@ namespace WeatherInfo.Classes
             icon = _icon;
         }
 
-        public int temp { get; protected set; }
+        public int temp { get; set; }
 
         public string clouds { get; protected set; }
 

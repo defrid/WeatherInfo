@@ -5,21 +5,46 @@
       <country>
         <countryId>RU</countryId>
         <countryRusName>Россия</countryRusName>
-        <countryEngName>Country</countryEngName>
+        <countryEngName>Russia</countryEngName>
       </country>
       <region>
         <regionId>0</regionId>
         <regionName>Region</regionName>
       </region>
       <city>
-        <cityYaId>27549</cityYaId>
-        <cityOWId>0</cityOWId>
-        <cityRusName>Муром</cityRusName>
-        <cityEngName>City</cityEngName>
+        <cityYaId>27786</cityYaId>
+        <cityOWId>479123</cityOWId>
+        <cityRusName>Ульяновск</cityRusName>
+        <cityEngName>ulyanovsk</cityEngName>
+      </city>
+    </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>Россия</countryRusName>
+        <countryEngName>Rossiya</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>37237</cityYaId>
+        <cityOWId>478581</cityOWId>
+        <cityRusName>Урус-Мартан</cityRusName>
+        <cityEngName>urus-martan</cityEngName>
       </city>
     </CitySettings>
   </cities>
-  <format>Days</format>
-  <updatePeriod>60</updatePeriod>
-  <autostart>true</autostart>
+  <format>Weeks</format>
+  <updatePeriod>10</updatePeriod>
+  <autostart>false</autostart>
+  <temperatureUnits>
+    <rusName>Цельсии</rusName>
+    <engName>Celsius</engName>
+  </temperatureUnits>
+  <language>
+    <rusName>Русский</rusName>
+    <engName>Russian</engName>
+  </language>
 </Settings>

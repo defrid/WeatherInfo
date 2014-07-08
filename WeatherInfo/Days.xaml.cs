@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tomers.WPF.Localization;
 using WeatherInfo.Classes;
 
 namespace WeatherInfo
@@ -33,11 +34,7 @@ namespace WeatherInfo
 
         private void Normalize()
         {
-            Dictionary<string, string> dayParts = new Dictionary<string, string>();
-            dayParts.Add("morning", "Утро");
-            dayParts.Add("day", "День");
-            dayParts.Add("evening", "Вечер");
-            dayParts.Add("night", "Ночь");
+            Dictionary<string, string> dayParts = InitDaysDictionary();
 
             for (int i = 0; i < days.Length; i++)
             {
@@ -52,6 +49,16 @@ namespace WeatherInfo
             }
         }
 
+        private Dictionary<string, string> InitDaysDictionary()
+        {
+            var days = new Dictionary<string, string>();
+            days.Add("morning", LanguageDictionary.Current.Translate<string>("morning_mainWin", "Content"));//"Утро"
+            days.Add("day", LanguageDictionary.Current.Translate<string>("day_mainWin", "Content"));//"День"
+            days.Add("evening", LanguageDictionary.Current.Translate<string>("evening_mainWin", "Content"));//"Вечер"
+            days.Add("night", LanguageDictionary.Current.Translate<string>("night_mainWin", "Content"));//"Ночь"
+
+            return days;
+        }
 
         private DockPanel GetWeather(ForecastHour[] forecasts, string date)
         {

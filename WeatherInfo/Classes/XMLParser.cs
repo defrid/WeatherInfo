@@ -23,8 +23,7 @@ namespace WeatherInfo.Classes
         {
             town = _town;
             townId = _townId;
-            string townEng = translate.toEng(town, @"Location/translit.txt");
-            opAPI = new OpenWeatherAPI(townEng);
+            opAPI = new OpenWeatherAPI(town);
             yaAPI = new YandexWeatherAPI(_townId);
             ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
             ci.NumberFormat.CurrencyDecimalSeparator = ".";
