@@ -87,7 +87,8 @@ namespace WeatherInfo
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Проверьте правильность введенных данных. Ошибка: " + ex.Message);
+                var message = LanguageDictionary.Current.Translate<string>("messCheckDataStts", "Content");//"Проверьте правильность введенных данных. Ошибка: "
+                MessageBox.Show(message + ex.Message);
             }
         }
 

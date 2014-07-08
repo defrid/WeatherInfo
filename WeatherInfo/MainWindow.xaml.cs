@@ -84,11 +84,7 @@ namespace WeatherInfo
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
             Tray.SetupTray(this, options, expandShort);
 
-            dayParts = new Dictionary<string, string>();
-            dayParts.Add("morning", LanguageDictionary.Current.Translate<string>("morning_mainWin", "Content"));//"Утро"
-            dayParts.Add("day", LanguageDictionary.Current.Translate<string>("day_mainWin", "Content"));//"День"
-            dayParts.Add("evening", LanguageDictionary.Current.Translate<string>("evening_mainWin", "Content"));//"Вечер"
-            dayParts.Add("night", LanguageDictionary.Current.Translate<string>("night_mainWin", "Content"));//"Ночь"
+            dayParts = InitDaysDictionary();
 
             hasConnection = IsNetworkAvailable();
             this.IsEnabled = false;
@@ -98,6 +94,17 @@ namespace WeatherInfo
                                           : LanguageDictionary.Current.Translate<string>("messUpdateStatusFaildConnection_mainWin", "Content");
             City.Content = message;//(hasConnection) ? "Обновление" : "Нет соединения";
             worker.RunWorkerAsync();
+        }
+
+        private Dictionary<string, string> InitDaysDictionary()
+        {
+            var days = new Dictionary<string, string>();
+            days.Add("morning", LanguageDictionary.Current.Translate<string>("morning_mainWin", "Content"));//"Утро"
+            days.Add("day", LanguageDictionary.Current.Translate<string>("day_mainWin", "Content"));//"День"
+            days.Add("evening", LanguageDictionary.Current.Translate<string>("evening_mainWin", "Content"));//"Вечер"
+            days.Add("night", LanguageDictionary.Current.Translate<string>("night_mainWin", "Content"));//"Ночь"
+
+            return days;
         }
 
 
@@ -449,6 +456,7 @@ namespace WeatherInfo
             if (index < 10)
             {
                 ForecastHour[] fors = dtldForecast[index].hours.ToArray();
+                InitDaysDictionary();
                 int temp = 0;
                 fors = fors.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
                 foreach (var el in fors)
