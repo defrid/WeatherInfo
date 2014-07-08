@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Dictionary EnglishName="English" CultureName="English" Culture="en-US">
 <!-- Settings -->
+	<Value Id="titleFormStts" Title="Settings" />
 	<Value Id="labelListOfCityStts" Content="List of cities" />
 	<Value Id="labelListOfCountryStts" Content="List of countries" />
 	<Value Id="listOfCountries_cbxStts" />
