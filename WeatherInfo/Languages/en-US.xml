@@ -21,12 +21,14 @@
 	<Value Id="about_btnStts" Content="About" />
 	<Value Id="accept_btnStts" Content="OK" />
 	<Value Id="cancel_btnStts" Content="Cancel" />
-	<Value Id="labelSystemStts" Content="System" />Check the correctness of data
+	<Value Id="labelSystemStts" Content="System" />
 	<Value Id="labelLabguageStts" Content="Language" />
 	<Value Id="autostartFlag_chbxStts" Content="Autostart with Windows" />
 	<Value Id="messCheckDataStts" Content="Check the correctness of data. Error: " />
 	<Value Id="incorrectCityStts" Content="Specific city can not be added! Check your input!" />
 	<Value Id="incorrectCountryStts" Content="Country can not be selected! Check your input!" />
+	<Value Id="errorAddInAutostartStts" Content="Failed to add program to startup!" />
+	<Value Id="errorRemoveFromAutostartStts" Content="Failed to remove the program from startup!" />
 <!-- Main Window -->		
 	<Value Id="labelCurMonthYear_mainWin" Content="Month Year" />
 	<Value Id="labelCurCity_mainWin" Content="City" />
@@ -74,4 +76,29 @@ Squad:
 	<Value Id="toolTipTextPreLoad_Tray" Content="WeatherInfo loads data" />
 	<Value Id="toolTipText_Tray" Content="Left mouse button - short forecasts, Right mouse button - to open the menu" />
 	<Value Id="menuExit_Tray" Content="Exit" />
+<!-- LoadSettingsHandler -->
+	<Value Id="getLibrariesFaild_LSH" Content="Path to the working folder not found!" />
+	<Value Id="loadHandlerLibFaild_LSH" Content="Library with handler not found!" />
+	<Value Id="getInstanceSettingsHandler_LSH" Content="Unable to find a single handler!" />
+	<Value Id="faildPathToHandler_LSH" Content="Nonexistent path to the handler!" />
+<!-- class getCity -->
+	<Value Id="locationFolderNotFound_gC" Content="Folder Location not found!" />
+	<Value Id="locationDataFileNotFound_gC" Content="In folder Location not found Data.xml (file with cities)" />		
+<!-- class translate -->
+	<Value Id="dictNotFound_trans" Content="Transliteration dictionary file is not found. Condole." />
+<!-- SettingsHandlerInterface.Classes.Option -->
+	<Value Id="getFormatAttributeFailed_Option" Content="Error retrieving of attribute by format of forecast." />
+	<Value Id="getValueByAttributeFailed_Option" Content="Error retrieving of format of forecast by a given attribute." />
+<!-- XMLSettingsHandler -->
+	<Value Id="writeXmlValidateSettings_SttsHandler" Content="Sent settings are not valid. Changes will not be saved." />
+	<Value Id="writeXml_SttsHandler" Content="Unexpected error. Failed to save the settings. Error text:" />
+	<Value Id="readXmlValidateSettings_SttsHandler" Content="Configuration file is not valid." />
+	<Value Id="readXml_SttsHandler" Content="Unexpected error. Will be loaded default settings, if possible. Error text:" />	
+<!-- XmlLanguageDictionary -->	
+	<Value Id="checkFilePathFailed_XmlLangDict" Content="File not found!" />	
+	<Value Id="invalidRoot_XmlLangDict" Content="Invalid root element. Must be Dictionary." />	
+	<Value Id="uidEmpty_XmlLangDict" Content="Uid must not be null or empty" />
+	<Value Id="uidNotFoundForDict_XmlLangDict" Content="Uid {0} was not found in the {1} dictionary" />	
+	<Value Id="vidNotFoundForUidForDict_XmlLangDict" Content="Vid {0} was not found for Uid {1}, in the {2} dictionary" />
+	<Value Id="failedTransTextInDict_XmlLangDict" Content="Failed to translate text {0} in dictionary {1}:\n{2}" />
 </Dictionary>

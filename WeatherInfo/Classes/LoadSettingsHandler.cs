@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Tomers.WPF.Localization;
 
 namespace WeatherInfo.Classes
 {
@@ -20,7 +21,7 @@ namespace WeatherInfo.Classes
             {
                 if (String.IsNullOrWhiteSpace(dirPath))
                 {
-                    throw new ApplicationException("Путь к рабочей папке не найден!");
+                    throw new ApplicationException(LanguageDictionary.Current.Translate<string>("getLibrariesFailed_LSH", "Content"));
                 }
 
                 var libs = new Dictionary<int, string>();
@@ -86,7 +87,7 @@ namespace WeatherInfo.Classes
             {
                 if (!File.Exists(handlerLibName))
                 {
-                    throw new ApplicationException("Библиотека обработчика " + handlerLibName + " не найдена!");
+                    throw new ApplicationException(handlerLibName + ": " + LanguageDictionary.Current.Translate<string>("loadHandlerLibFailed_LSH", "Content"));
                 }
 
                 var handlerAssembly = Assembly.LoadFrom(handlerLibName);
@@ -112,13 +113,13 @@ namespace WeatherInfo.Classes
                 var libs = GetLibrariesInDirectory(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
                 if (libs == null || libs.Count == 0)
                 {
-                    throw new ApplicationException("Не удалось найти ни одного обработчика!");
+                    throw new ApplicationException(LanguageDictionary.Current.Translate<string>("getInstanceSettingsHandler_LSH", "Content"));
                 }
 
                 var chooseLibName = SelectHandler(libs);
                 if (String.IsNullOrWhiteSpace(chooseLibName))
                 {
-                    throw new ApplicationException("Несуществующий путь к обработчику!");
+                    throw new ApplicationException(LanguageDictionary.Current.Translate<string>("failedPathToHandler_LSH", "Content"));
                 }
 
                 ISettingsHandler handler = LoadHandler(chooseLibName);

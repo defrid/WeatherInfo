@@ -309,7 +309,7 @@ namespace WeatherInfo
                 return;
             }
 
-            //на тот случай, если прогноз получился криво, ибо через некоторое время сервер может нас послать
+            //на тот случай, если прогноз получился криво, ибо через некоторое время сервер может нас послать и дать пустой прогноз
             if ((shrtForecasts.Count == 0 && connectedToOpAPI) || (dtldForecasts.Count == 0 && connectedToYaAPI))
             {
                 Connection.Content = LanguageDictionary.Current.Translate<string>("messUpdateStatusFaildConnection_mainWin", "Content");
@@ -346,7 +346,7 @@ namespace WeatherInfo
                 var icon = WeatherInfo.Classes.OpenWeatherAPI.GetImageById(curForecasts[i].icon);
                 listfortray.Add(new TrayCityData(name, temp, icon));
             }
-            Tray.Update(this, listfortray, needHide);
+            Tray.Update(listfortray, needHide);
         }
 
         private DockPanel GetContainerForCity(string cityName, string monthYear)
@@ -400,7 +400,7 @@ namespace WeatherInfo
             stackButton.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             var button1 = new Button()
                 {
-                    Name = cityName,
+                    Tag = cityName,
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Margin = new Thickness(5, 0, 5, 0),
                     Content = "One Day" //Локализация
@@ -409,7 +409,7 @@ namespace WeatherInfo
             docPanelCityYear.Children.Add(button1);
             var button2 = new Button()
             {
-                Name = cityName,
+                Tag = cityName,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 Margin = new Thickness(5, 0, 5, 0),
                 Content = "Many Day" //Локализация
@@ -418,7 +418,7 @@ namespace WeatherInfo
             docPanelCityYear.Children.Add(button2);
             var button3 = new Button()
             {
-                Name = cityName,
+                Tag = cityName,
                 HorizontalAlignment = HorizontalAlignment.Right,
                 Margin = new Thickness(5, 0, 5, 0),
                 Content = "Cloudly" //Локализация
@@ -431,7 +431,7 @@ namespace WeatherInfo
 
         void OneDay_Click(object sender, RoutedEventArgs e)
         {
-            var name = (sender as Button).Name;
+            var name = (sender as Button).Tag;
             var engName = App.settings.cities.Where(el => el.city.cityRusName == name).FirstOrDefault().city.cityEngName;
             var parser = forecasts.Where(el => el.town == engName).FirstOrDefault();
             var graphic = new WindowGraphics(lang.rus);
@@ -444,7 +444,7 @@ namespace WeatherInfo
 
         void ManyDays_Click(object sender, RoutedEventArgs e)
         {
-            var name = (sender as Button).Name;
+            var name = (sender as Button).Tag;
             var engName = App.settings.cities.Where(el => el.city.cityRusName == name).FirstOrDefault().city.cityEngName;
             var parser = forecasts.Where(el => el.town == engName).FirstOrDefault();
             var graphic = new WindowGraphics(lang.rus);
@@ -455,7 +455,7 @@ namespace WeatherInfo
 
         void Cloudly_Click(object sender, RoutedEventArgs e)
         {
-            var name = (sender as Button).Name;
+            var name = (sender as Button).Tag;
             var engName = App.settings.cities.Where(el => el.city.cityRusName == name).FirstOrDefault().city.cityEngName;
             var parser = forecasts.Where(el => el.town == engName).FirstOrDefault();
             var graphic = new WindowGraphics(lang.rus);
