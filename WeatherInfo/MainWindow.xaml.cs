@@ -705,15 +705,17 @@ namespace WeatherInfo
             new SettingsWindow(this).Show();
         }
 
-        //private void Window_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    switch (e.Key)
-        //    {
-        //        case Key.F1:
-        //            Two_Windows tw = new Two_Windows(this, new MainWindow());
-        //            break;
-        //    }
-        //}
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.F1:
+                    //WindowGraphics wg = new WindowGraphics(lang.eng); //пример создания окна графиков и построения диаграммы
+                    //wg.makeDiagram(dtldForecast.ToList());
+                    //wg.ShowDialog();
+                    break;
+            }
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

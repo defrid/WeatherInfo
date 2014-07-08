@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <country nameRu="Абхазия">
+  <country nameRu="Абхазия" nameEng="Abkhazia" nameShort="AB">
     <city nameRu="Гудаута" nameEng="gudauta" idYa="37187" idOp="614409" />
     <city nameRu="Гагра" nameEng="gagra" idYa="37172" idOp="614622" />
     <city nameRu="Сухум" nameEng="suhum" idYa="37189" idOp="2295065" />
   </country>
-  <country nameRu="Австралия">
+  <country nameRu="Австралия" nameEng="Australia" nameShort="AU">
     <city nameRu="Перт" nameEng="perth" idYa="94610" idOp="2063523" />
     <city nameRu="Ньюкасл" nameEng="newcastle" idYa="94774" idOp="2155472" />
     <city nameRu="Дарвин" nameEng="darwin" idYa="94120" idOp="2073124" />
@@ -19,7 +19,7 @@
     <city nameRu="Таунсвилл" nameEng="townsville" idYa="94294" idOp="2146142" />
     <city nameRu="Хобарт" nameEng="hobart" idYa="94975" idOp="2163355" />
   </country>
-  <country nameRu="Австрия">
+  <country nameRu="Австрия" nameEng="Austria" nameShort="AT">
     <city nameRu="Линц" nameEng="linz" idYa="11204" idOp="160660" />
     <city nameRu="Айзенштадт" nameEng="eisenstadt" idYa="11190" idOp="2780190" />
     <city nameRu="Сан-Антон" nameEng="sankt anton am arlberg" idYa="11110" idOp="2766757" />
@@ -32,27 +32,27 @@
     <city nameRu="Зальцбург" nameEng="salzburg" idYa="11350" idOp="2766824" />
     <city nameRu="Вена" nameEng="vienna" idYa="11036" idOp="4791160" />
   </country>
-  <country nameRu="Азербайджан">
+  <country nameRu="Азербайджан" nameEng="Azerbaijan" nameShort="AZ">
     <city nameRu="Баку" nameEng="baku" idYa="37864" idOp="1492255" />
   </country>
-  <country nameRu="Азорские острова">
+  <country nameRu="Азорские острова" nameEng="Azores" nameShort="?">
     <city nameRu="Понта-Делгада" nameEng="ponta delgada" idYa="8512" idOp="3372783" />
     <city nameRu="Орта" nameEng="horta" idYa="8505" idOp="1519050" />
   </country>
-  <country nameRu="Албания">
+  <country nameRu="Албания" nameEng="Albania" nameShort="AL">
     <city nameRu="Тирана" nameEng="tirana" idYa="13615" idOp="3183875" />
   </country>
-  <country nameRu="Алжир">
+  <country nameRu="Алжир" nameEng="Algeria" nameShort="DZ">
     <city nameRu="Алжир" nameEng="algiers" idYa="60369" idOp="2507480" />
     <city nameRu="Оран" nameEng="oran" idYa="60461" idOp="515109" />
   </country>
-  <country nameRu="Ангилья">
+  <country nameRu="Ангилья" nameEng="Anguilla" nameShort="AI">
     <city nameRu="Ангилья" nameEng="anguilla" idYa="78846" idOp="3183060" />
   </country>
-  <country nameRu="Ангола">
+  <country nameRu="Ангола" nameEng="Angola" nameShort="AO">
     <city nameRu="Луанда" nameEng="loanda" idYa="66160" idOp="3458479" />
   </country>
-  <country nameRu="Андорра">
+  <country nameRu="Андорра" nameEng="Andorra" nameShort="AD">
     <city nameRu="Энкамп" nameEng="encamp" idYa="7727" idOp="3040686" />
     <city nameRu="Эскальдес" nameEng="escaldes" idYa="7730" idOp="3040051" />
     <city nameRu="Пас-де-ла-Каса" nameEng="pas de la casa" idYa="7732" idOp="3039604" />
@@ -60,10 +60,10 @@
     <city nameRu="Ордино" nameEng="ordino" idYa="7735" idOp="3180247" />
     <city nameRu="Андорра-ла-Велья" nameEng="andorra la vella" idYa="7737" idOp="3041563" />
   </country>
-  <country nameRu="Антигуа и Барбуда">
+  <country nameRu="Антигуа и Барбуда" nameEng="Antigua and Barbuda" nameShort="AG">
     <city nameRu="Антигуа" nameEng="antigua" idYa="78862" idOp="2521706" />
   </country>
-  <country nameRu="Аргентина">
+  <country nameRu="Аргентина" nameEng="Argentina" nameShort="AR">
     <city nameRu="Ушуайя" nameEng="ushuaia" idYa="87938" idOp="3833367" />
     <city nameRu="Сальта" nameEng="salta" idYa="87047" idOp="581568" />
     <city nameRu="Мар-дель-Плата" nameEng="mar del plata" idYa="87692" idOp="3430863" />
@@ -71,25 +71,25 @@
     <city nameRu="Кордова" nameEng="cordoba" idYa="87344" idOp="3860259" />
     <city nameRu="Буэнос-Айрес" nameEng="buenos aires" idYa="87582" idOp="3435910" />
   </country>
-  <country nameRu="Армения">
+  <country nameRu="Армения" nameEng="Armenia" nameShort="AM">
     <city nameRu="Раздан" nameEng="hrazdan" idYa="37792" idOp="616629" />
     <city nameRu="Ереван" nameEng="yerevan" idYa="37789" idOp="616052" />
     <city nameRu="Гюмри" nameEng="gyumri" idYa="37686" idOp="616635" />
   </country>
-  <country nameRu="Аруба">
+  <country nameRu="Аруба" nameEng="Aruba" nameShort="AW">
     <city nameRu="Ораньестад" nameEng="oranjestad" idYa="78982" idOp="3577154" />
   </country>
-  <country nameRu="Афганистан">
+  <country nameRu="Афганистан" nameEng="Afghanistan" nameShort="AF">
     <city nameRu="Кабул" nameEng="kabul" idYa="40948" idOp="294615" />
   </country>
-  <country nameRu="Багамские острова">
+  <country nameRu="Багамские острова" nameEng="Bahamas" nameShort="BS">
     <city nameRu="Нассау" nameEng="nassau" idYa="78073" idOp="4713813" />
   </country>
-  <country nameRu="Балеарские острова">
+  <country nameRu="Балеарские острова" nameEng="Baleriansky islands" nameShort="?">
     <city nameRu="Менорка" nameEng="minorca" idYa="8314" idOp="4333548" />
     <city nameRu="Ибица" nameEng="ibiza" idYa="8373" idOp="2516479" />
   </country>
-  <country nameRu="Бангладеш">
+  <country nameRu="Бангладеш" nameEng="Bangladesh" nameShort="BD">
     <city nameRu="Дакка" nameEng="dhaka" idYa="41923" idOp="1273043" />
     <city nameRu="Джессор" nameEng="jessore" idYa="41936" idOp="1336140" />
     <city nameRu="Исхурди" nameEng="ishurdi" idYa="41907" idOp="1185207" />
@@ -100,13 +100,13 @@
     <city nameRu="Силхет" nameEng="sylhet" idYa="41891" idOp="1185099" />
     <city nameRu="Барисал" nameEng="barisal" idYa="41950" idOp="1336137" />
   </country>
-  <country nameRu="Барбадос">
+  <country nameRu="Барбадос" nameEng="Barbados" nameShort="BB">
     <city nameRu="Бриджтаун" nameEng="bridgetown" idYa="78955" idOp="2075807" />
   </country>
-  <country nameRu="Бахрейн">
+  <country nameRu="Бахрейн" nameEng="Bahrain" nameShort="BH">
     <city nameRu="Манама" nameEng="manama" idYa="41151" idOp="1263965" />
   </country>
-  <country nameRu="Беларусь">
+  <country nameRu="Беларусь" nameEng="Belarus" nameShort="BY">
     <city nameRu="Житковичи" nameEng="zhytkavichy" idYa="33027" idOp="618815" />
     <city nameRu="Октябрь" nameEng="oktyabr" idYa="26950" idOp="1501925" />
     <city nameRu="Климовичи" nameEng="klimavichy" idYa="26006" idOp="627202" />
@@ -142,11 +142,11 @@
     <city nameRu="Поставы" nameEng="pastavy" idYa="26026" idOp="623760" />
     <city nameRu="Славгород" nameEng="slavgorod" idYa="26878" idOp="1491706" />
   </country>
-  <country nameRu="Белиз">
+  <country nameRu="Белиз" nameEng="Belize" nameShort="BZ">
     <city nameRu="Белиз" nameEng="belize city" idYa="78584" idOp="3582677" />
     <city nameRu="Сан-Педро" nameEng="san pedro" idYa="78582" idOp="3836772" />
   </country>
-  <country nameRu="Бельгия">
+  <country nameRu="Бельгия" nameEng="Belgium" nameShort="BE">
     <city nameRu="Хасселт" nameEng="hasselt" idYa="6433" idOp="2754779" />
     <city nameRu="Остенде" nameEng="ostend" idYa="6407" idOp="2789786" />
     <city nameRu="Брюгге" nameEng="bruges" idYa="6409" idOp="3029799" />
@@ -157,10 +157,10 @@
     <city nameRu="Бовшен" nameEng="beauvechain" idYa="6458" idOp="2802483" />
     <city nameRu="Гент" nameEng="ghent" idYa="6431" idOp="7259400" />
   </country>
-  <country nameRu="Бенин">
+  <country nameRu="Бенин" nameEng="Benin" nameShort="BJ">
     <city nameRu="Котону" nameEng="cotonou" idYa="65344" idOp="2394819" />
   </country>
-  <country nameRu="Болгария">
+  <country nameRu="Болгария" nameEng="Bulgaria" nameShort="BG">
     <city nameRu="Плевен" nameEng="pleven" idYa="15745" idOp="728203" />
     <city nameRu="Сопот" nameEng="sopot" idYa="15746" idOp="666435" />
     <city nameRu="Пловдив" nameEng="plovdiv" idYa="15625" idOp="728193" />
@@ -187,38 +187,38 @@
     <city nameRu="Габрово" nameEng="gabrovo" idYa="15743" idOp="731549" />
     <city nameRu="Свиленград" nameEng="svilengrad" idYa="15741" idOp="726546" />
   </country>
-  <country nameRu="Боливия">
+  <country nameRu="Боливия" nameEng="Bolivia" nameShort="BO">
     <city nameRu="Ла-Пас" nameEng="la paz" idYa="85201" idOp="3432079" />
     <city nameRu="Копакабана" nameEng="copacabana" idYa="85202" idOp="3685949" />
     <city nameRu="Сукре" nameEng="sucre" idYa="85283" idOp="3667728" />
     <city nameRu="Санта-Крус" nameEng="santa cruz de la sierra" idYa="85245" idOp="3904906" />
     <city nameRu="Тринидад" nameEng="trinidad" idYa="85154" idOp="3534915" />
   </country>
-  <country nameRu="Босния и Герцеговина">
+  <country nameRu="Босния и Герцеговина" nameEng="Bosnia and Herzegovina" nameShort="BA">
     <city nameRu="Ливно" nameEng="livno" idYa="14640" idOp="3196410" />
     <city nameRu="Сараево" nameEng="sarajevo" idYa="14654" idOp="3191281" />
   </country>
-  <country nameRu="Ботсвана">
+  <country nameRu="Ботсвана" nameEng="Botswana" nameShort="BW">
     <city nameRu="Габороне" nameEng="gaborone" idYa="68244" idOp="933773" />
   </country>
-  <country nameRu="Бразилия">
+  <country nameRu="Бразилия" nameEng="Brazil" nameShort="BR">
     <city nameRu="Рио-Де-Жанейро" nameEng="rio de janeiro" idYa="83746" idOp="3451190" />
     <city nameRu="Сан-Паулу" nameEng="sao paulo" idYa="83780" idOp="3448439" />
     <city nameRu="Бразилиа" nameEng="brasilia" idYa="83378" idOp="3469058" />
     <city nameRu="Манаус" nameEng="manaus" idYa="82332" idOp="3663517" />
     <city nameRu="Сальвадор" nameEng="salvador" idYa="83229" idOp="3836564" />
   </country>
-  <country nameRu="Бруней">
+  <country nameRu="Бруней" nameEng="Brunei Darussalam" nameShort="BN">
     <city nameRu="Куала-Белаит" nameEng="kuala belait" idYa="96323" idOp="1820491" />
     <city nameRu="Бандар-Сери-Бегаван" nameEng="bandar seri begawan" idYa="96315" idOp="1820906" />
   </country>
-  <country nameRu="Бурунди">
+  <country nameRu="Бурунди" nameEng="Burundi" nameShort="BI">
     <city nameRu="Бужумбура" nameEng="bujumbura" idYa="64390" idOp="425378" />
   </country>
-  <country nameRu="Бутан">
+  <country nameRu="Бутан" nameEng="Bhutan" nameShort="BT">
     <city nameRu="Тхимпху" nameEng="thimphu" idYa="42300" idOp="1252416" />
   </country>
-  <country nameRu="Великобритания">
+  <country nameRu="Великобритания" nameEng="United Kingdom" nameShort="UK">
     <city nameRu="Глазго" nameEng="glasgow" idYa="3140" idOp="5654320" />
     <city nameRu="Манчестер" nameEng="manchester" idYa="3334" idOp="5000598" />
     <city nameRu="Лондон" nameEng="london" idYa="3772" idOp="1006984" />
@@ -233,7 +233,7 @@
     <city nameRu="Ливерпуль" nameEng="liverpool" idYa="3932" idOp="2159851" />
     <city nameRu="Оксфорд" nameEng="oxford" idYa="3933" idOp="4081914" />
   </country>
-  <country nameRu="Венгрия">
+  <country nameRu="Венгрия" nameEng="Hungary" nameShort="HU">
     <city nameRu="Тата" nameEng="tata" idYa="12836" idOp="1490003" />
     <city nameRu="Эгер" nameEng="eger" idYa="12870" idOp="4912474" />
     <city nameRu="Будапешт" nameEng="budapest" idYa="12843" idOp="3054643" />
@@ -241,17 +241,17 @@
     <city nameRu="Кестхей" nameEng="keszthely" idYa="12920" idOp="3050212" />
     <city nameRu="Папа" nameEng="papa" idYa="12825" idOp="1260417" />
   </country>
-  <country nameRu="Венесуэла">
+  <country nameRu="Венесуэла" nameEng="Venezuela" nameShort="VE">
     <city nameRu="Порламар (остров Маргарита)" nameEng="porlamar" idYa="80421" idOp="3629965" />
     <city nameRu="Каракас" nameEng="caracas" idYa="80415" idOp="3646738" />
   </country>
-  <country nameRu="Восточное Самоа">
+  <country nameRu="Восточное Самоа" nameEng="East Samoa" nameShort="?">
     <city nameRu="Паго-Паго" nameEng="pago pago" idYa="91765" idOp="5881576" />
   </country>
-  <country nameRu="Восточный Тимор">
+  <country nameRu="Восточный Тимор" nameEng="East Timor" nameShort="TP">
     <city nameRu="Дили" nameEng="dili" idYa="97390" idOp="616752" />
   </country>
-  <country nameRu="Вьетнам">
+  <country nameRu="Вьетнам" nameEng="Vietnam" nameShort="VN">
     <city nameRu="Хошимин" nameEng="ho chi minh" idYa="48900" idOp="1566083" />
     <city nameRu="Камау" nameEng="ca mau" idYa="48914" idOp="1586443" />
     <city nameRu="Сапа (Шапа)" nameEng="sa pa" idYa="48804" idOp="5435059" />
@@ -261,36 +261,36 @@
     <city nameRu="Винь" nameEng="vinh" idYa="48845" idOp="3445014" />
     <city nameRu="Фантхьет" nameEng="phan thiet" idYa="48887" idOp="1571058" />
   </country>
-  <country nameRu="Габон">
+  <country nameRu="Габон" nameEng="Gabon" nameShort="GA">
     <city nameRu="Либревиль" nameEng="libreville" idYa="64500" idOp="2399697" />
   </country>
-  <country nameRu="Гаити">
+  <country nameRu="Гаити" nameEng="Haiti" nameShort="HT">
     <city nameRu="Порт-о-Пренс" nameEng="port-au-prince" idYa="78439" idOp="3718426" />
   </country>
-  <country nameRu="Гайана">
+  <country nameRu="Гайана" nameEng="Guyana" nameShort="GY">
     <city nameRu="Джорджтаун" nameEng="georgetown" idYa="81001" idOp="4292686" />
   </country>
-  <country nameRu="Гамбия">
+  <country nameRu="Гамбия" nameEng="Gambia" nameShort="GM">
     <city nameRu="Банжул" nameEng="banjul" idYa="61701" idOp="2413876" />
   </country>
-  <country nameRu="Гана">
+  <country nameRu="Гана" nameEng="Ghana" nameShort="GH">
     <city nameRu="Аккра" nameEng="accra" idYa="65472" idOp="2306104" />
   </country>
-  <country nameRu="Гваделупа">
+  <country nameRu="Гваделупа" nameEng="Guadeloupe" nameShort="GP">
     <city nameRu="Пуэнт-а-Питр" nameEng="pointe-a-pitre" idYa="78897" idOp="3578599" />
     <city nameRu="Густавия" nameEng="gustavia" idYa="78894" idOp="3579132" />
   </country>
-  <country nameRu="Гватемала">
+  <country nameRu="Гватемала" nameEng="Guatemala" nameShort="GT">
     <city nameRu="Гватемала Сити" nameEng="guatemala city" idYa="78641" idOp="3598132" />
     <city nameRu="Флорес" nameEng="flores" idYa="78615" idOp="3399539" />
   </country>
-  <country nameRu="Гвинея">
+  <country nameRu="Гвинея" nameEng="Guinea" nameShort="GN">
     <city nameRu="Конакри" nameEng="conakry" idYa="61832" idOp="2422465" />
   </country>
-  <country nameRu="Гвинея-Бисау">
+  <country nameRu="Гвинея-Бисау" nameEng="Guinea-Bissau" nameShort="GW">
     <city nameRu="Бисау" nameEng="bissau" idYa="61766" idOp="1275441" />
   </country>
-  <country nameRu="Германия">
+  <country nameRu="Германия" nameEng="Germany" nameShort="DE">
     <city nameRu="Потсдам" nameEng="potsdam" idYa="10379" idOp="5132103" />
     <city nameRu="Франкфурт-на-Майне" nameEng="frankfurt am main" idYa="10637" idOp="2925533" />
     <city nameRu="Кельн" nameEng="cologne" idYa="10513" idOp="3178287" />
@@ -312,45 +312,45 @@
     <city nameRu="Дрезден" nameEng="dresden" idYa="10486" idOp="4619013" />
     <city nameRu="Берген" nameEng="bergen" idYa="10238" idOp="5095611" />
   </country>
-  <country nameRu="Гибралтар">
+  <country nameRu="Гибралтар" nameEng="Gibraltar" nameShort="GI">
     <city nameRu="Гибралтар" nameEng="gibraltar" idYa="8495" idOp="2411585" />
   </country>
-  <country nameRu="Гондурас">
+  <country nameRu="Гондурас" nameEng="Honduras" nameShort="HN">
     <city nameRu="Тегусигальпа" nameEng="tegucigalpa" idYa="78720" idOp="3600949" />
   </country>
-  <country nameRu="Гренландия">
+  <country nameRu="Гренландия" nameEng="Greenland" nameShort="GL">
     <city nameRu="Нуук (Готхоб)" nameEng="nuuk" idYa="4250" idOp="3421319" />
   </country>
-  <country nameRu="Греция">
+  <country nameRu="Греция" nameEng="Greece" nameShort="GR">
     <city nameRu="Керкира (Корфу)" nameEng="kerkyra" idYa="16641" idOp="2463679" />
     <city nameRu="Кастория" nameEng="kastoria" idYa="16614" idOp="735927" />
     <city nameRu="Парос" nameEng="paros" idYa="16748" idOp="255721" />
     <city nameRu="Афины" nameEng="athens" idYa="16716" idOp="4180386" />
     <city nameRu="Салоники" nameEng="thessaloniki" idYa="16666" idOp="734077" />
   </country>
-  <country nameRu="Грузия">
+  <country nameRu="Грузия" nameEng="Georgia" nameShort="GE">
     <city nameRu="Кутаиси" nameEng="kutaisi" idYa="37395" idOp="613607" />
     <city nameRu="Батуми" nameEng="batumi" idYa="37484" idOp="615532" />
     <city nameRu="Тбилиси" nameEng="tbilisi" idYa="37549" idOp="611717" />
   </country>
-  <country nameRu="Дания">
+  <country nameRu="Дания" nameEng="Denmark" nameShort="DK">
     <city nameRu="Оденсе" nameEng="odense" idYa="6120" idOp="2884344" />
     <city nameRu="Варде" nameEng="varde" idYa="6195" idOp="542334" />
     <city nameRu="Копенгаген" nameEng="copenhagen" idYa="6180" idOp="2618425" />
   </country>
-  <country nameRu="Демократическая республика Конго">
+  <country nameRu="Демократическая республика Конго" nameEng="Congo" nameShort="CD">
     <city nameRu="Киншаса" nameEng="kinshasa" idYa="64210" idOp="2314302" />
   </country>
-  <country nameRu="Джибути">
+  <country nameRu="Джибути" nameEng="Djibouti" nameShort="DJ">
     <city nameRu="Джибути" nameEng="djibouti" idYa="63125" idOp="223817" />
   </country>
-  <country nameRu="Доминика">
+  <country nameRu="Доминика" nameEng="Dominica" nameShort="DM">
     <city nameRu="Розо" nameEng="roseau" idYa="78907" idOp="5043752" />
   </country>
-  <country nameRu="Доминиканская Республика">
+  <country nameRu="Доминиканская Республика" nameEng="Dominican Republic" nameShort="DO">
     <city nameRu="Санто-Доминго" nameEng="santo domingo" idYa="78486" idOp="3536640" />
   </country>
-  <country nameRu="Египет">
+  <country nameRu="Египет" nameEng="Egypt" nameShort="EG">
     <city nameRu="Марса-Алам" nameEng="marsa alam" idYa="62467" idOp="352736" />
     <city nameRu="Луксор" nameEng="luxor" idYa="62405" idOp="360502" />
     <city nameRu="Асуан" nameEng="aswan" idYa="62414" idOp="1257800" />
@@ -358,20 +358,20 @@
     <city nameRu="Таба" nameEng="taba" idYa="62457" idOp="540042" />
     <city nameRu="Каир" nameEng="cairo" idYa="62366" idOp="4185632" />
   </country>
-  <country nameRu="Замбия">
+  <country nameRu="Замбия" nameEng="Zambia" nameShort="ZM">
     <city nameRu="Лусака" nameEng="lusaka" idYa="67665" idOp="909137" />
     <city nameRu="Ливингстон" nameEng="livingstone" idYa="67743" idOp="910111" />
   </country>
-  <country nameRu="Зимбабве">
+  <country nameRu="Зимбабве" nameEng="Zimbabwe" nameShort="ZW">
     <city nameRu="Кариба" nameEng="kariba" idYa="67761" idOp="889215" />
     <city nameRu="Хараре" nameEng="harare" idYa="67775" idOp="890299" />
   </country>
-  <country nameRu="Израиль">
+  <country nameRu="Израиль" nameEng="Israel" nameShort="IL">
     <city nameRu="Иерусалим" nameEng="jerusalem" idYa="40290" idOp="281184" />
     <city nameRu="Тель-Авив" nameEng="tel aviv" idYa="40180" idOp="293397" />
     <city nameRu="Хайфа" nameEng="haifa" idYa="40155" idOp="294801" />
   </country>
-  <country nameRu="Индия">
+  <country nameRu="Индия" nameEng="India" nameShort="IN">
     <city nameRu="Лакнау" nameEng="lucknow" idYa="42369" idOp="1264733" />
     <city nameRu="Бхагалпур" nameEng="bhagalpur" idYa="42498" idOp="1276300" />
     <city nameRu="Джхасугуда" nameEng="jharsuguda" idYa="42886" idOp="1268977" />
@@ -417,7 +417,7 @@
     <city nameRu="Райпур" nameEng="raipur" idYa="42874" idOp="1258972" />
     <city nameRu="Горанкпур" nameEng="gorakhpur" idYa="42379" idOp="1270927" />
   </country>
-  <country nameRu="Индонезия">
+  <country nameRu="Индонезия" nameEng="Indonesia" nameShort="ID">
     <city nameRu="Банда-Ачех" nameEng="banda aceh" idYa="96001" idOp="1215502" />
     <city nameRu="Лхоксемаве" nameEng="lhokseumawe" idYa="96009" idOp="1214658" />
     <city nameRu="Энде" nameEng="ende" idYa="97290" idOp="527581" />
@@ -445,28 +445,28 @@
     <city nameRu="Амбон" nameEng="ambon" idYa="97724" idOp="3004774" />
     <city nameRu="Таракан" nameEng="tarakan" idYa="96509" idOp="1624725" />
   </country>
-  <country nameRu="Иордания">
+  <country nameRu="Иордания" nameEng="Jordan" nameShort="JO">
     <city nameRu="Петра" nameEng="petra" idYa="40297" idOp="867005" />
     <city nameRu="Амман" nameEng="amman" idYa="40270" idOp="2648603" />
     <city nameRu="Акаба" nameEng="aqaba" idYa="40342" idOp="250774" />
   </country>
-  <country nameRu="Ирак">
+  <country nameRu="Ирак" nameEng="Iraq" nameShort="IQ">
     <city nameRu="Басра" nameEng="basra" idYa="40689" idOp="99532" />
     <city nameRu="Багдад" nameEng="baghdad" idYa="40650" idOp="98182" />
   </country>
-  <country nameRu="Иран">
+  <country nameRu="Иран" nameEng="Iran" nameShort="IR">
     <city nameRu="Шираз" nameEng="shiraz" idYa="40848" idOp="115019" />
     <city nameRu="Керман" nameEng="kerman" idYa="40841" idOp="712576" />
     <city nameRu="Тегеран" nameEng="tehran" idYa="40754" idOp="112931" />
     <city nameRu="Семнан" nameEng="semnan" idYa="40757" idOp="116402" />
   </country>
-  <country nameRu="Ирландия">
+  <country nameRu="Ирландия" nameEng="Ireland" nameShort="IE">
     <city nameRu="Дублин" nameEng="dublin" idYa="3969" idOp="5344157" />
     <city nameRu="Корк" nameEng="cork" idYa="3955" idOp="2965140" />
     <city nameRu="Бирр" nameEng="birr" idYa="3965" idOp="2661493" />
     <city nameRu="Лимерик" nameEng="limerick" idYa="3961" idOp="5198034" />
   </country>
-  <country nameRu="Испания">
+  <country nameRu="Испания" nameEng="Spain" nameShort="ES">
     <city nameRu="Картахена" nameEng="cartagena" idYa="8961" idOp="3896433" />
     <city nameRu="Гвадалахара" nameEng="guadalajara" idYa="8226" idOp="4005539" />
     <city nameRu="Марбелья" nameEng="marbella" idYa="8963" idOp="2514169" />
@@ -482,7 +482,7 @@
     <city nameRu="Мадрид" nameEng="madrid" idYa="8221" idOp="4865871" />
     <city nameRu="Севилья" nameEng="seville" idYa="8391" idOp="5171681" />
   </country>
-  <country nameRu="Италия">
+  <country nameRu="Италия" nameEng="Italy" nameShort="IT">
     <city nameRu="Бормио" nameEng="bormio" idYa="16009" idOp="3181730" />
     <city nameRu="Болонья" nameEng="bologna" idYa="16140" idOp="3181928" />
     <city nameRu="Бари" nameEng="bari" idYa="16270" idOp="2024626" />
@@ -508,14 +508,14 @@
     <city nameRu="Рим" nameEng="rome" idYa="16242" idOp="146770" />
     <city nameRu="Генуя" nameEng="genoa" idYa="16120" idOp="4833348" />
   </country>
-  <country nameRu="Йемен">
+  <country nameRu="Йемен" nameEng="Yemen" nameShort="YE">
     <city nameRu="Аден" nameEng="aden" idYa="41480" idOp="3446420" />
     <city nameRu="Сана" nameEng="sanaa" idYa="41404" idOp="71137" />
   </country>
-  <country nameRu="Кабо-Верде">
+  <country nameRu="Кабо-Верде" nameEng="Cape Verde" nameShort="CV">
     <city nameRu="Прая" nameEng="praia" idYa="8589" idOp="3452465" />
   </country>
-  <country nameRu="Казахстан">
+  <country nameRu="Казахстан" nameEng="Kazakhstan" nameShort="KZ">
     <city nameRu="Алматы" nameEng="almaty" idYa="36870" idOp="1526384" />
     <city nameRu="Петропавловск" nameEng="petropavlovsk" idYa="28679" idOp="510171" />
     <city nameRu="Аркалык" nameEng="arkalyk" idYa="35363" idOp="1526193" />
@@ -532,14 +532,14 @@
     <city nameRu="Темир" nameEng="temir" idYa="35426" idOp="553099" />
     <city nameRu="Астана" nameEng="astana" idYa="35188" idOp="1526273" />
   </country>
-  <country nameRu="Каймановы острова">
+  <country nameRu="Каймановы острова" nameEng="Cayman Islands" nameShort="KY">
     <city nameRu="Джорджтаун" nameEng="george town" idYa="78383" idOp="2165718" />
   </country>
-  <country nameRu="Камбоджа">
+  <country nameRu="Камбоджа" nameEng="Cambodia" nameShort="KH">
     <city nameRu="Сиануквиль" nameEng="sihanoukville" idYa="48983" idOp="1831142" />
     <city nameRu="Пномпень" nameEng="phnom penh" idYa="48991" idOp="1821306" />
   </country>
-  <country nameRu="Канада">
+  <country nameRu="Канада" nameEng="Canada" nameShort="CA">
     <city nameRu="Йеллоунайф" nameEng="yellowknife" idYa="71936" idOp="6185377" />
     <city nameRu="Вистлер" nameEng="whistler" idYa="71687" idOp="6180144" />
     <city nameRu="Форт-Нельсон" nameEng="fort nelson" idYa="71945" idOp="5955902" />
@@ -566,20 +566,20 @@
     <city nameRu="Эдмонтон" nameEng="edmonton" idYa="71123" idOp="5946768" />
     <city nameRu="Виктория" nameEng="victoria" idYa="71799" idOp="3634922" />
   </country>
-  <country nameRu="Канарские острова">
+  <country nameRu="Канарские острова" nameEng="Canary Islands" nameShort="?">
     <city nameRu="Тенерифе" nameEng="tenerife" idYa="8212" idOp="2511174" />
     <city nameRu="Санта-Крус" nameEng="santa cruz de tenerife" idYa="60020" idOp="2511174" />
   </country>
-  <country nameRu="Катар">
+  <country nameRu="Катар" nameEng="Qatar" nameShort="QA">
     <city nameRu="Доха" nameEng="doha" idYa="41170" idOp="290030" />
   </country>
-  <country nameRu="Кения">
+  <country nameRu="Кения" nameEng="Kenya" nameShort="KE">
     <city nameRu="Момбаса" nameEng="mombasa" idYa="63820" idOp="186301" />
     <city nameRu="Накуру" nameEng="nakuru" idYa="63714" idOp="184622" />
     <city nameRu="Ламу" nameEng="lamu" idYa="63772" idOp="7180617" />
     <city nameRu="Найроби" nameEng="nairobi" idYa="63740" idOp="184745" />
   </country>
-  <country nameRu="Кипр">
+  <country nameRu="Кипр" nameEng="Cyprus" nameShort="CY">
     <city nameRu="Пафос" nameEng="paphos" idYa="17600" idOp="146214" />
     <city nameRu="Никосия" nameEng="nicosia" idYa="17602" idOp="146268" />
     <city nameRu="Айя-Напа" nameEng="ayia napa" idYa="17603" idOp="146748" />
@@ -587,7 +587,7 @@
     <city nameRu="Лимасол" nameEng="limassol" idYa="17608" idOp="146384" />
     <city nameRu="Ларнака" nameEng="larnaca" idYa="17609" idOp="146400" />
   </country>
-  <country nameRu="Киргизия">
+  <country nameRu="Киргизия" nameEng="Kyrgyzstan" nameShort="?">
     <city nameRu="Чолпон-Ата" nameEng="cholpon-ata" idYa="36934" idOp="1528512" />
     <city nameRu="Талас" nameEng="talas" idYa="38345" idOp="299900" />
     <city nameRu="Нарын" nameEng="naryn" idYa="36974" idOp="1527592" />
@@ -596,10 +596,10 @@
     <city nameRu="Ош" nameEng="osh" idYa="38615" idOp="465291" />
     <city nameRu="Балыкчи (Иссык-Куль)" nameEng="balykchy" idYa="36927" idOp="1527004" />
   </country>
-  <country nameRu="Кирибати">
+  <country nameRu="Кирибати" nameEng="Kiribati" nameShort="KI">
     <city nameRu="Байрики" nameEng="bairiki" idYa="91610" idOp="7601762" />
   </country>
-  <country nameRu="Китай">
+  <country nameRu="Китай" nameEng="China" nameShort="CN">
     <city nameRu="Синин, пров. Цинхай" nameEng="xining" idYa="52866" idOp="1788852" />
     <city nameRu="Синань, пров. Гуандун" nameEng="xinan" idYa="57731" idOp="3391130" />
     <city nameRu="Ухань, пров. Хубэй" nameEng="wuhan" idYa="57494" idOp="1791247" />
@@ -651,36 +651,36 @@
     <city nameRu="Бейхай, Гуанси-Чжуанский авт. р." nameEng="beihai" idYa="59644" idOp="1816705" />
     <city nameRu="Тяньцзинь" nameEng="tianjin" idYa="54527" idOp="1792947" />
   </country>
-  <country nameRu="Кокосовые острова">
+  <country nameRu="Кокосовые острова" nameEng="Cocos Islands" nameShort="?">
     <city nameRu="Кокосовые острова (Килинг)" nameEng="west island" idYa="96996" idOp="7304591" />
   </country>
-  <country nameRu="Колумбия">
+  <country nameRu="Колумбия" nameEng="Colombia" nameShort="CO">
     <city nameRu="Богота" nameEng="bogota" idYa="80222" idOp="5095808" />
   </country>
-  <country nameRu="Коморские острова">
+  <country nameRu="Коморские острова" nameEng="Comoros" nameShort="KM">
     <city nameRu="Морони" nameEng="moroni" idYa="67001" idOp="921772" />
   </country>
-  <country nameRu="Коста-Рика">
+  <country nameRu="Коста-Рика" nameEng="Costa Rica" nameShort="CR">
     <city nameRu="Пунтаренас" nameEng="puntarenas" idYa="78760" idOp="3622228" />
     <city nameRu="Сан-Хосе" nameEng="san jose" idYa="78762" idOp="3628142" />
     <city nameRu="Пуэрто-Лимон" nameEng="puerto limon" idYa="78767" idOp="3622247" />
     <city nameRu="Либериа" nameEng="liberia" idYa="78774" idOp="3623076" />
   </country>
-  <country nameRu="Кот-д'Ивуар">
+  <country nameRu="Кот-д'Ивуар" nameEng="Cote dIvoire" nameShort="CI">
     <city nameRu="Абиджан" nameEng="abidjan" idYa="65578" idOp="2293538" />
   </country>
-  <country nameRu="Куба">
+  <country nameRu="Куба" nameEng="Cuba" nameShort="CU">
     <city nameRu="Сантьяго-де-Куба" nameEng="santiago de cuba" idYa="78264" idOp="3536729" />
     <city nameRu="Тринидад" nameEng="trinidad" idYa="78337" idOp="3534915" />
     <city nameRu="Варадеро" nameEng="varadero" idYa="78229" idOp="3534632" />
     <city nameRu="Гавана" nameEng="havana" idYa="78325" idOp="3553478" />
   </country>
-  <country nameRu="Лаос">
+  <country nameRu="Лаос" nameEng="Lao" nameShort="LA">
     <city nameRu="Пхонсаван" nameEng="phonsavan" idYa="48934" idOp="1952156" />
     <city nameRu="Вьентьян" nameEng="vientiane" idYa="48940" idOp="1651944" />
     <city nameRu="Паксе (пров. Чампасак)" nameEng="pakxe" idYa="48955" idOp="1654379" />
   </country>
-  <country nameRu="Латвия">
+  <country nameRu="Латвия" nameEng="Latvia" nameShort="LV">
     <city nameRu="Ливаны" nameEng="livani" idYa="26437" idOp="457860" />
     <city nameRu="Вентспилс" nameEng="ventspils" idYa="26314" idOp="454310" />
     <city nameRu="Резекне" nameEng="rezekne" idYa="26446" idOp="456202" />
@@ -689,23 +689,23 @@
     <city nameRu="Краслава" nameEng="kraslava" idYa="26550" idOp="458623" />
     <city nameRu="Цесис" nameEng="cesis" idYa="26335" idOp="460570" />
   </country>
-  <country nameRu="Лесото">
+  <country nameRu="Лесото" nameEng="Lesotho" nameShort="LS">
     <city nameRu="Масеру" nameEng="maseru" idYa="68454" idOp="932505" />
   </country>
-  <country nameRu="Либерия">
+  <country nameRu="Либерия" nameEng="Liberia" nameShort="LR">
     <city nameRu="Монровия" nameEng="monrovia" idYa="65602" idOp="5374175" />
   </country>
-  <country nameRu="Ливан">
+  <country nameRu="Ливан" nameEng="Lebanon" nameShort="LB">
     <city nameRu="Баальбек" nameEng="baalbek" idYa="40112" idOp="277130" />
     <city nameRu="Бейрут" nameEng="beirut" idYa="40100" idOp="276781" />
     <city nameRu="Триполи" nameEng="tripoli" idYa="40103" idOp="252601" />
   </country>
-  <country nameRu="Ливия">
+  <country nameRu="Ливия" nameEng="Libya" nameShort="LY">
     <city nameRu="Себха" nameEng="sabha" idYa="62124" idOp="2212775" />
     <city nameRu="Триполи" nameEng="tripoli" idYa="62010" idOp="252601" />
     <city nameRu="Бенгази" nameEng="benghazi" idYa="62052" idOp="88319" />
   </country>
-  <country nameRu="Литва">
+  <country nameRu="Литва" nameEng="Lithuania" nameShort="LT">
     <city nameRu="Каунас" nameEng="kaunas" idYa="26629" idOp="598316" />
     <city nameRu="Тракай" nameEng="trakai" idYa="26729" idOp="593871" />
     <city nameRu="Вильнюс" nameEng="vilnius" idYa="26730" idOp="593116" />
@@ -714,25 +714,25 @@
     <city nameRu="Паланга" nameEng="palanga" idYa="26510" idOp="596238" />
     <city nameRu="Друскининкай" nameEng="druskininkai" idYa="26735" idOp="599757" />
   </country>
-  <country nameRu="Лихтенштейн">
+  <country nameRu="Лихтенштейн" nameEng="Liechtenstein" nameShort="LI">
     <city nameRu="Вадуц" nameEng="vaduz" idYa="6990" idOp="3042030" />
   </country>
-  <country nameRu="Люксембург">
+  <country nameRu="Люксембург" nameEng="Luxembourg" nameShort="LU">
     <city nameRu="Люксембург" nameEng="luxembourg" idYa="6590" idOp="2960316" />
   </country>
-  <country nameRu="Мавритания">
+  <country nameRu="Мавритания" nameEng="Mauritania" nameShort="MR">
     <city nameRu="Нуакшот" nameEng="nouakchott" idYa="61442" idOp="2377450" />
   </country>
-  <country nameRu="Мадагаскар">
+  <country nameRu="Мадагаскар" nameEng="Madagascar" nameShort="MG">
     <city nameRu="Антананариву" nameEng="antananarivo" idYa="67083" idOp="1070940" />
   </country>
-  <country nameRu="Македония">
+  <country nameRu="Македония" nameEng="Macedonia" nameShort="MK">
     <city nameRu="Скопье" nameEng="skopje" idYa="13586" idOp="785842" />
   </country>
-  <country nameRu="Малави">
+  <country nameRu="Малави" nameEng="Malawi" nameShort="MW">
     <city nameRu="Лилонгве" nameEng="lilongwe" idYa="67586" idOp="927967" />
   </country>
-  <country nameRu="Малайзия">
+  <country nameRu="Малайзия" nameEng="Malaysia" nameShort="MY">
     <city nameRu="Сибу" nameEng="sibu" idYa="96421" idOp="691097" />
     <city nameRu="Субанг" nameEng="subang" idYa="48647" idOp="1771023" />
     <city nameRu="Куала-Лумпур" nameEng="kuala lumpur" idYa="48648" idOp="1735161" />
@@ -740,26 +740,26 @@
     <city nameRu="Куантан" nameEng="kuantan" idYa="48657" idOp="1735227" />
     <city nameRu="Кудат" nameEng="kudat" idYa="96477" idOp="2112454" />
   </country>
-  <country nameRu="Мали">
+  <country nameRu="Мали" nameEng="Mali" nameShort="ML">
     <city nameRu="Бамако" nameEng="bamako" idYa="61291" idOp="2460596" />
   </country>
-  <country nameRu="Мальдивские острова">
+  <country nameRu="Мальдивские острова" nameEng="Maldives" nameShort="?">
     <city nameRu="Мале" nameEng="male" idYa="43555" idOp="1264115" />
   </country>
-  <country nameRu="Мальта">
+  <country nameRu="Мальта" nameEng="Malta" nameShort="MT">
     <city nameRu="Валлетта" nameEng="valletta" idYa="16597" idOp="2562305" />
   </country>
-  <country nameRu="Марокко">
+  <country nameRu="Марокко" nameEng="Morocco" nameShort="MA">
     <city nameRu="Танжер" nameEng="tangier" idYa="60101" idOp="2530335" />
     <city nameRu="Рабат" nameEng="rabat" idYa="60135" idOp="2562620" />
     <city nameRu="Фес" nameEng="fes" idYa="60141" idOp="4386419" />
     <city nameRu="Касабланка" nameEng="casablanca" idYa="60155" idOp="2553604" />
     <city nameRu="Агадир" nameEng="agadir" idYa="60252" idOp="683914" />
   </country>
-  <country nameRu="Маршалловы Острова">
+  <country nameRu="Маршалловы Острова" nameEng="Marshall Islands" nameShort="?">
     <city nameRu="Маджуро" nameEng="majuro" idYa="91376" idOp="2113779" />
   </country>
-  <country nameRu="Мексика">
+  <country nameRu="Мексика" nameEng="Mexico" nameShort="MX">
     <city nameRu="Чиуауа" nameEng="chihuahua" idYa="76225" idOp="4014338" />
     <city nameRu="Гвадалахара" nameEng="guadalajara" idYa="76612" idOp="4005539" />
     <city nameRu="Акапулько" nameEng="acapulco" idYa="76805" idOp="3533462" />
@@ -770,35 +770,35 @@
     <city nameRu="Сан-Лукас" nameEng="cabo san lucas" idYa="76518" idOp="3985710" />
     <city nameRu="Канкун" nameEng="cancun" idYa="76595" idOp="3531673" />
   </country>
-  <country nameRu="Мелилья">
+  <country nameRu="Мелилья" nameEng="Melilla" nameShort="?">
     <city nameRu="Мелилья" nameEng="melilla" idYa="60338" idOp="2513947" />
   </country>
-  <country nameRu="Микронезия">
+  <country nameRu="Микронезия" nameEng="Micronesia" nameShort="FM">
     <city nameRu="Паликир" nameEng="palikir" idYa="91348" idOp="2081986" />
   </country>
-  <country nameRu="Мозамбик">
+  <country nameRu="Мозамбик" nameEng="Mozambique" nameShort="MZ">
     <city nameRu="Мапуту" nameEng="maputo" idYa="67341" idOp="1040652" />
   </country>
-  <country nameRu="Молдова">
+  <country nameRu="Молдова" nameEng="Moldova" nameShort="MD">
     <city nameRu="Бендеры (Тигина)" nameEng="bender" idYa="33828" idOp="618577" />
     <city nameRu="Тирасполь" nameEng="tiraspol" idYa="33829" idOp="617239" />
     <city nameRu="Сороки" nameEng="soroki" idYa="33678" idOp="1491378" />
     <city nameRu="Комрат" nameEng="comrat" idYa="33883" idOp="618405" />
   </country>
-  <country nameRu="Монако">
+  <country nameRu="Монако" nameEng="Monaco" nameShort="MC">
     <city nameRu="Монако" nameEng="monaco" idYa="7691" idOp="2993458" />
   </country>
-  <country nameRu="Монголия">
+  <country nameRu="Монголия" nameEng="Mongolia" nameShort="MN">
     <city nameRu="Улаангом" nameEng="ulaangom" idYa="44212" idOp="1515029" />
     <city nameRu="Мандалговь" nameEng="mandalgovi" idYa="44341" idOp="2030065" />
     <city nameRu="Ховд" nameEng="hovd" idYa="44218" idOp="1516048" />
     <city nameRu="Баянхонгор" nameEng="bayanhongor" idYa="44287" idOp="2032532" />
     <city nameRu="Алтай" nameEng="altay" idYa="44277" idOp="1511736" />
   </country>
-  <country nameRu="Монтсеррат">
+  <country nameRu="Монтсеррат" nameEng="Montserrat" nameShort="MS">
     <city nameRu="Плимут" nameEng="plymouth" idYa="78898" idOp="2186239" />
   </country>
-  <country nameRu="Мьянма">
+  <country nameRu="Мьянма" nameEng="Myanmar" nameShort="MM">
     <city nameRu="Ситуэ" nameEng="sittwe" idYa="48062" idOp="1295765" />
     <city nameRu="Мьичина" nameEng="myitkyina" idYa="48008" idOp="1307741" />
     <city nameRu="Мандалай" nameEng="mandalay" idYa="48042" idOp="1311874" />
@@ -807,83 +807,83 @@
     <city nameRu="Пьинмана" nameEng="pyinmana" idYa="48074" idOp="1298987" />
     <city nameRu="Патейн" nameEng="pathein" idYa="48094" idOp="1328421" />
   </country>
-  <country nameRu="Намибия">
+  <country nameRu="Намибия" nameEng="Namibia" nameShort="NA">
     <city nameRu="Виндхук" nameEng="windhoek" idYa="68110" idOp="3352136" />
   </country>
-  <country nameRu="Непал">
+  <country nameRu="Непал" nameEng="Nepal" nameShort="NP">
     <city nameRu="Покхара" nameEng="pokhara" idYa="44434" idOp="1282898" />
     <city nameRu="Дханкута" nameEng="dhankuta" idYa="44477" idOp="1283465" />
     <city nameRu="Бхайрава" nameEng="bhairahawa" idYa="44438" idOp="1283621" />
     <city nameRu="Катманду" nameEng="kathmandu" idYa="44454" idOp="1283240" />
   </country>
-  <country nameRu="Нигер">
+  <country nameRu="Нигер" nameEng="Niger" nameShort="NE">
     <city nameRu="Ниамей" nameEng="niamey" idYa="61052" idOp="2440485" />
   </country>
-  <country nameRu="Нигерия">
+  <country nameRu="Нигерия" nameEng="Nigeria" nameShort="NG">
     <city nameRu="Лагос" nameEng="lagos" idYa="65201" idOp="4002224" />
     <city nameRu="Абуджа" nameEng="abuja" idYa="65125" idOp="2352778" />
   </country>
-  <country nameRu="Нидерланды">
+  <country nameRu="Нидерланды" nameEng="Netherlands" nameShort="NL">
     <city nameRu="Амстердам" nameEng="amsterdam" idYa="6240" idOp="5107152" />
     <city nameRu="Роттердам" nameEng="rotterdam" idYa="6344" idOp="5134453" />
     <city nameRu="Маастрихт" nameEng="maastricht" idYa="6380" idOp="2751283" />
   </country>
-  <country nameRu="Никарагуа">
+  <country nameRu="Никарагуа" nameEng="Nicaragua" nameShort="NI">
     <city nameRu="Манагуа" nameEng="managua" idYa="78741" idOp="3617763" />
   </country>
-  <country nameRu="Новая Зеландия">
+  <country nameRu="Новая Зеландия" nameEng="New Zealand" nameShort="NZ">
     <city nameRu="Крайстчерч" nameEng="christchurch" idYa="93781" idOp="2192362" />
     <city nameRu="Окленд" nameEng="auckland" idYa="93110" idOp="2193733" />
     <city nameRu="Веллингтон" nameEng="wellington" idYa="93439" idOp="1252887" />
   </country>
-  <country nameRu="Новая Каледония">
+  <country nameRu="Новая Каледония" nameEng="New Caledonia" nameShort="NC">
     <city nameRu="Нумеа" nameEng="noumea" idYa="91592" idOp="2139521" />
   </country>
-  <country nameRu="Норвегия">
+  <country nameRu="Норвегия" nameEng="Norway" nameShort="NO">
     <city nameRu="Осло" nameEng="oslo" idYa="1384" idOp="542213" />
     <city nameRu="Киркенес" nameEng="kirkenes" idYa="1089" idOp="779303" />
     <city nameRu="Лиллехаммер" nameEng="lillehammer" idYa="1378" idOp="3147474" />
     <city nameRu="Берген" nameEng="bergen" idYa="1311" idOp="5095611" />
   </country>
-  <country nameRu="Норфолк">
+  <country nameRu="Норфолк" nameEng="Norfolk Island" nameShort="NF">
     <city nameRu="Кингстон" nameEng="kingston" idYa="94996" idOp="2161311" />
   </country>
-  <country nameRu="ОАЭ">
+  <country nameRu="ОАЭ" nameEng="United Arab Emirates" nameShort="AE">
     <city nameRu="Абу-Даби" nameEng="abu dhabi" idYa="41217" idOp="292968" />
     <city nameRu="Дубай" nameEng="dubai" idYa="41194" idOp="292223" />
     <city nameRu="Аджман" nameEng="ajman" idYa="41195" idOp="292932" />
     <city nameRu="Шарджа" nameEng="sharjah" idYa="41196" idOp="292672" />
   </country>
-  <country nameRu="Оман">
+  <country nameRu="Оман" nameEng="Oman" nameShort="OM">
     <city nameRu="Маскат" nameEng="muscat" idYa="41258" idOp="4868404" />
     <city nameRu="Салала" nameEng="salalah" idYa="41316" idOp="286621" />
   </country>
-  <country nameRu="Остров Гуам">
+  <country nameRu="Остров Гуам" nameEng="Island Guam" nameShort="?">
     <city nameRu="Аганья" nameEng="hagatna" idYa="91212" idOp="4044012" />
   </country>
-  <country nameRu="Острова Кука">
+  <country nameRu="Острова Кука" nameEng="Cook Islands" nameShort="?">
     <city nameRu="Аваруа" nameEng="avarua" idYa="91843" idOp="4035715" />
   </country>
-  <country nameRu="Пакистан">
+  <country nameRu="Пакистан" nameEng="Pakistan" nameShort="PK">
     <city nameRu="Лахор" nameEng="lahore" idYa="41640" idOp="1172451" />
     <city nameRu="Исламабад" nameEng="islamabad" idYa="41571" idOp="1176615" />
     <city nameRu="Карачи" nameEng="karachi" idYa="41780" idOp="1174872" />
   </country>
-  <country nameRu="Палау">
+  <country nameRu="Палау" nameEng="Palau" nameShort="PW">
     <city nameRu="Корор" nameEng="koror" idYa="91408" idOp="7732415" />
   </country>
-  <country nameRu="Палестинская автономия">
+  <country nameRu="Палестинская автономия" nameEng="Palestinian Authority" nameShort="?">
     <city nameRu="Газа" nameEng="gaza" idYa="62338" idOp="281133" />
     <city nameRu="Вифлеем" nameEng="bethlehem" idYa="40183" idOp="1019704" />
   </country>
-  <country nameRu="Панама">
+  <country nameRu="Панама" nameEng="Panama" nameShort="PA">
     <city nameRu="Давид" nameEng="david" idYa="78793" idOp="2169314" />
     <city nameRu="Колон" nameEng="colon" idYa="78794" idOp="1273850" />
     <city nameRu="Буке" nameEng="boquete" idYa="78796" idOp="3713860" />
     <city nameRu="Панама" nameEng="panama" idYa="78806" idOp="4167694" />
     <city nameRu="Бокас-дель-Торо" nameEng="bocas del toro" idYa="78791" idOp="3713959" />
   </country>
-  <country nameRu="Папуа - Новая Гвинея">
+  <country nameRu="Папуа - Новая Гвинея" nameEng="Papua New Guinea" nameShort="PG">
     <city nameRu="Ванимо" nameEng="vanimo" idYa="94022" idOp="2084442" />
     <city nameRu="Киунга" nameEng="kiunga" idYa="94001" idOp="2093846" />
     <city nameRu="Киета" nameEng="kieta" idYa="94097" idOp="2094027" />
@@ -893,16 +893,16 @@
     <city nameRu="Туфи" nameEng="tufi" idYa="94067" idOp="3165120" />
     <city nameRu="Маданг" nameEng="madang" idYa="94014" idOp="2091996" />
   </country>
-  <country nameRu="Парагвай">
+  <country nameRu="Парагвай" nameEng="Paraguay" nameShort="PY">
     <city nameRu="Асунсьон" nameEng="asuncion" idYa="86218" idOp="3480908" />
   </country>
-  <country nameRu="Перу">
+  <country nameRu="Перу" nameEng="Peru" nameShort="PE">
     <city nameRu="Лима" nameEng="lima" idYa="84628" idOp="535229" />
     <city nameRu="Трухильо" nameEng="trujillo" idYa="84501" idOp="3625979" />
     <city nameRu="Куско" nameEng="cusco" idYa="84686" idOp="3941584" />
     <city nameRu="Наска" nameEng="nazca" idYa="84719" idOp="3934356" />
   </country>
-  <country nameRu="Польша">
+  <country nameRu="Польша" nameEng="Poland" nameShort="PL">
     <city nameRu="Краков" nameEng="krakow" idYa="12566" idOp="2884850" />
     <city nameRu="Белосток" nameEng="bialystok" idYa="12295" idOp="776069" />
     <city nameRu="Вроцлав" nameEng="wroclaw" idYa="12424" idOp="3081368" />
@@ -914,7 +914,7 @@
     <city nameRu="Гданьск" nameEng="gdansk" idYa="12150" idOp="3099434" />
     <city nameRu="Варшава" nameEng="warsaw" idYa="12375" idOp="4927854" />
   </country>
-  <country nameRu="Португалия">
+  <country nameRu="Португалия" nameEng="Portugal" nameShort="PT">
     <city nameRu="Порту" nameEng="porto" idYa="8545" idOp="3391408" />
     <city nameRu="Брага" nameEng="braga" idYa="8547" idOp="3405006" />
     <city nameRu="Коимбра" nameEng="coimbra" idYa="8548" idOp="2740637" />
@@ -924,14 +924,14 @@
     <city nameRu="Фуншал (Мадейра)" nameEng="funchal" idYa="8521" idOp="2267827" />
     <city nameRu="Лиссабон" nameEng="lisbon" idYa="8536" idOp="4516749" />
   </country>
-  <country nameRu="Республика Конго">
+  <country nameRu="Республика Конго" nameEng="Republic of Congo" nameShort="?">
     <city nameRu="Браззавиль" nameEng="brazzaville" idYa="64450" idOp="2260535" />
   </country>
-  <country nameRu="Реюньон">
+  <country nameRu="Реюньон" nameEng="Reunion Island" nameShort="RE">
     <city nameRu="Сен-Пьер" nameEng="saint-pierre" idYa="61984" idOp="5972291" />
     <city nameRu="Сен-Дени" nameEng="saint-denis" idYa="61980" idOp="2980916" />
   </country>
-  <country nameRu="Россия">
+  <country nameRu="Россия" nameEng="Russian Federation" nameShort="RU">
     <city nameRu="Нытва" nameEng="nytva" idYa="28219" idOp="516576" />
     <city nameRu="Окуловка" nameEng="okulovka" idYa="26283" idOp="515771" />
     <city nameRu="Уссурийск" nameEng="ussuriysk" idYa="31847" idOp="2014006" />
@@ -1849,15 +1849,15 @@
     <city nameRu="Макушино" nameEng="makushino" idYa="28666" idOp="1500036" />
     <city nameRu="Ангарск" nameEng="angarsk" idYa="30715" idOp="2027667" />
   </country>
-  <country nameRu="Руанда">
+  <country nameRu="Руанда" nameEng="Rwanda" nameShort="RW">
     <city nameRu="Кигали" nameEng="kigali" idYa="64387" idOp="202061" />
   </country>
-  <country nameRu="Румыния">
+  <country nameRu="Румыния" nameEng="Romania" nameShort="RO">
     <city nameRu="Галац" nameEng="galati" idYa="15310" idOp="3176407" />
     <city nameRu="Бухарест" nameEng="bucharest" idYa="15420" idOp="683506" />
     <city nameRu="Синая" nameEng="sinaia" idYa="15325" idOp="667091" />
   </country>
-  <country nameRu="США">
+  <country nameRu="США" nameEng="United States Minor Outlying Islands" nameShort="UM">
     <city nameRu="Чикаго, шт. Иллинойс" nameEng="chicago" idYa="72530" idOp="4887398" />
     <city nameRu="Анкоридж" nameEng="anchorage" idYa="70276" idOp="5879400" />
     <city nameRu="Финикс, шт. Аризона" nameEng="phoenix" idYa="72278" idOp="5308655" />
@@ -1921,96 +1921,96 @@
     <city nameRu="Солт-Лейк-Сити, шт. Юта" nameEng="salt lake city" idYa="72572" idOp="5780993" />
     <city nameRu="Канзас-Сити, шт. Миссури" nameEng="kansas city" idYa="72446" idOp="4273837" />
   </country>
-  <country nameRu="Сальвадор">
+  <country nameRu="Сальвадор" nameEng="El Salvador" nameShort="SV">
     <city nameRu="Сан-Мигель" nameEng="san miguel" idYa="78670" idOp="3428644" />
     <city nameRu="Сан-Сальвадор" nameEng="san salvador" idYa="78663" idOp="3428481" />
   </country>
-  <country nameRu="Самоа">
+  <country nameRu="Самоа" nameEng="East Samoa" nameShort="?">
     <city nameRu="Апиа" nameEng="apia" idYa="91762" idOp="3461954" />
   </country>
-  <country nameRu="Сан-Марино">
+  <country nameRu="Сан-Марино" nameEng="San Marino" nameShort="SM">
     <city nameRu="Сан-Марино" nameEng="san marino" idYa="16591" idOp="5392400" />
   </country>
-  <country nameRu="Саудовская Аравия">
+  <country nameRu="Саудовская Аравия" nameEng="Saudi Arabia" nameShort="SA">
     <city nameRu="Медина" nameEng="medina" idYa="40249" idOp="2066608" />
     <city nameRu="Даммам" nameEng="dammam" idYa="40419" idOp="110336" />
     <city nameRu="Эр-Рияд" nameEng="riyadh" idYa="40437" idOp="108410" />
     <city nameRu="Мекка" nameEng="mecca" idYa="41030" idOp="5371965" />
   </country>
-  <country nameRu="Свазиленд">
+  <country nameRu="Свазиленд" nameEng="Swaziland" nameShort="SZ">
     <city nameRu="Манзини" nameEng="manzini" idYa="68396" idOp="934995" />
   </country>
-  <country nameRu="Северная Корея">
+  <country nameRu="Северная Корея" nameEng="Korea" nameShort="KP">
     <city nameRu="Чхонджин" nameEng="chongjin" idYa="47008" idOp="2044757" />
     <city nameRu="Пхеньян" nameEng="pyongyang" idYa="47058" idOp="1871859" />
   </country>
-  <country nameRu="Северные Марианские острова">
+  <country nameRu="Северные Марианские острова" nameEng="Northern Mariana Islands" nameShort="MP">
     <city nameRu="Сайпан" nameEng="saipan" idYa="91232" idOp="7828758" />
   </country>
-  <country nameRu="Сейшельские острова">
+  <country nameRu="Сейшельские острова" nameEng="Seychelles" nameShort="?">
     <city nameRu="Виктория" nameEng="victoria" idYa="63980" idOp="3634922" />
   </country>
-  <country nameRu="Сенегал">
+  <country nameRu="Сенегал" nameEng="Senegal" nameShort="SN">
     <city nameRu="Дакар" nameEng="dakar" idYa="61641" idOp="2253354" />
   </country>
-  <country nameRu="Сент-Винсент и Гренадины">
+  <country nameRu="Сент-Винсент и Гренадины" nameEng="Saint Vincent and the Grenadines" nameShort="VC">
     <city nameRu="Кингстаун" nameEng="kingstown" idYa="78951" idOp="5223672" />
   </country>
-  <country nameRu="Сент-Китс и Невис">
+  <country nameRu="Сент-Китс и Невис" nameEng="Saint Kitts and Nevis" nameShort="KN">
     <city nameRu="Бастер" nameEng="basseterre" idYa="78857" idOp="3575551" />
   </country>
-  <country nameRu="Сент-Люсия">
+  <country nameRu="Сент-Люсия" nameEng="Saint Lucia" nameShort="LC">
     <city nameRu="Кастри" nameEng="castries" idYa="78947" idOp="3028258" />
   </country>
-  <country nameRu="Сербия">
+  <country nameRu="Сербия" nameEng="Serbia and Montenegro" nameShort="CS">
     <city nameRu="Белград" nameEng="belgrade" idYa="13272" idOp="4957962" />
     <city nameRu="Димитровград" nameEng="dimitrovgrad" idYa="13397" idOp="566199" />
   </country>
-  <country nameRu="Сеута">
+  <country nameRu="Сеута" nameEng="Ceuta" nameShort="?">
     <city nameRu="Сеута" nameEng="ceuta" idYa="60320" idOp="6362987" />
   </country>
-  <country nameRu="Сингапур">
+  <country nameRu="Сингапур" nameEng="Singapore" nameShort="SG">
     <city nameRu="Сингапур" nameEng="singapore" idYa="48698" idOp="1880252" />
   </country>
-  <country nameRu="Сирия">
+  <country nameRu="Сирия" nameEng="Syria" nameShort="SY">
     <city nameRu="Дамаск" nameEng="damascus" idYa="40080" idOp="4352728" />
     <city nameRu="Хама" nameEng="khama" idYa="40030" idOp="550775" />
     <city nameRu="Латакия" nameEng="latakia" idYa="40022" idOp="173576" />
     <city nameRu="Алеппо (Халеб)" nameEng="aleppo" idYa="40007" idOp="170063" />
   </country>
-  <country nameRu="Словакия">
+  <country nameRu="Словакия" nameEng="Slovakia" nameShort="SK">
     <city nameRu="Кошице" nameEng="kosice" idYa="11968" idOp="724443" />
     <city nameRu="Братислава" nameEng="bratislava" idYa="11816" idOp="3060972" />
     <city nameRu="Ясна" nameEng="yasna" idYa="11915" idOp="805755" />
     <city nameRu="Попрад" nameEng="poprad" idYa="11934" idOp="723846" />
   </country>
-  <country nameRu="Словения">
+  <country nameRu="Словения" nameEng="Slovenia" nameShort="SI">
     <city nameRu="Вогель" nameEng="vogel" idYa="14006" idOp="2816874" />
     <city nameRu="Любляна" nameEng="ljubljana" idYa="14015" idOp="3196359" />
   </country>
-  <country nameRu="Соломоновы острова">
+  <country nameRu="Соломоновы острова" nameEng="Solomon Islands" nameShort="?">
     <city nameRu="Хониара" nameEng="honiara" idYa="91520" idOp="2108502" />
   </country>
-  <country nameRu="Сомали">
+  <country nameRu="Сомали" nameEng="Somalia" nameShort="SO">
     <city nameRu="Могадишо" nameEng="mogadishu" idYa="63260" idOp="53654" />
   </country>
-  <country nameRu="Судан">
+  <country nameRu="Судан" nameEng="Sudan" nameShort="SD">
     <city nameRu="Хартум" nameEng="khartoum" idYa="62721" idOp="379252" />
   </country>
-  <country nameRu="Суринам">
+  <country nameRu="Суринам" nameEng="Suriname" nameShort="SR">
     <city nameRu="Парамарибо" nameEng="paramaribo" idYa="81200" idOp="3383330" />
   </country>
-  <country nameRu="Сьерра-Леоне">
+  <country nameRu="Сьерра-Леоне" nameEng="Sierra Leone" nameShort="SL">
     <city nameRu="Макени" nameEng="makeni" idYa="61873" idOp="2406407" />
   </country>
-  <country nameRu="Таджикистан">
+  <country nameRu="Таджикистан" nameEng="Tajikistan" nameShort="TJ">
     <city nameRu="Худжанд" nameEng="khujand" idYa="38599" idOp="1514879" />
     <city nameRu="Турсунзода" nameEng="tursunzoda" idYa="38834" idOp="1220301" />
     <city nameRu="Душанбе" nameEng="dushanbe" idYa="38836" idOp="1221874" />
     <city nameRu="Гарм" nameEng="garm" idYa="38868" idOp="1277318" />
     <city nameRu="Кулоб" nameEng="kulob" idYa="38943" idOp="1221194" />
   </country>
-  <country nameRu="Таиланд">
+  <country nameRu="Таиланд" nameEng="Thailand" nameShort="TH">
     <city nameRu="Ко Чанг" nameEng="ko chang" idYa="48481" idOp="7280459" />
     <city nameRu="Самуи" nameEng="samui" idYa="48550" idOp="727455" />
     <city nameRu="Бангкок" nameEng="bangkok" idYa="48455" idOp="1609350" />
@@ -2019,38 +2019,38 @@
     <city nameRu="Пхукет" nameEng="phuket" idYa="48565" idOp="1151254" />
     <city nameRu="Саттанхип" nameEng="sattahip" idYa="48477" idOp="1606386" />
   </country>
-  <country nameRu="Тайвань">
+  <country nameRu="Тайвань" nameEng="Taiwan" nameShort="TW">
     <city nameRu="Тайбей" nameEng="taipei" idYa="58968" idOp="1668341" />
     <city nameRu="Тайнань" nameEng="tainan" idYa="59358" idOp="1668355" />
   </country>
-  <country nameRu="Танзания">
+  <country nameRu="Танзания" nameEng="Tanzania" nameShort="TZ">
     <city nameRu="Занзибар" nameEng="zanzibar" idYa="63870" idOp="148730" />
     <city nameRu="Додома" nameEng="dodoma" idYa="63862" idOp="160196" />
     <city nameRu="Дар-эс-Салам" nameEng="dar es salaam" idYa="63894" idOp="160263" />
     <city nameRu="Чаки-Чаки" nameEng="chake chake" idYa="63845" idOp="160677" />
   </country>
-  <country nameRu="Того">
+  <country nameRu="Того" nameEng="Togo" nameShort="TG">
     <city nameRu="Ломе" nameEng="lome" idYa="65387" idOp="490914" />
   </country>
-  <country nameRu="Тонга">
+  <country nameRu="Тонга" nameEng="Tonga" nameShort="TO">
     <city nameRu="Нукуалофа" nameEng="nukualofa" idYa="91791" idOp="4032402" />
   </country>
-  <country nameRu="Тринидад и Тобаго">
+  <country nameRu="Тринидад и Тобаго" nameEng="Trinidad and Tobago" nameShort="TT">
     <city nameRu="Тринидад" nameEng="trinidad" idYa="78970" idOp="3534915" />
   </country>
-  <country nameRu="Тувалу">
+  <country nameRu="Тувалу" nameEng="Tuvalu" nameShort="TV">
     <city nameRu="Фунафути" nameEng="funafuti" idYa="91643" idOp="2110394" />
   </country>
-  <country nameRu="Тунис">
+  <country nameRu="Тунис" nameEng="Tunisia" nameShort="TN">
     <city nameRu="Сусс" nameEng="sousse" idYa="60739" idOp="2464915" />
     <city nameRu="Монастир" nameEng="monastir" idYa="60740" idOp="2473493" />
     <city nameRu="Тунис" nameEng="tunis" idYa="60715" idOp="2464470" />
     <city nameRu="Хаммамет" nameEng="hammamet" idYa="60729" idOp="2494548" />
   </country>
-  <country nameRu="Туркмения">
+  <country nameRu="Туркмения" nameEng="Turkmenistan" nameShort="?">
     <city nameRu="Ашхабад" nameEng="ashgabat" idYa="38880" idOp="162183" />
   </country>
-  <country nameRu="Турция">
+  <country nameRu="Турция" nameEng="Turkey" nameShort="TR">
     <city nameRu="Синоп" nameEng="sinop" idYa="17026" idOp="2523086" />
     <city nameRu="Бодрум" nameEng="bodrum" idYa="17290" idOp="320995" />
     <city nameRu="Даламан" nameEng="dalaman" idYa="17295" idOp="447273" />
@@ -2076,19 +2076,19 @@
     <city nameRu="Бурса" nameEng="bursa" idYa="17116" idOp="750269" />
     <city nameRu="Анкара" nameEng="ankara" idYa="17130" idOp="1254972" />
   </country>
-  <country nameRu="Тёркс и Кайкос">
+  <country nameRu="Тёркс и Кайкос" nameEng="Turks and Caicos Islands" nameShort="?">
     <city nameRu="Кокберн-Таун" nameEng="cockburn town" idYa="78118" idOp="3576994" />
   </country>
-  <country nameRu="Уганда">
+  <country nameRu="Уганда" nameEng="Uganda" nameShort="UG">
     <city nameRu="Кампала" nameEng="kampala" idYa="63680" idOp="232422" />
   </country>
-  <country nameRu="Узбекистан">
+  <country nameRu="Узбекистан" nameEng="Uzbekistan" nameShort="UZ">
     <city nameRu="Навои" nameEng="navoi" idYa="38567" idOp="1513131" />
     <city nameRu="Наманган" nameEng="namangan" idYa="38611" idOp="1513157" />
     <city nameRu="Нукус" nameEng="nukus" idYa="38264" idOp="601294" />
     <city nameRu="Ташкент" nameEng="tashkent" idYa="38457" idOp="1512569" />
   </country>
-  <country nameRu="Украина">
+  <country nameRu="Украина" nameEng="Ukraine" nameShort="UA">
     <city nameRu="Орджоникидзе" nameEng="ordzhonikidze" idYa="33804" idOp="515083" />
     <city nameRu="Никополь" nameEng="nikopol" idYa="33805" idOp="700051" />
     <city nameRu="Ровно" nameEng="rovno" idYa="33301" idOp="501091" />
@@ -2183,18 +2183,18 @@
     <city nameRu="Сумы" nameEng="sumy" idYa="33275" idOp="692194" />
     <city nameRu="Харьков" nameEng="kharkiv" idYa="34300" idOp="706483" />
   </country>
-  <country nameRu="Уругвай">
+  <country nameRu="Уругвай" nameEng="Uruguay" nameShort="UY">
     <city nameRu="Монтевидео" nameEng="montevideo" idYa="86585" idOp="3441575" />
   </country>
-  <country nameRu="Фарерские острова">
+  <country nameRu="Фарерские острова" nameEng="Faroe Islands" nameShort="FO">
     <city nameRu="Торсхавн" nameEng="torshavn" idYa="6011" idOp="2611396" />
   </country>
-  <country nameRu="Фиджи">
+  <country nameRu="Фиджи" nameEng="Fiji" nameShort="FJ">
     <city nameRu="Нанди" nameEng="nadi" idYa="91680" idOp="1262292" />
     <city nameRu="Лабаса" nameEng="labasa" idYa="91657" idOp="5332593" />
     <city nameRu="Сува" nameEng="suva" idYa="91690" idOp="785238" />
   </country>
-  <country nameRu="Филиппины">
+  <country nameRu="Филиппины" nameEng="Philippines" nameShort="PH">
     <city nameRu="Давао" nameEng="davao" idYa="98753" idOp="1715348" />
     <city nameRu="Инфанта" nameEng="infanta" idYa="98434" idOp="1710744" />
     <city nameRu="Сан-Хосе" nameEng="san jose" idYa="98531" idOp="3628142" />
@@ -2208,7 +2208,7 @@
     <city nameRu="Корон" nameEng="coron" idYa="98526" idOp="3860164" />
     <city nameRu="Калапан" nameEng="calapan" idYa="98431" idOp="1720561" />
   </country>
-  <country nameRu="Финляндия">
+  <country nameRu="Финляндия" nameEng="Finland" nameShort="FI">
     <city nameRu="Халли" nameEng="halli" idYa="2945" idOp="1254396" />
     <city nameRu="Леви" nameEng="levi" idYa="2824" idOp="535505" />
     <city nameRu="Куусамо" nameEng="kuusamo" idYa="2869" idOp="649924" />
@@ -2217,7 +2217,7 @@
     <city nameRu="Хельсинки" nameEng="helsinki" idYa="2974" idOp="658225" />
     <city nameRu="Лахти" nameEng="lahti" idYa="2965" idOp="649360" />
   </country>
-  <country nameRu="Франция">
+  <country nameRu="Франция" nameEng="France" nameShort="FR">
     <city nameRu="Марсель" nameEng="marseilles" idYa="7650" idOp="4901279" />
     <city nameRu="Перпиньян" nameEng="perpignan" idYa="7747" idOp="2987914" />
     <city nameRu="Канны" nameEng="cannes" idYa="7684" idOp="3028808" />
@@ -2238,22 +2238,22 @@
     <city nameRu="Шамони" nameEng="chamonix" idYa="7498" idOp="3027301" />
     <city nameRu="Лион" nameEng="lyon" idYa="7481" idOp="4207205" />
   </country>
-  <country nameRu="Французская Гвиана">
+  <country nameRu="Французская Гвиана" nameEng="French Guiana" nameShort="GF">
     <city nameRu="Кайенна" nameEng="cayenne" idYa="81405" idOp="3028097" />
   </country>
-  <country nameRu="Французская Полинезия">
+  <country nameRu="Французская Полинезия" nameEng="French Polynesia" nameShort="PF">
     <city nameRu="Папеэте" nameEng="papeete" idYa="91938" idOp="4033936" />
   </country>
-  <country nameRu="Хорватия">
+  <country nameRu="Хорватия" nameEng="Croatia/Hrvatska" nameShort="HR">
     <city nameRu="Загреб" nameEng="zagreb" idYa="14240" idOp="6618983" />
     <city nameRu="Дубровник" nameEng="dubrovnik" idYa="14474" idOp="3201047" />
     <city nameRu="Пула" nameEng="pula" idYa="14307" idOp="1262338" />
     <city nameRu="Сплит" nameEng="split" idYa="14444" idOp="3190261" />
   </country>
-  <country nameRu="Центральноафриканская республика">
+  <country nameRu="Центральноафриканская республика" nameEng="Central African Republic" nameShort="CF">
     <city nameRu="Банги" nameEng="bangui" idYa="64650" idOp="1727211" />
   </country>
-  <country nameRu="Черногория">
+  <country nameRu="Черногория" nameEng="Serbia and Montenegro" nameShort="CS">
     <city nameRu="Тиват" nameEng="tivat" idYa="13457" idOp="3189073" />
     <city nameRu="Котор" nameEng="kotor" idYa="13456" idOp="3197532" />
     <city nameRu="Будва" nameEng="budva" idYa="13458" idOp="3203106" />
@@ -2261,21 +2261,21 @@
     <city nameRu="Бар" nameEng="bar" idYa="13461" idOp="578953" />
     <city nameRu="Подгорица" nameEng="podgorica" idYa="13462" idOp="3193044" />
   </country>
-  <country nameRu="Чехия">
+  <country nameRu="Чехия" nameEng="Czech Republic" nameShort="CZ">
     <city nameRu="Брно" nameEng="brno" idYa="11723" idOp="3078610" />
     <city nameRu="Яхимов" nameEng="jachymov" idYa="11412" idOp="3074587" />
     <city nameRu="Карловы Вары" nameEng="karlovy vary" idYa="11414" idOp="3073803" />
     <city nameRu="Марианские Лазни" nameEng="marianske lazne" idYa="11418" idOp="3071024" />
     <city nameRu="Прага" nameEng="prague" idYa="11518" idOp="4548393" />
   </country>
-  <country nameRu="Чили">
+  <country nameRu="Чили" nameEng="Chile" nameShort="CL">
     <city nameRu="Вальпараисо" nameEng="valparaiso" idYa="85571" idOp="3868626" />
     <city nameRu="Винья-дель-Мар" nameEng="vina del mar" idYa="85572" idOp="3868121" />
     <city nameRu="Пуэрто-Монт" nameEng="puerto mont" idYa="85799" idOp="3874960" />
     <city nameRu="Сантьяго" nameEng="santiago" idYa="85577" idOp="3536729" />
     <city nameRu="Арика" nameEng="arica" idYa="85406" idOp="3899361" />
   </country>
-  <country nameRu="Швейцария">
+  <country nameRu="Швейцария" nameEng="Switzerland" nameShort="CH">
     <city nameRu="Вербье" nameEng="verbier" idYa="6722" idOp="2658168" />
     <city nameRu="Давос" nameEng="davos" idYa="6787" idOp="2661039" />
     <city nameRu="Берн" nameEng="bern" idYa="6630" idOp="3854985" />
@@ -2286,30 +2286,30 @@
     <city nameRu="Лозанна" nameEng="lausanne" idYa="6992" idOp="2659994" />
     <city nameRu="Гриндельвальд" nameEng="grindelwald" idYa="6745" idOp="2660498" />
   </country>
-  <country nameRu="Швеция">
+  <country nameRu="Швеция" nameEng="Sweden" nameShort="SE">
     <city nameRu="Стокгольм" nameEng="stockholm" idYa="2464" idOp="2673730" />
     <city nameRu="Гетеборг" nameEng="gothenburg" idYa="2513" idOp="5695743" />
     <city nameRu="Мальмё" nameEng="malmo" idYa="2635" idOp="2979001" />
     <city nameRu="Тимро" nameEng="timra" idYa="2366" idOp="2669047" />
     <city nameRu="Оре" nameEng="are" idYa="2214" idOp="536625" />
   </country>
-  <country nameRu="Шри-Ланка">
+  <country nameRu="Шри-Ланка" nameEng="Sri Lanka" nameShort="LK">
     <city nameRu="Маннар" nameEng="mannar" idYa="43413" idOp="1263659" />
     <city nameRu="Коломбо" nameEng="colombo" idYa="43466" idOp="3465927" />
     <city nameRu="Канди" nameEng="kandy" idYa="43444" idOp="1241622" />
     <city nameRu="Анурадхапура" nameEng="anuradhapura" idYa="43421" idOp="1251081" />
     <city nameRu="Галле" nameEng="galle" idYa="43495" idOp="3838859" />
   </country>
-  <country nameRu="Эквадор">
+  <country nameRu="Эквадор" nameEng="Ecuador" nameShort="EC">
     <city nameRu="Куэнка" nameEng="cuenca" idYa="84239" idOp="4012344" />
     <city nameRu="Гуаякиль" nameEng="guayaquil" idYa="84203" idOp="3657509" />
     <city nameRu="Кито" nameEng="quito" idYa="84071" idOp="3696183" />
   </country>
-  <country nameRu="Экваториальная Гвинея">
+  <country nameRu="Экваториальная Гвинея" nameEng="Equatorial Guinea" nameShort="GQ">
     <city nameRu="Малабо" nameEng="malabo" idYa="64810" idOp="1703315" />
     <city nameRu="Бата" nameEng="bata" idYa="64820" idOp="578740" />
   </country>
-  <country nameRu="Эстония">
+  <country nameRu="Эстония" nameEng="Estonia" nameShort="EE">
     <city nameRu="Нарва-Йыэсуу" nameEng="narva-joesuu" idYa="26057" idOp="590030" />
     <city nameRu="Хаапсалу" nameEng="haapsalu" idYa="26123" idOp="592225" />
     <city nameRu="Курессааре" nameEng="kuressaare" idYa="26215" idOp="590939" />
@@ -2320,27 +2320,27 @@
     <city nameRu="Пярну" nameEng="parnu" idYa="26231" idOp="589580" />
     <city nameRu="Таллин" nameEng="tallin" idYa="26038" idOp="4493186" />
   </country>
-  <country nameRu="Эфиопия">
+  <country nameRu="Эфиопия" nameEng="Ethiopia" nameShort="ET">
     <city nameRu="Аддис-Абеба" nameEng="addis ababa" idYa="63450" idOp="344979" />
   </country>
-  <country nameRu="ЮАР">
+  <country nameRu="ЮАР" nameEng="South Africa" nameShort="ZA">
     <city nameRu="Йоханнесбург" nameEng="johannesburg" idYa="68368" idOp="993800" />
     <city nameRu="Дурбан" nameEng="durban" idYa="68588" idOp="1007311" />
     <city nameRu="Тсване (Претория)" nameEng="pretoria" idYa="68262" idOp="964137" />
   </country>
-  <country nameRu="Южная Корея">
+  <country nameRu="Южная Корея" nameEng="Korea" nameShort="KR">
     <city nameRu="Масан" nameEng="masan" idYa="47155" idOp="1700753" />
     <city nameRu="Сеул" nameEng="seoul" idYa="47108" idOp="1835848" />
     <city nameRu="Пусан" nameEng="busan" idYa="47159" idOp="1724862" />
   </country>
-  <country nameRu="Южная Осетия">
+  <country nameRu="Южная Осетия" nameEng="South Ossetia" nameShort="?">
     <city nameRu="Цхинвал" nameEng="tskhinval" idYa="37416" idOp="611403" />
   </country>
-  <country nameRu="Ямайка">
+  <country nameRu="Ямайка" nameEng="Jamaica" nameShort="JM">
     <city nameRu="Монтего-Бэй" nameEng="montego bay" idYa="78388" idOp="3489460" />
     <city nameRu="Кингстон" nameEng="kingston" idYa="78397" idOp="2161311" />
   </country>
-  <country nameRu="Япония">
+  <country nameRu="Япония" nameEng="Japan" nameShort="JP">
     <city nameRu="Наха" nameEng="naha" idYa="47936" idOp="1259244" />
     <city nameRu="Осака" nameEng="osaka" idYa="47772" idOp="1520327" />
     <city nameRu="Нара" nameEng="nara" idYa="47780" idOp="1261837" />

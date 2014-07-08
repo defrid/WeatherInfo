@@ -1,38 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Controls.DataVisualization.Charting;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using WeatherInfo.Classes;
 
 namespace WeatherInfo
 {
+    public enum lang { rus, eng };
+
     public partial class WindowGraphics : Window
     {
-        public WindowGraphics()
+        
+
+
+        public WindowGraphics(lang language)
         {
             InitializeComponent();
+            this.Lang = language;
         }
 
+        public lang Lang;
        
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            if (Lang != lang.rus) this.Title = "Statistic";
         }
 
         /// <summary>
-        /// Строит график температуры в течении дня (Внутри дня записи часовых показаний должны быть в хронолгически верном порядке)
+        /// Строит график температуры в течении дня (Внимание! Необходимо чтобы приходил список отсортированный по дате!)
         /// </summary>
         /// <param name="Day">День</param>
         public void makeGraphic(ForecastDay Day)
@@ -48,7 +44,11 @@ namespace WeatherInfo
             NewChart.ItemsSource = coll;
             NewChart.DependentValuePath = "temp";
             NewChart.IndependentValuePath = "id";
-            NewChart.Title = "Температура";
+
+            if (Lang == lang.rus)
+                NewChart.Title = "Температура";
+            else
+                NewChart.Title = "Temperature";
             
             grafic.Series.Add(NewChart);
 
@@ -61,16 +61,25 @@ namespace WeatherInfo
             yA.Maximum = max+1;
             yA.Minimum = min-1;
             yA.ShowGridLines = true;
-            yA.Title = "Температура";
+            if (Lang == lang.rus)
+                yA.Title = "Температура";
+            else
+                yA.Title = "Temperature";
             grafic.Axes.Add(yA);
 
             CategoryAxis xA = new CategoryAxis();
             xA.Orientation = AxisOrientation.X;
-            xA.Title="Время суток";
+            if (Lang == lang.rus)
+                xA.Title = "Время суток";
+            else
+                xA.Title = "Day time";
             xA.ShowGridLines = true;
             grafic.Axes.Add(xA);
 
-            grafic.Title = "Изменение температуры за день";
+            if (Lang == lang.rus)
+                grafic.Title = "Изменение температуры за день";
+            else
+                grafic.Title = "Temperature changing in the day";
         }
 
         /// <summary>
@@ -93,7 +102,10 @@ namespace WeatherInfo
             NewChart.ItemsSource = coll;
             NewChart.DependentValuePath = "temp";
             NewChart.IndependentValuePath = "id";
-            NewChart.Title = "Температура";
+            if (Lang == lang.rus)
+                NewChart.Title = "Температура";
+            else
+                NewChart.Title = "Temperature";
 
             grafic.Series.Add(NewChart);
 
@@ -106,48 +118,91 @@ namespace WeatherInfo
             yA.Maximum = max + 1;
             yA.Minimum = min - 1;
             yA.ShowGridLines = true;
-            yA.Title = "Средняя температура";
+            if (Lang == lang.rus)
+                yA.Title = "Средняя температура";
+            else
+                yA.Title = "Average temperature";
             grafic.Axes.Add(yA);
 
             CategoryAxis xA = new CategoryAxis();
             xA.Orientation = AxisOrientation.X;
-            xA.Title = "Дни";
+            if (Lang == lang.rus)
+                xA.Title = "Дни";
+            else
+                xA.Title = "Days";
             xA.ShowGridLines = true;
             grafic.Axes.Add(xA);
 
-            grafic.Title = "Изменение температуры по дням";
+            if (Lang == lang.rus)
+                grafic.Title = "Изменение температуры за несколько дней";
+            else
+                grafic.Title = "Temperature change for some days";
         }
 
         /// <summary>
-        /// Строит диаграмму облачности
+        /// Строит диаграмму облачности (Внимание! Необходимо чтобы приходил список отсортированный по дате!)
         /// </summary>
         /// <param name="dayList">Список дней</param>
         public void makeDiagram(List<ForecastDay> dayList)
         {
-            ObservableCollection<dataCharHour> coll = new ObservableCollection<dataCharHour>();
+            ObservableCollection<PieDataPoint> coll = new ObservableCollection<PieDataPoint>();
             Dictionary<string, int> oblaka = new Dictionary<string, int>();
+            Dictionary<string, List<string>> oblakaDays = new Dictionary<string, List<string>>();
 
             foreach (var a in dayList)
             {
                 foreach(var b in a.hours)
                 {
-                    if (oblaka.ContainsKey(b.clouds)) oblaka[b.clouds]++;
-                    else oblaka.Add(b.clouds, 1);
+                    string category = b.clouds;
+                    if (Lang == lang.rus) category = getRusClouds(category);
+
+                    if (oblaka.ContainsKey(category))
+                    {
+                        if (!oblakaDays[category].Contains(a.date))
+                        {
+                            oblaka[category]++;
+                            oblakaDays[category].Add(a.date);
+                        }
+                    }
+
+                    else
+                    {
+                        oblaka.Add(category, 1);
+                        oblakaDays.Add(category, new List<string> { a.date });
+                    }
                 }
             }
 
             foreach(var a in oblaka)
             {
-                coll.Add(new dataCharHour { id = a.Key, temp = a.Value });
+                PieDataPoint t = new PieDataPoint();
+                t.IndependentValue = a.Key;
+                t.DependentValue = a.Value;
+
+                string res = "Числа с такой погодой";
+                if (Lang != lang.rus) res = "Days with such weather";
+
+                foreach(var b in oblakaDays[a.Key])
+                {
+                    res += "\n";
+                    res += b;
+                }
+                t.DataContext = res;
+
+                coll.Add(t);
             }
 
             PieSeries NewChart = new PieSeries();
             NewChart.ItemsSource = coll;
-            NewChart.DependentValuePath = "temp";
-            NewChart.IndependentValuePath = "id";
-            grafic.Title = "Диаграмма облачности";
-            grafic.Series.Add(NewChart);
+            NewChart.DependentValuePath = "DependentValue";
+            NewChart.IndependentValuePath = "IndependentValue";
 
+
+
+            if (Lang == lang.rus) grafic.Title = "Диаграмма облачности";
+            else grafic.Title = "Overcast chart";
+            grafic.Series.Add(NewChart);
+           
         }
 
         //Служебный класс
@@ -157,6 +212,26 @@ namespace WeatherInfo
             public string id { get; set; }
         }
 
+        string getRusClouds(string engClouds)
+        {
+            engClouds = engClouds.Replace("overcast", "пасмурно");
+            engClouds = engClouds.Replace("and", "и");
+            engClouds = engClouds.Replace("light", "лёгкий");
+            engClouds = engClouds.Replace("rain", "дождь");
+            engClouds = engClouds.Replace("partly", "местами");
+            engClouds = engClouds.Replace("cloudy", "облачно");
+            engClouds = engClouds.Replace("clear", "ясно");
+            engClouds = engClouds.Replace("mostly", "в большей части");
+            engClouds = engClouds.Replace("thunderstorms", "гроза");
+            engClouds = engClouds.Replace("possible", "возможно");
+            engClouds = engClouds.Replace("with", "с");
+            engClouds = engClouds.Replace("showers", "ливни");
+            engClouds = engClouds.Replace("possibility", "возможно");
+            engClouds = engClouds.Replace("of", "");
+            engClouds = engClouds.Replace("snow", "снег");
+            engClouds = engClouds.Replace("hail", "град");
+            return engClouds;
+        }
 
         /*
            
