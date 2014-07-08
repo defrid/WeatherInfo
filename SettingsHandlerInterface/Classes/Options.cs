@@ -4,44 +4,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Tomers.WPF.Localization;
 
 namespace SettingsHandlerInterface.Classes
 {
     public class Options
     {
         #region Единицы измерения температуры
-        #region TemperatureUnits на enum
-        //public enum TemperatureUnits
-        //{
-        //    [FormatAttribute("Цельсии")]
-        //    Celsius,
-        //    [FormatAttribute("Кельвины")]
-        //    Kelvin,
-        //    [FormatAttribute("Фаренгейты")]
-        //    Fahrenheit
-        //}
-        #endregion
-
-        /// <summary>
-        /// Класс формата единиц измерения температуры
-        /// </summary>
-        //public class TemperatureUnits
-        //{
-        //    public TemperatureUnits(string _rusName, string _engName)
-        //    {
-        //        rusName = _rusName;
-        //        engName = _engName;
-        //    }
-
-        //    string rusName { get; set; }
-        //    string engName { get; set; }
-
-        //    public override string ToString()
-        //    {
-        //        return engName;
-        //        //return string.Format("{1} | {0}", rusName, engName);
-        //    }
-        //}
 
         /// <summary>
         /// Список, хранящий единицы измерения температуры
@@ -57,34 +26,6 @@ namespace SettingsHandlerInterface.Classes
         #endregion
 
         #region Языки для системы
-        #region Languages на enum
-        //public enum Languages
-        //{
-        //    [FormatAttribute("Русский")]
-        //    Russian,
-        //    [FormatAttribute("Английский")]
-        //    English
-        //}
-        #endregion
-        /// <summary>
-        /// Языки
-        /// </summary>
-        //public class Language
-        //{
-        //    public Language(string _rusName, string _engName)
-        //    {
-        //        rusName = _rusName;
-        //        engName = _engName;
-        //    }
-
-        //    string rusName { get; set; }
-        //    string engName { get; set; }
-
-        //    public override string ToString()
-        //    {
-        //        return string.Format("{1} | {0}", rusName, engName);
-        //    }
-        //}
 
         /// <summary>
         /// Список, хранящий языки для системы (Расский, Английкский, ...)
@@ -141,7 +82,7 @@ namespace SettingsHandlerInterface.Classes
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("SettingsHandler.GetFormatAttribute(): Ошибка при получении атрибута формата прогноза погоды. Текст ошибки: " + ex.Message);
+                Debug.WriteLine("SettingsHandler.GetFormatAttribute(): " + LanguageDictionary.Current.Translate<string>("getFormatAttributeFailed_Option", "Content"));
                 return String.Empty;
             }
         }
@@ -164,12 +105,13 @@ namespace SettingsHandlerInterface.Classes
                         return format;
                     }
                 }
+                return String.Empty;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("SettingsHandler.GetValueByAttribute(): Ошибка при получении формата прогноза погоды по заданному атрибуту. Текст ошибки: " + ex.Message);
+                Debug.WriteLine("SettingsHandler.GetValueByAttribute(): " + LanguageDictionary.Current.Translate<string>("getValueByAttributeFailed_Option", "Content"));
+                return String.Empty;
             }
-            return String.Empty;
         }
     }
 }

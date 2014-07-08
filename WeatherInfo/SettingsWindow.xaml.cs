@@ -33,6 +33,9 @@ namespace WeatherInfo
         {
             main = (MainWindow)e;
             InitializeComponent();
+
+            Icon = MainWindow.ConvertBitmabToImage(Properties.Resources.settingsGear.ToBitmap());
+
             ChoosenCities = new List<CitySettings>();
             updatePeriod_save = 10;
             format_save = Options.GetValueByAttribute(Options.FormatForecast.Days.ToString());
@@ -154,7 +157,7 @@ namespace WeatherInfo
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка добвления программы в автозагрузку! Ошибка: " + ex.Message);
+                MessageBox.Show(LanguageDictionary.Current.Translate<string>("errorAddInAutostartStts", "Content"));
                 return false;
             }            
         }
@@ -176,7 +179,7 @@ namespace WeatherInfo
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка удаления программы из автозагрузки! Ошибка: " + ex.Message);
+                MessageBox.Show(LanguageDictionary.Current.Translate<string>("errorRemoveFromAutostartStts", "Content"));
                 return false;
             }            
         }

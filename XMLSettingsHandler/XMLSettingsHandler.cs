@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using SettingsHandlerInterface;
 using SettingsHandlerInterface.Classes;
 using System.Reflection;
+using Tomers.WPF.Localization;
 
 namespace XMLSettingsHandler
 {
@@ -35,7 +36,7 @@ namespace XMLSettingsHandler
                 var isValid = ValidateSettings(settings);
                 if (!isValid)
                 {
-                    throw new Exception("Переданные настройки не прошли проверку на валиндность. Изменения не будут сохранены.");
+                    throw new Exception(LanguageDictionary.Current.Translate<string>("writeXmlValidateSettings_SttsHandler", "Content"));
                 }
 
                 XmlSerializer ser = new XmlSerializer(typeof(Settings));
@@ -46,7 +47,7 @@ namespace XMLSettingsHandler
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("SettingsHandler.WriteXml(): Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
+                Debug.WriteLine("SettingsHandler.WriteXml(): " + LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content") + ex.Message);
                 //MessageBox.Show("Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
             }
         }
@@ -73,13 +74,13 @@ namespace XMLSettingsHandler
                     }
                     else
                     {
-                        throw new Exception("Файл настроек не прошел проверку на валиндность.");
+                        throw new Exception(LanguageDictionary.Current.Translate<string>("readXmlValidateSettings_SttsHandler", "Content"));
                     }
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("SettingsHandler.ReadXml(): Непредвиденная ошибка. Будут загружены настройки по-умолчанию, если это возможно. Текст ошибки: " + ex.Message);
+                Debug.WriteLine("SettingsHandler.ReadXml(): " + LanguageDictionary.Current.Translate<string>("readXml_SttsHandler", "Content") + ex.Message);
                 //MessageBox.Show("Непредвиденная ошибка. Будут загружены настройки по-умолчанию, если это возможно. Текст ошибки: " + ex.Message);
             }
             return Settings.GetDefaultSettings();

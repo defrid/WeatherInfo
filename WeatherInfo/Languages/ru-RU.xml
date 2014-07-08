@@ -27,6 +27,8 @@
 	<Value Id="messCheckDataStts" Content="Проверьте правильность введенных данных. Ошибка: " />
 	<Value Id="incorrectCityStts" Content="Заданный город не может быть добавлен! Проверьте правильность введённых данных!" />
 	<Value Id="incorrectCountryStts" Content="Страна не может быть выбрана! Проверьте правильность введённых данных!" />
+	<Value Id="errorAddInAutostartStts" Content="Не удалось добавить программу в автозагрузку!" />
+	<Value Id="errorRemoveFromAutostartStts" Content="Не удалось удалить программу из автозагрузки!" />
 <!-- Главное окно -->	
 	<Value Id="labelCurMonthYear_mainWin" Content="Месяц Год" />	
 	<Value Id="labelCurCity_mainWin" Content="Город" />	
@@ -70,8 +72,33 @@
 <!-- Трэй -->
 	<Value Id="menuFullWindow_Tray" Content="Развернуть" />
 	<Value Id="menuOptions_Tray" Content="Настройки" />
-	<Value Id="menuExit_Tray" Content="Выход" />	notifyIcon.ToolTipText
+	<Value Id="menuExit_Tray" Content="Выход" />
 	<Value Id="toolTipTextPreLoad_Tray" Content="WeatherInfo загружает данные" />
 	<Value Id="toolTipText_Tray" Content="Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню" />
 	<Value Id="menuExit_Tray" Content="Выход" />
+<!-- class LoadSettingsHandler -->
+	<Value Id="getLibrariesFailed_LSH" Content="Путь к рабочей папке не найден!" />
+	<Value Id="loadHandlerLibFailed_LSH" Content="Библиотека обработчика не найдена!" />
+	<Value Id="getInstanceSettingsHandler_LSH" Content="Не удалось найти ни одного обработчика!" />
+	<Value Id="failedPathToHandler_LSH" Content="Несуществующий путь к обработчику!" />
+<!-- class getCity -->
+	<Value Id="locationFolderNotFound_gC" Content="Папка Location не найдена!" />
+	<Value Id="locationDataFileNotFound_gC" Content="В папке Location не найден Data.xml (файл с городами)" />	
+<!-- class translate -->
+	<Value Id="dictNotFound_trans" Content="Файл словаря транслита не найден. Соболезнуем." />
+<!-- SettingsHandlerInterface.Classes.Option -->
+	<Value Id="getFormatAttributeFailed_Option" Content="Ошибка при получении атрибута формата прогноза погоды." />
+	<Value Id="getValueByAttributeFailed_Option" Content="Ошибка при получении формата прогноза погоды по заданному атрибуту." />
+<!-- XMLSettingsHandler -->
+	<Value Id="writeXmlValidateSettings_SttsHandler" Content="Переданные настройки не валидны. Изменения не будут сохранены." />
+	<Value Id="writeXml_SttsHandler" Content="Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " />
+	<Value Id="readXmlValidateSettings_SttsHandler" Content="Файл настроек не прошел проверку на валиндность." />
+	<Value Id="readXml_SttsHandler" Content="Непредвиденная ошибка. Будут загружены настройки по-умолчанию, если это возможно. Текст ошибки: " />
+<!-- XmlLanguageDictionary -->	
+	<Value Id="checkFilePathFailed_XmlLangDict" Content="Файл {0} не обнаружен!" />	
+	<Value Id="invalidRoot_XmlLangDict" Content="Недопустимый корневой элемент. Должен быть Dictionary." />
+	<Value Id="uidEmpty_XmlLangDict" Content="Параметр Uid не может быть пустым." />
+	<Value Id="uidNotFoundForDict_XmlLangDict" Content="Параметр Uid {0} не обнаружен в {1} словаре!" />	
+	<Value Id="vidNotFoundForUidForDict_XmlLangDict" Content="Параметр Vid не обнаружен для параметра Uid {0}, в {2} словаре!" />	
+	<Value Id="failedTransTextInDict_XmlLangDict" Content="Не удалось перевести текст {0} в словаре {1}:\n{2}" />
 </Dictionary>

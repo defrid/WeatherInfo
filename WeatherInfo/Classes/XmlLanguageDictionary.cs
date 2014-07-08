@@ -40,7 +40,7 @@ namespace WeatherInfo.Classes
 		{
 			if (!File.Exists(path))
 			{
-				throw new ArgumentException(string.Format("File {0} doesn't exist", path));
+				throw new ArgumentException(string.Format(LanguageDictionary.Current.Translate<string>("checkFilePathFailed_XmlLangDict", "Content"), path));
 			}
 			this._path = path;
 		}
@@ -51,7 +51,7 @@ namespace WeatherInfo.Classes
 			xmlDocument.Load(_path);
 			if (xmlDocument.DocumentElement.Name != "Dictionary")
 			{
-				throw new XmlException("Invalid root element. Must be Dictionary");
+                throw new XmlException(LanguageDictionary.Current.Translate<string>("invalidRoot_XmlLangDict", "Content"));
 			}
 			XmlAttribute englishNameAttribute = xmlDocument.DocumentElement.Attributes["EnglishName"];
 			if (englishNameAttribute != null)
@@ -96,21 +96,21 @@ namespace WeatherInfo.Classes
 			if (string.IsNullOrEmpty(uid))
 			{
 				#region Trace
-				Debug.WriteLine(string.Format("Uid must not be null or empty"));
+                Debug.WriteLine(string.Format(LanguageDictionary.Current.Translate<string>("uidEmpty_XmlLangDict", "Content")));
 				#endregion
 				return defaultValue;
 			}
 			if (string.IsNullOrEmpty(vid))
 			{
 				#region Trace
-				Debug.WriteLine(string.Format("Vid must not be null or empty"));
+                Debug.WriteLine(string.Format(LanguageDictionary.Current.Translate<string>("uidEmpty_XmlLangDict", "Content")));
 				#endregion
 				return defaultValue;
 			}
 			if (!_data.ContainsKey(uid))
 			{
 				#region Trace
-				Debug.WriteLine(string.Format("Uid {0} was not found in the {1} dictionary", uid, EnglishName));
+                Debug.WriteLine(string.Format(LanguageDictionary.Current.Translate<string>("uidNotFoundForDict_XmlLangDict", "Content"), uid, EnglishName));
 				#endregion
 				return defaultValue;
 			}
@@ -119,7 +119,7 @@ namespace WeatherInfo.Classes
 			if (!innerData.ContainsKey(vid))
 			{
 				#region Trace
-				Debug.WriteLine(string.Format("Vid {0} was not found for Uid {1}, in the {2} dictionary", vid, uid, EnglishName));
+                Debug.WriteLine(string.Format(LanguageDictionary.Current.Translate<string>("vidNotFoundForUidForDict_XmlLangDict", "Content"), vid, uid, EnglishName));
 				#endregion
 				return defaultValue;
 			}
@@ -140,7 +140,7 @@ namespace WeatherInfo.Classes
 			catch (Exception ex)
 			{
 				#region Trace
-				Debug.WriteLine(string.Format("Failed to translate text {0} in dictionary {1}:\n{2}", textValue, EnglishName, ex.Message));
+                Debug.WriteLine(string.Format(LanguageDictionary.Current.Translate<string>("failedTransTextInDict_XmlLangDict", "Content"), textValue, EnglishName, ex.Message));
 				#endregion
 				return null;
 			}			
