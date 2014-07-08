@@ -1,9 +1,40 @@
 ﻿<Window x:Class="WeatherInfo.About"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="О программе" Height="178.846" Width="408.462">
+        xmlns:localization="http://schemas.tomer.com/winfx/2006/xaml/presentation"
+        localization:Translate.Uid="titleForm_aboutWin" Title="{localization:Translate Default=О программе}"
+        Height="178.846" Width="408.462">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="136" Width="380"><Span><Run Text="Информер погоды &quot;WatherInfo&quot;. Разработан Группой &quot;B&quot; в рамках Интенсива SimbirSoft лета 2014 года."/></Span><LineBreak/><Span><Run Text="Состав команды:"/></Span><LineBreak/><Span><Run Text="- Павел Бекетов (TL)"/></Span><LineBreak/><Span><Run Text="- Данила Матюшин (TL-2)"/></Span><LineBreak/><Span><Run Text="- Юлия Климова"/></Span><LineBreak/><Span><Run Text="- Сергей Смеречинский"/></Span><LineBreak/><Span><Run Text="- Андрей Солдаткин"/></Span><LineBreak/><Run Text=""/></TextBlock>
-
+        <TextBlock localization:Translate.Uid="textBlockAbout_curWeaWin" Text="{localization:Translate}" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="136" Width="380">
+            <!--<Span>
+                <Run Text="Информер погоды &quot;WatherInfo&quot;. Разработан Группой &quot;B&quot; в рамках Интенсива SimbirSoft лета 2014 года."/>
+            </Span>
+            <LineBreak/>
+            <Span>
+                <Run Text="Состав команды:"/>
+            </Span>
+            <LineBreak/>
+            <Span>
+                <Run Text="- Павел Бекетов (TL)"/>
+            </Span>
+            <LineBreak/>
+            <Span>
+                <Run Text="- Данила Матюшин (TL-2)"/>
+            </Span>
+            <LineBreak/>
+            <Span>
+                <Run Text="- Юлия Климова"/>
+            </Span>
+            <LineBreak/>
+            <Span>
+                <Run Text="- Сергей Смеречинский"/>
+            </Span>
+            <LineBreak/>
+            <Span>
+                <Run Text="- Андрей Солдаткин"/>
+            </Span>
+            <LineBreak/>
+            <Run Text=""/>-->
+        </TextBlock>
     </Grid>
 </Window>

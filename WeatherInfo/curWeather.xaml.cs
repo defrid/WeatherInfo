@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tomers.WPF.Localization;
 using WeatherInfo.Classes;
 
 
@@ -47,9 +48,9 @@ namespace WeatherInfo
             gridResult.ColumnDefinitions.Add(specRowDef);
 
             var dayLabel = new Label 
-            { 
-                Content = DateTime.Now.ToString("T"),
-                FontWeight = FontWeights.Bold 
+            {
+                Content = DateTime.Now.ToString("t", LanguageContext.Instance.Culture),
+                FontWeight = FontWeights.Bold
             };
             gridResult.Children.Add(dayLabel);
 

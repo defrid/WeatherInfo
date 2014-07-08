@@ -323,16 +323,22 @@ namespace WeatherInfo
                 timer.Start();
                 return;
             }
+
+            fillTray();
+            timer.Start();
+        }
+
+        private void fillTray(bool needHide = false)
+        {
             List<TrayCityData> listfortray = new List<TrayCityData>();
             for (int i = 0; i < App.settings.cities.Count; i++)
             {
-                var name = App.settings.cities[i].city.cityRusName;
+                var name = (App.settings.language.engName) == "English" ? upperEngCityName(App.settings.cities[i].city.cityEngName) : App.settings.cities[i].city.cityRusName;
                 var temp = curForecasts[i].temp;
                 var icon = WeatherInfo.Classes.OpenWeatherAPI.GetImageById(curForecasts[i].icon);
                 listfortray.Add(new TrayCityData(name, temp, icon));
             }
-            Tray.Update(listfortray, false);
-            timer.Start();
+            Tray.Update(this, listfortray, needHide);
         }
 
         private DockPanel GetContainerForCity(string cityName, string monthYear, bool addSettingsIcon = false)
@@ -406,7 +412,7 @@ namespace WeatherInfo
                 {
                     Label day = new Label()
                         {
-                            Content = curDay.ToString("ddd")
+                            Content = curDay.ToString("ddd", LanguageContext.Instance.Culture)
                         };
                     Grid.SetRow(day, 0);
                     Grid.SetColumn(day, i);
@@ -790,9 +796,14 @@ namespace WeatherInfo
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //DataBase data = new DataBase();
-            //data.ADD_BD();
-            //data.show();
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == System.Windows.WindowState.Minimized)
+            {
+                fillTray(true);
+            }
         }
 
     }

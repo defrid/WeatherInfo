@@ -9,6 +9,7 @@ using Hardcodet.Wpf.TaskbarNotification;
 using System.Threading;
 using System.Windows.Threading;
 using WeatherInfo.Properties;
+using Tomers.WPF.Localization;
 
 namespace WeatherInfo
 {
@@ -84,10 +85,10 @@ namespace WeatherInfo
             TextBlock FullWindow = new TextBlock();
             TextBlock Options = new TextBlock();
             TextBlock Exit = new TextBlock();
-
-                FullWindow.Text = "Развернуть";
-                Options.Text = "Настройки";
-                Exit.Text = "Выход";
+            
+            FullWindow.Text = LanguageDictionary.Current.Translate<string>("menuFullWindow_Tray", "Content");//"Развернуть";
+            Options.Text = LanguageDictionary.Current.Translate<string>("menuOptions_Tray", "Content"); //"Настройки";
+            Exit.Text = LanguageDictionary.Current.Translate<string>("menuExit_Tray", "Content"); //"Выход";
 
             notifyIcon.ContextMenu = new ContextMenu();
             notifyIcon.ContextMenu.Items.Add(FullWindow);
@@ -185,7 +186,7 @@ namespace WeatherInfo
             try
             {
                 notifyIcon.Visibility = Visibility.Visible;
-                notifyIcon.ToolTipText = "WeatherInfo загружает данные...";
+                notifyIcon.ToolTipText = LanguageDictionary.Current.Translate<string>("toolTipTextPreLoad_Tray", "Content");//"WeatherInfo загружает данные";
                 preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
                 timer.Start();
             }
@@ -209,18 +210,19 @@ namespace WeatherInfo
             }
         }
 
+
         /// <summary>
         /// Cкроет главное окно если открыто, запишет данные в трей, покажет его, сам трей будет с иконкой 1го города
         /// </summary>
         /// <param name="cities">Список городов</param>
         /// <param name="needHide">Если главное окно не надо прятать послать false</param>
-        public static void Update(List<TrayCityData> cities, bool needHide=true)
+        public static void Update(Window w, List<TrayCityData> cities, bool needHide=true)
         {
             try
             {
                 timer.Stop();
-
-                    notifyIcon.ToolTipText = "Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню";
+                
+                notifyIcon.ToolTipText = LanguageDictionary.Current.Translate<string>("toolTipText_Tray", "Content");//"Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню";
 
                 try
                 {
@@ -230,8 +232,8 @@ namespace WeatherInfo
 
                 if (needHide)
                 {
-                    windowMain.WindowState = WindowState.Normal;
-                    windowMain.Hide();
+                    w.WindowState = WindowState.Normal;
+                    w.Hide();
                 }
 
                 WindowTray wt = new WindowTray(leaveWindowTray, cities);

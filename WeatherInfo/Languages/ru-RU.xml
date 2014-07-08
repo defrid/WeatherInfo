@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Dictionary EnglishName="Russian" CultureName="Русский" Culture="ru-RU">	
 <!-- Настройки -->
+	<Value Id="titleFormStts" Title="Настройки" />
 	<Value Id="labelListOfCityStts" Content="Список городов" />
 	<Value Id="labelListOfCountryStts" Content="Список стран" />
 	<Value Id="listOfCountries_cbxStts" />
@@ -24,6 +25,8 @@
 	<Value Id="labelLabguageStts" Content="Язык" />
 	<Value Id="autostartFlag_chbxStts" Content="Автозапуск с Windows" />
 	<Value Id="messCheckDataStts" Content="Проверьте правильность введенных данных. Ошибка: " />
+	<Value Id="incorrectCityStts" Content="Заданный город не может быть добавлен! Проверьте правильность введённых данных!" />
+	<Value Id="incorrectCountryStts" Content="Страна не может быть выбрана! Проверьте правильность введённых данных!" />
 <!-- Главное окно -->	
 	<Value Id="labelCurMonthYear_mainWin" Content="Месяц Год" />	
 	<Value Id="labelCurCity_mainWin" Content="Город" />	
@@ -44,10 +47,31 @@
 	<Value Id="night_mainWin" Content="Ночь" />
 	<Value Id="messConnectedToYaAPIResult_mainWin" Content="Нет соединения с одним из серверов погоды" />
 	<Value Id="dailyTitle_mainWin" Content="Суточный прогноз" />
-	<Value Id="messWaitForUpdate_mainWin" Content="Подождите, пока завершится текущее обновление" />
+	<Value Id="messWaitForUpdate_mainWin" Content="Подождите, пока завершится текущее обновление" />	
 <!-- Окно Дни -->
 	<Value Id="titleForm_daysWin" Title="Дневной прогноз" />
 	<Value Id="labelForecastOnDay_daysWin" Content="Прогноз на день" />
 	<Value Id="buttonNext_daysWin" Content="След." />
 	<Value Id="buttonPrev_daysWin" Content="Пред." />
+<!-- Текущий прогноз -->	
+	<Value Id="titleForm_curWeaWin" Title="Текущий прогноз" />
+	<Value Id="labelCurWeather_curWeaWin" Content="Текущий прогноз" />
+<!-- Окно О программе -->	
+	<Value Id="titleForm_aboutWin" Title="Текущий прогноз" />
+	<Value Id="textBlockAbout_curWeaWin" Text=
+"Информер погоды 'WeatherInfo'. Разработан Группой 'B' в рамках Интенсива SimbirSoft лета 2014 года.
+Состав команды:
+- Павел Бекетов (TL)
+- Данила Матюшин (TL-2)
+- Юлия Климова
+- Сергей Смеречинский
+- Андрей Солдаткин
+" />
+<!-- Трэй -->
+	<Value Id="menuFullWindow_Tray" Content="Развернуть" />
+	<Value Id="menuOptions_Tray" Content="Настройки" />
+	<Value Id="menuExit_Tray" Content="Выход" />	notifyIcon.ToolTipText
+	<Value Id="toolTipTextPreLoad_Tray" Content="WeatherInfo загружает данные" />
+	<Value Id="toolTipText_Tray" Content="Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню" />
+	<Value Id="menuExit_Tray" Content="Выход" />
 </Dictionary>

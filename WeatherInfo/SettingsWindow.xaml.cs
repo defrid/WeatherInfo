@@ -41,7 +41,6 @@ namespace WeatherInfo
             language_save = new Language("Русский", "Russian");
         }
 
-        getCity gC = new getCity();
         string translatePath = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\Location\translit.txt";
 
         private void cancel_btn_Click(object sender, RoutedEventArgs e)
@@ -231,7 +230,7 @@ namespace WeatherInfo
             {
                 var item = new ComboBoxItem();
                 item.Tag = country;
-                item.Content = App.settings.language.engName == "English" ? translate.toEng(country, translatePath) : country;
+                item.Content = App.settings.language.engName == "English" ? getCity.countryTranslate(country, true) : country;
                 listOfCountries_cbx.Items.Add(item);
             }
             //listOfCountries_cbx.ItemsSource = countries;
@@ -423,10 +422,17 @@ namespace WeatherInfo
         {
             try
             {
+                if (listOfCountries_cbx.SelectedItem == null || string.IsNullOrWhiteSpace((string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag))
+                {
+                    throw new Exception(LanguageDictionary.Current.Translate<string>("incorrectCountryStts", "Content"));
+                }
                 LoadCities();
                 listOfCitiies_cbx.SelectedIndex = 0;
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void listOfCitiies_cbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -448,7 +454,7 @@ namespace WeatherInfo
         /// Добавить город в список выбранных
         /// </summary>
         private void AddCityToChoosen()
-        {
+        {                        
             var curCity = (string)((ComboBoxItem)listOfCitiies_cbx.SelectedItem).Tag;
             var curCountry = (string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag; //listOfCountries_cbx.SelectedItem.ToString();            
 
@@ -504,7 +510,24 @@ namespace WeatherInfo
 
         private void AddCityButtonClick(object sender, RoutedEventArgs e)
         {
-            AddCityToChoosen();
+            try
+            {
+                if (listOfCountries_cbx.SelectedItem == null || string.IsNullOrWhiteSpace((string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag))
+                {
+                    throw new Exception(LanguageDictionary.Current.Translate<string>("incorrectCountryStts", "Content"));
+                }
+
+                if (listOfCitiies_cbx.SelectedItem == null || string.IsNullOrWhiteSpace((string)((ComboBoxItem)listOfCitiies_cbx.SelectedItem).Tag))
+                {
+                    throw new Exception(LanguageDictionary.Current.Translate<string>("incorrectCityStts", "Content"));
+                }
+
+                AddCityToChoosen();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }  
         }
 
         private void DeleteCityButtonClick(object sender, RoutedEventArgs e)
@@ -534,8 +557,25 @@ namespace WeatherInfo
 
         private void ReplaceButton_Click(object sender, RoutedEventArgs e)
         {
-            RemoveCityFromChoosen();
-            AddCityToChoosen();
+            try
+            {
+                if (listOfCountries_cbx.SelectedItem == null || string.IsNullOrWhiteSpace((string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag))
+                {
+                    throw new Exception(LanguageDictionary.Current.Translate<string>("incorrectCountryStts", "Content"));
+                }
+
+                if (listOfCitiies_cbx.SelectedItem == null || string.IsNullOrWhiteSpace((string)((ComboBoxItem)listOfCitiies_cbx.SelectedItem).Tag))
+                {
+                    throw new Exception(LanguageDictionary.Current.Translate<string>("incorrectCityStts", "Content"));
+                }
+
+                RemoveCityFromChoosen();
+                AddCityToChoosen();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }            
         }
     }
 }

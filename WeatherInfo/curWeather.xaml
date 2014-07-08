@@ -1,9 +1,11 @@
 ﻿<Window x:Class="WeatherInfo.curWeather"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="curWeather" Height="157.5" Width="136.5">
+        xmlns:localization="http://schemas.tomer.com/winfx/2006/xaml/presentation"
+        localization:Translate.Uid="titleForm_curWeaWin" Title="{localization:Translate Default=Текущий прогноз}"
+        Height="157.5" Width="136.5">
     <Grid>
-        <Label Content="Текущий прогноз" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label localization:Translate.Uid="labelCurWeather_curWeaWin" Content="{localization:Translate Default=Текущий прогноз}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <DockPanel Name ="CurrentWeather" HorizontalAlignment="Left" Height="87" LastChildFill="False" Margin="10,31,0,0" VerticalAlignment="Top" Width="108"/>
     </Grid>
 </Window>
