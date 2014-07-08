@@ -61,7 +61,6 @@ namespace WeatherInfo
                 this.Close();
             }
 
-
             InitializeComponent();
             forecasts = new List<XMLParser>();
             var nowMonthYear = DateTime.Now.ToString("y");
@@ -73,6 +72,7 @@ namespace WeatherInfo
 
                 MainContainer.Children.Add(GetContainerForCity(town, nowMonthYear));
             }
+            SetWindowHeight();
 
             SettingsImage.Source = ConvertBitmabToImage(Properties.Resources.Gear);
             rotationTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10)};
@@ -97,6 +97,13 @@ namespace WeatherInfo
 
             Connection.Content = message;
             worker.RunWorkerAsync();
+        }
+
+        private void SetWindowHeight()
+        {
+            var screenHeight = SystemParameters.PrimaryScreenHeight;
+            var likelyHeight = (App.settings.cities.Count - 1)*250 + 330;
+            Height = likelyHeight < screenHeight ? likelyHeight : screenHeight;
         }
 
         private Dictionary<string, string> InitDaysDictionary()
@@ -256,6 +263,10 @@ namespace WeatherInfo
             }
             Tray.Update(listfortray, false);
             timer.Start();
+            foreach (var container in MainContainer.Children)
+            {
+                Console.WriteLine((container as FrameworkElement).ActualHeight);
+            }
         }
 
         private DockPanel GetContainerForCity(string cityName, string monthYear, bool addSettingsIcon = false)
@@ -452,9 +463,6 @@ namespace WeatherInfo
             gridResult.Children.Add(image);
             ToolTipService.SetShowDuration(gridResult, 15000);
 
-
-
-
             return gridResult;
         }
 
@@ -635,6 +643,7 @@ namespace WeatherInfo
 
                 MainContainer.Children.Add(GetContainerForCity(town, nowMonthYear));
             }
+            SetWindowHeight();
 
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
