@@ -1857,7 +1857,7 @@
     <city nameRu="Бухарест" nameEng="bucharest" idYa="15420" idOp="683506" />
     <city nameRu="Синая" nameEng="sinaia" idYa="15325" idOp="667091" />
   </country>
-  <country nameRu="США" nameEng="United States Minor Outlying Islands" nameShort="UM">
+  <country nameRu="США" nameEng="United States" nameShort="US">
     <city nameRu="Чикаго, шт. Иллинойс" nameEng="chicago" idYa="72530" idOp="4887398" />
     <city nameRu="Анкоридж" nameEng="anchorage" idYa="70276" idOp="5879400" />
     <city nameRu="Финикс, шт. Аризона" nameEng="phoenix" idYa="72278" idOp="5308655" />

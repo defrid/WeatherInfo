@@ -77,7 +77,11 @@ namespace WeatherInfo.Classes
                     throw new Exception("В папке Location не найден Data.xml (файл с городами)");
                 }
 
-                File = (SpCountryFull)xs.Deserialize(new StreamReader(@"Location/Data.xml"));
+                try
+                {
+                    File = (SpCountryFull)xs.Deserialize(new StreamReader(@"Location/Data.xml"));
+                }
+                catch { throw new Exception(@"Файл Location/Data.xml был поврежден!"); }
             }
 
             return File;
