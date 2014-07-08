@@ -56,9 +56,16 @@ namespace WeatherInfoUnitTests
         {
             string url = @"http://api.openweathermap.org/data/2.5/weather?mode=xml&lang=ru&units=metric&q=Moscow";
             var method = typeof (OpenWeatherAPI).GetRuntimeMethods().Single(m=>m.Name=="GetResponseStream");
-            var result = (XDocument)method.Invoke(null, new object[] {url});
+            var result = method.Invoke(null, new object[] {url});
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result, typeof(XDocument));
+        }
+
+        [TestMethod]
+        public void GetImageByIdTest()
+        {
+            var result = typeof (OpenWeatherAPI).GetMethod("GetImageById").Invoke(null, new object[] {"09n"});
+            Assert.IsNotNull(result);
         }
     }
 }
