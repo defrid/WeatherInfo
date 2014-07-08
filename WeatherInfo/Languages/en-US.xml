@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Dictionary EnglishName="English" CultureName="English" Culture="en-US">
+<!-- Settings -->
 	<Value Id="labelListOfCityStts" Content="List of cities" />
 	<Value Id="labelListOfCountryStts" Content="List of countries" />
 	<Value Id="listOfCountries_cbxStts" />
@@ -19,10 +20,11 @@
 	<Value Id="about_btnStts" Content="About" />
 	<Value Id="accept_btnStts" Content="OK" />
 	<Value Id="cancel_btnStts" Content="Cancel" />
-	<Value Id="labelSystemStts" Content="System" />
+	<Value Id="labelSystemStts" Content="System" />Check the correctness of data
 	<Value Id="labelLabguageStts" Content="Language" />
 	<Value Id="autostartFlag_chbxStts" Content="Autostart with Windows" />
-	
+	<Value Id="messCheckDataStts" Content="Check the correctness of data. Error: " />
+<!-- Main Window -->		
 	<Value Id="labelCurMonthYear_mainWin" Content="Month Year" />
 	<Value Id="labelCurCity_mainWin" Content="City" />
 	<Value Id="labelMonday_mainWin" Content="Mon" />
@@ -42,4 +44,9 @@
 	<Value Id="messConnectedToYaAPIResult_mainWin" Content="No connection to one of the weather's servers." />
 	<Value Id="dailyTitle_mainWin" Content="Daily forecast" />
 	<Value Id="messWaitForUpdate_mainWin" Content="Wait for the update will complete." />
+<!-- Days Window -->
+	<Value Id="titleForm_daysWin" Title="Daily forecast" />
+	<Value Id="labelForecastOnDay_daysWin" Content="Forecast for the day." />
+	<Value Id="buttonNext_daysWin" Content="Next" />
+	<Value Id="buttonPrev_daysWin" Content="Prev." />
 </Dictionary>

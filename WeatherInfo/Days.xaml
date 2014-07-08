@@ -1,14 +1,15 @@
 ﻿<Window x:Class="WeatherInfo.Days"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Days" Height="300" Width="300">
+        xmlns:localization="http://schemas.tomer.com/winfx/2006/xaml/presentation"
+        localization:Translate.Uid="titleForm_daysWin" Title="{localization:Translate Default=Дневной прогноз}" Height="300" Width="300">
     <Grid>
         <DockPanel Name ="WeatherPanel" HorizontalAlignment="Left" Height="233" LastChildFill="False" VerticalAlignment="Bottom" Width="292"/>
         <DockPanel HorizontalAlignment="Left" Height="37" LastChildFill="False" Margin="20,233,0,0" VerticalAlignment="Top" Width="190">
-            <Button x:Name="prev" Content="Пред." Height="25" VerticalAlignment="Top" Width="75" Click="prev_Click"/>
+            <Button x:Name="prev" localization:Translate.Uid="buttonPrev_daysWin" Content="{localization:Translate Default=Пред.}" Height="25" VerticalAlignment="Top" Width="75" Click="prev_Click"/>
         </DockPanel>
-        <Button x:Name="next" Content="След." HorizontalAlignment="Left" Margin="192,233,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="next_Click"/>
-        <Label Name ="Date" Content="Прогноз на день" Height="233" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <Button x:Name="next" localization:Translate.Uid="buttonNext_daysWin" Content="{localization:Translate Default=След.}" HorizontalAlignment="Left" Margin="192,233,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="next_Click"/>
+        <Label Name ="Date" localization:Translate.Uid="labelForecastOnDay_daysWin" Content="{localization:Translate Default=Прогноз на день}" Height="233" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
     </Grid>
 </Window>

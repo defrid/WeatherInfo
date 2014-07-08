@@ -20,6 +20,7 @@ using System.Threading;
 using System.Net.NetworkInformation;
 using WeatherInfo.Classes;
 using Entity_base;
+using Tomers.WPF.Localization;
 
 namespace WeatherInfo
 {
@@ -36,8 +37,8 @@ namespace WeatherInfo
         //private string townID;
         private const int BaseRowCount = 2;
         private const int BaseColumnCount = 2;
-        private const string HourTitle = "Почасовой прогноз";
-        private const string HoutTimeEnd = ":00";
+        private string HourTitle = "Почасовой прогноз";
+        private string HoutTimeEnd = ":00";
         private bool hasConnection = false;
         private bool connectedToYaAPI = false;
         private bool connectedToOpAPI = false;
@@ -85,18 +86,28 @@ namespace WeatherInfo
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
             Tray.SetupTray(this, options, expandShort);
 
-            dayParts = new Dictionary<string, string>();
-            dayParts.Add("morning", "Утро");
-            dayParts.Add("day", "День");
-            dayParts.Add("evening", "Вечер");
-            dayParts.Add("night", "Ночь");
+            
 
             hasConnection = IsNetworkAvailable();
             this.IsEnabled = false;
             Tray.PreLoad();
             Icon = ConvertBitmabToImage(Properties.Resources.weather.ToBitmap());
-            Connection.Content = (hasConnection) ? "Обновление" : "Нет соединения";
+            var message = (hasConnection) ? LanguageDictionary.Current.Translate<string>("messUpdateStatusInProcess_mainWin", "Content")
+                                          : LanguageDictionary.Current.Translate<string>("messUpdateStatusFaildConnection_mainWin", "Content");
+
+            Connection.Content = message;
             worker.RunWorkerAsync();
+        }
+
+        private Dictionary<string, string> InitDaysDictionary()
+        {
+            var days = new Dictionary<string, string>();
+            days.Add("morning", LanguageDictionary.Current.Translate<string>("morning_mainWin", "Content"));//"Утро"
+            days.Add("day", LanguageDictionary.Current.Translate<string>("day_mainWin", "Content"));//"День"
+            days.Add("evening", LanguageDictionary.Current.Translate<string>("evening_mainWin", "Content"));//"Вечер"
+            days.Add("night", LanguageDictionary.Current.Translate<string>("night_mainWin", "Content"));//"Ночь"
+
+            return days;
         }
 
 
@@ -182,6 +193,7 @@ namespace WeatherInfo
             shrtForecasts = new List<ForecastDay[]>();
             dtldForecasts = new List<ForecastDay[]>();
             curForecasts = new List<ForecastHour>();
+            dayParts = InitDaysDictionary();
             try
             {
                 foreach (var xmlParser in forecasts)
@@ -223,7 +235,7 @@ namespace WeatherInfo
         {
             if (!(connectedToOpAPI || connectedToYaAPI))
             {
-                Connection.Content = "Нет соединения";
+                Connection.Content = LanguageDictionary.Current.Translate<string>("messUpdateStatusFaildConnection_mainWin", "Content");
                 timer.Start();
                 return;
             }
@@ -450,11 +462,11 @@ namespace WeatherInfo
         {
             if (!connectedToYaAPI && !connectedToOpAPI)
             {
-                return "Нет соединения с одним из серверов погоды";
+                return LanguageDictionary.Current.Translate<string>("messConnectedToYaAPIResult_mainWin", "Content"); 
             }
             if (dayForecast.hours.Count > 24)
             {
-
+                InitDaysDictionary();
                 int temp = 0;
                 ForecastHour[] fors = dayForecast.hours.Where(el => Int32.TryParse(el.time, out temp)).ToArray();
                 if (today)
@@ -464,17 +476,20 @@ namespace WeatherInfo
                 }
                 int rows = fors.Length != 24 ? rowsAndColumns(fors.Length)[0] : 8;
                 int cols = fors.Length != 24 ? rowsAndColumns(fors.Length)[1] : 3;
+                HourTitle = LanguageDictionary.Current.Translate<string>("dailyTitle_mainWin", "Content");
                 return GetTooltipForecast(rows, cols, HourTitle, fors, HoutTimeEnd);
             }
             else
             {
+                InitDaysDictionary();
                 int temp = 0;
                 ForecastHour[] fors = dayForecast.hours.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
                 foreach (var el in fors)
                 {
                     el.time = dayParts[el.time];
                 }
-                return GetTooltipForecast(BaseRowCount, BaseColumnCount, "Суточный прогноз", fors, "");
+                var titleToolTip = LanguageDictionary.Current.Translate<string>("dailyTitle_mainWin", "Content");
+                return GetTooltipForecast(BaseRowCount, BaseColumnCount, titleToolTip, fors, "");
             }
         }
 
@@ -526,11 +541,6 @@ namespace WeatherInfo
                 };
             DockPanel.SetDock(titleLabel, Dock.Top);
             docResult.Children.Add(titleLabel);
-            if (!connectedToYaAPI)
-            {
-                titleLabel.Content = "Нет соединения с сервером погоды";
-                return docResult;
-            }
 
             var grid = new Grid();
             for (var i = 0; i < rowsCount; i++)
@@ -603,10 +613,13 @@ namespace WeatherInfo
         {
             while (worker.IsBusy)
             {
-                MessageBox.Show("Подождите, пока завершится текущее обновление");
+                var waitForUpdate = LanguageDictionary.Current.Translate<string>("messWaitForUpdate_mainWin", "Content");
+                MessageBox.Show(waitForUpdate);
             }
             hasConnection = IsNetworkAvailable();
-            Connection.Content = (hasConnection) ? "Обновление" : "Нет соединения";
+            var message = (hasConnection) ? LanguageDictionary.Current.Translate<string>("messUpdateStatusInProcess_mainWin", "Content")
+                                          : LanguageDictionary.Current.Translate<string>("messUpdateStatusFaildConnection_mainWin", "Content");
+            Connection.Content = message;
             this.IsEnabled = false;
 
             var mainElementsCount = MainContainer.Children.Cast<Panel>().Skip(1).Count();
