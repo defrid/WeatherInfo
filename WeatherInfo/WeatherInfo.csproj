@@ -226,12 +226,8 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Location\countries.txt" />
     <None Include="Resources\config.ico" />
     <None Include="Resources\weather.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Location\savedCountries.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Location\translit.txt" />
