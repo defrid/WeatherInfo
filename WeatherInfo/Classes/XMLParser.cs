@@ -82,7 +82,7 @@ namespace WeatherInfo.Classes
 
         public ForecastDay[] getBigForecast()
         {
-            ForecastDay[] res = new ForecastDay[14];
+            List<ForecastDay> res = new List<ForecastDay>();
             weather = opAPI.GetBigForecast();
             IEnumerable<XElement> forecasts = weather.Root.Element("forecast").Elements();
             int cur = 0;
@@ -92,10 +92,10 @@ namespace WeatherInfo.Classes
                 int min = (int)float.Parse(time.Element("temperature").Attribute("min").Value, NumberStyles.Any, ci);
                 int max = (int)float.Parse(time.Element("temperature").Attribute("max").Value, NumberStyles.Any, ci);
                 string icon = time.Element("symbol").Attribute("var").Value;
-                res[cur] = new ForecastDay(min, max, null, date, icon);
+                res.Add(new ForecastDay(min, max, null, date, icon));
                 cur++;
             }
-            return res;
+            return res.ToArray();
         }
     }
 }

@@ -72,12 +72,12 @@ namespace WeatherInfo
             preloaders = new List<DockPanel>();
             foreach (var city in App.settings.cities)
             {
-                var town = city.city.cityRusName;
+                MainContainer.Children.Add(GetContainerForCity(city.city.cityRusName, nowMonthYear));
+                var town = city.city.cityEngName;
                 var townId = city.city.cityYaId.ToString();
                 forecasts.Add(new XMLParser(town, townId));
-                MainContainer.Children.Add(GetContainerForCity(town, nowMonthYear));
             }
-            SetWindowHeight();
+
 
             preloaderRotationTimer=new DispatcherTimer();
             preloaderRotationTimer.Interval = TimeSpan.FromMilliseconds(100);
@@ -123,7 +123,7 @@ namespace WeatherInfo
 
         private void SetWindowHeight()
         {
-            var screenHeight = SystemParameters.PrimaryScreenHeight;
+            var screenHeight = SystemParameters.FullPrimaryScreenHeight;
             var likelyHeight = (App.settings.cities.Count - 1)*250 + 330;
             Height = likelyHeight < screenHeight ? likelyHeight : screenHeight;
         }
@@ -297,6 +297,9 @@ namespace WeatherInfo
             {
                 Connection.Content = "Соединение установлено";
             }
+
+            SetWindowHeight();
+
             FillTables();
             Scroll.IsEnabled = true;
 
@@ -389,7 +392,6 @@ namespace WeatherInfo
                 }
             }
 #warning Переделать!!!
-            int limit = !connectedToOpAPI ? 10 : 14;
             if (!connectedToOpAPI)
                 ConvertDtldToShrt();
             for (var k = 0; k < weatherTables.Count; k++)
@@ -399,7 +401,7 @@ namespace WeatherInfo
                     for (int j = 0; j < 7; j++)
                     {
                         var index = 7 * i + j;
-                        if (index >= limit)
+                        if (index >= shrtForecasts[k].Length)
                             break;
                         var weatherElement = GetWeaterElement(j, i + 1, shrtForecasts[k][index]);
                         if (index == 0)
@@ -688,13 +690,13 @@ namespace WeatherInfo
             preloaders=new List<DockPanel>();
             foreach (var city in App.settings.cities)
             {
-                var town = city.city.cityRusName;
+                var town = city.city.cityEngName;
                 var townId = city.city.cityYaId.ToString();
                 forecasts.Add(new XMLParser(town, townId));
 
-                MainContainer.Children.Add(GetContainerForCity(town, nowMonthYear));
+                MainContainer.Children.Add(GetContainerForCity(city.city.cityRusName, nowMonthYear));
             }
-            SetWindowHeight();
+            
             preloaderRotationTimer.Start();
 
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
