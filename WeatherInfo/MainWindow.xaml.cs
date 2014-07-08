@@ -72,8 +72,8 @@ namespace WeatherInfo
                 var townId = city.city.cityYaId.ToString();
                 forecasts.Add(new XMLParser(town, townId));
 
-            City.Content = (App.settings.language.engName) == "English" ? upperEngCityName(App.settings.GetFirstCity().city.cityEngName) : town;
-            MonthYear.Content = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
+            //City.Content = (App.settings.language.engName) == "English" ? upperEngCityName(App.settings.GetFirstCity().city.cityEngName) : town;
+            //MonthYear.Content = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
 
                MainContainer.Children.Add(GetContainerForCity(town, nowMonthYear));
             }
@@ -258,10 +258,10 @@ namespace WeatherInfo
             {
                 Connection.Content = "Соединение установлено";
             }
-            City.Content = (App.settings.language.engName) == "English" ? upperEngCityName(App.settings.GetFirstCity().city.cityEngName) : town;//town;
-            fillTable();
-            this.IsEnabled = true;
-            MonthYear.Content = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
+            //City.Content = (App.settings.language.engName) == "English" ? upperEngCityName(App.settings.GetFirstCity().city.cityEngName) : town;//town;
+            //FillTable();
+            //this.IsEnabled = true;
+            //MonthYear.Content = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
 
             FillTables();
             Scroll.IsEnabled = true;
@@ -486,7 +486,7 @@ namespace WeatherInfo
             }
             if (dayForecast.hours.Count > 24)
             {
-                InitDaysDictionary();
+                dayParts = InitDaysDictionary();
                 int temp = 0;
                 ForecastHour[] fors = dayForecast.hours.Where(el => Int32.TryParse(el.time, out temp)).ToArray();
                 if (today)
@@ -501,10 +501,10 @@ namespace WeatherInfo
             }
             else
             {
-                ForecastHour[] fors = dtldForecast[index].hours.ToArray();
+                //ForecastHour[] fors = dtldForecast[index].hours.ToArray();
+                //dayParts = InitDaysDictionary();
+
                 dayParts = InitDaysDictionary();
-                
-                InitDaysDictionary();
 
                 int temp = 0;
                 ForecastHour[] fors = dayForecast.hours.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
@@ -650,7 +650,7 @@ namespace WeatherInfo
             MainContainer.Children.RemoveRange(1, mainElementsCount);
 
 
-            MonthYear.Content = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
+            //MonthYear.Content = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
 
             forecasts = new List<XMLParser>();
             var nowMonthYear = DateTime.Now.ToString("y");
