@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:localization="http://schemas.tomer.com/winfx/2006/xaml/presentation"
         Title="Weather Informer" Height="320" Width="640" ResizeMode="CanMinimize" Loaded="Window_Loaded">
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Name="Scroll">
         <Border BorderBrush="Black" BorderThickness="2">
             <StackPanel Name="MainContainer">
                 <DockPanel>
