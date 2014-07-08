@@ -153,7 +153,7 @@ namespace WeatherInfo
         static DispatcherTimer timer = new DispatcherTimer { Interval = new TimeSpan(0, 0, 0, 0, 10) };
 
         /// <summary>
-        /// Этот метод следует вызвать если программу скрыли, а данные ещё долго будут грузиться
+        /// Этот метод следует вызвать если программу скрыли, а данные ещё долго будут грузиться.
         /// </summary>
         public static void PreLoad()
         {
