@@ -69,7 +69,7 @@ namespace WeatherInfo
 
             InitializeComponent();
             forecasts = new List<XMLParser>();
-            
+
             preloaders = new List<DockPanel>();
             var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
             foreach (var city in App.settings.cities)
@@ -82,13 +82,13 @@ namespace WeatherInfo
             }
 
 
-            preloaderRotationTimer=new DispatcherTimer();
+            preloaderRotationTimer = new DispatcherTimer();
             preloaderRotationTimer.Interval = TimeSpan.FromMilliseconds(100);
             preloaderRotationTimer.Tick += preloaderRotationTimer_Tick;
             preloaderRotationTimer.Start();
 
             SettingsImage.Source = ConvertBitmabToImage(Properties.Resources.Gear);
-            rotationTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10)};
+            rotationTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
             rotationTimer.Tick += rotationTimer_Tick;
 
             timer = new DispatcherTimer();
@@ -99,7 +99,7 @@ namespace WeatherInfo
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
             Tray.SetupTray(this, options, expandShort);
 
-            
+
 
             hasConnection = IsNetworkAvailable();
             Scroll.IsEnabled = false;
@@ -127,7 +127,7 @@ namespace WeatherInfo
         private void SetWindowHeight()
         {
             var screenHeight = SystemParameters.FullPrimaryScreenHeight;
-            var likelyHeight = (App.settings.cities.Count - 1)*250 + 330;
+            var likelyHeight = (App.settings.cities.Count - 1) * 250 + 330;
             Height = likelyHeight < screenHeight ? likelyHeight : screenHeight;
         }
 
@@ -135,7 +135,7 @@ namespace WeatherInfo
         {
             var resultPanel = new DockPanel();
             Grid.SetRowSpan(resultPanel, 2);
-            Grid.SetColumnSpan(resultPanel,7);
+            Grid.SetColumnSpan(resultPanel, 7);
             var stackPanel = new StackPanel()
                 {
                     HorizontalAlignment = HorizontalAlignment.Center,
@@ -145,12 +145,12 @@ namespace WeatherInfo
                 {
                     HorizontalAlignment = HorizontalAlignment.Center,
                     Source = ConvertBitmabToImage(Properties.Resources.Preloader),
-                    RenderTransformOrigin = new Point(0.5,0.5),
+                    RenderTransformOrigin = new Point(0.5, 0.5),
                     Height = 32,
                     Width = 32
                 };
             stackPanel.Children.Add(image);
-            var label = new Label() {Content = "Loading...", HorizontalAlignment = HorizontalAlignment.Center};
+            var label = new Label() { Content = "Loading...", HorizontalAlignment = HorizontalAlignment.Center };
             stackPanel.Children.Add(label);
             resultPanel.Children.Add(stackPanel);
             return resultPanel;
@@ -539,7 +539,7 @@ namespace WeatherInfo
         {
             if (!connectedToYaAPI && !connectedToOpAPI)
             {
-                return LanguageDictionary.Current.Translate<string>("messConnectedToYaAPIResult_mainWin", "Content"); 
+                return LanguageDictionary.Current.Translate<string>("messConnectedToYaAPIResult_mainWin", "Content");
             }
             if (dayForecast.hours.Count > 24)
             {
@@ -709,7 +709,7 @@ namespace WeatherInfo
 
 
             forecasts = new List<XMLParser>();
-            
+
             preloaders = new List<DockPanel>();
             var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
             foreach (var city in App.settings.cities)
@@ -720,7 +720,7 @@ namespace WeatherInfo
                 town = city.city.cityEngName;
                 forecasts.Add(new XMLParser(town, townId));
             }
-            
+
             preloaderRotationTimer.Start();
 
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
