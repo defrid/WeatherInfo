@@ -2,71 +2,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:localization="http://schemas.tomer.com/winfx/2006/xaml/presentation"
-        Title="Weather Informer" Height="295" Width="640" KeyDown="Window_KeyDown" ResizeMode="CanMinimize" Loaded="Window_Loaded">
-    <ScrollViewer>
-        <Border BorderBrush="Black" BorderThickness="2">
-    <StackPanel Name="MainContainer">
-            <DockPanel Margin="10">
-            <DockPanel DockPanel.Dock="Top">
-                        <Label Name="City" localization:Translate.Uid="labelCurCity_mainWin" Content="{localization:Translate Default=City}" HorizontalAlignment="Left" Margin="50 5" />
-                <DockPanel HorizontalAlignment="Right" VerticalAlignment="Center">
-                            <Label Name="MonthYear" localization:Translate.Uid="labelCurMonthYear_mainWin" Content="{localization:Translate Default=Month Year}" Margin="50 5" VerticalAlignment="Center"/>
-                    <Image Name="SettingsImage" RenderTransformOrigin="0.5 0.5" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter" MouseDown="SettingsImage_MouseDown"/>
-                </DockPanel>
-                    </DockPanel>
-            <Border BorderBrush="Black" BorderThickness="1" Visibility="Collapsed">
-                <Grid Name="WeatherTable" ShowGridLines="True" MinWidth="580" MinHeight="170">
-                    <Grid.Resources>
-                        <Style TargetType="Label">
-                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                        </Style>
-                    </Grid.Resources>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Border BorderBrush="Black" BorderThickness="1">
-                                <Label localization:Translate.Uid="labelMonday_mainWin" Content="{localization:Translate Default=ПН}"/>
-                    </Border>
-                    <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1">
-                                <Label localization:Translate.Uid="labelTuesday_mainWin" Content="{localization:Translate Default=ВТ}" />
-                    </Border>
-                    <Border Grid.Column="2" BorderBrush="Black" BorderThickness="1">
-                                <Label localization:Translate.Uid="labelWednesday_mainWin" Content="{localization:Translate Default=СР}"/>
-                    </Border>
-                    <Border Grid.Column="3" BorderBrush="Black" BorderThickness="1">
-                                <Label localization:Translate.Uid="labelThursday_mainWin" Content="{localization:Translate Default=ЧТ}" />
-                    </Border>
-                    <Border Grid.Column="4" BorderBrush="Black" BorderThickness="1">
-                                <Label localization:Translate.Uid="labelFriday_mainWin" Content="{localization:Translate Default=ПТ}" />
-                    </Border>
-                    <Border Grid.Column="5" BorderBrush="Black" BorderThickness="1">
-                                <Label localization:Translate.Uid="labelSaturday_mainWin" Content="{localization:Translate Default=СБ}" />
-                    </Border>
-                    <Border Grid.Column="6" BorderBrush="Black" BorderThickness="1">
-                                <Label localization:Translate.Uid="labelSunday_mainWin" Content="{localization:Translate Default=ВС}" />
-                    </Border>
-                </Grid>
-            </Border>
-        Title="Weather Informer" Height="330" Width="640" ResizeMode="CanMinimize" Loaded="Window_Loaded">
+        Title="Weather Informer" Height="320" Width="640" ResizeMode="CanMinimize" Loaded="Window_Loaded">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Border BorderBrush="Black" BorderThickness="2">
-    <StackPanel Name="MainContainer">
-        <DockPanel>
-            <Label Name="Connection" HorizontalAlignment="Left" Content="Connection"></Label>
-            <Image Name="SettingsImage" RenderTransformOrigin="0.5 0.5" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter"/>
-        </DockPanel>
-        </StackPanel>
+            <StackPanel Name="MainContainer">
+                <DockPanel>
+                    <Label Name="Connection" HorizontalAlignment="Left" Content="Connection"></Label>
+                    <Image Name="SettingsImage" RenderTransformOrigin="0.5 0.5" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter" MouseDown="SettingsImage_MouseUp"/>
+                </DockPanel>
+            </StackPanel>
         </Border>
     </ScrollViewer>
 </Window>
