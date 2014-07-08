@@ -50,6 +50,11 @@ namespace WeatherInfo
         private DispatcherTimer rotationTimer;
         private int rotationAngle = 0;
 
+        private List<DockPanel> preloaders;
+        private DispatcherTimer preloaderRotationTimer;
+        private int preloaderRotationAngle = 0;
+
+
         public MainWindow()
         {
             //Пример создания окна графиков
@@ -61,18 +66,23 @@ namespace WeatherInfo
                 this.Close();
             }
 
-
             InitializeComponent();
             forecasts = new List<XMLParser>();
             var nowMonthYear = DateTime.Now.ToString("y");
+            preloaders = new List<DockPanel>();
             foreach (var city in App.settings.cities)
             {
                 var town = city.city.cityRusName;
                 var townId = city.city.cityYaId.ToString();
                 forecasts.Add(new XMLParser(town, townId));
-
                 MainContainer.Children.Add(GetContainerForCity(town, nowMonthYear));
             }
+            SetWindowHeight();
+
+            preloaderRotationTimer=new DispatcherTimer();
+            preloaderRotationTimer.Interval = TimeSpan.FromMilliseconds(100);
+            preloaderRotationTimer.Tick += preloaderRotationTimer_Tick;
+            preloaderRotationTimer.Start();
 
             SettingsImage.Source = ConvertBitmabToImage(Properties.Resources.Gear);
             rotationTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10)};
@@ -97,6 +107,50 @@ namespace WeatherInfo
 
             Connection.Content = message;
             worker.RunWorkerAsync();
+        }
+
+        void preloaderRotationTimer_Tick(object sender, EventArgs e)
+        {
+            preloaderRotationAngle += 30;
+            if (preloaderRotationAngle >= 360)
+                preloaderRotationAngle = 0;
+            foreach (var preloader in preloaders)
+            {
+                var image = (preloader.Children[0] as StackPanel).Children[0] as Image;
+                image.RenderTransform = new RotateTransform(preloaderRotationAngle);
+            }
+        }
+
+        private void SetWindowHeight()
+        {
+            var screenHeight = SystemParameters.PrimaryScreenHeight;
+            var likelyHeight = (App.settings.cities.Count - 1)*250 + 330;
+            Height = likelyHeight < screenHeight ? likelyHeight : screenHeight;
+        }
+
+        private DockPanel GetPreloadPanel()
+        {
+            var resultPanel = new DockPanel();
+            Grid.SetRowSpan(resultPanel, 2);
+            Grid.SetColumnSpan(resultPanel,7);
+            var stackPanel = new StackPanel()
+                {
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+            var image = new Image()
+                {
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    Source = ConvertBitmabToImage(Properties.Resources.Preloader),
+                    RenderTransformOrigin = new Point(0.5,0.5),
+                    Height = 32,
+                    Width = 32
+                };
+            stackPanel.Children.Add(image);
+            var label = new Label() {Content = "Loading...", HorizontalAlignment = HorizontalAlignment.Center};
+            stackPanel.Children.Add(label);
+            resultPanel.Children.Add(stackPanel);
+            return resultPanel;
         }
 
         private Dictionary<string, string> InitDaysDictionary()
@@ -285,7 +339,7 @@ namespace WeatherInfo
 
             var gridBorder = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(1) };
 
-            var weatherGrid = new Grid() { ShowGridLines = true, MinWidth = 580, MinHeight = 170 };
+            var weatherGrid = new Grid() { ShowGridLines = false, MinWidth = 580, MinHeight = 170 };
             var dayStyle = new Style() { TargetType = typeof(Label) };
             dayStyle.Setters.Add(new Setter(HorizontalAlignmentProperty, HorizontalAlignment.Center));
             weatherGrid.Resources.Add("CenterAlligment", dayStyle);
@@ -294,6 +348,10 @@ namespace WeatherInfo
             weatherGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(30) });
             weatherGrid.RowDefinitions.Add(new RowDefinition());
             weatherGrid.RowDefinitions.Add(new RowDefinition());
+
+            var preloadPanel = GetPreloadPanel();
+            weatherGrid.Children.Add(preloadPanel);
+            preloaders.Add(preloadPanel);
 
             gridBorder.Child = weatherGrid;
 
@@ -306,11 +364,14 @@ namespace WeatherInfo
         /// </summary>
         private void FillTables()
         {
+            preloaderRotationTimer.Stop();
+
             var weatherresults = MainContainer.Children.Cast<DockPanel>().Skip(1);
             var weatherTables = weatherresults.Select(weatherContainer => (weatherContainer.Children[1] as Border).Child as Grid).ToList();
             foreach (var weatherTable in weatherTables)
             {
                 weatherTable.Children.Clear();
+                weatherTable.ShowGridLines = true;
             }
             DateTime curDay = DateTime.Now;
             foreach (var weatherTable in weatherTables)
@@ -451,9 +512,6 @@ namespace WeatherInfo
             image.SetValue(Grid.ColumnSpanProperty, 2);
             gridResult.Children.Add(image);
             ToolTipService.SetShowDuration(gridResult, 15000);
-
-
-
 
             return gridResult;
         }
@@ -627,6 +685,7 @@ namespace WeatherInfo
 
             forecasts = new List<XMLParser>();
             var nowMonthYear = DateTime.Now.ToString("y");
+            preloaders=new List<DockPanel>();
             foreach (var city in App.settings.cities)
             {
                 var town = city.city.cityRusName;
@@ -635,6 +694,8 @@ namespace WeatherInfo
 
                 MainContainer.Children.Add(GetContainerForCity(town, nowMonthYear));
             }
+            SetWindowHeight();
+            preloaderRotationTimer.Start();
 
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
