@@ -19,13 +19,20 @@ namespace WeatherInfoUnitTests
         /// Тест получения городов в стрене и их перевод
         /// </summary>
         [TestMethod]
-        public void TestGetCityAndTranslate()
+        public void TestGetCity()
         {
             List<string> t = getCity.getCities("Россия", true);
             Assert.AreEqual(true, t.Contains("Ульяновск"));
             Assert.AreEqual(true, t.Contains("Москва"));
             Assert.AreEqual(true, t.Contains("Орел"));
+        }
 
+        /// <summary>
+        /// тест перевода городов
+        /// </summary>
+        [TestMethod]
+        public void TranslateCity()
+        {
             string ul = getCity.cityTranslate("Ульяновск", true);
             Assert.AreEqual("ulyanovsk", ul);
             ul = getCity.cityTranslate("Москва", true);
