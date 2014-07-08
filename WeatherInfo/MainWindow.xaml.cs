@@ -342,7 +342,7 @@ namespace WeatherInfo
                 {
                     Label day = new Label()
                         {
-                            Content = curDay.ToString("ddd")
+                            Content = curDay.ToString("ddd", LanguageContext.Instance.Culture)
                         };
                     Grid.SetRow(day, 0);
                     Grid.SetColumn(day, i);
