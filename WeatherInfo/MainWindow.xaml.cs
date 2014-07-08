@@ -21,6 +21,7 @@ using System.Net.NetworkInformation;
 using WeatherInfo.Classes;
 using Entity_base;
 using Tomers.WPF.Localization;
+using System.Text.RegularExpressions;
 
 namespace WeatherInfo
 {
@@ -37,7 +38,7 @@ namespace WeatherInfo
         //private string townID;
         private const int BaseRowCount = 2;
         private const int BaseColumnCount = 2;
-        private string HourTitle = "Почасовой прогноз";
+        private string HourTitle = LanguageDictionary.Current.Translate<string>("hourTitle_mainWin", "Content");//"Почасовой прогноз";
         private string HoutTimeEnd = ":00";
         private bool hasConnection = false;
         private bool connectedToYaAPI = false;
@@ -50,6 +51,11 @@ namespace WeatherInfo
         private DispatcherTimer rotationTimer;
         private int rotationAngle = 0;
 
+        private List<DockPanel> preloaders;
+        private DispatcherTimer preloaderRotationTimer;
+        private int preloaderRotationAngle = 0;
+
+
         public MainWindow()
         {
             //Пример создания окна графиков
@@ -61,21 +67,28 @@ namespace WeatherInfo
                 this.Close();
             }
 
-
             InitializeComponent();
             forecasts = new List<XMLParser>();
-            var nowMonthYear = DateTime.Now.ToString("y");
+
+            preloaders = new List<DockPanel>();
+            var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
             foreach (var city in App.settings.cities)
             {
-                var town = city.city.cityRusName;
+                var town = (App.settings.language.engName) == "English" ? upperEngCityName(city.city.cityEngName) : city.city.cityRusName;//city.city.cityRusName;
                 var townId = city.city.cityYaId.ToString();
-                forecasts.Add(new XMLParser(town, townId));
-
                 MainContainer.Children.Add(GetContainerForCity(town, nowMonthYear));
+                town = city.city.cityEngName;
+                forecasts.Add(new XMLParser(town, townId));
             }
 
+
+            preloaderRotationTimer = new DispatcherTimer();
+            preloaderRotationTimer.Interval = TimeSpan.FromMilliseconds(100);
+            preloaderRotationTimer.Tick += preloaderRotationTimer_Tick;
+            preloaderRotationTimer.Start();
+
             SettingsImage.Source = ConvertBitmabToImage(Properties.Resources.Gear);
-            rotationTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10)};
+            rotationTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
             rotationTimer.Tick += rotationTimer_Tick;
 
             timer = new DispatcherTimer();
@@ -86,7 +99,7 @@ namespace WeatherInfo
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
             Tray.SetupTray(this, options, expandShort);
 
-            
+
 
             hasConnection = IsNetworkAvailable();
             Scroll.IsEnabled = false;
@@ -97,6 +110,50 @@ namespace WeatherInfo
 
             Connection.Content = message;
             worker.RunWorkerAsync();
+        }
+
+        void preloaderRotationTimer_Tick(object sender, EventArgs e)
+        {
+            preloaderRotationAngle += 30;
+            if (preloaderRotationAngle >= 360)
+                preloaderRotationAngle = 0;
+            foreach (var preloader in preloaders)
+            {
+                var image = (preloader.Children[0] as StackPanel).Children[0] as Image;
+                image.RenderTransform = new RotateTransform(preloaderRotationAngle);
+            }
+        }
+
+        private void SetWindowHeight()
+        {
+            var screenHeight = SystemParameters.FullPrimaryScreenHeight;
+            var likelyHeight = (App.settings.cities.Count - 1) * 250 + 330;
+            Height = likelyHeight < screenHeight ? likelyHeight : screenHeight;
+        }
+
+        private DockPanel GetPreloadPanel()
+        {
+            var resultPanel = new DockPanel();
+            Grid.SetRowSpan(resultPanel, 2);
+            Grid.SetColumnSpan(resultPanel, 7);
+            var stackPanel = new StackPanel()
+                {
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+            var image = new Image()
+                {
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    Source = ConvertBitmabToImage(Properties.Resources.Preloader),
+                    RenderTransformOrigin = new Point(0.5, 0.5),
+                    Height = 32,
+                    Width = 32
+                };
+            stackPanel.Children.Add(image);
+            var label = new Label() { Content = "Loading...", HorizontalAlignment = HorizontalAlignment.Center };
+            stackPanel.Children.Add(label);
+            resultPanel.Children.Add(stackPanel);
+            return resultPanel;
         }
 
         private Dictionary<string, string> InitDaysDictionary()
@@ -110,6 +167,18 @@ namespace WeatherInfo
             return days;
         }
 
+        private string upperEngCityName(string city)
+        {
+            var curCity = city;
+            if (App.settings.language.engName == "English")
+            {
+                var firstLit = curCity[0].ToString();
+                var reg = new Regex(curCity[0].ToString());
+                curCity = reg.Replace(curCity, firstLit.ToUpper(), 1);
+            }
+
+            return curCity;
+        }
 
         /// <summary>
         /// Обработчик таймера для поворота шестерни
@@ -239,10 +308,12 @@ namespace WeatherInfo
                 timer.Start();
                 return;
             }
-            else
             {
-                Connection.Content = "Соединение установлено";
+                Connection.Content = LanguageDictionary.Current.Translate<string>("messUpdateStatusSuccessConnection_mainWin", "Content");//"Соединение установлено";
             }
+
+            SetWindowHeight();
+
             FillTables();
             Scroll.IsEnabled = true;
 
@@ -260,6 +331,9 @@ namespace WeatherInfo
 
         private DockPanel GetContainerForCity(string cityName, string monthYear, bool addSettingsIcon = false)
         {
+            var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
+            var lang = App.settings.language.engName;
+
             var docResult = new DockPanel { Margin = new Thickness(10) };
 
             var docPanelCityYear = new DockPanel();
@@ -285,7 +359,7 @@ namespace WeatherInfo
 
             var gridBorder = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(1) };
 
-            var weatherGrid = new Grid() { ShowGridLines = true, MinWidth = 580, MinHeight = 170 };
+            var weatherGrid = new Grid() { ShowGridLines = false, MinWidth = 580, MinHeight = 170 };
             var dayStyle = new Style() { TargetType = typeof(Label) };
             dayStyle.Setters.Add(new Setter(HorizontalAlignmentProperty, HorizontalAlignment.Center));
             weatherGrid.Resources.Add("CenterAlligment", dayStyle);
@@ -294,6 +368,10 @@ namespace WeatherInfo
             weatherGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(30) });
             weatherGrid.RowDefinitions.Add(new RowDefinition());
             weatherGrid.RowDefinitions.Add(new RowDefinition());
+
+            var preloadPanel = GetPreloadPanel();
+            weatherGrid.Children.Add(preloadPanel);
+            preloaders.Add(preloadPanel);
 
             gridBorder.Child = weatherGrid;
 
@@ -306,11 +384,14 @@ namespace WeatherInfo
         /// </summary>
         private void FillTables()
         {
+            preloaderRotationTimer.Stop();
+
             var weatherresults = MainContainer.Children.Cast<DockPanel>().Skip(1);
             var weatherTables = weatherresults.Select(weatherContainer => (weatherContainer.Children[1] as Border).Child as Grid).ToList();
             foreach (var weatherTable in weatherTables)
             {
                 weatherTable.Children.Clear();
+                weatherTable.ShowGridLines = true;
             }
             DateTime curDay = DateTime.Now;
             foreach (var weatherTable in weatherTables)
@@ -328,7 +409,6 @@ namespace WeatherInfo
                 }
             }
 #warning Переделать!!!
-            int limit = !connectedToOpAPI ? 10 : 14;
             if (!connectedToOpAPI)
                 ConvertDtldToShrt();
             for (var k = 0; k < weatherTables.Count; k++)
@@ -338,7 +418,7 @@ namespace WeatherInfo
                     for (int j = 0; j < 7; j++)
                     {
                         var index = 7 * i + j;
-                        if (index >= limit)
+                        if (index >= shrtForecasts[k].Length)
                             break;
                         var weatherElement = GetWeaterElement(j, i + 1, shrtForecasts[k][index]);
                         if (index == 0)
@@ -452,9 +532,6 @@ namespace WeatherInfo
             gridResult.Children.Add(image);
             ToolTipService.SetShowDuration(gridResult, 15000);
 
-
-
-
             return gridResult;
         }
 
@@ -462,11 +539,11 @@ namespace WeatherInfo
         {
             if (!connectedToYaAPI && !connectedToOpAPI)
             {
-                return LanguageDictionary.Current.Translate<string>("messConnectedToYaAPIResult_mainWin", "Content"); 
+                return LanguageDictionary.Current.Translate<string>("messConnectedToYaAPIResult_mainWin", "Content");
             }
             if (dayForecast.hours.Count > 24)
             {
-                InitDaysDictionary();
+                dayParts = InitDaysDictionary();
                 int temp = 0;
                 ForecastHour[] fors = dayForecast.hours.Where(el => Int32.TryParse(el.time, out temp)).ToArray();
                 if (today)
@@ -481,7 +558,11 @@ namespace WeatherInfo
             }
             else
             {
-                InitDaysDictionary();
+                //ForecastHour[] fors = dtldForecast[index].hours.ToArray();
+                //dayParts = InitDaysDictionary();
+
+                dayParts = InitDaysDictionary();
+
                 int temp = 0;
                 ForecastHour[] fors = dayForecast.hours.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
                 foreach (var el in fors)
@@ -625,16 +706,22 @@ namespace WeatherInfo
             var mainElementsCount = MainContainer.Children.Cast<Panel>().Skip(1).Count();
             MainContainer.Children.RemoveRange(1, mainElementsCount);
 
+
+
             forecasts = new List<XMLParser>();
-            var nowMonthYear = DateTime.Now.ToString("y");
+
+            preloaders = new List<DockPanel>();
+            var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
             foreach (var city in App.settings.cities)
             {
-                var town = city.city.cityRusName;
+                var town = (App.settings.language.engName) == "English" ? upperEngCityName(city.city.cityEngName) : city.city.cityRusName;//city.city.cityRusName;
                 var townId = city.city.cityYaId.ToString();
-                forecasts.Add(new XMLParser(town, townId));
-
                 MainContainer.Children.Add(GetContainerForCity(town, nowMonthYear));
+                town = city.city.cityEngName;
+                forecasts.Add(new XMLParser(town, townId));
             }
+
+            preloaderRotationTimer.Start();
 
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 

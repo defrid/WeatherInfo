@@ -36,6 +36,7 @@
 	<Value Id="labelSunday_mainWin" Content="ВС" />
 	<Value Id="messUpdateStatusInProcess_mainWin" Content="Обновление" />
 	<Value Id="messUpdateStatusFaildConnection_mainWin" Content="Нет соединения" />
+	<Value Id="messUpdateStatusSuccessConnection_mainWin" Content="Соединение установлено" />
 	<Value Id="hourTitle_mainWin" Content="Почасовой прогноз" />
 	<Value Id="morning_mainWin" Content="Утро" />
 	<Value Id="day_mainWin" Content="День" />

@@ -124,9 +124,6 @@
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Two_Windows.xaml.cs">
-      <DependentUpon>Two_Windows.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WindowGraphics.xaml.cs">
       <DependentUpon>WindowGraphics.xaml</DependentUpon>
     </Compile>
@@ -166,10 +163,6 @@
     <Page Include="SettingsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Two_Windows.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowGraphics.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -226,6 +219,8 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Location\countries.txt" />
+    <None Include="Resources\preloader.png" />
     <None Include="Resources\config.ico" />
     <None Include="Resources\weather.ico" />
   </ItemGroup>
