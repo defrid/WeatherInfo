@@ -64,15 +64,18 @@ namespace WeatherInfo
 
         static TaskbarIcon notifyIcon;
         static Window windowMain;
-        
+        static lang Lang = lang.rus;
+
         /// <summary>
         /// Необходимо вызвать этот метод в самом начале работы программы
         /// </summary>
         /// <param name="main">окно, которое трей сочтет главным и будет его скрывать</param>
         /// <param name="onOptionsClick">сюда послать метод, который будет обрабатывать нажатие не опции</param>
         /// <param name="toWindow">сюда послать метод, совершающий действия, при развертывании трея</param>
-        public static void SetupTray(Window main, TrayVoid onOptionsClick, TrayVoid toWindow)
+        /// <param name="Language">укажите язык</param>
+        public static void SetupTray(Window main, TrayVoid onOptionsClick, TrayVoid toWindow, lang Language = lang.rus)
         {
+            Lang = Language;
             OnOptionsClick += onOptionsClick;
             onToWindow += toWindow;
             windowMain = main;
@@ -84,9 +87,19 @@ namespace WeatherInfo
             TextBlock FullWindow = new TextBlock();
             TextBlock Options = new TextBlock();
             TextBlock Exit = new TextBlock();
-            FullWindow.Text = "Развернуть";
-            Options.Text = "Настройки";
-            Exit.Text = "Выход";
+
+            if (Lang == lang.rus)
+            {
+                FullWindow.Text = "Развернуть";
+                Options.Text = "Настройки";
+                Exit.Text = "Выход";
+            }
+            else
+            {
+                FullWindow.Text = "Maximize";
+                Options.Text = "Options";
+                Exit.Text = "Exxit";
+            }
 
             notifyIcon.ContextMenu = new ContextMenu();
             notifyIcon.ContextMenu.Items.Add(FullWindow);
@@ -158,7 +171,10 @@ namespace WeatherInfo
         public static void PreLoad()
         {
             notifyIcon.Visibility = Visibility.Visible;
-            notifyIcon.ToolTipText = "WeatherInfo загружает данные";
+            if (Lang == lang.rus)
+                notifyIcon.ToolTipText = "WeatherInfo загружает данные...";
+            else
+                notifyIcon.ToolTipText = "WeatherInfo downloads data..";
             preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
             timer.Start();
         }
@@ -190,7 +206,11 @@ namespace WeatherInfo
             try
             {
                 timer.Stop();
-                notifyIcon.ToolTipText = "Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню";
+
+                if (Lang == lang.rus)
+                    notifyIcon.ToolTipText = "Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню";
+                else
+                    notifyIcon.ToolTipText = "Left mouse button - short forecast, Right mouse button - show menu";
 
                 try
                 {
