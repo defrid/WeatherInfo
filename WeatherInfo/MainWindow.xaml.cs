@@ -45,6 +45,7 @@ namespace WeatherInfo
         private bool connectedToOpAPI = false;
         private bool isFahr = false;
         private bool isKelv = false;
+        private int curIndex = 0;
 
         private Window[] curForeWindows = new Window[10];
 
@@ -74,6 +75,7 @@ namespace WeatherInfo
 
             InitializeComponent();
             forecasts = new List<XMLParser>();
+
 
             preloaders = new List<DockPanel>();
             var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
@@ -116,6 +118,11 @@ namespace WeatherInfo
                                           : LanguageDictionary.Current.Translate<string>("messUpdateStatusFaildConnection_mainWin", "Content");
 
             Connection.Content = message;
+
+            shrtForecasts = new List<ForecastDay[]>();
+            dtldForecasts = new List<ForecastDay[]>();
+            curForecasts = new List<ForecastHour>();
+
             worker.RunWorkerAsync();
         }
 
@@ -354,19 +361,14 @@ namespace WeatherInfo
         {
             timer.Stop();
             while (!(hasConnection = IsNetworkAvailable())) ;
-            shrtForecasts = new List<ForecastDay[]>();
-            dtldForecasts = new List<ForecastDay[]>();
-            curForecasts = new List<ForecastHour>();
             dayParts = InitDaysDictionary();
             try
             {
-                foreach (var xmlParser in forecasts)
-                {
-                    shrtForecasts.Add(xmlParser.getBigForecast());
-                    Thread.Sleep(1000);//Время между запросами должно быть не меньше секунды
-                    curForecasts.Add(xmlParser.getCurHour());
-                    Thread.Sleep(1000);
-                }
+                var xmlParser = forecasts[curIndex];
+                shrtForecasts.Add(xmlParser.getBigForecast());
+                Thread.Sleep(1000);//Время между запросами должно быть не меньше секунды
+                curForecasts.Add(xmlParser.getCurHour());
+                Thread.Sleep(1000);
                 connectedToOpAPI = true;
             }
             catch
@@ -375,11 +377,9 @@ namespace WeatherInfo
             }
             try
             {
-                foreach (var xmlParser in forecasts)
-                {
-                    dtldForecasts.Add(xmlParser.getDetailedWeek());
-                    Thread.Sleep(1000);//Время между запросами должно быть не меньше секунды
-                }
+                var xmlParser = forecasts[curIndex];
+                dtldForecasts.Add(xmlParser.getDetailedWeek());
+                Thread.Sleep(1000);//Время между запросами должно быть не меньше секунды
                 connectedToYaAPI = true;
             }
             catch
@@ -433,12 +433,20 @@ namespace WeatherInfo
 
             if (!connectedToOpAPI)
             {
-                timer.Start();
                 return;
             }
 
-            fillTray();
-            timer.Start();
+            curIndex++;
+            if (curIndex == forecasts.Count)
+            {
+                fillTray();
+                preloaderRotationTimer.Stop();
+                timer.Start();
+            }
+            else
+            {
+                worker.RunWorkerAsync();
+            }
         }
 
         private void fillTray(bool needHide = false)
@@ -455,7 +463,7 @@ namespace WeatherInfo
                 else
                     if (isFahr) format = "F";
                     else format = "°С";
-                
+
                 listfortray.Add(new TrayCityData(name, temp, icon, format));
             }
             Tray.Update(listfortray, needHide);
@@ -491,7 +499,7 @@ namespace WeatherInfo
 
             var gridBorder = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(1) };
 
-            var weatherGrid = new Grid() { ShowGridLines = false,MinWidth = 580,MinHeight = 170};
+            var weatherGrid = new Grid() { ShowGridLines = false, MinWidth = 580, MinHeight = 170 };
 
             if (isDailyForecast)
             {
@@ -506,7 +514,7 @@ namespace WeatherInfo
             {
                 for (var i = 0; i < 7; i++)
                     weatherGrid.ColumnDefinitions.Add(new ColumnDefinition());
-                weatherGrid.RowDefinitions.Add(new RowDefinition {Height = new GridLength(30)});
+                weatherGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(30) });
                 weatherGrid.RowDefinitions.Add(new RowDefinition());
                 weatherGrid.RowDefinitions.Add(new RowDefinition());
             }
@@ -523,12 +531,12 @@ namespace WeatherInfo
                     VerticalAlignment = VerticalAlignment.Bottom,
                     Orientation = Orientation.Horizontal,
                 };
-            DockPanel.SetDock(stackButton,Dock.Bottom);
+            DockPanel.SetDock(stackButton, Dock.Bottom);
             var button1 = new Button()
                 {
                     Tag = cityName,
                     MinWidth = 100,
-                    Margin=new Thickness(50,3,30,3),
+                    Margin = new Thickness(50, 3, 30, 3),
                     Content = LanguageDictionary.Current.Translate<string>("oneDayBtn_mainWin", "Content")
                 };
             button1.Click += OneDay_Click;
@@ -537,7 +545,7 @@ namespace WeatherInfo
             {
                 Tag = cityName,
                 MinWidth = 100,
-                Margin=new Thickness(30,3,30,3),
+                Margin = new Thickness(30, 3, 30, 3),
                 Content = LanguageDictionary.Current.Translate<string>("manyDayBtn_mainWin", "Content")
             };
             button2.Click += ManyDays_Click;
@@ -546,7 +554,7 @@ namespace WeatherInfo
             {
                 Tag = cityName,
                 MinWidth = 100,
-                Margin=new Thickness(30,3,50,3),
+                Margin = new Thickness(30, 3, 50, 3),
                 Content = LanguageDictionary.Current.Translate<string>("cloudyBtn_mainWin", "Content")
             };
             button3.Click += Cloudly_Click;
@@ -640,7 +648,7 @@ namespace WeatherInfo
                 var name = (sender as Button).Tag;
 
                 SettingsHandlerInterface.Classes.CitySettings engName = null;
-                lang wL=lang.eng;
+                lang wL = lang.eng;
 
                 if (App.settings.language.engName == "English")
                 {
@@ -656,7 +664,7 @@ namespace WeatherInfo
 
                 var parser = forecasts.Where(el => el.town == Ename).FirstOrDefault();
 
-                
+
 
                 var graphic = new WindowGraphics(wL);
                 List<ForecastDay> days = parser.getDetailedWeek().ToList();
@@ -673,66 +681,61 @@ namespace WeatherInfo
         /// </summary>
         private void FillTables()
         {
-            preloaderRotationTimer.Stop();
+            //preloaderRotationTimer.Stop();
 
             var weatherresults = MainContainer.Children.Cast<Panel>().Skip(1);
-            var weatherTables = weatherresults.Select(weatherContainer => (weatherContainer.Children[1] as Border).Child as Grid).ToList();
-            foreach (var weatherTable in weatherTables)
-            {
-                weatherTable.Children.Clear();
-                if(!isDailyForecast)
-                    weatherTable.ShowGridLines = true;
-            }
+            var weatherTable = weatherresults.Select(weatherContainer => (weatherContainer.Children[1] as Border).Child as Grid).ToList()[curIndex];
+            weatherTable.Children.Clear();
+            if (!isDailyForecast)
+                weatherTable.ShowGridLines = true;
+
 #warning где то тут разделение, дели с помощью isDailyForecast
+
+
             DateTime curDay = DateTime.Now;
-            
-            foreach (var weatherTable in weatherTables)
+
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    Label day = new Label()
-                        {
-                            Content = curDay.ToString("ddd", LanguageContext.Instance.Culture)
-                        };
-                    Grid.SetRow(day, 0);
-                    Grid.SetColumn(day, i);
-                    weatherTable.Children.Add(day);
-                    curDay = curDay.AddDays(1);
-                }
+                Label day = new Label()
+                    {
+                        Content = curDay.ToString("ddd", LanguageContext.Instance.Culture)
+                    };
+                Grid.SetRow(day, 0);
+                Grid.SetColumn(day, i);
+                weatherTable.Children.Add(day);
+                curDay = curDay.AddDays(1);
             }
 
-            if (!connectedToOpAPI)
-                ConvertDtldToShrt();
-            for (var k = 0; k < weatherTables.Count; k++)
+            //if (!connectedToOpAPI)
+            //    ConvertDtldToShrt();
+
+            for (int i = 0; i < 2; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < 7; j++)
                 {
-                    for (int j = 0; j < 7; j++)
+                    var index = 7 * i + j;
+                    if (index >= shrtForecasts[curIndex].Length)
+                        break;
+                    var weatherElement = GetWeaterElement(j, i + 1, shrtForecasts[curIndex][index]);
+                    if (index == 0)
                     {
-                        var index = 7 * i + j;
-                        if (index >= shrtForecasts[k].Length)
-                            break;
-                        var weatherElement = GetWeaterElement(j, i + 1, shrtForecasts[k][index]);
-                        if (index == 0)
-                        {
-                            weatherElement.MouseUp += gridResult_MouseUp;
-                            weatherElement.Name = "_" + k.ToString();
-                        }
-                        if (index < 10)
-                        {
-                            var today = index == 0;
-                            if (!connectedToYaAPI)
-                            {
-                                weatherElement.ToolTip = LanguageDictionary.Current.Translate<string>("messConnectedToYaAPIResult_mainWin", "Content");
-                            }
-                            else
-                            {
-                                var tooltip = GetSpecialTooltip(dtldForecasts[k][index], today);
-                                weatherElement.ToolTip = tooltip;
-                            }
-                        }
-                        weatherTables[k].Children.Add(weatherElement);
+                        weatherElement.MouseUp += gridResult_MouseUp;
+                        weatherElement.Name = "_" + curIndex.ToString();
                     }
+                    if (index < 10)
+                    {
+                        var today = index == 0;
+                        if (!connectedToYaAPI)
+                        {
+                            weatherElement.ToolTip = LanguageDictionary.Current.Translate<string>("messConnectedToYaAPIResult_mainWin", "Content");
+                        }
+                        else
+                        {
+                            var tooltip = GetSpecialTooltip(dtldForecasts[curIndex][index], today);
+                            weatherElement.ToolTip = tooltip;
+                        }
+                    }
+                    weatherTable.Children.Add(weatherElement);
                 }
             }
         }
@@ -804,7 +807,7 @@ namespace WeatherInfo
 
             var maxTempLabel = new Label()
                 {
-                    Content = (isKelv ? shortForecast.max + "K" : 
+                    Content = (isKelv ? shortForecast.max + "K" :
                         isFahr ? ((shortForecast.max > 0) ? "+" : "") + shortForecast.max + "F" :
                         shortForecast.max > 0 ? "+" + shortForecast.max.ToString() : shortForecast.max.ToString()),
                     HorizontalAlignment = HorizontalAlignment.Right,
@@ -1106,6 +1109,12 @@ namespace WeatherInfo
             timer.Interval = TimeSpan.FromMinutes(App.settings.updatePeriod);
 
             Tray.PreLoad();
+
+            shrtForecasts.Clear();
+            dtldForecasts.Clear();
+            curForecasts.Clear();
+            curIndex = 0;
+
             worker.RunWorkerAsync();
 
             //
