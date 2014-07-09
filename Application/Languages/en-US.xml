@@ -58,6 +58,9 @@
 	<Value Id="messConnectedToYaAPIResult_mainWin" Content="No connection to one of the weather's servers." />
 	<Value Id="dailyTitle_mainWin" Content="Daily forecast" />
 	<Value Id="messWaitForUpdate_mainWin" Content="Wait for the update will complete." />
+	<Value Id="oneDayBtn_mainWin" Content="One Day" />
+	<Value Id="manyDayBtn_mainWin" Content="Many Day" />
+	<Value Id="cloudyBtn_mainWin" Content="Cloudy" />
 <!-- Days Window -->
 	<Value Id="titleForm_daysWin" Title="Daily forecast" />
 	<Value Id="labelForecastOnDay_daysWin" Content="Forecast for the day." />

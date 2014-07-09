@@ -171,10 +171,14 @@ namespace WeatherInfo
         /// </summary>
         public static void PreLoad()
         {
-            notifyIcon.Visibility = Visibility.Visible;
-            notifyIcon.ToolTipText = LanguageDictionary.Current.Translate<string>("toolTipTextPreLoad_Tray", "Content");//"WeatherInfo загружает данные";
-            preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
-            timer.Start();
+            try
+            {
+                notifyIcon.Visibility = Visibility.Visible;
+                notifyIcon.ToolTipText = LanguageDictionary.Current.Translate<string>("toolTipTextPreLoad_Tray", "Content");//"WeatherInfo загружает данные";
+                preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
+                timer.Start();
+            }
+            catch { }
         }
 
         private static void rotationTimer_Tick(object sender, EventArgs e)

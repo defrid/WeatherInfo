@@ -421,7 +421,14 @@ namespace WeatherInfo
                 var name = (App.settings.language.engName) == "English" ? upperEngCityName(App.settings.cities[i].city.cityEngName) : App.settings.cities[i].city.cityRusName;
                 var temp = curForecasts[i].temp;
                 var icon = WeatherInfo.Classes.OpenWeatherAPI.GetImageById(curForecasts[i].icon);
-                listfortray.Add(new TrayCityData(name, temp, icon));
+
+                string format = "";
+                if (isKelv) format = "K";
+                else
+                    if (isFahr) format = "F";
+                    else format = "°С";
+                
+                listfortray.Add(new TrayCityData(name, temp, icon, format));
             }
             Tray.Update(listfortray, needHide);
         }

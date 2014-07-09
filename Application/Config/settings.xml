@@ -52,6 +52,125 @@
         <cityEngName>kampala</cityEngName>
       </city>
     </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>Россия</countryRusName>
+        <countryEngName>Rossiya</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>27220</cityYaId>
+        <cityOWId>523859</cityOWId>
+        <cityRusName>Мышкин</cityRusName>
+        <cityEngName>myshkin</cityEngName>
+      </city>
+    </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>Россия</countryRusName>
+        <countryEngName>Rossiya</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>28240</cityYaId>
+        <cityOWId>520494</cityOWId>
+        <cityRusName>Нижний Тагил</cityRusName>
+        <cityEngName>nizhniy tagil</cityEngName>
+      </city>
+    </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>Россия</countryRusName>
+        <countryEngName>Rossiya</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>27934</cityYaId>
+        <cityOWId>518602</cityOWId>
+        <cityRusName>Новомичуринск</cityRusName>
+        <cityEngName>novomichurinsk</cityEngName>
+      </city>
+    </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>Россия</countryRusName>
+        <countryEngName>Rossiya</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>29634</cityYaId>
+        <cityOWId>1496747</cityOWId>
+        <cityRusName>Новосибирск</cityRusName>
+        <cityEngName>novosibirsk</cityEngName>
+      </city>
+    </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>Свазиленд</countryRusName>
+        <countryEngName>Svazilend</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>68396</cityYaId>
+        <cityOWId>934995</cityOWId>
+        <cityRusName>Манзини</cityRusName>
+        <cityEngName>manzini</cityEngName>
+      </city>
+    </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>Сеута</countryRusName>
+        <countryEngName>Seuta</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>60320</cityYaId>
+        <cityOWId>6362987</cityOWId>
+        <cityRusName>Сеута</cityRusName>
+        <cityEngName>ceuta</cityEngName>
+      </city>
+    </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>США</countryRusName>
+        <countryEngName>Ssha</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>72617</cityYaId>
+        <cityOWId>4286281</cityOWId>
+        <cityRusName>Берлингтон, шт. Вермонт</cityRusName>
+        <cityEngName>burlington</cityEngName>
+      </city>
+    </CitySettings>
   </cities>
   <format>Days</format>
   <updatePeriod>10</updatePeriod>
@@ -61,7 +180,7 @@
     <engName>Celsius</engName>
   </temperatureUnits>
   <language>
-    <rusName>Английский</rusName>
-    <engName>English</engName>
+    <rusName>Русский</rusName>
+    <engName>Russian</engName>
   </language>
 </Settings>
