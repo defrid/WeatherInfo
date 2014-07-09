@@ -89,10 +89,11 @@ namespace WeatherInfo.Classes
         }
 
         /// <summary>
-        /// Возвращает названия стран (всё на русском)
+        /// Возвращает названия стран 
         /// </summary>
+        /// <param name="weNeedRus">Нужно русское название?</param>
         /// <returns></returns>
-        static public List<string> getCountryNames()
+        static public List<string> getCountryNames(bool weNeedRus = true)
         {
             getFullObject();
 
@@ -100,7 +101,10 @@ namespace WeatherInfo.Classes
 
             foreach (var contr in File.countries)
             {
-                res.Add(contr.nameRu);
+                if (weNeedRus)
+                    res.Add(contr.nameRu);
+                else
+                    res.Add(contr.nameEng);
             }
 
             res = res.OrderBy(item => item).ToList();
