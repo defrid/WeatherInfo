@@ -37,7 +37,6 @@ namespace WeatherInfoUnitTests
             Assert.IsInstanceOfType(result, typeof(XDocument));
             Assert.AreEqual("Moscow", result.Element("weatherdata").Element("location").Element("name").Value);
             Assert.AreEqual("RU", result.Element("weatherdata").Element("location").Element("country").Value);
-            Assert.AreEqual(41, result.Element("weatherdata").Element("forecast").Elements().Count());
         }
 
         [TestMethod]
