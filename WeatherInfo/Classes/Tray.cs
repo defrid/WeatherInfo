@@ -34,13 +34,13 @@ namespace WeatherInfo
             this.icon = icon;
 
             this.temp = new Label();
-            if (temperature > 0)
+            if (temperature > 0 && !format.Equals("K"))
             {
                 temp.Content = "+" + temperature.ToString();
                 temp.Foreground = Brushes.Red;
             }
             if (temperature == 0) temp.Content = "0";
-            if (temperature < 0)
+            if (temperature < 0 || format.Equals("K"))
             {
                 temp.Content = temperature.ToString();
                 temp.Foreground = Brushes.Blue;

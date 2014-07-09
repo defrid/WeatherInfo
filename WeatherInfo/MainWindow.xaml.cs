@@ -205,6 +205,33 @@ namespace WeatherInfo
             applySettings();
         }
 
+
+        private void toKelv(ref ForecastDay[] week)
+        {
+            foreach (var day in week)
+            {
+                day.max += 273;
+                day.min += 273;
+                foreach (var hour in day.hours)
+                {
+                    hour.temp += 273;
+                }
+            }
+        }
+
+        private void toFahr(ref ForecastDay[] week)
+        {
+            foreach (var day in week)
+            {
+                day.max = (int)(day.max * 1.8 + 32);
+                day.min = (int)(day.min * 1.8 + 32);
+                foreach (var hour in day.hours)
+                {
+                    hour.temp = (int)(hour.temp * 1.8 + 32);
+                }
+            }
+        }
+
         private void toKelv()
         {
             foreach (var city in shrtForecasts)
@@ -540,7 +567,16 @@ namespace WeatherInfo
                 string Ename = engName.city.cityEngName;
                 var parser = forecasts.Where(el => el.town == Ename).FirstOrDefault();
                 var graphic = new WindowGraphics(wL);
-                var day = parser.getDetailedWeek()[0];
+                ForecastDay[] days = parser.getDetailedWeek();
+                if (isKelv)
+                {
+                    toKelv(ref days);
+                }
+                if (isFahr)
+                {
+                    toFahr(ref days);
+                }
+                var day = days[0];
                 day.hours = day.hours.Take(24).ToList();
                 graphic.makeGraphic(day, name.ToString());
                 graphic.Show();
@@ -572,8 +608,16 @@ namespace WeatherInfo
 
                 var parser = forecasts.Where(el => el.town == Ename).FirstOrDefault();
                 var graphic = new WindowGraphics(wL);
-                List<ForecastDay> days = parser.getDetailedWeek().ToList();
-                graphic.makeGraphic(days, name.ToString());
+                ForecastDay[] days = parser.getDetailedWeek();
+                if (isKelv)
+                {
+                    toKelv(ref days);
+                }
+                if (isFahr)
+                {
+                    toFahr(ref days);
+                }
+                graphic.makeGraphic(days.ToList(), name.ToString());
                 graphic.Show();
             }
             catch { }
