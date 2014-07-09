@@ -482,7 +482,7 @@ namespace WeatherInfo
             var items = listOfLanguages_cbx.Items;
             foreach (var item in items)
             {
-                if ((Language)(((ComboBoxItem)item).Tag) == App.settings.language)
+                if (((Language)(((ComboBoxItem)item).Tag)).Equals(App.settings.language))
                 {
                     ind = listOfLanguages_cbx.Items.IndexOf(item);
                     break;

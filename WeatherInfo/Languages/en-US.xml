@@ -25,8 +25,8 @@
 	<Value Id="labelLabguageStts" Content="Language" />
 	<Value Id="autostartFlag_chbxStts" Content="Autostart with Windows" />
 	<Value Id="messCheckDataStts" Content="Check the correctness of data." />
-	<Value Id="incorrectCityStts" Content="Specific city can not be added! Check your input!" />
-	<Value Id="incorrectCountryStts" Content="Country can not be selected! Check your input!" />
+	<Value Id="incorrectCityStts" Content="Specific city can not be added! Check your input! Maybe the city is not selected or does not exist." />
+	<Value Id="incorrectCountryStts" Content="Country can not be selected! Check your input! Maybe the country is not selected or does not exist." />
 	<Value Id="errorAddInAutostartStts" Content="Failed to add program to startup!" />
 	<Value Id="errorRemoveFromAutostartStts" Content="Failed to remove the program from startup!" />
 	<Value Id="errorDelCityStts" Content="When you delete the selected city from the list of error has occurred!" />
@@ -61,6 +61,7 @@
 	<Value Id="oneDayBtn_mainWin" Content="One Day" />
 	<Value Id="manyDayBtn_mainWin" Content="Many Day" />
 	<Value Id="cloudyBtn_mainWin" Content="Cloudy" />
+	<Value Id="loadingMess_mainWin" Content="Loading..." />
 <!-- Days Window -->
 	<Value Id="titleForm_daysWin" Title="Daily forecast" />
 	<Value Id="labelForecastOnDay_daysWin" Content="Forecast for the day." />
@@ -98,8 +99,8 @@ Squad:
 <!-- class translate -->
 	<Value Id="dictNotFound_trans" Content="Transliteration dictionary file is not found. Condole." />
 <!-- SettingsHandlerInterface.Classes.Option -->
-	<Value Id="getFormatAttributeFailed_Option" Content="Error retrieving of attribute by format of forecast." />
-	<Value Id="getValueByAttributeFailed_Option" Content="Error retrieving of format of forecast by a given attribute." />
+	<Value Id="getFormatAttributeFailed_Option" Content="Error format of forecast." />
+	<Value Id="getValueByAttributeFailed_Option" Content="Error format of forecast." />
 <!-- XMLSettingsHandler -->
 	<Value Id="writeXmlValidateSettings_SttsHandler" Content="Sent settings are not valid. Changes will not be saved." />
 	<Value Id="writeXml_SttsHandler" Content="Unexpected error. Failed to save the settings. Error text:" />

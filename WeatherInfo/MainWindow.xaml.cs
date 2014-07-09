@@ -156,7 +156,10 @@ namespace WeatherInfo
                     Width = 32
                 };
             stackPanel.Children.Add(image);
-            var label = new Label() { Content = "Loading...", HorizontalAlignment = HorizontalAlignment.Center };
+            var label = new Label() {
+                Content = LanguageDictionary.Current.Translate<string>("loadingMess_mainWin", "Content"),
+                HorizontalAlignment = HorizontalAlignment.Center
+            };
             stackPanel.Children.Add(label);
             resultPanel.Children.Add(stackPanel);
             return resultPanel;

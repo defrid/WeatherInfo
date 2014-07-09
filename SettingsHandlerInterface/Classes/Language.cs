@@ -30,5 +30,13 @@ namespace SettingsHandlerInterface.Classes
         {
             return string.Format("{1} | {0}", rusName, engName);
         }
+
+        public override bool Equals(object _langCompare)
+        {
+            Language langCompare = (Language)_langCompare;
+            var isEqual = ((rusName == langCompare.rusName) && (engName == langCompare.engName));
+
+            return isEqual;
+        }
     }
 }
