@@ -58,6 +58,9 @@
 	<Value Id="messConnectedToYaAPIResult_mainWin" Content="Нет соединения с одним из серверов погоды" />
 	<Value Id="dailyTitle_mainWin" Content="Суточный прогноз" />
 	<Value Id="messWaitForUpdate_mainWin" Content="Подождите, пока завершится текущее обновление" />	
+	<Value Id="oneDayBtn_mainWin" Content="Один день" />
+	<Value Id="manyDayBtn_mainWin" Content="Несколько дней" />
+	<Value Id="cloudyBtn_mainWin" Content="Облачность" />
 <!-- Окно Дни -->
 	<Value Id="titleForm_daysWin" Title="Дневной прогноз" />
 	<Value Id="labelForecastOnDay_daysWin" Content="Прогноз на день" />

@@ -485,7 +485,7 @@ namespace WeatherInfo
                     Tag = cityName,
                     MinWidth = 100,
                     Margin=new Thickness(50,3,30,3),
-                    Content = "One Day" //Локализация
+                    Content = LanguageDictionary.Current.Translate<string>("oneDayBtn_mainWin", "Content")
                 };
             button1.Click += OneDay_Click;
             stackButton.Children.Add(button1);
@@ -494,7 +494,7 @@ namespace WeatherInfo
                 Tag = cityName,
                 MinWidth = 100,
                 Margin=new Thickness(30,3,30,3),
-                Content = "Many Day" //Локализация
+                Content = LanguageDictionary.Current.Translate<string>("manyDayBtn_mainWin", "Content")
             };
             button2.Click += ManyDays_Click;
             stackButton.Children.Add(button2);
@@ -503,7 +503,7 @@ namespace WeatherInfo
                 Tag = cityName,
                 MinWidth = 100,
                 Margin=new Thickness(30,3,50,3),
-                Content = "Cloudly" //Локализация
+                Content = LanguageDictionary.Current.Translate<string>("cloudyBtn_mainWin", "Content")
             };
             button3.Click += Cloudly_Click;
             stackButton.Children.Add(button3);
