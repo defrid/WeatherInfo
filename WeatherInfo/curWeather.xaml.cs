@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Threading;
 using Tomers.WPF.Localization;
 using WeatherInfo.Classes;
 
@@ -24,12 +25,18 @@ namespace WeatherInfo
     {
 
         ForecastHour cur;
+        bool isKelv;
+        bool isFahr;
 
         public curWeather(ForecastHour forecast)
         {
+            isKelv = App.settings.temperatureUnits.rusName.Equals("Кельвины");
+            isFahr = App.settings.temperatureUnits.rusName.Equals("Фаренгейты");
+
             InitializeComponent();
             cur = forecast;
             CurrentWeather.Children.Add(GetWeaterElement());
+            this.Show();
         }
 
 
@@ -48,18 +55,18 @@ namespace WeatherInfo
             var specRowDef = new ColumnDefinition { Width = new GridLength(1.2, GridUnitType.Star) };
             gridResult.ColumnDefinitions.Add(specRowDef);
 
-            var dayLabel = new Label 
+            var dayLabel = new Label
             {
                 Content = DateTime.Now.ToString("t", LanguageContext.Instance.Culture),
                 FontWeight = FontWeights.Bold
             };
             gridResult.Children.Add(dayLabel);
 
-
-
             var tempLabel = new Label()
             {
-                Content = (cur.temp > 0 ? "+" + cur.temp.ToString() : cur.temp.ToString()),
+                Content = isKelv ? cur.temp + "K" : 
+                        isFahr ? ((cur.temp > 0) ? "+" : "") + cur.temp + "F" :
+                        cur.temp > 0 ? "+" + cur.temp.ToString() : cur.temp.ToString(),
                 HorizontalAlignment = HorizontalAlignment.Left,
                 FontSize = 15,
                 FontWeight = FontWeights.Bold

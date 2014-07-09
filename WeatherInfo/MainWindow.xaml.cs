@@ -46,6 +46,7 @@ namespace WeatherInfo
         private bool isFahr = false;
         private bool isKelv = false;
 
+        private Window[] curForeWindows = new Window[10];
 
         private Dictionary<string, string> dayParts;
         DispatcherTimer timer;
@@ -756,7 +757,10 @@ namespace WeatherInfo
                 return;
             }
             var index = Int32.Parse((sender as FrameworkElement).Name.Remove(0, 1));
-            new curWeather(curForecasts[index]).Show();
+            if (curForeWindows[index] == null || !curForeWindows[index].IsVisible)
+            {
+                curForeWindows[index] = new curWeather(curForecasts[index]);
+            }
         }
 
         /// <summary>
