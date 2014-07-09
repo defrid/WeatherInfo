@@ -105,7 +105,7 @@
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\ChoosenCityForForecast.cs" />
-    <Compile Include="Classes\LoadSettingsHandler.cs" />
+    <Compile Include="Classes\LoadDataHandler.cs" />
     <Compile Include="Classes\Methods_to_BD.cs" />
     <Compile Include="Classes\cityChoose.cs" />
     <Compile Include="Classes\ForecastHour.cs" />
@@ -202,9 +202,9 @@
       <Project>{c794c9d9-24ce-423b-bde6-41c0be0edbb5}</Project>
       <Name>Entity_base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SettingsHandlerInterface\SettingsHandlerInterface.csproj">
+    <ProjectReference Include="..\SettingsHandlerInterface\DataHandlerInterface.csproj">
       <Project>{5aa7e742-fdc3-4ffa-9336-209943278141}</Project>
-      <Name>SettingsHandlerInterface</Name>
+      <Name>DataHandlerInterface</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

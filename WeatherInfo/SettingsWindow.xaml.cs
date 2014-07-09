@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using SettingsHandlerInterface.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DataHandlerInterface.Classes;
 using Tomers.WPF.Localization;
 using WeatherInfo.Classes;
 using System.Windows.Threading;
@@ -42,13 +42,11 @@ namespace WeatherInfo
 
             ChoosenCities = new List<CitySettings>();
             updatePeriod_save = 10;
-            format_save = Options.GetValueByAttribute(Options.FormatForecast.Days.ToString());
+            format_save = Options.GetValueByAttribute(Options.FormatForecast.Short.ToString(), App.settings.language.engName);
             autostart_save = true;
             temperatureUnits_save = new TemperatureUnits("Цельсии", "Celsius");
             language_save = new Language("Русский", "Russian");
         }
-
-        string translatePath = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\Location\translit.txt";
 
         private void cancel_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -57,7 +55,7 @@ namespace WeatherInfo
 
         private void about_btn_Click(object sender, RoutedEventArgs e)
         {
-            About aboutWindow = new About();
+            var aboutWindow = new About();
             aboutWindow.Show();
             aboutWindow.Focus();
             aboutWindow.Activate();
@@ -76,12 +74,12 @@ namespace WeatherInfo
             {
                 updatePeriod_save = Convert.ToInt32(updatePeriod_slider.Value);
                 format_save = ((ComboBoxItem)listOfFormatsForecast_cbx.SelectedItem).Tag.ToString();//Options.GetValueByAttribute(listOfFormatsForecast_cbx.SelectedItem.ToString());
-                autostart_save = (bool)autostartFlag_chbx.IsChecked;
+                if (autostartFlag_chbx.IsChecked != null) autostart_save = (bool)autostartFlag_chbx.IsChecked;
                 temperatureUnits_save = (TemperatureUnits)((ComboBoxItem)listOfTemperatureUnits_cbx.SelectedItem).Tag;
                 language_save = (Language)((ComboBoxItem)listOfLanguages_cbx.SelectedItem).Tag;
 
                 //App.settings = new Settings(countryId_save, countryRusName_save, countryEngName_save, regionId_save, regionName_save, cityYaId_save, cityOWId_save, cityRusName_save, cityEngName_save, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
-                App.settings = new Settings(ChoosenCities, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
+                App.settings = new UserSettings(ChoosenCities, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
 
                 App.settingHandler.SaveSettings(App.settings);                
 
@@ -118,11 +116,12 @@ namespace WeatherInfo
 
 
 
-                RegistryKey key =
+                var key =
                         Registry.CurrentUser.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
                 //Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
+                if (key == null) return;
 
-                if ((bool)autostartFlag_chbx.IsChecked)
+                if (autostartFlag_chbx.IsChecked != null && (bool)autostartFlag_chbx.IsChecked)
                 {
                     if (CreateShortCut(path, Environment.CurrentDirectory, pathToLnk))
                     {
@@ -137,8 +136,9 @@ namespace WeatherInfo
                         key.DeleteValue("WeatherInfo", false);
                     }
                 }
+                
                 key.Flush();
-                key.Close();   
+                key.Close();
             }
             catch (Exception ex)
             {
@@ -151,20 +151,20 @@ namespace WeatherInfo
         /// <summary>
         /// Создание ярлыка в папке автозагрузки
         /// </summary>
-        /// <param name="FilePath">Путь к исполняемому файлу программы</param>
-        /// <param name="WorkDir">Рабочая директория приложения</param>
+        /// <param name="filePath">Путь к исполняемому файлу программы</param>
+        /// <param name="workDir">Рабочая директория приложения</param>
         /// <param name="shortcutPath">Путь к создаваемому ярлыку</param>
         /// <returns>Флаг успешности операции</returns>
-        private bool CreateShortCut(string FilePath, string WorkDir, string shortcutPath)
+        private static bool CreateShortCut(string filePath, string workDir, string shortcutPath)
         {
             try
             {
-                WshShell shell = new WshShell();
+                var shell = new WshShell();
 
-                IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutPath);
+                var shortcut = (IWshShortcut)shell.CreateShortcut(shortcutPath);
                 shortcut.Description = "Запуск";
-                shortcut.TargetPath = FilePath;
-                shortcut.WorkingDirectory = WorkDir;
+                shortcut.TargetPath = filePath;
+                shortcut.WorkingDirectory = workDir;
                 shortcut.Save();
                 return true;
             }
@@ -180,7 +180,7 @@ namespace WeatherInfo
         /// </summary>
         /// <param name="shortcutPath">Путь к удаляемому ярлыку приложения в папке автозагрузки</param>
         /// <returns>Флаг успешности операции</returns>
-        private bool DeleteShortCut(string shortcutPath)
+        private static bool DeleteShortCut(string shortcutPath)
         {
             try
             {
@@ -199,9 +199,10 @@ namespace WeatherInfo
 
         private void autostartFlag_chbx_Checked(object sender, RoutedEventArgs e)
         {
-            autostart_save = (bool)autostartFlag_chbx.IsChecked;//true;
+            if (autostartFlag_chbx.IsChecked != null) autostart_save = (bool)autostartFlag_chbx.IsChecked;//true;
             //MessageBox.Show("Автозапуск");
         }
+
         #endregion
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -327,35 +328,36 @@ namespace WeatherInfo
         /// <summary>
         /// Подгружает список городов для выбранной страны
         /// </summary>
-        /// <param name="country"></param>
         void LoadCities()
         {
             listOfCitiies_cbx.Items.Clear();
             var country = App.settings.language.engName == "English" ? getCity.countryTranslate(listOfCountries_cbx.SelectedItem.ToString(), false) : listOfCountries_cbx.SelectedItem.ToString();//(string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag;
             
-            List<string> allCities = App.settings.language.engName == "English" ? getCity.getCities(country, false) : getCity.getCities(country, true);
+            var allCities = App.settings.language.engName == "English" ? getCity.getCities(country, false) : getCity.getCities(country, true);
             allCities = allCities.OrderBy(item => item).ToList();
             //listOfCitiies_cbx.ItemsSource = allCities;
             foreach (var city in allCities)
             {
-                var curCity = App.settings.language.engName == "English" ? upperEngCityName(getCity.cityTranslate(city, false, country)) : getCity.cityTranslate(city, true, country);
+                var curCity = App.settings.language.engName == "English" ? UpperEngCityName(getCity.cityTranslate(city, false, country)) : getCity.cityTranslate(city, true, country);
 
                 var item = new ComboBoxItem();
                 item.Tag = curCity;
-                item.Content = App.settings.language.engName == "English" ? upperEngCityName(city) : city;
+                item.Content = App.settings.language.engName == "English" ? UpperEngCityName(city) : city;
                 listOfCitiies_cbx.Items.Add(item);
             }
         }
 
-        public static string upperEngCityName(string city)
+        public static string UpperEngCityName(string city)
         {
             var curCity = city;
-            if (App.settings.language.engName == "English")
+            if (App.settings.language.engName != "English")
             {
-                var firstLit = curCity[0].ToString();
-                var reg = new Regex(curCity[0].ToString());
-                curCity = reg.Replace(curCity, firstLit.ToUpper(), 1);
+                return curCity;
             }
+
+            var firstLit = curCity[0].ToString();
+            var reg = new Regex(curCity[0].ToString());
+            curCity = reg.Replace(curCity, firstLit.ToUpper(), 1);
 
             return curCity;
         }
@@ -384,9 +386,14 @@ namespace WeatherInfo
             ChoosenCities = new List<CitySettings>(App.settings.cities);
             foreach (var cityStts in ChoosenCities)
             {
-                var item = new ComboBoxItem();
-                item.Tag = cityStts;
-                item.Content = App.settings.language.engName == "English" ? upperEngCityName(cityStts.city.cityEngName) : cityStts.city.cityRusName;//city.ToString();
+                var item = new ComboBoxItem
+                {
+                    Tag = cityStts,
+                    Content =
+                        App.settings.language.engName == "English"
+                            ? UpperEngCityName(cityStts.city.cityEngName)
+                            : cityStts.city.cityRusName
+                };
 
                 ChoosenCitiesComboBox.Items.Add(item);//(city.ToString());
                 //ChoosenCitiesComboBox.Items.GetItemAt(ChoosenCitiesComboBox.Items.Count - 1).Tag = city;                
@@ -398,14 +405,16 @@ namespace WeatherInfo
         /// </summary>
         void LoadFormats()
         {
-            string[] formats = Enum.GetNames(typeof(Options.FormatForecast));
-            foreach (var f in formats)
+            var formats = Enum.GetNames(typeof(Options.FormatForecast));
+            foreach (var format in formats)
             {
-                var value = Options.GetFormatAttribute(f);
+                var value = Options.GetFormatAttribute(format, App.settings.language.engName);
 
-                var item = new ComboBoxItem();
-                item.Tag = f;
-                item.Content = App.settings.language.engName == "English" ? f.ToString() : value;
+                var item = new ComboBoxItem
+                {
+                    Tag = format,
+                    Content = App.settings.language.engName == "English" ? format : value
+                };
 
                 listOfFormatsForecast_cbx.Items.Add(item);
             }
@@ -447,7 +456,7 @@ namespace WeatherInfo
         {
             var ind = 0;
             var items = listOfTemperatureUnits_cbx.Items;
-            TemperatureUnits t = App.settings.temperatureUnits;
+            var t = App.settings.temperatureUnits;
             foreach (var item in items)
             {
                 if (((TemperatureUnits)(((ComboBoxItem)item).Tag)).engName == App.settings.temperatureUnits.engName)
@@ -468,9 +477,11 @@ namespace WeatherInfo
             var languages = Options.GetLanguages();
             foreach (var lang in languages)
             {
-                var item = new ComboBoxItem();
-                item.Tag = lang;
-                item.Content = App.settings.language.engName == "English" ? lang.engName : lang.rusName;
+                var item = new ComboBoxItem
+                {
+                    Tag = lang,
+                    Content = App.settings.language.engName == "English" ? lang.engName : lang.rusName
+                };
 
                 listOfLanguages_cbx.Items.Add(item);
             }
@@ -554,7 +565,7 @@ namespace WeatherInfo
                     cityYaId = getCity.getCityId(curCityRus, true, true, curCountryRus),
                     cityOWId = getCity.getCityId(curCityRus, true, false, curCountryRus),
                     cityRusName = curCityRus,//curCity,
-                    cityEngName = upperEngCityName(curCityEng)
+                    cityEngName = UpperEngCityName(curCityEng)
                 }
             };
 
@@ -565,9 +576,11 @@ namespace WeatherInfo
             if (repeateSearch != null)
                 return;
             ChoosenCities.Add(newCity);
-            var item = new ComboBoxItem();
-            item.Tag = newCity;
-            item.Content = App.settings.language.engName == "English" ? newCity.city.cityEngName : newCity.city.cityRusName; // newCity.ToString();
+            var item = new ComboBoxItem
+            {
+                Tag = newCity,
+                Content = App.settings.language.engName == "English" ? newCity.city.cityEngName : newCity.city.cityRusName
+            };
 
             //ChoosenCitiesComboBox.Items.Add(newCity.ToString());
             //ChoosenCitiesComboBox.Tag = newCity;
@@ -580,9 +593,13 @@ namespace WeatherInfo
         /// </summary>
         private void RemoveCityFromChoosen()
         {
-            var countryCity = (ChoosenCitiesComboBox.SelectedItem as ComboBoxItem).Tag as CitySettings;
-            ChoosenCities.Remove(
-                ChoosenCities.SingleOrDefault(el => (el.city.cityRusName == countryCity.city.cityRusName && el.country.countryRusName == countryCity.country.countryRusName)));
+            var comboBoxItem = ChoosenCitiesComboBox.SelectedItem as ComboBoxItem;
+            if (comboBoxItem != null)
+            {
+                var countryCity = comboBoxItem.Tag as CitySettings;
+                ChoosenCities.Remove(
+                    ChoosenCities.SingleOrDefault(el => countryCity != null && (el.city.cityRusName == countryCity.city.cityRusName && el.country.countryRusName == countryCity.country.countryRusName)));
+            }
             ChoosenCitiesComboBox.Items.RemoveAt(ChoosenCitiesComboBox.SelectedIndex);            
         }
 
@@ -612,7 +629,7 @@ namespace WeatherInfo
             return true;
         }
 
-        private bool checkInputData()
+        private bool CheckInputData()
         {
             return (CheckInputCountry() && CheckInputCity());
         }
@@ -621,7 +638,7 @@ namespace WeatherInfo
         {
             try
             {
-                if (checkInputData())
+                if (CheckInputData())
                 {
                     AddCityToChoosen();
                 }
@@ -670,7 +687,7 @@ namespace WeatherInfo
         {
             try
             {
-                if (checkInputData())
+                if (CheckInputData())
                 {
                     RemoveCityFromChoosen();
                     AddCityToChoosen();

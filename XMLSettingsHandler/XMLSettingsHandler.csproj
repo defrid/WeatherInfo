@@ -7,8 +7,8 @@
     <ProjectGuid>{6BD9E98D-8644-40D5-B04C-60007E3FD8DF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XMLSettingsHandler</RootNamespace>
-    <AssemblyName>XMLSettingsHandler</AssemblyName>
+    <RootNamespace>XMLDataHandler</RootNamespace>
+    <AssemblyName>XMLDataHandler</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -69,11 +69,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="XMLSettingsHandler.cs" />
+    <Compile Include="XMLDataHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SettingsHandlerInterface\SettingsHandlerInterface.csproj">
+    <ProjectReference Include="..\SettingsHandlerInterface\DataHandlerInterface.csproj">
       <Project>{5aa7e742-fdc3-4ffa-9336-209943278141}</Project>
       <Name>SettingsHandlerInterface</Name>
     </ProjectReference>

@@ -114,4 +114,6 @@
 	<Value Id="vidNotFoundForUidForDict_XmlLangDict" Content="Параметр Vid не обнаружен для параметра Uid {0}, в {2} словаре!" />	
 	<Value Id="failedTransTextInDict_XmlLangDict" Content="Не удалось перевести текст {0} в словаре {1}:\n{2}" />
 	<Value Id="errorLoadXmlLangDict_XmlLangDict" Content="Произошла ошибка при загрузке файла локализации или смене локализации. Возможно файл локализации повреждён или словарь загружен некорректно." />	
+<!-- App.config -->
+	<Value Id="grobalError_App" Content="Ошибка приложения. Приложение будет завершено." />	
 </Dictionary>

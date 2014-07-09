@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace SettingsHandlerInterface.Classes
+namespace DataHandlerInterface.Classes
 {
     /// <summary>
     /// Класс языка системы
@@ -33,7 +30,11 @@ namespace SettingsHandlerInterface.Classes
 
         public override bool Equals(object _langCompare)
         {
-            Language langCompare = (Language)_langCompare;
+            if (_langCompare == null)
+            {
+                return false;
+            }
+            var langCompare = (Language)_langCompare;
             var isEqual = ((rusName == langCompare.rusName) && (engName == langCompare.engName));
 
             return isEqual;

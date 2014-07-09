@@ -1,47 +1,52 @@
-﻿using SettingsHandlerInterface.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using DataHandlerInterface.Classes;
 
-namespace SettingsHandlerInterface
+namespace DataHandlerInterface.Interfaces
 {
-    public interface ISettingsHandler
+    public interface IDataHandler
     {
         /// <summary>
         /// Метод загржуает настройки из хранилища.
         /// </summary>
-        /// <returns></returns>
-        Settings LoadSettings();
+        /// <returns>Объект, содержащий загруженные настройки.</returns>
+        UserSettings LoadSettings();
 
         /// <summary>
         /// Метод сохраняет настройки в хранилище.
         /// </summary>
         /// <param name="settings"></param>
-        void SaveSettings(Settings settings);
+        void SaveSettings(UserSettings settings);
+
+        void SaveForecastDay(ForecastDayModel forecastDay);
+
+        void SaveForecastHour(ForecastHourModel forecastHour);
+
+        List<ForecastDayModel> LoadForecastDays();
+
+        List<ForecastHourModel> LoadForecastHours();
     }
 
-    public abstract class SettingsHandler : ISettingsHandler
+    public abstract class DataHandler : IDataHandler
     {
-        public abstract Settings LoadSettings();
+        public abstract UserSettings LoadSettings();
 
-        public abstract void SaveSettings(Settings settings);
+        public abstract void SaveSettings(UserSettings settings);
+        public abstract void SaveForecastDay(ForecastDayModel forecastDay);
+        public abstract void SaveForecastHour(ForecastHourModel forecastHour);
+        public abstract List<ForecastDayModel> LoadForecastDays();
+        public abstract List<ForecastHourModel> LoadForecastHours();
 
         /// <summary>
         /// Метод проверяет переданные ему настройки на корректность.
         /// </summary>
-        /// <param name="settings"></param>
-        /// <returns></returns>
-        public static bool ValidateSettings(Settings settings)
+        /// <param name="settings">Объект, содержащий текущие настройки, сохраняемые или загружаемые, предназнаенные для проверки.</param>
+        /// <returns>Флаг успешности проверки.</returns>
+        public static bool ValidateSettings(UserSettings settings)
         {
 
             try
             {
-                var isValid = true;
-
                 if (settings == null || settings.cities == null)
                 {
                     return false;
@@ -105,7 +110,7 @@ namespace SettingsHandlerInterface
                     return false;
                 }
 
-                return isValid;
+                return true;
             }
             catch (Exception ex)
             {

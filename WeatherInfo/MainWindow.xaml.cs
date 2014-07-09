@@ -18,6 +18,7 @@ using System.Windows.Threading;
 using System.ComponentModel;
 using System.Threading;
 using System.Net.NetworkInformation;
+using DataHandlerInterface.Classes;
 using WeatherInfo.Classes;
 using Entity_base;
 using Tomers.WPF.Localization;
@@ -554,7 +555,7 @@ namespace WeatherInfo
             {
                 var name = (sender as Button).Tag;
 
-                SettingsHandlerInterface.Classes.CitySettings engName = null;
+                CitySettings engName = null;
                 lang wL = lang.eng;
 
                 if (App.settings.language.engName == "English")
@@ -594,7 +595,7 @@ namespace WeatherInfo
             {
                 var name = (sender as Button).Tag;
 
-                SettingsHandlerInterface.Classes.CitySettings engName = null;
+                CitySettings engName = null;
                 lang wL = lang.eng;
 
                 if (App.settings.language.engName == "English")
@@ -632,7 +633,7 @@ namespace WeatherInfo
             {
                 var name = (sender as Button).Tag;
 
-                SettingsHandlerInterface.Classes.CitySettings engName = null;
+                CitySettings engName = null;
                 lang wL=lang.eng;
 
                 if (App.settings.language.engName == "English")

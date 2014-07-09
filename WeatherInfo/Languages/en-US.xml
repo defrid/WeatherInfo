@@ -114,4 +114,6 @@ Squad:
 	<Value Id="vidNotFoundForUidForDict_XmlLangDict" Content="Vid {0} was not found for Uid {1}, in the {2} dictionary" />
 	<Value Id="failedTransTextInDict_XmlLangDict" Content="Failed to translate text {0} in dictionary {1}:\n{2}" />
 	<Value Id="errorLoadXmlLangDict_XmlLangDict" Content="An error occurred while downloading the file location or change of location. Perhaps localization file is damaged or incorrectly loaded dictionary." />	
+<!-- App.config -->
+	<Value Id="grobalError_App" Content="Application Error. The application will be completed." />	
 </Dictionary>
