@@ -43,6 +43,9 @@ namespace WeatherInfo
         private bool hasConnection = false;
         private bool connectedToYaAPI = false;
         private bool connectedToOpAPI = false;
+        private bool isFahr = false;
+        private bool isKelv = false;
+
 
         private Dictionary<string, string> dayParts;
         DispatcherTimer timer;
@@ -81,6 +84,8 @@ namespace WeatherInfo
                 forecasts.Add(new XMLParser(town, townId));
             }
 
+            isKelv = App.settings.temperatureUnits.rusName.Equals("Кельвины");
+            isFahr = App.settings.temperatureUnits.rusName.Equals("Фаренгейты");
 
             preloaderRotationTimer = new DispatcherTimer();
             preloaderRotationTimer.Interval = TimeSpan.FromMilliseconds(100);
@@ -197,6 +202,67 @@ namespace WeatherInfo
         void timer_Tick(object sender, EventArgs e)
         {
             applySettings();
+        }
+
+        private void toKelv()
+        {
+            foreach (var city in shrtForecasts)
+            {
+                foreach (var day in city)
+                {
+                    day.max += 273;
+                    day.min += 273;
+                }
+            }
+
+            foreach (var city in dtldForecasts)
+            {
+                foreach (var day in city)
+                {
+                    day.max += 273;
+                    day.min += 273;
+                    foreach (var hour in day.hours)
+                    {
+                        hour.temp += 273;
+                    }
+                }
+            }
+
+            foreach (var city in curForecasts)
+            {
+                city.temp += 273;
+            }
+        }
+
+        //F = 1.8 C + 32
+        private void toFahr()
+        {
+            foreach (var city in shrtForecasts)
+            {
+                foreach (var day in city)
+                {
+                    day.max = (int)(day.max * 1.8 + 32);
+                    day.min = (int)(day.min * 1.8 + 32);
+                }
+            }
+
+            foreach (var city in dtldForecasts)
+            {
+                foreach (var day in city)
+                {
+                    day.max = (int)(day.max * 1.8 + 32);
+                    day.min = (int)(day.min * 1.8 + 32);
+                    foreach (var hour in day.hours)
+                    {
+                        hour.temp = (int)(hour.temp * 1.8 + 32);
+                    }
+                }
+            }
+
+            foreach (var city in curForecasts)
+            {
+                city.temp = (int)(city.temp * 1.8 + 32);
+            }
         }
 
         /// <summary>
@@ -321,6 +387,16 @@ namespace WeatherInfo
 
 
             SetWindowHeight();
+
+            if (isKelv)
+            {
+                toKelv();
+            }
+
+            if (isFahr)
+            {
+                toFahr();
+            }
 
             FillTables();
             Scroll.IsEnabled = true;
@@ -598,7 +674,9 @@ namespace WeatherInfo
 
             var maxTempLabel = new Label()
                 {
-                    Content = (shortForecast.max > 0 ? "+" + shortForecast.max.ToString() : shortForecast.max.ToString()),
+                    Content = (isKelv ? shortForecast.max + "K" : 
+                        isFahr ? ((shortForecast.max > 0) ? "+" : "") + shortForecast.max + "F" :
+                        shortForecast.max > 0 ? "+" + shortForecast.max.ToString() : shortForecast.max.ToString()),
                     HorizontalAlignment = HorizontalAlignment.Right,
                     FontSize = 15,
                     FontWeight = FontWeights.Bold
@@ -608,7 +686,9 @@ namespace WeatherInfo
             gridResult.Children.Add(maxTempLabel);
             var minTempLabel = new Label()
                 {
-                    Content = (shortForecast.min > 0 ? "+" + shortForecast.min.ToString() : shortForecast.min.ToString()),
+                    Content = (isKelv ? shortForecast.min + "K" :
+                        isFahr ? ((shortForecast.min > 0) ? "+" : "") + shortForecast.min + "F" :
+                        shortForecast.min > 0 ? "+" + shortForecast.min.ToString() : shortForecast.min.ToString()),
                     HorizontalAlignment = HorizontalAlignment.Right
                 };
             minTempLabel.SetValue(Grid.RowProperty, 1);
@@ -754,7 +834,9 @@ namespace WeatherInfo
                     };
                     container.Children.Add(icon);
 
-                    var stringTemp = adding.temp > 0 ? "+" + adding.temp.ToString() : adding.temp.ToString();
+                    var stringTemp = (isKelv ? adding.temp + "K" :
+                        isFahr ? ((adding.temp > 0) ? "+" : "") + adding.temp + "F" :
+                        adding.temp > 0 ? "+" + adding.temp.ToString() : adding.temp.ToString());
                     var temperLabel = new Label()
                     {
                         VerticalAlignment = VerticalAlignment.Center,
@@ -802,7 +884,8 @@ namespace WeatherInfo
             var mainElementsCount = MainContainer.Children.Cast<Panel>().Skip(1).Count();
             MainContainer.Children.RemoveRange(1, mainElementsCount);
 
-
+            isKelv = App.settings.temperatureUnits.rusName.Equals("Кельвины");
+            isFahr = App.settings.temperatureUnits.rusName.Equals("Фаренгейты");
 
             forecasts = new List<XMLParser>();
 
@@ -883,6 +966,11 @@ namespace WeatherInfo
             {
                 fillTray(true);
             }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            App.Current.Shutdown();
         }
 
     }
