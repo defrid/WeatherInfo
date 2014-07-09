@@ -339,6 +339,27 @@ namespace WeatherInfo
             return false;
         }
 
+
+        private void getRealMaxMin()
+        {
+            var shrt = shrtForecasts[curIndex];
+            var dtld = dtldForecasts[curIndex];
+
+            for (int i = 0; i < dtld.Length; i++)
+            {
+                var hours = dtld[i].hours;
+                int max = hours[0].temp;
+                int min = hours[0].temp;
+                foreach (var hour in hours)
+                {
+                    max = (hour.temp > max) ? hour.temp : max;
+                    min = (hour.temp < min) ? hour.temp : min;
+                }
+                shrt[i].max = (shrt[i].max > max) ? shrt[i].max : max;
+                shrt[i].min = (shrt[i].min < min) ? shrt[i].min : min;
+            }
+        }
+
         /// <summary>
         /// Подключается к серверу в фоновом режиме
         /// </summary>
@@ -372,6 +393,11 @@ namespace WeatherInfo
             catch
             {
                 connectedToYaAPI = false;
+            }
+
+            if (connectedToYaAPI && connectedToOpAPI)
+            {
+                getRealMaxMin();
             }
         }
 
@@ -1131,7 +1157,7 @@ namespace WeatherInfo
 
         private string getTempString(int temp)
         {
-            return (isKelv ? temp + "K" : ((temp > 0) ? "+" : "" + (isFahr ? temp + "F" : temp.ToString())));
+            return (isKelv ? temp + "K" : (((temp > 0) ? "+" : "") + (isFahr ? temp + "F" : temp.ToString())));
         }
 
         void options()
