@@ -79,6 +79,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OpenApiUnitTest.cs" />
     <Compile Include="UnitTestSettings.cs" />
+    <Compile Include="YandexApiUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SettingsHandlerInterface\SettingsHandlerInterface.csproj">
