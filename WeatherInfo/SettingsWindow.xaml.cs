@@ -347,7 +347,7 @@ namespace WeatherInfo
             }
         }
 
-        string upperEngCityName(string city)
+        public static string upperEngCityName(string city)
         {
             var curCity = city;
             if (App.settings.language.engName == "English")

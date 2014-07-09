@@ -78,9 +78,6 @@ namespace WeatherInfo.Classes
         /// Загружает выбранный обработчик и передает ему список имен входных и выходных файлов для обработки.
         /// </summary>
         /// <param name="handlerLibName">Имя обработчика.</param>
-        /// <param name="dictFileName">Имя (путь) файла словаря (без указания расширения файла).</param>
-        /// <param name="textFileName">Имя (путь) входного файла с текстом (без указания расширения файла).</param>
-        /// <param name="resultFileName">Имя (путь) результирующего файла (без указания расширения файла).</param>
         private static ISettingsHandler LoadHandler(string handlerLibName)
         {
             try
