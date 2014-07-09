@@ -626,6 +626,7 @@ namespace WeatherInfo
                     string icon = fore.icon;
                     shrtForecast[i] = new ForecastDay(min, max, null, date, icon);
                 }
+                shrtForecasts.Add(shrtForecast);
             }
         }
 
