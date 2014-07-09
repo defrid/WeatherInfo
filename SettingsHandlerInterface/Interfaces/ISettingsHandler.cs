@@ -42,17 +42,12 @@ namespace SettingsHandlerInterface
             {
                 var isValid = true;
 
-                //FieldInfo[] fields = typeof(FormatForecast).GetFields(BindingFlags.Public | BindingFlags.Instance);
-                //foreach (var field in fields)
-                //{
-                //    if (!ValidSettingField(field, settings))
-                //    {
-                //        isValid = false;
-                //        break;
-                //    }
-                //}
+                if (settings == null || settings.cities == null)
+                {
+                    return false;
+                }
 
-                if (settings == null || settings.cities.Count == 0)
+                if (settings.cities.Count == 0)
                 {
                     return false;
                 }
@@ -74,6 +69,16 @@ namespace SettingsHandlerInterface
                         return false;
                     }
 
+                    if (city.region.regionId < 0)
+                    {
+                        return false;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(city.region.regionName))
+                    {
+                        return false;
+                    }
+
                     if (city.city.cityYaId < 0 || city.city.cityOWId < 0)
                     {
                         return false;
@@ -90,8 +95,6 @@ namespace SettingsHandlerInterface
                     }
                 }
 
-                
-
                 if (string.IsNullOrWhiteSpace(settings.format))
                 {
                     return false;
@@ -102,8 +105,6 @@ namespace SettingsHandlerInterface
                     return false;
                 }
 
-                
-
                 return isValid;
             }
             catch (Exception ex)
@@ -111,41 +112,5 @@ namespace SettingsHandlerInterface
                 return false;
             }
         }
-
-        //private static bool ValidSettingField(FieldInfo field, Settings settings)
-        //{
-        //    switch (field.GetType().ToString())
-        //    {
-        //        case "int":
-        //            if ((int)field.GetValue(settings) <= 0 || (int)field.GetValue(settings) == null)
-        //            {
-        //                return false;
-        //            }
-        //            break;
-        //        case "string":
-        //            if (string.IsNullOrWhiteSpace((string)field.GetValue(settings)))
-        //            {
-        //                return false;
-        //            }
-        //            break;
-        //        case "bool":
-        //            if ((bool)field.GetValue(settings) == null)
-        //            {
-        //                return false;
-        //            }
-        //            break;
-        //        case "City":
-        //            FieldInfo[] cityFields = typeof(Settings.City).GetFields(BindingFlags.Public | BindingFlags.Instance);
-        //            foreach (var cityField in cityFields)
-        //            {
-        //                if (!ValidSettingField(cityField, settings))
-        //                {
-        //                    return false;
-        //                }
-        //            }
-        //            break;
-        //    }
-        //    return false;
-        //}
     }
 }

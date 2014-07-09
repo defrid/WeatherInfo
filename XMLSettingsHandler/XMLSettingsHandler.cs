@@ -48,6 +48,8 @@ namespace XMLSettingsHandler
             catch (Exception ex)
             {
                 Debug.WriteLine("SettingsHandler.WriteXml(): " + LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content") + ex.Message);
+                throw new Exception();
+                //throw new Exception(LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content"));
                 //MessageBox.Show("Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
             }
         }
@@ -77,13 +79,14 @@ namespace XMLSettingsHandler
                         throw new Exception(LanguageDictionary.Current.Translate<string>("readXmlValidateSettings_SttsHandler", "Content"));
                     }
                 }
+                return Settings.GetDefaultSettings();
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("SettingsHandler.ReadXml(): " + LanguageDictionary.Current.Translate<string>("readXml_SttsHandler", "Content") + ex.Message);
-                //MessageBox.Show("Непредвиденная ошибка. Будут загружены настройки по-умолчанию, если это возможно. Текст ошибки: " + ex.Message);
+                //throw new Exception(LanguageDictionary.Current.Translate<string>("readXml_SttsHandler", "Content"));
+                return Settings.GetDefaultSettings();
             }
-            return Settings.GetDefaultSettings();
         }
     }
 }
