@@ -133,7 +133,7 @@ namespace WeatherInfo
         private void SetWindowHeight()
         {
             var screenHeight = SystemParameters.FullPrimaryScreenHeight;
-            var likelyHeight = (App.settings.cities.Count - 1) * 250 + 330;
+            var likelyHeight = (App.settings.cities.Count - 1) * 270 + 340;
             Height = likelyHeight < screenHeight ? likelyHeight : screenHeight;
         }
 
@@ -426,12 +426,12 @@ namespace WeatherInfo
             Tray.Update(listfortray, needHide);
         }
 
-        private DockPanel GetContainerForCity(string cityName, string monthYear)
+        private StackPanel GetContainerForCity(string cityName, string monthYear)
         {
             var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
             var lang = App.settings.language.engName;
 
-            var docResult = new DockPanel { Margin = new Thickness(10) };
+            var stackResult = new StackPanel() { Margin = new Thickness(10) };
 
             var docPanelCityYear = new DockPanel();
             DockPanel.SetDock(docPanelCityYear, Dock.Top);
@@ -452,11 +452,11 @@ namespace WeatherInfo
                 Content = monthYear
             };
             docPanelCityYear.Children.Add(monthYearLabel);
-            docResult.Children.Add(docPanelCityYear);
+            stackResult.Children.Add(docPanelCityYear);
 
             var gridBorder = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(1) };
 
-            var weatherGrid = new Grid() { ShowGridLines = false, MinWidth = 580, MinHeight = 170 };
+            var weatherGrid = new Grid() { ShowGridLines = false,MinWidth = 580,MinHeight = 170};
             var dayStyle = new Style() { TargetType = typeof(Label) };
             dayStyle.Setters.Add(new Setter(HorizontalAlignmentProperty, HorizontalAlignment.Center));
             weatherGrid.Resources.Add("CenterAlligment", dayStyle);
@@ -472,38 +472,42 @@ namespace WeatherInfo
 
             gridBorder.Child = weatherGrid;
 
-            docResult.Children.Add(gridBorder);
-            var stackButton = new StackPanel();
-            stackButton.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+            stackResult.Children.Add(gridBorder);
+            var stackButton = new StackPanel()
+                {
+                    VerticalAlignment = VerticalAlignment.Bottom,
+                    Orientation = Orientation.Horizontal,
+                };
+            DockPanel.SetDock(stackButton,Dock.Bottom);
             var button1 = new Button()
                 {
                     Tag = cityName,
-                    HorizontalAlignment = HorizontalAlignment.Left,
-                    Margin = new Thickness(5, 0, 5, 0),
+                    MinWidth = 100,
+                    Margin=new Thickness(50,3,30,3),
                     Content = "One Day" //Локализация
                 };
             button1.Click += OneDay_Click;
-            docPanelCityYear.Children.Add(button1);
+            stackButton.Children.Add(button1);
             var button2 = new Button()
             {
                 Tag = cityName,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                Margin = new Thickness(5, 0, 5, 0),
+                MinWidth = 100,
+                Margin=new Thickness(30,3,30,3),
                 Content = "Many Day" //Локализация
             };
             button2.Click += ManyDays_Click;
-            docPanelCityYear.Children.Add(button2);
+            stackButton.Children.Add(button2);
             var button3 = new Button()
             {
                 Tag = cityName,
-                HorizontalAlignment = HorizontalAlignment.Right,
-                Margin = new Thickness(5, 0, 5, 0),
+                MinWidth = 100,
+                Margin=new Thickness(30,3,50,3),
                 Content = "Cloudly" //Локализация
             };
             button3.Click += Cloudly_Click;
             stackButton.Children.Add(button3);
-            docPanelCityYear.Children.Add(stackButton);
-            return docResult;
+            stackResult.Children.Add(stackButton);
+            return stackResult;
         }
 
         void OneDay_Click(object sender, RoutedEventArgs e)
@@ -550,7 +554,7 @@ namespace WeatherInfo
         {
             preloaderRotationTimer.Stop();
 
-            var weatherresults = MainContainer.Children.Cast<DockPanel>().Skip(1);
+            var weatherresults = MainContainer.Children.Cast<Panel>().Skip(1);
             var weatherTables = weatherresults.Select(weatherContainer => (weatherContainer.Children[1] as Border).Child as Grid).ToList();
             foreach (var weatherTable in weatherTables)
             {
@@ -665,8 +669,8 @@ namespace WeatherInfo
                 gridResult.ColumnDefinitions.Add(new ColumnDefinition());
             }
             gridResult.RowDefinitions.Add(new RowDefinition());
-            var specRowDef = new ColumnDefinition { Width = new GridLength(1.2, GridUnitType.Star) };
-            gridResult.ColumnDefinitions.Add(specRowDef);
+            var specColumnDef = new ColumnDefinition { Width = new GridLength(1.6, GridUnitType.Star) };
+            gridResult.ColumnDefinitions.Add(specColumnDef);
 
             var dayLabel = new Label { FontWeight = FontWeights.Bold };
             gridResult.Children.Add(dayLabel);
