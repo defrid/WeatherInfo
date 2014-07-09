@@ -77,9 +77,9 @@ namespace WeatherInfo
             grafic.Axes.Add(xA);
 
             if (Lang == lang.rus)
-                grafic.Title = "Изменение температуры за день";
+                grafic.Title = "Изменение температуры за день " + Day.date;
             else
-                grafic.Title = "Temperature changing in the day";
+                grafic.Title = "Temperature changing in the day " + Day.date;
         }
 
         /// <summary>

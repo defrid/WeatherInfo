@@ -508,37 +508,87 @@ namespace WeatherInfo
 
         void OneDay_Click(object sender, RoutedEventArgs e)
         {
-            var name = (sender as Button).Tag;
-            var engName = App.settings.cities.Where(el => el.city.cityRusName == name).FirstOrDefault().city.cityEngName;
-            var parser = forecasts.Where(el => el.town == engName).FirstOrDefault();
-            var graphic = new WindowGraphics(lang.rus);
-            var day = parser.getDetailedWeek()[0];
-            day.hours = day.hours.Take(24).ToList();
-            graphic.makeGraphic(day);
-            graphic.Show();
+            try
+            {
+                var name = (sender as Button).Tag;
+
+                SettingsHandlerInterface.Classes.CitySettings engName = null;
+
+                if (App.settings.language.engName == "English")
+                {
+                    engName = App.settings.cities.Where(el => el.city.cityEngName.ToLower() == name.ToString().ToLower()).FirstOrDefault();
+                }
+                else
+                {
+                    engName = App.settings.cities.Where(el => el.city.cityRusName.ToLower() == name.ToString().ToLower()).FirstOrDefault();
+                }
+
+                string Ename = engName.city.cityEngName;
+                var parser = forecasts.Where(el => el.town == Ename).FirstOrDefault();
+                var graphic = new WindowGraphics(lang.rus);
+                var day = parser.getDetailedWeek()[0];
+                day.hours = day.hours.Take(24).ToList();
+                graphic.makeGraphic(day);
+                graphic.Show();
+            }
+            catch { }
         }
 
 
         void ManyDays_Click(object sender, RoutedEventArgs e)
         {
-            var name = (sender as Button).Tag;
-            var engName = App.settings.cities.Where(el => el.city.cityRusName == name).FirstOrDefault().city.cityEngName;
-            var parser = forecasts.Where(el => el.town == engName).FirstOrDefault();
-            var graphic = new WindowGraphics(lang.rus);
-            List<ForecastDay> days = parser.getDetailedWeek().ToList();
-            graphic.makeGraphic(days);
-            graphic.Show();
+            try
+            {
+                var name = (sender as Button).Tag;
+
+                SettingsHandlerInterface.Classes.CitySettings engName = null;
+
+                if (App.settings.language.engName == "English")
+                {
+                    engName = App.settings.cities.Where(el => el.city.cityEngName.ToLower() == name.ToString().ToLower()).FirstOrDefault();
+                }
+                else
+                {
+                    engName = App.settings.cities.Where(el => el.city.cityRusName.ToLower() == name.ToString().ToLower()).FirstOrDefault();
+                }
+
+                string Ename = engName.city.cityEngName;
+
+                var parser = forecasts.Where(el => el.town == Ename).FirstOrDefault();
+                var graphic = new WindowGraphics(lang.rus);
+                List<ForecastDay> days = parser.getDetailedWeek().ToList();
+                graphic.makeGraphic(days);
+                graphic.Show();
+            }
+            catch { }
         }
 
         void Cloudly_Click(object sender, RoutedEventArgs e)
         {
-            var name = (sender as Button).Tag;
-            var engName = App.settings.cities.Where(el => el.city.cityRusName == name).FirstOrDefault().city.cityEngName;
-            var parser = forecasts.Where(el => el.town == engName).FirstOrDefault();
-            var graphic = new WindowGraphics(lang.rus);
-            List<ForecastDay> days = parser.getDetailedWeek().ToList();
-            graphic.makeDiagram(days);
-            graphic.Show();
+            try
+            {
+                var name = (sender as Button).Tag;
+
+                SettingsHandlerInterface.Classes.CitySettings engName = null;
+
+                if (App.settings.language.engName == "English")
+                {
+                    engName = App.settings.cities.Where(el => el.city.cityEngName.ToLower() == name.ToString().ToLower()).FirstOrDefault();
+                }
+                else
+                {
+                    engName = App.settings.cities.Where(el => el.city.cityRusName.ToLower() == name.ToString().ToLower()).FirstOrDefault();
+                }
+
+                string Ename = engName.city.cityEngName;
+
+                var parser = forecasts.Where(el => el.town == Ename).FirstOrDefault();
+                var graphic = new WindowGraphics(lang.rus);
+                List<ForecastDay> days = parser.getDetailedWeek().ToList();
+                graphic.makeDiagram(days);
+                graphic.Show();
+            }
+            catch { }
         }
 
 
