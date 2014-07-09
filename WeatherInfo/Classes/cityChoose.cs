@@ -4,6 +4,7 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Data.Linq;
 using System.Linq;
+using Tomers.WPF.Localization;
 
 namespace WeatherInfo.Classes
 {
@@ -69,12 +70,12 @@ namespace WeatherInfo.Classes
 
                 if (!Directory.Exists("Location"))
                 {
-                    throw new Exception("Папка Location не найдена!");
+                    throw new Exception(LanguageDictionary.Current.Translate<string>("locationFolderNotFound_gC", "Content"));
                 }
 
                 if (!System.IO.File.Exists(@"Location/Data.xml"))
                 {
-                    throw new Exception("В папке Location не найден Data.xml (файл с городами)");
+                    throw new Exception(LanguageDictionary.Current.Translate<string>("locationDataFileNotFound_gC", "Content"));
                 }
 
                 try
@@ -233,7 +234,7 @@ namespace WeatherInfo.Classes
         /// <param name="nameOFcountry">Название страны</param>
         /// <param name="WeHaveRusName">Оно русское? True - вренем английское и наоборот</param>
         /// <returns></returns>
-        static public string countryTranslate (string nameOFcountry, bool WeHaveRusName)
+        static public string countryTranslate(string nameOFcountry, bool WeHaveRusName)
         {
             getFullObject();
 

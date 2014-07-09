@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Tomers.WPF.Localization;
 
 namespace WeatherInfo.Classes
 {
@@ -39,7 +40,7 @@ namespace WeatherInfo.Classes
                 }
             else
             {
-                throw new Exception("Файл словаря транслита не найден. Соболезнуем.");
+                throw new Exception(LanguageDictionary.Current.Translate<string>("dictNotFound_trans", "Content"));
             }
 
             List<char> res = new List<char>();

@@ -25,17 +25,26 @@ namespace WeatherInfo
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            LanguageDictionary.RegisterDictionary(
+            try
+            {
+                LanguageDictionary.RegisterDictionary(
                 CultureInfo.GetCultureInfo("en-US"),
                 new XmlLanguageDictionary(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\Languages\en-US.xml"));
 
-            LanguageDictionary.RegisterDictionary(
-                CultureInfo.GetCultureInfo("ru-RU"),
-                new XmlLanguageDictionary(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\Languages\ru-RU.xml"));
+                LanguageDictionary.RegisterDictionary(
+                    CultureInfo.GetCultureInfo("ru-RU"),
+                    new XmlLanguageDictionary(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\Languages\ru-RU.xml"));
 
-            LanguageContext.Instance.Culture = CultureInfo.GetCultureInfo(settings.language.engName == "English" ? "en-US" : "ru-RU");
+                LanguageContext.Instance.Culture = CultureInfo.GetCultureInfo(settings.language.engName == "English" ? "en-US" : "ru-RU");
 
-            base.OnStartup(e);
+                base.OnStartup(e);
+            }
+            catch (Exception ex)
+            {
+                var message = "Ошибка приложения. Приложение будет завершено.";
+                MessageBox.Show(message);
+                Environment.Exit(1);
+            }
         }
     }
 }

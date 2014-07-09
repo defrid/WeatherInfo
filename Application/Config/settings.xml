@@ -5,7 +5,7 @@
       <country>
         <countryId>RU</countryId>
         <countryRusName>Россия</countryRusName>
-        <countryEngName>Russia</countryEngName>
+        <countryEngName>Rossiya</countryEngName>
       </country>
       <region>
         <regionId>0</regionId>
@@ -18,25 +18,8 @@
         <cityEngName>ulyanovsk</cityEngName>
       </city>
     </CitySettings>
-    <CitySettings>
-      <country>
-        <countryId>RU</countryId>
-        <countryRusName>Россия</countryRusName>
-        <countryEngName>Rossiya</countryEngName>
-      </country>
-      <region>
-        <regionId>0</regionId>
-        <regionName>Region</regionName>
-      </region>
-      <city>
-        <cityYaId>37237</cityYaId>
-        <cityOWId>478581</cityOWId>
-        <cityRusName>Урус-Мартан</cityRusName>
-        <cityEngName>urus-martan</cityEngName>
-      </city>
-    </CitySettings>
   </cities>
-  <format>Weeks</format>
+  <format>Days</format>
   <updatePeriod>10</updatePeriod>
   <autostart>false</autostart>
   <temperatureUnits>
