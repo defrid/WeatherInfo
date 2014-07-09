@@ -292,13 +292,15 @@ namespace WeatherInfo
         /// </summary>
         void LoadCountries()
         {
-            List<string> countries = getCity.getCountryNames();
+            List<string> countries = App.settings.language.engName == "English" ? getCity.getCountryNames(false) : getCity.getCountryNames(true);
+            countries = countries.OrderBy(item => item).ToList();
+
             foreach (var country in countries)
             {
-                var item = new ComboBoxItem();
-                item.Tag = country;
-                item.Content = App.settings.language.engName == "English" ? getCity.countryTranslate(country, true) : country;
-                listOfCountries_cbx.Items.Add(item);
+                //var item = new ComboBoxItem();
+                //item.Tag = App.settings.language.engName == "English" ? getCity.countryTranslate(country, false) : country;//country;getCity.countryTranslate(curCity, true)
+                //item.Content = country;//App.settings.language.engName == "English" ? country : getCity.countryTranslate(country, false);
+                listOfCountries_cbx.Items.Add(country);
             }
             //listOfCountries_cbx.ItemsSource = countries;
         }
@@ -307,12 +309,15 @@ namespace WeatherInfo
         {
             var ind = 0;
             var items = listOfCountries_cbx.Items;
+            var countryName = App.settings.language.engName == "English" ? App.settings.cities[0].country.countryEngName : App.settings.cities[0].country.countryRusName;
             foreach (var item in items)
             {
-                if ((string)((ComboBoxItem)item).Tag == App.settings.cities[0].country.countryRusName)
+                var tmpCountry = item.ToString();
+                //if ((string)((ComboBoxItem)item).Tag == countryName)
+                if (tmpCountry == countryName)
                 {
                     ind = listOfCountries_cbx.Items.IndexOf(item);
-                    break; 
+                    break;
                 }
             }
 
@@ -326,21 +331,23 @@ namespace WeatherInfo
         void LoadCities()
         {
             listOfCitiies_cbx.Items.Clear();
-            var country = (string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag;
-            List<string> allCities = getCity.getCities(country, true);
+            var country = App.settings.language.engName == "English" ? getCity.countryTranslate(listOfCountries_cbx.SelectedItem.ToString(), false) : listOfCountries_cbx.SelectedItem.ToString();//(string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag;
+            
+            List<string> allCities = App.settings.language.engName == "English" ? getCity.getCities(country, false) : getCity.getCities(country, true);
+            allCities = allCities.OrderBy(item => item).ToList();
             //listOfCitiies_cbx.ItemsSource = allCities;
             foreach (var city in allCities)
             {
-                var curCity = getCity.cityTranslate(city, true, country);
+                var curCity = App.settings.language.engName == "English" ? upperEngCityName(getCity.cityTranslate(city, false, country)) : getCity.cityTranslate(city, true, country);
 
                 var item = new ComboBoxItem();
-                item.Tag = city;
-                item.Content = App.settings.language.engName == "English" ? upperEngCityName(curCity) : city;
+                item.Tag = curCity;
+                item.Content = App.settings.language.engName == "English" ? upperEngCityName(city) : city;
                 listOfCitiies_cbx.Items.Add(item);
             }
         }
 
-        string upperEngCityName(string city)
+        public static string upperEngCityName(string city)
         {
             var curCity = city;
             if (App.settings.language.engName == "English")
@@ -521,17 +528,21 @@ namespace WeatherInfo
         /// Добавить город в список выбранных
         /// </summary>
         private void AddCityToChoosen()
-        {                        
-            var curCity = (string)((ComboBoxItem)listOfCitiies_cbx.SelectedItem).Tag;
-            var curCountry = (string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag; //listOfCountries_cbx.SelectedItem.ToString();            
+        {
+            var curCountryRus = App.settings.language.engName == "English" ? getCity.countryTranslate(listOfCountries_cbx.SelectedItem.ToString(), false) : listOfCountries_cbx.SelectedItem.ToString();
+            var curCountryEng = App.settings.language.engName == "English" ? listOfCountries_cbx.SelectedItem.ToString() : getCity.countryTranslate(listOfCountries_cbx.SelectedItem.ToString(), true);
+            var curCityRus = App.settings.language.engName == "English" ? (string)((ComboBoxItem)listOfCitiies_cbx.SelectedItem).Tag : ((ComboBoxItem)listOfCitiies_cbx.SelectedItem).Content.ToString();
+            var curCityEng = App.settings.language.engName == "English" ? ((ComboBoxItem)listOfCitiies_cbx.SelectedItem).Content.ToString() : (string)((ComboBoxItem)listOfCitiies_cbx.SelectedItem).Tag;
+            //var curCountryRus = App.settings.language.engName == "English" ? (string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag : listOfCountries_cbx.SelectedItem.ToString();
+            //var curCountryEng = App.settings.language.engName == "English" ? listOfCountries_cbx.SelectedItem.ToString() : listOfCountries_cbx.SelectedItem.ToString();
 
             var newCity = new CitySettings
             {
                 country = new Country
                 {
                     countryId = "RU",
-                    countryRusName = curCountry,
-                    countryEngName = translate.toEng(curCountry, translatePath)
+                    countryRusName = curCountryRus,
+                    countryEngName = curCountryEng
                 },
                 region = new RegionOfCity
                 {
@@ -540,10 +551,10 @@ namespace WeatherInfo
                 },
                 city = new City
                 {
-                    cityYaId = getCity.getCityId(curCity, true, true, curCountry),
-                    cityOWId = getCity.getCityId(curCity, true, false, curCountry),
-                    cityRusName = curCity,
-                    cityEngName = upperEngCityName(getCity.cityTranslate(curCity, true, curCountry))
+                    cityYaId = getCity.getCityId(curCityRus, true, true, curCountryRus),
+                    cityOWId = getCity.getCityId(curCityRus, true, false, curCountryRus),
+                    cityRusName = curCityRus,//curCity,
+                    cityEngName = upperEngCityName(curCityEng)
                 }
             };
 
@@ -577,7 +588,7 @@ namespace WeatherInfo
 
         private bool CheckInputCountry()
         {
-            if (listOfCountries_cbx.SelectedItem == null || string.IsNullOrWhiteSpace((string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag))
+            if (listOfCountries_cbx.SelectedItem == null || string.IsNullOrWhiteSpace(listOfCountries_cbx.SelectedItem.ToString()/*(string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag)*/))
             {
                 var message = LanguageDictionary.Current.Translate<string>("incorrectCountryStts", "Content");
                 MessageBox.Show(message);
