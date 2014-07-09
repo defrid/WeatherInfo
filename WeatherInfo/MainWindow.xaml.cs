@@ -513,6 +513,7 @@ namespace WeatherInfo
                 var name = (sender as Button).Tag;
 
                 SettingsHandlerInterface.Classes.CitySettings engName = null;
+                lang wL = lang.eng;
 
                 if (App.settings.language.engName == "English")
                 {
@@ -521,14 +522,15 @@ namespace WeatherInfo
                 else
                 {
                     engName = App.settings.cities.Where(el => el.city.cityRusName.ToLower() == name.ToString().ToLower()).FirstOrDefault();
+                    wL = lang.rus;
                 }
 
                 string Ename = engName.city.cityEngName;
                 var parser = forecasts.Where(el => el.town == Ename).FirstOrDefault();
-                var graphic = new WindowGraphics(lang.rus);
+                var graphic = new WindowGraphics(wL);
                 var day = parser.getDetailedWeek()[0];
                 day.hours = day.hours.Take(24).ToList();
-                graphic.makeGraphic(day);
+                graphic.makeGraphic(day, name.ToString());
                 graphic.Show();
             }
             catch { }
@@ -542,6 +544,7 @@ namespace WeatherInfo
                 var name = (sender as Button).Tag;
 
                 SettingsHandlerInterface.Classes.CitySettings engName = null;
+                lang wL = lang.eng;
 
                 if (App.settings.language.engName == "English")
                 {
@@ -550,14 +553,15 @@ namespace WeatherInfo
                 else
                 {
                     engName = App.settings.cities.Where(el => el.city.cityRusName.ToLower() == name.ToString().ToLower()).FirstOrDefault();
+                    wL = lang.rus;
                 }
 
                 string Ename = engName.city.cityEngName;
 
                 var parser = forecasts.Where(el => el.town == Ename).FirstOrDefault();
-                var graphic = new WindowGraphics(lang.rus);
+                var graphic = new WindowGraphics(wL);
                 List<ForecastDay> days = parser.getDetailedWeek().ToList();
-                graphic.makeGraphic(days);
+                graphic.makeGraphic(days, name.ToString());
                 graphic.Show();
             }
             catch { }
@@ -570,6 +574,7 @@ namespace WeatherInfo
                 var name = (sender as Button).Tag;
 
                 SettingsHandlerInterface.Classes.CitySettings engName = null;
+                lang wL=lang.eng;
 
                 if (App.settings.language.engName == "English")
                 {
@@ -578,14 +583,18 @@ namespace WeatherInfo
                 else
                 {
                     engName = App.settings.cities.Where(el => el.city.cityRusName.ToLower() == name.ToString().ToLower()).FirstOrDefault();
+                    wL = lang.rus;
                 }
 
                 string Ename = engName.city.cityEngName;
 
                 var parser = forecasts.Where(el => el.town == Ename).FirstOrDefault();
-                var graphic = new WindowGraphics(lang.rus);
+
+                
+
+                var graphic = new WindowGraphics(wL);
                 List<ForecastDay> days = parser.getDetailedWeek().ToList();
-                graphic.makeDiagram(days);
+                graphic.makeDiagram(days, name.ToString());
                 graphic.Show();
             }
             catch { }
