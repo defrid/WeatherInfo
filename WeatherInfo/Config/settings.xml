@@ -5,56 +5,22 @@
       <country>
         <countryId>RU</countryId>
         <countryRusName>Россия</countryRusName>
-        <countryEngName>Russia</countryEngName>
+        <countryEngName>Rossiya</countryEngName>
       </country>
       <region>
         <regionId>0</regionId>
         <regionName>Region</regionName>
       </region>
       <city>
-        <cityYaId>28807</cityYaId>
-        <cityOWId>499099</cityOWId>
-        <cityRusName>Самара</cityRusName>
-        <cityEngName>samara</cityEngName>
-      </city>
-    </CitySettings>
-    <CitySettings>
-      <country>
-        <countryId>RU</countryId>
-        <countryRusName>Россия</countryRusName>
-        <countryEngName>Russia</countryEngName>
-      </country>
-      <region>
-        <regionId>0</regionId>
-        <regionName>Region</regionName>
-      </region>
-      <city>
-        <cityYaId>27612</cityYaId>
-        <cityOWId>524901</cityOWId>
-        <cityRusName>Москва</cityRusName>
-        <cityEngName>moscow</cityEngName>
-      </city>
-    </CitySettings>
-    <CitySettings>
-      <country>
-        <countryId>RU</countryId>
-        <countryRusName>Россия</countryRusName>
-        <countryEngName>Russia</countryEngName>
-      </country>
-      <region>
-        <regionId>0</regionId>
-        <regionName>Region</regionName>
-      </region>
-      <city>
-        <cityYaId>27595</cityYaId>
-        <cityOWId>551487</cityOWId>
-        <cityRusName>Казань</cityRusName>
-        <cityEngName>kazan</cityEngName>
+        <cityYaId>27786</cityYaId>
+        <cityOWId>479123</cityOWId>
+        <cityRusName>Ульяновск</cityRusName>
+        <cityEngName>ulyanovsk</cityEngName>
       </city>
     </CitySettings>
   </cities>
   <format>Days</format>
-  <updatePeriod>60</updatePeriod>
+  <updatePeriod>30</updatePeriod>
   <autostart>false</autostart>
   <temperatureUnits>
     <rusName>Цельсии</rusName>

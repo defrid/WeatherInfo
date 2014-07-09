@@ -89,8 +89,8 @@ namespace WeatherInfo
             }
             catch (Exception ex)
             {
-                var message = LanguageDictionary.Current.Translate<string>("messCheckDataStts", "Content");//"Проверьте правильность введенных данных. Ошибка: "
-                MessageBox.Show(message + ex.Message);
+                var message = LanguageDictionary.Current.Translate<string>("messCheckDataStts", "Content");
+                MessageBox.Show(message);
             }
         }
 
@@ -107,32 +107,41 @@ namespace WeatherInfo
         /// </summary>
         private void Autorun()
         {
-            var path = string.Concat(Environment.CurrentDirectory, @"\WeatherInfo.exe");
-            var pathToLnk = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\WeatherInfo.lnk";
-
-            
-
-            RegistryKey key =
-                    Registry.CurrentUser.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
-            //Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
-
-            if ((bool)autostartFlag_chbx.IsChecked)
+            try
             {
-                if (CreateShortCut(path, Environment.CurrentDirectory, pathToLnk))
+                var path = string.Concat(Environment.CurrentDirectory, @"\WeatherInfo.exe");
+                var pathToLnk = Environment.GetFolderPath(Environment.SpecialFolder.Startup) + "\\WeatherInfo.lnk";
+
+
+
+                RegistryKey key =
+                        Registry.CurrentUser.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
+                //Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
+
+                if ((bool)autostartFlag_chbx.IsChecked)
                 {
-                    key.SetValue("WeatherInfo", pathToLnk);
-                    //key.SetValue("WeatherInfo", "\\WeatherInfo.exe");
+                    if (CreateShortCut(path, Environment.CurrentDirectory, pathToLnk))
+                    {
+                        key.SetValue("WeatherInfo", pathToLnk);
+                        //key.SetValue("WeatherInfo", "\\WeatherInfo.exe");
+                    }
                 }
+                else
+                {
+                    if (DeleteShortCut(pathToLnk))
+                    {
+                        key.DeleteValue("WeatherInfo", false);
+                    }
+                }
+                key.Flush();
+                key.Close();   
             }
-            else
+            catch (Exception ex)
             {
-                if (DeleteShortCut(pathToLnk))
-                {
-                    key.DeleteValue("WeatherInfo", false);
-                }
+                var message = LanguageDictionary.Current.Translate<string>("errorAddInAutostartStts", "Content");
+                MessageBox.Show(message);
             }
-            key.Flush();
-            key.Close();            
+                     
         }
 
         /// <summary>
@@ -193,34 +202,85 @@ namespace WeatherInfo
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //var selectedItemCountry = new ComboBoxItem();
-            //selectedItemCountry.Tag = App.settings.cities[0].country.countryRusName;
-            //selectedItemCountry.Content = App.settings.language.engName == "English" ? translate.toEng((string)selectedItemCountry.Tag, translatePath) : (string)selectedItemCountry.Tag;
+            try
+            {
+                LoadCountries();
+                listOfCountries_cbx.SelectedIndex = GetIndCurCountry();
+                listOfCountries_cbx.SelectionChanged += listOfCountries_cbx_SelectionChanged;
+            } catch (Exception ex) 
+            {
+                var message = LanguageDictionary.Current.Translate<string>("errorLoadCountriesStts", "Content");
+                MessageBox.Show(message);
+            }
 
-            LoadCountries();
-            listOfCountries_cbx.SelectedIndex = GetIndCurCountry();
-            listOfCountries_cbx.SelectionChanged += listOfCountries_cbx_SelectionChanged;
+            try
+            {
+                LoadCities();
+                listOfCitiies_cbx.SelectedIndex = GetIndCurCity();
+                listOfCitiies_cbx.SelectionChanged += listOfCitiies_cbx_SelectionChanged;
+            }
+            catch (Exception ex)
+            {
+                var message = LanguageDictionary.Current.Translate<string>("errorLoadCitiesStts", "Content");
+                MessageBox.Show(message);
+            }
 
-            LoadCities();
-            listOfCitiies_cbx.SelectedIndex = GetIndCurCity();//SelectedItem = App.settings.cities[0].city.cityRusName;
-            listOfCitiies_cbx.SelectionChanged += listOfCitiies_cbx_SelectionChanged;
+            try
+            {
+                LoadChoosenCities();
+                ChoosenCitiesComboBox.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                var message = LanguageDictionary.Current.Translate<string>("errorLoadChoosenCitiesStts", "Content");
+                MessageBox.Show(message);
+            }
 
-            LoadChoosenCities();
-            ChoosenCitiesComboBox.SelectedIndex = 0;
+            try
+            {
+                LoadFormats();
+                listOfFormatsForecast_cbx.SelectedIndex = GetIndCurFormat();
+                listOfFormatsForecast_cbx.SelectionChanged += listOfFormatsForecast_cbx_SelectionChanged;
+            }
+            catch (Exception ex)
+            {
+                var message = LanguageDictionary.Current.Translate<string>("errorLoadFormatsStts", "Content");
+                MessageBox.Show(message);
+            }
 
-            updatePeriod_slider.Value = Convert.ToDouble(App.settings.updatePeriod);
+            try
+            {
+                LoadTemperatureUnits();
+                listOfTemperatureUnits_cbx.SelectedIndex = GetIndCurTemperatureUnit();
+            }
+            catch (Exception ex)
+            {
+                var message = LanguageDictionary.Current.Translate<string>("errorLoadTemperatureUnitsStts", "Content");
+                MessageBox.Show(message);
+            }
+            
 
-            LoadFormats();
-            listOfFormatsForecast_cbx.SelectedIndex = GetIndCurFormat();//Options.GetFormatAttribute(App.settings.format);
-            listOfFormatsForecast_cbx.SelectionChanged += listOfFormatsForecast_cbx_SelectionChanged;
+            try
+            {
+                LoadLanguages();
+                listOfLanguages_cbx.SelectedIndex = GetIndCurLanguage();
+            }
+            catch (Exception ex)
+            {
+                var message = LanguageDictionary.Current.Translate<string>("errorLoadLanguagesStts", "Content");
+                MessageBox.Show(message);
+            }
 
-            LoadTemperatureUnits();
-            listOfTemperatureUnits_cbx.SelectedIndex = GetIndCurTemperatureUnit();//0;
-
-            LoadLanguages();
-            listOfLanguages_cbx.SelectedIndex = GetIndCurLanguage();//0;
-
-            autostartFlag_chbx.IsChecked = App.settings.autostart;
+            try
+            {
+                updatePeriod_slider.Value = Convert.ToDouble(App.settings.updatePeriod);
+                autostartFlag_chbx.IsChecked = App.settings.autostart;
+            }
+            catch (Exception ex)
+            {
+                var message = LanguageDictionary.Current.Translate<string>("errorLoadOtherStts", "Content");
+                MessageBox.Show(message);
+            }            
         }
 
         /// <summary>
@@ -425,16 +485,16 @@ namespace WeatherInfo
         {
             try
             {
-                if (listOfCountries_cbx.SelectedItem == null || string.IsNullOrWhiteSpace((string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag))
+                if (CheckInputCountry())
                 {
-                    throw new Exception(LanguageDictionary.Current.Translate<string>("incorrectCountryStts", "Content"));
+                    LoadCities();
+                    listOfCitiies_cbx.SelectedIndex = 0;
                 }
-                LoadCities();
-                listOfCitiies_cbx.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                var message = LanguageDictionary.Current.Translate<string>("errorLoadCitiesStts", "Content");
+                MessageBox.Show(message);
             }
         }
 
@@ -511,32 +571,65 @@ namespace WeatherInfo
             ChoosenCitiesComboBox.Items.RemoveAt(ChoosenCitiesComboBox.SelectedIndex);            
         }
 
+        private bool CheckInputCountry()
+        {
+            if (listOfCountries_cbx.SelectedItem == null || string.IsNullOrWhiteSpace((string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag))
+            {
+                var message = LanguageDictionary.Current.Translate<string>("incorrectCountryStts", "Content");
+                MessageBox.Show(message);
+                return false;
+                //throw new Exception(LanguageDictionary.Current.Translate<string>("incorrectCountryStts", "Content"));
+            }
+
+            return true;
+        }
+
+        private bool CheckInputCity()
+        {
+            if (listOfCitiies_cbx.SelectedItem == null || string.IsNullOrWhiteSpace((string)((ComboBoxItem)listOfCitiies_cbx.SelectedItem).Tag))
+            {
+                var message = LanguageDictionary.Current.Translate<string>("incorrectCityStts", "Content");
+                MessageBox.Show(message);
+                return false;
+                //throw new Exception(LanguageDictionary.Current.Translate<string>("incorrectCityStts", "Content"));
+            }
+
+            return true;
+        }
+
+        private bool checkInputData()
+        {
+            return (CheckInputCountry() && CheckInputCity());
+        }
+
         private void AddCityButtonClick(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (listOfCountries_cbx.SelectedItem == null || string.IsNullOrWhiteSpace((string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag))
+                if (checkInputData())
                 {
-                    throw new Exception(LanguageDictionary.Current.Translate<string>("incorrectCountryStts", "Content"));
+                    AddCityToChoosen();
                 }
-
-                if (listOfCitiies_cbx.SelectedItem == null || string.IsNullOrWhiteSpace((string)((ComboBoxItem)listOfCitiies_cbx.SelectedItem).Tag))
-                {
-                    throw new Exception(LanguageDictionary.Current.Translate<string>("incorrectCityStts", "Content"));
-                }
-
-                AddCityToChoosen();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                var message = LanguageDictionary.Current.Translate<string>("messCheckDataStts", "Content");
+                MessageBox.Show(message);
             }  
         }
 
         private void DeleteCityButtonClick(object sender, RoutedEventArgs e)
         {
-            RemoveCityFromChoosen();
-            ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count - 1;
+            try
+            {
+                RemoveCityFromChoosen();
+                ChoosenCitiesComboBox.SelectedIndex = ChoosenCitiesComboBox.Items.Count - 1;
+            }
+            catch (Exception ex)
+            {
+                var message = LanguageDictionary.Current.Translate<string>("errorDelCityStts", "Content");
+                MessageBox.Show(message);
+            }
         }
 
         private void LockUnlockButtons(object sender, SelectionChangedEventArgs e)
@@ -562,22 +655,16 @@ namespace WeatherInfo
         {
             try
             {
-                if (listOfCountries_cbx.SelectedItem == null || string.IsNullOrWhiteSpace((string)((ComboBoxItem)listOfCountries_cbx.SelectedItem).Tag))
+                if (checkInputData())
                 {
-                    throw new Exception(LanguageDictionary.Current.Translate<string>("incorrectCountryStts", "Content"));
+                    RemoveCityFromChoosen();
+                    AddCityToChoosen();
                 }
-
-                if (listOfCitiies_cbx.SelectedItem == null || string.IsNullOrWhiteSpace((string)((ComboBoxItem)listOfCitiies_cbx.SelectedItem).Tag))
-                {
-                    throw new Exception(LanguageDictionary.Current.Translate<string>("incorrectCityStts", "Content"));
-                }
-
-                RemoveCityFromChoosen();
-                AddCityToChoosen();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                var message = LanguageDictionary.Current.Translate<string>("messCheckDataStts", "Content");
+                MessageBox.Show(message);
             }            
         }
     }
