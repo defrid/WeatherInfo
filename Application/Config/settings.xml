@@ -5,17 +5,51 @@
       <country>
         <countryId>RU</countryId>
         <countryRusName>Россия</countryRusName>
-        <countryEngName>Rossiya</countryEngName>
+        <countryEngName>Russia</countryEngName>
       </country>
       <region>
         <regionId>0</regionId>
         <regionName>Region</regionName>
       </region>
       <city>
-        <cityYaId>27786</cityYaId>
-        <cityOWId>479123</cityOWId>
-        <cityRusName>Ульяновск</cityRusName>
-        <cityEngName>ulyanovsk</cityEngName>
+        <cityYaId>27612</cityYaId>
+        <cityOWId>524901</cityOWId>
+        <cityRusName>Москва</cityRusName>
+        <cityEngName>moscow</cityEngName>
+      </city>
+    </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>Украина</countryRusName>
+        <countryEngName>Ukraina</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>33345</cityYaId>
+        <cityOWId>703448</cityOWId>
+        <cityRusName>Киев</cityRusName>
+        <cityEngName>kiev</cityEngName>
+      </city>
+    </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>Уганда</countryRusName>
+        <countryEngName>Uganda</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>63680</cityYaId>
+        <cityOWId>232422</cityOWId>
+        <cityRusName>Кампала</cityRusName>
+        <cityEngName>kampala</cityEngName>
       </city>
     </CitySettings>
   </cities>
@@ -27,7 +61,7 @@
     <engName>Celsius</engName>
   </temperatureUnits>
   <language>
-    <rusName>Русский</rusName>
-    <engName>Russian</engName>
+    <rusName>Английский</rusName>
+    <engName>English</engName>
   </language>
 </Settings>

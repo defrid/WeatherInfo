@@ -31,7 +31,7 @@ namespace WeatherInfo
         /// Строит график температуры в течении дня (Внимание! Необходимо чтобы приходил список отсортированный по дате!)
         /// </summary>
         /// <param name="Day">День</param>
-        public void makeGraphic(ForecastDay Day)
+        public void makeGraphic(ForecastDay Day, string cityName)
         {
             ObservableCollection<dataCharHour> coll = new ObservableCollection<dataCharHour>();
 
@@ -77,16 +77,16 @@ namespace WeatherInfo
             grafic.Axes.Add(xA);
 
             if (Lang == lang.rus)
-                grafic.Title = "Изменение температуры за день";
+                grafic.Title = cityName + " - Изменение температуры за день " + Day.date;
             else
-                grafic.Title = "Temperature changing in the day";
+                grafic.Title = cityName+" - Temperature changing in the day " + Day.date;
         }
 
         /// <summary>
         /// Строит график для выборки дней (Внимание! Необходимо чтобы приходил список отсортированный по дате!)
         /// </summary>
         /// <param name="dayList">Выборка дней</param>
-        public void makeGraphic(List<ForecastDay> dayList)
+        public void makeGraphic(List<ForecastDay> dayList, string cityName)
         {
             ObservableCollection<dataCharHour> coll = new ObservableCollection<dataCharHour>();
 
@@ -134,16 +134,16 @@ namespace WeatherInfo
             grafic.Axes.Add(xA);
 
             if (Lang == lang.rus)
-                grafic.Title = "Изменение температуры за несколько дней";
+                grafic.Title = cityName+" - Изменение температуры за несколько дней";
             else
-                grafic.Title = "Temperature change for some days";
+                grafic.Title = cityName+" - Temperature change for some days";
         }
 
         /// <summary>
         /// Строит диаграмму облачности (Внимание! Необходимо чтобы приходил список отсортированный по дате!)
         /// </summary>
         /// <param name="dayList">Список дней</param>
-        public void makeDiagram(List<ForecastDay> dayList)
+        public void makeDiagram(List<ForecastDay> dayList, string cityName)
         {
             ObservableCollection<PieDataPoint> coll = new ObservableCollection<PieDataPoint>();
             Dictionary<string, int> oblaka = new Dictionary<string, int>();
@@ -199,8 +199,8 @@ namespace WeatherInfo
 
 
 
-            if (Lang == lang.rus) grafic.Title = "Диаграмма облачности";
-            else grafic.Title = "Overcast chart";
+            if (Lang == lang.rus) grafic.Title = cityName+" - Диаграмма облачности";
+            else grafic.Title = cityName+" - Overcast chart";
             grafic.Series.Add(NewChart);
            
         }
