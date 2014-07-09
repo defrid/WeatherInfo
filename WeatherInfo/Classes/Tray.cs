@@ -115,50 +115,74 @@ namespace WeatherInfo
 
         private static void SetTrayMenu()
         {
-            FullWindow.Text = LanguageDictionary.Current.Translate<string>("menuFullWindow_Tray", "Content");//"Развернуть";
-            Options.Text = LanguageDictionary.Current.Translate<string>("menuOptions_Tray", "Content"); //"Настройки";
-            Exit.Text = LanguageDictionary.Current.Translate<string>("menuExit_Tray", "Content"); //"Выход";
+            try
+            {
+                FullWindow.Text = LanguageDictionary.Current.Translate<string>("menuFullWindow_Tray", "Content");//"Развернуть";
+                Options.Text = LanguageDictionary.Current.Translate<string>("menuOptions_Tray", "Content"); //"Настройки";
+                Exit.Text = LanguageDictionary.Current.Translate<string>("menuExit_Tray", "Content"); //"Выход";
+            }
+            catch { }
         }
 
         static void notifyIcon_TrayRightMouseDown(object sender, RoutedEventArgs e)
         {
-            notifyIcon.ContextMenu.Visibility = Visibility.Visible;
+            try
+            {
+                notifyIcon.ContextMenu.Visibility = Visibility.Visible;
+            }
+            catch { }
         }
 
         static void notifyIcon_TrayLeftMouseDown(object sender, RoutedEventArgs e)
         {
-            notifyIcon.TrayPopup.Visibility = Visibility.Visible;
+            try
+            {
+                notifyIcon.TrayPopup.Visibility = Visibility.Visible;
+            }
+            catch { }
         }
 
         static void Exit_MouseDown(object sender, RoutedEventArgs e)
         {
-            windowMain.Close();
+            try
+            {
+                windowMain.Close();
+            }
+            catch { }
         }
 
         static void Options_MouseDown(object sender, RoutedEventArgs e)
         {
-            //notifyIcon.Visibility = Visibility.Hidden;
-            notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
-            notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
+            try
+            {
+                //notifyIcon.Visibility = Visibility.Hidden;
+                notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
+                notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
 
-            windowMain.Show();
-            windowMain.Focus();
-            windowMain.Activate();
+                windowMain.Show();
+                windowMain.Focus();
+                windowMain.Activate();
 
-            OnOptionsClick();
+                OnOptionsClick();
+            }
+            catch { }
         }
 
         static void FullWindow_MouseDown(object sender, RoutedEventArgs e)
         {
-            //notifyIcon.Visibility = Visibility.Hidden;
-            notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
-            notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
+            try
+            {
+                //notifyIcon.Visibility = Visibility.Hidden;
+                notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
+                notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
 
-            windowMain.Show();
-            windowMain.Activate();
-            windowMain.Focus();
+                windowMain.Show();
+                windowMain.Activate();
+                windowMain.Focus();
 
-            onToWindow();
+                onToWindow();
+            }
+            catch { }
         }
 
         static System.Drawing.Bitmap preLoadCanvas;
@@ -232,8 +256,11 @@ namespace WeatherInfo
 
         static void leaveWindowTray()
         {
-            notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
-            
+            try
+            {
+                notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
+            }
+            catch { }
         }
 
         private static void ApplicationExit(object sender, ExitEventArgs e)
