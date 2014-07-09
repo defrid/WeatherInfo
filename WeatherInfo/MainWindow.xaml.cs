@@ -59,6 +59,7 @@ namespace WeatherInfo
         private DispatcherTimer preloaderRotationTimer;
         private int preloaderRotationAngle = 0;
 
+        private bool isDailyForecast;
 
         public MainWindow()
         {
@@ -492,14 +493,23 @@ namespace WeatherInfo
 
             var weatherGrid = new Grid() { ShowGridLines = false,MinWidth = 580,MinHeight = 170};
 
-            var dayStyle = new Style() { TargetType = typeof(Label) };
-            dayStyle.Setters.Add(new Setter(HorizontalAlignmentProperty, HorizontalAlignment.Center));
-            weatherGrid.Resources.Add("CenterAlligment", dayStyle);
-            for (var i = 0; i < 7; i++)
-                weatherGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            weatherGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(30) });
-            weatherGrid.RowDefinitions.Add(new RowDefinition());
-            weatherGrid.RowDefinitions.Add(new RowDefinition());
+            if (isDailyForecast)
+            {
+                for (var i = 0; i < 5; i++)
+                {
+                    weatherGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                }
+                weatherGrid.RowDefinitions.Add(new RowDefinition());
+                weatherGrid.RowDefinitions.Add(new RowDefinition());
+            }
+            else
+            {
+                for (var i = 0; i < 7; i++)
+                    weatherGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                weatherGrid.RowDefinitions.Add(new RowDefinition {Height = new GridLength(30)});
+                weatherGrid.RowDefinitions.Add(new RowDefinition());
+                weatherGrid.RowDefinitions.Add(new RowDefinition());
+            }
 
             var preloadPanel = GetPreloadPanel();
             weatherGrid.Children.Add(preloadPanel);
@@ -670,9 +680,12 @@ namespace WeatherInfo
             foreach (var weatherTable in weatherTables)
             {
                 weatherTable.Children.Clear();
-                weatherTable.ShowGridLines = true;
+                if(!isDailyForecast)
+                    weatherTable.ShowGridLines = true;
             }
+#warning где то тут разделение, дели с помощью isDailyForecast
             DateTime curDay = DateTime.Now;
+            
             foreach (var weatherTable in weatherTables)
             {
                 for (int i = 0; i < 7; i++)
@@ -863,6 +876,74 @@ namespace WeatherInfo
                 var titleToolTip = LanguageDictionary.Current.Translate<string>("dailyTitle_mainWin", "Content");
                 return GetTooltipForecast(BaseRowCount, BaseColumnCount, titleToolTip, fors, "");
             }
+        }
+
+        private Border GetDailyWeatherElement(int row, int column, string dateDay, ForecastHour[] hourForecasts)
+        {
+            var borderResult = new Border
+            {
+                BorderBrush = Brushes.Black,
+                BorderThickness = new Thickness(column == 0 ? 1 : 0, 1, column == 4 ? 1 : 0, 1)
+            };
+            Grid.SetColumn(borderResult, column);
+            Grid.SetRow(borderResult, row);
+            var gridElement = new Grid();
+            for (var i = 0; i < 4; i++)
+            {
+                gridElement.RowDefinitions.Add(new RowDefinition());
+                gridElement.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+
+            var borderDay = new Border
+            {
+                BorderThickness = new Thickness(1),
+                BorderBrush = Brushes.Black,
+                Child = new Label
+                {
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    Content = dateDay
+                }
+            };
+            Grid.SetColumnSpan(borderDay, 4);
+            gridElement.Children.Add(borderDay);
+
+            for (var i = 0; i < 4; i++)
+            {
+                var rowForecast = i / 2 == 0 ? 1 : 2;
+                var columnForecast = i % 2 == 0 ? 0 : 2;
+                var borderForecast = new Border() { BorderBrush = Brushes.Black, BorderThickness = new Thickness(1) };
+                Grid.SetColumn(borderForecast, columnForecast);
+                Grid.SetRow(borderForecast, rowForecast);
+                Grid.SetColumnSpan(borderForecast, 2);
+
+                var stackForecast = new StackPanel { Orientation = Orientation.Horizontal };
+                var dayLabel = new Label
+                {
+                    Padding = new Thickness(0),
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Content = hourForecasts[i].time[0] + ": " //Первый символ времени
+                };
+                stackForecast.Children.Add(dayLabel);
+                var imageForecast = new Image
+                {
+                    Height = 24,
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    Source = YandexWeatherAPI.GetBitmapImageById(hourForecasts[i].icon)
+                };
+                stackForecast.Children.Add(imageForecast);
+                var tempLabel = new Label
+                {
+                    Padding = new Thickness(0, 0, 3, 0),
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Content = String.Format("{0}K", hourForecasts[i].temp)//Температура
+                };
+                stackForecast.Children.Add(tempLabel);
+                borderForecast.Child = stackForecast;
+                gridElement.Children.Add(borderForecast);
+            }
+
+            borderResult.Child = gridElement;
+            return borderResult;
         }
 
         void gridResult_MouseUp(object sender, MouseButtonEventArgs e)
