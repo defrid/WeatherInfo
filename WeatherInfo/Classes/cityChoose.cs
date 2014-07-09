@@ -68,6 +68,7 @@ namespace WeatherInfo.Classes
             {
                 XmlSerializer xs = new XmlSerializer(typeof(SpCountryFull));
 
+                string a = Environment.CurrentDirectory;
                 if (!Directory.Exists("Location"))
                 {
                     throw new Exception(LanguageDictionary.Current.Translate<string>("locationFolderNotFound_gC", "Content"));
