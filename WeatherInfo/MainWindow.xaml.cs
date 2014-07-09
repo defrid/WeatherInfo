@@ -60,7 +60,7 @@ namespace WeatherInfo
         private DispatcherTimer preloaderRotationTimer;
         private int preloaderRotationAngle = 0;
 
-        private bool isDailyForecast;
+        private bool isDailyForecast = false;
 
         public MainWindow()
         {
@@ -143,6 +143,7 @@ namespace WeatherInfo
             var screenHeight = SystemParameters.FullPrimaryScreenHeight;
             var likelyHeight = (App.settings.cities.Count - 1) * 270 + 340;
             Height = likelyHeight < screenHeight ? likelyHeight : screenHeight;
+            Width = isDailyForecast ? 720 : 640;
         }
 
         private DockPanel GetPreloadPanel()
@@ -242,63 +243,49 @@ namespace WeatherInfo
 
         private void toKelv()
         {
-            foreach (var city in shrtForecasts)
+            var city = shrtForecasts[curIndex];
+            foreach (var day in city)
             {
-                foreach (var day in city)
+                day.max += 273;
+                day.min += 273;
+            }
+
+            city = dtldForecasts[curIndex];
+            foreach (var day in city)
+            {
+                day.max += 273;
+                day.min += 273;
+                foreach (var hour in day.hours)
                 {
-                    day.max += 273;
-                    day.min += 273;
+                    hour.temp += 273;
                 }
             }
 
-            foreach (var city in dtldForecasts)
-            {
-                foreach (var day in city)
-                {
-                    day.max += 273;
-                    day.min += 273;
-                    foreach (var hour in day.hours)
-                    {
-                        hour.temp += 273;
-                    }
-                }
-            }
-
-            foreach (var city in curForecasts)
-            {
-                city.temp += 273;
-            }
+            curForecasts[curIndex].temp += 273;
         }
 
         //F = 1.8 C + 32
         private void toFahr()
         {
-            foreach (var city in shrtForecasts)
+            var city = shrtForecasts[curIndex];
+            foreach (var day in city)
             {
-                foreach (var day in city)
+                day.max = (int)(day.max * 1.8 + 32);
+                day.min = (int)(day.min * 1.8 + 32);
+            }
+
+            city = dtldForecasts[curIndex];
+            foreach (var day in city)
+            {
+                day.max = (int)(day.max * 1.8 + 32);
+                day.min = (int)(day.min * 1.8 + 32);
+                foreach (var hour in day.hours)
                 {
-                    day.max = (int)(day.max * 1.8 + 32);
-                    day.min = (int)(day.min * 1.8 + 32);
+                    hour.temp = (int)(hour.temp * 1.8 + 32);
                 }
             }
 
-            foreach (var city in dtldForecasts)
-            {
-                foreach (var day in city)
-                {
-                    day.max = (int)(day.max * 1.8 + 32);
-                    day.min = (int)(day.min * 1.8 + 32);
-                    foreach (var hour in day.hours)
-                    {
-                        hour.temp = (int)(hour.temp * 1.8 + 32);
-                    }
-                }
-            }
-
-            foreach (var city in curForecasts)
-            {
-                city.temp = (int)(city.temp * 1.8 + 32);
-            }
+            curForecasts[curIndex].temp = (int)(curForecasts[curIndex].temp * 1.8 + 32);
         }
 
         /// <summary>
@@ -427,7 +414,11 @@ namespace WeatherInfo
                 toFahr();
             }
 
-            FillTables();
+            if (!isDailyForecast)
+                fillWeekly();
+            else
+                fillDaily();
+
             Scroll.IsEnabled = true;
 
 
@@ -675,22 +666,46 @@ namespace WeatherInfo
         }
 
 
+        private void fillDaily()
+        {
+            var weatherresults = MainContainer.Children.Cast<Panel>().Skip(1);
+            var weatherTable = weatherresults.Select(weatherContainer => (weatherContainer.Children[1] as Border).Child as Grid).ToList()[curIndex];
+            weatherTable.Children.Clear();
+
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    var index = 5 * i + j;
+                    int temp = 0;
+                    ForecastHour[] parts = dtldForecasts[curIndex][index].hours.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
+                    
+                    dayParts = InitDaysDictionary();
+                    foreach (var el in parts)
+                    {
+                        el.time = dayParts[el.time];
+                    }
+
+                    DateTime date = DateTime.Parse(dtldForecasts[curIndex][index].date);
+                    var dateDay = date.ToString("m", LanguageContext.Instance.Culture) + " " + date.ToString("ddd", LanguageContext.Instance.Culture);
+                    var weatherElement = GetDailyWeatherElement(i, j, dateDay, parts);
+                    weatherTable.Children.Add(weatherElement);
+                }
+            }
+
+        }
 
         /// <summary>
-        /// Заполнение таблицы погоды
+        /// Заполнение таблицы погоды кратким
         /// </summary>
-        private void FillTables()
+        private void fillWeekly()
         {
             //preloaderRotationTimer.Stop();
 
             var weatherresults = MainContainer.Children.Cast<Panel>().Skip(1);
             var weatherTable = weatherresults.Select(weatherContainer => (weatherContainer.Children[1] as Border).Child as Grid).ToList()[curIndex];
             weatherTable.Children.Clear();
-            if (!isDailyForecast)
-                weatherTable.ShowGridLines = true;
-
-#warning где то тут разделение, дели с помощью isDailyForecast
-
+            weatherTable.ShowGridLines = true;
 
             DateTime curDay = DateTime.Now;
 
@@ -807,9 +822,7 @@ namespace WeatherInfo
 
             var maxTempLabel = new Label()
                 {
-                    Content = (isKelv ? shortForecast.max + "K" :
-                        isFahr ? ((shortForecast.max > 0) ? "+" : "") + shortForecast.max + "F" :
-                        shortForecast.max > 0 ? "+" + shortForecast.max.ToString() : shortForecast.max.ToString()),
+                    Content = getTempString(shortForecast.max),
                     HorizontalAlignment = HorizontalAlignment.Right,
                     FontSize = 15,
                     FontWeight = FontWeights.Bold
@@ -819,9 +832,7 @@ namespace WeatherInfo
             gridResult.Children.Add(maxTempLabel);
             var minTempLabel = new Label()
                 {
-                    Content = (isKelv ? shortForecast.min + "K" :
-                        isFahr ? ((shortForecast.min > 0) ? "+" : "") + shortForecast.min + "F" :
-                        shortForecast.min > 0 ? "+" + shortForecast.min.ToString() : shortForecast.min.ToString()),
+                    Content = getTempString(shortForecast.min),
                     HorizontalAlignment = HorizontalAlignment.Right
                 };
             minTempLabel.SetValue(Grid.RowProperty, 1);
@@ -938,7 +949,7 @@ namespace WeatherInfo
                 {
                     Padding = new Thickness(0, 0, 3, 0),
                     VerticalAlignment = VerticalAlignment.Center,
-                    Content = String.Format("{0}K", hourForecasts[i].temp)//Температура
+                    Content = getTempString(hourForecasts[i].temp)//Температура
                 };
                 stackForecast.Children.Add(tempLabel);
                 borderForecast.Child = stackForecast;
@@ -1038,9 +1049,7 @@ namespace WeatherInfo
                     };
                     container.Children.Add(icon);
 
-                    var stringTemp = (isKelv ? adding.temp + "K" :
-                        isFahr ? ((adding.temp > 0) ? "+" : "") + adding.temp + "F" :
-                        adding.temp > 0 ? "+" + adding.temp.ToString() : adding.temp.ToString());
+                    var stringTemp = getTempString(adding.temp);
                     var temperLabel = new Label()
                     {
                         VerticalAlignment = VerticalAlignment.Center,
@@ -1118,6 +1127,11 @@ namespace WeatherInfo
             worker.RunWorkerAsync();
 
             //
+        }
+
+        private string getTempString(int temp)
+        {
+            return (isKelv ? temp + "K" : ((temp > 0) ? "+" : "" + (isFahr ? temp + "F" : temp.ToString())));
         }
 
         void options()
