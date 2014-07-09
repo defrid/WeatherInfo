@@ -338,11 +338,11 @@ namespace WeatherInfo
             //listOfCitiies_cbx.ItemsSource = allCities;
             foreach (var city in allCities)
             {
-                var curCity = App.settings.language.engName == "English" ? getCity.cityTranslate(city, false, country) : getCity.cityTranslate(city, true, country);
+                var curCity = App.settings.language.engName == "English" ? upperEngCityName(getCity.cityTranslate(city, false, country)) : getCity.cityTranslate(city, true, country);
 
                 var item = new ComboBoxItem();
                 item.Tag = curCity;
-                item.Content = city;//App.settings.language.engName == "English" ? upperEngCityName(curCity) : city;
+                item.Content = App.settings.language.engName == "English" ? upperEngCityName(city) : city;
                 listOfCitiies_cbx.Items.Add(item);
             }
         }
