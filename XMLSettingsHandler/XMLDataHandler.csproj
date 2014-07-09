@@ -75,7 +75,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SettingsHandlerInterface\DataHandlerInterface.csproj">
       <Project>{5aa7e742-fdc3-4ffa-9336-209943278141}</Project>
-      <Name>SettingsHandlerInterface</Name>
+      <Name>DataHandlerInterface</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
