@@ -206,6 +206,10 @@
       <Project>{5aa7e742-fdc3-4ffa-9336-209943278141}</Project>
       <Name>DataHandlerInterface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\XMLSettingsHandler\XMLDataHandler.csproj">
+      <Project>{6bd9e98d-8644-40d5-b04c-60007e3fd8df}</Project>
+      <Name>XMLDataHandler</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">
