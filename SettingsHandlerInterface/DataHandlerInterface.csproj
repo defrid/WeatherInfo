@@ -73,6 +73,7 @@
     <Compile Include="Classes\CitySettings.cs" />
     <Compile Include="Classes\Country.cs" />
     <Compile Include="Classes\ForecastDayModel.cs" />
+    <Compile Include="Classes\ForecastDetailed.cs" />
     <Compile Include="Classes\ForecastHourModel.cs" />
     <Compile Include="Classes\Language.cs" />
     <Compile Include="Classes\Options.cs" />

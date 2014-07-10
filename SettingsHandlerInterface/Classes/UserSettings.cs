@@ -56,7 +56,7 @@ namespace DataHandlerInterface.Classes
         {
             string _countryId = "RU";
             string _countryRusName = "Россия";
-            string _countryEngName = "Russia";
+            string _countryEngName = "Russian Federation";
 
             int _regionId = 0;
             string _regionName = "Region";

@@ -384,6 +384,11 @@ namespace WeatherInfo
                     Thread.Sleep(1000);//Время между запросами должно быть не меньше секунды
                 }
                 connectedToYaAPI = true;
+
+                //App.settingHandler.SaveForecasrDetailed(new ForecastDetailed(dtldForecasts));
+                //dtldForecasts.Clear();
+                //dtldForecasts = App.settingHandler.LoadForecastDetailed().forecasts;
+
             }
             catch
             {

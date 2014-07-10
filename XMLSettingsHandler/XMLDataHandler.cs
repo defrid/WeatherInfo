@@ -14,44 +14,59 @@ namespace XMLDataHandler
 {
     public class XmlDataHandler : DataHandler
     {
-        public static String XmlFileName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + /*Application.StartupPath + */@"\Config\settings.xml";
+        public static String XmlSettingsFileName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + /*Application.StartupPath + */@"\Config\UserSettings.xml";
+        //public static String XmlForecastDayFileName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + /*Application.StartupPath + */@"\Data\ForecastDay.xml";
+        //public static String XmlForecastHourFileName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + /*Application.StartupPath + */@"\Data\ForecastHour.xml";
+        public static String XmlForecastDetailedFileName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + /*Application.StartupPath + */@"\Data\ForecastDetailed.xml";
 
         public override void SaveSettings(UserSettings settings)
         {
-            WriteXml(settings);
+            WriteSettingsToXml(settings);
         }
 
-        public override void SaveForecastDay(ForecastDayModel forecastDay)
+        //public override void SaveForecastDay(ForecastDayModel forecastDay)
+        //{
+        //    //throw new NotImplementedException();
+        //}
+
+        //public override void SaveForecastHour(ForecastHourModel forecastHour)
+        //{
+        //    //throw new NotImplementedException();
+        //}
+
+        public override void SaveForecasrDetailed(ForecastDetailed forecastDetailed)
         {
-            //throw new NotImplementedException();
+            WriteForecastDetailedToXml(forecastDetailed);
         }
 
-        public override void SaveForecastHour(ForecastHourModel forecastHour)
-        {
-            //throw new NotImplementedException();
-        }
+        //public override List<ForecastDayModel> LoadForecastDays()
+        //{
+        //    return null;
+        //    //throw new NotImplementedException();
+        //}
 
-        public override List<ForecastDayModel> LoadForecastDays()
-        {
-            return null;
-            //throw new NotImplementedException();
-        }
+        //public override List<ForecastHourModel> LoadForecastHours()
+        //{
+        //    return null;
+        //    //throw new NotImplementedException();
+        //}
 
-        public override List<ForecastHourModel> LoadForecastHours()
+        public override ForecastDetailed LoadForecastDetailed()
         {
-            return null;
-            //throw new NotImplementedException();
+            var forecastDetailed = ReadForecastDetailedFromXml();
+
+            return forecastDetailed;
         }
 
         public override UserSettings LoadSettings()
         {
-            var settings = ReadXml();
+            var settings = ReadSettingsFromXml();
 
             return settings;
         }
 
         //Запись настроек в файл
-        private static void WriteXml(UserSettings settings)
+        private static void WriteSettingsToXml(UserSettings settings)
         {
             try
             {
@@ -62,7 +77,7 @@ namespace XMLDataHandler
                 }
 
                 var ser = new XmlSerializer(typeof(UserSettings));
-                using (TextWriter writer = new StreamWriter(XmlFileName))
+                using (TextWriter writer = new StreamWriter(XmlSettingsFileName))
                 {
                     ser.Serialize(writer, settings);
                 }
@@ -77,12 +92,12 @@ namespace XMLDataHandler
         }
 
         //Чтение настроек из файла
-        private static UserSettings ReadXml()
+        private static UserSettings ReadSettingsFromXml()
         {
             try
             {
                 //WriteXml(Settings.GetDefaultSettings());
-                if (!File.Exists(XmlFileName))
+                if (!File.Exists(XmlSettingsFileName))
                 {
                     return UserSettings.GetDefaultSettings();
                 }
@@ -90,7 +105,7 @@ namespace XMLDataHandler
                 var settings = new UserSettings();
 
                 var ser = new XmlSerializer(typeof(UserSettings));
-                using (TextReader reader = new StreamReader(XmlFileName))
+                using (TextReader reader = new StreamReader(XmlSettingsFileName))
                 {
                     settings = ser.Deserialize(reader) as UserSettings;
                 }
@@ -111,6 +126,120 @@ namespace XMLDataHandler
                 Debug.WriteLine("XmlDataHandler.ReadXml(): " + LanguageDictionary.Current.Translate<string>("readXml_SttsHandler", "Content") + ex.Message);
                 //throw new Exception(LanguageDictionary.Current.Translate<string>("readXml_SttsHandler", "Content"));
                 return UserSettings.GetDefaultSettings();
+            }
+        }
+
+        //Запись прогноза погоды в файл
+        /*private static void WriteForecastDayToXml(ForecastDayModel forecastDay)
+        {
+            try
+            {
+                //var isValid = ValidateSettings(settings);
+                //if (!isValid)
+                //{
+                //    throw new Exception(LanguageDictionary.Current.Translate<string>("writeXmlValidateSettings_SttsHandler", "Content"));
+                //}
+
+                var ser = new XmlSerializer(typeof(ForecastDayModel));
+                using (TextWriter writer = new StreamWriter(XmlForecastDayFileName))
+                {
+                    ser.Serialize(writer, forecastDay);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("XmlDataHandler.WriteXml(): " + LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content") + ex.Message);
+                //throw new Exception();
+                //throw new Exception(LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content"));
+                //MessageBox.Show("Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Загружает прогноз погоды из XML-файла
+        /// </summary>
+        /// <returns></returns>
+        private static ForecastDayModel ReadForecastDayFromXml()
+        {
+            try
+            {
+                //WriteXml(Settings.GetDefaultSettings());
+                if (!File.Exists(XmlForecastDayFileName))
+                {
+                    return null;//UserSettings.GetDefaultSettings();
+                }
+
+                var forecastDay = new ForecastDayModel();
+
+                var ser = new XmlSerializer(typeof(ForecastDayModel));
+                using (TextReader reader = new StreamReader(XmlForecastDayFileName))
+                {
+                    forecastDay = ser.Deserialize(reader) as ForecastDayModel;
+                }
+
+                //var isValid = ValidateSettings(settings);
+                //if (isValid)
+                //{
+                //    return settings;
+                //}
+                //else
+                //{
+                //    throw new Exception(LanguageDictionary.Current.Translate<string>("readXmlValidateSettings_SttsHandler", "Content"));
+                //}
+                return forecastDay;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("XmlDataHandler.ReadXml(): " + LanguageDictionary.Current.Translate<string>("readXml_SttsHandler", "Content") + ex.Message);
+                //throw new Exception(LanguageDictionary.Current.Translate<string>("readXml_SttsHandler", "Content"));
+                return null;
+            }
+        }*/
+
+        private static void WriteForecastDetailedToXml(ForecastDetailed forecastDetailed)
+        {
+            try
+            {
+                var ser = new XmlSerializer(typeof(ForecastDetailed));
+                using (TextWriter writer = new StreamWriter(XmlForecastDetailedFileName))
+                {
+                    ser.Serialize(writer, forecastDetailed);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("WriteForecastDetailed.WriteXml(): " + LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content") + ex.Message);
+                //throw new Exception();
+                //throw new Exception(LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content"));
+                //MessageBox.Show("Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
+            }
+        }
+
+        private static ForecastDetailed ReadForecastDetailedFromXml()
+        {
+            try
+            {
+                //WriteXml(Settings.GetDefaultSettings());
+                if (!File.Exists(XmlForecastDetailedFileName))
+                {
+                    return null;//UserSettings.GetDefaultSettings();
+                }
+
+                var forecastDetailed = new ForecastDetailed();
+
+                var ser = new XmlSerializer(typeof(ForecastDetailed));
+                using (TextReader reader = new StreamReader(XmlForecastDetailedFileName))
+                {
+                    forecastDetailed = ser.Deserialize(reader) as ForecastDetailed;
+                }
+
+                return forecastDetailed;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("XmlDataHandler.ReadForecastDetailedFromXml(): " + LanguageDictionary.Current.Translate<string>("readXml_SttsHandler", "Content") + ex.Message);
+                //throw new Exception(LanguageDictionary.Current.Translate<string>("readXml_SttsHandler", "Content"));
+                return null;
             }
         }
     }
