@@ -63,12 +63,18 @@ namespace WeatherInfo
         /// </summary>
         public static event TrayVoid onToWindow;
 
+        /// <summary>
+        /// Когда хотим справку
+        /// </summary>
+        public static event TrayVoid onHelp;
+
         static TaskbarIcon notifyIcon;
         static Window windowMain;
 
         static TextBlock FullWindow;
         static TextBlock Options;
         static TextBlock Exit;
+        static TextBlock Help;
         
         /// <summary>
         /// Необходимо вызвать этот метод в самом начале работы программы
@@ -76,11 +82,14 @@ namespace WeatherInfo
         /// <param name="main">окно, которое трей сочтет главным и будет его скрывать</param>
         /// <param name="onOptionsClick">сюда послать метод, который будет обрабатывать нажатие не опции</param>
         /// <param name="toWindow">сюда послать метод, совершающий действия, при развертывании трея</param>
-        public static void SetupTray(Window main, TrayVoid onOptionsClick, TrayVoid toWindow)
+        public static void SetupTray(Window main, TrayVoid onOptionsClick, TrayVoid toWindow, TrayVoid toHelp)
         {
             OnOptionsClick += onOptionsClick;
             onToWindow += toWindow;
+            onHelp += toHelp;
+
             windowMain = main;
+            
             System.Windows.Application.Current.Exit += ApplicationExit;
 
             notifyIcon = new TaskbarIcon();
@@ -88,6 +97,7 @@ namespace WeatherInfo
 
             FullWindow = new TextBlock();
             Options = new TextBlock();
+            Help = new TextBlock();
             Exit = new TextBlock();
 
             SetTrayMenu();
@@ -98,11 +108,14 @@ namespace WeatherInfo
             notifyIcon.ContextMenu = new ContextMenu();
             notifyIcon.ContextMenu.Items.Add(FullWindow);
             notifyIcon.ContextMenu.Items.Add(Options);
+            notifyIcon.ContextMenu.Items.Add(Help);
             notifyIcon.ContextMenu.Items.Add(Exit);
 
             FullWindow.MouseLeftButtonDown += FullWindow_MouseDown;
+            Help.MouseLeftButtonDown += Help_MouseLeftButtonDown;
             Options.MouseLeftButtonDown += Options_MouseDown;
             Exit.MouseLeftButtonDown += Exit_MouseDown;
+
             notifyIcon.TrayMouseDoubleClick += FullWindow_MouseDown;
             notifyIcon.TrayLeftMouseDown += notifyIcon_TrayLeftMouseDown;
             notifyIcon.TrayRightMouseDown += notifyIcon_TrayRightMouseDown;
@@ -113,12 +126,25 @@ namespace WeatherInfo
             preLoadImage = Properties.Resources.Gear;
         }
 
+        static void Help_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            try
+            {
+                notifyIcon.ContextMenu.Visibility = Visibility.Hidden;
+                notifyIcon.TrayPopup.Visibility = Visibility.Hidden;
+
+                onHelp();
+            }
+            catch { }
+        }
+
         private static void SetTrayMenu()
         {
             try
             {
                 FullWindow.Text = LanguageDictionary.Current.Translate<string>("menuFullWindow_Tray", "Content");//"Развернуть";
                 Options.Text = LanguageDictionary.Current.Translate<string>("menuOptions_Tray", "Content"); //"Настройки";
+                Help.Text = LanguageDictionary.Current.Translate<string>("menuHelp_Tray", "Content"); //Помощь
                 Exit.Text = LanguageDictionary.Current.Translate<string>("menuExit_Tray", "Content"); //"Выход";
             }
             catch { }
@@ -214,7 +240,11 @@ namespace WeatherInfo
                 preLoadGraphics.RotateTransform(1f);
                 preLoadGraphics.TranslateTransform(-50, -50);
                 preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
-                notifyIcon.Icon = System.Drawing.Icon.FromHandle(preLoadCanvas.GetHicon());
+                try
+                {
+                    notifyIcon.Icon = System.Drawing.Icon.FromHandle(preLoadCanvas.GetHicon());
+                }
+                catch { }
             }
             catch
             { 

@@ -85,6 +85,7 @@ Squad:
 	<Value Id="menuFullWindow_Tray" Content="Maximize" />
 	<Value Id="menuOptions_Tray" Content="Settings" />
 	<Value Id="menuExit_Tray" Content="Exit" />
+	<Value Id="menuHelp_Tray" Content="Help" />
 	<Value Id="toolTipTextPreLoad_Tray" Content="WeatherInfo loads data" />
 	<Value Id="toolTipText_Tray" Content="Left mouse button - short forecasts, Right mouse button - to open the menu" />
 	<Value Id="menuHelp_Tray" Content="Help" />
@@ -118,5 +119,4 @@ Squad:
 	<Value Id="errorLoadXmlLangDict_XmlLangDict" Content="An error occurred while downloading the file location or change of location. Perhaps localization file is damaged or incorrectly loaded dictionary." />	
 <!-- App.config -->
 	<Value Id="grobalError_App" Content="Application Error. The application will be completed." />	
-	<Value Id="errorLaodHandler_App" Content="Error loading handler store settings and the weather forecast! Handler is missing or damaged." />
 </Dictionary>

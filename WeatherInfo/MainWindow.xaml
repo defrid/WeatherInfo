@@ -3,14 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:localization="http://schemas.tomer.com/winfx/2006/xaml/presentation"
         Title="Weather Informer" Height="340" Width="640" ResizeMode="CanMinimize" Loaded="Window_Loaded" StateChanged="Window_StateChanged" Closed="Window_Closed">
-    <ScrollViewer VerticalScrollBarVisibility="Auto" Name="Scroll">
-        <Border BorderBrush="Black" BorderThickness="2">
-            <StackPanel Name="MainContainer">
-                <DockPanel>
-                    <Label Name="Connection" HorizontalAlignment="Left" Content="Connection"></Label>
-                    <Image Name="SettingsImage" RenderTransformOrigin="0.5 0.5" HorizontalAlignment="Right" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter" MouseUp="SettingsImage_MouseUp"/>
-                </DockPanel>
-            </StackPanel>
-        </Border>
-    </ScrollViewer>
+    <Border BorderBrush="Black" BorderThickness="2">
+        <DockPanel>
+            <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="1 1 1 2">
+            <DockPanel >
+                <Label Name="Connection" HorizontalAlignment="Left" Content="Connection"></Label>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Image Name="SettingsImage" RenderTransformOrigin="0.5 0.5" Margin="0 0 20 0" Height="16" VerticalAlignment="Center" MouseLeave="SettingsImage_MouseLeave" MouseEnter="SettingsImage_MouseEnter" MouseUp="SettingsImage_MouseUp"/>
+                    <TextBlock Text="???" VerticalAlignment="Center" Margin="20 0" MouseDown="TextBlock_MouseDown">
+                        <TextBlock.Style>
+                                <Style>
+                                    <Style.Triggers>
+                                        <Trigger Property="TextBlock.IsMouseOver" Value="True">
+                                            <Setter Property="TextBlock.TextDecorations" Value="Underline"></Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+            </DockPanel>
+            </Border>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Name="Scroll" >
+                <StackPanel Name="MainContainer">
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
+    </Border>
 </Window>

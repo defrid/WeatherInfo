@@ -7,14 +7,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Tomers.WPF.Localization;
-using System.ComponentModel.Composition;
-using System.ComponentModel.Composition.Hosting;
 
 namespace WeatherInfo.Classes
 {
-    /// <summary>
-    /// Класс загрузчика обработчиков. Старая версия, основанная на рефлексии. Заменен на MEF.
-    /// </summary>
     class LoadDataHandler
     {/*
         /// <summary>

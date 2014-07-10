@@ -127,6 +127,9 @@
     <Compile Include="WindowGraphics.xaml.cs">
       <DependentUpon>WindowGraphics.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowStolbiki.xaml.cs">
+      <DependentUpon>WindowStolbiki.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowTray.xaml.cs">
       <DependentUpon>WindowTray.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="WindowStolbiki.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowTray.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -204,6 +211,10 @@
     <ProjectReference Include="..\SettingsHandlerInterface\DataHandlerInterface.csproj">
       <Project>{5aa7e742-fdc3-4ffa-9336-209943278141}</Project>
       <Name>DataHandlerInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XMLSettingsHandler\XMLDataHandler.csproj">
+      <Project>{6bd9e98d-8644-40d5-b04c-60007e3fd8df}</Project>
+      <Name>XMLDataHandler</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

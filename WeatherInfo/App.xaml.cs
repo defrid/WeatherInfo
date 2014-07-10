@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using DataHandlerInterface.Classes;
@@ -13,8 +15,6 @@ using System.Windows;
 using Tomers.WPF.Localization;
 using WeatherInfo.Classes;
 using WeatherInfo.Interfaces;
-using System.ComponentModel.Composition;
-using System.ComponentModel.Composition.Hosting;
 
 namespace WeatherInfo
 {
@@ -24,7 +24,7 @@ namespace WeatherInfo
     public partial class App : Application
     {
         public static IDataHandler dataHandler;// = LoadDataHandler.GetInstanceSettingsHandler();
-        public static UserSettings settings;// = dataHandler.LoadSettings();
+        public static UserSettings settings;// = settingHandler.LoadSettings();
 
         #region Для расширяемости с помощью инструмента MEF
         [ImportMany]
@@ -44,10 +44,9 @@ namespace WeatherInfo
                 MessageBox.Show(message);
                 throw new Exception();
             }
-            
+
         }
         #endregion
-
         protected override void OnStartup(StartupEventArgs e)
         {
             try
@@ -82,6 +81,6 @@ namespace WeatherInfo
                 MessageBox.Show(message);
                 Environment.Exit(1);
             }
-        }        
+        }
     }
 }
