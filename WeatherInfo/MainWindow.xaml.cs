@@ -91,9 +91,24 @@ namespace WeatherInfo
             }
 
             var forecastDetailed = App.settingHandler.LoadForecastDetailed();
-            //shrtForecasts = forecastDetailed.shrtForecasts;
-            //dtldForecasts = forecastDetailed.dtldForecasts;
-            
+            if (forecastDetailed != null)
+            {
+                shrtForecasts = forecastDetailed.shrtForecasts;
+                dtldForecasts = forecastDetailed.dtldForecasts;
+                for (curIndex = 0; curIndex < forecasts.Count; curIndex++)
+                {
+                    if (isDailyForecast)
+                    {
+                        fillDaily();
+                        continue;
+                    }
+                    fillWeekly();
+                }
+            }
+
+            firstLaunch = false;
+
+            curIndex = 0;
             isKelv = App.settings.temperatureUnits.rusName.Equals("Кельвины");
             isFahr = App.settings.temperatureUnits.rusName.Equals("Фаренгейты");
 
@@ -117,7 +132,7 @@ namespace WeatherInfo
 
 
             hasConnection = IsNetworkAvailable();
-            Scroll.IsEnabled = false;
+            //Scroll.IsEnabled = false;
             Tray.PreLoad();
             Icon = ConvertBitmabToImage(Properties.Resources.weather.ToBitmap());
             var message = (hasConnection) ? LanguageDictionary.Current.Translate<string>("messUpdateStatusInProcess_mainWin", "Content")
@@ -171,7 +186,8 @@ namespace WeatherInfo
                     Width = 32
                 };
             stackPanel.Children.Add(image);
-            var label = new Label() {
+            var label = new Label()
+            {
                 Content = LanguageDictionary.Current.Translate<string>("loadingMess_mainWin", "Content"),
                 HorizontalAlignment = HorizontalAlignment.Center
             };
@@ -187,6 +203,10 @@ namespace WeatherInfo
             days.Add("day", LanguageDictionary.Current.Translate<string>("day_mainWin", "Content"));//"День"
             days.Add("evening", LanguageDictionary.Current.Translate<string>("evening_mainWin", "Content"));//"Вечер"
             days.Add("night", LanguageDictionary.Current.Translate<string>("night_mainWin", "Content"));//"Ночь"
+            days.Add("Утро", LanguageDictionary.Current.Translate<string>("morning_mainWin", "Content"));//"Утро"
+            days.Add("День", LanguageDictionary.Current.Translate<string>("day_mainWin", "Content"));//"День"
+            days.Add("Вечер", LanguageDictionary.Current.Translate<string>("evening_mainWin", "Content"));//"Вечер"
+            days.Add("Ночь", LanguageDictionary.Current.Translate<string>("night_mainWin", "Content"));//"Ночь"
 
             return days;
         }
@@ -694,7 +714,7 @@ namespace WeatherInfo
                 var name = (sender as Button).Tag;
 
                 CitySettings engName = null;
-                lang wL=lang.eng;
+                lang wL = lang.eng;
 
                 if (App.settings.language.engName == "English")
                 {
@@ -710,7 +730,7 @@ namespace WeatherInfo
 
                 var parser = forecasts.Where(el => el.town == Ename).FirstOrDefault();
 
-                int index = forecasts.FindIndex(el=>el==parser);
+                int index = forecasts.FindIndex(el => el == parser);
 
                 var graphic = new WindowStolbiki();
                 List<ForecastDay> days = shrtForecasts[index].ToList();
@@ -736,7 +756,7 @@ namespace WeatherInfo
                     var index = 5 * i + j;
                     int temp = 0;
                     ForecastHour[] parts = dtldForecasts[curIndex][index].hours.Where(el => !Int32.TryParse(el.time, out temp)).ToArray();
-                    
+
                     dayParts = InitDaysDictionary();
                     foreach (var el in parts)
                     {
@@ -789,7 +809,7 @@ namespace WeatherInfo
                     if (index >= shrtForecasts[curIndex].Length)
                         break;
                     var weatherElement = GetWeaterElement(j, i + 1, shrtForecasts[curIndex][index]);
-                    if (index == 0)
+                    if (index == 0 && !firstLaunch)
                     {
                         weatherElement.MouseUp += gridResult_MouseUp;
                         weatherElement.Name = "_" + curIndex.ToString();
@@ -797,7 +817,7 @@ namespace WeatherInfo
                     if (index < 10)
                     {
                         var today = index == 0;
-                        if (!connectedToYaAPI)
+                        if (!connectedToYaAPI && !firstLaunch)
                         {
                             weatherElement.ToolTip = LanguageDictionary.Current.Translate<string>("messConnectedToYaAPIResult_mainWin", "Content");
                         }
@@ -895,16 +915,19 @@ namespace WeatherInfo
             minTempLabel.SetValue(Grid.RowProperty, 1);
             minTempLabel.SetValue(Grid.ColumnProperty, 2);
             gridResult.Children.Add(minTempLabel);
-            var image = new Image
-                {
-                    Source = connectedToOpAPI ? new BitmapImage(
-                        new Uri(OpenWeatherAPI.ImageRequestString + String.Format("{0}.png", shortForecast.icon)))
-                        : YandexWeatherAPI.GetBitmapImageById(shortForecast.icon)
-                };
-            image.SetValue(Grid.RowProperty, 1);
-            image.SetValue(Grid.RowSpanProperty, 2);
-            image.SetValue(Grid.ColumnSpanProperty, 2);
-            gridResult.Children.Add(image);
+            if (!firstLaunch)
+            {
+                var image = new Image
+                    {
+                        Source = connectedToOpAPI ? new BitmapImage(
+                            new Uri(OpenWeatherAPI.ImageRequestString + String.Format("{0}.png", shortForecast.icon)))
+                            : YandexWeatherAPI.GetBitmapImageById(shortForecast.icon)
+                    };
+                image.SetValue(Grid.RowProperty, 1);
+                image.SetValue(Grid.RowSpanProperty, 2);
+                image.SetValue(Grid.ColumnSpanProperty, 2);
+                gridResult.Children.Add(image);
+            }
             ToolTipService.SetShowDuration(gridResult, 15000);
 
             return gridResult;
@@ -912,10 +935,11 @@ namespace WeatherInfo
 
         private object GetSpecialTooltip(ForecastDay dayForecast, bool today)
         {
-            if (!connectedToYaAPI)
+            if (!connectedToYaAPI && !firstLaunch)
             {
                 return LanguageDictionary.Current.Translate<string>("messConnectedToYaAPIResult_mainWin", "Content");
             }
+
             if (dayForecast.hours.Count > 24)
             {
                 dayParts = InitDaysDictionary();
@@ -995,13 +1019,16 @@ namespace WeatherInfo
                     Content = hourForecasts[i].time[0] + ": " //Первый символ времени
                 };
                 stackForecast.Children.Add(dayLabel);
-                var imageForecast = new Image
+                if (!firstLaunch)
                 {
-                    Height = 24,
-                    HorizontalAlignment = HorizontalAlignment.Left,
-                    Source = YandexWeatherAPI.GetBitmapImageById(hourForecasts[i].icon)
-                };
-                stackForecast.Children.Add(imageForecast);
+                    var imageForecast = new Image
+                    {
+                        Height = 24,
+                        HorizontalAlignment = HorizontalAlignment.Left,
+                        Source = YandexWeatherAPI.GetBitmapImageById(hourForecasts[i].icon)
+                    };
+                    stackForecast.Children.Add(imageForecast);
+                }
                 var tempLabel = new Label
                 {
                     Padding = new Thickness(0, 0, 3, 0),
@@ -1097,14 +1124,18 @@ namespace WeatherInfo
                     };
                     container.Children.Add(timeLabel);
 
-                    var bitmapImage = YandexWeatherAPI.GetBitmapImageById(adding.icon);
-                    var icon = new Image
+                    if (!firstLaunch)
                     {
-                        Source = bitmapImage,
-                        Width = 32,
-                        Height = 32
-                    };
-                    container.Children.Add(icon);
+                        var bitmapImage = YandexWeatherAPI.GetBitmapImageById(adding.icon);
+
+                        var icon = new Image
+                        {
+                            Source = bitmapImage,
+                            Width = 32,
+                            Height = 32
+                        };
+                        container.Children.Add(icon);
+                    }
 
                     var stringTemp = getTempString(adding.temp);
                     var temperLabel = new Label()
