@@ -34,11 +34,11 @@ namespace WeatherInfo
             main = (MainWindow)e;
             InitializeComponent();
 
-            try //ибо тут падало (кстати у меня в трее тоже в такой строке падало)
-            {
-                //Icon = MainWindow.ConvertBitmabToImage(Properties.Resources.settingsGear.ToBitmap());
-            }
-            catch { }
+            //try //ибо тут падало (кстати у меня в трее тоже в такой строке падало)
+            //{
+            //    Icon = MainWindow.ConvertBitmabToImage(Properties.Resources.settingsGear.ToBitmap());
+            //}
+            //catch { }
 
             ChoosenCities = new List<CitySettings>();
             updatePeriod_save = 10;

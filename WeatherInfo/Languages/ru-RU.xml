@@ -87,7 +87,6 @@
 	<Value Id="menuExit_Tray" Content="Выход" />
 	<Value Id="toolTipTextPreLoad_Tray" Content="WeatherInfo загружает данные" />
 	<Value Id="toolTipText_Tray" Content="Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню" />
-	<Value Id="menuExit_Tray" Content="Выход" />
 	<Value Id="menuHelp_Tray" Content="Справка" />
 <!-- class LoadSettingsHandler -->
 	<Value Id="getLibrariesFailed_LSH" Content="Путь к рабочей папке не найден!" />
@@ -102,11 +101,13 @@
 <!-- SettingsHandlerInterface.Classes.Option -->
 	<Value Id="getFormatAttributeFailed_Option" Content="Ошибка формата прогноза погоды." />
 	<Value Id="getValueByAttributeFailed_Option" Content="Ошибка формата прогноза погоды." />
-<!-- XMLSettingsHandler -->
-	<Value Id="writeXmlValidateSettings_SttsHandler" Content="Переданные настройки некорректны. Изменения не будут сохранены." />
-	<Value Id="writeXml_SttsHandler" Content="Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " />
-	<Value Id="readXmlValidateSettings_SttsHandler" Content="Файл настроек не прошел проверку на корректность." />
-	<Value Id="readXml_SttsHandler" Content="Непредвиденная ошибка. Будут загружены настройки по-умолчанию, если это возможно. Текст ошибки: " />
+<!-- XMLDataHandler -->
+	<Value Id="writeXmlValidateSettings_SttsHandler" Content="Переданные настройки некорректны. Изменения не будут сохранены. " />
+	<Value Id="writeXml_SttsHandler" Content="Непредвиденная ошибка. Не удалось сохранить настройки. " />
+	<Value Id="writeForecastToXml_SttsHandler" Content="Непредвиденная ошибка. Не удалось сохранить прогноз погоды. " />
+	<Value Id="readXmlValidateSettings_SttsHandler" Content="Файл настроек не прошел проверку на корректность. " />
+	<Value Id="readXml_SttsHandler" Content="Непредвиденная ошибка. Настройки не могут быть загружены из базы. Будут загружены настройки по-умолчанию, если это возможно. " />
+	<Value Id="readForecastFromXml_SttsHandler" Content="Непредвиденная ошибка. Прогноз погоды не может быть загружен из базы. Пожалуйста, дождитесь обновления с сервера. " />
 <!-- XmlLanguageDictionary -->	
 	<Value Id="checkFilePathFailed_XmlLangDict" Content="Файл {0} не обнаружен!" />	
 	<Value Id="invalidRoot_XmlLangDict" Content="Недопустимый корневой элемент. Должен быть Dictionary." />

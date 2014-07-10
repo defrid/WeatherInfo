@@ -18,16 +18,16 @@ namespace DataHandlerInterface.Interfaces
         /// <param name="settings"></param>
         void SaveSettings(UserSettings settings);
 
-        //void SaveForecastDay(ForecastDayModel forecastDay);
-
-        //void SaveForecastHour(ForecastHourModel forecastHour);
-
+        /// <summary>
+        /// Метод сохраняет прогноз погоды в хранилище.
+        /// </summary>
+        /// <param name="forecastDetailed">Объект, содержащий информацию о погоде для выбранных городов</param>
         void SaveForecasrDetailed(ForecastDetailed forecastDetailed);
 
-        //List<ForecastDayModel> LoadForecastDays();
-
-        //List<ForecastHourModel> LoadForecastHours();
-
+        /// <summary>
+        /// Метод загружает хранящийся прогноз погоды из хранилища.
+        /// </summary>
+        /// <returns>Объект, содержащий информацию о погоде для выбранных городов</returns>
         ForecastDetailed LoadForecastDetailed();
     }
 
@@ -36,11 +36,7 @@ namespace DataHandlerInterface.Interfaces
         public abstract UserSettings LoadSettings();
 
         public abstract void SaveSettings(UserSettings settings);
-        //public abstract void SaveForecastDay(ForecastDayModel forecastDay);
-        //public abstract void SaveForecastHour(ForecastHourModel forecastHour);
         public abstract void SaveForecasrDetailed(ForecastDetailed forecastDetailed);
-        //public abstract List<ForecastDayModel> LoadForecastDays();
-        //public abstract List<ForecastHourModel> LoadForecastHours();
         public abstract ForecastDetailed LoadForecastDetailed();
 
         /// <summary>
