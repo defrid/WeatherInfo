@@ -88,8 +88,7 @@ namespace WeatherInfo
                 forecasts.Add(new XMLParser(town, townId));
             }
 
-
-
+            
             isKelv = App.settings.temperatureUnits.rusName.Equals("Кельвины");
             isFahr = App.settings.temperatureUnits.rusName.Equals("Фаренгейты");
 
