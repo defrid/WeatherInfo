@@ -92,7 +92,7 @@
 	<Value Id="getLibrariesFailed_LSH" Content="Путь к рабочей папке не найден!" />
 	<Value Id="loadHandlerLibFailed_LSH" Content="Библиотека обработчика не найдена!" />
 	<Value Id="getInstanceSettingsHandler_LSH" Content="Не удалось найти ни одного обработчика!" />
-	<Value Id="failedPathToHandler_LSH" Content="Несуществующий путь к обработчику!" />
+	<Value Id="failedPathToHandler_LSH" Content="Несуществующий путь к обработчику!" />	
 <!-- class getCity -->
 	<Value Id="locationFolderNotFound_gC" Content="Папка Location не найдена!" />
 	<Value Id="locationDataFileNotFound_gC" Content="В папке Location не найден Data.xml (файл с городами)" />	
@@ -118,4 +118,5 @@
 	<Value Id="errorLoadXmlLangDict_XmlLangDict" Content="Произошла ошибка при загрузке файла локализации или смене локализации. Возможно файл локализации повреждён или словарь загружен некорректно." />	
 <!-- App.config -->
 	<Value Id="grobalError_App" Content="Ошибка приложения. Приложение будет завершено." />	
+	<Value Id="errorLaodHandler_App" Content="Ошибка загрузки обработчика хранения настроек и прогноза погоды! Обработчик отсутствует или поврежден." />
 </Dictionary>

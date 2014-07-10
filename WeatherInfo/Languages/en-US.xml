@@ -118,4 +118,5 @@ Squad:
 	<Value Id="errorLoadXmlLangDict_XmlLangDict" Content="An error occurred while downloading the file location or change of location. Perhaps localization file is damaged or incorrectly loaded dictionary." />	
 <!-- App.config -->
 	<Value Id="grobalError_App" Content="Application Error. The application will be completed." />	
+	<Value Id="errorLaodHandler_App" Content="Error loading handler store settings and the weather forecast! Handler is missing or damaged." />
 </Dictionary>

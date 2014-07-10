@@ -400,7 +400,7 @@ namespace WeatherInfo
                 {
                     citiesForXml.Add(city.city);
                 }
-                App.settingHandler.SaveForecasrDetailed(new ForecastDetailed(dtldForecasts, shrtForecasts, citiesForXml));
+                App.dataHandler.SaveForecasrDetailed(new ForecastDetailed(dtldForecasts, shrtForecasts, citiesForXml));
             }
             catch (Exception ex)
             {
@@ -470,7 +470,7 @@ namespace WeatherInfo
                 dtldForecasts = new List<ForecastDay[]>();
                 dayParts = InitDaysDictionary();
 
-                var forecastDetailed = App.settingHandler.LoadForecastDetailed();
+                var forecastDetailed = App.dataHandler.LoadForecastDetailed();
                 shrtForecasts = forecastDetailed.shrtForecasts;
                 dtldForecasts = forecastDetailed.dtldForecasts;
 
