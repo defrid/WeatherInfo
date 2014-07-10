@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6BD9E98D-8644-40D5-B04C-60007E3FD8DF}</ProjectGuid>
+    <ProjectGuid>{5AA7E742-FDC3-4FFA-9336-209943278141}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XMLSettingsHandler</RootNamespace>
-    <AssemblyName>XMLSettingsHandler</AssemblyName>
+    <RootNamespace>DataHandlerInterface</RootNamespace>
+    <AssemblyName>DataHandlerInterface</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -69,14 +69,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="XMLSettingsHandler.cs" />
+    <Compile Include="Classes\City.cs" />
+    <Compile Include="Classes\CitySettings.cs" />
+    <Compile Include="Classes\Country.cs" />
+    <Compile Include="Classes\ForecastDayModel.cs" />
+    <Compile Include="Classes\ForecastHourModel.cs" />
+    <Compile Include="Classes\Language.cs" />
+    <Compile Include="Classes\Options.cs" />
+    <Compile Include="Classes\RegionOfCity.cs" />
+    <Compile Include="Classes\UserSettings.cs" />
+    <Compile Include="Classes\TemperatureUnits.cs" />
+    <Compile Include="Interfaces\IDataHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SettingsHandlerInterface\SettingsHandlerInterface.csproj">
-      <Project>{5aa7e742-fdc3-4ffa-9336-209943278141}</Project>
-      <Name>SettingsHandlerInterface</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

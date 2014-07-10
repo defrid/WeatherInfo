@@ -1,4 +1,5 @@
-﻿using SettingsHandlerInterface;
+﻿using DataHandlerInterface.Interfaces;
+using DataHandlerInterface;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +10,7 @@ using Tomers.WPF.Localization;
 
 namespace WeatherInfo.Classes
 {
-    class LoadSettingsHandler
+    class LoadDataHandler
     {
         /// <summary>
         /// Возвращает список (словарь) доступных в указанной директории обработчиков.
@@ -26,7 +27,7 @@ namespace WeatherInfo.Classes
 
                 var libs = new Dictionary<int, string>();
 
-                var pathesToLibs = Directory.GetFiles(dirPath, "*SettingsHandler.dll");
+                var pathesToLibs = Directory.GetFiles(dirPath, "*DataHandler.dll");
                 foreach (var path in pathesToLibs)
                 {
                     libs.Add(libs.Count + 1, path);
@@ -66,7 +67,7 @@ namespace WeatherInfo.Classes
                 //}
                 //return chooseLibName;
 
-                return "XMLSettingsHandler.dll";//"MdfDbSettingsHandler.dll";
+                return "XMLDataHandler.dll";//"MdfDbSettingsHandler.dll";
             }
             catch (Exception e)
             {
@@ -78,7 +79,7 @@ namespace WeatherInfo.Classes
         /// Загружает выбранный обработчик и передает ему список имен входных и выходных файлов для обработки.
         /// </summary>
         /// <param name="handlerLibName">Имя обработчика.</param>
-        private static ISettingsHandler LoadHandler(string handlerLibName)
+        private static IDataHandler LoadHandler(string handlerLibName)
         {
             try
             {
@@ -90,9 +91,9 @@ namespace WeatherInfo.Classes
                 var handlerAssembly = Assembly.LoadFrom(handlerLibName);
                 foreach (var t in handlerAssembly.GetExportedTypes())
                 {
-                    if (t.IsClass && typeof(ISettingsHandler).IsAssignableFrom(t))
+                    if (t.IsClass && typeof(IDataHandler).IsAssignableFrom(t))
                     {
-                        ISettingsHandler handler = (ISettingsHandler)Activator.CreateInstance(t);
+                        var handler = (IDataHandler)Activator.CreateInstance(t);
                         return handler;
                     }
                 }
@@ -104,7 +105,7 @@ namespace WeatherInfo.Classes
             }
         }
     
-        public static ISettingsHandler GetInstanceSettingsHandler() {
+        public static IDataHandler GetInstanceSettingsHandler() {
             try
             {
                 var libs = GetLibrariesInDirectory(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
@@ -119,7 +120,7 @@ namespace WeatherInfo.Classes
                     throw new ApplicationException(LanguageDictionary.Current.Translate<string>("failedPathToHandler_LSH", "Content"));
                 }
 
-                ISettingsHandler handler = LoadHandler(chooseLibName);
+                var handler = LoadHandler(chooseLibName);
 
                 return handler;
             }

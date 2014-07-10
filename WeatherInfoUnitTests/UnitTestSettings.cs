@@ -1,12 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SettingsHandlerInterface;
-using SettingsHandlerInterface.Classes;
+﻿using DataHandlerInterface.Classes;
+using DataHandlerInterface.Interfaces;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WeatherInfo;
 
 namespace WeatherInfoUnitTests
 {
@@ -16,19 +11,21 @@ namespace WeatherInfoUnitTests
         [TestMethod]
         public void TestGetFormatAttribute()
         {
-            var formatWeeks = "Weeks";
-            var formatDays = "Days";
-            Assert.AreEqual("По неделям", Options.GetFormatAttribute(formatWeeks));
-            Assert.AreNotEqual("По неделям", Options.GetFormatAttribute(formatDays));
+            var formatShort = "Short";
+            var formatDetailed = "Detailed";
+            Assert.AreEqual("Short", Options.GetFormatAttribute(formatShort, "English"));
+            Assert.AreEqual("Краткий", Options.GetFormatAttribute(formatShort, "Russian"));
+            Assert.AreEqual("Detailed", Options.GetFormatAttribute(formatDetailed, "English"));
+            Assert.AreEqual("Подробный", Options.GetFormatAttribute(formatDetailed, "Russian"));
         }
 
         [TestMethod]
         public void TestGetValueByAttribute()
         {
-            var attrWeeks = "По неделям";
-            var attrDays = "По дням";
-            Assert.AreEqual("Weeks", Options.GetValueByAttribute(attrWeeks));
-            Assert.AreNotEqual("Weeks", Options.GetFormatAttribute(attrDays));
+            Assert.AreEqual("Short", Options.GetValueByAttribute("Краткий", "Russian"));
+            Assert.AreNotEqual("Short", Options.GetValueByAttribute("Подробный", "English"));
+            Assert.AreEqual("Detailed", Options.GetValueByAttribute("Подробный", "Russian"));
+            Assert.AreNotEqual("Detailed", Options.GetValueByAttribute("Краткий", "English"));
         }
 
         [TestMethod]
@@ -37,8 +34,8 @@ namespace WeatherInfoUnitTests
             var validSettings = GetValidSettings();
             var invalidSettings = GetInvalidSettings();
 
-            Assert.AreEqual(true, SettingsHandler.ValidateSettings(validSettings));
-            Assert.AreNotEqual(true, SettingsHandler.ValidateSettings(invalidSettings));
+            Assert.AreEqual(true, DataHandler.ValidateSettings(validSettings));
+            Assert.AreNotEqual(true, DataHandler.ValidateSettings(invalidSettings));
         }
 
         [TestMethod]
@@ -50,7 +47,7 @@ namespace WeatherInfoUnitTests
             //Assert.AreEqual("Ульяновск", SettingsWindow.upperEngCityName(cityName2));
         }
 
-        private static Settings GetValidSettings()
+        private static UserSettings GetValidSettings()
         {
             string _countryId = "RU";
             string _countryRusName = "Россия";
@@ -64,18 +61,18 @@ namespace WeatherInfoUnitTests
             string _cityRusName = "Ульяновск";
             string _cityEngName = "Ulyanovsk";
 
-            string _format = Enum.GetName(typeof(Options.FormatForecast), Options.FormatForecast.Days);
+            string _format = Enum.GetName(typeof(Options.FormatForecast), Options.FormatForecast.Short);
             int _updatePeriod = 60;
             bool _autostart = false;
             TemperatureUnits _temperatureUnits = new TemperatureUnits("Цельсии", "Celsius");
             Language _language = new Language("Русский", "Russian");
 
-            var settings = new Settings(_countryId, _countryRusName, _countryEngName, _regionId, _regionName, _cityYaId, _cityOWId, _cityRusName, _cityEngName, _format, _updatePeriod, _autostart, _temperatureUnits, _language);
+            var settings = new UserSettings(_countryId, _countryRusName, _countryEngName, _regionId, _regionName, _cityYaId, _cityOWId, _cityRusName, _cityEngName, _format, _updatePeriod, _autostart, _temperatureUnits, _language);
 
             return settings;
         }
 
-        private static Settings GetInvalidSettings()
+        private static UserSettings GetInvalidSettings()
         {
             string _countryId = "";
             string _countryRusName = "Россия";
@@ -89,13 +86,13 @@ namespace WeatherInfoUnitTests
             string _cityRusName = "Ульяновск";
             string _cityEngName = "Ulyanovsk";
 
-            string _format = Enum.GetName(typeof(Options.FormatForecast), Options.FormatForecast.Days);
+            string _format = Enum.GetName(typeof(Options.FormatForecast), Options.FormatForecast.Short);
             int _updatePeriod = 5;
             bool _autostart = false;
             TemperatureUnits _temperatureUnits = new TemperatureUnits("Цельсии", "Celsius");
             Language _language = new Language("Русский", "Russian");
 
-            var settings = new Settings(_countryId, _countryRusName, _countryEngName, _regionId, _regionName, _cityYaId, _cityOWId, _cityRusName, _cityEngName, _format, _updatePeriod, _autostart, _temperatureUnits, _language);
+            var settings = new UserSettings(_countryId, _countryRusName, _countryEngName, _regionId, _regionName, _cityYaId, _cityOWId, _cityRusName, _cityEngName, _format, _updatePeriod, _autostart, _temperatureUnits, _language);
 
             return settings;
         }

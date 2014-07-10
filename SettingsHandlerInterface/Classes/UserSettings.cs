@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 
-namespace SettingsHandlerInterface.Classes
+namespace DataHandlerInterface.Classes
 {    
     /// <summary>
     /// Класс настроек приложения
     /// </summary>
-    public class Settings
+    public class UserSettings
     {
-        public Settings() { }
+        public UserSettings() { }
 
-        public Settings(List<CitySettings> _cities, string _format, int _updatePeriod, bool _autostart, TemperatureUnits _temperatureUnits, Language _language)
+        public UserSettings(List<CitySettings> _cities, string _format, int _updatePeriod, bool _autostart, TemperatureUnits _temperatureUnits, Language _language)
         {
             cities = new List<CitySettings>(_cities);
             format = _format;
@@ -25,7 +20,7 @@ namespace SettingsHandlerInterface.Classes
             language = _language;
         }
 
-        public Settings(string _countryId, string _countryRusName, string _countryEngName, int _regionId, string _regionName, int _cityYaId, int _cityOWId, string _cityRusName, string _cityEngName, string _format, int _updatePeriod, bool _autostart, TemperatureUnits _temperatureUnits, Language _language)
+        public UserSettings(string _countryId, string _countryRusName, string _countryEngName, int _regionId, string _regionName, int _cityYaId, int _cityOWId, string _cityRusName, string _cityEngName, string _format, int _updatePeriod, bool _autostart, TemperatureUnits _temperatureUnits, Language _language)
         {
             cities = new List<CitySettings>();
             cities.Add(new CitySettings(_countryId, _countryRusName, _countryEngName, _regionId, _regionName, _cityYaId, _cityOWId, _cityRusName, _cityEngName));
@@ -36,7 +31,7 @@ namespace SettingsHandlerInterface.Classes
             language = _language;
         }
 
-        public Settings(List<Country> _countries, List<RegionOfCity> _regions, List<City> _cities, string _format, int _updatePeriod, bool _autostart, TemperatureUnits _temperatureUnits, Language _language)
+        public UserSettings(List<Country> _countries, List<RegionOfCity> _regions, List<City> _cities, string _format, int _updatePeriod, bool _autostart, TemperatureUnits _temperatureUnits, Language _language)
         {
             cities = new List<CitySettings>();
             format = _format;
@@ -57,7 +52,7 @@ namespace SettingsHandlerInterface.Classes
         /// Настройки по-умолчанию
         /// </summary>
         /// <returns>Объект, хранящий настройки программы.</returns>
-        public static Settings GetDefaultSettings()
+        public static UserSettings GetDefaultSettings()
         {
             string _countryId = "RU";
             string _countryRusName = "Россия";
@@ -71,13 +66,13 @@ namespace SettingsHandlerInterface.Classes
             string _cityRusName = "Ульяновск";
             string _cityEngName = "Ulyanovsk";
 
-            string _format = Enum.GetName(typeof(Options.FormatForecast), Options.FormatForecast.Days);
+            string _format = Enum.GetName(typeof(Options.FormatForecast), Options.FormatForecast.Short);
             int _updatePeriod = 60;
             bool _autostart = false;
             TemperatureUnits _temperatureUnits = new TemperatureUnits("Цельсии", "Celsius");
             Language _language = new Language("Русский", "Russian");
 
-            var settings = new Settings(_countryId, _countryRusName, _countryEngName, _regionId, _regionName, _cityYaId, _cityOWId, _cityRusName, _cityEngName, _format, _updatePeriod, _autostart, _temperatureUnits, _language);
+            var settings = new UserSettings(_countryId, _countryRusName, _countryEngName, _regionId, _regionName, _cityYaId, _cityOWId, _cityRusName, _cityEngName, _format, _updatePeriod, _autostart, _temperatureUnits, _language);
 
             return settings;
         }

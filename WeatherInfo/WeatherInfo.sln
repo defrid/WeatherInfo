@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
 # Visual Studio Express 2013 for Windows Desktop
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherInfo", "WeatherInfo.csproj", "{AE16993A-EDF7-43E7-B4F2-F12C6C1AA7FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingsHandlerInterface", "..\SettingsHandlerInterface\SettingsHandlerInterface.csproj", "{5AA7E742-FDC3-4FFA-9336-209943278141}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataHandlerInterface", "..\SettingsHandlerInterface\DataHandlerInterface.csproj", "{5AA7E742-FDC3-4FFA-9336-209943278141}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLSettingsHandler", "..\XMLSettingsHandler\XMLSettingsHandler.csproj", "{6BD9E98D-8644-40D5-B04C-60007E3FD8DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLDataHandler", "..\XMLSettingsHandler\XMLDataHandler.csproj", "{6BD9E98D-8644-40D5-B04C-60007E3FD8DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity_base", "..\Entity_base\Entity_base.csproj", "{C794C9D9-24CE-423B-BDE6-41C0BE0EDBB5}"
 EndProject

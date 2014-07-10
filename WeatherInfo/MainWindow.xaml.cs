@@ -18,6 +18,7 @@ using System.Windows.Threading;
 using System.ComponentModel;
 using System.Threading;
 using System.Net.NetworkInformation;
+using DataHandlerInterface.Classes;
 using WeatherInfo.Classes;
 using Entity_base;
 using Tomers.WPF.Localization;
@@ -166,7 +167,10 @@ namespace WeatherInfo
                     Width = 32
                 };
             stackPanel.Children.Add(image);
-            var label = new Label() { Content = "Loading...", HorizontalAlignment = HorizontalAlignment.Center };
+            var label = new Label() {
+                Content = LanguageDictionary.Current.Translate<string>("loadingMess_mainWin", "Content"),
+                HorizontalAlignment = HorizontalAlignment.Center
+            };
             stackPanel.Children.Add(label);
             resultPanel.Children.Add(stackPanel);
             return resultPanel;
@@ -587,7 +591,7 @@ namespace WeatherInfo
             {
                 var name = (sender as Button).Tag;
 
-                SettingsHandlerInterface.Classes.CitySettings engName = null;
+                CitySettings engName = null;
                 lang wL = lang.eng;
 
                 if (App.settings.language.engName == "English")
@@ -627,7 +631,7 @@ namespace WeatherInfo
             {
                 var name = (sender as Button).Tag;
 
-                SettingsHandlerInterface.Classes.CitySettings engName = null;
+                CitySettings engName = null;
                 lang wL = lang.eng;
 
                 if (App.settings.language.engName == "English")
@@ -665,8 +669,8 @@ namespace WeatherInfo
             {
                 var name = (sender as Button).Tag;
 
-                SettingsHandlerInterface.Classes.CitySettings engName = null;
-                lang wL = lang.eng;
+                CitySettings engName = null;
+                lang wL=lang.eng;
 
                 if (App.settings.language.engName == "English")
                 {

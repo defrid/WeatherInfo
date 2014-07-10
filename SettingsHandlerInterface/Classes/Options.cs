@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using Tomers.WPF.Localization;
 
-namespace SettingsHandlerInterface.Classes
+namespace DataHandlerInterface.Classes
 {
     public class Options
     {
@@ -15,7 +14,7 @@ namespace SettingsHandlerInterface.Classes
         /// <summary>
         /// Список, хранящий единицы измерения температуры
         /// </summary>
-        private static List<TemperatureUnits> temperatureUnits = new List<TemperatureUnits> { new TemperatureUnits("Цельсии", "Celsius"), 
+        private static readonly List<TemperatureUnits> temperatureUnits = new List<TemperatureUnits> { new TemperatureUnits("Цельсии", "Celsius"), 
                                                                                               new TemperatureUnits("Кельвины", "Kelvin"),
                                                                                               new TemperatureUnits("Фаренгейты", "Fahrenheit") };
 
@@ -30,7 +29,7 @@ namespace SettingsHandlerInterface.Classes
         /// <summary>
         /// Список, хранящий языки для системы (Расский, Английкский, ...)
         /// </summary>
-        private static List<Language> languages = new List<Language> { new Language("Русский", "Russian"), new Language("Английский", "English") };
+        private static readonly List<Language> languages = new List<Language> { new Language("Русский", "Russian"), new Language("Английский", "English") };
 
         /// <summary>
         /// Возвращает список языков для системы
@@ -47,10 +46,10 @@ namespace SettingsHandlerInterface.Classes
         /// </summary>
         public enum FormatForecast
         {
-            [FormatAttribute("По неделям")]
-            Weeks,
-            [FormatAttribute("По дням")]
-            Days
+            [FormatAttribute("Краткий", "Short")]
+            Short,
+            [FormatAttribute("Подробный", "Detailed")]
+            Detailed
         }
 
         /// <summary>
@@ -59,10 +58,12 @@ namespace SettingsHandlerInterface.Classes
         [AttributeUsage(AttributeTargets.All)]
         internal class FormatAttribute : Attribute
         {
-            public string name = string.Empty;
-            public FormatAttribute(string _name)
+            public string nameRus = string.Empty;
+            public string nameEng = string.Empty;
+            public FormatAttribute(string _nameRus, string _nameEng)
             {
-                name = _name;
+                nameRus = _nameRus;
+                nameEng = _nameEng;
             }
         }
 
@@ -71,18 +72,18 @@ namespace SettingsHandlerInterface.Classes
         /// </summary>
         /// <param name="format"></param>
         /// <returns></returns>
-        public static string GetFormatAttribute(string format)
+        public static string GetFormatAttribute(string format, string language)
         {
             try
             {
-                FieldInfo fieldInfo = typeof(FormatForecast).GetField(format);
-                FormatAttribute[] attributes = (FormatAttribute[])fieldInfo.GetCustomAttributes(typeof(FormatAttribute), false);
+                var fieldInfo = typeof(FormatForecast).GetField(format);
+                var attributes = (FormatAttribute[])fieldInfo.GetCustomAttributes(typeof(FormatAttribute), false);
 
-                return attributes.Length == 0 ? String.Empty : attributes[0].name;
+                return attributes.Length == 0 ? String.Empty : (language == "English" ? attributes[0].nameEng : attributes[0].nameRus);
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("SettingsHandler.GetFormatAttribute(): " + LanguageDictionary.Current.Translate<string>("getFormatAttributeFailed_Option", "Content"));
+                Debug.WriteLine("DataHandler.GetFormatAttribute(): " + LanguageDictionary.Current.Translate<string>("getFormatAttributeFailed_Option", "Content"));
                 return String.Empty;
             }
         }
@@ -93,23 +94,20 @@ namespace SettingsHandlerInterface.Classes
         /// </summary>
         /// <param name="attribute"></param>
         /// <returns></returns>
-        public static string GetValueByAttribute(string attribute)
+        public static string GetValueByAttribute(string attribute, string language)
         {
             try
             {
                 var ff = Enum.GetNames(typeof(FormatForecast));
-                foreach (var format in ff)
+                foreach (var format in ff.Where(format => attribute == GetFormatAttribute(format, language)))
                 {
-                    if (attribute == GetFormatAttribute(format))
-                    {
-                        return format;
-                    }
+                    return format;
                 }
                 return String.Empty;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("SettingsHandler.GetValueByAttribute(): " + LanguageDictionary.Current.Translate<string>("getValueByAttributeFailed_Option", "Content"));
+                Debug.WriteLine("DataHandler.GetValueByAttribute(): " + LanguageDictionary.Current.Translate<string>("getValueByAttributeFailed_Option", "Content"));
                 return String.Empty;
             }
         }

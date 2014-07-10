@@ -1,8 +1,9 @@
 ﻿using System.Globalization;
 using System.IO;
 using System.Reflection;
-using SettingsHandlerInterface;
-using SettingsHandlerInterface.Classes;
+using DataHandlerInterface.Classes;
+using DataHandlerInterface.Interfaces;
+using DataHandlerInterface;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -20,8 +21,8 @@ namespace WeatherInfo
     /// </summary>
     public partial class App : Application
     {
-        public static ISettingsHandler settingHandler = LoadSettingsHandler.GetInstanceSettingsHandler();
-        public static Settings settings = settingHandler.LoadSettings();
+        public static IDataHandler settingHandler = LoadDataHandler.GetInstanceSettingsHandler();
+        public static UserSettings settings = settingHandler.LoadSettings();
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -41,7 +42,7 @@ namespace WeatherInfo
             }
             catch (Exception ex)
             {
-                var message = "Ошибка приложения. Приложение будет завершено.";
+                var message = "Ошибка приложения. Приложение будет завершено.\r\nApplication Error. The application will be completed.";
                 MessageBox.Show(message);
                 Environment.Exit(1);
             }
