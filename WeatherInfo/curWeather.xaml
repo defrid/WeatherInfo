@@ -7,6 +7,6 @@
     <Grid>
         <Label localization:Translate.Uid="labelCurWeather_curWeaWin" Content="{localization:Translate Default=Текущий прогноз}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <DockPanel Name ="CurrentWeather" HorizontalAlignment="Left" Margin="0,26,0,0" VerticalAlignment="Top" LastChildFill="False" Height="150" Width="198"/>
-        <Button Content="X" HorizontalAlignment="Left" Margin="178,0,0,0" VerticalAlignment="Top" Width="16" Height="21" RenderTransformOrigin="0.558,0.548" FontWeight="Bold" Click="Button_Click"/>
+        <Label Content="x" HorizontalAlignment="Left" Margin="179,-9,0,0" VerticalAlignment="Top" FontSize="20" MouseDown="Button_Click"/>
     </Grid>
 </Window>

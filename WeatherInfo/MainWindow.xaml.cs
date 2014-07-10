@@ -44,6 +44,7 @@ namespace WeatherInfo
         private bool hasConnection = false;
         private bool connectedToYaAPI = false;
         private bool connectedToOpAPI = false;
+        private bool firstLaunch = true;
         private bool isFahr = false;
         private bool isKelv = false;
         private int curIndex = 0;
@@ -89,7 +90,9 @@ namespace WeatherInfo
                 forecasts.Add(new XMLParser(town, townId));
             }
 
-            
+            var forecastDetailed = App.settingHandler.LoadForecastDetailed();
+            //shrtForecasts = forecastDetailed.shrtForecasts;
+            //dtldForecasts = forecastDetailed.dtldForecasts;
             
             isKelv = App.settings.temperatureUnits.rusName.Equals("Кельвины");
             isFahr = App.settings.temperatureUnits.rusName.Equals("Фаренгейты");
@@ -469,6 +472,21 @@ namespace WeatherInfo
             {
                 fillTray();
                 preloaderRotationTimer.Stop();
+                try
+                {
+                    ///Пример сохранения погоды в XML
+                    var citiesForXml = new List<City>();
+                    foreach (var city in App.settings.cities)
+                    {
+                        citiesForXml.Add(city.city);
+                    }
+                    App.settingHandler.SaveForecasrDetailed(new ForecastDetailed(dtldForecasts, shrtForecasts, citiesForXml));
+                }
+                catch (Exception ex)
+                {
+                    var message = LanguageDictionary.Current.Translate<string>("writeForecastToXml_SttsHandler", "Content");
+                    MessageBox.Show(message);
+                }
                 timer.Start();
             }
             else
