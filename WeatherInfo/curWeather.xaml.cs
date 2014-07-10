@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Threading;
+using DataHandlerInterface.Classes;
 using Tomers.WPF.Localization;
 using WeatherInfo.Classes;
 
@@ -86,6 +87,19 @@ namespace WeatherInfo
             image.SetValue(Grid.ColumnSpanProperty, 2);
             gridResult.Children.Add(image);
             return gridResult;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            this.DragMove();
         }
     }
 }

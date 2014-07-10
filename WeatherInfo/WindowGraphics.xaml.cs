@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls.DataVisualization.Charting;
 using System.Collections.ObjectModel;
+using DataHandlerInterface.Classes;
 using WeatherInfo.Classes;
 
 namespace WeatherInfo

@@ -85,7 +85,7 @@ namespace WeatherInfo.Properties {
         /// </summary>
         internal static System.Drawing.Icon settingsGear {
             get {
-                object obj = ResourceManager.GetObject("settingsGear", resourceCulture);
+                object obj = ResourceManager.GetObject("settingsGear");
                 return ((System.Drawing.Icon)(obj));
             }
         }

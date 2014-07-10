@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
+using DataHandlerInterface.Classes;
 using WeatherInfo.Interfaces;
 
 namespace WeatherInfo.Classes

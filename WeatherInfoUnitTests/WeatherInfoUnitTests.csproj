@@ -82,9 +82,9 @@
     <Compile Include="YandexApiUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SettingsHandlerInterface\SettingsHandlerInterface.csproj">
+    <ProjectReference Include="..\SettingsHandlerInterface\DataHandlerInterface.csproj">
       <Project>{5aa7e742-fdc3-4ffa-9336-209943278141}</Project>
-      <Name>SettingsHandlerInterface</Name>
+      <Name>DataHandlerInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\WeatherInfo\WeatherInfo.csproj">
       <Project>{ae16993a-edf7-43e7-b4f2-f12c6c1aa7fd}</Project>

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SettingsHandlerInterface.Classes
+﻿namespace DataHandlerInterface.Classes
 {
     public class CitySettings
     {
@@ -56,7 +51,7 @@ namespace SettingsHandlerInterface.Classes
         {
             string _countryId = "RU";
             string _countryRusName = "Россия";
-            string _countryEngName = "Russia";
+            string _countryEngName = "Russian Federation";
             int _regionId = 0;
             string _regionName = "Region";
 
