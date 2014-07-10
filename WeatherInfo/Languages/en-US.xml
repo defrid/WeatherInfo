@@ -87,7 +87,6 @@ Squad:
 	<Value Id="menuExit_Tray" Content="Exit" />
 	<Value Id="toolTipTextPreLoad_Tray" Content="WeatherInfo loads data" />
 	<Value Id="toolTipText_Tray" Content="Left mouse button - short forecasts, Right mouse button - to open the menu" />
-	<Value Id="menuExit_Tray" Content="Exit" />
 <!-- LoadSettingsHandler -->
 	<Value Id="getLibrariesFaild_LSH" Content="Path to the working folder not found!" />
 	<Value Id="loadHandlerLibFaild_LSH" Content="Library with handler not found!" />
@@ -103,7 +102,7 @@ Squad:
 	<Value Id="getValueByAttributeFailed_Option" Content="Error format of forecast." />
 <!-- XMLDataHandler -->
 	<Value Id="writeXmlValidateSettings_SttsHandler" Content="Sent settings are not valid. Changes will not be saved. " />
-	<Value Id="writeXml_SttsHandler" Content="Unexpected error. Failed to save the settings. />
+	<Value Id="writeXml_SttsHandler" Content="Unexpected error. Failed to save the settings. " />
 	<Value Id="writeForecastToXml_SttsHandler" Content="Unexpected error. Failed to save the forecast. " />
 	<Value Id="readXmlValidateSettings_SttsHandler" Content="Configuration file is not valid. " />
 	<Value Id="readXml_SttsHandler" Content="Unexpected error. Will be loaded default settings, if possible. " />	
