@@ -1235,15 +1235,21 @@ namespace WeatherInfo
 
         void help()
         {
-            if (!File.Exists(@"Config/help.chm"))
+            if(!Directory.Exists(@"Config/help"))
             {
-                MessageBox.Show("Не найден файл справки по пути Config/help.chm");
+                System.Windows.Forms.MessageBox.Show(@"Не найдена папка Config/help");
+                return;
+            }
+
+            if (!File.Exists(@"Config/help/help.chm"))
+            {
+                System.Windows.Forms.MessageBox.Show("Не найден файл справки по пути Config/help/help.chm");
                 return;
             }
 
             try
             {
-                System.Windows.Forms.Help.ShowHelp(null, @"Config/help.chm");
+                System.Windows.Forms.Help.ShowHelp(null, @"Config/help/help.chm");
             }
             catch { }
         }
@@ -1304,6 +1310,16 @@ namespace WeatherInfo
         private void Window_Closed(object sender, EventArgs e)
         {
             App.Current.Shutdown();
+        }
+
+        /// <summary>
+        /// Нажатие на "???"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            help();
         }
 
     }
