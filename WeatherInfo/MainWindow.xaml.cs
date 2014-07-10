@@ -1131,8 +1131,8 @@ namespace WeatherInfo
             Connection.Content = message;
             Scroll.IsEnabled = false;
 
-            var mainElementsCount = MainContainer.Children.Cast<Panel>().Skip(1).Count();
-            MainContainer.Children.RemoveRange(1, mainElementsCount);
+            var mainElementsCount = MainContainer.Children.Cast<Panel>().Count();
+            MainContainer.Children.RemoveRange(0, mainElementsCount);
 
             isDailyForecast = !App.settings.format.Equals("Short");
 
@@ -1176,6 +1176,11 @@ namespace WeatherInfo
         void options()
         {
             new SettingsWindow(this).Show();
+        }
+
+        void help()
+        {
+
         }
 
         /// <summary>
