@@ -127,6 +127,9 @@
     <Compile Include="WindowGraphics.xaml.cs">
       <DependentUpon>WindowGraphics.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowStolbiki.xaml.cs">
+      <DependentUpon>WindowStolbiki.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowTray.xaml.cs">
       <DependentUpon>WindowTray.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
     <Page Include="WindowGraphics.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WindowStolbiki.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowTray.xaml">
       <Generator>MSBuild:Compile</Generator>
