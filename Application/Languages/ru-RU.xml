@@ -25,8 +25,8 @@
 	<Value Id="labelLabguageStts" Content="Язык" />
 	<Value Id="autostartFlag_chbxStts" Content="Автозапуск с Windows" />
 	<Value Id="messCheckDataStts" Content="Произошла ошибка. Введенные данные не могут быть сохранены. Проверьте корректность введенных данных." />
-	<Value Id="incorrectCityStts" Content="Заданный город не может быть добавлен! Проверьте правильность введённых данных!" />
-	<Value Id="incorrectCountryStts" Content="Страна не может быть выбрана! Проверьте правильность введённых данных!" />
+	<Value Id="incorrectCityStts" Content="Заданный город не может быть добавлен! Проверьте правильность введённых данных! Возможно город не выбран или не существует." />
+	<Value Id="incorrectCountryStts" Content="Страна не может быть выбрана! Проверьте правильность введённых данных! Возможно страна не выбрана или не существует." />
 	<Value Id="errorAddInAutostartStts" Content="Не удалось добавить программу в автозагрузку!" />
 	<Value Id="errorRemoveFromAutostartStts" Content="Не удалось удалить программу из автозагрузки!" />
 	<Value Id="errorDelCityStts" Content="При удалении выбранно гогорода из списка произошла ошибка!" />
@@ -61,6 +61,7 @@
 	<Value Id="oneDayBtn_mainWin" Content="Один день" />
 	<Value Id="manyDayBtn_mainWin" Content="Несколько дней" />
 	<Value Id="cloudyBtn_mainWin" Content="Облачность" />
+	<Value Id="loadingMess_mainWin" Content="Загрузка..." />
 <!-- Окно Дни -->
 	<Value Id="titleForm_daysWin" Title="Дневной прогноз" />
 	<Value Id="labelForecastOnDay_daysWin" Content="Прогноз на день" />
@@ -98,12 +99,12 @@
 <!-- class translate -->
 	<Value Id="dictNotFound_trans" Content="Файл словаря транслита не найден. Соболезнуем." />
 <!-- SettingsHandlerInterface.Classes.Option -->
-	<Value Id="getFormatAttributeFailed_Option" Content="Ошибка при получении атрибута формата прогноза погоды." />
-	<Value Id="getValueByAttributeFailed_Option" Content="Ошибка при получении формата прогноза погоды по заданному атрибуту." />
+	<Value Id="getFormatAttributeFailed_Option" Content="Ошибка формата прогноза погоды." />
+	<Value Id="getValueByAttributeFailed_Option" Content="Ошибка формата прогноза погоды." />
 <!-- XMLSettingsHandler -->
-	<Value Id="writeXmlValidateSettings_SttsHandler" Content="Переданные настройки не валидны. Изменения не будут сохранены." />
+	<Value Id="writeXmlValidateSettings_SttsHandler" Content="Переданные настройки некорректны. Изменения не будут сохранены." />
 	<Value Id="writeXml_SttsHandler" Content="Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " />
-	<Value Id="readXmlValidateSettings_SttsHandler" Content="Файл настроек не прошел проверку на валиндность." />
+	<Value Id="readXmlValidateSettings_SttsHandler" Content="Файл настроек не прошел проверку на корректность." />
 	<Value Id="readXml_SttsHandler" Content="Непредвиденная ошибка. Будут загружены настройки по-умолчанию, если это возможно. Текст ошибки: " />
 <!-- XmlLanguageDictionary -->	
 	<Value Id="checkFilePathFailed_XmlLangDict" Content="Файл {0} не обнаружен!" />	
@@ -113,4 +114,6 @@
 	<Value Id="vidNotFoundForUidForDict_XmlLangDict" Content="Параметр Vid не обнаружен для параметра Uid {0}, в {2} словаре!" />	
 	<Value Id="failedTransTextInDict_XmlLangDict" Content="Не удалось перевести текст {0} в словаре {1}:\n{2}" />
 	<Value Id="errorLoadXmlLangDict_XmlLangDict" Content="Произошла ошибка при загрузке файла локализации или смене локализации. Возможно файл локализации повреждён или словарь загружен некорректно." />	
+<!-- App.config -->
+	<Value Id="grobalError_App" Content="Ошибка приложения. Приложение будет завершено." />	
 </Dictionary>

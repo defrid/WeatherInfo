@@ -77,7 +77,7 @@ namespace WeatherInfo
             InitializeComponent();
             forecasts = new List<XMLParser>();
 
-
+            isDailyForecast = !App.settings.format.Equals("Short");
             preloaders = new List<DockPanel>();
             var nowMonthYear = DateTime.Now.ToString("y", LanguageContext.Instance.Culture);
             foreach (var city in App.settings.cities)
@@ -89,6 +89,7 @@ namespace WeatherInfo
                 forecasts.Add(new XMLParser(town, townId));
             }
 
+            
             
             isKelv = App.settings.temperatureUnits.rusName.Equals("Кельвины");
             isFahr = App.settings.temperatureUnits.rusName.Equals("Фаренгейты");
@@ -1132,6 +1133,8 @@ namespace WeatherInfo
 
             var mainElementsCount = MainContainer.Children.Cast<Panel>().Skip(1).Count();
             MainContainer.Children.RemoveRange(1, mainElementsCount);
+
+            isDailyForecast = !App.settings.format.Equals("Short");
 
             isKelv = App.settings.temperatureUnits.rusName.Equals("Кельвины");
             isFahr = App.settings.temperatureUnits.rusName.Equals("Фаренгейты");
