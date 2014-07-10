@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:localization="http://schemas.tomer.com/winfx/2006/xaml/presentation"
         localization:Translate.Uid="titleForm_curWeaWin" Title="{localization:Translate Default=Текущий прогноз}"
-        Height="204" Width="204" ResizeMode="NoResize">
+        Height="204" Width="204" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
         <Label localization:Translate.Uid="labelCurWeather_curWeaWin" Content="{localization:Translate Default=Текущий прогноз}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <DockPanel Name ="CurrentWeather" HorizontalAlignment="Left" Margin="0,26,0,0" VerticalAlignment="Top" LastChildFill="False" Height="150" Width="198"/>
+        <Button Content="X" HorizontalAlignment="Left" Margin="178,0,0,0" VerticalAlignment="Top" Width="16" Height="21" RenderTransformOrigin="0.558,0.548" FontWeight="Bold" Click="Button_Click"/>
     </Grid>
 </Window>

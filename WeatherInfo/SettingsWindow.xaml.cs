@@ -36,7 +36,7 @@ namespace WeatherInfo
 
             try //ибо тут падало (кстати у меня в трее тоже в такой строке падало)
             {
-                Icon = MainWindow.ConvertBitmabToImage(Properties.Resources.settingsGear.ToBitmap());
+                //Icon = MainWindow.ConvertBitmabToImage(Properties.Resources.settingsGear.ToBitmap());
             }
             catch { }
 
