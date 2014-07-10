@@ -1,9 +1,9 @@
 ﻿namespace DataHandlerInterface.Classes
 {
-    public class ForecastHourModel
+    public class ForecastHour
     {
-        public ForecastHourModel() { }
-        public ForecastHourModel(int _temp, string _clouds, string _time, string _icon)
+        public ForecastHour() { }
+        public ForecastHour(int _temp, string _clouds, string _time, string _icon)
         {
             temp = _temp;
             clouds = _clouds;
@@ -11,7 +11,7 @@
             icon = _icon;
         }
 
-        public ForecastHourModel(ForecastHourModel forecastHour)
+        public ForecastHour(ForecastHour forecastHour)
         {
             temp = forecastHour.temp;
             clouds = forecastHour.clouds;
@@ -21,10 +21,10 @@
 
         public int temp { get; set; }
 
-        public string clouds { get; protected set; }
+        public string clouds { get; set; }
 
         public string time { get; set; }
 
-        public string icon { get; protected set; }
+        public string icon { get; set; }
     }
 }

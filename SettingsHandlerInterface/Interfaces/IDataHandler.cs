@@ -18,13 +18,17 @@ namespace DataHandlerInterface.Interfaces
         /// <param name="settings"></param>
         void SaveSettings(UserSettings settings);
 
-        void SaveForecastDay(ForecastDayModel forecastDay);
+        //void SaveForecastDay(ForecastDayModel forecastDay);
 
-        void SaveForecastHour(ForecastHourModel forecastHour);
+        //void SaveForecastHour(ForecastHourModel forecastHour);
 
-        List<ForecastDayModel> LoadForecastDays();
+        void SaveForecasrDetailed(ForecastDetailed forecastDetailed);
 
-        List<ForecastHourModel> LoadForecastHours();
+        //List<ForecastDayModel> LoadForecastDays();
+
+        //List<ForecastHourModel> LoadForecastHours();
+
+        ForecastDetailed LoadForecastDetailed();
     }
 
     public abstract class DataHandler : IDataHandler
@@ -32,10 +36,12 @@ namespace DataHandlerInterface.Interfaces
         public abstract UserSettings LoadSettings();
 
         public abstract void SaveSettings(UserSettings settings);
-        public abstract void SaveForecastDay(ForecastDayModel forecastDay);
-        public abstract void SaveForecastHour(ForecastHourModel forecastHour);
-        public abstract List<ForecastDayModel> LoadForecastDays();
-        public abstract List<ForecastHourModel> LoadForecastHours();
+        //public abstract void SaveForecastDay(ForecastDayModel forecastDay);
+        //public abstract void SaveForecastHour(ForecastHourModel forecastHour);
+        public abstract void SaveForecasrDetailed(ForecastDetailed forecastDetailed);
+        //public abstract List<ForecastDayModel> LoadForecastDays();
+        //public abstract List<ForecastHourModel> LoadForecastHours();
+        public abstract ForecastDetailed LoadForecastDetailed();
 
         /// <summary>
         /// Метод проверяет переданные ему настройки на корректность.
