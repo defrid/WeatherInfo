@@ -214,7 +214,11 @@ namespace WeatherInfo
                 preLoadGraphics.RotateTransform(1f);
                 preLoadGraphics.TranslateTransform(-50, -50);
                 preLoadGraphics.DrawImage(preLoadImage, 0, 0, 100, 100);
-                notifyIcon.Icon = System.Drawing.Icon.FromHandle(preLoadCanvas.GetHicon());
+                try
+                {
+                    notifyIcon.Icon = System.Drawing.Icon.FromHandle(preLoadCanvas.GetHicon());
+                }
+                catch { }
             }
             catch
             { 

@@ -692,12 +692,14 @@ namespace WeatherInfo
 
                 var parser = forecasts.Where(el => el.town == Ename).FirstOrDefault();
 
+                int index = forecasts.FindIndex(el=>el==parser);
 
+                var graphic = new WindowStolbiki();
+                List<ForecastDay> days = shrtForecasts[index].ToList();
 
-                var graphic = new WindowGraphics(wL);
-                List<ForecastDay> days = parser.getDetailedWeek().ToList();
-                graphic.makeDiagram(days, name.ToString());
                 graphic.Show();
+                graphic.makeDiagram(days, name.ToString());
+
             }
             catch { }
         }
