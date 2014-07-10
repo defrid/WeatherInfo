@@ -694,7 +694,7 @@ namespace WeatherInfo
 
         private void fillDaily()
         {
-            var weatherresults = MainContainer.Children.Cast<Panel>().Skip(1);
+            var weatherresults = MainContainer.Children.Cast<Panel>();
             var weatherTable = weatherresults.Select(weatherContainer => (weatherContainer.Children[1] as Border).Child as Grid).ToList()[curIndex];
             weatherTable.Children.Clear();
 
@@ -728,7 +728,7 @@ namespace WeatherInfo
         {
             //preloaderRotationTimer.Stop();
 
-            var weatherresults = MainContainer.Children.Cast<Panel>().Skip(1);
+            var weatherresults = MainContainer.Children.Cast<Panel>();
             var weatherTable = weatherresults.Select(weatherContainer => (weatherContainer.Children[1] as Border).Child as Grid).ToList()[curIndex];
             weatherTable.Children.Clear();
             weatherTable.ShowGridLines = true;
