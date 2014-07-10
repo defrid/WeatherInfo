@@ -127,7 +127,7 @@ namespace WeatherInfo
 
             worker.DoWork += worker_reload;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-            Tray.SetupTray(this, options, expandShort);
+            Tray.SetupTray(this, options, expandShort, help);
 
 
 
