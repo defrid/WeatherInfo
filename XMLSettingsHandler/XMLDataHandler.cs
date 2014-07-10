@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ using Tomers.WPF.Localization;
 
 namespace XMLDataHandler
 {
+    #region Для расширяемости с помощью инструмента MEF
+    [Export(typeof(IDataHandler))]
+    #endregion
     public class XmlDataHandler : DataHandler
     {
         private static String XmlSettingsDirName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\Config";

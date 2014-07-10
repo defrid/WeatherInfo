@@ -90,7 +90,7 @@ namespace WeatherInfo
                 forecasts.Add(new XMLParser(town, townId));
             }
 
-            var forecastDetailed = App.settingHandler.LoadForecastDetailed();
+            var forecastDetailed = App.dataHandler.LoadForecastDetailed();
             if (forecastDetailed != null)
             {
                 shrtForecasts = forecastDetailed.shrtForecasts;
@@ -504,7 +504,7 @@ namespace WeatherInfo
                     {
                         citiesForXml.Add(city.city);
                     }
-                    App.settingHandler.SaveForecasrDetailed(new ForecastDetailed(dtldForecasts, shrtForecasts, citiesForXml));
+                    App.dataHandler.SaveForecasrDetailed(new ForecastDetailed(dtldForecasts, shrtForecasts, citiesForXml));
                 }
                 catch (Exception ex)
                 {

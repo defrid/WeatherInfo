@@ -81,7 +81,7 @@ namespace WeatherInfo
                 //App.settings = new Settings(countryId_save, countryRusName_save, countryEngName_save, regionId_save, regionName_save, cityYaId_save, cityOWId_save, cityRusName_save, cityEngName_save, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
                 App.settings = new UserSettings(ChoosenCities, format_save, updatePeriod_save, autostart_save, temperatureUnits_save, language_save);
 
-                App.settingHandler.SaveSettings(App.settings);                
+                App.dataHandler.SaveSettings(App.settings);                
 
                 Autorun();
                 ChangeLocalization();

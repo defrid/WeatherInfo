@@ -11,7 +11,7 @@ using Tomers.WPF.Localization;
 namespace WeatherInfo.Classes
 {
     class LoadDataHandler
-    {
+    {/*
         /// <summary>
         /// Возвращает список (словарь) доступных в указанной директории обработчиков.
         /// </summary>
@@ -128,6 +128,6 @@ namespace WeatherInfo.Classes
             {
                 return null;
             }
-        }
+        }*/
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using DataHandlerInterface.Classes;
@@ -21,13 +23,46 @@ namespace WeatherInfo
     /// </summary>
     public partial class App : Application
     {
-        public static IDataHandler settingHandler = LoadDataHandler.GetInstanceSettingsHandler();
-        public static UserSettings settings = settingHandler.LoadSettings();
+        public static IDataHandler dataHandler;// = LoadDataHandler.GetInstanceSettingsHandler();
+        public static UserSettings settings;// = settingHandler.LoadSettings();
 
+        #region Для расширяемости с помощью инструмента MEF
+        [ImportMany]
+        protected IDataHandler[] DataHandlers { get; set; }
+
+        private void Compose()
+        {
+            try
+            {
+                var catalog = new DirectoryCatalog(Environment.CurrentDirectory);
+                var container = new CompositionContainer(catalog);
+                container.ComposeParts(this);
+            }
+            catch (Exception ex)
+            {
+                var message = "Ошибка загрузки обработчика хранения настроек и прогноза погоды! Обработчик отсутствует или поврежден. \r\n Error loading handler store settings and the weather forecast! Handler is missing or damaged.";
+                MessageBox.Show(message);
+                throw new Exception();
+            }
+
+        }
+        #endregion
         protected override void OnStartup(StartupEventArgs e)
         {
             try
             {
+                #region Для расширяемости с помощью инструмента MEF
+                Compose();
+                if (DataHandlers == null || DataHandlers.Length == 0)
+                {
+                    var message = "Не удалось найти ни одного обработчика! Unable to find a single handler!";
+                    MessageBox.Show(message);
+                    throw new Exception();
+                }
+                dataHandler = DataHandlers[0];
+                settings = dataHandler.LoadSettings();
+                #endregion
+
                 LanguageDictionary.RegisterDictionary(
                 CultureInfo.GetCultureInfo("en-US"),
                 new XmlLanguageDictionary(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\Languages\en-US.xml"));
