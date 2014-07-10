@@ -35,6 +35,23 @@
         <cityEngName>moscow</cityEngName>
       </city>
     </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>Россия</countryRusName>
+        <countryEngName>Russian Federation</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>27595</cityYaId>
+        <cityOWId>551487</cityOWId>
+        <cityRusName>Казань</cityRusName>
+        <cityEngName>kazan</cityEngName>
+      </city>
+    </CitySettings>
   </cities>
   <format>Short</format>
   <updatePeriod>60</updatePeriod>

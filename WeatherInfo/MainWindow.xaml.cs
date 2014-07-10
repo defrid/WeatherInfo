@@ -106,7 +106,7 @@ namespace WeatherInfo
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
             Tray.SetupTray(this, options, expandShort);
 
-
+            //SetForecastsTable();
 
             hasConnection = IsNetworkAvailable();
             Scroll.IsEnabled = false;
@@ -378,21 +378,34 @@ namespace WeatherInfo
             }
             try
             {
+
                 foreach (var xmlParser in forecasts)
                 {
                     dtldForecasts.Add(xmlParser.getDetailedWeek());
+
                     Thread.Sleep(1000);//Время между запросами должно быть не меньше секунды
                 }
                 connectedToYaAPI = true;
-
-                //App.settingHandler.SaveForecasrDetailed(new ForecastDetailed(dtldForecasts));
-                //dtldForecasts.Clear();
-                //dtldForecasts = App.settingHandler.LoadForecastDetailed().forecasts;
-
             }
             catch
             {
                 connectedToYaAPI = false;
+            }
+
+            try
+            {
+                ///Пример сохранения погоды в XML
+                var citiesForXml = new List<City>();
+                foreach (var city in App.settings.cities)
+                {
+                    citiesForXml.Add(city.city);
+                }
+                App.settingHandler.SaveForecasrDetailed(new ForecastDetailed(dtldForecasts, shrtForecasts, citiesForXml));
+            }
+            catch (Exception ex)
+            {
+                var message = LanguageDictionary.Current.Translate<string>("writeForecastToXml_SttsHandler", "Content");
+                MessageBox.Show(message);
             }
         }
 
@@ -447,6 +460,43 @@ namespace WeatherInfo
 
             fillTray();
             timer.Start();
+        }
+
+        private void SetForecastsTable()
+        {
+            try
+            {
+                shrtForecasts = new List<ForecastDay[]>();
+                dtldForecasts = new List<ForecastDay[]>();
+                dayParts = InitDaysDictionary();
+
+                var forecastDetailed = App.settingHandler.LoadForecastDetailed();
+                shrtForecasts = forecastDetailed.shrtForecasts;
+                dtldForecasts = forecastDetailed.dtldForecasts;
+
+                SetWindowHeight();
+
+                if (isKelv)
+                {
+                    toKelv();
+                }
+
+                if (isFahr)
+                {
+                    toFahr();
+                }
+
+                FillTables();
+                Scroll.IsEnabled = true;
+
+                fillTray();
+            }
+            catch (Exception ex)
+            {
+                var message = LanguageDictionary.Current.Translate<string>("readForecastFromXml_SttsHandler", "Content");
+                MessageBox.Show(message);
+            }
+            
         }
 
         private void fillTray(bool needHide = false)
