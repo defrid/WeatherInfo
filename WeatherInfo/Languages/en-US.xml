@@ -85,6 +85,7 @@ Squad:
 	<Value Id="menuFullWindow_Tray" Content="Maximize" />
 	<Value Id="menuOptions_Tray" Content="Settings" />
 	<Value Id="menuExit_Tray" Content="Exit" />
+	<Value Id="menuHelp_Tray" Content="Help" />
 	<Value Id="toolTipTextPreLoad_Tray" Content="WeatherInfo loads data" />
 	<Value Id="toolTipText_Tray" Content="Left mouse button - short forecasts, Right mouse button - to open the menu" />
 	<Value Id="menuExit_Tray" Content="Exit" />

@@ -109,7 +109,7 @@ namespace WeatherInfo
 
             worker.DoWork += worker_reload;
             worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-            Tray.SetupTray(this, options, expandShort);
+            Tray.SetupTray(this, options, expandShort, help);
 
 
 
@@ -1180,9 +1180,22 @@ namespace WeatherInfo
             new SettingsWindow(this).Show();
         }
 
+        /// <summary>
+        /// Открытие справки
+        /// </summary>
         void help()
         {
+            if (!File.Exists(@"Config/help.chm"))
+            {
+                MessageBox.Show("Не найден файл справки по пути Config/help.chm");
+                return;
+            }
 
+            try
+            {
+                System.Windows.Forms.Help.ShowHelp(null, @"Config/help.chm");
+            }
+            catch { }
         }
 
         /// <summary>

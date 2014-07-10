@@ -88,6 +88,7 @@
 	<Value Id="toolTipTextPreLoad_Tray" Content="WeatherInfo загружает данные" />
 	<Value Id="toolTipText_Tray" Content="Левая кнопка мыши - краткий прогноз, Правая кнопка мыши - открыть меню" />
 	<Value Id="menuExit_Tray" Content="Выход" />
+	<Value Id="menuHelp_Tray" Content="Справка" />
 <!-- class LoadSettingsHandler -->
 	<Value Id="getLibrariesFailed_LSH" Content="Путь к рабочей папке не найден!" />
 	<Value Id="loadHandlerLibFailed_LSH" Content="Библиотека обработчика не найдена!" />
