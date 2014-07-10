@@ -207,6 +207,10 @@ namespace WeatherInfo
             days.Add("День", LanguageDictionary.Current.Translate<string>("day_mainWin", "Content"));//"День"
             days.Add("Вечер", LanguageDictionary.Current.Translate<string>("evening_mainWin", "Content"));//"Вечер"
             days.Add("Ночь", LanguageDictionary.Current.Translate<string>("night_mainWin", "Content"));//"Ночь"
+            days.Add("Morning", LanguageDictionary.Current.Translate<string>("morning_mainWin", "Content"));//"Утро"
+            days.Add("Day", LanguageDictionary.Current.Translate<string>("day_mainWin", "Content"));//"День"
+            days.Add("Evening", LanguageDictionary.Current.Translate<string>("evening_mainWin", "Content"));//"Вечер"
+            days.Add("Night", LanguageDictionary.Current.Translate<string>("night_mainWin", "Content"));
 
             return days;
         }
@@ -1231,7 +1235,17 @@ namespace WeatherInfo
 
         void help()
         {
+            if (!File.Exists(@"Config/help.chm"))
+            {
+                MessageBox.Show("Не найден файл справки по пути Config/help.chm");
+                return;
+            }
 
+            try
+            {
+                System.Windows.Forms.Help.ShowHelp(null, @"Config/help.chm");
+            }
+            catch { }
         }
 
         /// <summary>
