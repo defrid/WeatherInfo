@@ -14,43 +14,38 @@ namespace XMLDataHandler
 {
     public class XmlDataHandler : DataHandler
     {
-        public static String XmlSettingsFileName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + /*Application.StartupPath + */@"\Config\UserSettings.xml";
-        //public static String XmlForecastDayFileName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + /*Application.StartupPath + */@"\Data\ForecastDay.xml";
-        //public static String XmlForecastHourFileName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + /*Application.StartupPath + */@"\Data\ForecastHour.xml";
-        public static String XmlForecastDetailedFileName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + /*Application.StartupPath + */@"\Data\ForecastDetailed.xml";
+        private static String XmlSettingsDirName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\Config";
+        private static String XmlSettingsFileName = XmlSettingsDirName + @"\UserSettings.xml";
+        private static String XmlForecastDetailedDirName = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\Data";
+        private static String XmlForecastDetailedFileName = XmlForecastDetailedDirName + @"\ForecastDetailed.xml";
 
+
+        #region public Save
+        /// <summary>
+        /// Метод сохраняет настройки в хранилище.
+        /// </summary>
+        /// <param name="settings">Объект, содержащий сохраняемые настройки</param>
         public override void SaveSettings(UserSettings settings)
         {
             WriteSettingsToXml(settings);
         }
 
-        //public override void SaveForecastDay(ForecastDayModel forecastDay)
-        //{
-        //    //throw new NotImplementedException();
-        //}
-
-        //public override void SaveForecastHour(ForecastHourModel forecastHour)
-        //{
-        //    //throw new NotImplementedException();
-        //}
-
+        /// <summary>
+        /// Метод сохраняет прогноз погоды в хранилище.
+        /// </summary>
+        /// <param name="forecastDetailed">Объект, содержащий информацию о погоде для выбранных городов</param>
         public override void SaveForecasrDetailed(ForecastDetailed forecastDetailed)
         {
             WriteForecastDetailedToXml(forecastDetailed);
         }
 
-        //public override List<ForecastDayModel> LoadForecastDays()
-        //{
-        //    return null;
-        //    //throw new NotImplementedException();
-        //}
+        #endregion
 
-        //public override List<ForecastHourModel> LoadForecastHours()
-        //{
-        //    return null;
-        //    //throw new NotImplementedException();
-        //}
-
+        #region public Load
+        /// <summary>
+        /// Метод загружает хранящийся прогноз погоды из хранилища.
+        /// </summary>
+        /// <returns>Объект, содержащий информацию о погоде для выбранных городов</returns>
         public override ForecastDetailed LoadForecastDetailed()
         {
             var forecastDetailed = ReadForecastDetailedFromXml();
@@ -58,6 +53,10 @@ namespace XMLDataHandler
             return forecastDetailed;
         }
 
+        /// <summary>
+        /// Метод загржуает настройки из хранилища.
+        /// </summary>
+        /// <returns>Объект, содержащий загруженные настройки.</returns>
         public override UserSettings LoadSettings()
         {
             var settings = ReadSettingsFromXml();
@@ -65,11 +64,22 @@ namespace XMLDataHandler
             return settings;
         }
 
-        //Запись настроек в файл
+        #endregion
+
+        #region private WriteToXml
+        /// <summary>
+        /// Метод сохраняет настройки в хранилище.
+        /// </summary>
+        /// <param name="settings">Объект, содержащий сохраняемые настройки</param>
         private static void WriteSettingsToXml(UserSettings settings)
         {
             try
             {
+                if (!Directory.Exists(XmlSettingsDirName))
+                {
+                    Directory.CreateDirectory(XmlSettingsDirName);
+                }
+
                 var isValid = ValidateSettings(settings);
                 if (!isValid)
                 {
@@ -85,17 +95,56 @@ namespace XMLDataHandler
             catch (Exception ex)
             {
                 Debug.WriteLine("XmlDataHandler.WriteXml(): " + LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content") + ex.Message);
-                throw new Exception();
-                //throw new Exception(LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content"));
+                //throw new Exception();
+                throw new Exception(LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content"));
                 //MessageBox.Show("Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
             }
         }
 
-        //Чтение настроек из файла
+        /// <summary>
+        /// Метод сохраняет прогноз погоды в хранилище.
+        /// </summary>
+        /// <param name="forecastDetailed">Объект, содержащий информацию о погоде для выбранных городов</param>
+        private static void WriteForecastDetailedToXml(ForecastDetailed forecastDetailed)
+        {
+            try
+            {
+                if (!Directory.Exists(XmlForecastDetailedDirName))
+                {
+                    Directory.CreateDirectory(XmlForecastDetailedDirName);
+                }
+
+                var ser = new XmlSerializer(typeof(ForecastDetailed));
+                using (TextWriter writer = new StreamWriter(XmlForecastDetailedFileName))
+                {
+                    ser.Serialize(writer, forecastDetailed);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("WriteForecastDetailed.WriteXml(): " + LanguageDictionary.Current.Translate<string>("writeForecastToXml_SttsHandler", "Content") + ex.Message);
+                //throw new Exception();
+                throw new Exception(LanguageDictionary.Current.Translate<string>("writeForecastToXml_SttsHandler", "Content"));
+                //MessageBox.Show("Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
+            }
+        }
+
+        #endregion
+        
+        #region private ReadFromXml
+
+        /// <summary>
+        /// Метод загржуает настройки из хранилища.
+        /// </summary>
+        /// <returns>Объект, содержащий загруженные настройки.</returns>
         private static UserSettings ReadSettingsFromXml()
         {
             try
             {
+                if (!Directory.Exists(XmlSettingsDirName))
+                {
+                    return UserSettings.GetDefaultSettings();
+                }
                 //WriteXml(Settings.GetDefaultSettings());
                 if (!File.Exists(XmlSettingsFileName))
                 {
@@ -129,96 +178,18 @@ namespace XMLDataHandler
             }
         }
 
-        //Запись прогноза погоды в файл
-        /*private static void WriteForecastDayToXml(ForecastDayModel forecastDay)
-        {
-            try
-            {
-                //var isValid = ValidateSettings(settings);
-                //if (!isValid)
-                //{
-                //    throw new Exception(LanguageDictionary.Current.Translate<string>("writeXmlValidateSettings_SttsHandler", "Content"));
-                //}
-
-                var ser = new XmlSerializer(typeof(ForecastDayModel));
-                using (TextWriter writer = new StreamWriter(XmlForecastDayFileName))
-                {
-                    ser.Serialize(writer, forecastDay);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("XmlDataHandler.WriteXml(): " + LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content") + ex.Message);
-                //throw new Exception();
-                //throw new Exception(LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content"));
-                //MessageBox.Show("Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
-            }
-        }
-
         /// <summary>
-        /// Загружает прогноз погоды из XML-файла
+        /// Метод загружает хранящийся прогноз погоды из хранилища.
         /// </summary>
-        /// <returns></returns>
-        private static ForecastDayModel ReadForecastDayFromXml()
-        {
-            try
-            {
-                //WriteXml(Settings.GetDefaultSettings());
-                if (!File.Exists(XmlForecastDayFileName))
-                {
-                    return null;//UserSettings.GetDefaultSettings();
-                }
-
-                var forecastDay = new ForecastDayModel();
-
-                var ser = new XmlSerializer(typeof(ForecastDayModel));
-                using (TextReader reader = new StreamReader(XmlForecastDayFileName))
-                {
-                    forecastDay = ser.Deserialize(reader) as ForecastDayModel;
-                }
-
-                //var isValid = ValidateSettings(settings);
-                //if (isValid)
-                //{
-                //    return settings;
-                //}
-                //else
-                //{
-                //    throw new Exception(LanguageDictionary.Current.Translate<string>("readXmlValidateSettings_SttsHandler", "Content"));
-                //}
-                return forecastDay;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("XmlDataHandler.ReadXml(): " + LanguageDictionary.Current.Translate<string>("readXml_SttsHandler", "Content") + ex.Message);
-                //throw new Exception(LanguageDictionary.Current.Translate<string>("readXml_SttsHandler", "Content"));
-                return null;
-            }
-        }*/
-
-        private static void WriteForecastDetailedToXml(ForecastDetailed forecastDetailed)
-        {
-            try
-            {
-                var ser = new XmlSerializer(typeof(ForecastDetailed));
-                using (TextWriter writer = new StreamWriter(XmlForecastDetailedFileName))
-                {
-                    ser.Serialize(writer, forecastDetailed);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("WriteForecastDetailed.WriteXml(): " + LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content") + ex.Message);
-                //throw new Exception();
-                //throw new Exception(LanguageDictionary.Current.Translate<string>("writeXml_SttsHandler", "Content"));
-                //MessageBox.Show("Непредвиденная ошибка. Не удалось сохранить настройки. Текст ошибки: " + ex.Message);
-            }
-        }
-
+        /// <returns>Объект, содержащий информацию о погоде для выбранных городов</returns>
         private static ForecastDetailed ReadForecastDetailedFromXml()
         {
             try
             {
+                if (!Directory.Exists(XmlForecastDetailedDirName))
+                {
+                    return null;
+                }
                 //WriteXml(Settings.GetDefaultSettings());
                 if (!File.Exists(XmlForecastDetailedFileName))
                 {
@@ -237,10 +208,12 @@ namespace XMLDataHandler
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("XmlDataHandler.ReadForecastDetailedFromXml(): " + LanguageDictionary.Current.Translate<string>("readXml_SttsHandler", "Content") + ex.Message);
+                Debug.WriteLine("XmlDataHandler.ReadForecastDetailedFromXml(): " + LanguageDictionary.Current.Translate<string>("readForecastFromXml_SttsHandler", "Content") + ex.Message);
                 //throw new Exception(LanguageDictionary.Current.Translate<string>("readXml_SttsHandler", "Content"));
                 return null;
             }
         }
+
+        #endregion
     }
 }
