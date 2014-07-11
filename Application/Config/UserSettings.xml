@@ -18,13 +18,30 @@
         <cityEngName>Ulyanovsk</cityEngName>
       </city>
     </CitySettings>
+    <CitySettings>
+      <country>
+        <countryId>RU</countryId>
+        <countryRusName>Россия</countryRusName>
+        <countryEngName>Russian Federation</countryEngName>
+      </country>
+      <region>
+        <regionId>0</regionId>
+        <regionName>Region</regionName>
+      </region>
+      <city>
+        <cityYaId>36072</cityYaId>
+        <cityOWId>1512205</cityOWId>
+        <cityRusName>Абаза</cityRusName>
+        <cityEngName>abaza</cityEngName>
+      </city>
+    </CitySettings>
   </cities>
   <format>Detailed</format>
-  <updatePeriod>60</updatePeriod>
+  <updatePeriod>10</updatePeriod>
   <autostart>false</autostart>
   <temperatureUnits>
-    <rusName>Кельвины</rusName>
-    <engName>Kelvin</engName>
+    <rusName>Цельсии</rusName>
+    <engName>Celsius</engName>
   </temperatureUnits>
   <language>
     <rusName>Русский</rusName>
