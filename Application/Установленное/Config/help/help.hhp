@@ -1,0 +1,34 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=help.chm
+Contents file=Table of Contents.hhc
+Default topic=О программе.htm
+Display compile progress=No
+Full text search stop list file=search.stp
+Full-text search=Yes
+Index file=Index.hhk
+Language=0x419 Русский (Россия)
+Title=Help
+
+
+[FILES]
+Главное окно программыПК.htm
+ГрафикиПК.htm
+Диаграмма облачности.htm
+Изменение температуры за день.htm
+Изменение температуры за несколько дней.htm
+Назначение программы.htm
+НастройкиПК.htm
+О программе.htm
+Об авторах и принявших участие.htm
+Общие сведенияК.htm
+Параметры обновления.htm
+Прогноз.htm
+Работа с программойK.htm
+Система.htm
+Списки стран и городов.htm
+ТрейПК.htm
+Инсталляция.htm
+
+[INFOTYPES]
+
