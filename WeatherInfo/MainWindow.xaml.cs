@@ -117,6 +117,8 @@ namespace WeatherInfo
             preloaderRotationTimer.Tick += preloaderRotationTimer_Tick;
             preloaderRotationTimer.Start();
 
+            HelpImage.Source = ConvertBitmabToImage(Properties.Resources.help);
+
             SettingsImage.Source = ConvertBitmabToImage(Properties.Resources.Gear);
             rotationTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(10) };
             rotationTimer.Tick += rotationTimer_Tick;

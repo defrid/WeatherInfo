@@ -234,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Location\countries.txt" />
+    <None Include="Resources\gnome-help.png" />
     <None Include="Resources\preloader.png" />
     <None Include="Resources\config.ico" />
     <None Include="Resources\weather.ico" />

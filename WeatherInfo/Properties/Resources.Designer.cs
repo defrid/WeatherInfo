@@ -73,6 +73,16 @@ namespace WeatherInfo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap help {
+            get {
+                object obj = ResourceManager.GetObject("help", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Preloader {
             get {
                 object obj = ResourceManager.GetObject("Preloader", resourceCulture);
@@ -85,7 +95,7 @@ namespace WeatherInfo.Properties {
         /// </summary>
         internal static System.Drawing.Icon settingsGear {
             get {
-                object obj = ResourceManager.GetObject("settingsGear");
+                object obj = ResourceManager.GetObject("settingsGear", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
