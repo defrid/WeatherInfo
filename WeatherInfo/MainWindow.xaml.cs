@@ -64,6 +64,8 @@ namespace WeatherInfo
 
         private bool isDailyForecast = false;
 
+        SettingsWindow Setting_window;
+
         public MainWindow()
         {
             //Пример создания окна графиков
@@ -1230,7 +1232,9 @@ namespace WeatherInfo
 
         void options()
         {
-            new SettingsWindow(this).Show();
+            if (Setting_window != null) Setting_window.Close();
+            Setting_window = new SettingsWindow(this);
+            Setting_window.Show();
         }
 
         void help()
@@ -1280,7 +1284,9 @@ namespace WeatherInfo
         /// <param name="e"></param>
         private void SettingsImage_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            new SettingsWindow(this).Show();
+            if (Setting_window != null) Setting_window.Close();
+            Setting_window = new SettingsWindow(this);
+            Setting_window.Show();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

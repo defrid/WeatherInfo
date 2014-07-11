@@ -85,26 +85,26 @@
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>20</temp>
+            <temp>21</temp>
             <clouds>clear</clouds>
             <time>13</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
             <temp>21</temp>
-            <clouds>partly-cloudy</clouds>
+            <clouds>cloudy</clouds>
             <time>14</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
             <temp>21</temp>
-            <clouds>partly-cloudy</clouds>
+            <clouds>cloudy</clouds>
             <time>15</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
             <temp>22</temp>
-            <clouds>partly-cloudy</clouds>
+            <clouds>cloudy</clouds>
             <time>16</time>
             <icon>bkn_d</icon>
           </ForecastHour>
@@ -115,7 +115,7 @@
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>20</temp>
+            <temp>21</temp>
             <clouds>mostly-clear</clouds>
             <time>18</time>
             <icon>bkn_d</icon>
@@ -145,10 +145,10 @@
             <icon>skc_n</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>14</temp>
-            <clouds>clear</clouds>
+            <temp>15</temp>
+            <clouds>partly-cloudy</clouds>
             <time>23</time>
-            <icon>skc_n</icon>
+            <icon>bkn_n</icon>
           </ForecastHour>
           <ForecastHour>
             <temp>18</temp>
@@ -158,21 +158,21 @@
           </ForecastHour>
           <ForecastHour>
             <temp>22</temp>
-            <clouds>mostly-clear</clouds>
+            <clouds>partly-cloudy</clouds>
             <time>day</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>20</temp>
-            <clouds>clear</clouds>
+            <temp>21</temp>
+            <clouds>mostly-clear</clouds>
             <time>evening</time>
-            <icon>skc_d</icon>
+            <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>13</temp>
-            <clouds>clear</clouds>
+            <temp>14</temp>
+            <clouds>mostly-clear</clouds>
             <time>night</time>
-            <icon>skc_n</icon>
+            <icon>bkn_n</icon>
           </ForecastHour>
         </hours>
         <date>2014-07-11</date>
@@ -182,37 +182,37 @@
         <min>0</min>
         <hours>
           <ForecastHour>
-            <temp>13</temp>
-            <clouds>clear</clouds>
+            <temp>14</temp>
+            <clouds>partly-cloudy</clouds>
             <time>00</time>
-            <icon>skc_n</icon>
+            <icon>bkn_n</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>12</temp>
-            <clouds>clear</clouds>
+            <temp>13</temp>
+            <clouds>partly-cloudy</clouds>
             <time>01</time>
-            <icon>skc_n</icon>
+            <icon>bkn_n</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>11</temp>
+            <temp>13</temp>
             <clouds>clear</clouds>
             <time>02</time>
             <icon>skc_n</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>11</temp>
+            <temp>12</temp>
             <clouds>clear</clouds>
             <time>03</time>
             <icon>skc_n</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>10</temp>
+            <temp>12</temp>
             <clouds>clear</clouds>
             <time>04</time>
             <icon>skc_n</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>12</temp>
+            <temp>13</temp>
             <clouds>clear</clouds>
             <time>05</time>
             <icon>skc_d</icon>
@@ -236,7 +236,7 @@
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>17</temp>
+            <temp>16</temp>
             <clouds>cloudy</clouds>
             <time>09</time>
             <icon>bkn_d</icon>
@@ -260,63 +260,69 @@
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>20</temp>
+            <temp>19</temp>
             <clouds>clear</clouds>
             <time>13</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>21</temp>
+            <temp>19</temp>
             <clouds>clear</clouds>
             <time>14</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>21</temp>
+            <temp>20</temp>
             <clouds>clear</clouds>
             <time>15</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>21</temp>
+            <temp>20</temp>
             <clouds>clear</clouds>
             <time>16</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>21</temp>
+            <temp>19</temp>
             <clouds>clear</clouds>
             <time>17</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>20</temp>
+            <temp>19</temp>
             <clouds>clear</clouds>
             <time>18</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>20</temp>
+            <temp>19</temp>
             <clouds>clear</clouds>
             <time>19</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>18</temp>
+            <temp>17</temp>
             <clouds>clear</clouds>
             <time>20</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>16</temp>
+            <temp>15</temp>
             <clouds>clear</clouds>
             <time>21</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>15</temp>
+            <temp>14</temp>
             <clouds>clear</clouds>
             <time>22</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>13</temp>
+            <clouds>clear</clouds>
+            <time>23</time>
             <icon>skc_n</icon>
           </ForecastHour>
           <ForecastHour>
@@ -326,19 +332,1219 @@
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>21</temp>
+            <temp>20</temp>
             <clouds>clear</clouds>
             <time>day</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>20</temp>
+            <temp>19</temp>
             <clouds>clear</clouds>
             <time>evening</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
+            <temp>14</temp>
+            <clouds>clear</clouds>
+            <time>night</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-12</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>21</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Утро</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>partly-cloudy-and-light-rain</clouds>
+            <time>День</time>
+            <icon>bkn_-ra_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>Вечер</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>20</temp>
+            <clouds>clear</clouds>
+            <time>Ночь</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-13</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>21</temp>
+            <clouds>clear</clouds>
+            <time>Утро</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>clear</clouds>
+            <time>День</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>clear</clouds>
+            <time>Вечер</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>18</temp>
+            <clouds>clear</clouds>
+            <time>Ночь</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-14</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>23</temp>
+            <clouds>clear</clouds>
+            <time>Утро</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>27</temp>
+            <clouds>clear</clouds>
+            <time>День</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>27</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Вечер</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>21</temp>
+            <clouds>clear</clouds>
+            <time>Ночь</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-15</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>27</temp>
+            <clouds>clear</clouds>
+            <time>Утро</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>30</temp>
+            <clouds>mostly-clear</clouds>
+            <time>День</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>30</temp>
+            <clouds>clear</clouds>
+            <time>Вечер</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>22</temp>
+            <clouds>clear</clouds>
+            <time>Ночь</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-16</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>26</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Утро</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>28</temp>
+            <clouds>mostly-clear</clouds>
+            <time>День</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>28</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Вечер</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>22</temp>
+            <clouds>clear</clouds>
+            <time>Ночь</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-17</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>22</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Утро</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>mostly-clear</clouds>
+            <time>День</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Вечер</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>clear</clouds>
+            <time>Ночь</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-18</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>20</temp>
+            <clouds>clear</clouds>
+            <time>Утро</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>23</temp>
+            <clouds>mostly-clear</clouds>
+            <time>День</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>23</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>Вечер</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>18</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Ночь</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-19</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Утро</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>23</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>День</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>23</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Вечер</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>17</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Ночь</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-20</date>
+      </ForecastDay>
+    </ArrayOfForecastDay>
+    <ArrayOfForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>12</temp>
+            <clouds>overcast</clouds>
+            <time>00</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>11</temp>
+            <clouds>overcast</clouds>
+            <time>01</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>11</temp>
+            <clouds>overcast</clouds>
+            <time>02</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>11</temp>
+            <clouds>overcast-and-light-rain</clouds>
+            <time>03</time>
+            <icon>ovc_-ra</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>11</temp>
+            <clouds>overcast-and-light-rain</clouds>
+            <time>04</time>
+            <icon>ovc_-ra</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>11</temp>
+            <clouds>overcast-and-light-rain</clouds>
+            <time>05</time>
+            <icon>ovc_-ra</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>11</temp>
+            <clouds>overcast-and-light-rain</clouds>
+            <time>06</time>
+            <icon>ovc_-ra</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>10</temp>
+            <clouds>overcast-and-light-rain</clouds>
+            <time>07</time>
+            <icon>ovc_-ra</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>10</temp>
+            <clouds>overcast-and-light-rain</clouds>
+            <time>08</time>
+            <icon>ovc_-ra</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>10</temp>
+            <clouds>overcast-and-light-rain</clouds>
+            <time>09</time>
+            <icon>ovc_-ra</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>11</temp>
+            <clouds>overcast-and-light-rain</clouds>
+            <time>10</time>
+            <icon>ovc_-ra</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>11</temp>
+            <clouds>overcast</clouds>
+            <time>11</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>12</temp>
+            <clouds>overcast</clouds>
+            <time>12</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>13</temp>
+            <clouds>overcast</clouds>
+            <time>13</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>14</temp>
+            <clouds>overcast</clouds>
+            <time>14</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>16</temp>
+            <clouds>overcast</clouds>
+            <time>15</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>18</temp>
+            <clouds>overcast</clouds>
+            <time>16</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>18</temp>
+            <clouds>overcast</clouds>
+            <time>17</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>overcast</clouds>
+            <time>18</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>overcast</clouds>
+            <time>19</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>cloudy</clouds>
+            <time>20</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>18</temp>
+            <clouds>cloudy</clouds>
+            <time>21</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>18</temp>
+            <clouds>cloudy</clouds>
+            <time>22</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>17</temp>
+            <clouds>mostly-clear</clouds>
+            <time>23</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>11</temp>
+            <clouds>overcast-and-light-rain</clouds>
+            <time>morning</time>
+            <icon>ovc_-ra</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>18</temp>
+            <clouds>overcast</clouds>
+            <time>day</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>cloudy</clouds>
+            <time>evening</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>17</temp>
+            <clouds>clear</clouds>
+            <time>night</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-11</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>17</temp>
+            <clouds>mostly-clear</clouds>
+            <time>00</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>16</temp>
+            <clouds>mostly-clear</clouds>
+            <time>01</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+          <ForecastHour>
             <temp>15</temp>
+            <clouds>clear</clouds>
+            <time>02</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>15</temp>
+            <clouds>clear</clouds>
+            <time>03</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>14</temp>
+            <clouds>clear</clouds>
+            <time>04</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>14</temp>
+            <clouds>clear</clouds>
+            <time>05</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>14</temp>
+            <clouds>clear</clouds>
+            <time>06</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>14</temp>
+            <clouds>clear</clouds>
+            <time>07</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>16</temp>
+            <clouds>mostly-clear</clouds>
+            <time>08</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>17</temp>
+            <clouds>mostly-clear</clouds>
+            <time>09</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>mostly-clear</clouds>
+            <time>10</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>20</temp>
+            <clouds>clear</clouds>
+            <time>11</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>21</temp>
+            <clouds>clear</clouds>
+            <time>12</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>22</temp>
+            <clouds>clear</clouds>
+            <time>13</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>23</temp>
+            <clouds>clear</clouds>
+            <time>14</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>24</temp>
+            <clouds>clear</clouds>
+            <time>15</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>clear</clouds>
+            <time>16</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>clear</clouds>
+            <time>17</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>clear</clouds>
+            <time>18</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>24</temp>
+            <clouds>clear</clouds>
+            <time>19</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>23</temp>
+            <clouds>clear</clouds>
+            <time>20</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>22</temp>
+            <clouds>clear</clouds>
+            <time>21</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>21</temp>
+            <clouds>clear</clouds>
+            <time>22</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>20</temp>
+            <clouds>clear</clouds>
+            <time>23</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>20</temp>
+            <clouds>mostly-clear</clouds>
+            <time>morning</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>clear</clouds>
+            <time>day</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>clear</clouds>
+            <time>evening</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>21</temp>
+            <clouds>clear</clouds>
+            <time>night</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-12</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>22</temp>
+            <clouds>clear</clouds>
+            <time>Утро</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>27</temp>
+            <clouds>clear</clouds>
+            <time>День</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>27</temp>
+            <clouds>clear</clouds>
+            <time>Вечер</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>23</temp>
+            <clouds>clear</clouds>
+            <time>Ночь</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-13</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>23</temp>
+            <clouds>clear</clouds>
+            <time>Утро</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>30</temp>
+            <clouds>clear</clouds>
+            <time>День</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>30</temp>
+            <clouds>clear</clouds>
+            <time>Вечер</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>24</temp>
+            <clouds>clear</clouds>
+            <time>Ночь</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-14</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>26</temp>
+            <clouds>clear</clouds>
+            <time>Утро</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>30</temp>
+            <clouds>cloudy</clouds>
+            <time>День</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>30</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>Вечер</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>24</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Ночь</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-15</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>27</temp>
+            <clouds>clear</clouds>
+            <time>Утро</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>29</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>День</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>29</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Вечер</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>24</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Ночь</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-16</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>26</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Утро</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>30</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>День</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>30</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>Вечер</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>24</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Ночь</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-17</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>24</temp>
+            <clouds>clear</clouds>
+            <time>Утро</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>27</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>День</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>27</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>Вечер</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>22</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Ночь</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-18</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>22</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>Утро</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>День</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Вечер</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>21</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Ночь</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-19</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>21</temp>
+            <clouds>mostly-clear</clouds>
+            <time>Утро</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>cloudy</clouds>
+            <time>День</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>25</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>Вечер</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>21</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>Ночь</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-20</date>
+      </ForecastDay>
+    </ArrayOfForecastDay>
+    <ArrayOfForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>15</temp>
+            <clouds>overcast-and-light-rain</clouds>
+            <time>00</time>
+            <icon>ovc_-ra</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>14</temp>
+            <clouds>overcast-and-light-rain</clouds>
+            <time>01</time>
+            <icon>ovc_-ra</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>13</temp>
+            <clouds>overcast-and-light-rain</clouds>
+            <time>02</time>
+            <icon>ovc_-ra</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>12</temp>
+            <clouds>cloudy-and-light-rain</clouds>
+            <time>03</time>
+            <icon>bkn_-ra_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>12</temp>
+            <clouds>cloudy-and-light-rain</clouds>
+            <time>04</time>
+            <icon>bkn_-ra_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>12</temp>
+            <clouds>mostly-clear</clouds>
+            <time>05</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>11</temp>
+            <clouds>mostly-clear</clouds>
+            <time>06</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>12</temp>
+            <clouds>mostly-clear</clouds>
+            <time>07</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>12</temp>
+            <clouds>mostly-clear</clouds>
+            <time>08</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>14</temp>
+            <clouds>mostly-clear</clouds>
+            <time>09</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>16</temp>
+            <clouds>mostly-clear</clouds>
+            <time>10</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>16</temp>
+            <clouds>cloudy</clouds>
+            <time>11</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>17</temp>
+            <clouds>cloudy</clouds>
+            <time>12</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>17</temp>
+            <clouds>cloudy</clouds>
+            <time>13</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>18</temp>
+            <clouds>cloudy</clouds>
+            <time>14</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>18</temp>
+            <clouds>cloudy</clouds>
+            <time>15</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>cloudy</clouds>
+            <time>16</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>overcast</clouds>
+            <time>17</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>18</temp>
+            <clouds>overcast</clouds>
+            <time>18</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>18</temp>
+            <clouds>overcast</clouds>
+            <time>19</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>17</temp>
+            <clouds>overcast</clouds>
+            <time>20</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>16</temp>
+            <clouds>overcast</clouds>
+            <time>21</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>15</temp>
+            <clouds>overcast</clouds>
+            <time>22</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>14</temp>
+            <clouds>overcast</clouds>
+            <time>23</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>16</temp>
+            <clouds>mostly-clear</clouds>
+            <time>morning</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>cloudy</clouds>
+            <time>day</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>18</temp>
+            <clouds>overcast</clouds>
+            <time>evening</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>14</temp>
+            <clouds>partly-cloudy</clouds>
+            <time>night</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+        </hours>
+        <date>2014-07-11</date>
+      </ForecastDay>
+      <ForecastDay>
+        <max>0</max>
+        <min>0</min>
+        <hours>
+          <ForecastHour>
+            <temp>14</temp>
+            <clouds>overcast</clouds>
+            <time>00</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>13</temp>
+            <clouds>overcast</clouds>
+            <time>01</time>
+            <icon>ovc</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>13</temp>
+            <clouds>mostly-clear</clouds>
+            <time>02</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>12</temp>
+            <clouds>mostly-clear</clouds>
+            <time>03</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>12</temp>
+            <clouds>mostly-clear</clouds>
+            <time>04</time>
+            <icon>bkn_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>13</temp>
+            <clouds>clear</clouds>
+            <time>05</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>13</temp>
+            <clouds>clear</clouds>
+            <time>06</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>14</temp>
+            <clouds>clear</clouds>
+            <time>07</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>15</temp>
+            <clouds>mostly-clear</clouds>
+            <time>08</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>15</temp>
+            <clouds>mostly-clear</clouds>
+            <time>09</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>16</temp>
+            <clouds>mostly-clear</clouds>
+            <time>10</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>16</temp>
+            <clouds>clear</clouds>
+            <time>11</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>16</temp>
+            <clouds>clear</clouds>
+            <time>12</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>16</temp>
+            <clouds>clear</clouds>
+            <time>13</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>17</temp>
+            <clouds>clear</clouds>
+            <time>14</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>18</temp>
+            <clouds>clear</clouds>
+            <time>15</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>clear</clouds>
+            <time>16</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>clear</clouds>
+            <time>17</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>clear</clouds>
+            <time>18</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>clear</clouds>
+            <time>19</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>17</temp>
+            <clouds>clear</clouds>
+            <time>20</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>15</temp>
+            <clouds>clear</clouds>
+            <time>21</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>14</temp>
+            <clouds>clear</clouds>
+            <time>22</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>13</temp>
+            <clouds>clear</clouds>
+            <time>23</time>
+            <icon>skc_n</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>16</temp>
+            <clouds>mostly-clear</clouds>
+            <time>morning</time>
+            <icon>bkn_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>clear</clouds>
+            <time>day</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>19</temp>
+            <clouds>clear</clouds>
+            <time>evening</time>
+            <icon>skc_d</icon>
+          </ForecastHour>
+          <ForecastHour>
+            <temp>14</temp>
             <clouds>overcast</clouds>
             <time>night</time>
             <icon>ovc</icon>
@@ -351,13 +1557,13 @@
         <min>0</min>
         <hours>
           <ForecastHour>
-            <temp>21</temp>
+            <temp>20</temp>
             <clouds>cloudy</clouds>
             <time>Утро</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>24</temp>
+            <temp>25</temp>
             <clouds>partly-cloudy-and-light-rain</clouds>
             <time>День</time>
             <icon>bkn_-ra_d</icon>
@@ -369,7 +1575,7 @@
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>21</temp>
+            <temp>19</temp>
             <clouds>clear</clouds>
             <time>Ночь</time>
             <icon>skc_n</icon>
@@ -382,25 +1588,25 @@
         <min>0</min>
         <hours>
           <ForecastHour>
-            <temp>24</temp>
+            <temp>21</temp>
             <clouds>clear</clouds>
             <time>Утро</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>27</temp>
-            <clouds>mostly-clear</clouds>
+            <temp>25</temp>
+            <clouds>clear</clouds>
             <time>День</time>
-            <icon>bkn_d</icon>
+            <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>26</temp>
-            <clouds>cloudy</clouds>
+            <temp>25</temp>
+            <clouds>clear</clouds>
             <time>Вечер</time>
-            <icon>bkn_d</icon>
+            <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>21</temp>
+            <temp>17</temp>
             <clouds>mostly-clear</clouds>
             <time>Ночь</time>
             <icon>bkn_n</icon>
@@ -413,109 +1619,16 @@
         <min>0</min>
         <hours>
           <ForecastHour>
-            <temp>26</temp>
+            <temp>24</temp>
             <clouds>mostly-clear</clouds>
             <time>Утро</time>
             <icon>bkn_d</icon>
           </ForecastHour>
-          <ForecastHour>
-            <temp>29</temp>
-            <clouds>mostly-clear</clouds>
-            <time>День</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>29</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Вечер</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>23</temp>
-            <clouds>clear</clouds>
-            <time>Ночь</time>
-            <icon>skc_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-15</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
           <ForecastHour>
             <temp>28</temp>
             <clouds>clear</clouds>
-            <time>Утро</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>30</temp>
-            <clouds>mostly-clear</clouds>
             <time>День</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>30</temp>
-            <clouds>clear</clouds>
-            <time>Вечер</time>
             <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>23</temp>
-            <clouds>clear</clouds>
-            <time>Ночь</time>
-            <icon>skc_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-16</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>27</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Утро</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>29</temp>
-            <clouds>mostly-clear</clouds>
-            <time>День</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>29</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Вечер</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>22</temp>
-            <clouds>clear</clouds>
-            <time>Ночь</time>
-            <icon>skc_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-17</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>25</temp>
-            <clouds>clear</clouds>
-            <time>Утро</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>28</temp>
-            <clouds>mostly-clear</clouds>
-            <time>День</time>
-            <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
             <temp>28</temp>
@@ -525,507 +1638,6 @@
           </ForecastHour>
           <ForecastHour>
             <temp>22</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Ночь</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-18</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>24</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Утро</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>27</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>День</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>27</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>Вечер</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>21</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Ночь</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-19</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>23</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Утро</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>26</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>День</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>26</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>Вечер</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>20</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Ночь</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-20</date>
-      </ForecastDay>
-    </ArrayOfForecastDay>
-    <ArrayOfForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>12</temp>
-            <clouds>overcast</clouds>
-            <time>00</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>11</temp>
-            <clouds>overcast</clouds>
-            <time>01</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>11</temp>
-            <clouds>overcast</clouds>
-            <time>02</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>11</temp>
-            <clouds>overcast-and-light-rain</clouds>
-            <time>03</time>
-            <icon>ovc_-ra</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>11</temp>
-            <clouds>overcast-and-light-rain</clouds>
-            <time>04</time>
-            <icon>ovc_-ra</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>11</temp>
-            <clouds>overcast-and-light-rain</clouds>
-            <time>05</time>
-            <icon>ovc_-ra</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>11</temp>
-            <clouds>overcast-and-light-rain</clouds>
-            <time>06</time>
-            <icon>ovc_-ra</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>10</temp>
-            <clouds>overcast-and-light-rain</clouds>
-            <time>07</time>
-            <icon>ovc_-ra</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>10</temp>
-            <clouds>overcast-and-light-rain</clouds>
-            <time>08</time>
-            <icon>ovc_-ra</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>10</temp>
-            <clouds>overcast-and-light-rain</clouds>
-            <time>09</time>
-            <icon>ovc_-ra</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>11</temp>
-            <clouds>overcast-and-light-rain</clouds>
-            <time>10</time>
-            <icon>ovc_-ra</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>12</temp>
-            <clouds>overcast</clouds>
-            <time>11</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>12</temp>
-            <clouds>overcast</clouds>
-            <time>12</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>13</temp>
-            <clouds>overcast</clouds>
-            <time>13</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>15</temp>
-            <clouds>cloudy</clouds>
-            <time>14</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>17</temp>
-            <clouds>cloudy</clouds>
-            <time>15</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>18</temp>
-            <clouds>cloudy</clouds>
-            <time>16</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>19</temp>
-            <clouds>overcast</clouds>
-            <time>17</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>20</temp>
-            <clouds>overcast</clouds>
-            <time>18</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>20</temp>
-            <clouds>overcast</clouds>
-            <time>19</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>20</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>20</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>19</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>21</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>19</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>22</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>18</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>23</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>12</temp>
-            <clouds>overcast-and-light-rain</clouds>
-            <time>morning</time>
-            <icon>ovc_-ra</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>19</temp>
-            <clouds>overcast</clouds>
-            <time>day</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>20</temp>
-            <clouds>cloudy</clouds>
-            <time>evening</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>17</temp>
-            <clouds>mostly-clear</clouds>
-            <time>night</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-11</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>17</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>00</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>16</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>01</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>15</temp>
-            <clouds>mostly-clear</clouds>
-            <time>02</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>15</temp>
-            <clouds>mostly-clear</clouds>
-            <time>03</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>14</temp>
-            <clouds>mostly-clear</clouds>
-            <time>04</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>14</temp>
-            <clouds>clear</clouds>
-            <time>05</time>
-            <icon>skc_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>15</temp>
-            <clouds>clear</clouds>
-            <time>06</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>15</temp>
-            <clouds>clear</clouds>
-            <time>07</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>16</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>08</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>18</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>09</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>19</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>10</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>20</temp>
-            <clouds>mostly-clear</clouds>
-            <time>11</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>21</temp>
-            <clouds>mostly-clear</clouds>
-            <time>12</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>22</temp>
-            <clouds>mostly-clear</clouds>
-            <time>13</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>23</temp>
-            <clouds>clear</clouds>
-            <time>14</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>24</temp>
-            <clouds>clear</clouds>
-            <time>15</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>25</temp>
-            <clouds>clear</clouds>
-            <time>16</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>24</temp>
-            <clouds>clear</clouds>
-            <time>17</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>24</temp>
-            <clouds>clear</clouds>
-            <time>18</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>24</temp>
-            <clouds>clear</clouds>
-            <time>19</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>23</temp>
-            <clouds>clear</clouds>
-            <time>20</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>22</temp>
-            <clouds>clear</clouds>
-            <time>21</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>21</temp>
-            <clouds>clear</clouds>
-            <time>22</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>20</temp>
-            <clouds>mostly-clear</clouds>
-            <time>morning</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>25</temp>
-            <clouds>clear</clouds>
-            <time>day</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>24</temp>
-            <clouds>clear</clouds>
-            <time>evening</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>22</temp>
-            <clouds>clear</clouds>
-            <time>night</time>
-            <icon>skc_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-12</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>22</temp>
-            <clouds>clear</clouds>
-            <time>Утро</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>27</temp>
-            <clouds>clear</clouds>
-            <time>День</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>27</temp>
-            <clouds>clear</clouds>
-            <time>Вечер</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>23</temp>
-            <clouds>clear</clouds>
-            <time>Ночь</time>
-            <icon>skc_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-13</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>23</temp>
-            <clouds>clear</clouds>
-            <time>Утро</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>30</temp>
-            <clouds>clear</clouds>
-            <time>День</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>30</temp>
-            <clouds>clear</clouds>
-            <time>Вечер</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>24</temp>
-            <clouds>clear</clouds>
-            <time>Ночь</time>
-            <icon>skc_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-14</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>25</temp>
-            <clouds>clear</clouds>
-            <time>Утро</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>31</temp>
-            <clouds>clear</clouds>
-            <time>День</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>31</temp>
-            <clouds>clear</clouds>
-            <time>Вечер</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>25</temp>
             <clouds>clear</clouds>
             <time>Ночь</time>
             <icon>skc_n</icon>
@@ -1044,613 +1656,19 @@
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>31</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>День</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>31</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Вечер</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>26</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Ночь</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-16</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>27</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Утро</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
             <temp>30</temp>
-            <clouds>partly-cloudy</clouds>
+            <clouds>mostly-clear</clouds>
             <time>День</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
             <temp>30</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>Вечер</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>25</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Ночь</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-17</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>25</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Утро</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>28</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>День</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>28</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>Вечер</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>24</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Ночь</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-18</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>23</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Утро</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>27</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>День</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>27</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Вечер</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>23</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Ночь</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-19</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>23</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Утро</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>26</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>День</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>26</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Вечер</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>23</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Ночь</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-20</date>
-      </ForecastDay>
-    </ArrayOfForecastDay>
-    <ArrayOfForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>15</temp>
-            <clouds>overcast-and-light-rain</clouds>
-            <time>00</time>
-            <icon>ovc_-ra</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>14</temp>
-            <clouds>overcast-and-light-rain</clouds>
-            <time>01</time>
-            <icon>ovc_-ra</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>13</temp>
-            <clouds>overcast-and-light-rain</clouds>
-            <time>02</time>
-            <icon>ovc_-ra</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>12</temp>
-            <clouds>cloudy-and-light-rain</clouds>
-            <time>03</time>
-            <icon>bkn_-ra_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>12</temp>
-            <clouds>cloudy-and-light-rain</clouds>
-            <time>04</time>
-            <icon>bkn_-ra_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>12</temp>
-            <clouds>mostly-clear</clouds>
-            <time>05</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>11</temp>
-            <clouds>mostly-clear</clouds>
-            <time>06</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>12</temp>
-            <clouds>mostly-clear</clouds>
-            <time>07</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>12</temp>
-            <clouds>mostly-clear</clouds>
-            <time>08</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>14</temp>
-            <clouds>mostly-clear</clouds>
-            <time>09</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>16</temp>
-            <clouds>mostly-clear</clouds>
-            <time>10</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>16</temp>
-            <clouds>clear</clouds>
-            <time>11</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>17</temp>
-            <clouds>clear</clouds>
-            <time>12</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>18</temp>
-            <clouds>clear</clouds>
-            <time>13</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>18</temp>
             <clouds>cloudy</clouds>
-            <time>14</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>19</temp>
-            <clouds>cloudy</clouds>
-            <time>15</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>19</temp>
-            <clouds>cloudy</clouds>
-            <time>16</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>19</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>17</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>18</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>18</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>18</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>19</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>17</temp>
-            <clouds>cloudy</clouds>
-            <time>20</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>16</temp>
-            <clouds>cloudy</clouds>
-            <time>21</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>15</temp>
-            <clouds>cloudy</clouds>
-            <time>22</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>15</temp>
-            <clouds>cloudy</clouds>
-            <time>23</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>16</temp>
-            <clouds>mostly-clear</clouds>
-            <time>morning</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>19</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>day</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>18</temp>
-            <clouds>cloudy</clouds>
-            <time>evening</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>15</temp>
-            <clouds>cloudy</clouds>
-            <time>night</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-11</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>15</temp>
-            <clouds>cloudy</clouds>
-            <time>00</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>14</temp>
-            <clouds>cloudy</clouds>
-            <time>01</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>14</temp>
-            <clouds>cloudy</clouds>
-            <time>02</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>14</temp>
-            <clouds>cloudy</clouds>
-            <time>03</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>14</temp>
-            <clouds>cloudy</clouds>
-            <time>04</time>
-            <icon>bkn_n</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>14</temp>
-            <clouds>clear</clouds>
-            <time>05</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>14</temp>
-            <clouds>clear</clouds>
-            <time>06</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>15</temp>
-            <clouds>clear</clouds>
-            <time>07</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>15</temp>
-            <clouds>mostly-clear</clouds>
-            <time>08</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>16</temp>
-            <clouds>mostly-clear</clouds>
-            <time>09</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>17</temp>
-            <clouds>mostly-clear</clouds>
-            <time>10</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>17</temp>
-            <clouds>clear</clouds>
-            <time>11</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>17</temp>
-            <clouds>clear</clouds>
-            <time>12</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>18</temp>
-            <clouds>clear</clouds>
-            <time>13</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>18</temp>
-            <clouds>clear</clouds>
-            <time>14</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>19</temp>
-            <clouds>clear</clouds>
-            <time>15</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>20</temp>
-            <clouds>clear</clouds>
-            <time>16</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>20</temp>
-            <clouds>clear</clouds>
-            <time>17</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>19</temp>
-            <clouds>clear</clouds>
-            <time>18</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>19</temp>
-            <clouds>clear</clouds>
-            <time>19</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>18</temp>
-            <clouds>overcast</clouds>
-            <time>20</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>17</temp>
-            <clouds>overcast</clouds>
-            <time>21</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>16</temp>
-            <clouds>overcast</clouds>
-            <time>22</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>17</temp>
-            <clouds>mostly-clear</clouds>
-            <time>morning</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>20</temp>
-            <clouds>clear</clouds>
-            <time>day</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>19</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>evening</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>15</temp>
-            <clouds>overcast</clouds>
-            <time>night</time>
-            <icon>ovc</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-12</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>21</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Утро</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>25</temp>
-            <clouds>partly-cloudy</clouds>
-            <time>День</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>26</temp>
-            <clouds>mostly-clear</clouds>
             <time>Вечер</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
             <temp>22</temp>
-            <clouds>clear</clouds>
-            <time>Ночь</time>
-            <icon>skc_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-13</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>24</temp>
-            <clouds>clear</clouds>
-            <time>Утро</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>27</temp>
-            <clouds>clear</clouds>
-            <time>День</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>27</temp>
-            <clouds>clear</clouds>
-            <time>Вечер</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>22</temp>
-            <clouds>clear</clouds>
-            <time>Ночь</time>
-            <icon>skc_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-14</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>27</temp>
-            <clouds>clear</clouds>
-            <time>Утро</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>28</temp>
-            <clouds>cloudy</clouds>
-            <time>День</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>28</temp>
-            <clouds>clear</clouds>
-            <time>Вечер</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>22</temp>
-            <clouds>clear</clouds>
-            <time>Ночь</time>
-            <icon>skc_n</icon>
-          </ForecastHour>
-        </hours>
-        <date>2014-07-15</date>
-      </ForecastDay>
-      <ForecastDay>
-        <max>0</max>
-        <min>0</min>
-        <hours>
-          <ForecastHour>
-            <temp>27</temp>
-            <clouds>clear</clouds>
-            <time>Утро</time>
-            <icon>skc_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>30</temp>
-            <clouds>mostly-clear</clouds>
-            <time>День</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>30</temp>
-            <clouds>mostly-clear</clouds>
-            <time>Вечер</time>
-            <icon>bkn_d</icon>
-          </ForecastHour>
-          <ForecastHour>
-            <temp>23</temp>
             <clouds>clear</clouds>
             <time>Ночь</time>
             <icon>skc_n</icon>
@@ -1663,25 +1681,25 @@
         <min>0</min>
         <hours>
           <ForecastHour>
-            <temp>26</temp>
-            <clouds>mostly-clear</clouds>
+            <temp>24</temp>
+            <clouds>clear</clouds>
             <time>Утро</time>
-            <icon>bkn_d</icon>
+            <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>28</temp>
+            <temp>26</temp>
             <clouds>mostly-clear</clouds>
             <time>День</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>28</temp>
-            <clouds>clear</clouds>
+            <temp>26</temp>
+            <clouds>mostly-clear</clouds>
             <time>Вечер</time>
-            <icon>skc_d</icon>
+            <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>22</temp>
+            <temp>20</temp>
             <clouds>clear</clouds>
             <time>Ночь</time>
             <icon>skc_n</icon>
@@ -1694,28 +1712,28 @@
         <min>0</min>
         <hours>
           <ForecastHour>
-            <temp>24</temp>
+            <temp>21</temp>
             <clouds>clear</clouds>
             <time>Утро</time>
             <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>27</temp>
+            <temp>23</temp>
             <clouds>mostly-clear</clouds>
             <time>День</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>27</temp>
-            <clouds>mostly-clear</clouds>
+            <temp>23</temp>
+            <clouds>clear</clouds>
             <time>Вечер</time>
-            <icon>bkn_d</icon>
+            <icon>skc_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>21</temp>
-            <clouds>mostly-clear</clouds>
+            <temp>18</temp>
+            <clouds>clear</clouds>
             <time>Ночь</time>
-            <icon>bkn_n</icon>
+            <icon>skc_n</icon>
           </ForecastHour>
         </hours>
         <date>2014-07-18</date>
@@ -1725,25 +1743,25 @@
         <min>0</min>
         <hours>
           <ForecastHour>
-            <temp>23</temp>
-            <clouds>mostly-clear</clouds>
+            <temp>19</temp>
+            <clouds>partly-cloudy</clouds>
             <time>Утро</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>26</temp>
-            <clouds>partly-cloudy</clouds>
+            <temp>23</temp>
+            <clouds>cloudy</clouds>
             <time>День</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>26</temp>
+            <temp>23</temp>
             <clouds>partly-cloudy</clouds>
             <time>Вечер</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>21</temp>
+            <temp>18</temp>
             <clouds>mostly-clear</clouds>
             <time>Ночь</time>
             <icon>bkn_n</icon>
@@ -1756,26 +1774,26 @@
         <min>0</min>
         <hours>
           <ForecastHour>
-            <temp>22</temp>
+            <temp>19</temp>
             <clouds>partly-cloudy</clouds>
             <time>Утро</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>25</temp>
+            <temp>22</temp>
             <clouds>partly-cloudy</clouds>
             <time>День</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>25</temp>
+            <temp>22</temp>
             <clouds>partly-cloudy</clouds>
             <time>Вечер</time>
             <icon>bkn_d</icon>
           </ForecastHour>
           <ForecastHour>
-            <temp>20</temp>
-            <clouds>mostly-clear</clouds>
+            <temp>18</temp>
+            <clouds>partly-cloudy</clouds>
             <time>Ночь</time>
             <icon>bkn_n</icon>
           </ForecastHour>
@@ -1788,13 +1806,13 @@
     <ArrayOfForecastDay>
       <ForecastDay>
         <max>22</max>
-        <min>13</min>
+        <min>14</min>
         <date>2014-07-11</date>
         <icon>10d</icon>
       </ForecastDay>
       <ForecastDay>
-        <max>21</max>
-        <min>10</min>
+        <max>20</max>
+        <min>12</min>
         <date>2014-07-12</date>
         <icon>01d</icon>
       </ForecastDay>
@@ -1836,13 +1854,13 @@
       </ForecastDay>
       <ForecastDay>
         <max>32</max>
-        <min>21</min>
+        <min>18</min>
         <date>2014-07-19</date>
         <icon>10d</icon>
       </ForecastDay>
       <ForecastDay>
         <max>33</max>
-        <min>20</min>
+        <min>17</min>
         <date>2014-07-20</date>
         <icon>01d</icon>
       </ForecastDay>
@@ -1873,20 +1891,20 @@
     </ArrayOfForecastDay>
     <ArrayOfForecastDay>
       <ForecastDay>
-        <max>20</max>
-        <min>8</min>
+        <max>19</max>
+        <min>10</min>
         <date>2014-07-11</date>
         <icon>01d</icon>
       </ForecastDay>
       <ForecastDay>
         <max>25</max>
-        <min>8</min>
+        <min>11</min>
         <date>2014-07-12</date>
         <icon>01d</icon>
       </ForecastDay>
       <ForecastDay>
-        <max>28</max>
-        <min>15</min>
+        <max>29</max>
+        <min>16</min>
         <date>2014-07-13</date>
         <icon>01d</icon>
       </ForecastDay>
@@ -1928,7 +1946,7 @@
       </ForecastDay>
       <ForecastDay>
         <max>30</max>
-        <min>22</min>
+        <min>21</min>
         <date>2014-07-20</date>
         <icon>10d</icon>
       </ForecastDay>
@@ -1959,20 +1977,20 @@
     </ArrayOfForecastDay>
     <ArrayOfForecastDay>
       <ForecastDay>
-        <max>23</max>
+        <max>21</max>
         <min>11</min>
         <date>2014-07-11</date>
         <icon>10d</icon>
       </ForecastDay>
       <ForecastDay>
-        <max>21</max>
-        <min>12</min>
+        <max>20</max>
+        <min>11</min>
         <date>2014-07-12</date>
         <icon>01d</icon>
       </ForecastDay>
       <ForecastDay>
         <max>28</max>
-        <min>18</min>
+        <min>17</min>
         <date>2014-07-13</date>
         <icon>01d</icon>
       </ForecastDay>
@@ -1996,25 +2014,25 @@
       </ForecastDay>
       <ForecastDay>
         <max>32</max>
-        <min>22</min>
+        <min>20</min>
         <date>2014-07-17</date>
         <icon>10d</icon>
       </ForecastDay>
       <ForecastDay>
         <max>32</max>
-        <min>20</min>
+        <min>18</min>
         <date>2014-07-18</date>
         <icon>10d</icon>
       </ForecastDay>
       <ForecastDay>
         <max>31</max>
-        <min>21</min>
+        <min>18</min>
         <date>2014-07-19</date>
         <icon>10d</icon>
       </ForecastDay>
       <ForecastDay>
         <max>30</max>
-        <min>20</min>
+        <min>18</min>
         <date>2014-07-20</date>
         <icon>01d</icon>
       </ForecastDay>
